@@ -1,0 +1,1 @@
+com.unity.nuget.newtonsoft-json 3.0.1버전이 필요합니다
