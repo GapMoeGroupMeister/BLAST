@@ -23,12 +23,12 @@ public class EnemyState<T> where T : Enum
     public virtual void Enter()
     {
         _endTriggerCalled = false;
-        //_enemyBase.AnimatorCompo.SetBool(_animBoolHash, true);
+        _enemyBase.AnimatorCompo.SetBool(_animBoolHash, true);
     }
 
     public virtual void Exit()
     {
-        //_enemyBase.AnimatorCompo.SetBool(_animBoolHash, false);
+        _enemyBase.AnimatorCompo.SetBool(_animBoolHash, false);
     }
 
     public void AnimationFinishTrigger()

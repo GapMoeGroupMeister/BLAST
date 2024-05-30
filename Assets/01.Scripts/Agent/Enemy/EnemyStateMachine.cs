@@ -18,8 +18,7 @@ public class EnemyStateMachine<T> where T : Enum
 
     public void ChangeState(T newState, bool forceMode = false)
     {
-        //if (!_enemyBase.CanStateChangeable && !forceMode) return;
-        //if (_enemyBase.isDead) return;
+        if (!_enemyBase.CanStateChangeable && !forceMode) return;
 
         CurrentState.Exit();
         CurrentState = stateDictionary[newState];
