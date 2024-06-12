@@ -6,7 +6,6 @@ public abstract class Enemy : Agent
 {
     [Header("Common Setting")]
     public float moveSpeed;
-    public float battleTime;
     public bool isActive;
 
     protected float _defaultMoveSpeed;
@@ -40,6 +39,8 @@ public abstract class Enemy : Agent
 
         _enemyCheckColliders = new Collider[_maxCheckEnemy];
         capsuleCollider = GetComponent<CapsuleCollider>();
+
+        (MovementCompo as EnemyMovement).Initialize(this);
     }
 
     public virtual Collider IsPlayerDetected()
