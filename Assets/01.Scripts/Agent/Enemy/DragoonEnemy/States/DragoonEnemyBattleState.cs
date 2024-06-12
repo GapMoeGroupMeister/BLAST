@@ -42,10 +42,7 @@ public class DragoonEnemyBattleState : EnemyState<DragoonEnemyStateEnum>
 
         if (Vector3.Distance(_enemyBase.transform.position, _enemyBase.targetTrm.position) <= _enemyBase.attackDistance)
         {
-            if (_enemyBase.lastAttackTime + _enemyBase.attackCooldown > Time.time)
-            {
-                _stateMachine.ChangeState(DragoonEnemyStateEnum.Attack);
-            }
+            _stateMachine.ChangeState(DragoonEnemyStateEnum.Attack);
         }
     }
 }

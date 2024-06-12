@@ -27,7 +27,7 @@ public class UtilityWindow : EditorWindow
     private GUIStyle _selectStyle;
 
     #region 각 데이터 테이블 모음
-    private readonly string _poolDirectory = "Assets/10_Database/ObjectPool";
+    private readonly string _poolDirectory = "Assets/10.Database/ObjectPool";
     private PoolingTableSO _poolTable;
     #endregion
     
@@ -246,7 +246,7 @@ public class UtilityWindow : EditorWindow
         
         string code = string.Format(CodeFormat.PoolingTypeFormat, codeBuilder.ToString());
         
-        string path = $"{Application.dataPath}/PoolManager/Core/ObjectPool/PoolingType.cs";
+        string path = $"{Application.dataPath}/01.Scripts/ObjectPool/PoolingType.cs";
         
         
         File.WriteAllText(path, code);

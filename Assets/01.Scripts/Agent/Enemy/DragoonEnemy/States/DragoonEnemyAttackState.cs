@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ObjectPooling;
 
 public class DragoonEnemyAttackState : EnemyState<DragoonEnemyStateEnum>
 {
@@ -12,6 +13,11 @@ public class DragoonEnemyAttackState : EnemyState<DragoonEnemyStateEnum>
     {
         base.Enter();
         _enemyBase.transform.rotation = Quaternion.LookRotation((_enemyBase.targetTrm.position - _enemyBase.transform.position).normalized);
+        Transform firePosTrm = (_enemyBase as DragoonEnemy).firePosTrm;
+        EffectPlayer effect = PoolingManager.Instance.Pop(PoolingType.Charge_VFX) as EffectPlayer;
+        effect.transform.position = firePosTrm.position;
+        effect.transform.SetParent(firePosTrm);
+        effect.StartPlay(1.5f);
         _enemyBase.MovementCompo.StopImmediately();
     }
 

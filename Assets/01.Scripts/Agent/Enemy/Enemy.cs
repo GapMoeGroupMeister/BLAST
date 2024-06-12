@@ -39,6 +39,8 @@ public abstract class Enemy : Agent
 
         _enemyCheckColliders = new Collider[_maxCheckEnemy];
         capsuleCollider = GetComponent<CapsuleCollider>();
+
+        (MovementCompo as EnemyMovement).Initialize(this);
     }
 
     public virtual Collider IsPlayerDetected()

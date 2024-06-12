@@ -15,6 +15,8 @@ public class DragoonEnemy : Enemy
 {
     public EnemyStateMachine<DragoonEnemyStateEnum> StateMachine { get; private set; }
 
+    public Transform firePosTrm;
+
     protected override void Awake()
     {
         base.Awake();
