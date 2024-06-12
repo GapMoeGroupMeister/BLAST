@@ -232,7 +232,7 @@ GameObject:
   - component: {fileID: 3389667730939113789}
   - component: {fileID: 5065626374008235485}
   - component: {fileID: 5785841590471671912}
-  - component: {fileID: 3824449533428434276}
+  - component: {fileID: 294903427704956916}
   m_Layer: 0
   m_Name: DefaultPlayerPart
   m_TagString: Untagged
@@ -311,7 +311,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &3824449533428434276
+--- !u!114 &294903427704956916
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -320,17 +320,34 @@ MonoBehaviour:
   m_GameObject: {fileID: 8517488567826268197}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45b889fcbf43269419bedc8a8c393822, type: 3}
+  m_Script: {fileID: 11500000, guid: 054dfac990be40ce8446c94befd22c3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerPartType: 0
-  _bulletFirePositions:
-  - {fileID: 3128271772544532723}
-  - {fileID: 7807962545353490545}
-  - {fileID: 5844285591956642450}
-  - {fileID: 2452334306918328598}
-  dedicateSkills: 
-  _cooldown: 0.1
+  magazineInfoL:
+    curMagazine: 10
+    maxMagazine: 10
+    attackDelay: 0.2
+    attackDelayTimer: 0
+    cooldown: 5
+    cooldownTimer: 0
+    bulletFirePositions:
+    - {fileID: 3128271772544532723}
+    - {fileID: 5844285591956642450}
+    AttackDirection: {x: 0, y: 0, z: 0}
+    _bulletPoolingType: 1
+  magazineInfoR:
+    curMagazine: 10
+    maxMagazine: 10
+    attackDelay: 0.2
+    attackDelayTimer: 0
+    cooldown: 5
+    cooldownTimer: 0
+    bulletFirePositions:
+    - {fileID: 7807962545353490545}
+    - {fileID: 2452334306918328598}
+    AttackDirection: {x: 0, y: 0, z: 0}
+    _bulletPoolingType: 1
   whatIsEnemy:
     serializedVersion: 2
     m_Bits: 0

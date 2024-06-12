@@ -34,10 +34,10 @@ public class PlayerMovement : MovementController
             _baseTrm.rotation = Quaternion.Lerp(this._baseTrm.rotation, Quaternion.LookRotation(lookDirection), Time.deltaTime * _rotateSpeed);
         }
 
-        HandleAttackDirection(_inputReader.MousePosition);
+        HandleLookDirection(_inputReader.MousePosition);
     }
 
-    private void HandleAttackDirection(Vector2 mousePos)
+    private void HandleLookDirection(Vector2 mousePos)
     {
         Ray ray = Camera.main.ScreenPointToRay(mousePos);
         if (Physics.Raycast(ray, out RaycastHit hit, 1000, _whatIsGround))
