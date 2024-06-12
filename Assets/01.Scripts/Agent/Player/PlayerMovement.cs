@@ -4,6 +4,8 @@ using DG.Tweening;
 
 public class PlayerMovement : MovementController
 {
+    [SerializeField] private Transform _attackPointTrm;
+    [SerializeField] private Vector3 _attackPointOffset;
     [SerializeField] private Transform _baseTrm;
     [SerializeField] private LayerMask _whatIsGround;
 
@@ -21,21 +23,6 @@ public class PlayerMovement : MovementController
         _inputReader = GameManager.Instance.InputReader;
         _rigidbodyCompo = GetComponent<Rigidbody>();
         _player = GetComponent<Player>();
-        _inputReader.AttackDirectionEvent += HandleAttackDirection;
-    }
-
-    private void OnDestroy()
-    {
-        _inputReader.AttackDirectionEvent -= HandleAttackDirection;
-    }
-
-    private void HandleAttackDirection(Vector2 mousePos)
-    {
-        Ray ray = Camera.main.ScreenPointToRay(mousePos);
-        if (Physics.Raycast(ray, out RaycastHit hit, 1000, _whatIsGround))
-        {
-            lookDirection = hit.point - transform.position;
-        }
     }
 
     private void FixedUpdate()
@@ -45,6 +32,18 @@ public class PlayerMovement : MovementController
         {
             lookDirection.y = 0;
             _baseTrm.rotation = Quaternion.Lerp(this._baseTrm.rotation, Quaternion.LookRotation(lookDirection), Time.deltaTime * _rotateSpeed);
+        }
+
+        HandleAttackDirection(_inputReader.MousePosition);
+    }
+
+    private void HandleAttackDirection(Vector2 mousePos)
+    {
+        Ray ray = Camera.main.ScreenPointToRay(mousePos);
+        if (Physics.Raycast(ray, out RaycastHit hit, 1000, _whatIsGround))
+        {
+            lookDirection = hit.point - transform.position;
+            _attackPointTrm.position = hit.point + _attackPointOffset;
         }
     }
 
