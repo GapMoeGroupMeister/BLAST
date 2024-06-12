@@ -19,5 +19,4 @@ public class Agent : MonoBehaviour
         MovementCompo = GetComponent<MovementController>();
         HealthCompo = GetComponent<Health>();
     }
-    
 }

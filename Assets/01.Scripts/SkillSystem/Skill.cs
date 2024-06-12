@@ -1,8 +1,5 @@
 ﻿using UnityEngine;
 
-//스킬을 UI하고 연동해서 스킬 쿨타임을 보여주기 위해서
-public delegate void CooldownInfoEvent(float current, float total);
-
 public class Skill : MonoBehaviour
 {
     public bool skillEnabled;

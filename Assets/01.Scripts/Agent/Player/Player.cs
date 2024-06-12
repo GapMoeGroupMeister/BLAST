@@ -4,13 +4,16 @@ using UnityEngine;
 public class Player : Agent
 {
     public PlayerStateMachine<PlayerStateEnum> StateMachine;
-    public PlayerAttack PlayerAttack { get; private set; }
+    public PlayerPartController PlayerPartController;
 
     protected override void Awake()
     {
         base.Awake();
         StateMachine = new PlayerStateMachine<PlayerStateEnum>();
-        PlayerAttack = GetComponent<PlayerAttack>();
+        PlayerPartController = PlayerPartController.Instance;
+
+        //임시로 만든거
+        PlayerPartController.Init(PlayerPartType.Default);
 
         foreach (PlayerStateEnum stateEnum in Enum.GetValues(typeof(PlayerStateEnum)))
         {
