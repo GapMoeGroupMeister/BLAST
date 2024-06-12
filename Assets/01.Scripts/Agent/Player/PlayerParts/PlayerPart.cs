@@ -10,7 +10,7 @@ public class MagazineInfo
 {
 	public int curMagazine;
 	public int maxMagazine = 20;
-	public event PlayerMagazineEvent wa;
+	public event PlayerMagazineEvent playerMagazineEvent;
 
 	public float attackDelay = 0.2f;
 	[HideInInspector] public float attackDelayTimer;
@@ -29,15 +29,15 @@ public class MagazineInfo
 	public void HandleAttackUpdate(bool value)
 	{
 		IsAttack = value;
-		Debug.Log(IsAttack);
 	}
 	
 	public void Attack()
 	{
 		if (attackDelayTimer > 0 || curMagazine <= 0) return;
 		attackDelayTimer = attackDelay;
-		OnAttackEvent?.Invoke(AttackDirection);
 		--curMagazine;
+		OnAttackEvent?.Invoke(AttackDirection);
+		playerMagazineEvent?.Invoke(curMagazine, maxMagazine);
 		
 		for (int i = 0; i < bulletFirePositions.Length; ++i)
 		{
@@ -75,6 +75,7 @@ public class MagazineInfo
 			{
 				cooldownTimer = cooldown;
 				curMagazine = maxMagazine;
+				playerMagazineEvent?.Invoke(curMagazine, maxMagazine);
 			}
 		}
 	}
