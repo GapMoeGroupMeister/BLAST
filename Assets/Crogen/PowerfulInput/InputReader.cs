@@ -9,10 +9,13 @@ namespace Crogen.PowerfulInput
     {
         #region Input Event
 
-        public event Action<Vector3> MoveEvent;
+        public event Action MoveStartEvent;
         public event Action DashEvent;
         public event Action AttackEvent;
         public event Action<Vector2> AttackDirectionEvent;
+
+        public Vector3 Movement { get; private set; }
+        
         #endregion
 
         private Controls _controls;
@@ -24,7 +27,7 @@ namespace Crogen.PowerfulInput
                 _controls = new Controls();
                 _controls.Player.SetCallbacks(this);
             }
-            _controls.Enable();
+            _controls.Player.Enable();
         }
 
         private void OnDisable()
@@ -40,7 +43,8 @@ namespace Crogen.PowerfulInput
 
         public void OnMove(InputAction.CallbackContext context)
         {
-            MoveEvent?.Invoke(context.ReadValue<Vector3>());
+            MoveStartEvent?.Invoke();
+            Movement = context.ReadValue<Vector3>();
         }
 
         public void OnAttack(InputAction.CallbackContext context)

@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class PlayerState<T> where T : Enum
 {
+    protected GameManager _gameManager;
     protected PlayerStateMachine<T> _stateMachine;
     protected Player _playerBase;
 
@@ -14,10 +15,11 @@ public class PlayerState<T> where T : Enum
         _playerBase = playerBase;
         _stateMachine = stateMachine;
         _animBoolHash = Animator.StringToHash(animBoolName);
+        _gameManager = GameManager.Instance;
     }
 
     public virtual void UpdateState() { }
-
+    public virtual void FixedUpdateState() { }
     public virtual void Enter()
     {
         _endTriggerCalled = false;

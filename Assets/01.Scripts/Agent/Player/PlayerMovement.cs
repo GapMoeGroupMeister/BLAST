@@ -1,21 +1,25 @@
 ﻿using Crogen.PowerfulInput;
 using UnityEngine;
+using DG.Tweening;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : MovementController
 {
     [SerializeField] private Transform _baseTrm;
     [SerializeField] private LayerMask _whatIsGround;
+
+    [SerializeField] private float _moveSpeed = 2f;
     [SerializeField] private float _rotateSpeed = 100f;
+    
     private InputReader _inputReader;
     
     private Player _player;
     private Rigidbody _rigidbodyCompo;
     private Vector3 lookDirection;
-
+    
     private void Awake()
     {
         _inputReader = GameManager.Instance.InputReader;
-
+        _rigidbodyCompo = GetComponent<Rigidbody>();
         _player = GetComponent<Player>();
         _inputReader.AttackDirectionEvent += HandleAttackDirection;
     }
@@ -44,11 +48,14 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public void StopImmediately()
+    public override void StopImmediately()
     {
     }
     
-    public void SetMovement(Vector3 movement, bool isRotation = false)
+    public override void SetMovement(Vector3 movement, bool isRotation = false)
     {
+        if(movement.sqrMagnitude < 0.1f) return;
+        transform.DORotateQuaternion(Quaternion.LookRotation(-movement), 0.85f);
+        _rigidbodyCompo.velocity = -movement * _moveSpeed;
     }
 }

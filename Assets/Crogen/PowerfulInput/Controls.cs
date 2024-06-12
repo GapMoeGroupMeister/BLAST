@@ -41,7 +41,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""type"": ""Value"",
                     ""id"": ""a5129431-4049-4fbe-b3a0-9cd5bc8d8c0f"",
                     ""expectedControlType"": ""Vector3"",
-                    ""processors"": """",
+                    ""processors"": ""NormalizeVector3"",
                     ""interactions"": """",
                     ""initialStateCheck"": true
                 },
@@ -99,30 +99,8 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""left"",
-                    ""id"": ""cd7bcceb-b7c1-4f27-8130-4f029ebfead2"",
-                    ""path"": ""<Keyboard>/a"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""right"",
-                    ""id"": ""0c80e206-49db-4ee9-bb35-d6d735bcf203"",
-                    ""path"": ""<Keyboard>/d"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""forward"",
-                    ""id"": ""b0043a45-daa6-4435-88b1-4c424c494e85"",
+                    ""name"": ""Forward"",
+                    ""id"": ""04cd3eab-12ca-4f11-a6d2-2f4881197a7c"",
                     ""path"": ""<Keyboard>/w"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -132,9 +110,31 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""backward"",
-                    ""id"": ""12db6050-6756-45a5-a312-cab92980d307"",
+                    ""name"": ""Left"",
+                    ""id"": ""b0043a45-daa6-4435-88b1-4c424c494e85"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Backward"",
+                    ""id"": ""cb67ecea-7d5b-450f-9928-b474a129237b"",
                     ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Right"",
+                    ""id"": ""12db6050-6756-45a5-a312-cab92980d307"",
+                    ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
