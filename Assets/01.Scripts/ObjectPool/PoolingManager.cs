@@ -35,6 +35,21 @@ public class PoolingManager : MonoSingleton<PoolingManager>
         item.ResetItem();
         return item;
     }
+    
+    public PoolableMono Pop(PoolingType type, Vector3 position, Quaternion rotation)
+    {
+        if (_pools.ContainsKey(type) == false)
+        {
+            Debug.LogError($"Prefab dose not exist on Pool : {type}");
+            return null;
+        }
+        
+        PoolableMono item = _pools[type].Pop();
+        item.transform.position = position;
+        item.transform.rotation = rotation;
+        item.ResetItem();
+        return item;
+    }
 
     public void Push(PoolableMono obj, bool resetParent = false)
     {

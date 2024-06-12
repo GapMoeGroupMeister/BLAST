@@ -38,10 +38,13 @@ public class MagazineInfo
 		attackDelayTimer = attackDelay;
 		OnAttackEvent?.Invoke(AttackDirection);
 		--curMagazine;
+		
 		for (int i = 0; i < bulletFirePositions.Length; ++i)
 		{
-			Bullet bullet = PoolingManager.Instance.Pop(_bulletPoolingType) as Bullet;
-			bullet.transform.position = bulletFirePositions[i].position;
+			Bullet bullet = PoolingManager.Instance.Pop(
+				_bulletPoolingType, 
+				bulletFirePositions[i].position, 
+				Quaternion.LookRotation(AttackDirection)) as Bullet;
 		}
 		
 		
@@ -80,8 +83,8 @@ public class MagazineInfo
 public abstract class PlayerPart : MonoBehaviour
 {
 	private InputReader _inputReader;
-    public PlayerPartType playerPartType;
 	private PlayerPartController _playerPartController;
+    public PlayerPartType playerPartType;
 
 	[Header("MagazineL")] 
 	public MagazineInfo magazineInfoL;
@@ -89,12 +92,14 @@ public abstract class PlayerPart : MonoBehaviour
 	[Header("MagazineR")] 
 	public MagazineInfo magazineInfoR;
 
+	private PlayerMovement _playerMovement;
 	public LayerMask whatIsEnemy;
 
 	protected virtual void OnEnable()
 	{
 		_playerPartController = PlayerPartController.Instance;
 		_inputReader = GameManager.Instance.InputReader;
+		_playerMovement = GameManager.Instance.Player.MovementCompo as PlayerMovement;
 		
 		//Magazine
 		magazineInfoL.curMagazine = magazineInfoL.maxMagazine;
@@ -127,6 +132,6 @@ public abstract class PlayerPart : MonoBehaviour
 	
 	protected void FixedUpdate()
 	{
-		magazineInfoL.AttackDirection = magazineInfoR.AttackDirection = transform.forward;
+		magazineInfoL.AttackDirection = magazineInfoR.AttackDirection = _playerMovement.lookDirection;
 	}
 }

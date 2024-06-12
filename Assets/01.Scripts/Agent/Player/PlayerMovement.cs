@@ -16,7 +16,7 @@ public class PlayerMovement : MovementController
     
     private Player _player;
     private Rigidbody _rigidbodyCompo;
-    private Vector3 lookDirection;
+    public Vector3 lookDirection;
     
     private void Awake()
     {
