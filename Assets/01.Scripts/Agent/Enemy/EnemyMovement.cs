@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyMovement : MonoBehaviour
+public class EnemyMovement : MovementController
 {
     public Vector3 Velocity { get; }
 
@@ -46,17 +46,6 @@ public class EnemyMovement : MonoBehaviour
         _navAgent.SetDestination(destination);
     }
 
-    public void StopImmediately()
-    {
-        if (!_navAgent.enabled) return;
-        _navAgent.isStopped = true;
-    }
-
-
-    public void SetMovement(Vector3 movement, bool isRotation = false)
-    {
-    }
-
     public void GetKnockback(Vector3 force)
     {
         StartCoroutine(ApplyKnockback(force));
@@ -90,5 +79,15 @@ public class EnemyMovement : MonoBehaviour
         _navAgent.Warp(transform.position);
         _navAgent.enabled = true;
         _isKnockback = false;
+    }
+
+    public override void StopImmediately()
+    {
+        if (!_navAgent.enabled) return;
+        _navAgent.isStopped = true;
+    }
+
+    public override void SetMovement(Vector3 movement, bool isRotation = false)
+    {
     }
 }

@@ -6,7 +6,6 @@ public abstract class Enemy : Agent
 {
     [Header("Common Setting")]
     public float moveSpeed;
-    public float battleTime;
     public bool isActive;
 
     protected float _defaultMoveSpeed;
