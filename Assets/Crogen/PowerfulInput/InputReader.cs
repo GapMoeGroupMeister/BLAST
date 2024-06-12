@@ -12,9 +12,9 @@ namespace Crogen.PowerfulInput
         public event Action MoveStartEvent;
         public event Action DashEvent;
         public event Action AttackEvent;
-        public event Action<Vector2> AttackDirectionEvent;
 
         public Vector3 Movement { get; private set; }
+        public Vector2 MousePosition { get; private set; }
         
         #endregion
 
@@ -55,7 +55,7 @@ namespace Crogen.PowerfulInput
 
         public void OnAttackDirection(InputAction.CallbackContext context)
         {
-            AttackDirectionEvent?.Invoke(context.ReadValue<Vector2>());
+            MousePosition = context.ReadValue<Vector2>();
         }
     }
 }
