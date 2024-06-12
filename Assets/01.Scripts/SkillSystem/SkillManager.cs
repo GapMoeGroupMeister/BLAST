@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum PlayerSkill
+public enum SkillType
 {
     None = 0, 
 }
@@ -17,9 +17,9 @@ public class SkillManager : MonoSingleton<SkillManager>
     {
         _skills = new Dictionary<Type, Skill>();
         _passiveSkills = new List<Skill>();
-        foreach (PlayerSkill skillEnum in Enum.GetValues(typeof(PlayerSkill)))
+        foreach (SkillType skillEnum in Enum.GetValues(typeof(SkillType)))
         {
-            if(skillEnum == PlayerSkill.None) continue;
+            if(skillEnum == SkillType.None) continue;
 
             Skill skillCompo = GetComponent($"{skillEnum.ToString()}Skill") as Skill;
             Type type = skillCompo.GetType();
@@ -37,7 +37,7 @@ public class SkillManager : MonoSingleton<SkillManager>
         return null;
     }
     
-    public Skill GetSkill(PlayerSkill skill)
+    public Skill GetSkill(SkillType skill)
     {
         Type t = Type.GetType($"{skill.ToString()}");
 

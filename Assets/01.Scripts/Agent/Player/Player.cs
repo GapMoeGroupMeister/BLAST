@@ -4,12 +4,14 @@ using UnityEngine;
 public class Player : Agent
 {
     public PlayerStateMachine<PlayerStateEnum> StateMachine;
-        
+    public PlayerAttack PlayerAttack { get; private set; }
+
     protected override void Awake()
     {
         base.Awake();
         StateMachine = new PlayerStateMachine<PlayerStateEnum>();
-        
+        PlayerAttack = GetComponent<PlayerAttack>();
+
         foreach (PlayerStateEnum stateEnum in Enum.GetValues(typeof(PlayerStateEnum)))
         {
             try
