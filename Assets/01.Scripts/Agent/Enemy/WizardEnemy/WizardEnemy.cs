@@ -51,4 +51,9 @@ public class WizardEnemy : Enemy
     {
         StateMachine.CurrentState.AnimationFinishTrigger();
     }
+
+    public override void EffectPlayTrigger()
+    {
+        StateMachine.CurrentState.EffectPlayTrigger();
+    }
 }

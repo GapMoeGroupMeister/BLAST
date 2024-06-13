@@ -9,6 +9,7 @@ public class EnemyState<T> where T : Enum
     protected Enemy _enemyBase;
 
     protected bool _endTriggerCalled;
+    protected bool _effectPlayTriggerCalled;
     protected int _animBoolHash;
 
     public EnemyState(Enemy enemyBase, EnemyStateMachine<T> stateMachine, string animBoolName)
@@ -34,5 +35,10 @@ public class EnemyState<T> where T : Enum
     public void AnimationFinishTrigger()
     {
         _endTriggerCalled = true;
+    }
+
+    public void EffectPlayTrigger()
+    {
+        _effectPlayTriggerCalled = true;
     }
 }

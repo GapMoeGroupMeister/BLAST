@@ -2,6 +2,6 @@ namespace ObjectPooling
 {
     public enum PoolingType
     {
-        Charge_VFX,
+        Charge_VFX,Trail_VFX,
     }
 }
