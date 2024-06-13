@@ -12,7 +12,7 @@ namespace Crogen.PowerfulInput
         public event Action MoveStartEvent;
         public event Action DashEvent;
         public event Action AttackEvent;
-
+        public event Action<float> ZoomEvent;
         public Vector3 Movement { get; private set; }
         public Vector2 MousePosition { get; private set; }
         
@@ -57,5 +57,10 @@ namespace Crogen.PowerfulInput
         {
             MousePosition = context.ReadValue<Vector2>();
         }
-    }
+
+		public void OnZoom(InputAction.CallbackContext context)
+		{
+            ZoomEvent?.Invoke(Mathf.Clamp(context.ReadValue<float>(), -1, 1));
+        }
+	}
 }
