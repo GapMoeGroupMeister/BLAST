@@ -1,6 +1,7 @@
 ﻿using Crogen.PowerfulInput;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.Serialization;
 
 public class PlayerMovement : MovementController
 {
@@ -16,7 +17,7 @@ public class PlayerMovement : MovementController
     
     private Player _player;
     private Rigidbody _rigidbodyCompo;
-    public Vector3 lookDirection;
+    private Vector3 _lookDirection;
     
     private void Awake()
     {
@@ -28,10 +29,10 @@ public class PlayerMovement : MovementController
     private void FixedUpdate()
     {
         //Base 회전
-        if (lookDirection != Vector3.zero)
+        if (_lookDirection != Vector3.zero)
         {
-            lookDirection.y = 0;
-            _baseTrm.rotation = Quaternion.Lerp(this._baseTrm.rotation, Quaternion.LookRotation(lookDirection), Time.deltaTime * _rotateSpeed);
+            _lookDirection.y = 0;
+            _baseTrm.rotation = Quaternion.Lerp(this._baseTrm.rotation, Quaternion.LookRotation(_lookDirection), Time.deltaTime * _rotateSpeed);
         }
 
         HandleLookDirection(_inputReader.MousePosition);
@@ -42,7 +43,7 @@ public class PlayerMovement : MovementController
         Ray ray = Camera.main.ScreenPointToRay(mousePos);
         if (Physics.Raycast(ray, out RaycastHit hit, 1000, _whatIsGround))
         {
-            lookDirection = hit.point - transform.position;
+            _lookDirection = hit.point - transform.position;
             _attackPointTrm.position = hit.point + _attackPointOffset;
         }
     }
@@ -54,6 +55,7 @@ public class PlayerMovement : MovementController
     public override void SetMovement(Vector3 movement, bool isRotation = false)
     {
         if(movement.sqrMagnitude < 0.1f) return;
+        movement = Quaternion.Euler(0, -45, 0) * movement;
         transform.DORotateQuaternion(Quaternion.LookRotation(-movement), 0.85f);
         _rigidbodyCompo.velocity = -movement * _moveSpeed;
     }

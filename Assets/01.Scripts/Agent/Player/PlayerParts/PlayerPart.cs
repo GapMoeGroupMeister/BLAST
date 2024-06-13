@@ -84,7 +84,7 @@ public class MagazineInfo
 public abstract class PlayerPart : MonoBehaviour
 {
 	private InputReader _inputReader;
-	private PlayerPartController _playerPartController;
+	protected PlayerPartController _playerPartController;
     public PlayerPartType playerPartType;
 
 	[Header("MagazineL")] 
@@ -133,6 +133,6 @@ public abstract class PlayerPart : MonoBehaviour
 	
 	protected void FixedUpdate()
 	{
-		magazineInfoL.AttackDirection = magazineInfoR.AttackDirection = _playerMovement.lookDirection;
+		magazineInfoL.AttackDirection = magazineInfoR.AttackDirection = transform.rotation * Vector3.forward;
 	}
 }
