@@ -1,15 +1,18 @@
 using DG.Tweening;
-using ObjectPooling;
+using Crogen.ObjectPooling;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TrailEffect : PoolableMono
+public class TrailEffect : MonoBehaviour, IPoolingObject
 {
     private TrailRenderer _trailRenderer;
-    private Vector3 _targetPos;
+    private Vector3 _targetPos; 
     private Material _material;
     private readonly int _alphaHash = Shader.PropertyToID("_Alpha");
+
+    public PoolType OriginPoolType { get; set; }
+    GameObject IPoolingObject.gameObject { get; set ; }
 
     private void Awake()
     {
@@ -42,12 +45,16 @@ public class TrailEffect : PoolableMono
 
         DOTween.To(() => _material.GetFloat(_alphaHash), v => _material.SetFloat(_alphaHash, v), 0, 1f).
             OnComplete(() => { 
-                PoolingManager.Instance.Push(this); 
+                this.Push(); 
                 _trailRenderer.Clear(); 
             });
     }
 
-    public override void ResetItem()
+    public void OnPop()
+    {
+    }
+
+    public void OnPush()
     {
         _trailRenderer.enabled = false;
         _material.SetFloat(_alphaHash, 1);
