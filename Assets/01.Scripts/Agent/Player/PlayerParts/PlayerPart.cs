@@ -9,10 +9,13 @@ public delegate void PlayerOverloadEvent(int curOverload, int maxOverload);
 [Serializable]
 public class MagazineInfo
 {
+	[Header("Overload")]
 	public int curOverload;
 	public int maxOverload = 20;
+	public float overloadDelay = 0.5f;
 	public event PlayerOverloadEvent playerOverloadEvent;
 
+	[Header("Attack")]
 	public float attackDelay = 0.2f;
 	[HideInInspector] public float curAttackDelay;
 	
@@ -27,7 +30,8 @@ public class MagazineInfo
 	
 	public void HandleAttackUpdate(bool value)
 	{
-		IsAttack = value;
+		if (curOverload <= maxOverload)
+			IsAttack = value;
 	}
 	
 	public void Attack()
@@ -36,8 +40,8 @@ public class MagazineInfo
 
 		curAttackDelay = attackDelay;
 		++curOverload;
-		OnAttackEvent?.Invoke(AttackDirection);
 		playerOverloadEvent?.Invoke(curOverload, maxOverload);
+		OnAttackEvent?.Invoke(AttackDirection);
 		for (int i = 0; i < bulletFirePositions.Length; ++i)
 		{
 			bulletFirePositions[i].gameObject.Pop(
@@ -61,9 +65,10 @@ public class MagazineInfo
 	
 	public void SetOverload()
 	{
-		if (curOverload < maxOverload)
+		if (curOverload > 0 && IsAttack == false)
 		{
 			--curOverload;
+			playerOverloadEvent?.Invoke(curOverload, maxOverload);
 		}
 	}
 }
@@ -121,11 +126,25 @@ public abstract class PlayerPart : MonoBehaviour
 
 	private IEnumerator CoroutineUpdateOverload()
 	{
+		float currentTimeL=0;
+		float currentTimeR=0;
+
 		while(true)
 		{
-			yield return new WaitForSeconds(1);
-			magazineInfoL.SetOverload();
-			magazineInfoR.SetOverload();
+			yield return null;
+			currentTimeL += Time.deltaTime;
+			currentTimeR += Time.deltaTime;
+
+			if(currentTimeL > magazineInfoL.overloadDelay)
+			{
+				magazineInfoL.SetOverload();
+				currentTimeL = 0;
+			}
+			if(currentTimeR > magazineInfoR.overloadDelay)
+			{
+				magazineInfoR.SetOverload();
+				currentTimeR = 0;
+			}
 		}
 	}
 }
