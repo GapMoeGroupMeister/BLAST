@@ -9,13 +9,12 @@ public delegate void PlayerOverloadEvent(int curOverload, int maxOverload);
 [Serializable]
 public class MagazineInfo
 {
-	private bool _isAttacking = false;
 	public int curOverload;
 	public int maxOverload = 20;
 	public event PlayerOverloadEvent playerOverloadEvent;
 
 	public float attackDelay = 0.2f;
-	[HideInInspector] public float attackDelayTimer;
+	[HideInInspector] public float curAttackDelay;
 	
 	public Action<Vector3> OnAttackEvent;
 	[SerializeField] public Transform[] bulletFirePositions;
@@ -33,16 +32,16 @@ public class MagazineInfo
 	
 	public void Attack()
 	{
-		if (attackDelayTimer > 0 || curOverload >= maxOverload) return;
-		attackDelayTimer = attackDelay;
+		if (curAttackDelay > 0 || curOverload >= maxOverload) return;
+
+		curAttackDelay = attackDelay;
+		++curOverload;
 		OnAttackEvent?.Invoke(AttackDirection);
 		playerOverloadEvent?.Invoke(curOverload, maxOverload);
-		
 		for (int i = 0; i < bulletFirePositions.Length; ++i)
 		{
 			bulletFirePositions[i].gameObject.Pop(
 				_bulletPoolingType,
-				null,
 				bulletFirePositions[i].position, 
 				Quaternion.LookRotation(AttackDirection));
 		}
@@ -52,10 +51,10 @@ public class MagazineInfo
 	{
 		if (attackDelay > 0)
 		{
-			attackDelayTimer -= Time.deltaTime;
-			if (attackDelayTimer <= 0)
+			curAttackDelay -= Time.deltaTime;
+			if (curAttackDelay <= 0)
 			{
-				attackDelayTimer = 0;
+				curAttackDelay = 0;
 			}
 		}
 	}
@@ -90,13 +89,8 @@ public abstract class PlayerPart : MonoBehaviour
 		_inputReader = GameManager.Instance.InputReader;
 		_playerMovement = GameManager.Instance.Player.MovementCompo as PlayerMovement;
 		
-		//Magazine
-		magazineInfoL.curOverload = magazineInfoL.maxOverload;
-		magazineInfoR.curOverload = magazineInfoR.maxOverload;
-		
 		_inputReader.AttackLEvent += magazineInfoL.HandleAttackUpdate;
 		_inputReader.AttackREvent += magazineInfoR.HandleAttackUpdate;
-
 		StartCoroutine(CoroutineUpdateOverload());
 	}
 
