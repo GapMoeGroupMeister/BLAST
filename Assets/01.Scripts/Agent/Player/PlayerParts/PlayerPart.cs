@@ -1,8 +1,8 @@
 using System;
 using System.Collections;
 using Crogen.PowerfulInput;
-using ObjectPooling;
 using UnityEngine;
+using Crogen.ObjectPooling;
 
 public delegate void PlayerOverloadEvent(int curOverload, int maxOverload);
 
@@ -24,7 +24,7 @@ public class MagazineInfo
 
 	public bool IsAttack { get; private set; }
 
-	[SerializeField] private PoolingType _bulletPoolingType;
+	[SerializeField] private PoolType _bulletPoolingType;
 	
 	public void HandleAttackUpdate(bool value)
 	{
@@ -40,10 +40,11 @@ public class MagazineInfo
 		
 		for (int i = 0; i < bulletFirePositions.Length; ++i)
 		{
-			Bullet bullet = PoolingManager.Instance.Pop(
-				_bulletPoolingType, 
+			bulletFirePositions[i].gameObject.Pop(
+				_bulletPoolingType,
+				null,
 				bulletFirePositions[i].position, 
-				Quaternion.LookRotation(AttackDirection)) as Bullet;
+				Quaternion.LookRotation(AttackDirection));
 		}
 	}
 

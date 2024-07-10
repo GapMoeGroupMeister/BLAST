@@ -1,8 +1,8 @@
-using ObjectPooling;
 using DG.Tweening;
 using UnityEngine;
+using Crogen.ObjectPooling;
 
-public class Bullet : PoolableMono
+public class Bullet : MonoBehaviour, IPoolingObject
 {
 	public float speed = 100f;
 	public float duration = 5f;
@@ -11,14 +11,12 @@ public class Bullet : PoolableMono
 
 	[SerializeField] private float _collisionRadius = 1f;
 
+	public PoolType OriginPoolType { get; set; }
+	GameObject IPoolingObject.gameObject { get; set; }
+
 	private void Awake()
 	{
 		_colliders = new Collider[10];
-	}
-
-	public override void ResetItem()
-	{
-		transform.DOMove(transform.forward * speed * duration, duration).OnComplete(() => { PoolingManager.Instance.Push(this, true); });
 	}
 
 	private void FixedUpdate()
@@ -26,12 +24,21 @@ public class Bullet : PoolableMono
 		if (Physics.OverlapSphereNonAlloc(transform.position, _collisionRadius, _colliders, _whatIsEnemy) > 0)
 		{
 			transform.DOKill();
-			PoolingManager.Instance.Push(this, true);
+			this.Push();
 		}
 	}
 
 	private void OnDrawGizmos()
 	{
 		Gizmos.DrawWireSphere(transform.position, _collisionRadius);
+	}
+
+	public void OnPop()
+	{
+		transform.DOMove(transform.forward * speed * duration, duration).OnComplete(() => { this.Push(); });
+	}
+
+	public void OnPush()
+	{
 	}
 }

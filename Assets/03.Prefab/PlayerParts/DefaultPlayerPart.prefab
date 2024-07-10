@@ -325,29 +325,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPartType: 0
   magazineInfoL:
-    curMagazine: 20
-    maxMagazine: 40
+    curOverload: 0
+    maxOverload: 20
     attackDelay: 0.1
     attackDelayTimer: 0
-    cooldown: 5
-    cooldownTimer: 0
     bulletFirePositions:
     - {fileID: 3128271772544532723}
     - {fileID: 5844285591956642450}
     AttackDirection: {x: 0, y: 0, z: 0}
-    _bulletPoolingType: 1
+    _bulletPoolingType: 2
   magazineInfoR:
-    curMagazine: 20
-    maxMagazine: 40
+    curOverload: 0
+    maxOverload: 20
     attackDelay: 0.1
     attackDelayTimer: 0
-    cooldown: 5
-    cooldownTimer: 0
     bulletFirePositions:
     - {fileID: 7807962545353490545}
     - {fileID: 2452334306918328598}
     AttackDirection: {x: 0, y: 0, z: 0}
-    _bulletPoolingType: 1
+    _bulletPoolingType: 2
   whatIsEnemy:
     serializedVersion: 2
     m_Bits: 0

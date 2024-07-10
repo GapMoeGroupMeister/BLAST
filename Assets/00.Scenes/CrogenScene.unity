@@ -779,7 +779,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 694662798}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.14865234, y: 0.8513282, z: -0.35887846, w: 0.35263172}
+  m_LocalRotation: {x: 0.14865232, y: 0.8513282, z: -0.35887846, w: 0.35263172}
   m_LocalPosition: {x: -80, y: 120, z: 80}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1152,7 +1152,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 955857828}
-  - component: {fileID: 955857827}
+  - component: {fileID: 955857829}
   m_Layer: 0
   m_Name: PoolingManager
   m_TagString: Untagged
@@ -1160,19 +1160,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &955857827
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 955857826}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7798824480ba3446aa6658e05732f5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  listSO: {fileID: 11400000, guid: 399858e2ec3b1b3429c5851240979594, type: 2}
 --- !u!4 &955857828
 Transform:
   m_ObjectHideFlags: 0
@@ -1188,6 +1175,32 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &955857829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 955857826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4889394bf6bb225498bb7f1958045b37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  poolBase: {fileID: 11400000, guid: 7caa77fff4d3a8442b19db7e99401de3, type: 2}
+  poolingPairs:
+  - poolType: VFX_Trail
+    prefab: {fileID: 2159627337749470773, guid: dbc01cc6a1c7d8343b3f8a9a7963692f,
+      type: 3}
+    poolCount: 3
+  - poolType: VFX_Charge
+    prefab: {fileID: 6914194330204579595, guid: f8bbfc3828d9a4f429481dd83e3026a1,
+      type: 3}
+    poolCount: 3
+  - poolType: PlayerDefaultBullet
+    prefab: {fileID: 8538479565421077914, guid: 493b7b28f1b066a48853885a0c424227,
+      type: 3}
+    poolCount: 40
 --- !u!1 &1079879307
 GameObject:
   m_ObjectHideFlags: 0
@@ -1350,7 +1363,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1106337031}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.14865234, y: 0.8513282, z: -0.35887846, w: 0.35263172}
+  m_LocalRotation: {x: 0.14865232, y: 0.8513282, z: -0.35887846, w: 0.35263172}
   m_LocalPosition: {x: -80, y: 120, z: 80}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
