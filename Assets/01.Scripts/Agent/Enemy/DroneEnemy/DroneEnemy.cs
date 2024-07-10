@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public enum DroneEnemyStateEnum
 {
@@ -14,6 +15,7 @@ public enum DroneEnemyStateEnum
 public class DroneEnemy : Enemy
 {
     public EnemyStateMachine<DroneEnemyStateEnum> StateMachine { get; private set; }
+    public Light redLight;
 
     protected override void Awake()
     {

@@ -21,6 +21,7 @@ public class TrailEffect : PoolableMono
 
     public void SetTrail(Vector3 startPos, Vector3 endPos, float duration)
     {
+        print(startPos);
         _trailRenderer.enabled = true;
         transform.position = startPos;
         _targetPos = endPos;
@@ -31,6 +32,7 @@ public class TrailEffect : PoolableMono
     {
         Vector3 startPos = transform.position;
         float percent = 0;
+        yield return null;
         while (percent < 1)
         {
             percent += Time.deltaTime / duration;
@@ -39,13 +41,15 @@ public class TrailEffect : PoolableMono
         }
 
         DOTween.To(() => _material.GetFloat(_alphaHash), v => _material.SetFloat(_alphaHash, v), 0, 1f).
-            OnComplete(() => PoolingManager.Instance.Push(this));
+            OnComplete(() => { 
+                PoolingManager.Instance.Push(this); 
+                _trailRenderer.Clear(); 
+            });
     }
 
     public override void ResetItem()
     {
         _trailRenderer.enabled = false;
-        _trailRenderer.Clear();
         _material.SetFloat(_alphaHash, 1);
     }
 }

@@ -41,7 +41,7 @@ public class DragoonEnemyAttackState : EnemyState<DragoonEnemyStateEnum>
             _effectPlayTriggerCalled = false;
             TrailEffect trail = PoolingManager.Instance.Pop(PoolingType.Trail_VFX) as TrailEffect;
             trail.transform.SetParent(_firePosTrm);
-            trail.transform.position = _firePosTrm.position;
+            Debug.Log(_firePosTrm.position);
             trail.SetTrail(_firePosTrm.position, _targetPos, 0.1f);
         }
         if (_endTriggerCalled)
