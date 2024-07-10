@@ -1,22 +1,22 @@
 using System;
+using System.Collections;
 using Crogen.PowerfulInput;
 using ObjectPooling;
 using UnityEngine;
 
-public delegate void PlayerMagazineEvent(int curMagazine, int maxMagazine);
+public delegate void PlayerOverloadEvent(int curOverload, int maxOverload);
 
 [Serializable]
 public class MagazineInfo
 {
-	public int curMagazine;
-	public int maxMagazine = 20;
-	public event PlayerMagazineEvent playerMagazineEvent;
+	private bool _isAttacking = false;
+	public int curOverload;
+	public int maxOverload = 20;
+	public event PlayerOverloadEvent playerOverloadEvent;
 
 	public float attackDelay = 0.2f;
 	[HideInInspector] public float attackDelayTimer;
 	
-	public float cooldown;
-	[HideInInspector] public float cooldownTimer;
 	public Action<Vector3> OnAttackEvent;
 	[SerializeField] public Transform[] bulletFirePositions;
 
@@ -33,11 +33,10 @@ public class MagazineInfo
 	
 	public void Attack()
 	{
-		if (attackDelayTimer > 0 || curMagazine <= 0) return;
+		if (attackDelayTimer > 0 || curOverload >= maxOverload) return;
 		attackDelayTimer = attackDelay;
-		--curMagazine;
 		OnAttackEvent?.Invoke(AttackDirection);
-		playerMagazineEvent?.Invoke(curMagazine, maxMagazine);
+		playerOverloadEvent?.Invoke(curOverload, maxOverload);
 		
 		for (int i = 0; i < bulletFirePositions.Length; ++i)
 		{
@@ -45,12 +44,6 @@ public class MagazineInfo
 				_bulletPoolingType, 
 				bulletFirePositions[i].position, 
 				Quaternion.LookRotation(AttackDirection)) as Bullet;
-		}
-		
-		
-		if (curMagazine <= 0)
-		{
-			cooldownTimer = cooldown;
 		}
 	}
 
@@ -66,17 +59,11 @@ public class MagazineInfo
 		}
 	}
 	
-	public void SetCooldown()
+	public void SetOverload()
 	{
-		if (cooldown > 0)
+		if (curOverload < maxOverload)
 		{
-			cooldownTimer -= Time.deltaTime;
-			if (cooldownTimer <= 0)
-			{
-				cooldownTimer = cooldown;
-				curMagazine = maxMagazine;
-				playerMagazineEvent?.Invoke(curMagazine, maxMagazine);
-			}
+			--curOverload;
 		}
 	}
 }
@@ -103,17 +90,21 @@ public abstract class PlayerPart : MonoBehaviour
 		_playerMovement = GameManager.Instance.Player.MovementCompo as PlayerMovement;
 		
 		//Magazine
-		magazineInfoL.curMagazine = magazineInfoL.maxMagazine;
-		magazineInfoR.curMagazine = magazineInfoR.maxMagazine;
+		magazineInfoL.curOverload = magazineInfoL.maxOverload;
+		magazineInfoR.curOverload = magazineInfoR.maxOverload;
 		
 		_inputReader.AttackLEvent += magazineInfoL.HandleAttackUpdate;
 		_inputReader.AttackREvent += magazineInfoR.HandleAttackUpdate;
+
+		StartCoroutine(CoroutineUpdateOverload());
 	}
 
 	private void OnDestroy()
 	{
 		_inputReader.AttackLEvent -= magazineInfoL.HandleAttackUpdate;
 		_inputReader.AttackREvent -= magazineInfoR.HandleAttackUpdate;
+
+		StopAllCoroutines();
 	}
 
 	protected virtual void Update()
@@ -126,13 +117,20 @@ public abstract class PlayerPart : MonoBehaviour
 		
 		magazineInfoL.SetDelay();
 		magazineInfoR.SetDelay();
-		
-		magazineInfoL.SetCooldown();
-		magazineInfoR.SetCooldown();
 	}
 	
 	protected void FixedUpdate()
 	{
 		magazineInfoL.AttackDirection = magazineInfoR.AttackDirection = transform.rotation * Vector3.forward;
+	}
+
+	private IEnumerator CoroutineUpdateOverload()
+	{
+		while(true)
+		{
+			yield return new WaitForSeconds(1);
+			magazineInfoL.SetOverload();
+			magazineInfoR.SetOverload();
+		}
 	}
 }
