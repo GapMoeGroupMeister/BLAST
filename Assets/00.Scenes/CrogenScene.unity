@@ -241,7 +241,7 @@ GameObject:
   - component: {fileID: 337649700}
   - component: {fileID: 337649701}
   m_Layer: 0
-  m_Name: SkillManager
+  m_Name: WeaponManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -271,9 +271,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 337649699}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 101c7151c9f2abb4e865afcd293593cc, type: 3}
+  m_Script: {fileID: 11500000, guid: b0882b9a178a23d45ad0268609a23a05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <WeaponDataSO>k__BackingField: {fileID: 11400000, guid: 2e4ab1b1407c35e40b49c62daeae3afb,
+    type: 2}
+  currentActiveWeapon: 
 --- !u!1 &407342180
 GameObject:
   m_ObjectHideFlags: 0
@@ -779,7 +782,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 694662798}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.14865234, y: 0.8513282, z: -0.35887846, w: 0.35263172}
+  m_LocalRotation: {x: 0.14865232, y: 0.8513282, z: -0.35887846, w: 0.35263172}
   m_LocalPosition: {x: -80, y: 120, z: 80}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1363,7 +1366,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1106337031}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.14865234, y: 0.8513282, z: -0.35887846, w: 0.35263172}
+  m_LocalRotation: {x: 0.14865232, y: 0.8513282, z: -0.35887846, w: 0.35263172}
   m_LocalPosition: {x: -80, y: 120, z: 80}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2914,6 +2917,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1106337034}
+  - {fileID: 955857828}
   - {fileID: 407342182}
   - {fileID: 337649700}
   - {fileID: 1479388297}
@@ -2926,6 +2930,5 @@ SceneRoots:
   - {fileID: 1684598894}
   - {fileID: 3098980553347185658}
   - {fileID: 461387009}
-  - {fileID: 955857828}
   - {fileID: 527391409}
   - {fileID: 484480013}
