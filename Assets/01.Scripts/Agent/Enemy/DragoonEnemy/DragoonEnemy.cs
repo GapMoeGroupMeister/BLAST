@@ -53,4 +53,9 @@ public class DragoonEnemy : Enemy
     {
         StateMachine.CurrentState.AnimationFinishTrigger();
     }
+
+    public override void EffectPlayTrigger()
+    {
+        StateMachine.CurrentState.EffectPlayTrigger();
+    }
 }

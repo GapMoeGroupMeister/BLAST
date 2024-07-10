@@ -10,4 +10,9 @@ public class EnemyAnimationTrigger : MonoBehaviour
     {
         _enemy.AnimationEndTrigger();
     }
+
+    private void EffectPlay()
+    {
+        _enemy.EffectPlayTrigger();
+    }
 }

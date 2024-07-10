@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,7 +7,6 @@ public abstract class Enemy : Agent
 {
     [Header("Common Setting")]
     public float moveSpeed;
-    public bool isActive;
 
     protected float _defaultMoveSpeed;
 
@@ -56,4 +56,6 @@ public abstract class Enemy : Agent
     }
 
     public abstract void AnimationEndTrigger();
+
+    public abstract void EffectPlayTrigger();
 }

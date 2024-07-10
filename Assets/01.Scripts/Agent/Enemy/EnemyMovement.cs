@@ -84,6 +84,7 @@ public class EnemyMovement : MovementController
     public override void StopImmediately()
     {
         if (!_navAgent.enabled) return;
+        _navAgent.velocity = Vector3.zero;
         _navAgent.isStopped = true;
     }
 
