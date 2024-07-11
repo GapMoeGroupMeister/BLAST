@@ -29,6 +29,7 @@ public class DroneEnemyDistructState : EnemyState<DroneEnemyStateEnum>
         
         if(_distructTimer > _distructTime)
         {
+            //폭발 하는 코드. VFX내놓으십시오.
             _stateMachine.ChangeState(DroneEnemyStateEnum.Dead);
         }
     }
