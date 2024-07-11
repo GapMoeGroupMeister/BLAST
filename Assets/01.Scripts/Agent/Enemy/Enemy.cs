@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Enemy : Agent
+public abstract class Enemy : Agent, IPoolingObject
 {
     [Header("Common Setting")]
     public float moveSpeed;
@@ -30,6 +30,9 @@ public abstract class Enemy : Agent
     public CapsuleCollider capsuleCollider;
 
     protected Collider[] _enemyCheckColliders;
+
+    public PoolType OriginPoolType { get; set; }
+    GameObject IPoolingObject.gameObject { get; set; }
 
     protected override void Awake()
     {
@@ -58,4 +61,12 @@ public abstract class Enemy : Agent
     public abstract void AnimationEndTrigger();
 
     public abstract void EffectPlayTrigger();
+
+    public virtual void OnPop()
+    {
+    }
+
+    public virtual void OnPush()
+    {
+    }
 }
