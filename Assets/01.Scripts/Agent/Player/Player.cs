@@ -4,7 +4,7 @@ using UnityEngine;
 public class Player : Agent
 {
     public PlayerStateMachine<PlayerStateEnum> StateMachine;
-    public PlayerPartController PlayerPartController;
+    [HideInInspector] public PlayerPartController PlayerPartController;
 
     protected override void Awake()
     {
