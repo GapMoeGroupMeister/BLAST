@@ -19,7 +19,7 @@ public class Weapon : MonoBehaviour
 		for (int i = 0; i < _weaponEffectSpawnPointList.Count; ++i)
 		{
 			if(_weaponEffectSpawnPointList[i] != null)
-				Instantiate(weaponEffect, _weaponEffectSpawnPointList[i].position, _weaponEffectSpawnPointList[i].rotation);
+				Instantiate(weaponEffect, _weaponEffectSpawnPointList[i].position, Quaternion.LookRotation(_weaponEffectSpawnPointList[i].forward));
 		}
 	}
 
