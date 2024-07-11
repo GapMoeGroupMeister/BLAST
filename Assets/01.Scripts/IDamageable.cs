@@ -4,4 +4,5 @@
 
     public void RestoreHealth(int amount);
 
+    public void CheckDie();
 }
