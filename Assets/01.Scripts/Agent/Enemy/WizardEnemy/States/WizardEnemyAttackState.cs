@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using ObjectPooling;
 
 public class WizardEnemyAttackState : EnemyState<WizardEnemyStateEnum>
 {

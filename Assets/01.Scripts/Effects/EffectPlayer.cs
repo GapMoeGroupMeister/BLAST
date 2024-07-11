@@ -1,15 +1,18 @@
+using Crogen.ObjectPooling;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.VFX;
-using ObjectPooling;
 
-public class EffectPlayer : PoolableMono
+public class EffectPlayer : MonoBehaviour, IPoolingObject
 {
     [SerializeField]
     protected List<ParticleSystem> _particles;
     [SerializeField]
     protected List<VisualEffect> _effects;
+
+    public PoolType OriginPoolType { get; set; }
+    GameObject IPoolingObject.gameObject { get; set; }
 
     public void StartPlay(float endTime)
     {
@@ -24,10 +27,14 @@ public class EffectPlayer : PoolableMono
     private IEnumerator TimerCoroutine(float endTime)
     {
         yield return new WaitForSeconds(endTime);
-        PoolingManager.Instance.Push(this);
+        this.Push();
     }
 
-    public override void ResetItem()
+    public void OnPop()
+    {
+    }
+
+    public void OnPush()
     {
         if (_particles != null)
             _particles.ForEach(p => p.Simulate(0));
