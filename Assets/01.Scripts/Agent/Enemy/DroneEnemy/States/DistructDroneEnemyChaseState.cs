@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DroneEnemyChaseState : EnemyState<DroneEnemyStateEnum>
+public class DistructDroneEnemyChaseState : EnemyState<DistructDroneEnemyStateEnum>
 {
-    public DroneEnemyChaseState(Enemy enemyBase, EnemyStateMachine<DroneEnemyStateEnum> stateMachine, string animBoolName) : base(enemyBase, stateMachine, animBoolName)
+    public DistructDroneEnemyChaseState(Enemy enemyBase, EnemyStateMachine<DistructDroneEnemyStateEnum> stateMachine, string animBoolName) : base(enemyBase, stateMachine, animBoolName)
     {
         _movementCompo = enemyBase.MovementCompo as EnemyMovement;
     }
@@ -41,7 +41,7 @@ public class DroneEnemyChaseState : EnemyState<DroneEnemyStateEnum>
 
         if (Vector3.Distance(_enemyBase.transform.position, _enemyBase.targetTrm.position) <= _enemyBase.attackDistance)
         {
-            _stateMachine.ChangeState(DroneEnemyStateEnum.Distruct);
+            _stateMachine.ChangeState(DistructDroneEnemyStateEnum.Distruct);
         }
     }
 }
