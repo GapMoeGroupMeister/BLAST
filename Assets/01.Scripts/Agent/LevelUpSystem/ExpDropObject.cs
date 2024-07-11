@@ -1,12 +1,14 @@
 ﻿using System.Collections;
-using ObjectPooling;
 using UnityEngine;
 
-public class ExpDropObject : PoolableMono
+public class ExpDropObject : MonoBehaviour, IPoolingObject
 {
     [SerializeField] private GameObject Player;
     [SerializeField] private int _exp;
     public int Exp => _exp;
+
+    public PoolType OriginPoolType { get; set; }
+    GameObject IPoolingObject.gameObject { get; set; }
 
     public void Follow()
     {
@@ -34,7 +36,12 @@ public class ExpDropObject : PoolableMono
         }
     }
 
-    public override void ResetItem()
+
+    public void OnPop()
+    {
+    }
+
+    public void OnPush()
     {
         StopAllCoroutines();
     }

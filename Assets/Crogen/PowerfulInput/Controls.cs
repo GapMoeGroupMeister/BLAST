@@ -46,15 +46,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Attack"",
-                    ""type"": ""Button"",
-                    ""id"": ""ba14dfe1-f2aa-4737-94d4-b9f8a17c2f92"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""AttackDirection"",
                     ""type"": ""Value"",
                     ""id"": ""01337f26-8b3f-4b7e-9891-07d70832e46a"",
@@ -68,6 +59,24 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""type"": ""Value"",
                     ""id"": ""5a16ee92-b6dc-47dc-acf9-ee404d4d5afe"",
                     ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""AttackR"",
+                    ""type"": ""Button"",
+                    ""id"": ""ef074941-f82e-4212-b975-65400c959114"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""AttackL"",
+                    ""type"": ""Button"",
+                    ""id"": ""ba14dfe1-f2aa-4737-94d4-b9f8a17c2f92"",
+                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
@@ -153,17 +162,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""89a8e9cd-66f1-4370-b894-737bd44b2229"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Attack"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""52c238a5-7a53-4443-b3c4-f17f492d1c68"",
                     ""path"": ""<Mouse>/position"",
                     ""interactions"": """",
@@ -205,6 +203,28 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""Zoom"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f32f911e-fe43-451e-ae3d-6ca14c480cea"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AttackR"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""89a8e9cd-66f1-4370-b894-737bd44b2229"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AttackL"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -243,9 +263,10 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
-        m_Player_Attack = m_Player.FindAction("Attack", throwIfNotFound: true);
         m_Player_AttackDirection = m_Player.FindAction("AttackDirection", throwIfNotFound: true);
         m_Player_Zoom = m_Player.FindAction("Zoom", throwIfNotFound: true);
+        m_Player_AttackR = m_Player.FindAction("AttackR", throwIfNotFound: true);
+        m_Player_AttackL = m_Player.FindAction("AttackL", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_MouseClick = m_UI.FindAction("MouseClick", throwIfNotFound: true);
@@ -312,18 +333,20 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
     private readonly InputAction m_Player_Dash;
     private readonly InputAction m_Player_Move;
-    private readonly InputAction m_Player_Attack;
     private readonly InputAction m_Player_AttackDirection;
     private readonly InputAction m_Player_Zoom;
+    private readonly InputAction m_Player_AttackR;
+    private readonly InputAction m_Player_AttackL;
     public struct PlayerActions
     {
         private @Controls m_Wrapper;
         public PlayerActions(@Controls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Dash => m_Wrapper.m_Player_Dash;
         public InputAction @Move => m_Wrapper.m_Player_Move;
-        public InputAction @Attack => m_Wrapper.m_Player_Attack;
         public InputAction @AttackDirection => m_Wrapper.m_Player_AttackDirection;
         public InputAction @Zoom => m_Wrapper.m_Player_Zoom;
+        public InputAction @AttackR => m_Wrapper.m_Player_AttackR;
+        public InputAction @AttackL => m_Wrapper.m_Player_AttackL;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -339,15 +362,18 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Move.started += instance.OnMove;
             @Move.performed += instance.OnMove;
             @Move.canceled += instance.OnMove;
-            @Attack.started += instance.OnAttack;
-            @Attack.performed += instance.OnAttack;
-            @Attack.canceled += instance.OnAttack;
             @AttackDirection.started += instance.OnAttackDirection;
             @AttackDirection.performed += instance.OnAttackDirection;
             @AttackDirection.canceled += instance.OnAttackDirection;
             @Zoom.started += instance.OnZoom;
             @Zoom.performed += instance.OnZoom;
             @Zoom.canceled += instance.OnZoom;
+            @AttackR.started += instance.OnAttackR;
+            @AttackR.performed += instance.OnAttackR;
+            @AttackR.canceled += instance.OnAttackR;
+            @AttackL.started += instance.OnAttackL;
+            @AttackL.performed += instance.OnAttackL;
+            @AttackL.canceled += instance.OnAttackL;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -358,15 +384,18 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Move.started -= instance.OnMove;
             @Move.performed -= instance.OnMove;
             @Move.canceled -= instance.OnMove;
-            @Attack.started -= instance.OnAttack;
-            @Attack.performed -= instance.OnAttack;
-            @Attack.canceled -= instance.OnAttack;
             @AttackDirection.started -= instance.OnAttackDirection;
             @AttackDirection.performed -= instance.OnAttackDirection;
             @AttackDirection.canceled -= instance.OnAttackDirection;
             @Zoom.started -= instance.OnZoom;
             @Zoom.performed -= instance.OnZoom;
             @Zoom.canceled -= instance.OnZoom;
+            @AttackR.started -= instance.OnAttackR;
+            @AttackR.performed -= instance.OnAttackR;
+            @AttackR.canceled -= instance.OnAttackR;
+            @AttackL.started -= instance.OnAttackL;
+            @AttackL.performed -= instance.OnAttackL;
+            @AttackL.canceled -= instance.OnAttackL;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -434,9 +463,10 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     {
         void OnDash(InputAction.CallbackContext context);
         void OnMove(InputAction.CallbackContext context);
-        void OnAttack(InputAction.CallbackContext context);
         void OnAttackDirection(InputAction.CallbackContext context);
         void OnZoom(InputAction.CallbackContext context);
+        void OnAttackR(InputAction.CallbackContext context);
+        void OnAttackL(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
