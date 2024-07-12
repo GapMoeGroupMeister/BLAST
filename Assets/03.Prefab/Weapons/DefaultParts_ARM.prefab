@@ -164,7 +164,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1929356975789170764}
-  - component: {fileID: 5525641990887701000}
+  - component: {fileID: 7726152678362839373}
   m_Layer: 0
   m_Name: DefaultParts_ARM
   m_TagString: Untagged
@@ -195,7 +195,7 @@ Transform:
   - {fileID: 1361822638388838104}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5525641990887701000
+--- !u!114 &7726152678362839373
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -210,6 +210,7 @@ MonoBehaviour:
   basePart: {fileID: 0}
   maxAttackDelay: 10
   currentAttackDelay: 0
+  isCanAttack: 0
   weaponEffect: {fileID: 3908910876973318051, guid: b8b4323c7b864ca4a85c23114815d756,
     type: 3}
   _weaponEffectSpawnPointList:
