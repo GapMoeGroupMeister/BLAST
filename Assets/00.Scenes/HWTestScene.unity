@@ -988,7 +988,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 899308777}
-  - component: {fileID: 899308776}
+  - component: {fileID: 899308778}
   m_Layer: 0
   m_Name: PoolManager
   m_TagString: Untagged
@@ -996,19 +996,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &899308776
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 899308775}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7798824480ba3446aa6658e05732f5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  listSO: {fileID: 11400000, guid: 1021c24b563af404e9619bf7c97fdfe7, type: 2}
 --- !u!4 &899308777
 Transform:
   m_ObjectHideFlags: 0
@@ -1024,6 +1011,28 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &899308778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 899308775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4889394bf6bb225498bb7f1958045b37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  poolBase: {fileID: 11400000, guid: 7caa77fff4d3a8442b19db7e99401de3, type: 2}
+  poolingPairs:
+  - poolType: VFX_Trail
+    prefab: {fileID: 2159627337749470773, guid: dbc01cc6a1c7d8343b3f8a9a7963692f,
+      type: 3}
+    poolCount: 3
+  - poolType: VFX_Charge
+    prefab: {fileID: 6914194330204579595, guid: f8bbfc3828d9a4f429481dd83e3026a1,
+      type: 3}
+    poolCount: 3
 --- !u!1 &1001207797
 GameObject:
   m_ObjectHideFlags: 0

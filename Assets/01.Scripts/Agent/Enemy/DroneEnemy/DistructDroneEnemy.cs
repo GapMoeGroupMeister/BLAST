@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
-public enum DroneEnemyStateEnum
+public enum DistructDroneEnemyStateEnum
 {
     Idle,
     Chase,
@@ -12,22 +12,22 @@ public enum DroneEnemyStateEnum
     Dead
 }
 
-public class DroneEnemy : Enemy
+public class DistructDroneEnemy : Enemy
 {
-    public EnemyStateMachine<DroneEnemyStateEnum> StateMachine { get; private set; }
+    public EnemyStateMachine<DistructDroneEnemyStateEnum> StateMachine { get; private set; }
     public Light redLight;
 
     protected override void Awake()
     {
         base.Awake();
-        StateMachine = new EnemyStateMachine<DroneEnemyStateEnum>();
-        foreach (DroneEnemyStateEnum stateEnum in Enum.GetValues(typeof(DroneEnemyStateEnum)))
+        StateMachine = new EnemyStateMachine<DistructDroneEnemyStateEnum>();
+        foreach (DistructDroneEnemyStateEnum stateEnum in Enum.GetValues(typeof(DistructDroneEnemyStateEnum)))
         {
             string typeName = stateEnum.ToString();
             try
             {
-                Type t = Type.GetType($"DroneEnemy{typeName}State");
-                EnemyState<DroneEnemyStateEnum> enemyState = Activator.CreateInstance(t, this, StateMachine, typeName) as EnemyState<DroneEnemyStateEnum>;
+                Type t = Type.GetType($"DistructDroneEnemy{typeName}State");
+                EnemyState<DistructDroneEnemyStateEnum> enemyState = Activator.CreateInstance(t, this, StateMachine, typeName) as EnemyState<DistructDroneEnemyStateEnum>;
 
                 StateMachine.AddState(stateEnum, enemyState);
             }
@@ -40,7 +40,7 @@ public class DroneEnemy : Enemy
 
     private void Start()
     {
-        StateMachine.Initialize(DroneEnemyStateEnum.Idle, this);
+        StateMachine.Initialize(DistructDroneEnemyStateEnum.Idle, this);
     }
 
     private void Update()

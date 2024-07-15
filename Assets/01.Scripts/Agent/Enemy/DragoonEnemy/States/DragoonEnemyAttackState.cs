@@ -17,7 +17,7 @@ public class DragoonEnemyAttackState : EnemyState<DragoonEnemyStateEnum>
     {
         base.Enter();
         _enemyBase.transform.rotation = Quaternion.LookRotation((_enemyBase.targetTrm.position - _enemyBase.transform.position).normalized);
-        EffectPlayer effect = _enemyBase.gameObject.Pop(PoolType.VFX_Charge, _firePosTrm, _firePosTrm.position, Quaternion.identity) as EffectPlayer;
+        EffectPlayer effect = _enemyBase.gameObject.Pop(PoolType.VFX_Charge, _firePosTrm, Vector3.zero, Quaternion.identity) as EffectPlayer;
         effect.StartPlay(4f);
         _targetPos = _enemyBase.targetTrm.position;
         _targetPos *= 5;

@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DroneEnemyDistructState : EnemyState<DroneEnemyStateEnum>
+public class DistructDroneEnemyDistructState : EnemyState<DistructDroneEnemyStateEnum>
 {
-    public DroneEnemyDistructState(Enemy enemyBase, EnemyStateMachine<DroneEnemyStateEnum> stateMachine, string animBoolName) : base(enemyBase, stateMachine, animBoolName)
+    public DistructDroneEnemyDistructState(Enemy enemyBase, EnemyStateMachine<DistructDroneEnemyStateEnum> stateMachine, string animBoolName) : base(enemyBase, stateMachine, animBoolName)
     {
-        _droneEnemyBase = enemyBase as DroneEnemy;
+        _droneEnemyBase = enemyBase as DistructDroneEnemy;
     }
 
-    private DroneEnemy _droneEnemyBase;
+    private DistructDroneEnemy _droneEnemyBase;
 
     private float _distructTime = 1.5f;
     private float _distructTimer = 0f;
@@ -29,7 +29,8 @@ public class DroneEnemyDistructState : EnemyState<DroneEnemyStateEnum>
         
         if(_distructTimer > _distructTime)
         {
-            _stateMachine.ChangeState(DroneEnemyStateEnum.Dead);
+            //폭발 하는 코드. VFX내놓으십시오.
+            _stateMachine.ChangeState(DistructDroneEnemyStateEnum.Dead);
         }
     }
 }
