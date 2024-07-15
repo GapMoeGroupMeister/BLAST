@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 3524562652745679409}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3, y: -0.15, z: 10.5}
+  m_LocalPosition: {x: 3, y: 0, z: 7.81}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -56,7 +56,38 @@ Transform:
   m_GameObject: {fileID: 6181872560168020964}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3, y: -0.9, z: 10.5}
+  m_LocalPosition: {x: 3, y: -0.75, z: 7.81}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3389667730939113789}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6335155351439992423
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3159477447243025612}
+  m_Layer: 0
+  m_Name: Weapons
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3159477447243025612
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6335155351439992423}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -87,7 +118,7 @@ Transform:
   m_GameObject: {fileID: 8034859021925149815}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3, y: -0.15, z: 10.5}
+  m_LocalPosition: {x: -3, y: -0, z: 7.81}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -118,7 +149,7 @@ Transform:
   m_GameObject: {fileID: 8202967171447594351}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3, y: -0.9, z: 10.5}
+  m_LocalPosition: {x: -3, y: -0.75, z: 7.81}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -152,7 +183,7 @@ Transform:
   m_GameObject: {fileID: 8515070857842178297}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 1.69, z: 0}
+  m_LocalPosition: {x: -0, y: 1.69, z: -2.536}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -232,7 +263,7 @@ GameObject:
   - component: {fileID: 3389667730939113789}
   - component: {fileID: 5065626374008235485}
   - component: {fileID: 5785841590471671912}
-  - component: {fileID: 3824449533428434276}
+  - component: {fileID: 294903427704956916}
   m_Layer: 0
   m_Name: DefaultPlayerPart
   m_TagString: Untagged
@@ -258,6 +289,7 @@ Transform:
   - {fileID: 7807962545353490545}
   - {fileID: 5844285591956642450}
   - {fileID: 2452334306918328598}
+  - {fileID: 3159477447243025612}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5065626374008235485
@@ -311,7 +343,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &3824449533428434276
+--- !u!114 &294903427704956916
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -320,17 +352,32 @@ MonoBehaviour:
   m_GameObject: {fileID: 8517488567826268197}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45b889fcbf43269419bedc8a8c393822, type: 3}
+  m_Script: {fileID: 11500000, guid: 054dfac990be40ce8446c94befd22c3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerPartType: 0
-  _bulletFirePositions:
-  - {fileID: 3128271772544532723}
-  - {fileID: 7807962545353490545}
-  - {fileID: 5844285591956642450}
-  - {fileID: 2452334306918328598}
-  dedicateSkills: 
-  _cooldown: 0.1
+  magazineInfoL:
+    curOverload: 0
+    maxOverload: 60
+    overloadDelay: 0.33
+    attackDelay: 0.1
+    curAttackDelay: 0
+    bulletFirePositions:
+    - {fileID: 3128271772544532723}
+    - {fileID: 5844285591956642450}
+    AttackDirection: {x: 0, y: 0, z: 0}
+    _bulletPoolingType: 2
+  magazineInfoR:
+    curOverload: 0
+    maxOverload: 60
+    overloadDelay: 0.33
+    attackDelay: 0.1
+    curAttackDelay: 0
+    bulletFirePositions:
+    - {fileID: 7807962545353490545}
+    - {fileID: 2452334306918328598}
+    AttackDirection: {x: 0, y: 0, z: 0}
+    _bulletPoolingType: 2
   whatIsEnemy:
     serializedVersion: 2
     m_Bits: 0
