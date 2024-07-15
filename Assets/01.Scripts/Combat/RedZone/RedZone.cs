@@ -17,4 +17,12 @@ public class RedZone : MonoBehaviour
         transform.DOScale(scale, openDuration).SetEase(ease)
             .OnComplete(onComplete);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.TryGetComponent(out Health health))
+        {
+            health.TakeDamage(100);
+        }
+    }
 }
