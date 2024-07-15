@@ -1,9 +1,8 @@
 ﻿using Crogen.PowerfulInput;
 using UnityEngine;
 using DG.Tweening;
-using UnityEngine.Serialization;
 
-public class PlayerMovement : MovementController
+public class PlayerMovement : MovementController, IValueChanged
 {
     [SerializeField] private Transform _attackPointTrm;
     [SerializeField] private Vector3 _attackPointOffset;
@@ -18,8 +17,12 @@ public class PlayerMovement : MovementController
     private Player _player;
     private Rigidbody _rigidbodyCompo;
     private Vector3 _lookDirection;
-    
-    private void Awake()
+
+	[field:SerializeField] public ChangableValueEnum ChangableValueEnum { get; set; }
+
+	public event ValueChangedEvent ValueChangedEvent;
+
+	private void Awake()
     {
         _inputReader = GameManager.Instance.InputReader;
         _rigidbodyCompo = GetComponent<Rigidbody>();
@@ -55,7 +58,10 @@ public class PlayerMovement : MovementController
     public override void SetMovement(Vector3 movement, bool isRotation = false)
     {
         if(movement.sqrMagnitude < 0.1f) return;
-        movement = Quaternion.Euler(0, -45, 0) * movement;
+
+		ValueChangedEvent?.Invoke(movement.magnitude);
+
+		movement = Quaternion.Euler(0, -45, 0) * movement;
         transform.DORotateQuaternion(Quaternion.LookRotation(-movement), 0.85f);
         _rigidbodyCompo.velocity = -movement * _moveSpeed;
     }

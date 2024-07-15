@@ -6,6 +6,7 @@ public class Weapon : MonoBehaviour
     [HideInInspector] public PlayerPart basePart;
 	public float maxAttackDelay = 10f;
 	public float currentAttackDelay = 0f;
+	public bool isCanAttack=false;
 
 	[Header("Weapon")]
 	public WeaponEffect weaponEffect;
@@ -15,7 +16,7 @@ public class Weapon : MonoBehaviour
 	{
 		if (currentAttackDelay < maxAttackDelay) return;
 		currentAttackDelay = 0;
-
+		isCanAttack = false;
 		for (int i = 0; i < _weaponEffectSpawnPointList.Count; ++i)
 		{
 			if(_weaponEffectSpawnPointList[i] != null)
@@ -25,9 +26,11 @@ public class Weapon : MonoBehaviour
 
 	public virtual void Update()
 	{
-		if(currentAttackDelay < maxAttackDelay)
+		if (currentAttackDelay < maxAttackDelay)
 		{
 			currentAttackDelay += Time.deltaTime;
 		}
+		else
+			isCanAttack = true;
 	}
 }
