@@ -20,7 +20,7 @@ public class RedZone : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent(out Health health))
+        if (other.TryGetComponent(out IDamageable health))
         {
             health.TakeDamage(100);
         }

@@ -1,8 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
-using UnityEngine.Rendering.Universal;
 
 public class RedZoneManager : MonoBehaviour
 {
@@ -13,13 +11,13 @@ public class RedZoneManager : MonoBehaviour
     public void Start()
     {
         _redZoneDecal.gameObject.SetActive(false);
-        StartRedZone(Vector3.zero, "Warning! Red Zone is coming!");
+        StartRedZone(new Vector3(0, 2, 0), "레드존 발생");
     }
     
     public void StartRedZone(Vector3 position, string warningMessage)
     {
-        _redZoneDecal.AreaCollider.enabled = false;
         _redZoneDecal.gameObject.SetActive(true);
+        _redZoneDecal.AreaCollider.enabled = false;
         _redZoneDecal.RedZoneSet(position, 
                 new Vector3(10, 10, 10), Ease.InSine, 
                 () => _redZoneDecal.AreaCollider.enabled = true);
