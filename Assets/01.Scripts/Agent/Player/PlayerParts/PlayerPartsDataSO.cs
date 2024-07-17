@@ -2,17 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerPartsDataSO : MonoBehaviour
+[System.Serializable]
+public struct PartPair
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+	public int id;
+	public string partName;
+	public PlayerPart partPrefab;
+	public Sprite partImage;
+}
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+[CreateAssetMenu(menuName = "SO/PlayerPartsData")]
+public class PlayerPartsDataSO : ScriptableObject
+{
+	public List<PartPair> partPairList;
 }
