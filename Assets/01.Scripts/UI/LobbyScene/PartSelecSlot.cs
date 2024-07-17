@@ -8,12 +8,16 @@ public class PartSelecSlot : MonoBehaviour
 {
     public PlayerPartsDataSO partSO;
     private Image _partImage;
-    [SerializeField] private TextMeshProUGUI _part
+    [SerializeField] private TextMeshProUGUI _partNameText;
+    
     public void Initialize(PlayerPartsDataSO data)
     {
         partSO = data;
         
     }
-    
-    public void 
+
+    public void Refresh()
+    {
+        
+    }
 }
