@@ -1,13 +1,14 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
 public class ObjectUI : MonoBehaviour, IClickable
 {
-    public event Action OnClickEvent;
-    public event Action OnEnterEvent;
-    public event Action OnExitEvent;
-    public event Action OnReleaseEvent;
+    public UnityEvent OnClickEvent;
+    public UnityEvent OnEnterEvent;
+    public UnityEvent OnExitEvent;
+    public UnityEvent OnReleaseEvent;
     
     public void Enter()
     {
