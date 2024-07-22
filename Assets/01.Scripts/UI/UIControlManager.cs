@@ -16,8 +16,15 @@ public class UIControlManager : MonoBehaviour
 
         Ray ray = Camera.main.ScreenPointToRay(mousePosition);
         Physics.Raycast(ray, out RaycastHit hit, _detectDistance, _uiLayer);
-        if (hit.collider == null) return;
+        if (hit.collider == null)
+        {
+            _isTargeted = false;
+            _currentObject = null;
+            return;
+        }
+        
 
+        
         if (hit.transform.TryGetComponent(out IClickable clickTarget))
         {
             _currentObject = clickTarget;

@@ -1,16 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class PartSelecSlot : MonoBehaviour
 {
-    public PlayerPartsDataSO partSO;
-    private Image _partImage;
+    public PlayerPartDataSO partSO;
+    [SerializeField] private Image _partImage;
     [SerializeField] private TextMeshProUGUI _partNameText;
     
-    public void Initialize(PlayerPartsDataSO data)
+    public void Initialize(PlayerPartDataSO data)
     {
         partSO = data;
         
@@ -18,6 +17,8 @@ public class PartSelecSlot : MonoBehaviour
 
     public void Refresh()
     {
+        _partImage.sprite = partSO.partImage;
+        _partNameText.text = partSO.partName;
         
     }
 }

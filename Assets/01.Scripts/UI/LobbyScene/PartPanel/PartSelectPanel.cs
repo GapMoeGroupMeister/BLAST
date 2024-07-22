@@ -9,7 +9,9 @@ public class PartSelectPanel : MonoBehaviour, IWindowPanel
     [SerializeField] private float _defaultPosY;
     [SerializeField] private float _activePosY;
     [SerializeField] private float _duration = 0.2f;
+    [SerializeField] private PartSelecSlot _slotPrefab;
     private RectTransform _rectTrm;
+    [SerializeField] private RectTransform _contentTrm;
     [SerializeField] private bool _isActive;
     private CanvasGroup _canvasGroup;
     private void Awake()
@@ -38,5 +40,18 @@ public class PartSelectPanel : MonoBehaviour, IWindowPanel
         _canvasGroup.interactable = value;
         _canvasGroup.blocksRaycasts = value;
         _canvasGroup.DOFade(value ? 1f : 0f, _duration);
+    }
+
+    private void GenerateSlots()
+    {
+        
+    }
+
+    private void ClearSlots()
+    {
+        foreach (Transform slot in _contentTrm)
+        {
+            Destroy(slot.gameObject);
+        }
     }
 }
