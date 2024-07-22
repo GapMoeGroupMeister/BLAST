@@ -3,7 +3,7 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class PartChanger : MonoBehaviour
+public class PartChanger : MonoSingleton<PartChanger>
 {
     [SerializeField] private Transform _partConnecterTrm;
     [SerializeField] private Transform _tongsTrm;
@@ -44,6 +44,8 @@ public class PartChanger : MonoBehaviour
         });
         _seq.AppendCallback(() =>
         {
+            ShakeTongs();
+            
             _tongs[0].SetGrab(true);
             _tongs[1].SetGrab(true);
         });
@@ -61,17 +63,25 @@ public class PartChanger : MonoBehaviour
         _seq.Append(_tongsTrm.DOMoveY(0f, _upDuration));
         _seq.AppendCallback(() =>
         {
+            ShakeTongs();
+
             _tongs[0].SetGrab(false);
             _tongs[1].SetGrab(false);
         });
         _seq.AppendCallback(() =>
         {
+            
             _currentPartTrm.SetParent(_partConnecterTrm);
         });
-        _seq.AppendInterval(0.2f);
+        _seq.AppendInterval(0.4f);
         _seq.Append(_tongsTrm.DOMoveY(_upDistance, _upDuration).OnComplete(() => _isChanging = false));
-    } 
+    }
 
+    private void ShakeTongs()
+    {
+        _tongsTrm.DOShakePosition(0.2f, 0.4f, 50);
+    }
+    
     private IEnumerator ChangeCoroutine()
     {
         

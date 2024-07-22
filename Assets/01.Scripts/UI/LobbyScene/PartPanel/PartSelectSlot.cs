@@ -1,9 +1,8 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-public class PartSelecSlot : MonoBehaviour
+public class PartSelectSlot : MonoBehaviour
 {
     public PlayerPartDataSO partSO;
     [SerializeField] private Image _partImage;

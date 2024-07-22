@@ -9,7 +9,7 @@ public class PartSelectPanel : MonoBehaviour, IWindowPanel
     [SerializeField] private float _defaultPosY;
     [SerializeField] private float _activePosY;
     [SerializeField] private float _duration = 0.2f;
-    [SerializeField] private PartSelecSlot _slotPrefab;
+    [SerializeField] private PartSelectSlot _slotPrefab;
     private RectTransform _rectTrm;
     [SerializeField] private RectTransform _contentTrm;
     [SerializeField] private bool _isActive;
