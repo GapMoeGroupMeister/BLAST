@@ -88,9 +88,17 @@ public abstract class PlayerPart : MonoBehaviour
 	private PlayerMovement _playerMovement;
 	public LayerMask whatIsEnemy;
 
+	private bool _isNoFunc; // Lobby씬을 위한 장치
+	
 	protected virtual void OnEnable()
 	{
+		if (FindObjectOfType<PlayerPartController>() == null)
+		{
+			_isNoFunc = true;
+			return;
+		}
 		_playerPartController = PlayerPartController.Instance;
+		
 		_inputReader = GameManager.Instance.InputReader;
 		_playerMovement = GameManager.Instance.Player.MovementCompo as PlayerMovement;
 		
@@ -101,6 +109,10 @@ public abstract class PlayerPart : MonoBehaviour
 
 	private void OnDestroy()
 	{
+		// 음 근데 이렇게 체크하게되면 나중에 씬 바꼈을때 어떻게 문제가 다른게 터질지 모르겠다
+		// 그래서 FindObject로 하긴했는데 좀 똥같으면 나중에 바꿈
+		if (_isNoFunc)
+			return;
 		_inputReader.AttackLEvent -= magazineInfoL.HandleAttackUpdate;
 		_inputReader.AttackREvent -= magazineInfoR.HandleAttackUpdate;
 
