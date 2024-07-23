@@ -1,4 +1,4 @@
-﻿public class StartButton : ObjectUI
+﻿public class StartButton : ButtonObject
 {
     
     private void Start()

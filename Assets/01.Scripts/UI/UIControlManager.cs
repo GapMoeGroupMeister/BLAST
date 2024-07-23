@@ -31,10 +31,21 @@ public class UIControlManager : MonoBehaviour
             _currentObject = null;
             return;
         }
+
+       
         
         if (hit.transform.TryGetComponent(out IClickable clickTarget))
         {
+            
             if(_currentObject == clickTarget) clickTarget.Enter();
+            _prevObject = _currentObject;
+            if (_currentObject != _prevObject)
+            {
+                _currentObject.Exit();
+                _prevObject = _currentObject;
+                return;
+            
+            }
             _currentObject = clickTarget;
             
         }

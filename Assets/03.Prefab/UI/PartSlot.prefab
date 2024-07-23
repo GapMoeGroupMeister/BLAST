@@ -166,7 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7ffb0b33e3640d4495dcee47b1bd155, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  partSO: {fileID: 0}
+  partSO: {fileID: 11400000, guid: 46bcd6d338148844b9c8c3d6dd64840c, type: 2}
   _partImage: {fileID: 7807391498929653303}
   _partNameText: {fileID: 2401639599297992341}
 --- !u!1 &4144923224826182643
@@ -575,4 +575,16 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5334764687464872958}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1699874725628901519}
+        m_TargetAssemblyTypeName: PartSelectSlot, Assembly-CSharp
+        m_MethodName: PartSelect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
