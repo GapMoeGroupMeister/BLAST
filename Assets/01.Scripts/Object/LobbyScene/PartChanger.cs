@@ -11,15 +11,16 @@ public class PartChanger : MonoSingleton<PartChanger>
     [SerializeField] private Transform _partGenerateTrm;
     [Space(10f)] 
     [SerializeField] private Transform _currentPartTrm;
-    
+
+    [SerializeField] private ParticleSystem _particle;
     [Header("Setting Values")]
     [SerializeField] private float _upDuration;
     [SerializeField] private float _upDistance = 11f;
 
     private bool _isChanging;
     private Sequence _seq;
-
-    [FormerlySerializedAs("_TestSO")] [SerializeField] private PlayerPartDataSO _testSO;
+    [SerializeField] private PlayerPartDataSO _testSO;
+    
     [ContextMenu("DebugChange")]
     private void DebugChangePart()
     {
@@ -48,6 +49,7 @@ public class PartChanger : MonoSingleton<PartChanger>
             
             _tongs[0].SetGrab(true);
             _tongs[1].SetGrab(true);
+            _particle.Play();
         });
         _seq.AppendInterval(0.8f);
         _seq.Append(_tongsTrm.DOMoveY(_upDistance, _upDuration).SetEase(Ease.InQuart));
@@ -67,6 +69,7 @@ public class PartChanger : MonoSingleton<PartChanger>
 
             _tongs[0].SetGrab(false);
             _tongs[1].SetGrab(false);
+            _particle.Play();
         });
         _seq.AppendCallback(() =>
         {

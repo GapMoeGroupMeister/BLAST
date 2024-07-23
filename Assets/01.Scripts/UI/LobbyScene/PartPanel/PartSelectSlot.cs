@@ -20,4 +20,9 @@ public class PartSelectSlot : MonoBehaviour
         _partNameText.text = partSO.partName;
         
     }
+
+    public void PartSelect()
+    {
+        PartChanger.Instance.ChangePart(partSO);
+    }
 }
