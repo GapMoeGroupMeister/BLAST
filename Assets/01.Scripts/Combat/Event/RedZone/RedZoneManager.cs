@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class RedZoneManager : MonoBehaviour
 {
+    //[SerializeField] private EffectPlayer _bombParticle;
     [SerializeField] private RedZone _redZoneDecal;
     [SerializeField] private float _redZoneDuration = 10f;
     [SerializeField] private WarningUI _warningUI;
@@ -21,6 +22,7 @@ public class RedZoneManager : MonoBehaviour
         _redZoneDecal.RedZoneSet(position, 
                 new Vector3(10, 10, 10), Ease.InSine, 
                 () => _redZoneDecal.AreaCollider.enabled = true);
+        //_bombParticle.StartPlay(1f);
         _warningUI.OpenWarningPanel(warningMessage, 0.2f);
         StartCoroutine(EndRedZone());
     }
