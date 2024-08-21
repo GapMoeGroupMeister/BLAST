@@ -6,9 +6,8 @@ using AYellowpaper.SerializedCollections;
 public struct WeaponData
 {
     public float coolTime;
-    public int attackCount;
     public Sprite icon;
-    public GameObject weaponEffectPrefab;
+    public Weapon weaponPrefab;
 }
 
 [CreateAssetMenu(menuName = "SO/Weapon/WeaponData")]
