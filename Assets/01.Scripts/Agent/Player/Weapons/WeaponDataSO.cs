@@ -8,6 +8,7 @@ public struct WeaponData
     public float coolTime;
     public Sprite icon;
     public Weapon weaponPrefab;
+    public StatDataSO statData;
 }
 
 [CreateAssetMenu(menuName = "SO/Weapon/WeaponData")]
