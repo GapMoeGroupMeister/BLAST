@@ -60,9 +60,7 @@ public abstract class Enemy : Agent, IPoolingObject
         return Physics.Raycast(transform.position, direction, distance, _whatIsObstacle);
     }
 
-    public abstract void AnimationEndTrigger();
-
-    public abstract void EffectPlayTrigger();
+    public abstract void AnimationEndTrigger(AnimationTriggerEnum triggerBit);
 
     public virtual void OnPop()
     {

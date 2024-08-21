@@ -33,14 +33,8 @@ public class DistructDroneEnemy : Enemy
         StateMachine.CurrentState.UpdateState();
     }
 
-
-    public override void AnimationEndTrigger()
+    public override void AnimationEndTrigger(AnimationTriggerEnum triggerBit)
     {
-        StateMachine.CurrentState.AnimationFinishTrigger();
-    }
-
-    public override void EffectPlayTrigger()
-    {
-        StateMachine.CurrentState.EffectPlayTrigger();
+        StateMachine.CurrentState.AnimationTrigger(triggerBit);
     }
 }

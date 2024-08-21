@@ -24,7 +24,7 @@ public class WizardEnemyAttackState : EnemyState<WizardEnemy>
     public override void UpdateState()
     {
         base.UpdateState();
-        if (_endTriggerCalled)
+        if (IsTriggerCalled(AnimationTriggerEnum.EndTrigger))
         {
             _stateMachine.ChangeState(WizardEnemyStateEnum.Battle);
         }

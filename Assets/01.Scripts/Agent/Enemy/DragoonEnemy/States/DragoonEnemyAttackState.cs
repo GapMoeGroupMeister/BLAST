@@ -32,13 +32,13 @@ public class DragoonEnemyAttackState : EnemyState<DragoonEnemy>
     public override void UpdateState()
     {
         base.UpdateState();
-        if(_effectPlayTriggerCalled)
+        if(IsTriggerCalled(AnimationTriggerEnum.EffectTrigger))
         {
-            _effectPlayTriggerCalled = false;
             TrailEffect trail = _enemyBase.gameObject.Pop(PoolType.VFX_Trail, _enemyBase.firePosTrm, _enemyBase.firePosTrm.position, Quaternion.identity) as TrailEffect;
             trail.SetTrail(_enemyBase.firePosTrm.position, _targetPos, 0.1f);
+            RemoveTrigger(AnimationTriggerEnum.EffectTrigger);
         }
-        if (_endTriggerCalled)
+        if (IsTriggerCalled(AnimationTriggerEnum.EndTrigger))
         {
             _stateMachine.ChangeState(DragoonEnemyStateEnum.Battle);
         }

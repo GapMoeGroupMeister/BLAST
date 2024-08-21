@@ -8,8 +8,7 @@ public class EnemyState<T> where T : Enemy
     protected EnemyStateMachine<T> _stateMachine;
     protected T _enemyBase;
 
-    protected bool _endTriggerCalled;
-    protected bool _effectPlayTriggerCalled;
+    protected int _animationTriggerBit = 0;
     protected int _animBoolHash;
 
     public EnemyState(T enemyBase, EnemyStateMachine<T> stateMachine, string animBoolName)
@@ -23,7 +22,7 @@ public class EnemyState<T> where T : Enemy
 
     public virtual void Enter()
     {
-        _endTriggerCalled = false;
+        _animationTriggerBit = 0;
         _enemyBase.AnimatorCompo.SetBool(_animBoolHash, true);
     }
 
@@ -32,13 +31,15 @@ public class EnemyState<T> where T : Enemy
         _enemyBase.AnimatorCompo.SetBool(_animBoolHash, false);
     }
 
-    public void AnimationFinishTrigger()
+    public void AnimationTrigger(AnimationTriggerEnum triggerBit)
     {
-        _endTriggerCalled = true;
+        _animationTriggerBit |= (int)triggerBit;
     }
 
-    public void EffectPlayTrigger()
-    {
-        _effectPlayTriggerCalled = true;
-    }
+    public bool IsTriggerCalled(AnimationTriggerEnum triggerBit)
+        => _animationTriggerBit * (int)triggerBit != 0;
+    
+
+    public void RemoveTrigger(AnimationTriggerEnum triggerBit)
+        => _animationTriggerBit &= ~(int)triggerBit;
 }
