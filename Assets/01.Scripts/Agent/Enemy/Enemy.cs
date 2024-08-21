@@ -5,6 +5,8 @@ using UnityEngine;
 
 public abstract class Enemy : Agent, IPoolingObject
 {
+    public EnemyMovement EnemyMovementCompo { get; private set; }
+
     [Header("Common Setting")]
     public float moveSpeed;
 
@@ -42,8 +44,8 @@ public abstract class Enemy : Agent, IPoolingObject
 
         _enemyCheckColliders = new Collider[_maxCheckEnemy];
         capsuleCollider = GetComponent<CapsuleCollider>();
-
-        (MovementCompo as EnemyMovement).Initialize(this);
+        EnemyMovementCompo = MovementCompo as EnemyMovement;
+        EnemyMovementCompo.Initialize(this);
     }
 
     public virtual Collider IsPlayerDetected()

@@ -2,20 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DistructDroneEnemyChaseState : EnemyState<DistructDroneEnemyStateEnum>
+public class DistructDroneEnemyChaseState : EnemyState<DistructDroneEnemy>
 {
-    public DistructDroneEnemyChaseState(Enemy enemyBase, EnemyStateMachine<DistructDroneEnemyStateEnum> stateMachine, string animBoolName) : base(enemyBase, stateMachine, animBoolName)
+    public DistructDroneEnemyChaseState(DistructDroneEnemy enemyBase, EnemyStateMachine<DistructDroneEnemy> stateMachine, string animBoolName) : base(enemyBase, stateMachine, animBoolName)
     {
-        _movementCompo = enemyBase.MovementCompo as EnemyMovement;
     }
 
     private Vector3 _targetDestination;
-    private EnemyMovement _movementCompo;
 
     private void SetDestination(Vector3 destination)
     {
         _targetDestination = destination;
-        _movementCompo.SetDestination(destination);
+        _enemyBase.EnemyMovementCompo.SetDestination(destination);
     }
 
     public override void Enter()
@@ -27,9 +25,9 @@ public class DistructDroneEnemyChaseState : EnemyState<DistructDroneEnemyStateEn
     public override void UpdateState()
     {
         base.UpdateState();
-        if (_movementCompo.NavAgent.enabled)
+        if (_enemyBase.EnemyMovementCompo.NavAgent.enabled)
         {
-            _targetDestination = _movementCompo.NavAgent.destination;
+            _targetDestination = _enemyBase.EnemyMovementCompo.NavAgent.destination;
         }
 
         float distance = (_targetDestination - _enemyBase.targetTrm.position).magnitude;

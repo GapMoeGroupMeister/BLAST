@@ -3,16 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyState<T> where T : Enum
+public class EnemyState<T> where T : Enemy
 {
     protected EnemyStateMachine<T> _stateMachine;
-    protected Enemy _enemyBase;
+    protected T _enemyBase;
 
     protected bool _endTriggerCalled;
     protected bool _effectPlayTriggerCalled;
     protected int _animBoolHash;
 
-    public EnemyState(Enemy enemyBase, EnemyStateMachine<T> stateMachine, string animBoolName)
+    public EnemyState(T enemyBase, EnemyStateMachine<T> stateMachine, string animBoolName)
     {
         _enemyBase = enemyBase;
         _stateMachine = stateMachine;

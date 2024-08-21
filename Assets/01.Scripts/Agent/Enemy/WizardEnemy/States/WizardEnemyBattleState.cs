@@ -3,20 +3,16 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class WizardEnemyBattleState : EnemyState<WizardEnemyStateEnum>
+public class WizardEnemyBattleState : EnemyState<WizardEnemy>
 {
-    public WizardEnemyBattleState(Enemy enemyBase, EnemyStateMachine<WizardEnemyStateEnum> stateMachine, string animBoolName) : base(enemyBase, stateMachine, animBoolName)
+    public WizardEnemyBattleState(WizardEnemy enemyBase, EnemyStateMachine<WizardEnemy> stateMachine, string animBoolName) : base(enemyBase, stateMachine, animBoolName)
     {
-        _movementCompo = _enemyBase.MovementCompo as EnemyMovement;
     }
-
     private Vector3 _targetDestination;
-    private EnemyMovement _movementCompo;
-
     private void SetDestination(Vector3 destination)
     {
         _targetDestination = destination;
-        _movementCompo.SetDestination(destination);
+        _enemyBase.EnemyMovementCompo.SetDestination(destination);
     }
 
     public override void Enter()
@@ -28,9 +24,9 @@ public class WizardEnemyBattleState : EnemyState<WizardEnemyStateEnum>
     public override void UpdateState()
     {
         base.UpdateState();
-        if (_movementCompo.NavAgent.enabled)
+        if (_enemyBase.EnemyMovementCompo.NavAgent.enabled)
         {
-            _targetDestination = _movementCompo.NavAgent.destination;
+            _targetDestination = _enemyBase.EnemyMovementCompo.NavAgent.destination;
         }
 
         float distance = (_targetDestination - _enemyBase.targetTrm.position).magnitude;

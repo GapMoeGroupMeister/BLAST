@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DistructDroneEnemyDeadState : EnemyState<DistructDroneEnemyStateEnum>
+public class DistructDroneEnemyDeadState : EnemyState<DistructDroneEnemy>
 {
-    public DistructDroneEnemyDeadState(Enemy enemyBase, EnemyStateMachine<DistructDroneEnemyStateEnum> stateMachine, string animBoolName) : base(enemyBase, stateMachine, animBoolName)
+    public DistructDroneEnemyDeadState(DistructDroneEnemy enemyBase, EnemyStateMachine<DistructDroneEnemy> stateMachine, string animBoolName) : base(enemyBase, stateMachine, animBoolName)
     {
     }
 

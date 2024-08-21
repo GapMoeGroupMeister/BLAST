@@ -14,33 +14,18 @@ public enum DistructDroneEnemyStateEnum
 
 public class DistructDroneEnemy : Enemy
 {
-    public EnemyStateMachine<DistructDroneEnemyStateEnum> StateMachine { get; private set; }
+    public EnemyStateMachine<DistructDroneEnemy> StateMachine { get; private set; }
     public Light redLight;
 
     protected override void Awake()
     {
         base.Awake();
-        StateMachine = new EnemyStateMachine<DistructDroneEnemyStateEnum>();
-        foreach (DistructDroneEnemyStateEnum stateEnum in Enum.GetValues(typeof(DistructDroneEnemyStateEnum)))
-        {
-            string typeName = stateEnum.ToString();
-            try
-            {
-                Type t = Type.GetType($"DistructDroneEnemy{typeName}State");
-                EnemyState<DistructDroneEnemyStateEnum> enemyState = Activator.CreateInstance(t, this, StateMachine, typeName) as EnemyState<DistructDroneEnemyStateEnum>;
-
-                StateMachine.AddState(stateEnum, enemyState);
-            }
-            catch (Exception e)
-            {
-                Debug.LogError($"{typeName} doesn't exist! : {e.Message}");
-            }
-        }
+        StateMachine = new EnemyStateMachine<DistructDroneEnemy>(this);
     }
 
     private void Start()
     {
-        StateMachine.Initialize(DistructDroneEnemyStateEnum.Idle, this);
+        StateMachine.Initialize(DistructDroneEnemyStateEnum.Idle);
     }
 
     private void Update()

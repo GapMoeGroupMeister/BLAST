@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WizardEnemyAttackState : EnemyState<WizardEnemyStateEnum>
+public class WizardEnemyAttackState : EnemyState<WizardEnemy>
 {
-    public WizardEnemyAttackState(Enemy enemyBase, EnemyStateMachine<WizardEnemyStateEnum> stateMachine, string animBoolName) : base(enemyBase, stateMachine, animBoolName)
+    public WizardEnemyAttackState(WizardEnemy enemyBase, EnemyStateMachine<WizardEnemy> stateMachine, string animBoolName) : base(enemyBase, stateMachine, animBoolName)
     {
     }
 
