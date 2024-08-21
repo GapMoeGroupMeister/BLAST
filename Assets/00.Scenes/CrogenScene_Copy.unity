@@ -20,13 +20,13 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 1.1194968, g: 0.41090858, b: 0.22178696, a: 1}
+  m_AmbientSkyColor: {r: 1.0058109, g: 1.0058109, b: 1.0058109, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
   m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 0}
+  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -426,7 +426,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <WeaponDataSO>k__BackingField: {fileID: 11400000, guid: 2e4ab1b1407c35e40b49c62daeae3afb,
     type: 2}
-  currentActiveWeapon: 
+  startWeapon: 
 --- !u!1 &341070420
 GameObject:
   m_ObjectHideFlags: 0
@@ -1081,7 +1081,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 694662798}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.14865232, y: 0.8513282, z: -0.35887846, w: 0.35263172}
+  m_LocalRotation: {x: 0.14865234, y: 0.8513282, z: -0.35887846, w: 0.35263172}
   m_LocalPosition: {x: -80, y: 120, z: 80}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1770,7 +1770,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1819,7 +1819,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1106337031}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.14865232, y: 0.8513282, z: -0.35887846, w: 0.35263172}
+  m_LocalRotation: {x: 0.14865234, y: 0.8513282, z: -0.35887846, w: 0.35263172}
   m_LocalPosition: {x: -80, y: 120, z: 80}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2469,6 +2469,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _weaponDisplay_Left: {fileID: 972466834}
   _weaponDisplay_Right: {fileID: 1651355360}
+  _healthUI: {fileID: 0}
 --- !u!1 &1479388296
 GameObject:
   m_ObjectHideFlags: 0
@@ -2815,6 +2816,7 @@ MonoBehaviour:
     m_Bits: 64
   _moveSpeed: 15
   _rotateSpeed: 5
+  <ChangableValueEnum>k__BackingField: 0
 --- !u!114 &1684598896
 MonoBehaviour:
   m_ObjectHideFlags: 0
