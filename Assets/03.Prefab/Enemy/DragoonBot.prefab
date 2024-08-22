@@ -79,14 +79,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 20
-  isActive: 0
   _whatIsPlayer:
     serializedVersion: 2
     m_Bits: 256
   _whatIsObstacle:
     serializedVersion: 2
     m_Bits: 64
-  runAwayDistance: 60
+  runAwayDistance: 10000
   attackDistance: 50
   attackCooldown: 2.3
   _maxCheckEnemy: 1

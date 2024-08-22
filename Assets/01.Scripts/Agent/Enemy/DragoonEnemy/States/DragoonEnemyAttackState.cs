@@ -9,6 +9,7 @@ public class DragoonEnemyAttackState : EnemyState<DragoonEnemy>
     {
     }
 
+    private float _lastAttackTime = 0;
     private Vector3 _targetPos;
 
     public override void Enter()
@@ -25,7 +26,7 @@ public class DragoonEnemyAttackState : EnemyState<DragoonEnemy>
 
     public override void Exit()
     {
-        _enemyBase.lastAttackTime = Time.time;
+        _lastAttackTime = Time.time;
         base.Exit();
     }
 

@@ -18,15 +18,7 @@ public abstract class Enemy : Agent, IPoolingObject
     protected LayerMask _whatIsObstacle;
 
     [Header("Attack Setting")]
-    public float runAwayDistance;
     public float attackDistance;
-    public float attackCooldown;
-    [SerializeField]
-    protected int _maxCheckEnemy = 1;
-    [HideInInspector]
-    public float lastAttackTime;
-
-    [HideInInspector]
     public Transform targetTrm;
     [HideInInspector]
     public CapsuleCollider capsuleCollider;
@@ -36,28 +28,20 @@ public abstract class Enemy : Agent, IPoolingObject
     public PoolType OriginPoolType { get; set; }
     GameObject IPoolingObject.gameObject { get; set; }
 
+    private void OnValidate()
+    {
+        targetTrm = FindObjectOfType<Player>().transform;
+    }
+
     protected override void Awake()
     {
         base.Awake();
 
         _defaultMoveSpeed = moveSpeed;
 
-        _enemyCheckColliders = new Collider[_maxCheckEnemy];
         capsuleCollider = GetComponent<CapsuleCollider>();
         EnemyMovementCompo = MovementCompo as EnemyMovement;
         EnemyMovementCompo.Initialize(this);
-    }
-
-    public virtual Collider IsPlayerDetected()
-    {
-        int cnt = Physics.OverlapSphereNonAlloc(transform.position, runAwayDistance, _enemyCheckColliders, _whatIsPlayer);
-
-        return cnt >= 1 ? _enemyCheckColliders[0] : null;
-    }
-
-    public virtual bool IsObstacleDetected(float distance, Vector3 direction)
-    {
-        return Physics.Raycast(transform.position, direction, distance, _whatIsObstacle);
     }
 
     public abstract void AnimationEndTrigger(AnimationTriggerEnum triggerBit);
