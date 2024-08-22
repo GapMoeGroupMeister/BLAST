@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Crogen.ObjectPooling;
+﻿using Crogen.ObjectPooling;
 using UnityEngine;
 
 namespace ItemManage
@@ -10,12 +8,12 @@ namespace ItemManage
 
         private void Start()
         {
-             Debug.Log(DropItem(PoolType.Item_Skill, Vector3.zero));
+            Debug.Log(DropItem(PoolType.Item_Speed, Vector3.zero));
         }
 
         public Item DropItem(PoolType type, Vector3 position)
         {
-            var item = gameObject.Pop(type, this.transform) as WeaponItem;
+            var item = gameObject.Pop(type, this.transform) as Item;
             return item;
         }
     }
