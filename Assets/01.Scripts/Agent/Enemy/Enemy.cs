@@ -3,8 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Enemy : Agent
+public abstract class Enemy : Agent, IPoolingObject
 {
+    public EnemyMovement EnemyMovementCompo { get; private set; }
+
     [Header("Common Setting")]
     public float moveSpeed;
 
@@ -31,6 +33,9 @@ public abstract class Enemy : Agent
 
     protected Collider[] _enemyCheckColliders;
 
+    public PoolType OriginPoolType { get; set; }
+    GameObject IPoolingObject.gameObject { get; set; }
+
     protected override void Awake()
     {
         base.Awake();
@@ -39,8 +44,8 @@ public abstract class Enemy : Agent
 
         _enemyCheckColliders = new Collider[_maxCheckEnemy];
         capsuleCollider = GetComponent<CapsuleCollider>();
-
-        (MovementCompo as EnemyMovement).Initialize(this);
+        EnemyMovementCompo = MovementCompo as EnemyMovement;
+        EnemyMovementCompo.Initialize(this);
     }
 
     public virtual Collider IsPlayerDetected()
@@ -55,7 +60,13 @@ public abstract class Enemy : Agent
         return Physics.Raycast(transform.position, direction, distance, _whatIsObstacle);
     }
 
-    public abstract void AnimationEndTrigger();
+    public abstract void AnimationEndTrigger(AnimationTriggerEnum triggerBit);
 
-    public abstract void EffectPlayTrigger();
+    public virtual void OnPop()
+    {
+    }
+
+    public virtual void OnPush()
+    {
+    }
 }

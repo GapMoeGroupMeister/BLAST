@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DragoonEnemyIdleState : EnemyState<DragoonEnemyStateEnum>
+public class DragoonEnemyIdleState : EnemyState<DragoonEnemy>
 {
-    public DragoonEnemyIdleState(Enemy enemyBase, EnemyStateMachine<DragoonEnemyStateEnum> stateMachine, string animBoolName) : base(enemyBase, stateMachine, animBoolName)
+    public DragoonEnemyIdleState(DragoonEnemy enemyBase, EnemyStateMachine<DragoonEnemy> stateMachine, string animBoolName) : base(enemyBase, stateMachine, animBoolName)
     {
     }
 

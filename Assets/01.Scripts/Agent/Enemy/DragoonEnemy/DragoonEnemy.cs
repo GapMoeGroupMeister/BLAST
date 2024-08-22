@@ -13,34 +13,19 @@ public enum DragoonEnemyStateEnum
 
 public class DragoonEnemy : Enemy
 {
-    public EnemyStateMachine<DragoonEnemyStateEnum> StateMachine { get; private set; }
+    public EnemyStateMachine<DragoonEnemy> StateMachine { get; private set; }
 
     public Transform firePosTrm;
 
     protected override void Awake()
     {
         base.Awake();
-        StateMachine = new EnemyStateMachine<DragoonEnemyStateEnum>();
-        foreach (DragoonEnemyStateEnum stateEnum in Enum.GetValues(typeof(DragoonEnemyStateEnum)))
-        {
-            string typeName = stateEnum.ToString();
-            try
-            {
-                Type t = Type.GetType($"DragoonEnemy{typeName}State");
-                EnemyState<DragoonEnemyStateEnum> enemyState = Activator.CreateInstance(t, this, StateMachine, typeName) as EnemyState<DragoonEnemyStateEnum>;
-
-                StateMachine.AddState(stateEnum, enemyState);
-            }
-            catch (Exception e)
-            {
-                Debug.LogError($"{typeName} doesn't exist! : {e.Message}");
-            }
-        }
+        StateMachine = new EnemyStateMachine<DragoonEnemy>(this);
     }
 
     private void Start()
     {
-        StateMachine.Initialize(DragoonEnemyStateEnum.Idle, this);
+        StateMachine.Initialize(DragoonEnemyStateEnum.Idle);
     }
 
     private void Update()
@@ -48,14 +33,8 @@ public class DragoonEnemy : Enemy
         StateMachine.CurrentState.UpdateState();
     }
 
-
-    public override void AnimationEndTrigger()
+    public override void AnimationEndTrigger(AnimationTriggerEnum triggerBit)
     {
-        StateMachine.CurrentState.AnimationFinishTrigger();
-    }
-
-    public override void EffectPlayTrigger()
-    {
-        StateMachine.CurrentState.EffectPlayTrigger();
+        StateMachine.CurrentState.AnimationTrigger(triggerBit);
     }
 }

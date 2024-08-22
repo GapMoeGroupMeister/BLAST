@@ -3,20 +3,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyStateMachine<T> where T : Enum
+public class EnemyStateMachine<T> where T : Enemy
 {
-    public EnemyState<T> CurrentState {  get; private set; }
-    public Dictionary<T, EnemyState<T>> stateDictionary = new Dictionary<T, EnemyState<T>>();
-    private Enemy _enemyBase;
+    public EnemyState<T> CurrentState { get; private set; }
+    public Dictionary<Enum, EnemyState<T>> stateDictionary = new Dictionary<Enum, EnemyState<T>>();
+    private T _enemyBase;
 
-    public void Initialize(T startState, Enemy enemy)
+    public EnemyStateMachine(Enemy enemyBase)
     {
-        _enemyBase = enemy;
+        _enemyBase = enemyBase as T;
+        string baseClassName = typeof(T).ToString();
+        Type enumType = Type.GetType($"{baseClassName}StateEnum");
+
+        foreach (Enum stateEnum in Enum.GetValues(enumType))
+        {
+            string enumName = stateEnum.ToString();
+            Type t = Type.GetType($"{baseClassName}{enumName}State");
+            EnemyState<T> state = Activator.CreateInstance(t, _enemyBase, this, enumName) as EnemyState<T>;
+            stateDictionary.Add(stateEnum, state);
+        }
+    }
+
+    public void Initialize(Enum startState)
+    {
         CurrentState = stateDictionary[startState];
         CurrentState.Enter();
     }
 
-    public void ChangeState(T newState, bool forceMode = false)
+    public void ChangeState(Enum newState, bool forceMode = false)
     {
         if (!_enemyBase.CanStateChangeable && !forceMode) return;
 
@@ -25,7 +39,7 @@ public class EnemyStateMachine<T> where T : Enum
         CurrentState.Enter();
     }
 
-    public void AddState(T stateEnum, EnemyState<T> state) 
+    public void AddState(Enum stateEnum, EnemyState<T> state)
     {
         stateDictionary.Add(stateEnum, state);
     }

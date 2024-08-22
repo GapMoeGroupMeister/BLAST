@@ -1,16 +1,49 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using UnityEngine.Events;
 
 public class Health : MonoBehaviour, IDamageable
 {
+    public UnityEvent<int, int> OnHealthChangedEvent;
+    public UnityEvent OnDieEvent;
+    private int _currentHealth = 0;
+    public int CurrentHealth => _currentHealth;
+    private int _maxHealth;
+    public int MaxHealth => _maxHealth;
     
+    [SerializeField] private bool _isDead;
+
+
+    public void Initialize(int health)
+    {
+        _isDead = false;
+        _currentHealth = health;
+        _maxHealth = health;
+    }
     
     public void TakeDamage(int amount)
     {
-        throw new System.NotImplementedException();
+        if (_isDead) return;
+        _currentHealth -= amount;
+        OnHealthChangedEvent?.Invoke(_currentHealth, _maxHealth);
+        CheckDie();
     }
 
     public void RestoreHealth(int amount)
     {
-        throw new System.NotImplementedException();
+        if (_isDead) return;
+        _currentHealth += amount;
+        OnHealthChangedEvent?.Invoke(_currentHealth, _maxHealth);
+        CheckDie();
+    }
+
+    public void CheckDie()
+    {
+        
+        if (_currentHealth <= 0)
+        {
+            _isDead = true;
+            OnDieEvent?.Invoke();
+        }
     }
 }

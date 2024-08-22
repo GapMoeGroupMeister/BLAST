@@ -7,11 +7,6 @@ public class WeaponDisplay : MonoBehaviour
     [SerializeField] private Color _normalColor;
     [SerializeField] private Color _overloadColor;
 
-    private void Awake()
-    {
-        // 나중에 공격 부분에 이벤트를 구독해서 UI갱신되도록 해야함
-    }
-    
     
 
     /**
@@ -27,5 +22,9 @@ public class WeaponDisplay : MonoBehaviour
         
 
     }
-    
+
+    private void RefreshText()
+    {
+        // 과부하 %를 표기시 구현
+    }
 }

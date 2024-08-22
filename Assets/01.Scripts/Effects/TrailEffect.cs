@@ -24,7 +24,6 @@ public class TrailEffect : MonoBehaviour, IPoolingObject
 
     public void SetTrail(Vector3 startPos, Vector3 endPos, float duration)
     {
-        print(startPos);
         _trailRenderer.enabled = true;
         transform.position = startPos;
         _targetPos = endPos;

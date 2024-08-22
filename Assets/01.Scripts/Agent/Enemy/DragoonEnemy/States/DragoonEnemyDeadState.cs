@@ -2,18 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DragoonEnemyDeadState : EnemyState<DragoonEnemyStateEnum>
+public class DragoonEnemyDeadState : EnemyState<DragoonEnemy>
 {
-    public DragoonEnemyDeadState(Enemy enemyBase, EnemyStateMachine<DragoonEnemyStateEnum> stateMachine, string animBoolName) : base(enemyBase, stateMachine, animBoolName)
+    public DragoonEnemyDeadState(DragoonEnemy enemyBase, EnemyStateMachine<DragoonEnemy> stateMachine, string animBoolName) : base(enemyBase, stateMachine, animBoolName)
     {
-        _movementCompo = (_enemyBase.MovementCompo as EnemyMovement);
     }
 
-    private EnemyMovement _movementCompo;
 
     public override void Enter()
     {
         base.Enter();
-        _movementCompo.DisableNavAgent();
+        _enemyBase.EnemyMovementCompo.DisableNavAgent();
     }
 }
