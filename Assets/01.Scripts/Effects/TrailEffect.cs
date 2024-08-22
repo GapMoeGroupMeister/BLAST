@@ -45,7 +45,6 @@ public class TrailEffect : MonoBehaviour, IPoolingObject
         DOTween.To(() => _material.GetFloat(_alphaHash), v => _material.SetFloat(_alphaHash, v), 0, 1f).
             OnComplete(() => { 
                 this.Push(); 
-                _trailRenderer.Clear(); 
             });
     }
 
@@ -55,6 +54,7 @@ public class TrailEffect : MonoBehaviour, IPoolingObject
 
     public void OnPush()
     {
+        _trailRenderer.Clear();
         _trailRenderer.enabled = false;
         _material.SetFloat(_alphaHash, 1);
     }
