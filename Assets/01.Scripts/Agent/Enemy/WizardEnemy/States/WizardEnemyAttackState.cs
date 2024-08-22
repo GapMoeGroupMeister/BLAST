@@ -8,6 +8,7 @@ public class WizardEnemyAttackState : EnemyState<WizardEnemy>
     {
     }
 
+    private float _lastAttackTime = 0;
     public override void Enter()
     {
         base.Enter();
@@ -17,7 +18,7 @@ public class WizardEnemyAttackState : EnemyState<WizardEnemy>
 
     public override void Exit()
     {
-        _enemyBase.lastAttackTime = Time.time;
+        _lastAttackTime = Time.time;
         base.Exit();
     }
 
