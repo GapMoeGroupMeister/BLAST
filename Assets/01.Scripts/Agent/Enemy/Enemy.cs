@@ -9,7 +9,6 @@ public abstract class Enemy : Agent, IPoolingObject
 
     [Header("Common Setting")]
     public float moveSpeed;
-
     protected float _defaultMoveSpeed;
 
     [SerializeField]

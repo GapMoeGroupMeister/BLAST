@@ -12,10 +12,12 @@ public class Health : MonoBehaviour, IDamageable
     public int MaxHealth => _maxHealth;
     
     [SerializeField] private bool _isDead;
+    private Agent _owner;
 
 
-    public void Initialize(int health)
+    public void Initialize(Agent owner, int health)
     {
+        _owner = owner;
         _isDead = false;
         _currentHealth = health;
         _maxHealth = health;
