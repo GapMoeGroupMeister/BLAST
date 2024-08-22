@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponManager : MonoBehaviour
+public class WeaponManager : MonoSingleton<WeaponManager>
 {
 	[field:SerializeField] public WeaponDataSO WeaponDataSO { get; private set; }
 	private Dictionary<WeaponEnum, Weapon> _currentWeaponDictionary;

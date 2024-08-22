@@ -12,6 +12,6 @@ public class SpeedItem : Item
 
     private void HandleSpeedUp()
     {
-        Debug.Log("Speed Up");
+        _player.Stat.statDictionary[StatEnum.Speed] += _speedUpValue;
     }
 }

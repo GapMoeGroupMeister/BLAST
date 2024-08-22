@@ -10,11 +10,12 @@ namespace ItemManage
 
         private void Start()
         {
+             Debug.Log(DropItem(PoolType.Item_Skill, Vector3.zero));
         }
 
         public Item DropItem(PoolType type, Vector3 position)
         {
-            SpeedItem item = gameObject.Pop(type, this.transform) as SpeedItem;
+            var item = gameObject.Pop(type, this.transform) as WeaponItem;
             return item;
         }
     }

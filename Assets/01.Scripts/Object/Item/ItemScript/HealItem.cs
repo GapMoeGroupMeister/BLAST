@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HealItem : Item
 {
-    [SerializeField] private float _healValue;
+    [SerializeField] private int _healValue;
     private void Start()
     {
         OnInteractEvent += HandleHeal;
@@ -12,6 +12,6 @@ public class HealItem : Item
 
     private void HandleHeal()
     {
-        Debug.Log($"Heal {_healValue}");
+        _player.HealthCompo.RestoreHealth(_healValue);
     }
 }

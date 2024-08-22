@@ -4,32 +4,20 @@ using UnityEngine;
 
 namespace ItemManage
 {
-    public abstract class Item : MonoBehaviour, IInteractable, IDetectable, IPoolingObject
+    public abstract class Item : MonoBehaviour, IPoolingObject
     {
         [field:SerializeField] public ItemType ItemType { get; set; }
         public PoolType OriginPoolType { get; set; }
         GameObject IPoolingObject.gameObject { get; set; }
         public event Action OnInteractEvent;
-        public event Action OnDetectEvent;
-        public event Action OnUnDetectEvent;
+        
+        protected Player _player;
 
         [ContextMenu("Interact")]
         public virtual void Interact()
         {
             OnInteractEvent?.Invoke();
             this.Push();
-        }
-
-        [ContextMenu("Detect")]
-        public virtual void Detect()
-        {
-            OnDetectEvent?.Invoke();
-        }
-
-        [ContextMenu("UnDetect")]
-        public virtual void UnDetect()
-        {
-            OnUnDetectEvent?.Invoke();
         }
 
 
@@ -39,6 +27,15 @@ namespace ItemManage
 
         public virtual void OnPush()
         {
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.TryGetComponent(out Player player))
+            {
+                _player = player;
+                Interact();
+            }
         }
     }
 }
