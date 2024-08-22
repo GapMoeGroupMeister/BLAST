@@ -1,38 +1,44 @@
 ﻿using System;
+using Crogen.ObjectPooling;
 using UnityEngine;
 
-public class Item : MonoBehaviour, IInteractable, IDetectable, IPoolingObject
+namespace ItemManage
 {
-    [field:SerializeField] public ItemType ItemType { get; set; }
-    public PoolType OriginPoolType { get; set; }
-    public GameObject gameObject { get; set; }
-    public event Action OnInteractEvent;
-    public event Action OnDetectEvent;
-    public event Action OnUnDetectEvent;
-    
-    public virtual void Interact()
+    public abstract class Item : MonoBehaviour, IInteractable, IDetectable, IPoolingObject
     {
-        OnInteractEvent?.Invoke();
-    }
+        [field:SerializeField] public ItemType ItemType { get; set; }
+        public PoolType OriginPoolType { get; set; }
+        GameObject IPoolingObject.gameObject { get; set; }
+        public event Action OnInteractEvent;
+        public event Action OnDetectEvent;
+        public event Action OnUnDetectEvent;
 
-    public virtual void Detect()
-    {
-        OnDetectEvent?.Invoke();
-    }
+        [ContextMenu("Interact")]
+        public virtual void Interact()
+        {
+            OnInteractEvent?.Invoke();
+            this.Push();
+        }
 
-    public virtual void UnDetect()
-    {
-        OnUnDetectEvent?.Invoke();
-    }
+        [ContextMenu("Detect")]
+        public virtual void Detect()
+        {
+            OnDetectEvent?.Invoke();
+        }
 
-    
-    public virtual void OnPop()
-    {
-        
-    }
+        [ContextMenu("UnDetect")]
+        public virtual void UnDetect()
+        {
+            OnUnDetectEvent?.Invoke();
+        }
 
-    public virtual void OnPush()
-    {
-        
+
+        public virtual void OnPop()
+        {
+        }
+
+        public virtual void OnPush()
+        {
+        }
     }
 }

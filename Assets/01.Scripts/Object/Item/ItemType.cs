@@ -1,4 +1,9 @@
-﻿public enum ItemType
+﻿namespace ItemManage
 {
-    Item
+    public enum ItemType
+    {
+        HealItem,
+        Skill,
+        SpeedUp,
+    }
 }

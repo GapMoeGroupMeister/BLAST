@@ -1,25 +1,21 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Crogen.ObjectPooling;
 using UnityEngine;
 
-public class ItemDropManager : MonoSingleton<ItemDropManager>
+namespace ItemManage
 {
-    [field:SerializeField] public List<ItemTableSO> ItemTableSO { get; set; }
-    
-    public Item DropItem(int id, int itemIndex, Vector3 position)
+    public class ItemDropManager : MonoSingleton<ItemDropManager>
     {
-        ItemSO itemSO = GetItemSO(id, itemIndex);
-        // Pooling으로 아이템 가져오기
-        return null;
-    }
-    
-    private ItemTableSO GetItemTableSO(int id)
-    {
-        return ItemTableSO.Find(x => x.id == id);
-    }
-    
-    public ItemSO GetItemSO(int id, int itemIndex)
-    {
-        return GetItemTableSO(id).items[itemIndex];
+
+        private void Start()
+        {
+        }
+
+        public Item DropItem(PoolType type, Vector3 position)
+        {
+            SpeedItem item = gameObject.Pop(type, this.transform) as SpeedItem;
+            return item;
+        }
     }
 }
