@@ -29,7 +29,7 @@ public class EnemyMovement : MovementController
     {
         _enemy = agent as Enemy;
         _navAgent = GetComponent<NavMeshAgent>();
-        _navAgent.speed = _enemy.moveSpeed;
+        _navAgent.speed = _enemy.Stat.GetValue(StatEnum.Speed);
 
         _rigidbodyCompo = GetComponent<Rigidbody>();
     }

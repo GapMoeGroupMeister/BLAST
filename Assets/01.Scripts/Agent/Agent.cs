@@ -8,7 +8,8 @@ public class Agent : MonoBehaviour
     public MovementController MovementCompo { get; protected set; }
     public Health HealthCompo { get; protected set; }
     #endregion
-    public StatDataSO Stat;
+    [field: SerializeField]
+    public StatDataSO Stat { get; protected set; }
 
     public bool CanStateChangeable { get; protected set; } = true;
 

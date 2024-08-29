@@ -78,18 +78,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ded1921e99805044b879a2044797ebd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 20
+  <Stat>k__BackingField: {fileID: 11400000, guid: a6e92f6833b1a6b44947402d9070f23e,
+    type: 2}
   _whatIsPlayer:
     serializedVersion: 2
     m_Bits: 256
-  _whatIsObstacle:
-    serializedVersion: 2
-    m_Bits: 64
-  runAwayDistance: 10000
   attackDistance: 50
-  attackCooldown: 2.3
-  _maxCheckEnemy: 1
-  lastAttackTime: 0
   targetTrm: {fileID: 0}
   capsuleCollider: {fileID: 0}
   firePosTrm: {fileID: 6669945850423679157}
