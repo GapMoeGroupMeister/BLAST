@@ -5,6 +5,8 @@ public enum PlayerPartType
 {
 	Default,
 	Electronic,
+	HoleMaker,
+	Fire
 }
 
 public class PlayerPartController : MonoSingleton<PlayerPartController>
