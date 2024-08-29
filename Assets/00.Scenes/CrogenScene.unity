@@ -648,7 +648,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 694662798}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.14865234, y: 0.8513282, z: -0.35887846, w: 0.35263172}
+  m_LocalRotation: {x: 0.14865232, y: 0.8513282, z: -0.35887846, w: 0.35263172}
   m_LocalPosition: {x: -80, y: 120.22, z: 80}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1070,6 +1070,30 @@ MonoBehaviour:
     prefab: {fileID: 8538479565421077914, guid: 493b7b28f1b066a48853885a0c424227,
       type: 3}
     poolCount: 40
+  - poolType: Enemy_Dragoon
+    prefab: {fileID: 5273259378002957757, guid: 01a094297fba9264e9d41c3b66196d87,
+      type: 3}
+    poolCount: 5
+  - poolType: Enemy_DistructDrone
+    prefab: {fileID: 3469917630753008567, guid: cfc2d5b4c2b1dad48908792071eb3c66,
+      type: 3}
+    poolCount: 5
+  - poolType: Enemy_WizardBot
+    prefab: {fileID: 7554849678795088332, guid: c9abff9bcf16355419ca440043afd5ff,
+      type: 3}
+    poolCount: 5
+  - poolType: Item_Speed
+    prefab: {fileID: 8247759671278569473, guid: e12c2075af2d08d4c93efcd39a6bc55b,
+      type: 3}
+    poolCount: 5
+  - poolType: Item_Skill
+    prefab: {fileID: 2847848300834198667, guid: 8f8e646e32ce1b1479f38f61d6ab2a4c,
+      type: 3}
+    poolCount: 5
+  - poolType: Item_Heal
+    prefab: {fileID: 3288226144765936843, guid: 03508103fc015dc4d8efb6f9723301d8,
+      type: 3}
+    poolCount: 5
 --- !u!1 &1106337031
 GameObject:
   m_ObjectHideFlags: 0
@@ -1157,7 +1181,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1106337031}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.14865234, y: 0.8513282, z: -0.35887846, w: 0.35263172}
+  m_LocalRotation: {x: 0.14865232, y: 0.8513282, z: -0.35887846, w: 0.35263172}
   m_LocalPosition: {x: -80, y: 120.22, z: 80}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1290,6 +1314,8 @@ MonoBehaviour:
   _playerPartList:
   - {fileID: 294903427704956916, guid: 0a088780fd58b0b49b9aa8a59ca05833, type: 3}
   - {fileID: 294903427704956916, guid: adb39cc5587a3c646a2f4361d3a8ca32, type: 3}
+  - {fileID: 294903427704956916, guid: 53756cfabefb9994887b792335e77b68, type: 3}
+  - {fileID: 294903427704956916, guid: 02549dc8771b07446a6f2f3cb07bc1e1, type: 3}
 --- !u!1 &1274551196
 GameObject:
   m_ObjectHideFlags: 0
@@ -1513,6 +1539,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Stat>k__BackingField: {fileID: 11400000, guid: 08ba1e6f4bc538b4bbf931e970e89da3,
     type: 2}
+  currentSelectedPart: 3
   PlayerPartController: {fileID: 0}
 --- !u!136 &1684598897
 CapsuleCollider:
