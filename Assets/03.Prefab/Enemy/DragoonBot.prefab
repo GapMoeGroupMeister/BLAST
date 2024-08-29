@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 3569790279375286571}
   - component: {fileID: 5643435964428425110}
   - component: {fileID: 7352450689115178033}
+  - component: {fileID: -412865199034554813}
   - component: {fileID: 2540701336388605630}
   m_Layer: 0
   m_Name: DragoonBot
@@ -102,6 +103,25 @@ MonoBehaviour:
   _knockbackThreshold: 0
   _maxKnockbackTime: 1
   _physicsDelayTime: 0.25
+--- !u!114 &-412865199034554813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5273259378002957757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec2e8163a86f4414b853f4241c9b4a04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnHealthChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDieEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  _isDead: 0
 --- !u!195 &2540701336388605630
 NavMeshAgent:
   m_ObjectHideFlags: 0
