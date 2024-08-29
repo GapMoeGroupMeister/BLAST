@@ -8,7 +8,7 @@ namespace ItemManage
 
         private void Start()
         {
-            Debug.Log(DropItem(PoolType.Item_Speed, Vector3.zero));
+            Debug.Log(DropItem(PoolType.Item_Speed, new Vector3(10,0)));
         }
 
         public Item DropItem(PoolType type, Vector3 position)
