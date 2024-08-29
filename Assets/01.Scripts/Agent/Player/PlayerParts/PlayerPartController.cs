@@ -4,6 +4,7 @@ using UnityEngine;
 public enum PlayerPartType
 {
 	Default,
+	Electronic,
 }
 
 public class PlayerPartController : MonoSingleton<PlayerPartController>
