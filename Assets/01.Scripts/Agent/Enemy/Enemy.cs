@@ -8,13 +8,8 @@ public abstract class Enemy : Agent, IPoolingObject
     public EnemyMovement EnemyMovementCompo { get; private set; }
 
     [Header("Common Setting")]
-    public float moveSpeed;
-    protected float _defaultMoveSpeed;
-
     [SerializeField]
     protected LayerMask _whatIsPlayer;
-    [SerializeField]
-    protected LayerMask _whatIsObstacle;
 
     [Header("Attack Setting")]
     public float attackDistance;
@@ -35,9 +30,6 @@ public abstract class Enemy : Agent, IPoolingObject
     protected override void Awake()
     {
         base.Awake();
-
-        _defaultMoveSpeed = moveSpeed;
-
         capsuleCollider = GetComponent<CapsuleCollider>();
         EnemyMovementCompo = MovementCompo as EnemyMovement;
         EnemyMovementCompo.Initialize(this);

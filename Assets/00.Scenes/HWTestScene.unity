@@ -621,6 +621,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be4e4b5624df4e448c7912869c835781, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Stat: {fileID: 0}
   PlayerPartController: {fileID: 0}
 --- !u!4 &372912754
 Transform:
@@ -1587,13 +1588,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a5dc9728c2f7024e8aa1891179a958e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 80
+  Stat: {fileID: 0}
   _whatIsPlayer:
     serializedVersion: 2
     m_Bits: 256
-  _whatIsObstacle:
-    serializedVersion: 2
-    m_Bits: 64
   attackDistance: 10
   targetTrm: {fileID: 372912754}
   capsuleCollider: {fileID: 0}
@@ -3071,6 +3069,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2094500888}
+  - component: {fileID: 2094500889}
   m_Layer: 0
   m_Name: Boss-524
   m_TagString: Untagged
@@ -3095,6 +3094,26 @@ Transform:
   - {fileID: 1866133572}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2094500889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2094500887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e064e8650160f746ba9b5c734a5a095, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Stat: {fileID: 11400000, guid: 0ac816a15c4f3e54998b4911776de54f, type: 2}
+  _whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 256
+  attackDistance: 0
+  targetTrm: {fileID: 372912754}
+  capsuleCollider: {fileID: 0}
+  cannonTrm: {fileID: 0}
 --- !u!1 &2130517442
 GameObject:
   m_ObjectHideFlags: 0

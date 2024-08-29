@@ -47,19 +47,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c4d4ea0397afba47a63722633def72e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 30
-  isActive: 0
+  Stat: {fileID: 11400000, guid: 13738ea458b77c243bd5c9908ae5f2e3, type: 2}
   _whatIsPlayer:
     serializedVersion: 2
     m_Bits: 256
-  _whatIsObstacle:
-    serializedVersion: 2
-    m_Bits: 64
-  runAwayDistance: 80
   attackDistance: 10
-  attackCooldown: 1.5
-  _maxCheckEnemy: 1
-  lastAttackTime: 0
   targetTrm: {fileID: 0}
   capsuleCollider: {fileID: 0}
 --- !u!114 &6801356604917785203
