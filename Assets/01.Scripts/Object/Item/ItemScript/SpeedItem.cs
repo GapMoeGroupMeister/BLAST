@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using ItemManage;
 using UnityEngine;
 
@@ -12,6 +13,13 @@ public class SpeedItem : Item
 
     private void HandleSpeedUp()
     {
+        StartCoroutine(SpeedUpCoroutine());
+    }
+
+    private IEnumerator SpeedUpCoroutine()
+    {
         _player.Stat.statDictionary[StatEnum.Speed] += _speedUpValue;
+        yield return new WaitForSeconds(_itemEffectDuration);
+        _player.Stat.statDictionary[StatEnum.Speed] -= _speedUpValue;
     }
 }

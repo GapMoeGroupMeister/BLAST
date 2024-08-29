@@ -11,6 +11,7 @@ public class Supplies : MonoBehaviour
 {
     [SerializeField] private SuppliesDropItemSO _supplies;
     [SerializeField] private float _speed = 1f;
+    [SerializeField] private int _dropItemCount = 3;
     private bool _isDrop;
 
     private void OnEnable()
@@ -37,20 +38,15 @@ public class Supplies : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        if (Input.GetKey(KeyCode.Space))
-        {
-            DropSupplies();
-        }
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         Debug.LogError(other.gameObject.name);
         if (_isDrop) return;
         Debug.Log("Get Supplies");
-        DropSupplies();
+        for (int i = 0; i < _dropItemCount; i++)
+        {
+            DropSupplies();
+        }
         _isDrop = true;
     }
 

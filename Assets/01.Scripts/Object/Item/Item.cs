@@ -8,6 +8,7 @@ namespace ItemManage
     public abstract class Item : MonoBehaviour, IPoolingObject
     {
         [field:SerializeField] public ItemType ItemType { get; set; }
+        [SerializeField] protected float _itemEffectDuration;
         public PoolType OriginPoolType { get; set; }
         GameObject IPoolingObject.gameObject { get; set; }
         public event Action OnInteractEvent;
@@ -24,13 +25,13 @@ namespace ItemManage
 
         public virtual void OnPop()
         {
-            StartCoroutine(Push());
+            StartCoroutine(PushCoRoutine());
         }
 
-        private IEnumerator Push()
+        private IEnumerator PushCoRoutine()
         {
             yield return new WaitForSeconds(1f);
-            PushCore.Push(this);
+            this.Push();
         }
 
         public virtual void OnPush()

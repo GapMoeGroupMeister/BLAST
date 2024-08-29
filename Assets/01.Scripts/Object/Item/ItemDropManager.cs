@@ -6,22 +6,17 @@ namespace ItemManage
 {
     public class ItemDropManager : MonoSingleton<ItemDropManager>
     {
-
-        private void Start()
+        public Item DropItem(PoolType type)
         {
-            Debug.Log(DropItem(PoolType.Item_Speed, new Vector3(10,0)));
-        }
-
-        public Item DropItem(PoolType type, Vector3 position)
-        {
-            var item = gameObject.Pop(type, this.transform) as Item;
-            item.transform.position = position;
+            var item = gameObject.Pop(type, transform) as Item;
+            item.transform.position = transform.position;
             return item;
         }
         
-        public Item DropItem(PoolType type)
+        public Item DropItem(PoolType type, Vector3 startPos)
         {
-            var item = gameObject.Pop(type, this.transform) as Item;
+            var item = gameObject.Pop(type, transform) as Item;
+            item.transform.position = startPos;
             item.transform.DOJump(item.GetRandomPosition(10f), 1, 1, 1);
             return item;
         }
