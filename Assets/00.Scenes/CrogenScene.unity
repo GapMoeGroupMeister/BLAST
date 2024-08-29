@@ -1289,6 +1289,7 @@ MonoBehaviour:
   currentPlayerPart: {fileID: 0}
   _playerPartList:
   - {fileID: 294903427704956916, guid: 0a088780fd58b0b49b9aa8a59ca05833, type: 3}
+  - {fileID: 294903427704956916, guid: adb39cc5587a3c646a2f4361d3a8ca32, type: 3}
 --- !u!1 &1274551196
 GameObject:
   m_ObjectHideFlags: 0
@@ -1453,6 +1454,7 @@ GameObject:
   - component: {fileID: 1684598895}
   - component: {fileID: 1684598898}
   - component: {fileID: 1684598897}
+  - component: {fileID: 1684598899}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1509,6 +1511,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be4e4b5624df4e448c7912869c835781, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <Stat>k__BackingField: {fileID: 11400000, guid: 08ba1e6f4bc538b4bbf931e970e89da3,
+    type: 2}
   PlayerPartController: {fileID: 0}
 --- !u!136 &1684598897
 CapsuleCollider:
@@ -1560,6 +1564,25 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!114 &1684598899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1684598893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec2e8163a86f4414b853f4241c9b4a04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnHealthChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDieEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  _isDead: 0
 --- !u!1 &1788354647
 GameObject:
   m_ObjectHideFlags: 0

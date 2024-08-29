@@ -13,7 +13,7 @@ public class Player : Agent
         PlayerPartController = PlayerPartController.Instance;
 
         //임시로 만든거
-        PlayerPartController.Init(PlayerPartType.Default);
+        PlayerPartController.Init(PlayerPartType.Electronic);
 
         foreach (PlayerStateEnum stateEnum in Enum.GetValues(typeof(PlayerStateEnum)))
         {

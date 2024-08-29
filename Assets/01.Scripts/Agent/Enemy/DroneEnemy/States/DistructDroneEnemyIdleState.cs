@@ -11,9 +11,6 @@ public class DistructDroneEnemyIdleState : EnemyState<DistructDroneEnemy>
     public override void UpdateState()
     {
         base.UpdateState();
-        Collider target = _enemyBase.IsPlayerDetected();
-        if (target == null) return;
-        _enemyBase.targetTrm = target.transform;
         _stateMachine.ChangeState(DistructDroneEnemyStateEnum.Chase);
     }
 }

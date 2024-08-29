@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8485147330064131221}
   - component: {fileID: 6270543725264798543}
   - component: {fileID: 7182160893438680747}
+  - component: {fileID: -1783861949578848788}
   - component: {fileID: 6446611948878621683}
   m_Layer: 0
   m_Name: Drone
@@ -47,18 +48,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a5dc9728c2f7024e8aa1891179a958e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 80
+  <Stat>k__BackingField: {fileID: 11400000, guid: a6e92f6833b1a6b44947402d9070f23e,
+    type: 2}
   _whatIsPlayer:
     serializedVersion: 2
     m_Bits: 256
-  _whatIsObstacle:
-    serializedVersion: 2
-    m_Bits: 64
-  runAwayDistance: 100
   attackDistance: 10
-  attackCooldown: 0
-  _maxCheckEnemy: 1
-  lastAttackTime: 0
   targetTrm: {fileID: 0}
   capsuleCollider: {fileID: 0}
   redLight: {fileID: 2068960083974424355}
@@ -77,6 +72,25 @@ MonoBehaviour:
   _knockbackThreshold: 0
   _maxKnockbackTime: 0
   _physicsDelayTime: 0
+--- !u!114 &-1783861949578848788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3469917630753008567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec2e8163a86f4414b853f4241c9b4a04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnHealthChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDieEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  _isDead: 0
 --- !u!195 &6446611948878621683
 NavMeshAgent:
   m_ObjectHideFlags: 0

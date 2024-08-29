@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 2766082655179900744}
   - component: {fileID: 2911722560416591815}
   - component: {fileID: 6669458520609101230}
-  - component: {fileID: 4737423268452293563}
+  - component: {fileID: 495135223865608285}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: SpeedItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -106,7 +106,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4737423268452293563
+--- !u!114 &495135223865608285
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -115,8 +115,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 8247759671278569473}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb1cc46fb6de4f738b219cdbcb52be17, type: 3}
+  m_Script: {fileID: 11500000, guid: 2e5cd5d818d74aec9038d6236e47de5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 0}
-  _exp: 1
+  <ItemType>k__BackingField: 2
+  _speedUpValue: 222

@@ -5,6 +5,7 @@ public enum StatEnum
 	Defense,
 	Speed,
 	Evasion,
+	MaxHP,
 
 	//Critical
 	CriticalProbability,
