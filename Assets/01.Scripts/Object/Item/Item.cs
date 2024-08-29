@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using Crogen.ObjectPooling;
 using UnityEngine;
 
@@ -23,6 +24,13 @@ namespace ItemManage
 
         public virtual void OnPop()
         {
+            StartCoroutine(Push());
+        }
+
+        private IEnumerator Push()
+        {
+            yield return new WaitForSeconds(1f);
+            PushCore.Push(this);
         }
 
         public virtual void OnPush()
@@ -36,6 +44,13 @@ namespace ItemManage
                 _player = player;
                 Interact();
             }
+        }
+        
+        public Vector3 GetRandomPosition(float radius)
+        {
+            var randomPos = UnityEngine.Random.insideUnitSphere * radius;
+            randomPos.y = 0;
+            return randomPos;
         }
     }
 }
