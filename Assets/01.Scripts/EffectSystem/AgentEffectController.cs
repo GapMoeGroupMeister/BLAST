@@ -56,6 +56,20 @@ namespace EffectSystem
             }
         }
 
+        /**
+         * <param name="type">
+         * 효과 타입 enum
+         * </param>
+         * <param name="duration">
+         * 효과 지속시간
+         * </param>
+         * <param name="level">
+         * 효과 강도
+         * </param>
+         * <summary>
+         * 효과 부여 메서드
+         * </summary>
+         */
         public virtual void ApplyEffect(EffectStateTypeEnum type, float duration, int level)
         {
             effectDictionary[type].Start(level, duration);
