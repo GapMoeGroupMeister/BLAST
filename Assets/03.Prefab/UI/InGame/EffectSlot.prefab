@@ -87,6 +87,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6420219442343794621}
   - component: {fileID: 4130522743529156986}
+  - component: {fileID: 7297469782940536863}
   m_Layer: 5
   m_Name: EffectSlot
   m_TagString: Untagged
@@ -124,6 +125,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1157465627131655994}
   m_CullTransparentMesh: 1
+--- !u!114 &7297469782940536863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1157465627131655994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28977746875d4768b2453116cc6b2a98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _timeText: {fileID: 3665652018023183248}
+  _iconImage: {fileID: 3134032418929453355}
 --- !u!1 &1166167628593887808
 GameObject:
   m_ObjectHideFlags: 0

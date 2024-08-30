@@ -8,16 +8,16 @@ namespace EffectSystem
     public class AgentEffectController : MonoBehaviour
     {
         public Dictionary<EffectStateTypeEnum, EffectState> effectDictionary = new Dictionary<EffectStateTypeEnum, EffectState>();
-        private Agent _owner;
-        private float _currentTime = 0f;
+        protected Agent _owner;
+        protected float _currentTime = 0f;
         
-        private void Awake()
+        protected virtual void Awake()
         {
             Initialize();
             _owner = GetComponent<Agent>();
         }
 
-        private void Update()
+        protected virtual  void Update()
         {
             _currentTime += Time.deltaTime;
             foreach (EffectState effect in effectDictionary.Values)
@@ -56,7 +56,7 @@ namespace EffectSystem
             }
         }
 
-        public void ApplyEffect(EffectStateTypeEnum type, float duration, int level)
+        public virtual void ApplyEffect(EffectStateTypeEnum type, float duration, int level)
         {
             effectDictionary[type].Start(level, duration);
         }

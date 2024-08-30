@@ -1,9 +1,12 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace EffectSystem
 {
     public class EffectState
     {
+        public event Action<int, int> OnUpdateEvent;
+        public event Action OnOverEvent;
         public bool isResist;
         public bool enabled;
         public int level;
@@ -29,7 +32,7 @@ namespace EffectSystem
         public virtual void Update()
         {
             duration -= Time.deltaTime;
-            
+            OnUpdateEvent?.Invoke((int)duration, level);
         }
 
         public virtual void UpdateBySecond()
@@ -42,6 +45,7 @@ namespace EffectSystem
             enabled = false;
             level = 0;
             duration = 0f;
+            OnOverEvent?.Invoke();
         }
 
 
