@@ -8,4 +8,10 @@ public class Boss524AttackState : EnemyState<Boss524>
     {
     }
 
+
+    public override void Enter()
+    {
+        base.Enter();
+        _enemyBase.MovementCompo.StopImmediately();
+    }
 }
