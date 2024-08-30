@@ -3215,7 +3215,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 694662798}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.14865232, y: 0.8513282, z: -0.35887846, w: 0.35263172}
+  m_LocalRotation: {x: 0.14865234, y: 0.8513282, z: -0.35887846, w: 0.35263172}
   m_LocalPosition: {x: -80, y: 120, z: 80}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5033,7 +5033,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1106337031}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.14865232, y: 0.8513282, z: -0.35887846, w: 0.35263172}
+  m_LocalRotation: {x: 0.14865234, y: 0.8513282, z: -0.35887846, w: 0.35263172}
   m_LocalPosition: {x: -80, y: 120, z: 80}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -7759,6 +7759,7 @@ GameObject:
   - component: {fileID: 1684598898}
   - component: {fileID: 1684598897}
   - component: {fileID: 1684598899}
+  - component: {fileID: 1684598900}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -7817,6 +7818,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Stat>k__BackingField: {fileID: 11400000, guid: 08ba1e6f4bc538b4bbf931e970e89da3,
     type: 2}
+  currentSelectedPart: 0
   PlayerPartController: {fileID: 0}
 --- !u!136 &1684598897
 CapsuleCollider:
@@ -7887,6 +7889,19 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   _isDead: 0
+--- !u!114 &1684598900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1684598893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ffe42c1426342339b616e79b533fa65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _effectPanel: {fileID: 1949021072}
 --- !u!1 &1713335871
 GameObject:
   m_ObjectHideFlags: 0

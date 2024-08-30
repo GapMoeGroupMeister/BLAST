@@ -13,8 +13,8 @@ namespace EffectSystem
         
         protected virtual void Awake()
         {
-            Initialize();
             _owner = GetComponent<Agent>();
+            Initialize();
         }
 
         protected virtual  void Update()

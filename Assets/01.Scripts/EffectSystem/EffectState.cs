@@ -33,6 +33,8 @@ namespace EffectSystem
         {
             duration -= Time.deltaTime;
             OnUpdateEvent?.Invoke((int)duration, level);
+            if(duration <= 0)
+                Over();
         }
 
         public virtual void UpdateBySecond()
