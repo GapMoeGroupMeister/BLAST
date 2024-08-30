@@ -10,6 +10,7 @@ public class Bullet : MonoBehaviour, IPoolingObject
 	private Collider[] _colliders;
 
 	[SerializeField] private float _collisionRadius = 1f;
+	[SerializeField] private Vector3 _offset;
 
 	public PoolType OriginPoolType { get; set; }
 	GameObject IPoolingObject.gameObject { get; set; }
@@ -17,11 +18,12 @@ public class Bullet : MonoBehaviour, IPoolingObject
 	private void Awake()
 	{
 		_colliders = new Collider[10];
+		
 	}
 
 	private void FixedUpdate()
 	{
-		if (Physics.OverlapSphereNonAlloc(transform.position, _collisionRadius, _colliders, _whatIsEnemy) > 0)
+		if (Physics.OverlapSphereNonAlloc(transform.position + _offset, _collisionRadius, _colliders, _whatIsEnemy) > 0)
 		{
 			transform.DOKill();
 			this.Push();
@@ -30,7 +32,7 @@ public class Bullet : MonoBehaviour, IPoolingObject
 
 	private void OnDrawGizmos()
 	{
-		Gizmos.DrawWireSphere(transform.position, _collisionRadius);
+		Gizmos.DrawWireSphere(transform.position + _offset, _collisionRadius);
 	}
 
 	public void OnPop()
