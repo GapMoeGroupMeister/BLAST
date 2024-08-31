@@ -20,7 +20,7 @@ public class RedZoneManager : MonoBehaviour
         _redZoneDecal.gameObject.SetActive(true);
         _redZoneDecal.AreaCollider.enabled = false;
         _redZoneDecal.RedZoneSet(position, 
-                new Vector3(10, 10, 10), Ease.InSine, 
+                new Vector3(0, 00, 0), Ease.InSine, 
                 () => _redZoneDecal.AreaCollider.enabled = true);
         //_bombParticle.StartPlay(1f);
         _warningUI.OpenWarningPanel(warningMessage, 0.2f);
