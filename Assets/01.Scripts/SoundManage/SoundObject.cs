@@ -66,11 +66,6 @@ namespace SoundManage
         }
 
        
-        public void ResetItem()
-        {
-            
-        }
-
         
         public void OnPop()
         {

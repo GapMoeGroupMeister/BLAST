@@ -1,3 +1,4 @@
+using System.Data.Common;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,6 +12,7 @@ public class PartSelectSlot : MonoBehaviour
     public void Initialize(PlayerPartDataSO data)
     {
         partSO = data;
+        _partNameText.text = data.partName;
         Refresh();
     }
 
@@ -24,5 +26,6 @@ public class PartSelectSlot : MonoBehaviour
     public void PartSelect()
     {
         PartChanger.Instance.ChangePart(partSO);
+        LobbySceneUIManager.Instance.RefreshSelectPartInfo(partSO);
     }
 }
