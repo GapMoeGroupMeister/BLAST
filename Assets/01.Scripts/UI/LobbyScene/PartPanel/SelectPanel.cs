@@ -1,40 +1,43 @@
 using DG.Tweening;
 using UnityEngine;
 
-public class SelectPanel : MonoBehaviour, IWindowPanel
+public class SelectPanel : UIPanel
 {
-    private CanvasGroup _canvasGroup;
     [SerializeField]
     private bool _isActive;
     private RectTransform _rectTrm;
 
     [SerializeField] private PartSelectSlot _partSelectSlotPrefab;
     [SerializeField] private Transform _contentTrm;
-    
-    
-    private void Awake()
+
+
+    protected override void Awake()
     {
-        _canvasGroup = GetComponent<CanvasGroup>();
+        base.Awake();
         _rectTrm = transform as RectTransform;
-        
     }
 
-    public void Open()
+    public override void Open()
     {
-        if (_isActive) return;
-        _canvasGroup.DOFade(1f, 0.5f);
+        base.Open();
         _rectTrm.DOAnchorPosY(-85f, 0.4f).OnComplete(() => _isActive = true);
+
     }
-    
-    public void Close()
+
+    public override void Close()
     {
-        if (!_isActive) return;
-        _canvasGroup.DOFade(0f, 0.5f);
+        base.Close();
         _rectTrm.DOAnchorPosY(200f, 0.4f).OnComplete(() => _isActive = false);
+
     }
 
     public void RefreshSlot()
     {
+        foreach (Transform child in _contentTrm)
+        {
+            Destroy(child.gameObject);
+        }
+        
         
     }
 }

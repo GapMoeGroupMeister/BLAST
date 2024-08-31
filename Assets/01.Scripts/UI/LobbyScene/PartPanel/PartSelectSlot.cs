@@ -11,7 +11,7 @@ public class PartSelectSlot : MonoBehaviour
     public void Initialize(PlayerPartDataSO data)
     {
         partSO = data;
-        
+        Refresh();
     }
 
     public void Refresh()
