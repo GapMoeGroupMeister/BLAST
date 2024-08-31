@@ -28031,7 +28031,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5478074720893084, guid: 7eee18a1e0600f346993bcc981c2e5d5, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5478074720893084, guid: 7eee18a1e0600f346993bcc981c2e5d5, type: 3}
       propertyPath: m_AnchorMin.x
@@ -28039,7 +28039,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5478074720893084, guid: 7eee18a1e0600f346993bcc981c2e5d5, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5478074720893084, guid: 7eee18a1e0600f346993bcc981c2e5d5, type: 3}
       propertyPath: m_SizeDelta.x
@@ -28079,11 +28079,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5478074720893084, guid: 7eee18a1e0600f346993bcc981c2e5d5, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 530
       objectReference: {fileID: 0}
     - target: {fileID: 5478074720893084, guid: 7eee18a1e0600f346993bcc981c2e5d5, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -85
       objectReference: {fileID: 0}
     - target: {fileID: 5478074720893084, guid: 7eee18a1e0600f346993bcc981c2e5d5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -28950,7 +28950,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1950017841}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.016293617, y: 0.94847554, z: -0.04944615, w: 0.312544}
+  m_LocalRotation: {x: 0.016293608, y: 0.94847554, z: -0.04944613, w: 0.31254396}
   m_LocalPosition: {x: -11.6, y: 9.3, z: 12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -29160,6 +29160,92 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 440984256}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1980030880
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1980030882}
+  - component: {fileID: 1980030881}
+  m_Layer: 0
+  m_Name: PoolManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1980030881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1980030880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4889394bf6bb225498bb7f1958045b37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  poolBase: {fileID: 11400000, guid: 7caa77fff4d3a8442b19db7e99401de3, type: 2}
+  poolingPairs:
+  - poolType: VFX_Trail
+    prefab: {fileID: 2159627337749470773, guid: dbc01cc6a1c7d8343b3f8a9a7963692f,
+      type: 3}
+    poolCount: 3
+  - poolType: VFX_Charge
+    prefab: {fileID: 6914194330204579595, guid: f8bbfc3828d9a4f429481dd83e3026a1,
+      type: 3}
+    poolCount: 3
+  - poolType: PlayerDefaultBullet
+    prefab: {fileID: 8538479565421077914, guid: 493b7b28f1b066a48853885a0c424227,
+      type: 3}
+    poolCount: 40
+  - poolType: Enemy_Dragoon
+    prefab: {fileID: 5273259378002957757, guid: 01a094297fba9264e9d41c3b66196d87,
+      type: 3}
+    poolCount: 5
+  - poolType: Enemy_DistructDrone
+    prefab: {fileID: 3469917630753008567, guid: cfc2d5b4c2b1dad48908792071eb3c66,
+      type: 3}
+    poolCount: 5
+  - poolType: Enemy_WizardBot
+    prefab: {fileID: 7554849678795088332, guid: c9abff9bcf16355419ca440043afd5ff,
+      type: 3}
+    poolCount: 5
+  - poolType: Item_Speed
+    prefab: {fileID: 8247759671278569473, guid: e12c2075af2d08d4c93efcd39a6bc55b,
+      type: 3}
+    poolCount: 5
+  - poolType: Item_Skill
+    prefab: {fileID: 2847848300834198667, guid: 8f8e646e32ce1b1479f38f61d6ab2a4c,
+      type: 3}
+    poolCount: 5
+  - poolType: Item_Heal
+    prefab: {fileID: 3288226144765936843, guid: 03508103fc015dc4d8efb6f9723301d8,
+      type: 3}
+    poolCount: 5
+  - poolType: SFXPlayer
+    prefab: {fileID: 7387021849737377057, guid: 642b4c47cbef453458e8a77b73f9bacf,
+      type: 3}
+    poolCount: 20
+--- !u!4 &1980030882
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1980030880}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -8.745494, y: 4.5186152, z: -3.921748}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1989239105
 GameObject:
@@ -30158,7 +30244,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5478074720893084, guid: 7eee18a1e0600f346993bcc981c2e5d5, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5478074720893084, guid: 7eee18a1e0600f346993bcc981c2e5d5, type: 3}
       propertyPath: m_AnchorMin.x
@@ -30166,7 +30252,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5478074720893084, guid: 7eee18a1e0600f346993bcc981c2e5d5, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5478074720893084, guid: 7eee18a1e0600f346993bcc981c2e5d5, type: 3}
       propertyPath: m_SizeDelta.x
@@ -30206,11 +30292,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5478074720893084, guid: 7eee18a1e0600f346993bcc981c2e5d5, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 240
       objectReference: {fileID: 0}
     - target: {fileID: 5478074720893084, guid: 7eee18a1e0600f346993bcc981c2e5d5, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -85
       objectReference: {fileID: 0}
     - target: {fileID: 5478074720893084, guid: 7eee18a1e0600f346993bcc981c2e5d5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -30515,3 +30601,4 @@ SceneRoots:
   - {fileID: 1375416737119453946}
   - {fileID: 1402251488}
   - {fileID: 841111316}
+  - {fileID: 1980030882}
