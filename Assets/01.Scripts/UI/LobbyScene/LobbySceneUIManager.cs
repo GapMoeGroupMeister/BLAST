@@ -2,13 +2,10 @@
 
 public class LobbySceneUIManager : MonoSingleton<LobbySceneUIManager>
 {
-    [SerializeField] private QuadMeshDrawer _quadDrawer;
-    [SerializeField] private SelectPanel _selectPanel;
+    [SerializeField] private SelectDisplayPanel _selectDisplayPanel;
 
-
-
-    public void RefreshPartInfo()
+    public void RefreshSelectPartInfo(PlayerPartDataSO data)
     {
-        
+        _selectDisplayPanel.SelectPart(data);
     }
 }
