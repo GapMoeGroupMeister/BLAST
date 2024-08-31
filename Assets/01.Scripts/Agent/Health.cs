@@ -6,6 +6,7 @@ public class Health : MonoBehaviour, IDamageable
 {
     public UnityEvent<int, int> OnHealthChangedEvent;
     public UnityEvent OnDieEvent;
+    public bool IsInvincibility { get; set; }
     private int _currentHealth = 0;
     public int CurrentHealth => _currentHealth;
     private int _maxHealth;
@@ -26,6 +27,7 @@ public class Health : MonoBehaviour, IDamageable
     public void TakeDamage(int amount)
     {
         if (_isDead) return;
+        if (IsInvincibility) return;
         _currentHealth -= amount;
         OnHealthChangedEvent?.Invoke(_currentHealth, _maxHealth);
         CheckDie();
