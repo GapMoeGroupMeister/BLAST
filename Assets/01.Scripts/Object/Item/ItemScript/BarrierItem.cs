@@ -4,12 +4,7 @@ using UnityEngine;
 
 public class BarrierItem : Item
 {
-    private void Start()
-    {
-        OnInteractEvent += HandleBarrierAdd;
-    }
-
-    private void HandleBarrierAdd()
+    protected override void GetEffect()
     {
         // Add Barrier
         StartCoroutine(BarrierOnCoroutine());

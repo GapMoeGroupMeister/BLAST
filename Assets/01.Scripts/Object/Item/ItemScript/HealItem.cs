@@ -5,12 +5,8 @@ using UnityEngine;
 public class HealItem : Item
 {
     [SerializeField] private int _healValue;
-    private void Start()
-    {
-        OnInteractEvent += HandleHeal;
-    }
 
-    private void HandleHeal()
+    protected override void GetEffect()
     {
         _player.HealthCompo.RestoreHealth(_healValue);
     }

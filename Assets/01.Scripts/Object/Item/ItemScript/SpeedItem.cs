@@ -6,12 +6,8 @@ using UnityEngine;
 public class SpeedItem : Item
 {
     [SerializeField] private float _speedUpValue;
-    private void Start()
-    {
-        OnInteractEvent += HandleSpeedUp;
-    }
 
-    private void HandleSpeedUp()
+    protected override void GetEffect()
     {
         StartCoroutine(SpeedUpCoroutine());
     }
