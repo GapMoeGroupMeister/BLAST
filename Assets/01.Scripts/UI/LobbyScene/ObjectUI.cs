@@ -5,6 +5,8 @@ using UnityEngine.EventSystems;
 
 public class ObjectUI : MonoBehaviour, IClickable
 {
+    [SerializeField] protected bool _isVisual = true;
+
     public UnityEvent OnClickEvent;
     public UnityEvent OnEnterEvent;
     public UnityEvent OnExitEvent;
