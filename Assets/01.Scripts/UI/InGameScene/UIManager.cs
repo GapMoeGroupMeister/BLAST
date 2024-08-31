@@ -14,7 +14,7 @@ public enum InGameUIEnum
 
 public class UIManager : MonoSingleton<UIManager>
 {
-    //public InputReader inputReader;
+    public UIInputReader inputReader;
     [SerializeField] private InGameUIInfo[] _UIs;
     [SerializeField] private Transform _canvasTrm;
     private Dictionary<InGameUIEnum, IWindowPanel> uiPanelsDictionary = new Dictionary<InGameUIEnum, IWindowPanel>();
@@ -28,8 +28,12 @@ public class UIManager : MonoSingleton<UIManager>
         _systemCanvasTrm = _canvasTrm.Find("SystemCanvas");
         
         Initialize();
-        
+
+        inputReader.OnEscEvent += HandleOpenPause;
+
     }
+
+   
 
     private void Initialize()
     {
@@ -61,5 +65,11 @@ public class UIManager : MonoSingleton<UIManager>
     public void Close(InGameUIEnum type)
     {
         uiPanelsDictionary[type].Close();
+    }
+    
+    private void HandleOpenPause()
+    {
+        Open(InGameUIEnum.Pause);
+        Open(InGameUIEnum.Fade);
     }
 }
