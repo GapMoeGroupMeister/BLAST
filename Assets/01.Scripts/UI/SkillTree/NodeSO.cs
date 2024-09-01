@@ -1,17 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [CreateAssetMenu(menuName = "SO/SkillTreeNode")]
 public class NodeSO : ScriptableObject
 {
+    [HideInInspector] public string guid;
+    [HideInInspector] public Vector2 position;
+
     public int id;
-    public int requireCost;
-    public TemporaryEnum skillToUnlock;
-    public NodeSO[] nextNodes;
+    public TemporaryEnum skillToOpen;        //일단 임시임ㅇㅇ
+
+    public bool isStartNode;
+    public List<NodeSO> nextNodes;
 }
 
-public enum TemporaryEnum 
+public enum TemporaryEnum
 {
     SKIL = 0,
     SKILL = 1,
