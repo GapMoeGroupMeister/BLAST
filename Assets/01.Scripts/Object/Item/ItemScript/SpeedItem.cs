@@ -1,17 +1,21 @@
 ﻿using System;
+using System.Collections;
 using ItemManage;
 using UnityEngine;
 
 public class SpeedItem : Item
 {
     [SerializeField] private float _speedUpValue;
-    private void Start()
+
+    protected override void GetEffect()
     {
-        OnInteractEvent += HandleSpeedUp;
+        StartCoroutine(SpeedUpCoroutine());
     }
 
-    private void HandleSpeedUp()
+    private IEnumerator SpeedUpCoroutine()
     {
         _player.Stat.statDictionary[StatEnum.Speed] += _speedUpValue;
+        yield return new WaitForSeconds(_itemEffectDuration);
+        _player.Stat.statDictionary[StatEnum.Speed] -= _speedUpValue;
     }
 }
