@@ -378,7 +378,7 @@ GameObject:
   - component: {fileID: 3389667730939113789}
   - component: {fileID: 5065626374008235485}
   - component: {fileID: 5785841590471671912}
-  - component: {fileID: 294903427704956916}
+  - component: {fileID: 3016868156403632621}
   m_Layer: 0
   m_Name: HoleMakerPart
   m_TagString: Untagged
@@ -457,7 +457,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &294903427704956916
+--- !u!114 &3016868156403632621
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -466,7 +466,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8517488567826268197}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 054dfac990be40ce8446c94befd22c3a, type: 3}
+  m_Script: {fileID: 11500000, guid: 4ca4ad9e1270fd444813d4cc8c1dcf7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerPartType: 2
@@ -478,7 +478,7 @@ MonoBehaviour:
     curAttackDelay: 0
     bulletFirePositions:
     - {fileID: 3128271772544532723}
-    - {fileID: 7520630712134425780}
+    - {fileID: 9160743018950736794}
     AttackDirection: {x: 0, y: 0, z: 0}
     _bulletPoolingType: 2
   magazineInfoR:
@@ -488,7 +488,7 @@ MonoBehaviour:
     attackDelay: 0.02
     curAttackDelay: 0
     bulletFirePositions:
-    - {fileID: 9160743018950736794}
+    - {fileID: 7520630712134425780}
     - {fileID: 209973233109825987}
     AttackDirection: {x: 0, y: 0, z: 0}
     _bulletPoolingType: 2
