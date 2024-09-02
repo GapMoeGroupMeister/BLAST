@@ -14,8 +14,8 @@ public class WeaponManager : MonoSingleton<WeaponManager>
         foreach (WeaponType weaponEnum in Enum.GetValues(typeof(WeaponType)))
         {
             if (weaponEnum == WeaponType.None) continue;
-
-            Weapon weaponCompo = GetComponent($"{weaponEnum.ToString()}Weapon") as Weapon;
+            Type t = Type.GetType($"{weaponEnum.ToString()}Weapon");
+            Weapon weaponCompo = GetComponentInChildren(t) as Weapon;
             _weapons.Add(weaponEnum, weaponCompo);
             if (weaponCompo.weaponEnabled)
                 _curWeapons.Add(weaponCompo);
