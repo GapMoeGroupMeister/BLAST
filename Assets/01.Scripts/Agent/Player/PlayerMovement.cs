@@ -2,7 +2,7 @@
 using UnityEngine;
 using DG.Tweening;
 
-public class PlayerMovement : MovementController, IValueChanged
+public class PlayerMovement : MovementController
 {
     [SerializeField] private Transform _attackPointTrm;
     [SerializeField] private Vector3 _attackPointOffset;
@@ -17,10 +17,6 @@ public class PlayerMovement : MovementController, IValueChanged
     private Player _player;
     private Rigidbody _rigidbodyCompo;
     private Vector3 _lookDirection;
-
-	[field:SerializeField] public ChangableValueEnum ChangableValueEnum { get; set; }
-
-	public event ValueChangedEvent ValueChangedEvent;
 
 	private void Awake()
     {
@@ -58,8 +54,6 @@ public class PlayerMovement : MovementController, IValueChanged
     public override void SetMovement(Vector3 movement, bool isRotation = false)
     {
         if(movement.sqrMagnitude < 0.1f) return;
-
-		ValueChangedEvent?.Invoke(movement.magnitude);
 
 		movement = Quaternion.Euler(0, -45, 0) * movement;
         transform.DORotateQuaternion(Quaternion.LookRotation(-movement), 0.85f);
