@@ -43,6 +43,9 @@ public class WeaponManager : MonoSingleton<WeaponManager>
             return;
 		}
 
+        //전에 없다면 초기화
+        _weapons[weapon].player = GameManager.Instance.Player;
+        _weapons[weapon].WeaponInit();
         _weapons[weapon].weaponEnabled = true;
         _curWeapons.Add(_weapons[weapon]);
     }

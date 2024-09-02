@@ -18,7 +18,7 @@ public abstract class Weapon : MonoBehaviour
 	protected float _curCooldown;
 
 	[Header("레벨")]
-	[Range(1, 100)]
+	[Range(1, 10)]
 	public uint level=1;
 
 	[Header("전용무기인가?")]
@@ -51,6 +51,8 @@ public abstract class Weapon : MonoBehaviour
 			OnCooldownEvent?.Invoke(_curCooldown, _cooldown);
 		}
 	}
+
+	public virtual void WeaponInit() { }
 
 	public virtual bool UseWeapon(float value)
 	{

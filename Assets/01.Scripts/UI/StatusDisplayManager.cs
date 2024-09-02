@@ -12,7 +12,7 @@ public class StatusDisplayManager : MonoBehaviour
     
     private void Start()
     {
-        _currentPart = PlayerPartController.Instance.currentPlayerPart;
+        _currentPart = PlayerPartController.Instance.GetCurrentPlayerPart();
         _currentPart.magazineInfoL.playerOverloadEvent += _weaponDisplay_Left.HandleDisplayRefresh;
         _currentPart.magazineInfoR.playerOverloadEvent += _weaponDisplay_Right.HandleDisplayRefresh;
         GameManager.Instance.Player.HealthCompo.OnHealthChangedEvent.AddListener(_healthUI.Refresh);

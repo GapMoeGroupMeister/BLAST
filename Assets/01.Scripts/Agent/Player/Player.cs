@@ -4,7 +4,8 @@ using UnityEngine;
 public class Player : Agent
 {
     public PlayerStateMachine<PlayerStateEnum> StateMachine;
-    public PlayerPartType currentSelectedPart;
+    public PlayerPart currentPlayerPart;
+    [SerializeField] private PlayerPartType _currentPartType;
     [HideInInspector] public PlayerPartController PlayerPartController;
 
     protected override void Awake()
@@ -14,8 +15,8 @@ public class Player : Agent
         PlayerPartController = PlayerPartController.Instance;
 
         //임시로 만든거
-        PlayerPartController.Init(currentSelectedPart);
-
+        currentPlayerPart = PlayerPartController.Init(_currentPartType);
+        
         foreach (PlayerStateEnum stateEnum in Enum.GetValues(typeof(PlayerStateEnum)))
         {
             try
