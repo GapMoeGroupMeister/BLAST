@@ -18,7 +18,13 @@ public abstract class Weapon : MonoBehaviour
 	protected float _curCooldown;
 
 	[Header("레벨")]
+	[Range(1, 100)]
 	public uint level=1;
+
+	[Header("전용무기인가?")]
+	[Tooltip("체크하면 이 무기는 전용무기가 됩니다.")]
+	public bool isUniqueWeapon;
+	public PlayerPartType partType;
 
 	[Header("조건부로 발동하는 무기인가?")]
 	[Tooltip("체크하면 쿨다운뿐만 아니라 조건부까지 같이 고려하여 무기를 사용합니다.")]
@@ -30,6 +36,7 @@ public abstract class Weapon : MonoBehaviour
 
 	[HideInInspector] public Player player;
 	public event CooldownInfoEvent OnCooldownEvent;
+	[Header("적이 뭐임?")]
 	public LayerMask whatIsEnemy;
 
 	protected virtual void Update()

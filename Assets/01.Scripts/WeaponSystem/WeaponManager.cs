@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System;
-
+using UnityEngine;
 public class WeaponManager : MonoSingleton<WeaponManager>
 {
 	private Dictionary<WeaponType, Weapon> _weapons;
 
-    private List<Weapon> _curWeapons; //해금된 자동발동 무기 리스트
+    [SerializeField] private List<Weapon> _curWeapons; //해금된 자동발동 무기 리스트
 
     private void Awake()
     {
@@ -17,6 +17,8 @@ public class WeaponManager : MonoSingleton<WeaponManager>
 
             Weapon weaponCompo = GetComponent($"{weaponEnum.ToString()}Weapon") as Weapon;
             _weapons.Add(weaponEnum, weaponCompo);
+            if (weaponCompo.weaponEnabled)
+                _curWeapons.Add(weaponCompo);
         }
     }
 
