@@ -269,9 +269,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0882b9a178a23d45ad0268609a23a05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  curWeaponDic:
+    _serializedList: []
   <WeaponDataSO>k__BackingField: {fileID: 11400000, guid: 2e4ab1b1407c35e40b49c62daeae3afb,
     type: 2}
-  startWeapon: 000000000100000002000000
 --- !u!1 &407342180
 GameObject:
   m_ObjectHideFlags: 0
@@ -1816,7 +1817,7 @@ PrefabInstance:
     - target: {fileID: 1818484225686448684, guid: d715b0cde2ca3754eb7ea29b435422cf,
         type: 3}
       propertyPath: currentSelectedPart
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3008086090903353795, guid: d715b0cde2ca3754eb7ea29b435422cf,
         type: 3}

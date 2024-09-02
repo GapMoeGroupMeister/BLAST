@@ -6,7 +6,7 @@ public class WeaponItem : Item
 {
     protected override void GetEffect()
     {
-        WeaponEnum weaponEnum = (WeaponEnum)Random.Range(0, Enum.GetValues(typeof(WeaponEnum)).Length);
+        WeaponType weaponEnum = (WeaponType)Random.Range(0, Enum.GetValues(typeof(WeaponType)).Length);
         WeaponManager.Instance.AppendWeapon(weaponEnum);
     }
 }

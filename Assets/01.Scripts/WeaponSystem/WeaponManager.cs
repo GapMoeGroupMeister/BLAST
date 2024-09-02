@@ -1,0 +1,56 @@
+﻿using System.Collections.Generic;
+using System;
+
+public class WeaponManager : MonoSingleton<WeaponManager>
+{
+	private Dictionary<WeaponType, Weapon> _weapons;
+
+    private List<Weapon> _curWeapons; //해금된 자동발동 무기 리스트
+
+    private void Awake()
+    {
+        _weapons = new Dictionary<WeaponType, Weapon>();
+        _curWeapons = new List<Weapon>();
+        foreach (WeaponType weaponEnum in Enum.GetValues(typeof(WeaponType)))
+        {
+            if (weaponEnum == WeaponType.None) continue;
+
+            Weapon weaponCompo = GetComponent($"{weaponEnum.ToString()}Weapon") as Weapon;
+            _weapons.Add(weaponEnum, weaponCompo);
+        }
+    }
+
+    public Weapon GetWeapon(WeaponType weapon)
+	{
+        if (weapon == WeaponType.None) return null;
+
+        if(_weapons.TryGetValue(weapon, out Weapon weaponCompo))
+		{
+            return weaponCompo as Weapon;
+        }
+
+        return null;
+    }
+
+    public void AppendWeapon(WeaponType weapon)
+    {
+        //이미 있다면 레벨업
+        if(_curWeapons.Contains(_weapons[weapon]))
+		{
+            ++_weapons[weapon].level;
+            return;
+		}
+
+        _weapons[weapon].weaponEnabled = true;
+        _curWeapons.Add(_weapons[weapon]);
+    }
+
+    private void Update()
+    {
+        foreach (var weapon in _curWeapons)
+        {
+            if (weapon.isConditionalWeapon) continue;
+            weapon.UseWeapon();
+        }
+    }
+}
