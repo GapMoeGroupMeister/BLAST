@@ -11,11 +11,17 @@ namespace EffectSystem
         public bool enabled;
         public int level;
         public float duration;
+        
         protected Agent _owner;
+        protected Health _ownerHealth;
+        protected Transform _ownerTrm;
+
         
         public EffectState(Agent agent, bool isResist)
         {
             _owner = agent;
+            _ownerHealth = _owner.HealthCompo;
+            _ownerTrm = _owner.transform;
             this.isResist = isResist;
         }
 

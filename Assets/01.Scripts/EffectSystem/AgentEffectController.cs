@@ -14,7 +14,12 @@ namespace EffectSystem
         protected virtual void Awake()
         {
             _owner = GetComponent<Agent>();
+        }
+
+        private void Start()
+        {
             Initialize();
+
         }
 
         protected virtual  void Update()
@@ -41,6 +46,8 @@ namespace EffectSystem
         {
             foreach (EffectStateTypeEnum effectEnum in Enum.GetValues(typeof(EffectStateTypeEnum)))
             {
+                if(effectEnum == 0) continue;
+                
                 string typeName = effectEnum.ToString();
                 Type t = Type.GetType($"EffectSystem.Effect{typeName}");
 

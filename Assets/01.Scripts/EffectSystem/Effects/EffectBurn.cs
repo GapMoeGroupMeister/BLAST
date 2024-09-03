@@ -1,19 +1,21 @@
-﻿namespace EffectSystem
+﻿using UnityEngine;
+
+namespace EffectSystem
 {
     public class EffectBurn : EffectState
     {
-        private Health _health;
-        
         
         public EffectBurn(Agent agent, bool isResist) : base(agent, isResist)
         {
+            
         }
 
         
         public override void UpdateBySecond()
         {
             base.UpdateBySecond();
-            _owner.HealthCompo.TakeDamage(level);
+            _ownerHealth.TakeDamage(level);
+            PopupTextManager.Instance.GenerateDamagePopup(_ownerTrm.position, level, EffectStateTypeEnum.Burn, true);
         }
     }
 }
