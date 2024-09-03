@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using System;
+using EffectSystem;
 
 public abstract class DamageCaster : MonoBehaviour
 {
@@ -14,6 +15,11 @@ public abstract class DamageCaster : MonoBehaviour
 
 	public event Action OnCasterEvent;
 	public event Action OnDamageCastSuccessEvent;
+
+	[Header("DamageEffect")]
+	[SerializeField] private EffectStateTypeEnum _effectStateType = 0;
+	[SerializeField] private float _effectDuration = 0f;
+	[SerializeField] private int _effectLevel = 1;
 
 	protected virtual void Awake()
 	{
@@ -37,9 +43,11 @@ public abstract class DamageCaster : MonoBehaviour
 			{
 				break;
 			}
-			if (_castColliders[i].TryGetComponent(out Health health))
+			if (_castColliders[i].TryGetComponent(out Agent agent))
 			{
-				health.TakeDamage(damage);
+
+				agent.AgentEffectController.ApplyEffect(_effectStateType, _effectDuration, _effectLevel);
+				agent.HealthCompo.TakeDamage(damage);
 				OnDamageCastSuccessEvent?.Invoke();
 			}
 		}

@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using EffectSystem;
 
 public class Agent : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class Agent : MonoBehaviour
     public StatDataSO Stat { get; protected set; }
 
     public bool CanStateChangeable { get; protected set; } = true;
+    public AgentEffectController AgentEffectController { get; protected set; }
 
     protected virtual void Awake()
     {
