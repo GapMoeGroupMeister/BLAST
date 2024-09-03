@@ -10,6 +10,7 @@ public class SkillDisplaySlot : MonoBehaviour
     private CanvasGroup _lockPanelGroup;
     public bool isActive;
     private Weapon _ownerWeapon;
+    private WeaponUIData _uiData;
 
     private void Awake()
     {
@@ -21,10 +22,13 @@ public class SkillDisplaySlot : MonoBehaviour
         _lockPanelGroup.alpha = 1f;
     }
 
-    public void Active(Weapon weapon)
+    public void Active(Weapon weapon, WeaponUIData uiData)
     {
         isActive = true;
         _ownerWeapon = weapon;
+        _uiData = uiData;
+        _iconImage.sprite = uiData.icon;
+        _lockPanelGroup.alpha = 0f;
         weapon.OnCooldownEvent += HandleRefreshCoolTimeGauge;
     }
 

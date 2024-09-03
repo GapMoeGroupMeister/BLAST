@@ -3,7 +3,8 @@ using System;
 using UnityEngine;
 public class WeaponManager : MonoSingleton<WeaponManager>
 {
-	private Dictionary<WeaponType, Weapon> _weapons;
+    public event Action<WeaponType> OnAppendWeaponEvent;
+    private Dictionary<WeaponType, Weapon> _weapons;
 
     [SerializeField] private List<Weapon> _curWeapons; //해금된 자동발동 무기 리스트
 
@@ -34,10 +35,17 @@ public class WeaponManager : MonoSingleton<WeaponManager>
 
         if(_weapons.TryGetValue(weapon, out Weapon weaponCompo))
 		{
+            
             return weaponCompo as Weapon;
         }
 
         return null;
+    }
+
+    [ContextMenu("DebugAppendWeapon")]
+    private void AppendWeapon()
+    {
+        AppendWeapon(WeaponType.Mine);   
     }
 
     public void AppendWeapon(WeaponType weapon)
@@ -54,6 +62,7 @@ public class WeaponManager : MonoSingleton<WeaponManager>
         _weapons[weapon].WeaponInit();
         _weapons[weapon].weaponEnabled = true;
         _curWeapons.Add(_weapons[weapon]);
+        OnAppendWeaponEvent?.Invoke(weapon);
     }
 
     private void Update()

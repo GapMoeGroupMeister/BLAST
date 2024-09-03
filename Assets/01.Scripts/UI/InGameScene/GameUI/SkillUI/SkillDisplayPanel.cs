@@ -1,10 +1,8 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SkillDisplayPanel : MonoBehaviour
 {
+    [SerializeField] private WeaponUIDataSO _weaponUIData;
     [SerializeField] private SkillDisplaySlot _slotPrefab;
     [SerializeField] private SkillDisplaySlot[] _displaySlotList;
     [SerializeField]  private Transform _contentTrm;
@@ -15,6 +13,11 @@ public class SkillDisplayPanel : MonoBehaviour
     private void Awake()
     {
         
+    }
+
+    private void Start()
+    {
+        WeaponManager.Instance.OnAppendWeaponEvent += Active;
     }
 
     [ContextMenu("DebugInit")]
@@ -37,9 +40,11 @@ public class SkillDisplayPanel : MonoBehaviour
 
     }
 
-    public void Active(Weapon newWeapon)
+    public void Active(WeaponType type)
     {
-        _displaySlotList[currentWeaponAmount++].Active(newWeapon);
+        Weapon weapon = WeaponManager.Instance.GetWeapon(type);
+        
+        _displaySlotList[currentWeaponAmount++].Active(weapon, _weaponUIData[type]);
     }
 
 }
