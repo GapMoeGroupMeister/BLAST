@@ -19,10 +19,12 @@ public class CoolingSpeedUpWeapon : Weapon
 
     public override bool UseWeapon()
     {
+        if(_magazineInfoR is null) return false;
+
         if(base.UseWeapon())
         {
-            _magazineInfoR.overloadDelay = defaultOverloadDelayR + (defaultOverloadDelayR * (level / 10f));
-            _magazineInfoL.overloadDelay = defaultOverloadDelayL + (defaultOverloadDelayL * (level / 10f));
+            _magazineInfoR.overloadDelay = defaultOverloadDelayR - (defaultOverloadDelayR * (level / 20f));
+            _magazineInfoL.overloadDelay = defaultOverloadDelayL - (defaultOverloadDelayL * (level / 20f));
         }	
 
         return true;
