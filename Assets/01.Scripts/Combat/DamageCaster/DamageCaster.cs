@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using System;
+using EffectSystem;
 
 public abstract class DamageCaster : MonoBehaviour
 {
@@ -9,10 +10,17 @@ public abstract class DamageCaster : MonoBehaviour
 	public int allocationCount = 32;
 	[SerializeField] protected LayerMask _whatIsCastable;
 	protected Collider[] _castColliders;
+	[SerializeField] private bool _usingExcludeCast = true;
     public List<DamageCaster> excludedDamageCasterList;
+
 	public event Action OnCasterEvent;
 	public event Action OnDamageCastSuccessEvent;
-	
+
+	[Header("DamageEffect")]
+	[SerializeField] private EffectStateTypeEnum _effectStateType = 0;
+	[SerializeField] private float _effectDuration = 0f;
+	[SerializeField] private int _effectLevel = 1;
+
 	protected virtual void Awake()
 	{
 		_castColliders = new Collider[allocationCount];
@@ -25,7 +33,8 @@ public abstract class DamageCaster : MonoBehaviour
 		CastOverlap();
 
 		//제외
-		ExcludeCast(_castColliders);
+		if(_usingExcludeCast)
+			ExcludeCast(_castColliders);
 
 		//데미지 입히기
 		for (int i = 0; i < _castColliders.Length; ++i)
@@ -34,9 +43,11 @@ public abstract class DamageCaster : MonoBehaviour
 			{
 				break;
 			}
-			if (_castColliders[i].TryGetComponent(out Health health))
+			if (_castColliders[i].TryGetComponent(out Agent agent))
 			{
-				health.TakeDamage(damage);
+
+				agent.AgentEffectController.ApplyEffect(_effectStateType, _effectDuration, _effectLevel);
+				agent.HealthCompo.TakeDamage(damage);
 				OnDamageCastSuccessEvent?.Invoke();
 			}
 		}
