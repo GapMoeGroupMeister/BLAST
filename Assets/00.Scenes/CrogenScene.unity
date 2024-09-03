@@ -489,7 +489,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 694662798}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.14865232, y: 0.8513282, z: -0.35887846, w: 0.35263172}
+  m_LocalRotation: {x: 0.14865234, y: 0.8513282, z: -0.35887846, w: 0.35263172}
   m_LocalPosition: {x: -80, y: 120.22, z: 80}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -826,6 +826,10 @@ MonoBehaviour:
     prefab: {fileID: 3288226144765936843, guid: 03508103fc015dc4d8efb6f9723301d8,
       type: 3}
     poolCount: 5
+  - poolType: weaponEffect_Mine
+    prefab: {fileID: 6345484463924468307, guid: 0b833bef354221a4fbc2308e665996e3,
+      type: 3}
+    poolCount: 10
 --- !u!1001 &962037325
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1191,7 +1195,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1106337031}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.14865232, y: 0.8513282, z: -0.35887846, w: 0.35263172}
+  m_LocalRotation: {x: 0.14865234, y: 0.8513282, z: -0.35887846, w: 0.35263172}
   m_LocalPosition: {x: -80, y: 120.22, z: 80}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1778,8 +1782,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1818484225686448684, guid: d715b0cde2ca3754eb7ea29b435422cf,
         type: 3}
-      propertyPath: currentSelectedPart
-      value: 3
+      propertyPath: _currentPartType
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3008086090903353795, guid: d715b0cde2ca3754eb7ea29b435422cf,
         type: 3}
@@ -1905,12 +1909,7 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -2398094424083446430, guid: 9ddb693b15025364d89aea50a130ce07,
-        type: 3}
-      propertyPath: _cooldown
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: -2398094424083446430, guid: 9ddb693b15025364d89aea50a130ce07,
+    - target: {fileID: 3431340043160336752, guid: 9ddb693b15025364d89aea50a130ce07,
         type: 3}
       propertyPath: weaponEnabled
       value: 1
@@ -1919,6 +1918,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WeaponManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 5144747693960115713, guid: 9ddb693b15025364d89aea50a130ce07,
+        type: 3}
+      propertyPath: weaponEnabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5246632227947119379, guid: 9ddb693b15025364d89aea50a130ce07,
+        type: 3}
+      propertyPath: _cooldown
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5246632227947119379, guid: 9ddb693b15025364d89aea50a130ce07,
+        type: 3}
+      propertyPath: _autoUseType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5246632227947119379, guid: 9ddb693b15025364d89aea50a130ce07,
+        type: 3}
+      propertyPath: _targetValue
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5246632227947119379, guid: 9ddb693b15025364d89aea50a130ce07,
+        type: 3}
+      propertyPath: weaponEnabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5246632227947119379, guid: 9ddb693b15025364d89aea50a130ce07,
+        type: 3}
+      propertyPath: isConditionalWeapon
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6165231877111597868, guid: 9ddb693b15025364d89aea50a130ce07,
         type: 3}

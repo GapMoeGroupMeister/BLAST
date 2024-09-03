@@ -1,9 +1,12 @@
 ﻿using Crogen.PowerfulInput;
 using UnityEngine;
 using DG.Tweening;
+using System;
 
 public class PlayerMovement : MovementController
 {
+    public event Action<float> OnDistanceTravelledEvent;
+
     [SerializeField] private Transform _attackPointTrm;
     [SerializeField] private Vector3 _attackPointOffset;
     [SerializeField] private Transform _baseTrm;
@@ -18,7 +21,9 @@ public class PlayerMovement : MovementController
     private Rigidbody _rigidbodyCompo;
     private Vector3 _lookDirection;
 
-	private void Awake()
+    private float _distanceTravelled;
+
+    private void Awake()
     {
         _inputReader = GameManager.Instance.InputReader;
         _rigidbodyCompo = GetComponent<Rigidbody>();
@@ -50,13 +55,20 @@ public class PlayerMovement : MovementController
     public override void StopImmediately()
     {
     }
-    
+
+    private Vector3 _startPos;
+    private Vector3 _endPos;
     public override void SetMovement(Vector3 movement, bool isRotation = false)
     {
-        if(movement.sqrMagnitude < 0.1f) return;
+        _startPos = transform.position;
+        if (movement.sqrMagnitude < 0.1f) return;
 
 		movement = Quaternion.Euler(0, -45, 0) * movement;
         transform.DORotateQuaternion(Quaternion.LookRotation(-movement), 0.85f);
         _rigidbodyCompo.velocity = -movement * _moveSpeed;
+
+        _distanceTravelled += (_startPos - _endPos).magnitude;
+        OnDistanceTravelledEvent?.Invoke(_distanceTravelled);
+        _endPos = _startPos;
     }
 }

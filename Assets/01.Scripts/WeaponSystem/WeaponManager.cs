@@ -7,18 +7,24 @@ public class WeaponManager : MonoSingleton<WeaponManager>
 
     [SerializeField] private List<Weapon> _curWeapons; //해금된 자동발동 무기 리스트
 
-    private void Awake()
-    {
+	private void Awake()
+	{
         _weapons = new Dictionary<WeaponType, Weapon>();
         _curWeapons = new List<Weapon>();
+    }
+
+	private void Start()
+    {
         foreach (WeaponType weaponEnum in Enum.GetValues(typeof(WeaponType)))
         {
             if (weaponEnum == WeaponType.None) continue;
-
-            Weapon weaponCompo = GetComponent($"{weaponEnum.ToString()}Weapon") as Weapon;
+            Type t = Type.GetType($"{weaponEnum.ToString()}Weapon");
+            Weapon weaponCompo = GetComponentInChildren(t) as Weapon;
             _weapons.Add(weaponEnum, weaponCompo);
+            
+            //초반에 활성화된 무기 추가(거의 사실 상 디버그용)
             if (weaponCompo.weaponEnabled)
-                _curWeapons.Add(weaponCompo);
+                AppendWeapon(weaponEnum);
         }
     }
 
@@ -43,6 +49,9 @@ public class WeaponManager : MonoSingleton<WeaponManager>
             return;
 		}
 
+        //전에 없다면 초기화
+        _weapons[weapon].player = GameManager.Instance.Player;
+        _weapons[weapon].WeaponInit();
         _weapons[weapon].weaponEnabled = true;
         _curWeapons.Add(_weapons[weapon]);
     }
