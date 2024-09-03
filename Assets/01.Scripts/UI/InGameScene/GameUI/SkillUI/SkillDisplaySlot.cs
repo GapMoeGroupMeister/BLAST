@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,16 +7,30 @@ public class SkillDisplaySlot : MonoBehaviour
     [SerializeField] private Image _iconImage;
     [SerializeField] private Color _gaugeStartColor;
     [SerializeField] private Color _gaugeEndColor;
+    private CanvasGroup _lockPanelGroup;
+    public bool isActive;
+    private Weapon _ownerWeapon;
 
-    private Skill _ownerSkill;
-    
-    public void Initialize(Skill skill)
+    private void Awake()
     {
-        _ownerSkill = skill;
+        _lockPanelGroup = transform.Find("LockPanel").GetComponent<CanvasGroup>();
     }
 
-    public void HandleRefreshCoolTimeGauge(float fill)
+    public void Initialize()
     {
+        _lockPanelGroup.alpha = 1f;
+    }
+
+    public void Active(Weapon weapon)
+    {
+        isActive = true;
+        _ownerWeapon = weapon;
+        weapon.OnCooldownEvent += HandleRefreshCoolTimeGauge;
+    }
+
+    public void HandleRefreshCoolTimeGauge(float current, float maxCooltime)
+    {
+        float fill = current / maxCooltime;
         _gaugeFill.color = Color.Lerp(_gaugeStartColor, _gaugeEndColor, fill);
 
         _gaugeFill.fillAmount = fill;
