@@ -1,15 +1,38 @@
-﻿using UnityEngine;
+﻿using Crogen.ObjectPooling;
+using UnityEngine;
 
 public class MineWeapon : Weapon
 {
+    [SerializeField] private PoolType _minePoolType;
+
+	public override void WeaponInit()
+	{
+		base.WeaponInit();
+        (player.MovementCompo as PlayerMovement).OnDistanceTravelledEvent += AutoUseWeaponByValueCheck;
+    }
+
+	private void OnDestroy()
+	{
+        (player.MovementCompo as PlayerMovement).OnDistanceTravelledEvent -= AutoUseWeaponByValueCheck;
+    }
+
     public override bool UseWeapon()
     {
-        if(base.UseWeapon())
+        if (base.UseWeapon())
         {
-            //여기에 로직
-        }	
+            CreateMine();
+        }
 
         return true;
+    }
+
+    private void CreateMine()
+	{
+        Mine mine = gameObject.Pop(
+        _minePoolType, player.transform.position - player.transform.forward
+        , Quaternion.identity) as Mine;
+
+        mine.Init(level, this);
     }
 
     protected override void Update()

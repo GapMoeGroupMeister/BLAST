@@ -8,6 +8,13 @@ public enum CompareMode
 	Less
 }
 
+public enum AutoUseType
+{
+	ValueCondition,
+	ValueCheck,
+	Event
+}
+
 public abstract class Weapon : MonoBehaviour
 {
 	[Header("Weapon이 활성화되었는가?")]
@@ -31,6 +38,7 @@ public abstract class Weapon : MonoBehaviour
 	public bool isConditionalWeapon;
 
 	[Header("조건부")]
+	[SerializeField] protected AutoUseType _autoUseType;
 	[SerializeField] protected CompareMode _compareMode;
 	[SerializeField] protected float _targetValue;
 
@@ -54,37 +62,60 @@ public abstract class Weapon : MonoBehaviour
 
 	public virtual void WeaponInit() { }
 
-	public virtual bool UseWeapon(float value)
+	public void AutoUseWeaponByValueConditional(float newValue)
 	{
-		if (_curCooldown > 0 || weaponEnabled == false) return false;
-
-		if(isConditionalWeapon)
+		if (isConditionalWeapon)
 		{
+			if (_autoUseType != AutoUseType.ValueCondition) return;
 			switch (_compareMode)
 			{
 				case CompareMode.Greater:
-					if (value < this._targetValue)
-						return true;
-					break;
+					if (newValue > this._targetValue)
+						UseWeapon();
+					return;
 				case CompareMode.Equals:
-					if (Mathf.Approximately(value, this._targetValue))
-						return true;
-					break;
+					if (Mathf.Approximately(newValue, this._targetValue))
+						UseWeapon();
+					return;
 				case CompareMode.NotEqual:
-					if (Mathf.Approximately(value, this._targetValue) == false)
-						return true;
-					break;
+					if (Mathf.Approximately(newValue, this._targetValue) == false)
+						UseWeapon();
+					return;
 				case CompareMode.Less:
-					if (value > this._targetValue)
-						return true;
-					break;
+					if (newValue < this._targetValue)
+						UseWeapon();
+					return;
 				default:
-					return false;
+					return;
 			}
 		}
+		return;
+	}
 
-		_curCooldown = _cooldown;
-		return true;
+	private float valueCheckPoint = 0;
+
+	public void AutoUseWeaponByValueCheck(float newValue)
+	{
+		if (isConditionalWeapon)
+		{
+			if (_autoUseType != AutoUseType.ValueCheck) return;
+			if (newValue - valueCheckPoint > this._targetValue)
+			{
+				valueCheckPoint = newValue;
+				UseWeapon();
+			}
+		}
+		return;
+	}
+
+	public void AutoUseWeaponByEvent()
+	{
+		if (isConditionalWeapon)
+		{
+			if (_autoUseType != AutoUseType.Event) return;
+			UseWeapon();
+		}
+		return;
 	}
 
 	public virtual bool UseWeapon()

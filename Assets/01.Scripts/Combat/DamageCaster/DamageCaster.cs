@@ -1,41 +1,47 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System;
 
 public abstract class DamageCaster : MonoBehaviour
 {
     public bool excluded;
-	protected LayerMask _whatIsCastable;
-	[HideInInspector] public Collider[] castColliders;
+	public int allocationCount = 32;
+	[SerializeField] protected LayerMask _whatIsCastable;
+	protected Collider[] _castColliders;
     public List<DamageCaster> excludedDamageCasterList;
-
+	public event Action OnCasterEvent;
+	public event Action OnDamageCastSuccessEvent;
+	
 	protected virtual void Awake()
 	{
-		castColliders = new Collider[128];
+		_castColliders = new Collider[allocationCount];
 	}
 
-	public virtual void CastOverlap()
-	{
-		castColliders = castColliders.Where(x => x != null).ToArray();
-	}
+	public abstract void CastOverlap();
 
 	public virtual void CastDamage(int damage)
 	{
 		CastOverlap();
 
 		//제외
-		ExcludeCast(castColliders);
+		ExcludeCast(_castColliders);
 
 		//데미지 입히기
-		for (int i = 0; i < castColliders.Length; ++i)
+		for (int i = 0; i < _castColliders.Length; ++i)
 		{
-			if (castColliders[i].TryGetComponent(out Health health))
+			if (_castColliders[i] == null)
+			{
+				break;
+			}
+			if (_castColliders[i].TryGetComponent(out Health health))
 			{
 				health.TakeDamage(damage);
+				OnDamageCastSuccessEvent?.Invoke();
 			}
 		}
 
-		castColliders = new Collider[128];
+		OnCasterEvent?.Invoke();
 	}
 
 	protected void ExcludeCast(Collider[] colliders)
@@ -43,7 +49,7 @@ public abstract class DamageCaster : MonoBehaviour
 		foreach (var excludeCaster in excludedDamageCasterList)
 		{
 			excludeCaster.CastOverlap();
-			colliders = colliders.Except(excludeCaster.castColliders).ToArray();
+			colliders = colliders.Except(excludeCaster._castColliders).ToArray();
 		}
 	}
 

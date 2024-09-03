@@ -618,7 +618,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Stat>k__BackingField: {fileID: 11400000, guid: 08ba1e6f4bc538b4bbf931e970e89da3,
     type: 2}
-  currentSelectedPart: 1
+  currentPlayerPart: {fileID: 0}
+  _currentPartType: 0
   PlayerPartController: {fileID: 0}
 --- !u!114 &6872490257994263261
 MonoBehaviour:
@@ -640,7 +641,6 @@ MonoBehaviour:
     m_Bits: 64
   _moveSpeed: 15
   _rotateSpeed: 5
-  <ChangableValueEnum>k__BackingField: 0
 --- !u!54 &4304136632676638823
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -663,7 +663,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 80

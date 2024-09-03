@@ -16,9 +16,7 @@ public class LineDamageCaster : DamageCaster
 		hits = hits.Where(x => x.transform != null).ToArray();
 
 		for (int i = 0; i < hits.Length; ++i)
-			castColliders[i] = hits[i].collider;
-
-		base.CastOverlap();
+			_castColliders[i] = hits[i].collider;
 	}
 
 	private void OnDrawGizmos()

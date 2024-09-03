@@ -13,8 +13,7 @@ public class CircleRayDamageCaster : DamageCaster
 
 	public override void CastOverlap()
 	{
-		Physics.OverlapSphereNonAlloc(center + transform.position, radius, castColliders, _whatIsCastable);
-		base.CastOverlap();
+		Physics.OverlapSphereNonAlloc(center + transform.position, radius, _castColliders, _whatIsCastable);
 	}
 
 	private void OnDrawGizmos()
