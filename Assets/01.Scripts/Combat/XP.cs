@@ -48,4 +48,11 @@ public class XP : MonoBehaviour, IPoolingObject
 			_isMoving = true;
 		}
 	}
+
+	private void OnDrawGizmosSelected()
+	{
+		Gizmos.color = Color.yellow;
+		Gizmos.DrawWireSphere(transform.position, _radius);
+		Gizmos.color = Color.white;
+	}
 }
