@@ -9,10 +9,12 @@ public abstract class DamageCaster : MonoBehaviour
 	public int allocationCount = 32;
 	[SerializeField] protected LayerMask _whatIsCastable;
 	protected Collider[] _castColliders;
+	[SerializeField] private bool _usingExcludeCast = true;
     public List<DamageCaster> excludedDamageCasterList;
+
 	public event Action OnCasterEvent;
 	public event Action OnDamageCastSuccessEvent;
-	
+
 	protected virtual void Awake()
 	{
 		_castColliders = new Collider[allocationCount];
@@ -25,7 +27,8 @@ public abstract class DamageCaster : MonoBehaviour
 		CastOverlap();
 
 		//제외
-		ExcludeCast(_castColliders);
+		if(_usingExcludeCast)
+			ExcludeCast(_castColliders);
 
 		//데미지 입히기
 		for (int i = 0; i < _castColliders.Length; ++i)

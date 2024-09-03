@@ -190,6 +190,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _level: 0
   _damage: 0
+  _mainDamageCaster: {fileID: 3129240616958993470}
+  _subDamageCaster: {fileID: 8322726408798169739}
 --- !u!114 &3129240616958993470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -203,10 +205,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   excluded: 0
-  allocationCount: 32
+  allocationCount: 5
   _whatIsCastable:
     serializedVersion: 2
     m_Bits: 512
+  _usingExcludeCast: 0
   excludedDamageCasterList: []
   center: {x: 0, y: 0, z: 0}
   radius: 4.3
@@ -227,6 +230,7 @@ MonoBehaviour:
   _whatIsCastable:
     serializedVersion: 2
     m_Bits: 512
+  _usingExcludeCast: 0
   excludedDamageCasterList: []
   center: {x: 0, y: 0, z: 0}
   radius: 8
