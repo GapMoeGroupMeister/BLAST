@@ -1439,74 +1439,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _virtualCamera: {fileID: 694662799}
---- !u!1001 &1495204375
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2032437148862603578, guid: 0b833bef354221a4fbc2308e665996e3,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 3.34
-      objectReference: {fileID: 0}
-    - target: {fileID: 2032437148862603578, guid: 0b833bef354221a4fbc2308e665996e3,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2032437148862603578, guid: 0b833bef354221a4fbc2308e665996e3,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 19.86
-      objectReference: {fileID: 0}
-    - target: {fileID: 2032437148862603578, guid: 0b833bef354221a4fbc2308e665996e3,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2032437148862603578, guid: 0b833bef354221a4fbc2308e665996e3,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2032437148862603578, guid: 0b833bef354221a4fbc2308e665996e3,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2032437148862603578, guid: 0b833bef354221a4fbc2308e665996e3,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2032437148862603578, guid: 0b833bef354221a4fbc2308e665996e3,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2032437148862603578, guid: 0b833bef354221a4fbc2308e665996e3,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2032437148862603578, guid: 0b833bef354221a4fbc2308e665996e3,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6345484463924468307, guid: 0b833bef354221a4fbc2308e665996e3,
-        type: 3}
-      propertyPath: m_Name
-      value: weaponEffect_Mine
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 0b833bef354221a4fbc2308e665996e3, type: 3}
 --- !u!114 &1684598896 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1818484225686448684, guid: d715b0cde2ca3754eb7ea29b435422cf,
@@ -1654,6 +1586,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b92f5ebb2f1b09446863bebdc30c35e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _xpPoolType: 0
 --- !u!4 &1860280906
 Transform:
   m_ObjectHideFlags: 0
@@ -1968,11 +1901,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1818484225686448684, guid: d715b0cde2ca3754eb7ea29b435422cf,
-        type: 3}
-      propertyPath: _currentPartType
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 3008086090903353795, guid: d715b0cde2ca3754eb7ea29b435422cf,
         type: 3}
       propertyPath: _effectPanel
@@ -2178,5 +2106,4 @@ SceneRoots:
   - {fileID: 484480013}
   - {fileID: 110755609}
   - {fileID: 962037325}
-  - {fileID: 1495204375}
   - {fileID: 1886347255}

@@ -1,7 +1,11 @@
+using Crogen.ObjectPooling;
 using System;
+using UnityEngine;
 
 public class XPManager : MonoSingleton<XPManager>
 {
+	[SerializeField] private PoolType _xpPoolType;
+
 	public event Action<float> OnXPPercentEvent;
 	public event Action<int> OnLevelUpEvent;
 
@@ -36,5 +40,10 @@ public class XPManager : MonoSingleton<XPManager>
 	private void MaxXPUp()
 	{
 		_maxXP = (int)(_maxXP * 1.75f);
+	}
+
+	public void CreateXP(Vector3 pos)
+	{
+		gameObject.Pop(_xpPoolType, pos + Vector3.up, Quaternion.identity);
 	}
 }
