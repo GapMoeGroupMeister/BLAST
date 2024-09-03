@@ -3,7 +3,7 @@ using System;
 using AYellowpaper.SerializedCollections;
 
 [Serializable]
-public struct WeaponIUData
+public struct WeaponUIData
 {
     public Sprite icon;
     [TextArea]
@@ -13,19 +13,19 @@ public struct WeaponIUData
 [CreateAssetMenu(menuName = "SO/Weapon/WeaponUIData")]
 public class WeaponUIDataSO : ScriptableObject
 {
-    public WeaponIUData this[WeaponType key]
+    public WeaponUIData this[WeaponType key]
     {
         get => this.weaponDataDictionary[key];
         set => this.weaponDataDictionary[key] = value;
     }
-    public SerializedDictionary<WeaponType, WeaponIUData> weaponDataDictionary;
+    public SerializedDictionary<WeaponType, WeaponUIData> weaponDataDictionary;
 
     private void Reset()
     {
-        weaponDataDictionary = new SerializedDictionary<WeaponType, WeaponIUData>();
+        weaponDataDictionary = new SerializedDictionary<WeaponType, WeaponUIData>();
         foreach (WeaponType value in Enum.GetValues(typeof(WeaponType)))
         {
-            weaponDataDictionary.Add(value, new WeaponIUData());
+            weaponDataDictionary.Add(value, new WeaponUIData());
         }
     }
 }
