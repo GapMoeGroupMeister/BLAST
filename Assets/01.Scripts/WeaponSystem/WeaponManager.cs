@@ -50,6 +50,17 @@ public class WeaponManager : MonoSingleton<WeaponManager>
 
     public void AppendWeapon(WeaponType weapon)
     {
+        //전용 무기라면
+        if(_weapons[weapon].isUniqueWeapon)
+		{
+            PlayerPartType playerPartType = PlayerPartController.Instance.GetCurrentPlayerPart().playerPartType;
+            if(_weapons[weapon].partType != playerPartType)
+			{
+                //현재 파츠 타입과 같지 않다면 추가할 수 없음
+                return;
+			}
+        }
+
         //이미 있다면 레벨업
         if(_curWeapons.Contains(_weapons[weapon]))
 		{
