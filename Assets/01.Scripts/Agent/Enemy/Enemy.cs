@@ -24,7 +24,8 @@ public abstract class Enemy : Agent, IPoolingObject
 
     private void OnValidate()
     {
-        targetTrm = FindObjectOfType<Player>().transform;
+        Player player = FindObjectOfType<Player>();
+        if (player != null) targetTrm = player.transform;
     }
 
     protected override void Awake()
