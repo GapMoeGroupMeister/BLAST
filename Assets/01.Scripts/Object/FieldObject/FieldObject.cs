@@ -1,11 +1,14 @@
-﻿using ObjectPooling;
-using UnityEngine;
+﻿using UnityEngine;
+using Crogen.ObjectPooling;
 
-public abstract class FieldObject : PoolableMono
+public abstract class FieldObject : MonoBehaviour, IPoolingObject
 {
     [SerializeField] private bool _isDestroy;
     public Health HealthCompo { get; private set; }
-    [SerializeField] protected PoolingType _destroyParticlePoolType;
+    public PoolType OriginPoolType { get; set; }
+    GameObject IPoolingObject.gameObject { get; set; }
+
+    [SerializeField] protected PoolType _destroyParticlePoolType;
 
     private void Awake()
     {
@@ -17,27 +20,24 @@ public abstract class FieldObject : PoolableMono
     {
     }
 
-
-    public override void ResetItem()
-    {
-        _isDestroy = false;
-        
-    }
-
     protected void HandleDestroy()
     {
         if (_isDestroy) return;
         _isDestroy = true;
         DestroyEvent();
-        EffectObject effectObject = PoolingManager.Instance.Pop(_destroyParticlePoolType) as EffectObject;
+        EffectObject effectObject = gameObject.Pop(_destroyParticlePoolType, null, Vector3.zero, Quaternion.identity) as EffectObject;
         effectObject.Play();
-        PoolingManager.Instance.Push(this);
+        this.Push();
     }
 
     protected abstract void DestroyEvent();
 
+    public void OnPop()
+    {
+    }
 
-
-
-
+    public void OnPush()
+    {
+        _isDestroy = false;
+    }
 }

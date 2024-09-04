@@ -24,15 +24,6 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Attack",
-                    "type": "Button",
-                    "id": "ba14dfe1-f2aa-4737-94d4-b9f8a17c2f92",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "AttackDirection",
                     "type": "Value",
                     "id": "01337f26-8b3f-4b7e-9891-07d70832e46a",
@@ -46,6 +37,24 @@
                     "type": "Value",
                     "id": "5a16ee92-b6dc-47dc-acf9-ee404d4d5afe",
                     "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "AttackR",
+                    "type": "Button",
+                    "id": "ef074941-f82e-4212-b975-65400c959114",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "AttackL",
+                    "type": "Button",
+                    "id": "ba14dfe1-f2aa-4737-94d4-b9f8a17c2f92",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -131,17 +140,6 @@
                 },
                 {
                     "name": "",
-                    "id": "89a8e9cd-66f1-4370-b894-737bd44b2229",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Attack",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "52c238a5-7a53-4443-b3c4-f17f492d1c68",
                     "path": "<Mouse>/position",
                     "interactions": "",
@@ -183,6 +181,28 @@
                     "action": "Zoom",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "f32f911e-fe43-451e-ae3d-6ca14c480cea",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AttackR",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "89a8e9cd-66f1-4370-b894-737bd44b2229",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AttackL",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -198,6 +218,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "MouseRelease",
+                    "type": "Button",
+                    "id": "633a66e4-b7e1-4629-b6ed-0bdb53689954",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "MousePosition",
+                    "type": "Value",
+                    "id": "4f0acaa7-e2a4-4722-a20f-cf6a80dffa93",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -209,6 +247,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "MouseClick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "657e43e1-04f6-4a9e-abb3-b723e9c73cb2",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MousePosition",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a3d83ded-2ff3-49b1-abe9-6898d23cdb18",
+                    "path": "<Mouse>/{Cancel}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MouseRelease",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

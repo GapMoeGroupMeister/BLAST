@@ -3,15 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyState<T> where T : Enum
+public class EnemyState<T> where T : Enemy
 {
     protected EnemyStateMachine<T> _stateMachine;
-    protected Enemy _enemyBase;
+    protected T _enemyBase;
 
-    protected bool _endTriggerCalled;
+    protected int _animationTriggerBit = 0;
     protected int _animBoolHash;
 
-    public EnemyState(Enemy enemyBase, EnemyStateMachine<T> stateMachine, string animBoolName)
+    public EnemyState(T enemyBase, EnemyStateMachine<T> stateMachine, string animBoolName)
     {
         _enemyBase = enemyBase;
         _stateMachine = stateMachine;
@@ -22,7 +22,7 @@ public class EnemyState<T> where T : Enum
 
     public virtual void Enter()
     {
-        _endTriggerCalled = false;
+        _animationTriggerBit = 0;
         _enemyBase.AnimatorCompo.SetBool(_animBoolHash, true);
     }
 
@@ -31,8 +31,15 @@ public class EnemyState<T> where T : Enum
         _enemyBase.AnimatorCompo.SetBool(_animBoolHash, false);
     }
 
-    public void AnimationFinishTrigger()
+    public void AnimationTrigger(AnimationTriggerEnum triggerBit)
     {
-        _endTriggerCalled = true;
+        _animationTriggerBit |= (int)triggerBit;
     }
+
+    public bool IsTriggerCalled(AnimationTriggerEnum triggerBit)
+        => _animationTriggerBit * (int)triggerBit != 0;
+    
+
+    public void RemoveTrigger(AnimationTriggerEnum triggerBit)
+        => _animationTriggerBit &= ~(int)triggerBit;
 }

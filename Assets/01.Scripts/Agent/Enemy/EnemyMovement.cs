@@ -29,7 +29,7 @@ public class EnemyMovement : MovementController
     {
         _enemy = agent as Enemy;
         _navAgent = GetComponent<NavMeshAgent>();
-        _navAgent.speed = _enemy.moveSpeed;
+        _navAgent.speed = _enemy.Stat.GetValue(StatEnum.Speed);
 
         _rigidbodyCompo = GetComponent<Rigidbody>();
     }
@@ -84,6 +84,7 @@ public class EnemyMovement : MovementController
     public override void StopImmediately()
     {
         if (!_navAgent.enabled) return;
+        _navAgent.velocity = Vector3.zero;
         _navAgent.isStopped = true;
     }
 

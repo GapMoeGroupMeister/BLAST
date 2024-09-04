@@ -11,8 +11,11 @@ namespace Crogen.PowerfulInput
 
         public event Action MoveStartEvent;
         public event Action DashEvent;
-        public event Action AttackEvent;
         public event Action<float> ZoomEvent;
+
+        public event Action<bool> AttackLEvent;
+        public event Action<bool> AttackREvent;
+        
         public Vector3 Movement { get; private set; }
         public Vector2 MousePosition { get; private set; }
         
@@ -47,12 +50,6 @@ namespace Crogen.PowerfulInput
             Movement = context.ReadValue<Vector3>();
         }
 
-        public void OnAttack(InputAction.CallbackContext context)
-        {
-            if(context.performed)
-                AttackEvent?.Invoke();
-        }
-
         public void OnAttackDirection(InputAction.CallbackContext context)
         {
             MousePosition = context.ReadValue<Vector2>();
@@ -62,5 +59,21 @@ namespace Crogen.PowerfulInput
 		{
             ZoomEvent?.Invoke(Mathf.Clamp(context.ReadValue<float>(), -1, 1));
         }
-	}
+
+        public void OnAttackL(InputAction.CallbackContext context)
+        {
+            if(context.started)
+                AttackLEvent?.Invoke(true);
+            if(context.canceled)
+                AttackLEvent?.Invoke(false);
+        }
+        
+        public void OnAttackR(InputAction.CallbackContext context)
+        {
+            if(context.started)
+                AttackREvent?.Invoke(true);
+            if(context.canceled)
+                AttackREvent?.Invoke(false);
+        }
+    }
 }

@@ -1,36 +1,45 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using ObjectPooling;
+using Crogen.ObjectPooling;
 
-public class DragoonEnemyAttackState : EnemyState<DragoonEnemyStateEnum>
+public class DragoonEnemyAttackState : EnemyState<DragoonEnemy>
 {
-    public DragoonEnemyAttackState(Enemy enemyBase, EnemyStateMachine<DragoonEnemyStateEnum> stateMachine, string animBoolName) : base(enemyBase, stateMachine, animBoolName)
+    public DragoonEnemyAttackState(DragoonEnemy enemyBase, EnemyStateMachine<DragoonEnemy> stateMachine, string animBoolName) : base(enemyBase, stateMachine, animBoolName)
     {
     }
+
+    private float _lastAttackTime = 0;
+    private Vector3 _targetPos;
 
     public override void Enter()
     {
         base.Enter();
         _enemyBase.transform.rotation = Quaternion.LookRotation((_enemyBase.targetTrm.position - _enemyBase.transform.position).normalized);
-        Transform firePosTrm = (_enemyBase as DragoonEnemy).firePosTrm;
-        EffectPlayer effect = PoolingManager.Instance.Pop(PoolingType.Charge_VFX) as EffectPlayer;
-        effect.transform.position = firePosTrm.position;
-        effect.transform.SetParent(firePosTrm);
-        effect.StartPlay(1.5f);
+        EffectPlayer effect = _enemyBase.gameObject.Pop(PoolType.VFX_Charge, _enemyBase.firePosTrm, Vector3.zero, Quaternion.identity) as EffectPlayer;
+        effect.StartPlay(4f);
+        _targetPos = _enemyBase.targetTrm.position;
+        _targetPos *= 5;
+        _targetPos.y = _enemyBase.firePosTrm.position.y;
         _enemyBase.MovementCompo.StopImmediately();
     }
 
     public override void Exit()
     {
-        _enemyBase.lastAttackTime = Time.time;
+        _lastAttackTime = Time.time;
         base.Exit();
     }
 
     public override void UpdateState()
     {
         base.UpdateState();
-        if (_endTriggerCalled)
+        if(IsTriggerCalled(AnimationTriggerEnum.EffectTrigger))
+        {
+            TrailEffect trail = _enemyBase.gameObject.Pop(PoolType.VFX_Trail, _enemyBase.firePosTrm, _enemyBase.firePosTrm.position, Quaternion.identity) as TrailEffect;
+            trail.SetTrail(_enemyBase.firePosTrm.position, _targetPos, 0.1f);
+            RemoveTrigger(AnimationTriggerEnum.EffectTrigger);
+        }
+        if (IsTriggerCalled(AnimationTriggerEnum.EndTrigger))
         {
             _stateMachine.ChangeState(DragoonEnemyStateEnum.Battle);
         }
