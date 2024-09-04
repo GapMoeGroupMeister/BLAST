@@ -8,6 +8,7 @@ public class EffectStateSlot : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _timeText;
     [SerializeField] private Image _iconImage;
+    [SerializeField] private Image _bgImage;
     private EffectState _effect;
     private RectTransform _rectTrm;
 
@@ -17,9 +18,13 @@ public class EffectStateSlot : MonoBehaviour
         
     }
 
-    public void Initialize(EffectState effect)
+    public void Initialize(EffectStateSlotUIDataSO uiData, EffectState effect)
     {
         _effect = effect;
+
+        _iconImage.sprite = uiData.icon;
+        _iconImage.color = uiData.iconColor;
+        _bgImage.color = uiData.color;
         _effect.OnUpdateEvent += HandleRefresh;
         _effect.OnOverEvent += HandleDestroy;
     }
