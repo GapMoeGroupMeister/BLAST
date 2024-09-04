@@ -1,0 +1,13 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <Style src="project://database/Assets/01.Scripts/UI/SkillTree/Editor/TechTreeGenerator.uss?fileID=7433441132597879392&amp;guid=97d1dd86c54f2254e96d74bcc2bf0a45&amp;type=3#TechTreeGenerator" />
+    <SplitView>
+        <ui:VisualElement name="left-panel" style="flex-grow: 1; background-color: rgb(62, 62, 62); width: 182px;">
+            <ui:VisualElement name="inspector-view-container" style="flex-grow: 1; margin-top: 10px; margin-right: 10px; margin-bottom: 10px; margin-left: 10px;">
+                <InspectorView />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="right-panel" style="flex-grow: 1;">
+            <TechTreeGraphView focusable="true" style="flex-grow: 1;" />
+        </ui:VisualElement>
+    </SplitView>
+</ui:UXML>
