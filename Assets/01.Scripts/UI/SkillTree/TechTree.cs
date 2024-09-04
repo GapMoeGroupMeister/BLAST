@@ -3,14 +3,17 @@ using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using DG.Tweening;
 
-public class TechTree : MonoBehaviour
+public class TechTree : MonoBehaviour, IWindowPanel
 {
     public TechTreeSO treeSO;
     public Dictionary<NodeSO, Node> nodeDic;
 
     public Transform edgeParent;
     private string _path;
+
+    [SerializeField] private RectTransform _treeRect;
 
     private void Awake()
     {
@@ -36,7 +39,7 @@ public class TechTree : MonoBehaviour
         {
             if (nodeDic.TryGetValue(treeSO.nodes[i], out Node node))
             {
-                node.Init(this, node.node.isStartNode);
+                node.Init(this, false);
             }
         }
 
@@ -92,6 +95,16 @@ public class TechTree : MonoBehaviour
 
             node.Init(this, isEnable);
         }
+    }
+
+    public void Open()
+    {
+        _treeRect.DOAnchorPosY(0, 0.5f).SetEase(Ease.Linear);
+    }
+
+    public void Close()
+    {
+        _treeRect.DOAnchorPosY(-1080, 0.5f).SetEase(Ease.Linear);
     }
 }
 

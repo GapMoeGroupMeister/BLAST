@@ -1,0 +1,165 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8631509498344444934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc21cd2ec364e594d8dc2f91f8569e29, type: 3}
+  m_Name: WeaponNodeSO-4
+  m_EditorClassIdentifier: 
+  guid: e798bcd9776da044daca9ad30f6a01e1
+  position: {x: 123.5, y: -72.5}
+  id: 4
+  nextNodes: []
+  weapon: 0
+--- !u!114 &-7542940532315797207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0ac6e1064397f04eac35488a387594e, type: 3}
+  m_Name: PartNodeSO-5
+  m_EditorClassIdentifier: 
+  guid: cc35353abb4a0fc4a823972ab7f4c23d
+  position: {x: -52.5, y: 112.5}
+  id: 5
+  nextNodes:
+  - {fileID: -1275102293581768158}
+  openPart: 3
+--- !u!114 &-2558004194139731428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5a579d6d09d4d54e9f01a96ad8ac520, type: 3}
+  m_Name: StartNodeSO-0
+  m_EditorClassIdentifier: 
+  guid: fdb2b911d74d93244adecb10cf79318c
+  position: {x: -401, y: -72.5}
+  id: 0
+  nextNodes:
+  - {fileID: 2371163587558859479}
+  - {fileID: 7689657182731714729}
+  - {fileID: -7542940532315797207}
+  - {fileID: 6604778246579609252}
+--- !u!114 &-1275102293581768158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc21cd2ec364e594d8dc2f91f8569e29, type: 3}
+  m_Name: WeaponNodeSO-6
+  m_EditorClassIdentifier: 
+  guid: d8e250fb0290b684dbd9b3279f6d17a3
+  position: {x: 123.5, y: 112.5}
+  id: 6
+  nextNodes: []
+  weapon: 0
+--- !u!114 &-466742831731884154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc21cd2ec364e594d8dc2f91f8569e29, type: 3}
+  m_Name: WeaponNodeSO-2
+  m_EditorClassIdentifier: 
+  guid: 4aca7fdb39532904e9528858380426ad
+  position: {x: 123.5, y: -229}
+  id: 2
+  nextNodes: []
+  weapon: 0
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a540f074e8eedc143a24836c44f62d00, type: 3}
+  m_Name: TESTECHTREE
+  m_EditorClassIdentifier: 
+  nodes:
+  - {fileID: -2558004194139731428}
+  - {fileID: 2371163587558859479}
+  - {fileID: -466742831731884154}
+  - {fileID: 7689657182731714729}
+  - {fileID: -8631509498344444934}
+  - {fileID: -7542940532315797207}
+  - {fileID: -1275102293581768158}
+  - {fileID: 6604778246579609252}
+--- !u!114 &2371163587558859479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0ac6e1064397f04eac35488a387594e, type: 3}
+  m_Name: PartNodeSO-1
+  m_EditorClassIdentifier: 
+  guid: 2b77220f933a7274184d3ebdde3c34fb
+  position: {x: -51, y: -229}
+  id: 1
+  nextNodes:
+  - {fileID: -466742831731884154}
+  openPart: 1
+--- !u!114 &6604778246579609252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc21cd2ec364e594d8dc2f91f8569e29, type: 3}
+  m_Name: WeaponNodeSO-7
+  m_EditorClassIdentifier: 
+  guid: 92f1e2b6305c15141ae862e4e06877af
+  position: {x: -240.5, y: 199.5}
+  id: 7
+  nextNodes: []
+  weapon: 0
+--- !u!114 &7689657182731714729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0ac6e1064397f04eac35488a387594e, type: 3}
+  m_Name: PartNodeSO-3
+  m_EditorClassIdentifier: 
+  guid: 0bb8c737b9180314e95bb76ea14cfa0b
+  position: {x: -52.5, y: -72.5}
+  id: 3
+  nextNodes:
+  - {fileID: -8631509498344444934}
+  openPart: 2
