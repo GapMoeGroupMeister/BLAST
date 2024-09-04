@@ -27,10 +27,10 @@ public class XPManager : MonoSingleton<XPManager>
 
 			if(_xp >= _maxXP)
 			{
+				_xp = 0;
 				++_level;
 				OnLevelUpEvent?.Invoke(_level);
 				MaxXPUp();
-				_xp = 0;
 			}
 			else
 			{
