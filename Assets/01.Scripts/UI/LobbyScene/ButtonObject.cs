@@ -9,10 +9,16 @@ public class ButtonObject : ObjectUI
     private Color _defaultColor;
     private void Awake()
     {
-        _defaultColor = _spriteRenderer.color;
-        
-        OnEnterEvent.AddListener(HandleHoverEnter);
-        OnExitEvent.AddListener(HandleHoverExit);
+
+        if (_isVisual)
+        {
+            
+            _defaultColor = _spriteRenderer.color;
+
+            OnEnterEvent.AddListener(HandleHoverEnter);
+            OnExitEvent.AddListener(HandleHoverExit);
+            
+        }
     }
 
     public void HandleHoverEnter()

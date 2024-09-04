@@ -19,6 +19,7 @@ namespace Crogen.PowerfulInput
         public Vector3 Movement { get; private set; }
         public Vector2 MousePosition { get; private set; }
         
+        
         #endregion
 
         private Controls _controls;

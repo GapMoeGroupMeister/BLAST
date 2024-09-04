@@ -20,7 +20,7 @@ public class MagazineInfo
 	[HideInInspector] public float curAttackDelay;
 	
 	public Action<Vector3> OnAttackEvent;
-	[SerializeField] public Transform[] bulletFirePositions;
+	public Transform[] bulletFirePositions;
 
 	[HideInInspector] public Vector3 AttackDirection;
 
