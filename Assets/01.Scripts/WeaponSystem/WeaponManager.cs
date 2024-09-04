@@ -22,11 +22,22 @@ public class WeaponManager : MonoSingleton<WeaponManager>
             Type t = Type.GetType($"{weaponEnum.ToString()}Weapon");
             Weapon weaponCompo = GetComponentInChildren(t) as Weapon;
             _weapons.Add(weaponEnum, weaponCompo);
-            
+
+            CheckCanUseForWeapon(weaponCompo);
+
             //초반에 활성화된 무기 추가(거의 사실 상 디버그용)
             if (weaponCompo.weaponEnabled)
                 AppendWeapon(weaponEnum);
         }
+    }
+
+    private void CheckCanUseForWeapon(Weapon weaponCompo)
+	{
+        //해금이 안되면 false
+        //나중에 진순이가 코드 짜면 해금 정보 불러와서 쓱싹
+
+        //고유 무기인데 현재 파츠와 타입이 불일치하면 false
+        weaponCompo.canUse = PlayerPartController.Instance.GetCurrentPlayerPart().playerPartType == weaponCompo.partType;
     }
 
     public Weapon GetWeapon(WeaponType weapon)
