@@ -5,9 +5,9 @@ public class ExpGauge : MonoBehaviour
 {
     [SerializeField] private Image _gaugeFill;
 
-    public void HandleRefreshEvent(int value, int max)
+    public void HandleRefreshEvent(float fill)
     {
-        _gaugeFill.fillAmount = (float)value / max;
+        _gaugeFill.fillAmount = fill;
     }
     
     
