@@ -17,6 +17,9 @@ public class StatusDisplayManager : MonoBehaviour
         _currentPart.magazineInfoR.playerOverloadEvent += _weaponDisplay_Right.HandleDisplayRefresh;
         GameManager.Instance.Player.HealthCompo.OnHealthChangedEvent.AddListener(_healthUI.Refresh);
         // 체력 이벤트 등록하기
+        _weaponDisplay_Left.HandleDisplayRefresh(0, 1);
+        _weaponDisplay_Right.HandleDisplayRefresh(0, 1);
+        _healthUI.Refresh(1, 1);
     }
 
     public void SetVisible(bool value)
