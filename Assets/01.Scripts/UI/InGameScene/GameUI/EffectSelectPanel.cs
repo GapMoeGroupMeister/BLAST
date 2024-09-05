@@ -33,7 +33,6 @@ public class EffectSelectPanel : UIPanel
 
 	private void OnDestroy()
 	{
-        XPManager.Instance.OnLevelUpEvent -= HandleLevelUp;
         for (int i = 0; i < slots.Length; ++i)
         {
             slots[i].OnSelectedEndEvent -= HandleSelectedEnd;
