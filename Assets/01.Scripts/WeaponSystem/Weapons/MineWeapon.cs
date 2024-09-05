@@ -11,11 +11,6 @@ public class MineWeapon : Weapon
         (player.MovementCompo as PlayerMovement).OnDistanceTravelledEvent += AutoUseWeaponByValueCheck;
     }
 
-	private void OnDestroy()
-	{
-        (player.MovementCompo as PlayerMovement).OnDistanceTravelledEvent -= AutoUseWeaponByValueCheck;
-    }
-
     public override bool UseWeapon()
     {
         if (base.UseWeapon())

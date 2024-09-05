@@ -1,38 +1,109 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Analytics;
 
 public class EffectSelectPanel : UIPanel
 {
     [SerializeField] private WeaponUIDataSO uiDataSO;
     [SerializeField] private EffectSelectSlot[] slots;
     List<WeaponType> weaponTypes = new List<WeaponType>();
-    private List<Weapon> _weaponList = new List<Weapon>();
+
+    //Managements
     private WeaponManager _weaponManager;
+    private TimeManager _timeManager;
 
     private void Start()
     {
         _weaponManager = WeaponManager.Instance;
+        _timeManager = TimeManager.Instance;
+
+        for (int i = 0; i < slots.Length; ++i)
+        {
+            slots[i].OnSelectedEndEvent += HandleSelectedEnd;
+        }
+
+        XPManager.Instance.OnLevelUpEvent += HandleLevelUp;
         foreach (WeaponType type in Enum.GetValues(typeof(WeaponType)))
         {
             if (type == 0) continue;
             weaponTypes.Add(type);
-            _weaponList.Add(_weaponManager.GetWeapon(type));
         }
+    }
+
+	private void OnDestroy()
+	{
+        XPManager.Instance.OnLevelUpEvent -= HandleLevelUp;
+        for (int i = 0; i < slots.Length; ++i)
+        {
+            slots[i].OnSelectedEndEvent -= HandleSelectedEnd;
+        }
+    }
+
+    private void HandleLevelUp(int _)
+	{
+        Open();
     }
 
     public override void Open()
     {
-        //셔플
         base.Open();
-        
+
+        //셔플
+        WeaponTypeShuffle(weaponTypes);
+
+        //카드 결정
+        List<WeaponType> curWeaponTypes = new List<WeaponType>();
+		foreach (var weaponType in weaponTypes)
+		{
+            if(_weaponManager.GetWeapon(weaponType).canUse)
+			{
+                curWeaponTypes.Add(weaponType);
+            }
+            if(curWeaponTypes.Count >= 3)
+			{
+                break;
+			}
+		}
+
+        //카드 셋팅
+        SetUpWeaponCards(curWeaponTypes);
     }
     
-    private void SetUpWeaponCards()
+    private void SetUpWeaponCards(List<WeaponType> curWeaponTypes)
     {
+		for (int i = 0; i < slots.Length; ++i)
+		{
+            slots[i].SetWeaponInfo(
+                curWeaponTypes[i], 
+                uiDataSO[curWeaponTypes[i]]);
+        }
+
+        //멈추기
+        _timeManager.PauseTime();
     }
-    
+
+    public List<WeaponType> WeaponTypeShuffle(List<WeaponType> list)
+    {
+        // Random 인스턴스 생성 (Unity에서 Random.Range를 사용할 수도 있지만, 시스템의 랜덤 클래스를 사용하는 것이 일반적)
+        System.Random rng = new System.Random();
+
+        int n = list.Count;
+        while (n > 1)
+        {
+            n--;
+            int k = rng.Next(n + 1);  // 0부터 n 사이의 무작위 인덱스를 선택
+            WeaponType value = list[k];
+            list[k] = list[n];
+            list[n] = value;
+        }
+
+        return list;
+    }
+
+    private void HandleSelectedEnd()
+	{
+        _timeManager.PlayTime();
+        Close();
+	}
 }

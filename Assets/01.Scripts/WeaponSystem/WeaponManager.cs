@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System;
 using UnityEngine;
+
 public class WeaponManager : MonoSingleton<WeaponManager>
 {
     public event Action<WeaponType> OnAppendWeaponEvent;
@@ -37,7 +38,10 @@ public class WeaponManager : MonoSingleton<WeaponManager>
         //나중에 진순이가 코드 짜면 해금 정보 불러와서 쓱싹
 
         //고유 무기인데 현재 파츠와 타입이 불일치하면 false
-        weaponCompo.canUse = PlayerPartController.Instance.GetCurrentPlayerPart().playerPartType == weaponCompo.partType;
+        //if (weaponCompo.isUniqueWeapon)
+        //    weaponCompo.canUse = PlayerPartController.Instance.GetCurrentPlayerPart().playerPartType == weaponCompo.partType;
+        //else
+        //    weaponCompo.canUse = true;
     }
 
     public Weapon GetWeapon(WeaponType weapon)
