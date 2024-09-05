@@ -12,6 +12,7 @@ public class BallisticMissile : WeaponEffect
 	[SerializeField] private PoolType _explosionPoolType;
 	[SerializeField] private float _moveDuration = 1f;
 	[SerializeField] private float _maxPosY = 150f;
+	[SerializeField] private DamageCaster _damageCaster;
 
 	public override void Init(uint level, Weapon weaponBase)
 	{
@@ -56,6 +57,7 @@ public class BallisticMissile : WeaponEffect
 	//Æø¹ßÇÏ±â
 	private void ExplosionEffect()
 	{
+		_damageCaster.CastDamage(_damage);
 		gameObject.Pop(_explosionPoolType, transform.position, Quaternion.identity);
 		Destroy(gameObject);
 	}

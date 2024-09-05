@@ -55,8 +55,6 @@ public class BallisticMissileWeapon : Weapon
                 player.transform.position + (Vector3.up * 5), 
                 Quaternion.LookRotation(Vector3.up));
 
-            Debug.Log(ballisticMissileWeapon);
-
             //기달
             yield return new WaitForSeconds(0.2f);
 

@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 296542540926570493}
-  - component: {fileID: 8465781185212350881}
   - component: {fileID: -6635482705123328200}
+  - component: {fileID: 9200667422131376362}
   m_Layer: 0
   m_Name: weaponEffect_BallisticMissile
   m_TagString: Untagged
@@ -34,7 +34,27 @@ Transform:
   - {fileID: 8265616673142870252}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8465781185212350881
+--- !u!114 &-6635482705123328200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 601856103945394147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98de01b040e161f4dabd39a9c74c00c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _level: 0
+  _damage: 0
+  _ballisticMissileSignPrefab: {fileID: 3819229858683504616, guid: c09dcf5a22a367044bc3e0d4c196de78,
+    type: 3}
+  _explosionPoolType: 14
+  _moveDuration: 1
+  _maxPosY: 150
+  _damageCaster: {fileID: 0}
+--- !u!114 &9200667422131376362
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -56,27 +76,8 @@ MonoBehaviour:
   _effectStateType: 0
   _effectDuration: 0
   _effectLevel: 1
-  center: {x: 0, y: 0, z: 8.41}
-  radius: 1
---- !u!114 &-6635482705123328200
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 601856103945394147}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98de01b040e161f4dabd39a9c74c00c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _level: 0
-  _damage: 0
-  _ballisticMissileSignPrefab: {fileID: 3819229858683504616, guid: c09dcf5a22a367044bc3e0d4c196de78,
-    type: 3}
-  _explosionPoolType: 1
-  _moveDuration: 1
-  _maxPosY: 150
+  center: {x: 0, y: 0, z: 3.93}
+  radius: 3
 --- !u!1 &761065801349773403
 GameObject:
   m_ObjectHideFlags: 0
@@ -105,7 +106,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalScale: {x: 1.6000001, y: 1.6000001, z: 1.6000001}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 296542540926570493}

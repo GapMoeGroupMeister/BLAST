@@ -55,11 +55,15 @@ public abstract class DamageCaster : MonoBehaviour
 			}
 			if (_castColliders[i].TryGetComponent(out Agent agent))
 			{
-
 				agent.AgentEffectController.ApplyEffect(_effectStateType, _effectDuration, _effectLevel);
 				agent.HealthCompo.TakeDamage(damage);
 				OnDamageCastSuccessEvent?.Invoke();
 			}
+			if(_castColliders[i].TryGetComponent(out IEffectable effectable))
+			{
+				effectable.ApplyEffect(_effectStateType, _effectDuration, _effectLevel);
+			}
+			
 		}
 
 		OnCasterEvent?.Invoke();
