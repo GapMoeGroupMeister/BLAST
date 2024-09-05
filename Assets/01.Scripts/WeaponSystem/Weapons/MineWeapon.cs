@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class MineWeapon : Weapon
 {
+    [Header("----------------------------------------")]
     [SerializeField] private PoolType _minePoolType;
 
 	public override void WeaponInit()
