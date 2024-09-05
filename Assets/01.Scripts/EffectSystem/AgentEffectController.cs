@@ -5,7 +5,7 @@ using UnityEngine;
 namespace EffectSystem
 {
     
-    public class AgentEffectController : MonoBehaviour
+    public class AgentEffectController : MonoBehaviour, IEffectable
     {
         public Dictionary<EffectStateTypeEnum, EffectState> effectDictionary = new Dictionary<EffectStateTypeEnum, EffectState>();
         protected Agent _owner;
