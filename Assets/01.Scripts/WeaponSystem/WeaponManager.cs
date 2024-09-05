@@ -32,6 +32,7 @@ public class WeaponManager : MonoSingleton<WeaponManager>
         }
     }
 
+    //지금은 디버깅 땜시 하는 건 없음
     private void CheckCanUseForWeapon(Weapon weaponCompo)
 	{
         //해금이 안되면 false

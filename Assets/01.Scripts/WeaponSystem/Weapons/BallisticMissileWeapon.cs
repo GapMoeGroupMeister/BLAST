@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class BallisticMissileWeapon : Weapon
 {
+    [Header("----------------------------------------")]
     [SerializeField] private float _findAroundRound = 20f;
     [SerializeField] private PoolType _ballisticMissilePoolType;
     private PlayerDefaultPart _basePart;
