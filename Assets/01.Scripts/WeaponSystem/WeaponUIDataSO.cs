@@ -8,6 +8,8 @@ public struct WeaponUIData
     public Sprite icon;
     [TextArea]
     public string description;
+    public bool isUniqueWeapon;
+    public PlayerPartType parentPart;
 }
 
 [CreateAssetMenu(menuName = "SO/Weapon/WeaponUIData")]

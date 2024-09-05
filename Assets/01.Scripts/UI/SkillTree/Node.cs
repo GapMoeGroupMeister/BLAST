@@ -64,7 +64,11 @@ public class Node : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
             nextNode?.Activenode();
         }
 
-        Debug.Log(_tree);
+        if (node is PartNodeSO part)
+            GameDataManager.Instance.EnablePart(part.openPart);
+        if (node is WeaponNodeSO weapon)
+            GameDataManager.Instance.EnableWeapon(weapon.weapon);
+
         _tree.Save();
     }
 
