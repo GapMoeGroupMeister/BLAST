@@ -17,6 +17,8 @@ public enum AutoUseType
 
 public abstract class Weapon : MonoBehaviour
 {
+	public bool canUse = true;
+
 	[Header("Weapon이 활성화되었는가?")]
 	public bool weaponEnabled;
 

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -5,9 +6,15 @@ public class ExpGauge : MonoBehaviour
 {
     [SerializeField] private Image _gaugeFill;
 
-    public void HandleRefreshEvent(int value, int max)
+    private void Start()
     {
-        _gaugeFill.fillAmount = (float)value / max;
+        XPManager.Instance.OnXPPercentEvent += HandleRefreshEvent;
+        HandleRefreshEvent(0);
+    }
+
+    public void HandleRefreshEvent(float fill)
+    {
+        _gaugeFill.fillAmount = fill;
     }
     
     

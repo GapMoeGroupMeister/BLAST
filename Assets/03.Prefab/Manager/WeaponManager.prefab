@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a6ebd31ea064e5fa2be1b7ffb136fcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canUse: 0
   weaponEnabled: 0
   _cooldown: 0
   level: 1
@@ -71,6 +72,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4160e0885ef44ac5be04f2460195aadf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canUse: 0
   weaponEnabled: 0
   _cooldown: 0
   level: 1
@@ -96,6 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1100e29d1564d018053acb1208ddedf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canUse: 0
   weaponEnabled: 0
   _cooldown: 0
   level: 1
@@ -155,6 +158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcf76d0220ecab14590685fb9bb40cf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canUse: 0
   weaponEnabled: 0
   _cooldown: 10
   level: 1
@@ -180,6 +184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 567e5c0b4c1e65f4a875aa1a56ac9b71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canUse: 0
   weaponEnabled: 0
   _cooldown: 0
   level: 1
@@ -205,6 +210,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d5fd3e4d0334e539bc37bdcae76d341, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canUse: 0
   weaponEnabled: 0
   _cooldown: 0
   level: 1
@@ -291,6 +297,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25491bae6aaa480ba011cbe34822de72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canUse: 0
   weaponEnabled: 0
   _cooldown: 0
   level: 1
@@ -316,6 +323,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa6d572c9ef94d939844cb353477fdb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canUse: 0
   weaponEnabled: 0
   _cooldown: 0
   level: 1
@@ -341,6 +349,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d22084da3a2044c8b12479226f42a28d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canUse: 0
   weaponEnabled: 0
   _cooldown: 0
   level: 1
@@ -366,6 +375,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d30f16dccf5f4210b728299194e73a8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canUse: 1
   weaponEnabled: 1
   _cooldown: 3
   level: 1
@@ -391,6 +401,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97c39fc4e2be4aaa98c12c00ecd8add7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canUse: 0
   weaponEnabled: 0
   _cooldown: 0
   level: 1
@@ -416,6 +427,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d9a7716e69548e0a73515dc1e1f7d6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canUse: 1
   weaponEnabled: 0
   _cooldown: 0
   level: 1
@@ -428,7 +440,7 @@ MonoBehaviour:
   player: {fileID: 0}
   whatIsEnemy:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
 --- !u!114 &5246632227947119379
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -441,7 +453,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1dab2cfaa5b4b73a198e7fcbec72c55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponEnabled: 1
+  canUse: 1
+  weaponEnabled: 0
   _cooldown: 5
   level: 1
   isUniqueWeapon: 0
@@ -467,6 +480,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b75a73bec5c445c9b4186254cf90903, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canUse: 0
   weaponEnabled: 0
   _cooldown: 0
   level: 1
@@ -492,6 +506,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a51cede5c77426c8a2a4f1319b85688, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canUse: 0
   weaponEnabled: 0
   _cooldown: 0
   level: 1
@@ -517,6 +532,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b741a16df7f545c0bfb7c007f3b6ff80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canUse: 0
   weaponEnabled: 0
   _cooldown: 0
   level: 1
@@ -542,6 +558,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c8ef29e63ef46a38b6a2fd8f935dd52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canUse: 0
   weaponEnabled: 0
   _cooldown: 0
   level: 1
@@ -567,6 +584,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07575d1577974d07a5ba097a6a3a7c51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canUse: 0
   weaponEnabled: 0
   _cooldown: 0
   level: 1
@@ -624,8 +642,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2896ca279df9467bac2d712f7030d3e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canUse: 1
   weaponEnabled: 0
-  _cooldown: 0
+  _cooldown: 5
   level: 1
   isUniqueWeapon: 1
   partType: 0
@@ -637,6 +656,8 @@ MonoBehaviour:
   whatIsEnemy:
     serializedVersion: 2
     m_Bits: 0
+  _findAroundRound: 50
+  _ballisticMissilePrefab: {fileID: 0}
 --- !u!1 &7992053496910435731
 GameObject:
   m_ObjectHideFlags: 0
@@ -684,6 +705,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36fc75e32e774cc0a8b66e50b7173352, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canUse: 0
   weaponEnabled: 0
   _cooldown: 0
   level: 1
@@ -709,6 +731,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0b000027cc441a280abd1a2afdd9db7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canUse: 0
   weaponEnabled: 0
   _cooldown: 0
   level: 1
@@ -734,6 +757,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60829f7d80c54cec85bc2bcb93caa0f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canUse: 0
   weaponEnabled: 0
   _cooldown: 0
   level: 1
@@ -759,6 +783,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c9522f5728f45eaa5b1807ee654b14e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canUse: 0
   weaponEnabled: 0
   _cooldown: 0
   level: 1

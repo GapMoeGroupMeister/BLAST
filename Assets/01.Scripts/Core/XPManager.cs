@@ -21,18 +21,21 @@ public class XPManager : MonoSingleton<XPManager>
 		set
 		{
 			//이벤트 실행
-			OnXPPercentEvent?.Invoke(_xp / _maxXP);
+			OnXPPercentEvent?.Invoke((float)_xp / _maxXP);
 
 			//경험치 최대치 갱신
 
 			if(_xp >= _maxXP)
 			{
+				_xp = 0;
 				++_level;
 				OnLevelUpEvent?.Invoke(_level);
 				MaxXPUp();
-				_xp = 0;
 			}
-			_xp = value;
+			else
+			{
+				_xp = value;
+			}
 		}
 	}
 

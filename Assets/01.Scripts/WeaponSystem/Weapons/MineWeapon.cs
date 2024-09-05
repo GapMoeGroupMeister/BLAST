@@ -3,17 +3,13 @@ using UnityEngine;
 
 public class MineWeapon : Weapon
 {
+    [Header("----------------------------------------")]
     [SerializeField] private PoolType _minePoolType;
 
 	public override void WeaponInit()
 	{
 		base.WeaponInit();
         (player.MovementCompo as PlayerMovement).OnDistanceTravelledEvent += AutoUseWeaponByValueCheck;
-    }
-
-	private void OnDestroy()
-	{
-        (player.MovementCompo as PlayerMovement).OnDistanceTravelledEvent -= AutoUseWeaponByValueCheck;
     }
 
     public override bool UseWeapon()

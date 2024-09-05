@@ -6,6 +6,7 @@ using AYellowpaper.SerializedCollections;
 public struct WeaponUIData
 {
     public Sprite icon;
+    public string weaponName;
     [TextArea]
     public string description;
 }

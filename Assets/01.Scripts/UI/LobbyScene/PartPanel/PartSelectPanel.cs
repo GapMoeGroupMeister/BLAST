@@ -13,8 +13,9 @@ public class PartSelectPanel : UIPanel
     [SerializeField] private bool _isActive;
     private List<PartSelectSlot> partSlotList = new();
     
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         _rectTrm = transform as RectTransform;
         _canvasGroup = GetComponent<CanvasGroup>();
     }

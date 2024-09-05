@@ -12,7 +12,7 @@ public class SkillDisplayPanel : MonoBehaviour
     
     private void Awake()
     {
-        
+        Initialize(10);
     }
 
     private void Start()

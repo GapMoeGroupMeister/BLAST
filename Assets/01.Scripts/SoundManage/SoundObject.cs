@@ -8,7 +8,7 @@ namespace SoundManage
     public class SoundObject : MonoBehaviour, IPoolingObject
     {
         [field:SerializeField] public PoolType OriginPoolType { get; set; }
-        public GameObject gameObject { get; set; }
+        GameObject IPoolingObject.gameObject { get; set; }
         
         
         [SerializeField] private AudioMixerGroup _sfxGroup, _musicGroup;
