@@ -23,7 +23,7 @@ namespace EffectSystem
         public override void ApplyEffect(EffectStateTypeEnum type, float duration, int level)
         {
             if(!effectDictionary[type].enabled)
-                _effectPanel.GenerateSlot(effectDictionary[type]);
+                _effectPanel.GenerateSlot(type, effectDictionary[type]);
             
             base.ApplyEffect(type, duration, level);
             
