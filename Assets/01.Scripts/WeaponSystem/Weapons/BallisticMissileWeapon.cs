@@ -7,7 +7,7 @@ public class BallisticMissileWeapon : Weapon
 {
     [Header("----------------------------------------")]
     [SerializeField] private float _findAroundRound = 20f;
-    [SerializeField] private PoolType _ballisticMissilePoolType;
+    [SerializeField] private BallisticMissile _ballisticMissilePrefab;
     private PlayerDefaultPart _basePart;
 
     public override bool UseWeapon()
@@ -46,24 +46,22 @@ public class BallisticMissileWeapon : Weapon
 
     private IEnumerator CoroutineFireBallisticMissile()
 	{
-        Transform[] firePos = _basePart.GetSubAttackPoints();
         Transform[] enemyPos = GetRoundEffectPos();
 
-        for (int i = 0; i < enemyPos.Length; ++i)
-        {
-            //타겟
-            Transform targetTrm = firePos[i % 2];
+        int count = enemyPos.Length > level ? (int)level : enemyPos.Length;
 
-            BallisticMissile ballisticMissile =
-                gameObject.Pop(_ballisticMissilePoolType,
-                targetTrm.position, //번갈아가며 발싸 (개수 맞추기 위한)
-                Quaternion.identity) as BallisticMissile;
+        for (int i = 0; i < count; ++i)
+        {
+            BallisticMissile ballisticMissileWeapon = 
+                Instantiate(_ballisticMissilePrefab, 
+                player.transform.position + (Vector3.up * 5), 
+                Quaternion.LookRotation(Vector3.up));
 
             //기달
             yield return new WaitForSeconds(0.2f);
 
             //타겟 설정(타겟 설정하면 그쪽으로 가면서 죽일 거임)
-            ballisticMissile.SetTarget(targetTrm);
+            ballisticMissileWeapon.SetTarget(enemyPos[i]);
         }
     }
 
@@ -79,6 +77,7 @@ public class BallisticMissileWeapon : Weapon
 
 	private void OnDrawGizmosSelected()
 	{
-        Gizmos.DrawWireSphere(transform.position, _findAroundRound);
+        player ??= FindObjectOfType<Player>();
+        Gizmos.DrawWireSphere(player.transform.position, _findAroundRound);
 	}
 }
