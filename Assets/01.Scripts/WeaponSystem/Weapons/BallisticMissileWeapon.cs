@@ -48,14 +48,14 @@ public class BallisticMissileWeapon : Weapon
 	{
         Transform[] enemyPos = GetRoundEffectPos();
 
-        int count = enemyPos.Length > level ? (int)level : enemyPos.Length;
-
-        for (int i = 0; i < count; ++i)
+        for (int i = 0; i < enemyPos.Length; ++i)
         {
             BallisticMissile ballisticMissileWeapon = 
                 Instantiate(_ballisticMissilePrefab, 
                 player.transform.position + (Vector3.up * 5), 
                 Quaternion.LookRotation(Vector3.up));
+
+            Debug.Log(ballisticMissileWeapon);
 
             //기달
             yield return new WaitForSeconds(0.2f);

@@ -21,13 +21,13 @@ public abstract class DamageCaster : MonoBehaviour
 	[SerializeField] private float _effectDuration = 0f;
 	[SerializeField] private int _effectLevel = 1;
 
-	protected Vector3 GetScaledCenter(Vector3 center)
+	protected Vector3 GetFinalCenter(Vector3 center)
 	{
 		Vector3 finalCenter;
 		finalCenter.x = center.x * transform.lossyScale.x;
 		finalCenter.y = center.y * transform.lossyScale.y;
 		finalCenter.z = center.z * transform.lossyScale.z;
-
+		finalCenter = transform.rotation * finalCenter;
 		return finalCenter;
 	}
 
