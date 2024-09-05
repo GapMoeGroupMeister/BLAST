@@ -28,8 +28,8 @@ public class OilObject : MonoBehaviour, IPoolingObject, IEffectable
     private void Awake()
     {
         hits = new Collider[3];
-        _dissolveHash = Shader.PropertyToID("DissolveHeight");
-        _randomSeedHash = Shader.PropertyToID("RandomSeed");
+        _dissolveHash = Shader.PropertyToID("_DissolveHeight");
+        _randomSeedHash = Shader.PropertyToID("_RandomSeed");
         _decalCompo = GetComponentInChildren<DecalProjector>();
         _decalMaterial = _decalCompo.material;
         _fireVFX = transform.Find("FireVFX").GetComponent<ParticleSystem>();
@@ -66,7 +66,7 @@ public class OilObject : MonoBehaviour, IPoolingObject, IEffectable
         int amount =  Physics.OverlapSphereNonAlloc(transform.position, _detectRange, hits, _targetLayer);
         if (amount == 0) return;
         leftOilAmount--;
-        _decalMaterial.SetFloat(_dissolveHash, Mathf.Lerp(0.7f, 0f, leftOilAmount/(float)setOilAmount));
+        _decalMaterial.SetFloat(_dissolveHash, Mathf.Lerp(0f, 0.7f, leftOilAmount/(float)setOilAmount));
         for (int i = 0; i < amount; i++)
         {
             if (hits[i].transform.TryGetComponent(out IEffectable effectTarget))
