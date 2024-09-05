@@ -48,9 +48,7 @@ public class BallisticMissileWeapon : Weapon
 	{
         Transform[] enemyPos = GetRoundEffectPos();
 
-        int count = enemyPos.Length > level ? (int)level : enemyPos.Length;
-
-        for (int i = 0; i < count; ++i)
+        for (int i = 0; i < enemyPos.Length; ++i)
         {
             BallisticMissile ballisticMissileWeapon = 
                 Instantiate(_ballisticMissilePrefab, 
