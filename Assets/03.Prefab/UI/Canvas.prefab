@@ -3060,7 +3060,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uD574\uC0C1\uB3C4"
+  m_text: Screen Size
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7aefa06654f846544be84f0625ebe2e2, type: 2}
   m_sharedMaterial: {fileID: 4898519576181494692, guid: 7aefa06654f846544be84f0625ebe2e2,
@@ -3631,6 +3631,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5de7707740324d00849aca345779bdd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _uiDatas:
+    _serializedList:
+    - Key: 1
+      Value: {fileID: 11400000, guid: ec475df88eb1e994d9a4ce6c0d29d84a, type: 2}
+    - Key: 2
+      Value: {fileID: 11400000, guid: e64433a1c3e2b434e855aaf8f53be28d, type: 2}
+    - Key: 3
+      Value: {fileID: 11400000, guid: dee33247ae6c3f6458838aad59e18e48, type: 2}
+    - Key: 4
+      Value: {fileID: 11400000, guid: 3fbe427441d126541aa288d6ea336254, type: 2}
   _slotPrefab: {fileID: 7297469782940536863, guid: ce1a83b4b9f9c974182e2611f012bb19,
     type: 3}
   _contentTrm: {fileID: 5768690286943423283}
@@ -3742,8 +3752,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _useUnscaledTime: 1
-  _activeDuration: 1
-  _bgmSlider: {fileID: 0}
+  _activeDuration: 0.3
+  _audioMixer: {fileID: 24100000, guid: 482e3ef0a64820c48b83acc260035550, type: 2}
+  _bgmSlider: {fileID: 2018825076214172000}
+  _sfxSlider: {fileID: 3071550722081470526}
+  _screenSettingDropDown: {fileID: 5450635035805836810}
 --- !u!1 &6155810997801152036
 GameObject:
   m_ObjectHideFlags: 0
@@ -5178,7 +5191,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -50, y: -50}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 70, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2003411269451145068
 CanvasRenderer:
@@ -5208,7 +5221,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 1496833696, guid: 25360e6de98d17d4987636a031fed73e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5889,7 +5902,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4422144408042054365}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7055368419891612292}
+        m_TargetAssemblyTypeName: UIPanel, Assembly-CSharp
+        m_MethodName: Close
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6349068953184231298}
+        m_TargetAssemblyTypeName: PausePanel, Assembly-CSharp
+        m_MethodName: Close
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8621103859810350873
 GameObject:
   m_ObjectHideFlags: 0
@@ -6265,6 +6302,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _useUnscaledTime: 1
   _activeDuration: 1
+  uiDataSO: {fileID: 0}
   slots: []
 --- !u!1 &8804190339852858726
 GameObject:
