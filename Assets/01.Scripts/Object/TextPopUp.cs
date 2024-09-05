@@ -31,8 +31,9 @@ public class TextPopUp : MonoBehaviour, IPoolingObject
     }
 
     public PoolType OriginPoolType { get; set; }
-    public GameObject gameObject { get; set; }
-    public void OnPop()
+	GameObject IPoolingObject.gameObject { get; set; }
+
+	public void OnPop()
     {
         Sequence seq = DOTween.Sequence();
         _textTrm.localScale = Vector3.one;
