@@ -21,6 +21,9 @@ public class OilObject : MonoBehaviour, IPoolingObject, IEffectable
 
     private int _dissolveHash;
     private int _randomSeedHash;
+
+    [SerializeField] private float _burnAroundDuration = 0.5f;
+    private float _currentTime = 0;
     
     private void Awake()
     {
@@ -43,8 +46,17 @@ public class OilObject : MonoBehaviour, IPoolingObject, IEffectable
 
     private void FixedUpdate()
     {
-        if(_isFire)
-            BurnAround();
+        if (_isFire)
+        {
+            _currentTime += Time.deltaTime;
+            if (_currentTime >= _burnAroundDuration)
+            {
+                _currentTime = 0;
+                BurnAround();
+                
+            }
+
+        }
         
     }
 
@@ -86,8 +98,23 @@ public class OilObject : MonoBehaviour, IPoolingObject, IEffectable
     public void OnPush()
     {
         
+        
+        
     }
 
+    [ContextMenu("DebugSEtOil")]
+    private void DEbugSetOil()
+    {
+        SetOil(100);
+    }
+    
+    [ContextMenu("DebugFire")]
+    private void FireDick()
+    {
+        ApplyEffect(EffectStateTypeEnum.Burn, 1, 1);
+    } 
+    
+    
     public void ApplyEffect(EffectStateTypeEnum type, float duration, int level)
     {
         if(_isFire || leftOilAmount <= 0) return;
