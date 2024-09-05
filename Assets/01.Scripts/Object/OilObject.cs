@@ -1,7 +1,8 @@
+using System.Collections;
+using Crogen.ObjectPooling;
 using EffectSystem;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
-using Random = UnityEngine.Random;
 
 public class OilObject : MonoBehaviour, IPoolingObject, IEffectable
 {
@@ -10,7 +11,8 @@ public class OilObject : MonoBehaviour, IPoolingObject, IEffectable
 
     private DecalProjector _decalCompo;
     private Material _decalMaterial;
-    [SerializeField] private float _detectRange = 4f;   
+    [SerializeField] private float _detectRange = 4f;
+    private int setOilAmount = 0;
     public int leftOilAmount = 0;
     [SerializeField] private LayerMask _targetLayer;
     private bool _isFire;
@@ -27,13 +29,15 @@ public class OilObject : MonoBehaviour, IPoolingObject, IEffectable
         _randomSeedHash = Shader.PropertyToID("RandomSeed");
         _decalCompo = GetComponentInChildren<DecalProjector>();
         _decalMaterial = _decalCompo.material;
+        _fireVFX = transform.Find("FireVFX").GetComponent<ParticleSystem>();
 
     }
 
     public void SetOil(int amount)
     {
-        _decalMaterial.SetFloat(_dissolveHash, amount);
+        _decalMaterial.SetFloat(_dissolveHash, 0.7f);
         leftOilAmount = amount;
+        setOilAmount = amount;
         _isFire = false;
     }
 
@@ -49,7 +53,8 @@ public class OilObject : MonoBehaviour, IPoolingObject, IEffectable
     {
         int amount =  Physics.OverlapSphereNonAlloc(transform.position, _detectRange, hits, _targetLayer);
         if (amount == 0) return;
-        
+        leftOilAmount--;
+        _decalMaterial.SetFloat(_dissolveHash, Mathf.Lerp(0.7f, 0f, leftOilAmount/(float)setOilAmount));
         for (int i = 0; i < amount; i++)
         {
             if (hits[i].transform.TryGetComponent(out IEffectable effectTarget))
@@ -57,6 +62,19 @@ public class OilObject : MonoBehaviour, IPoolingObject, IEffectable
                 effectTarget.ApplyEffect(EffectStateTypeEnum.Burn, 1f,1);
             }
         }
+
+        if (leftOilAmount <= 0)
+        {
+            _isFire = false;
+            StartCoroutine(SetOffFireCoroutine());
+        }
+    }
+
+    private IEnumerator SetOffFireCoroutine()
+    {
+        _fireVFX.Stop();
+        yield return new WaitForSeconds(2f);
+        this.Push();
     }
 
     public void OnPop()
@@ -72,7 +90,7 @@ public class OilObject : MonoBehaviour, IPoolingObject, IEffectable
 
     public void ApplyEffect(EffectStateTypeEnum type, float duration, int level)
     {
-        if(_isFire) return;
+        if(_isFire || leftOilAmount <= 0) return;
         if (type == EffectStateTypeEnum.Burn)
         {
             _isFire = true;
