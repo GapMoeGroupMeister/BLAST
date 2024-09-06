@@ -20,7 +20,7 @@ public class MagazineInfo
 	[HideInInspector] public float curAttackDelay;
 	
 	public Action<Vector3> OnAttackEvent;
-	[SerializeField] public Transform[] bulletFirePositions;
+	public Transform[] bulletFirePositions;
 
 	[HideInInspector] public Vector3 AttackDirection;
 
@@ -133,7 +133,7 @@ public abstract class PlayerPart : MonoBehaviour
 	
 	protected void FixedUpdate()
 	{
-		magazineInfoL.AttackDirection = magazineInfoR.AttackDirection = transform.rotation * Vector3.forward;
+		magazineInfoL.AttackDirection = magazineInfoR.AttackDirection = transform.forward;
 	}
 
 	private IEnumerator CoroutineUpdateOverload()

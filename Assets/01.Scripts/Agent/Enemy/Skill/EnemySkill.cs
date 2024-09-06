@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
-public class EnemySkill<T> where T : Enemy
+public abstract class EnemySkill<T> where T : Enemy
 {
     public EnemySkill(T owner)
     {
@@ -18,29 +19,22 @@ public class EnemySkill<T> where T : Enemy
         _afterDelay = afterDelay;
     }
 
-    private T _owner;
+    protected T _owner;
 
-    private float _cooltime;
-    private float _cooldownTimer = 0;
-    private float _speed;
-    private float _beforeDelay;
-    private float _afterDelay;
+    protected float _lastUseTime = 0;
+    protected float _cooltime;
+    protected float _speed;
+    protected float _beforeDelay;
+    protected float _afterDelay;
+    public bool IsUsing = false;
 
 
-    public bool IsUseable { get; protected set; }
-
-    public void UpdateCooltime()
-    {
-        if (IsUseable) return;
-        _cooldownTimer += Time.deltaTime;
-        if (_cooldownTimer > _cooltime)
-        {
-            IsUseable = true;
-        }
-    }
+    public abstract bool IsUseable();
 
     public virtual void UseSkill()
     {
-        _cooldownTimer = 0;
+        _lastUseTime = Time.time;
+        IsUsing = true;
     }
+
 }

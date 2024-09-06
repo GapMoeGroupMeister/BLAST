@@ -24,21 +24,26 @@ public abstract class Enemy : Agent, IPoolingObject
 
     private void OnValidate()
     {
-        targetTrm = FindObjectOfType<Player>().transform;
+        Player player = FindObjectOfType<Player>();
+        if (player != null) targetTrm = player.transform;
     }
 
     protected override void Awake()
     {
         base.Awake();
+        HealthCompo.OnDieEvent.AddListener(OnDie);
         capsuleCollider = GetComponent<CapsuleCollider>();
         EnemyMovementCompo = MovementCompo as EnemyMovement;
         EnemyMovementCompo.Initialize(this);
     }
 
+    public abstract void OnDie();
+
     public abstract void AnimationEndTrigger(AnimationTriggerEnum triggerBit);
 
     public virtual void OnPop()
     {
+        CanStateChangeable = true;
     }
 
     public virtual void OnPush()

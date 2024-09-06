@@ -1,44 +1,61 @@
-using DG.Tweening;
 using UnityEngine;
 using Crogen.ObjectPooling;
+using System.Collections;
 
 public class Bullet : MonoBehaviour, IPoolingObject
 {
 	public float speed = 100f;
 	public float duration = 5f;
-	public LayerMask _whatIsEnemy;
-	private Collider[] _colliders;
 
-	[SerializeField] private float _collisionRadius = 1f;
-
+	[SerializeField] private DamageCaster _damageCaster;
+	[SerializeField] private int _damage = 1;
 	public PoolType OriginPoolType { get; set; }
 	GameObject IPoolingObject.gameObject { get; set; }
 
+	private bool _isDie;
+
 	private void Awake()
 	{
-		_colliders = new Collider[10];
+		_damageCaster.OnDamageCastSuccessEvent += OnDie;
 	}
 
 	private void FixedUpdate()
 	{
-		if (Physics.OverlapSphereNonAlloc(transform.position, _collisionRadius, _colliders, _whatIsEnemy) > 0)
-		{
-			transform.DOKill();
-			this.Push();
-		}
-	}
-
-	private void OnDrawGizmos()
-	{
-		Gizmos.DrawWireSphere(transform.position, _collisionRadius);
+		if(_isDie == false)
+			_damageCaster.CastDamage(_damage);
 	}
 
 	public void OnPop()
 	{
-		transform.DOMove(transform.forward * speed * duration, duration).OnComplete(() => { this.Push(); });
+		_isDie = false;
+		StartCoroutine(CoroutineMove());
 	}
 
 	public void OnPush()
 	{
+		_isDie = true;
+		StopAllCoroutines();
+	}
+
+	private IEnumerator CoroutineMove()
+	{
+		float currentTime = 0;
+		float percent = 0;
+		Vector3 startPos = transform.position;
+		Vector3 endPos = transform.forward * speed * duration;
+		while (percent < 1)
+		{
+			yield return null;
+			currentTime += Time.deltaTime;
+			percent = currentTime / duration;
+			transform.position = Vector3.Lerp(startPos, endPos, percent);
+		}
+		yield return new WaitForSeconds(duration);
+		OnDie();
+	}
+
+	private void OnDie()
+	{
+		this.Push();
 	}
 }

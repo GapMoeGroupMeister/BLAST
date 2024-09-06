@@ -45,7 +45,7 @@ namespace Crogen.ObjectPooling
 
                 return poolingObject;
             }
-            catch (KeyNotFoundException e)
+            catch
             {
                 Debug.LogError("You should make 'PoolManager'!");
                 throw;
@@ -80,7 +80,7 @@ namespace Crogen.ObjectPooling
 
                 return poolingObject;
             }
-            catch (KeyNotFoundException e)
+            catch
             {
                 Debug.LogError("You should make 'PoolManager'!");
                 throw;
@@ -118,7 +118,7 @@ namespace Crogen.ObjectPooling
 
                 return poolingObject;
             }
-            catch (KeyNotFoundException e)
+            catch
             {
                 Debug.LogError("You should make 'PoolManager'!");
                 throw;

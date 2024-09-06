@@ -37,4 +37,10 @@ public class DragoonEnemy : Enemy
     {
         StateMachine.CurrentState.AnimationTrigger(triggerBit);
     }
+
+    public override void OnDie()
+    {
+        StateMachine.ChangeState(DragoonEnemyStateEnum.Dead);
+        CanStateChangeable = false;
+    }
 }

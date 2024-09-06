@@ -1,4 +1,6 @@
-﻿public class PlayerDefaultPart : PlayerPart
+﻿using UnityEngine;
+
+public class PlayerDefaultPart : PlayerPart
 {
     protected override void OnEnable()
     {
