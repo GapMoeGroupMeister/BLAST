@@ -12,8 +12,6 @@ public class Bullet : MonoBehaviour, IPoolingObject
 	public PoolType OriginPoolType { get; set; }
 	GameObject IPoolingObject.gameObject { get; set; }
 
-	private bool _isDie;
-
 	private void Awake()
 	{
 		_damageCaster.OnDamageCastSuccessEvent += OnDie;
@@ -21,19 +19,16 @@ public class Bullet : MonoBehaviour, IPoolingObject
 
 	private void FixedUpdate()
 	{
-		if(_isDie == false)
-			_damageCaster.CastDamage(_damage);
+		_damageCaster.CastDamage(_damage);
 	}
 
 	public void OnPop()
 	{
-		_isDie = false;
 		StartCoroutine(CoroutineMove());
 	}
 
 	public void OnPush()
 	{
-		_isDie = true;
 		StopAllCoroutines();
 	}
 
