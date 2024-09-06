@@ -37,7 +37,7 @@ public class Bullet : MonoBehaviour, IPoolingObject
 		float currentTime = 0;
 		float percent = 0;
 		Vector3 startPos = transform.position;
-		Vector3 endPos = transform.forward * speed * duration;
+		Vector3 endPos = transform.position + transform.forward * speed * duration;
 		while (percent < 1)
 		{
 			yield return null;
