@@ -18,6 +18,7 @@ public class OilObject : MonoBehaviour, IPoolingObject, IEffectable
     private bool _isFire;
     private Collider[] hits;
     private ParticleSystem _fireVFX;
+    private Collider _collider;
 
     private int _dissolveHash;
     private int _randomSeedHash;
@@ -27,7 +28,8 @@ public class OilObject : MonoBehaviour, IPoolingObject, IEffectable
     
     private void Awake()
     {
-        hits = new Collider[3];
+        _collider = GetComponent<Collider>();
+        hits = new Collider[6];
         _dissolveHash = Shader.PropertyToID("_DissolveHeight");
         _randomSeedHash = Shader.PropertyToID("_RandomSeed");
         _decalCompo = GetComponentInChildren<DecalProjector>();
@@ -82,6 +84,7 @@ public class OilObject : MonoBehaviour, IPoolingObject, IEffectable
         }
     }
 
+
     private IEnumerator SetOffFireCoroutine()
     {
         _fireVFX.Stop();
@@ -101,19 +104,6 @@ public class OilObject : MonoBehaviour, IPoolingObject, IEffectable
         
         
     }
-
-    [ContextMenu("DebugSEtOil")]
-    private void DEbugSetOil()
-    {
-        SetOil(100);
-    }
-    
-    [ContextMenu("DebugFire")]
-    private void FireDick()
-    {
-        ApplyEffect(EffectStateTypeEnum.Burn, 1, 1);
-    } 
-    
     
     public void ApplyEffect(EffectStateTypeEnum type, float duration, int level)
     {
