@@ -35,4 +35,10 @@ public class WizardEnemy : Enemy
     {
         StateMachine.CurrentState.AnimationTrigger(triggerBit);
     }
+
+    public override void OnDie()
+	{
+        StateMachine.ChangeState(WizardEnemyStateEnum.Dead);
+        CanStateChangeable = false;
+    }
 }

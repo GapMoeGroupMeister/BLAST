@@ -46,6 +46,7 @@ public abstract class DamageCaster : MonoBehaviour
 		if(_usingExcludeCast)
 			ExcludeCast(_castColliders);
 
+
 		//데미지 입히기
 		for (int i = 0; i < _castColliders.Length; ++i)
 		{
@@ -53,11 +54,13 @@ public abstract class DamageCaster : MonoBehaviour
 			{
 				break;
 			}
+			else
+			{
+				OnDamageCastSuccessEvent?.Invoke();
+			}
 			if (_castColliders[i].TryGetComponent(out Agent agent))
 			{
-				agent.AgentEffectController.ApplyEffect(_effectStateType, _effectDuration, _effectLevel);
 				agent.HealthCompo.TakeDamage(damage);
-				OnDamageCastSuccessEvent?.Invoke();
 			}
 			if(_castColliders[i].TryGetComponent(out IEffectable effectable))
 			{

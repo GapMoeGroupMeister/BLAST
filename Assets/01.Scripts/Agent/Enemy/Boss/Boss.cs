@@ -33,4 +33,11 @@ public class Boss<T> : Enemy where T : Boss<T>
     {
         StateMachine.CurrentState.AnimationTrigger(triggerBit);
     }
+
+	public override void OnDie()
+	{
+        //Á×´Â °Í Á» ºÎÅ¹
+        //StateMachine.ChangeState(Boss.Dead);
+        CanStateChangeable = false;
+    }
 }

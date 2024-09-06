@@ -6,7 +6,6 @@ public class BulletSizeUpWeapon : Weapon
     {
         if(base.UseWeapon())
         {
-            //여기에 로직
         }	
 
         return true;

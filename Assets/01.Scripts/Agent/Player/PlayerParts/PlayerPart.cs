@@ -133,7 +133,7 @@ public abstract class PlayerPart : MonoBehaviour
 	
 	protected void FixedUpdate()
 	{
-		magazineInfoL.AttackDirection = magazineInfoR.AttackDirection = transform.rotation * Vector3.forward;
+		magazineInfoL.AttackDirection = magazineInfoR.AttackDirection = transform.forward;
 	}
 
 	private IEnumerator CoroutineUpdateOverload()
