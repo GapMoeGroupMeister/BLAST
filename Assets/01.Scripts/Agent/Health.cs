@@ -9,7 +9,7 @@ public class Health : MonoBehaviour, IDamageable
     public bool IsInvincibility { get; set; }
     private int _currentHealth = 0;
     public int CurrentHealth => _currentHealth;
-    private int _maxHealth;
+    [SerializeField] private int _maxHealth;
     public int MaxHealth => _maxHealth;
     
     [SerializeField] private bool _isDead;

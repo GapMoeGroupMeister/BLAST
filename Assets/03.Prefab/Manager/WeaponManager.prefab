@@ -375,8 +375,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d30f16dccf5f4210b728299194e73a8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canUse: 1
-  weaponEnabled: 1
+  canUse: 0
+  weaponEnabled: 0
   _cooldown: 3
   level: 1
   isUniqueWeapon: 0
@@ -453,7 +453,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1dab2cfaa5b4b73a198e7fcbec72c55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canUse: 1
+  canUse: 0
   weaponEnabled: 0
   _cooldown: 5
   level: 1
@@ -655,9 +655,10 @@ MonoBehaviour:
   player: {fileID: 0}
   whatIsEnemy:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   _findAroundRound: 50
-  _ballisticMissilePrefab: {fileID: 0}
+  _ballisticMissilePrefab: {fileID: -6635482705123328200, guid: 5d3719d3826350640bcd04b046aa11e0,
+    type: 3}
 --- !u!1 &7992053496910435731
 GameObject:
   m_ObjectHideFlags: 0

@@ -37,4 +37,10 @@ public class DistructDroneEnemy : Enemy
     {
         StateMachine.CurrentState.AnimationTrigger(triggerBit);
     }
+
+	public override void OnDie()
+	{
+        StateMachine.ChangeState(DistructDroneEnemyStateEnum.Dead);
+        CanStateChangeable = false;
+    }
 }

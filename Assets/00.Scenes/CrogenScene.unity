@@ -1142,6 +1142,26 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8272785344364087472, guid: a26c55cfcafa7f44c9da997bcca03dd6,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8272785344364087472, guid: a26c55cfcafa7f44c9da997bcca03dd6,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8272785344364087472, guid: a26c55cfcafa7f44c9da997bcca03dd6,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8272785344364087472, guid: a26c55cfcafa7f44c9da997bcca03dd6,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1462,6 +1482,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -5367446765215496364, guid: c9abff9bcf16355419ca440043afd5ff,
+        type: 3}
+      propertyPath: _maxHealth
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7133687479449973321, guid: c9abff9bcf16355419ca440043afd5ff,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2195,36 +2220,15 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3431340043160336752, guid: 9ddb693b15025364d89aea50a130ce07,
-        type: 3}
-      propertyPath: canUse
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4758979373639413987, guid: 9ddb693b15025364d89aea50a130ce07,
         type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 1684598896}
-    - target: {fileID: 4758979373639413987, guid: 9ddb693b15025364d89aea50a130ce07,
-        type: 3}
-      propertyPath: whatIsEnemy.m_Bits
-      value: 512
-      objectReference: {fileID: 0}
-    - target: {fileID: 4758979373639413987, guid: 9ddb693b15025364d89aea50a130ce07,
-        type: 3}
-      propertyPath: _ballisticMissilePrefab
-      value: 
-      objectReference: {fileID: -6635482705123328200, guid: 5d3719d3826350640bcd04b046aa11e0,
-        type: 3}
     - target: {fileID: 4942398911378062715, guid: 9ddb693b15025364d89aea50a130ce07,
         type: 3}
       propertyPath: m_Name
       value: WeaponManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 5246632227947119379, guid: 9ddb693b15025364d89aea50a130ce07,
-        type: 3}
-      propertyPath: canUse
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6165231877111597868, guid: 9ddb693b15025364d89aea50a130ce07,
         type: 3}
