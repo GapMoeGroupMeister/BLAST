@@ -18,15 +18,20 @@ public class OilObject : MonoBehaviour, IPoolingObject, IEffectable
     private bool _isFire;
     private Collider[] hits;
     private ParticleSystem _fireVFX;
+    private Collider _collider;
 
     private int _dissolveHash;
     private int _randomSeedHash;
+
+    [SerializeField] private float _burnAroundDuration = 0.5f;
+    private float _currentTime = 0;
     
     private void Awake()
     {
-        hits = new Collider[3];
-        _dissolveHash = Shader.PropertyToID("DissolveHeight");
-        _randomSeedHash = Shader.PropertyToID("RandomSeed");
+        _collider = GetComponent<Collider>();
+        hits = new Collider[6];
+        _dissolveHash = Shader.PropertyToID("_DissolveHeight");
+        _randomSeedHash = Shader.PropertyToID("_RandomSeed");
         _decalCompo = GetComponentInChildren<DecalProjector>();
         _decalMaterial = _decalCompo.material;
         _fireVFX = transform.Find("FireVFX").GetComponent<ParticleSystem>();
@@ -43,8 +48,17 @@ public class OilObject : MonoBehaviour, IPoolingObject, IEffectable
 
     private void FixedUpdate()
     {
-        if(_isFire)
-            BurnAround();
+        if (_isFire)
+        {
+            _currentTime += Time.deltaTime;
+            if (_currentTime >= _burnAroundDuration)
+            {
+                _currentTime = 0;
+                BurnAround();
+                
+            }
+
+        }
         
     }
 
@@ -54,7 +68,7 @@ public class OilObject : MonoBehaviour, IPoolingObject, IEffectable
         int amount =  Physics.OverlapSphereNonAlloc(transform.position, _detectRange, hits, _targetLayer);
         if (amount == 0) return;
         leftOilAmount--;
-        _decalMaterial.SetFloat(_dissolveHash, Mathf.Lerp(0.7f, 0f, leftOilAmount/(float)setOilAmount));
+        _decalMaterial.SetFloat(_dissolveHash, Mathf.Lerp(0f, 0.7f, leftOilAmount/(float)setOilAmount));
         for (int i = 0; i < amount; i++)
         {
             if (hits[i].transform.TryGetComponent(out IEffectable effectTarget))
@@ -69,6 +83,7 @@ public class OilObject : MonoBehaviour, IPoolingObject, IEffectable
             StartCoroutine(SetOffFireCoroutine());
         }
     }
+
 
     private IEnumerator SetOffFireCoroutine()
     {
@@ -86,8 +101,10 @@ public class OilObject : MonoBehaviour, IPoolingObject, IEffectable
     public void OnPush()
     {
         
+        
+        
     }
-
+    
     public void ApplyEffect(EffectStateTypeEnum type, float duration, int level)
     {
         if(_isFire || leftOilAmount <= 0) return;
