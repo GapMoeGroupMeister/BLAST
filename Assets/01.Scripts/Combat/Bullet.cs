@@ -2,7 +2,7 @@ using UnityEngine;
 using Crogen.ObjectPooling;
 using System.Collections;
 
-public class Bullet : MonoBehaviour, IPoolingObject
+public class Bullet : MonoBehaviour, IPoolingObject, ISizeupable
 {
 	public float speed = 100f;
 	public float duration = 5f;
@@ -12,7 +12,9 @@ public class Bullet : MonoBehaviour, IPoolingObject
 	public PoolType OriginPoolType { get; set; }
 	GameObject IPoolingObject.gameObject { get; set; }
 
-	private bool _isDie;
+	public BulletSizeUpWeapon BulletSizeUpWeapon { get; set; }
+	public float MultipliedCount { get; set; }
+	public Vector3 DefaultSize { get; set; }
 
 	private void Awake()
 	{
@@ -21,19 +23,17 @@ public class Bullet : MonoBehaviour, IPoolingObject
 
 	private void FixedUpdate()
 	{
-		if(_isDie == false)
-			_damageCaster.CastDamage(_damage);
+		_damageCaster.CastDamage(_damage);
 	}
 
 	public void OnPop()
 	{
-		_isDie = false;
 		StartCoroutine(CoroutineMove());
+		OnResize();
 	}
 
 	public void OnPush()
 	{
-		_isDie = true;
 		StopAllCoroutines();
 	}
 
@@ -42,7 +42,7 @@ public class Bullet : MonoBehaviour, IPoolingObject
 		float currentTime = 0;
 		float percent = 0;
 		Vector3 startPos = transform.position;
-		Vector3 endPos = transform.forward * speed * duration;
+		Vector3 endPos = transform.position + transform.forward * speed * duration;
 		while (percent < 1)
 		{
 			yield return null;
@@ -57,5 +57,10 @@ public class Bullet : MonoBehaviour, IPoolingObject
 	private void OnDie()
 	{
 		this.Push();
+	}
+
+	public void OnResize()
+	{
+		transform.localScale = DefaultSize * MultipliedCount;
 	}
 }

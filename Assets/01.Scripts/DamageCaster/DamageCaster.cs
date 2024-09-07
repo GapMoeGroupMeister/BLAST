@@ -70,6 +70,8 @@ public abstract class DamageCaster : MonoBehaviour
 		}
 
 		OnCasterEvent?.Invoke();
+		//이거 내부적으로 메모리를 직접 초기화해서 가벼움
+		Array.Clear(_castColliders, 0, _castColliders.Length);
 	}
 
 	protected void ExcludeCast(Collider[] colliders)

@@ -15,7 +15,6 @@ public class ParticlePlayer : MonoBehaviour, IPoolingObject
 
 	public void OnParticleSystemStopped()
 	{
-		Debug.Log("dfdf");
 		this.Push();
 	}
 
