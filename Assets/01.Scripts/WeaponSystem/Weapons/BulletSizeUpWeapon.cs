@@ -12,7 +12,6 @@ public class BulletSizeUpWeapon : Weapon
         sizeupableList = FindExtension.FindInterfaces<ISizeupable>().ToList();
 		for (int i = 0; i < sizeupableList.Count; ++i)
 		{
-            Debug.Log("dfdf");
             sizeupableList[i].MultipliedCount = 1f;
             sizeupableList[i].DefaultSize = Vector3.one;
             sizeupableList[i].BulletSizeUpWeapon = this;
@@ -28,6 +27,11 @@ public class BulletSizeUpWeapon : Weapon
 
         return true;
     }
+
+    public void ResetSize(ISizeupable sizeupable)
+	{
+
+	}
 
     private void SetMultipliedCounts()
 	{

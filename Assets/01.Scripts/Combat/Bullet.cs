@@ -18,8 +18,6 @@ public class Bullet : MonoBehaviour, IPoolingObject, ISizeupable
 
 	private void Awake()
 	{
-		DefaultSize = transform.localScale;
-		MultipliedCount = 1f;
 		_damageCaster.OnDamageCastSuccessEvent += OnDie;
 	}
 
