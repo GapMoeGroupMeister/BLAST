@@ -21,6 +21,12 @@ public class Bullet : MonoBehaviour, IPoolingObject, ISizeupable
 		_damageCaster.OnDamageCastSuccessEvent += OnDie;
 	}
 
+	private void Start()
+	{
+		BulletSizeUpWeapon = WeaponManager.Instance.GetWeapon(WeaponType.BulletSizeUp) as BulletSizeUpWeapon;
+		BulletSizeUpWeapon.ResetSize(this);
+	}
+
 	private void FixedUpdate()
 	{
 		_damageCaster.CastDamage(_damage);

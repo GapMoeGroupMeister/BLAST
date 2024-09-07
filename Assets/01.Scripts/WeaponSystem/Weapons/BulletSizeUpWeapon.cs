@@ -6,16 +6,9 @@ public class BulletSizeUpWeapon : Weapon
 {
     public List<ISizeupable> sizeupableList;
 
-	private void Start()
+	private void Awake()
 	{
         sizeupableList = new List<ISizeupable>();
-        sizeupableList = FindExtension.FindInterfaces<ISizeupable>().ToList();
-		for (int i = 0; i < sizeupableList.Count; ++i)
-		{
-            sizeupableList[i].MultipliedCount = 1f;
-            sizeupableList[i].DefaultSize = Vector3.one;
-            sizeupableList[i].BulletSizeUpWeapon = this;
-        }
     }
 
 	public override bool UseWeapon()
@@ -30,8 +23,11 @@ public class BulletSizeUpWeapon : Weapon
 
     public void ResetSize(ISizeupable sizeupable)
 	{
-
-	}
+        sizeupable.MultipliedCount = 1f;
+        sizeupable.DefaultSize = Vector3.one;
+        sizeupable.BulletSizeUpWeapon = this;
+        sizeupableList.Add(sizeupable);
+    }
 
     private void SetMultipliedCounts()
 	{
