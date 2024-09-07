@@ -2,7 +2,7 @@ using UnityEngine;
 using Crogen.ObjectPooling;
 using System.Collections;
 
-public class Bullet : MonoBehaviour, IPoolingObject
+public class Bullet : MonoBehaviour, IPoolingObject, ISizeupable
 {
 	public float speed = 100f;
 	public float duration = 5f;
@@ -12,8 +12,14 @@ public class Bullet : MonoBehaviour, IPoolingObject
 	public PoolType OriginPoolType { get; set; }
 	GameObject IPoolingObject.gameObject { get; set; }
 
+	public BulletSizeUpWeapon BulletSizeUpWeapon { get; set; }
+	public float MultipliedCount { get; set; }
+	public Vector3 DefaultSize { get; set; }
+
 	private void Awake()
 	{
+		DefaultSize = transform.localScale;
+		MultipliedCount = 1f;
 		_damageCaster.OnDamageCastSuccessEvent += OnDie;
 	}
 
@@ -25,6 +31,7 @@ public class Bullet : MonoBehaviour, IPoolingObject
 	public void OnPop()
 	{
 		StartCoroutine(CoroutineMove());
+		OnResize();
 	}
 
 	public void OnPush()
@@ -52,5 +59,10 @@ public class Bullet : MonoBehaviour, IPoolingObject
 	private void OnDie()
 	{
 		this.Push();
+	}
+
+	public void OnResize()
+	{
+		transform.localScale = DefaultSize * MultipliedCount;
 	}
 }
