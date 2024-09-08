@@ -519,51 +519,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4675976240277001983, guid: 9ddb693b15025364d89aea50a130ce07,
-        type: 3}
-      propertyPath: canUse
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4675976240277001983, guid: 9ddb693b15025364d89aea50a130ce07,
-        type: 3}
-      propertyPath: _cooldown
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4675976240277001983, guid: 9ddb693b15025364d89aea50a130ce07,
-        type: 3}
-      propertyPath: _oilShootTerm
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4675976240277001983, guid: 9ddb693b15025364d89aea50a130ce07,
-        type: 3}
-      propertyPath: weaponEnabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4675976240277001983, guid: 9ddb693b15025364d89aea50a130ce07,
-        type: 3}
-      propertyPath: whatIsEnemy.m_Bits
-      value: 512
-      objectReference: {fileID: 0}
     - target: {fileID: 4942398911378062715, guid: 9ddb693b15025364d89aea50a130ce07,
         type: 3}
       propertyPath: m_Name
       value: WeaponManager
       objectReference: {fileID: 0}
-    - target: {fileID: 5246632227947119379, guid: 9ddb693b15025364d89aea50a130ce07,
-        type: 3}
-      propertyPath: weaponEnabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5381559122253746953, guid: 9ddb693b15025364d89aea50a130ce07,
-        type: 3}
-      propertyPath: _curWeapons.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5381559122253746953, guid: 9ddb693b15025364d89aea50a130ce07,
-        type: 3}
-      propertyPath: _curWeapons.Array.data[0]
-      value: 
-      objectReference: {fileID: 780809615}
     - target: {fileID: 6165231877111597868, guid: 9ddb693b15025364d89aea50a130ce07,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -801,18 +761,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 694fe0a287e8b4f40a81ccd64be8ddad, type: 3}
---- !u!114 &780809615 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4758979373639413987, guid: 9ddb693b15025364d89aea50a130ce07,
-    type: 3}
-  m_PrefabInstance: {fileID: 535098698}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2896ca279df9467bac2d712f7030d3e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &821524878
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1343,6 +1291,21 @@ MonoBehaviour:
   - poolType: OilObject
     prefab: {fileID: 772679227044409652, guid: 4dbf66e48480d01408a78fbb1035857a, type: 3}
     poolCount: 5
+  - poolType: DefaultExplosion
+    prefab: {fileID: 6849960665822617967, guid: f5cc09e6664fd854788aaaeba38a9b24,
+      type: 3}
+    poolCount: 10
+  - poolType: Turret
+    prefab: {fileID: 55155931996995198, guid: 1ba1ea050c6642446bd4a5cc934561a2, type: 3}
+    poolCount: 10
+  - poolType: EnergyBall_Laser
+    prefab: {fileID: 3789575531813594740, guid: ffc0dc3a02acc46468c10db23f0a5334,
+      type: 3}
+    poolCount: 12
+  - poolType: FireBullet
+    prefab: {fileID: 2756234889255895914, guid: b8a5fabc58236344591e81ef8e1a9dd9,
+      type: 3}
+    poolCount: 12
 --- !u!224 &956772290 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2229290250153757920, guid: a26c55cfcafa7f44c9da997bcca03dd6,
@@ -2615,7 +2578,7 @@ PrefabInstance:
     - target: {fileID: 4451756809564099535, guid: b8a5fabc58236344591e81ef8e1a9dd9,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9952784
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4451756809564099535, guid: b8a5fabc58236344591e81ef8e1a9dd9,
         type: 3}
@@ -2625,7 +2588,7 @@ PrefabInstance:
     - target: {fileID: 4451756809564099535, guid: b8a5fabc58236344591e81ef8e1a9dd9,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.09706176
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4451756809564099535, guid: b8a5fabc58236344591e81ef8e1a9dd9,
         type: 3}
@@ -2640,12 +2603,17 @@ PrefabInstance:
     - target: {fileID: 4451756809564099535, guid: b8a5fabc58236344591e81ef8e1a9dd9,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 11.14
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4451756809564099535, guid: b8a5fabc58236344591e81ef8e1a9dd9,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7937788255384944580, guid: b8a5fabc58236344591e81ef8e1a9dd9,
+        type: 3}
+      propertyPath: speed
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
