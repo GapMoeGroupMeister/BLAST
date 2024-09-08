@@ -4965,6 +4965,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e8f813dfd6391e47919172c066ee6e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _level: 0
+  _damage: 0
+  _speed: 4
+  _duration: 3
+  _radius: 15
+  _whatIsEnemy:
+    serializedVersion: 2
+    m_Bits: 512
+  _attackDelay: 0.35
+  _curAttacktime: 0
+  _maxAttackableCount: 5
+  _laserPoolType: 16
 --- !u!1 &5811620600011710873
 GameObject:
   m_ObjectHideFlags: 0

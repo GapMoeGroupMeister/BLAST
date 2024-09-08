@@ -13,6 +13,7 @@ public class EnergySphereLaser : MonoBehaviour, IPoolingObject
 	[SerializeField] private DamageCaster _damageCaster;
 
 	[Space(25f)]
+	[SerializeField] private LineRenderer _lineRenderer;
 	private Transform _target;
 
 	public PoolType OriginPoolType { get; set; }
@@ -32,6 +33,7 @@ public class EnergySphereLaser : MonoBehaviour, IPoolingObject
 	{
 		SetTarget(target);
 		SetDamage(damage);
+		StartCoroutine(CoroutineOnAttack());
 	}
 
 	private void SetTarget(Transform target)
@@ -52,11 +54,16 @@ public class EnergySphereLaser : MonoBehaviour, IPoolingObject
 		_target = null;
 	}
 
-	private void FixedUpdate()
+	private IEnumerator CoroutineOnAttack()
 	{
-		if (_target == null) return;
-
-		_damageCasterTrm.position = _target.position;
-		_damageCaster.CastDamage(_damage);
+		yield return new WaitForSeconds(0.1f);
+		if (_target != null)
+		{
+			Vector3 attackPoint = _target.position - transform.position;
+			attackPoint.y = transform.position.y;
+			_lineRenderer.SetPosition(1, attackPoint);
+			_damageCasterTrm.position = _target.position;
+			_damageCaster.CastDamage(_damage);
+		}
 	}
 }

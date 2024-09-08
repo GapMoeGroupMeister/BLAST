@@ -7,7 +7,10 @@ public class EnergySphere : WeaponEffect
 {
 	[SerializeField] private float _speed = 4f;
 	[SerializeField] private float _duration = 3f;
-	[SerializeField] private float _currentLifetime = 0f;
+	private float _currentLifetime = 0f;
+	[SerializeField] private float _radius = 5f;
+	[SerializeField] private LayerMask _whatIsEnemy;
+
 	[Header("Laser option")]
 	[SerializeField] private float _attackDelay = 0.35f;
 	[SerializeField] private float _curAttacktime = 0;
@@ -43,19 +46,21 @@ public class EnergySphere : WeaponEffect
 
 	private IEnumerator CoroutineOnAttack()
 	{
+		Collider[] colliders = new Collider[_maxAttackableCount];
+		Physics.OverlapSphereNonAlloc(transform.position, _radius, colliders, _whatIsEnemy);
+
 		for (int i = 0; i < _maxAttackableCount; ++i)
 		{
+			if (colliders[i] == null) break;
 			yield return new WaitForSeconds(0.01f);
 			EnergySphereLaser laser = 
 				gameObject.Pop(_laserPoolType, 
 				transform.position, 
 				Quaternion.identity) as EnergySphereLaser;
 
-			//laser.Init()
-
+			laser.Init(colliders[i].transform, _damage);
 		}
 	}
-
 
 	private void FixedUpdate()
 	{
@@ -65,5 +70,12 @@ public class EnergySphere : WeaponEffect
 	private void OnDie()
 	{
 
+	}
+
+	private void OnDrawGizmos()
+	{
+		Gizmos.color = Color.blue;
+		Gizmos.DrawWireSphere(transform.position, _radius);
+		Gizmos.color = Color.white;
 	}
 }
