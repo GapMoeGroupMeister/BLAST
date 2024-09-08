@@ -1,3 +1,5 @@
+using Crogen.ObjectPooling;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,7 +20,12 @@ public class EnergySphereLaser : MonoBehaviour, IPoolingObject
 
 	private void Awake()
 	{
-		
+		_damageCaster.OnDamageCastSuccessEvent += HandleDamageCast;
+	}
+
+	private void HandleDamageCast()
+	{
+		this.Push();
 	}
 
 	public void SetTarget(Transform target)
@@ -36,6 +43,7 @@ public class EnergySphereLaser : MonoBehaviour, IPoolingObject
 
 	public void OnPush()
 	{
+		_target = null;
 	}
 
 	private void FixedUpdate()
