@@ -43,9 +43,9 @@ public class Nuclear : MonoBehaviour
             _decalMaterial.SetFloat(_waveSpeedHash, Mathf.Lerp(1f, 5f, currentTime / _waitDelay));
             yield return null;
         }
-        yield return new WaitForSeconds(_waitDelay);
         _rangeMark.enabled = false;
         _damageCaster.CastDamage(nuclearDamage);
+        ZoomController.Instance.ForceZoomOut(60f, 0.5f, 4f);
         _nuclearVFX.Play();
         
     }
