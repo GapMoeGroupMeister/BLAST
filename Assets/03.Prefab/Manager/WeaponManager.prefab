@@ -98,9 +98,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1100e29d1564d018053acb1208ddedf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canUse: 0
-  weaponEnabled: 0
-  _cooldown: 0
+  canUse: 1
+  weaponEnabled: 1
+  _cooldown: 10
   level: 1
   isUniqueWeapon: 1
   partType: 3
@@ -112,7 +112,7 @@ MonoBehaviour:
   whatIsEnemy:
     serializedVersion: 2
     m_Bits: 0
-  _oilShootTerm: 0
+  _oilShootTerm: 0.2
 --- !u!1 &2923285216936907121
 GameObject:
   m_ObjectHideFlags: 0
@@ -604,6 +604,8 @@ MonoBehaviour:
   whatIsEnemy:
     serializedVersion: 2
     m_Bits: 0
+  _nuclear: {fileID: 7818928688725486981, guid: a81944314ba1d874f9f7169501e8d54d,
+    type: 3}
 --- !u!1 &6445368848195410076
 GameObject:
   m_ObjectHideFlags: 0
