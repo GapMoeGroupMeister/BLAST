@@ -42,12 +42,12 @@ public abstract class DamageCaster : MonoBehaviour
 	{
 		CastOverlap();
 
-		//Á¦¿Ü
+		//ì œì™¸
 		if(_usingExcludeCast)
 			ExcludeCast(_castColliders);
 
 
-		//µ¥¹ÌÁö ÀÔÈ÷±â
+		//ë°ë¯¸ì§€ ì…íˆê¸°
 		for (int i = 0; i < _castColliders.Length; ++i)
 		{
 			if (_castColliders[i] == null)
@@ -70,7 +70,7 @@ public abstract class DamageCaster : MonoBehaviour
 		}
 
 		OnCasterEvent?.Invoke();
-		//ÀÌ°Å ³»ºÎÀûÀ¸·Î ¸Ş¸ğ¸®¸¦ Á÷Á¢ ÃÊ±âÈ­ÇØ¼­ °¡º­¿ò
+		//ì´ê±° ë‚´ë¶€ì ìœ¼ë¡œ ë©”ëª¨ë¦¬ë¥¼ ì§ì ‘ ì´ˆê¸°í™”í•´ì„œ ê°€ë²¼ì›€
 		Array.Clear(_castColliders, 0, _castColliders.Length);
 	}
 

@@ -1,12 +1,22 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class NewClearWeapon : Weapon
 {
+    [SerializeField] private Nuclear _nuclear;
+
+    private void Awake()
+    {
+        _nuclear = Instantiate(_nuclear);
+    }
+
     public override bool UseWeapon()
     {
         if(base.UseWeapon())
         {
-            //여기에 로직
+            _nuclear.SetPos(player.transform.position);
+            _nuclear.ExplodeNuclear();
+            
         }	
 
         return true;
