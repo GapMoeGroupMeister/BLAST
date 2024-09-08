@@ -173,6 +173,9 @@ MonoBehaviour:
   whatIsEnemy:
     serializedVersion: 2
     m_Bits: 0
+  _turretPoolType: 0
+  _turretMaxAmount: 10
+  _enemyFindRadius: 20
 --- !u!114 &1536740028326696760
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -298,9 +301,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25491bae6aaa480ba011cbe34822de72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canUse: 0
+  canUse: 1
   weaponEnabled: 0
-  _cooldown: 0
+  _cooldown: 15
   level: 1
   isUniqueWeapon: 0
   partType: 0
@@ -311,7 +314,9 @@ MonoBehaviour:
   player: {fileID: 0}
   whatIsEnemy:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
+  _energySphereEffect: {fileID: 717835522645430315, guid: 3c0fc751a34f3b5489367c5c3d2f4704,
+    type: 3}
 --- !u!114 &2935236773720576356
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -428,7 +433,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d9a7716e69548e0a73515dc1e1f7d6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canUse: 1
+  canUse: 0
   weaponEnabled: 0
   _cooldown: 3
   level: 1

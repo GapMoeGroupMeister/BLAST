@@ -12,9 +12,7 @@ public class Bullet : MonoBehaviour, IPoolingObject, ISizeupable
 	public PoolType OriginPoolType { get; set; }
 	GameObject IPoolingObject.gameObject { get; set; }
 
-	public BulletSizeUpWeapon BulletSizeUpWeapon { get; set; }
 	public float MultipliedCount { get; set; }
-	public Vector3 DefaultSize { get; set; }
 
 	private void Awake()
 	{
@@ -23,8 +21,7 @@ public class Bullet : MonoBehaviour, IPoolingObject, ISizeupable
 
 	private void Start()
 	{
-		BulletSizeUpWeapon = WeaponManager.Instance.GetWeapon(WeaponType.BulletSizeUp) as BulletSizeUpWeapon;
-		BulletSizeUpWeapon.ResetSize(this);
+		(WeaponManager.Instance.GetWeapon(WeaponType.BulletSizeUp) as BulletSizeUpWeapon).ResizeEvent += OnResize;
 	}
 
 	private void FixedUpdate()
@@ -35,7 +32,6 @@ public class Bullet : MonoBehaviour, IPoolingObject, ISizeupable
 	public void OnPop()
 	{
 		StartCoroutine(CoroutineMove());
-		OnResize();
 	}
 
 	public void OnPush()
@@ -65,8 +61,9 @@ public class Bullet : MonoBehaviour, IPoolingObject, ISizeupable
 		this.Push();
 	}
 
-	public void OnResize()
+	public void OnResize(float multipliedCount)
 	{
-		transform.localScale = DefaultSize * MultipliedCount;
+		MultipliedCount = multipliedCount;
+		transform.localScale = Vector3.one * MultipliedCount;
 	}
 }

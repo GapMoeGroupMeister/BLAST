@@ -28,11 +28,17 @@ public class EnergySphereLaser : MonoBehaviour, IPoolingObject
 		this.Push();
 	}
 
-	public void SetTarget(Transform target)
+	public void Init(Transform target, int damage)
+	{
+		SetTarget(target);
+		SetDamage(damage);
+	}
+
+	private void SetTarget(Transform target)
 	{
 		this._target = target;
 	}
-	public void SetDamage(int damage)
+	private void SetDamage(int damage)
 	{
 		_damage = damage;
 	}

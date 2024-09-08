@@ -136,6 +136,8 @@ public abstract class PlayerPart : MonoBehaviour
 		magazineInfoL.AttackDirection = magazineInfoR.AttackDirection = transform.forward;
 	}
 
+	public Vector3 GetAttackDir() => transform.forward;
+
 	private IEnumerator CoroutineUpdateOverload()
 	{
 		float currentTimeL=0;
