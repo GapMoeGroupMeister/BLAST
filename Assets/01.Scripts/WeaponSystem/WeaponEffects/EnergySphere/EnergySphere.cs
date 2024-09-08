@@ -21,6 +21,7 @@ public class EnergySphere : WeaponEffect
 	public override void Init(uint level, Weapon weaponBase)
 	{
 		base.Init(level, weaponBase);
+		_damage = 1 + Mathf.RoundToInt(level / 10);
 	}
 
 	private void Update()
