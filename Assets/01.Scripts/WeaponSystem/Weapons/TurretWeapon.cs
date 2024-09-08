@@ -19,7 +19,7 @@ public class TurretWeapon : Weapon
 	{
 		if(base.UseWeapon())
 		{
-			SpawnTurret();
+			SpawnTurret();	
 		}	
 
 		return true;
@@ -27,26 +27,24 @@ public class TurretWeapon : Weapon
 
 	private void SpawnTurret()
 	{
-		StartCoroutine(SpawnAndShotCoroutine());
+		StartCoroutine(SpawnCoroutine());
 	}
 
-	private IEnumerator SpawnAndShotCoroutine()
+	private IEnumerator SpawnCoroutine()
 	{
 		if (_turretAmount >= _turretMaxAmount)
 			yield break;
+		
 
-		var pos = GetCirclePosition(player.transform.position, 5f);
+		var pos = GetCirclePosition(player.transform.position, 20f);
 		
 		for (int i = 0; i < level; i++)
 		{
 			_turrets.Add(SpawnTurretObj(pos[i]));
 			yield return null;
 		}
-		yield return new WaitForSeconds(0.5f);
-		foreach (var turret in _turrets)
-		{
-			turret.Shot();
-		}
+
+		yield return null;
 	}
 
 	private List<Vector3> GetCirclePosition(Vector3 transformPosition, float f)
@@ -82,6 +80,9 @@ public class TurretWeapon : Weapon
 	private Transform GetNearestEnemy(Vector3 pos)
 	{
 		int count = Physics.OverlapSphereNonAlloc(pos, _enemyFindRadius, _colliders, whatIsEnemy);
+		
+		if (count == 0)
+			return null;
 		return _colliders[0].transform;
 
 	}
@@ -90,6 +91,14 @@ public class TurretWeapon : Weapon
 	protected override void Update()
 	{
 		base.Update();
+		if (_turrets.Count == 0) return;
+		for (int i = 0; i < _turrets.Count; i++)
+		{
+			if (!_turrets[i].IsPushed) continue;
+			_turretAmount--;
+			_turrets.RemoveAt(i);
+			i--;
+		}
 	}
 
 	private void OnDrawGizmosSelected()
