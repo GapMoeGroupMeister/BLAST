@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using Crogen.ObjectPooling;
 using EffectSystem;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
+using Random = UnityEngine.Random;
 
 public class OilObject : MonoBehaviour, IPoolingObject, IEffectable
 {
@@ -19,7 +21,7 @@ public class OilObject : MonoBehaviour, IPoolingObject, IEffectable
     private Collider[] hits;
     private ParticleSystem _fireVFX;
     private Collider _collider;
-
+    private int _fireLevel;
     private int _dissolveHash;
     private int _randomSeedHash;
 
@@ -33,14 +35,22 @@ public class OilObject : MonoBehaviour, IPoolingObject, IEffectable
         _dissolveHash = Shader.PropertyToID("_DissolveHeight");
         _randomSeedHash = Shader.PropertyToID("_RandomSeed");
         _decalCompo = GetComponentInChildren<DecalProjector>();
-        _decalMaterial = _decalCompo.material;
+        Debug.Log(_decalCompo.material); 
+        _decalMaterial = Instantiate(_decalCompo.material); // sharedMaterial이 아닌데 모든 객체의 메테리얼에 참조된 속성의 값이 변경됨.
+        _decalCompo.material = _decalMaterial;
         _fireVFX = transform.Find("FireVFX").GetComponent<ParticleSystem>();
 
     }
+    //
+    // private void Start()
+    // {
+    //     _decalMaterial = _decalCompo.material;
+    //     Debug.Log(_decalMaterial);
+    // }
 
     public void SetOil(int amount)
     {
-        _decalMaterial.SetFloat(_dissolveHash, 0.7f);
+        _decalCompo.material.SetFloat(_dissolveHash, 0.7f);
         leftOilAmount = amount;
         setOilAmount = amount;
         _isFire = false;
@@ -68,12 +78,12 @@ public class OilObject : MonoBehaviour, IPoolingObject, IEffectable
         int amount =  Physics.OverlapSphereNonAlloc(transform.position, _detectRange, hits, _targetLayer);
         if (amount == 0) return;
         leftOilAmount--;
-        _decalMaterial.SetFloat(_dissolveHash, Mathf.Lerp(0f, 0.7f, leftOilAmount/(float)setOilAmount));
+        _decalCompo.material.SetFloat(_dissolveHash, Mathf.Lerp(0f, 0.7f, leftOilAmount/(float)setOilAmount));
         for (int i = 0; i < amount; i++)
         {
             if (hits[i].transform.TryGetComponent(out IEffectable effectTarget))
             {
-                effectTarget.ApplyEffect(EffectStateTypeEnum.Burn, 1f,1);
+                effectTarget.ApplyEffect(EffectStateTypeEnum.Burn, 10f,_fireLevel);
             }
         }
 
@@ -95,7 +105,7 @@ public class OilObject : MonoBehaviour, IPoolingObject, IEffectable
     public void OnPop()
     {
         _isFire = false;
-        _decalMaterial.SetFloat(_randomSeedHash, Random.Range(-10f, 10f));
+        _decalCompo.material.SetFloat(_randomSeedHash, Random.Range(-10f, 10f));
     }
 
     public void OnPush()
@@ -107,6 +117,7 @@ public class OilObject : MonoBehaviour, IPoolingObject, IEffectable
     
     public void ApplyEffect(EffectStateTypeEnum type, float duration, int level)
     {
+        _fireLevel = level;
         if(_isFire || leftOilAmount <= 0) return;
         if (type == EffectStateTypeEnum.Burn)
         {
