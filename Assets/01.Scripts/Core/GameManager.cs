@@ -8,6 +8,11 @@ public class GameManager : MonoSingleton<GameManager>
 
 	private void Update()
 	{
+		if (Input.GetKeyDown(KeyCode.P))
+		{
+			ZoomController.Instance.ForceZoomOut(60, 0.1f, 3);
+		}
+
 		if(Input.GetKey(KeyCode.I))
 		{
 			Vector3 ranPos = new Vector3(Random.Range(-10, 10), 0, Random.Range(-10, 10));
