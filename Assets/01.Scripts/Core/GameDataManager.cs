@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using EasySave.Json;
 using System.IO;
+using UnityEditor.Experimental.GraphView;
 
 public class GameDataManager : MonoSingleton<GameDataManager>
 {
@@ -19,17 +20,79 @@ public class GameDataManager : MonoSingleton<GameDataManager>
     public Action OnGatherCoin;
     public Action OnUseCoin;
 
-    public DataSave s;
-
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
-
-        s = default;
-
         Load();
     }
 
+    #region GetDatas
+
+    public bool TryGetPart(int id, out PartSave part)
+    {
+        foreach(var p in parts)
+        {
+            if(p.id == id)
+            {
+                part = p;
+                return true;
+            }
+        }
+
+        part = null;
+        return false;
+    }
+
+    public bool TryGetWeapon(int id, out WeaponSave weapon)
+    {
+        foreach (var w in weapons)
+        {
+            if (w.id == id)
+            {
+                weapon = w;
+                return true;
+            }
+        }
+
+        weapon = null;
+        return false;
+    }
+
+    public void SetParts(List<Node> parts)
+    {
+        foreach(var p in parts)
+        {
+            PartNodeSO partSO = p.node as PartNodeSO;
+
+            this.parts.ForEach(part =>
+            {
+                if(part.id == (int)partSO.openPart)
+                {
+                    Debug.Log(part.id);
+                    part.enabled = p.IsNodeEnable;
+                }
+            });
+        }
+    }
+
+    public void SetWeapons(List<Node> weapons)
+    {
+        foreach (var w in weapons)
+        {
+            WeaponNodeSO weaponSO = w.node as WeaponNodeSO;
+
+            this.weapons.ForEach(weapon =>
+            {
+                if (weapon.id == (int)weaponSO.weapon)
+                {
+                    Debug.Log(weapon.id);
+                    weapon.enabled = w.IsNodeEnable;
+                }
+            });
+        }
+    }
+
+    #endregion
 
 
     #region Coin
@@ -62,6 +125,7 @@ public class GameDataManager : MonoSingleton<GameDataManager>
     {
         //저장해둔게 없으면
         DataSave save = new DataSave();
+        Debug.Log("밍밍");
 
         save.coin = coin;
         save.parts = parts;
@@ -73,11 +137,18 @@ public class GameDataManager : MonoSingleton<GameDataManager>
 
     public void Load()
     {
-        string path = Path.Combine(Application.dataPath, _path, ".json");
+        string path = EasyToJson.GetFilePath(_path);// Path.Combine(Application.dataPath, "/10.Database/Json/", _path, ".json");
 
+        
         if (!File.Exists(path))
         {
+            DataSave s = new DataSave();
+            EasyToJson.ToJson(s, _path, true);
 
+            coin = s.coin;
+            parts = s.parts;
+            weapons = s.weapons;
+            return;
         }
 
         DataSave save = EasyToJson.FromJson<DataSave>(_path);
