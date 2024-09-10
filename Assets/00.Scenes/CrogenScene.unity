@@ -896,6 +896,14 @@ MonoBehaviour:
     prefab: {fileID: 3789575531813594740, guid: ffc0dc3a02acc46468c10db23f0a5334,
       type: 3}
     poolCount: 12
+  - poolType: FireBullet
+    prefab: {fileID: 2756234889255895914, guid: b8a5fabc58236344591e81ef8e1a9dd9,
+      type: 3}
+    poolCount: 12
+  - poolType: LightningHit
+    prefab: {fileID: 5933602760919840800, guid: fcb74f28d107e284e80af037bfec14ca,
+      type: 3}
+    poolCount: 16
 --- !u!1001 &962037325
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2227,6 +2235,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 144204279329110225, guid: 9ddb693b15025364d89aea50a130ce07,
+        type: 3}
+      propertyPath: canUse
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4758979373639413987, guid: 9ddb693b15025364d89aea50a130ce07,
         type: 3}
       propertyPath: player

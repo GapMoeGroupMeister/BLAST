@@ -13,8 +13,10 @@ public class WeaponManager : MonoSingleton<WeaponManager>
 	{
         _weapons = new Dictionary<WeaponType, Weapon>();
         _curWeapons = new List<Weapon>();
-        
-        
+    }
+
+	private void Start()
+    {
         foreach (WeaponType weaponEnum in Enum.GetValues(typeof(WeaponType)))
         {
             if (weaponEnum == WeaponType.None) continue;
@@ -28,11 +30,6 @@ public class WeaponManager : MonoSingleton<WeaponManager>
             if (weaponCompo.weaponEnabled)
                 AppendWeapon(weaponEnum);
         }
-    }
-
-	private void Start()
-    {
-        
     }
 
     //지금은 디버깅 땜시 하는 건 없음
