@@ -9,12 +9,14 @@ using UnityEditor;
 [CreateAssetMenu(menuName = "SO/TechTree")]
 public class TechTreeSO : ScriptableObject
 {
-    public List<NodeSO> nodes;
+    public List<NodeSO> nodes = new List<NodeSO>();
+
 
 #if UNITY_EDITOR
     public NodeSO CreateNode(System.Type type)
     {
         NodeSO node = ScriptableObject.CreateInstance(type) as NodeSO;
+
         node.id = nodes.Count;
         node.name = $"{type.Name}-{node.id}";
         node.guid = GUID.Generate().ToString();
@@ -54,7 +56,7 @@ public class TechTreeSO : ScriptableObject
         //    child.lastNodes.Add(parent);
 
         bool isExsist = parent.nextNodes.Where((node) => node.id == child.id).Count() > 0;
-        if(!isExsist) parent.nextNodes.Add(child);
+        if (!isExsist) parent.nextNodes.Add(child);
 
         //if (parent.nextNodes.Contains(child) == false)
         //    parent.nextNodes.Add(child);
