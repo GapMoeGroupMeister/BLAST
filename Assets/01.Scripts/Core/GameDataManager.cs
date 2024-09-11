@@ -3,12 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using EasySave.Json;
 using System.IO;
-using UnityEditor.Experimental.GraphView;
-
 public class GameDataManager : MonoSingleton<GameDataManager>
 {
     [SerializeField] private WeaponUIDataSO _weaponUIDataSO;
-    [SerializeField] private TechTree _tree;
     private string _path = "GameData";
 
     private int coin = 0;
@@ -28,11 +25,11 @@ public class GameDataManager : MonoSingleton<GameDataManager>
 
     #region GetDatas
 
-    public bool TryGetPart(int id, out PartSave part)
+    public bool TryGetPart(PlayerPartType partType, out PartSave part)
     {
         foreach(var p in parts)
         {
-            if(p.id == id)
+            if(p.id == (int)partType)
             {
                 part = p;
                 return true;
@@ -43,11 +40,11 @@ public class GameDataManager : MonoSingleton<GameDataManager>
         return false;
     }
 
-    public bool TryGetWeapon(int id, out WeaponSave weapon)
+    public bool TryGetWeapon(WeaponType weaponType, out WeaponSave weapon)
     {
         foreach (var w in weapons)
         {
-            if (w.id == id)
+            if (w.id == (int)weaponType)
             {
                 weapon = w;
                 return true;

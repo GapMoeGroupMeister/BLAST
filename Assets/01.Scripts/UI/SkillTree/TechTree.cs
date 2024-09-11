@@ -110,14 +110,14 @@ public class TechTree : MonoBehaviour, IWindowPanel
         {
             if (n is PartNodeSO part)
             {
-                if (GameDataManager.Instance.TryGetPart((int)part.openPart, out PartSave p))
+                if (GameDataManager.Instance.TryGetPart(part.openPart, out PartSave p))
                 {
                     nodeDic[n].Init(this, p.enabled);
                 }
             }
             else if (n is WeaponNodeSO weapon)
             {
-                if (GameDataManager.Instance.TryGetWeapon((int)weapon.weapon, out WeaponSave w))
+                if (GameDataManager.Instance.TryGetWeapon(weapon.weapon, out WeaponSave w))
                 {
                     nodeDic[n].Init(this, w.enabled);
                 }
