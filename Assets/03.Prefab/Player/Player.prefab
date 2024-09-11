@@ -639,8 +639,10 @@ MonoBehaviour:
   _whatIsGround:
     serializedVersion: 2
     m_Bits: 64
-  _moveSpeed: 15
+  moveSpeed: 15
   _rotateSpeed: 5
+  dashPower: 5
+  lookDirection: {x: 0, y: 0, z: 0}
 --- !u!54 &4304136632676638823
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -709,6 +711,7 @@ MonoBehaviour:
   OnDieEvent:
     m_PersistentCalls:
       m_Calls: []
+  _maxHealth: 0
   _isDead: 0
 --- !u!114 &3008086090903353795
 MonoBehaviour:
