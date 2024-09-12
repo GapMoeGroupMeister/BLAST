@@ -1,10 +1,11 @@
-﻿using EffectSystem;
+﻿using Crogen.ObjectPooling;
+using EffectSystem;
 using UnityEngine;
 
 public class EMPWeapon : Weapon
 {
     [SerializeField] private SphereDamageCaster _damageCaster;
-    [SerializeField] private ParticleSystem _explosionEffect;
+    [SerializeField] private PoolType _explosionEffectPoolType;
 
     public override void WeaponInit()
     {
@@ -19,8 +20,7 @@ public class EMPWeapon : Weapon
             WeaponInit();
             _damageCaster.CastDamage((int)(level * 10));
             if (player == null) Debug.LogError("Player is null");
-            ParticleSystem explosionEffect = Instantiate(_explosionEffect, player.transform.position, Quaternion.identity);
-            explosionEffect.Play();
+            gameObject.Pop(_explosionEffectPoolType, player.transform.position, Quaternion.identity);
             // Stun effect
         }	
 
