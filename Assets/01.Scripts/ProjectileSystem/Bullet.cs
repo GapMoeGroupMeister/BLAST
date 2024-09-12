@@ -2,7 +2,7 @@ using UnityEngine;
 using Crogen.ObjectPooling;
 using System.Collections;
 
-public class Bullet : MonoBehaviour, IPoolingObject, ISizeupable
+public class Bullet : MonoBehaviour, IPoolingObject
 {
 	public float speed = 100f;
 	public float duration = 5f;
@@ -12,8 +12,6 @@ public class Bullet : MonoBehaviour, IPoolingObject, ISizeupable
 	public PoolType OriginPoolType { get; set; }
 	GameObject IPoolingObject.gameObject { get; set; }
 
-	public float MultipliedCount { get; set; }
-
 	private void Awake()
 	{
 		_damageCaster.OnDamageCastSuccessEvent += OnDie;
@@ -21,7 +19,6 @@ public class Bullet : MonoBehaviour, IPoolingObject, ISizeupable
 
 	private void Start()
 	{
-		(WeaponManager.Instance.GetWeapon(WeaponType.BulletSizeUp) as BulletSizeUpWeapon).ResizeEvent += OnResize;
 	}
 
 	private void FixedUpdate()
@@ -59,11 +56,5 @@ public class Bullet : MonoBehaviour, IPoolingObject, ISizeupable
 	private void OnDie()
 	{
 		this.Push();
-	}
-
-	public void OnResize(float multipliedCount)
-	{
-		MultipliedCount = multipliedCount;
-		transform.localScale = Vector3.one * MultipliedCount;
 	}
 }

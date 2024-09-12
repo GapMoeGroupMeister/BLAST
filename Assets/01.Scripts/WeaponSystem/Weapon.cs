@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public enum CompareMode
 {
@@ -46,6 +47,7 @@ public abstract class Weapon : MonoBehaviour
 
 	[HideInInspector] public Player player;
 	public event CooldownInfoEvent OnCooldownEvent;
+	public event Action<uint> OnWeaponUseEvent;
 	[Header("적이 뭐임?")]
 	public LayerMask whatIsEnemy;
 
@@ -125,6 +127,7 @@ public abstract class Weapon : MonoBehaviour
 		if (_curCooldown > 0 || weaponEnabled == false) return false;
 
 		_curCooldown = _cooldown;
+		OnWeaponUseEvent?.Invoke(level);
 		return true;
 	}
 }
