@@ -1,19 +1,22 @@
-﻿using UnityEngine;
+﻿using EffectSystem;
+using UnityEngine;
 
 public class EMPWeapon : Weapon
 {
+    [SerializeField] private SphereDamageCaster _damageCaster;
     public override bool UseWeapon()
     {
         if(base.UseWeapon())
         {
-            //여기에 로직
+            _damageCaster.CastDamage((int)(level * 10));
+            // Stun effect
         }	
 
         return true;
     }
-
-    protected override void Update()
+    
+    public void ChangeCooldown(float value)
     {
-        base.Update();
+        _cooldown = value;
     }
 }
