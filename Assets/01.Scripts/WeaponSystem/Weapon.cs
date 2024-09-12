@@ -47,7 +47,7 @@ public abstract class Weapon : MonoBehaviour
 
 	[HideInInspector] public Player player;
 	public event CooldownInfoEvent OnCooldownEvent;
-	public event Action<uint> OnWeaponUseEvent;
+	public event Action<float> OnWeaponUseEvent;
 	[Header("적이 뭐임?")]
 	public LayerMask whatIsEnemy;
 
