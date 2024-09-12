@@ -12,16 +12,19 @@ public enum Boss524StateEnum
 public enum Boss524SkillEnum
 {
     Dash,
-    //Blast,
-    //Laser,
+    Blast,
+    Laser,
 }
 
 public class Boss524 : Boss<Boss524>
 {
     [HideInInspector]
     public Transform cannonTrm;
+    public List<EnemyLaser> laserVisualList;
     [field: SerializeField]
     public LinePatternVisual LinePatternVisual { get; private set; }
+    [field: SerializeField]
+    public CirclePatternVisual CirclePatternVisual { get; private set; }
 
     public EnemySkillManager<Boss524> SkillManager { get; private set; }
 

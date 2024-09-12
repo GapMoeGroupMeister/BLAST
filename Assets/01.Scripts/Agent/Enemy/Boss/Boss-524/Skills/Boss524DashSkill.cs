@@ -16,7 +16,7 @@ public class Boss524DashSkill : EnemySkill<Boss524>
     {
         if (Time.time >= _lastUseTime + _cooltime)
         {
-            if (Vector3.Distance(_owner.transform.position, _owner.targetTrm.position) <= 200)
+            if (Vector3.Distance(_owner.transform.position, _owner.targetTrm.position) > 50)
             {
                 return true;
             }
@@ -39,9 +39,9 @@ public class Boss524DashSkill : EnemySkill<Boss524>
         _owner.transform.rotation = Quaternion.LookRotation(dir.normalized);
         _owner.LinePatternVisual.StartLinePattern(startPos, destination, 1.5f, 0.5f, 1.5f);
         yield return new WaitForSeconds(_beforeDelay);
-        _owner.transform.DOMove(destination, 0.6f);
-        yield return new WaitForSeconds(0.6f + _afterDelay);
-        _skillManager.SetUsingSKill(false);
+        _owner.transform.DOMove(destination, 1.3f);
+        yield return new WaitForSeconds(1.3f + _afterDelay);
+        _skillManager.SetUsingSkill(false);
         _lastUseTime = Time.time;
     }
 }

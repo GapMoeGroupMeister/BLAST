@@ -18,7 +18,7 @@ public class LinePatternVisual : MonoBehaviour
         transform.localScale = new Vector3(xSize, 1, dir.magnitude / 8f);
         transform.rotation = Quaternion.LookRotation(dir.normalized);
         Vector3 pos = Vector3.Lerp(startPos, endPos, 0.5f);
-        pos.y = 0.05f;
+        pos.y = 0f;
         transform.position = pos;
 
         StartCoroutine(LinePatternCoroutine(duration, afterDelay));

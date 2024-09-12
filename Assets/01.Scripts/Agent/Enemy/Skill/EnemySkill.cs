@@ -35,7 +35,7 @@ public abstract class EnemySkill<T> where T : Enemy
 
     public virtual void UseSkill()
     {
-        _skillManager.SetUsingSKill(true);
+        _skillManager.SetUsingSkill(true);
     }
 
 }

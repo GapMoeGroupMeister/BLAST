@@ -37,12 +37,12 @@ public class EnemySkillManager<T> where T : Enemy
             {
                 _currentUsingSkill = skill;
                 skill.UseSkill();
-                SetUsingSKill(true);
+                SetUsingSkill(true);
                 return true;
             }
         }
         return false;
     }
 
-    public void SetUsingSKill(bool isUsing) => IsUsingSkill = isUsing;
+    public void SetUsingSkill(bool isUsing) => IsUsingSkill = isUsing;
 }
