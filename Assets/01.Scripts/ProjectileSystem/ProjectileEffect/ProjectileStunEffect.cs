@@ -4,13 +4,13 @@ public class ProjectileStunEffect : ProjectileEffect
 {
 	[SerializeField] private DamageCaster _damageCaster;
 
-	private void OnEnable()
+	private void Start()
 	{
 		Init(WeaponType.StunBullet);
 		_baseWeapon.OnWeaponUseEvent += OnEffect;
 	}
 
-	private void OnDisable()
+	private void OnDestroy()
 	{
 		_baseWeapon.OnWeaponUseEvent -= OnEffect;
 	}
@@ -18,6 +18,5 @@ public class ProjectileStunEffect : ProjectileEffect
 	public override void OnEffect(float level)
 	{
 		base.OnEffect(level);
-		_damageCaster.effectStateType = EffectSystem.EffectStateTypeEnum.Stun;
 	}
 }
