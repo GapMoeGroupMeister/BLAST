@@ -20,6 +20,8 @@ public class Boss524 : Boss<Boss524>
 {
     [HideInInspector]
     public Transform cannonTrm;
+    [field: SerializeField]
+    public LinePatternVisual LinePatternVisual { get; private set; }
 
     public EnemySkillManager<Boss524> SkillManager { get; private set; }
 
