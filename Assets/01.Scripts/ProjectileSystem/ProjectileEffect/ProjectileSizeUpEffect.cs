@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class ProjectileSizeUpEffect : ProjectileEffect
 {
-	private void OnEnable()
+	private void Start()
 	{
 		Init(WeaponType.BulletSizeUp);
 		_baseWeapon.OnWeaponUseEvent += OnEffect;
 	}
 
-	private void OnDisable()
+	private void OnDestroy()
 	{
 		_baseWeapon.OnWeaponUseEvent -= OnEffect;
 	}
@@ -16,6 +16,7 @@ public class ProjectileSizeUpEffect : ProjectileEffect
 	public override void OnEffect(float level)
 	{
 		base.OnEffect(level);
-		transform.localScale = Vector3.one * (((level / 10f) * 0.55f) + 1f);
+		transform.localScale = Vector3.one + (Vector3.one*(level / 10f));
+		Debug.Log(level);
 	}
 }

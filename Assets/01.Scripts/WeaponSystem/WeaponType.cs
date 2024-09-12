@@ -7,7 +7,6 @@
 	PenetrationBullet,
 
 	//Fire
-	StrayBullet,
 	Napalm,
 	OilTerror,
 
