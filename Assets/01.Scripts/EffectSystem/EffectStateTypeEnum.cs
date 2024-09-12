@@ -6,6 +6,7 @@
         Burn,
         Shock,
         Acid,
-        Repair
+        Repair,
+        Stun
     }
 }

@@ -1,10 +1,12 @@
 using UnityEngine;
 
-public class ProjectileSizeUpEffect : ProjectileEffect
+public class ProjectileStunEffect : ProjectileEffect
 {
+	[SerializeField] private DamageCaster _damageCaster;
+
 	private void OnEnable()
 	{
-		Init(WeaponType.BulletSizeUp);
+		Init(WeaponType.StunBullet);
 		_baseWeapon.OnWeaponUseEvent += OnEffect;
 	}
 
@@ -16,6 +18,6 @@ public class ProjectileSizeUpEffect : ProjectileEffect
 	public override void OnEffect(float level)
 	{
 		base.OnEffect(level);
-		transform.localScale = Vector3.one * (((level / 10f) * 0.55f) + 1f);
+		_damageCaster.effectStateType = EffectSystem.EffectStateTypeEnum.Stun;
 	}
 }
