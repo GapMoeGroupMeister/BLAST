@@ -5,7 +5,7 @@ using DG.Tweening;
 using Crogen.ObjectPooling;
 using System;
 
-public class BallisticMissile : WeaponEffect, ISizeupable
+public class BallisticMissile : WeaponEffect
 {
 	private Transform _target;
 	[SerializeField] private BallisticMissileSign _ballisticMissileSignPrefab;
@@ -14,12 +14,9 @@ public class BallisticMissile : WeaponEffect, ISizeupable
 	[SerializeField] private float _maxPosY = 150f;
 	[SerializeField] private DamageCaster _damageCaster;
 
-	public float MultipliedCount { get; set; }
-
 	public override void Init(uint level, Weapon weaponBase)
 	{
 		base.Init(level, weaponBase);
-		(WeaponManager.Instance.GetWeapon(WeaponType.BulletSizeUp) as BulletSizeUpWeapon).ResizeEvent += OnResize;
 		_damage = 2;
 	}
 
@@ -64,11 +61,5 @@ public class BallisticMissile : WeaponEffect, ISizeupable
 		_damageCaster.CastDamage(_damage);
 		gameObject.Pop(_explosionPoolType, transform.position, Quaternion.identity);
 		Destroy(gameObject);
-	}
-
-	public void OnResize(float multipliedCount)
-	{
-		MultipliedCount = multipliedCount;
-		transform.localScale = Vector3.one * MultipliedCount;
 	}
 }
