@@ -6,6 +6,7 @@ public class EMPWeapon : Weapon
 {
     [SerializeField] private SphereDamageCaster _damageCaster;
     [SerializeField] private PoolType _explosionEffectPoolType;
+    [SerializeField] private int _defaultDamage = 10;
 
     public override void WeaponInit()
     {
@@ -18,7 +19,7 @@ public class EMPWeapon : Weapon
         if(base.UseWeapon())
         {
             WeaponInit();
-            _damageCaster.CastDamage((int)(level * 10));
+            _damageCaster.CastDamage(_defaultDamage);
             if (player == null) Debug.LogError("Player is null");
             gameObject.Pop(_explosionEffectPoolType, player.transform.position, Quaternion.identity);
             // Stun effect
@@ -30,5 +31,10 @@ public class EMPWeapon : Weapon
     public void ChangeCooldown(float value)
     {
         _cooldown = value;
+    }
+    
+    public void ChangeDamage(int value)
+    {
+        _defaultDamage = value;
     }
 }
