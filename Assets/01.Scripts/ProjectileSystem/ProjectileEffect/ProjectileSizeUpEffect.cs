@@ -17,6 +17,5 @@ public class ProjectileSizeUpEffect : ProjectileEffect
 	{
 		base.OnEffect(level);
 		transform.localScale = Vector3.one + (Vector3.one*(level / 10f));
-		Debug.Log(level);
 	}
 }
