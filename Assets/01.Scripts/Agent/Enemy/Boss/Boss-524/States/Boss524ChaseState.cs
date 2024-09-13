@@ -22,6 +22,7 @@ public class Boss524ChaseState : EnemyState<Boss524>
     {
         base.Enter();
         SetDestination(_enemyBase.targetTrm.position);
+        Debug.Log("엄");
     }
 
     public override void UpdateState()
@@ -32,27 +33,21 @@ public class Boss524ChaseState : EnemyState<Boss524>
             _targetDestination = _enemyBase.EnemyMovementCompo.NavAgent.destination;
         }
 
-        float distance = Vector3.Distance(_targetDestination, _enemyBase.targetTrm.position);
-
-        if (distance >= 3f)
-        {
-            SetDestination(_enemyBase.targetTrm.position);
-        }
+        SetDestination(_enemyBase.targetTrm.position);
 
         foreach (Boss524SkillEnum skillEnum in _skillEnums)
         {
             if (_enemyBase.SkillManager.TryUseSkill(skillEnum))
             {
-                Debug.Log("시발련아");
                 _stateMachine.ChangeState(Boss524StateEnum.UseSkill);
                 break;
             }
         }
 
-        if (Vector3.Distance(_enemyBase.transform.position, _enemyBase.targetTrm.position) <= _enemyBase.attackDistance)
-        {
-            _stateMachine.ChangeState(Boss524StateEnum.Attack);
-        }
+        //if (Vector3.Distance(_enemyBase.transform.position, _enemyBase.targetTrm.position) <= _enemyBase.attackDistance)
+        //{
+        //    _stateMachine.ChangeState(Boss524StateEnum.Attack);
+        //}
 
     }
 }

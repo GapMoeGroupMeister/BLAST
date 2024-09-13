@@ -40,6 +40,17 @@ public class TechTreeGraphView : GraphView
         DeleteElements(graphElements);
         graphViewChanged += OnGraphViewChanged;
 
+        if(_tree.nodes.Count == 0)
+        {
+            StartNodeSO node = ScriptableObject.CreateInstance<StartNodeSO>();
+            node.id = 0;
+            node.name = "StartNode";
+            node.guid = GUID.Generate().ToString();
+            node.nextNodes = new List<NodeSO>();
+
+            _tree.nodes.Add(node);
+        }
+
         //Create Node View
         _tree.nodes.ForEach(n => CreateNodeView(n));
 
@@ -68,6 +79,7 @@ public class TechTreeGraphView : GraphView
     private void CreateNode(Type type)
     {
         NodeSO node = _tree.CreateNode(type);
+        if (node == null) return;
         CreateNodeView(node);
     }
 
@@ -125,9 +137,14 @@ public class TechTreeGraphView : GraphView
     {
         //base.BuildContextualMenu(evt);
         {
-            NodeSO n = ScriptableObject.CreateInstance<NodeSO>();
-            Type type = n.GetType();
-            evt.menu.AppendAction($"[{type.BaseType.Name}] {type.Name}", (a) => CreateNode(type));
+            var types = TypeCache.GetTypesDerivedFrom<NodeSO>();
+            foreach (var t in types)
+            {
+                if (t == typeof(StartNodeSO)) continue;
+                evt.menu.AppendAction($"[{t.BaseType.Name}] {t.Name}", (a) => CreateNode(t));
+            }
+            //NodeSO n = ScriptableObject.CreateInstance<NodeSO>();
+            //Type type = n.GetType();
         }
     }
 }

@@ -9,6 +9,8 @@ public struct WeaponUIData
     public string weaponName;
     [TextArea]
     public string description;
+    public bool isUniqueWeapon;
+    public PlayerPartType parentPart;
 }
 
 [CreateAssetMenu(menuName = "SO/Weapon/WeaponUIData")]

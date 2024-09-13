@@ -17,7 +17,6 @@ public class Node : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     [SerializeField] private float _enableDuration = 0.5f;
     [SerializeField] private float _disableDuration = 0.2f;
 
-
     private bool _isNodeEnable = false;         //현재 노드가 뚫려있는지
     private bool _isNodeActive = false;         //현재 노드를 뚫을준비가 되있는지
     public bool IsNodeEnable => _isNodeEnable;
@@ -60,11 +59,17 @@ public class Node : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 
         for (int i = 0; i < node.nextNodes.Count; i++)
         {
-            Node nextNode = _tree.GetNode(node.nextNodes[i]);
-            nextNode?.Activenode();
+            if (_tree.TryGetNode(node.nextNodes[i], out Node nextNode))
+            {
+                nextNode.Activenode();
+            }
         }
 
-        Debug.Log(_tree);
+        if (node is PartNodeSO part)
+            GameDataManager.Instance.EnablePart(part.openPart);
+        if (node is WeaponNodeSO weapon)
+            GameDataManager.Instance.EnableWeapon(weapon.weapon);
+
         _tree.Save();
     }
 
@@ -80,16 +85,14 @@ public class Node : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
         {
             for (int i = 0; i < node.nextNodes.Count; i++)
             {
-                Node nextNode = _tree.GetNode(node.nextNodes[i]);
-                nextNode?.Activenode();
+                if (_tree.TryGetNode(node.nextNodes[i], out Node nextNode))
+                    nextNode.Activenode();
             }
-            if (vertex != null)
-                vertex.fillAmount = 1;
-            if (edge != null)
-                edge.fillAmount = 1;
+
+            if (vertex != null) vertex.fillAmount = 1;
+            if (edge != null)  edge.fillAmount = 1;
         }
     }
-
 
     private void Activenode()
     {
@@ -97,7 +100,6 @@ public class Node : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 
         //여기 원래 안보이다가 보이게 한다든가 그런거 하게 해주셈ㅇㅇ
     }
-
 
     #region InputEvent
 

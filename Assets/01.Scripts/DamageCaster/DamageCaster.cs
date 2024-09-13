@@ -17,7 +17,7 @@ public abstract class DamageCaster : MonoBehaviour
 	public event Action OnDamageCastSuccessEvent;
 
 	[Header("DamageEffect")]
-	[SerializeField] private EffectStateTypeEnum _effectStateType = 0;
+	public EffectStateTypeEnum effectStateType = 0;
 	[SerializeField] private float _effectDuration = 0f;
 	[SerializeField] private int _effectLevel = 1;
 
@@ -64,7 +64,7 @@ public abstract class DamageCaster : MonoBehaviour
 			}
 			if(_castColliders[i].TryGetComponent(out IEffectable effectable))
 			{
-				effectable.ApplyEffect(_effectStateType, _effectDuration, _effectLevel);
+				effectable.ApplyEffect(effectStateType, _effectDuration, _effectLevel);
 			}
 			
 		}

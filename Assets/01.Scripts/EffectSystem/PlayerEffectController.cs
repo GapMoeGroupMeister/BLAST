@@ -20,7 +20,7 @@ namespace EffectSystem
             ApplyEffect(EffectStateTypeEnum.Burn, 10f, 1);
         }
         
-        public override void ApplyEffect(EffectStateTypeEnum type, float duration, int level)
+        public override void ApplyEffect(EffectStateTypeEnum type, float duration, int level, float percent = 1f)
         {
             if(!effectDictionary[type].enabled)
                 _effectPanel.GenerateSlot(type, effectDictionary[type]);

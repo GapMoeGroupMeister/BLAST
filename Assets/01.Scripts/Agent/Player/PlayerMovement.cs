@@ -2,25 +2,29 @@
 using UnityEngine;
 using DG.Tweening;
 using System;
+using System.Collections;
 
 public class PlayerMovement : MovementController
 {
     public event Action<float> OnDistanceTravelledEvent;
-
+    public event Action<float> OnDashCoolTimePercentEvent;
+    public event Action<Vector3> OnDashEvent;
     [SerializeField] private Transform _attackPointTrm;
     [SerializeField] private Vector3 _attackPointOffset;
     [SerializeField] private Transform _baseTrm;
     [SerializeField] private LayerMask _whatIsGround;
 
-    [SerializeField] private float _moveSpeed = 2f;
+    public float moveSpeed = 2f;
     [SerializeField] private float _rotateSpeed = 100f;
-    
+    public float dashPower = 5f;
+    public float dashCooltime = 2f;
+    private float _curDashCooltime = 0;
     private InputReader _inputReader;
     
     private Player _player;
     private Rigidbody _rigidbodyCompo;
-    private Vector3 _lookDirection;
-
+    public Vector3 lookDirection;
+    private bool _canMove = true;
     private float _distanceTravelled;
 
     private void Awake()
@@ -30,13 +34,19 @@ public class PlayerMovement : MovementController
         _player = GetComponent<Player>();
     }
 
-    private void FixedUpdate()
+	private void Update()
+	{
+        _curDashCooltime += Time.deltaTime;
+        OnDashCoolTimePercentEvent?.Invoke(dashCooltime/_curDashCooltime);
+    }
+
+	private void FixedUpdate()
     {
         //Base 회전
-        if (_lookDirection != Vector3.zero)
+        if (lookDirection != Vector3.zero)
         {
-            _lookDirection.y = 0;
-            _baseTrm.rotation = Quaternion.Lerp(this._baseTrm.rotation, Quaternion.LookRotation(_lookDirection), Time.deltaTime * _rotateSpeed);
+            lookDirection.y = 0;
+            _baseTrm.rotation = Quaternion.Lerp(this._baseTrm.rotation, Quaternion.LookRotation(lookDirection), Time.deltaTime * _rotateSpeed);
         }
 
         HandleLookDirection(_inputReader.MousePosition);
@@ -47,25 +57,45 @@ public class PlayerMovement : MovementController
         Ray ray = Camera.main.ScreenPointToRay(mousePos);
         if (Physics.Raycast(ray, out RaycastHit hit, 1000, _whatIsGround))
         {
-            _lookDirection = hit.point - transform.position;
+            lookDirection = (hit.point - transform.position).normalized;
             _attackPointTrm.position = hit.point + _attackPointOffset;
         }
     }
 
     public override void StopImmediately()
     {
+        _rigidbodyCompo.velocity = Vector3.zero;
+    }
+
+    public void OnDash(Vector3 dashDir, float duration, float dashPower)
+	{
+        if (_curDashCooltime < dashCooltime) return;
+        _curDashCooltime = 0;
+        OnDashEvent?.Invoke(dashDir);
+        StartCoroutine(CoroutineOnDash(dashDir, duration, dashPower));
+	}
+
+    private IEnumerator CoroutineOnDash(Vector3 dashDir, float duration, float dashPower)
+	{
+        _canMove = false;
+        transform.rotation = Quaternion.LookRotation(dashDir);
+        _rigidbodyCompo.velocity = dashDir * dashPower;
+        yield return new WaitForSeconds(duration);
+        _rigidbodyCompo.velocity = Vector3.zero;
+        _canMove = true;
     }
 
     private Vector3 _startPos;
     private Vector3 _endPos;
     public override void SetMovement(Vector3 movement, bool isRotation = false)
     {
+        if (_canMove == false) return;
         _startPos = transform.position;
         if (movement.sqrMagnitude < 0.1f) return;
 
 		movement = Quaternion.Euler(0, -45, 0) * movement;
         transform.DORotateQuaternion(Quaternion.LookRotation(-movement), 0.85f);
-        _rigidbodyCompo.velocity = -movement * _moveSpeed;
+        _rigidbodyCompo.velocity = -movement * moveSpeed;
 
         _distanceTravelled += (_startPos - _endPos).magnitude;
         OnDistanceTravelledEvent?.Invoke(_distanceTravelled);

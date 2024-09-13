@@ -18,6 +18,7 @@ public class EnergySphereLaser : MonoBehaviour, IPoolingObject
 
 	public PoolType OriginPoolType { get; set; }
 	GameObject IPoolingObject.gameObject { get; set; }
+	[SerializeField] private PoolType _hitEffectPoolType;
 
 	private void Awake()
 	{
@@ -59,11 +60,14 @@ public class EnergySphereLaser : MonoBehaviour, IPoolingObject
 		yield return new WaitForSeconds(0.1f);
 		if (_target != null)
 		{
-			Vector3 attackPoint = _target.position - transform.position;
-			attackPoint.y = transform.position.y;
-			_lineRenderer.SetPosition(1, attackPoint);
+			Vector3 lineAttackPoint = _target.position - transform.position;
+			lineAttackPoint.y = transform.position.y;
+			Vector3 effectAttackPoint = _target.position;
+			effectAttackPoint.y = transform.position.y;
+			_lineRenderer.SetPosition(1, lineAttackPoint);
 			_damageCasterTrm.position = _target.position;
 			_damageCaster.CastDamage(_damage);
+			gameObject.Pop(_hitEffectPoolType, effectAttackPoint, Quaternion.identity);
 		}
 	}
 }

@@ -12,11 +12,14 @@ public class ZoomController : MonoSingleton<ZoomController>
 	private void Awake()
 	{
 		_inputReader = GameManager.Instance.InputReader;
-
-		_inputReader.ZoomEvent += HandleZoom;
 	}
 
-	private void OnDestroy()
+    private void OnEnable()
+    {
+        _inputReader.ZoomEvent += HandleZoom;
+    }
+
+    private void OnDestroy()
 	{
 		_inputReader.ZoomEvent -= HandleZoom;
 	}

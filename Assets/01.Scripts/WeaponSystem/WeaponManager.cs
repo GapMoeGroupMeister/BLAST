@@ -13,13 +13,10 @@ public class WeaponManager : MonoSingleton<WeaponManager>
 	{
         _weapons = new Dictionary<WeaponType, Weapon>();
         _curWeapons = new List<Weapon>();
-        
-        
     }
 
 	private void Start()
     {
-        
         foreach (WeaponType weaponEnum in Enum.GetValues(typeof(WeaponType)))
         {
             if (weaponEnum == WeaponType.None) continue;

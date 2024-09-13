@@ -8,7 +8,19 @@ public class PlayerWalkState : PlayerState<PlayerStateEnum>
     {
     }
 
-    public override void FixedUpdateState()
+	public override void Enter()
+	{
+		base.Enter();
+        _gameManager.InputReader.DashEvent += HandleOnDash;
+    }
+
+    public override void Exit()
+	{
+        _gameManager.InputReader.DashEvent -= HandleOnDash;
+        base.Exit();
+	}
+
+	public override void FixedUpdateState()
     {
         base.FixedUpdateState();
         _playerBase.MovementCompo.SetMovement(_gameManager.InputReader.Movement);
@@ -16,5 +28,10 @@ public class PlayerWalkState : PlayerState<PlayerStateEnum>
 		{
             _stateMachine.ChangeState(PlayerStateEnum.Idle);
         }
+    }
+
+    private void HandleOnDash()
+    {
+        _stateMachine.ChangeState(PlayerStateEnum.Dash);
     }
 }

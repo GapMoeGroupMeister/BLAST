@@ -17,7 +17,6 @@ public class PartSelectPanel : UIPanel
     {
         base.Awake();
         _rectTrm = transform as RectTransform;
-        _canvasGroup = GetComponent<CanvasGroup>();
     }
 
     public override void Open()
