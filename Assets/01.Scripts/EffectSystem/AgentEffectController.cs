@@ -5,8 +5,8 @@ using UnityEngine;
 namespace EffectSystem
 {
     [Serializable]
-    public struct EffectPair
-	{
+    public struct EffectStatePair
+    {
         public EffectStateTypeEnum effetStateType;
         public float duration;
         public int level;
@@ -26,7 +26,11 @@ namespace EffectSystem
         private void Start()
         {
             Initialize();
+        }
 
+        public EffectState GetEffectState(EffectStateTypeEnum type)
+        {
+            return effectDictionary[type];
         }
 
         protected virtual  void Update()
