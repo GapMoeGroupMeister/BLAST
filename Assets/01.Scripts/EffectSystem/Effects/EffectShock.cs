@@ -47,6 +47,7 @@ namespace EffectSystem
 
                 if(_targets[i].TryGetComponent(out AgentEffectController effectController))
                 {
+                    EffectShock shock = null;
                     // effectController에서 GetEffectState해서 shock를 가져오고
                     // chain가능 여부, shock enable 여부를 따져보고 나서 아래를 실행
                     if(true){

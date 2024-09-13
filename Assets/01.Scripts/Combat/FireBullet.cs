@@ -8,7 +8,6 @@ public class FireBullet : Bullet
 
     protected override void Awake()
     {
-        base.Awake();
         _visualMesh = transform.Find("Visual").GetComponent<MeshRenderer>();
         _fireMaterial = _visualMesh.material;
         _visualOffsetHash = Shader.PropertyToID("_VisualOffset");
