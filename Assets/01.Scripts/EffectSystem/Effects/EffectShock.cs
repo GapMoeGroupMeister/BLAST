@@ -19,7 +19,7 @@ namespace EffectSystem
             _enemyLayer = LayerMask.GetMask("Enemy");
         }
 
-        public override void Start(int level = 1, float duration = 10)
+        public override void Start(int level = 1, float duration = 10, float percent = 1f)
         {
             if(enabled)
             {
@@ -29,7 +29,7 @@ namespace EffectSystem
                 }
             }
             
-            base.Start(level, duration);
+            base.Start(level, duration, percent);
         }
 
         private void ChainShock(){

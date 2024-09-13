@@ -12,7 +12,7 @@ public class Bullet : MonoBehaviour, IPoolingObject
 	public PoolType OriginPoolType { get; set; }
 	GameObject IPoolingObject.gameObject { get; set; }
 
-	private void Awake()
+	protected virtual void Awake()
 	{
 		_damageCaster.OnDamageCastSuccessEvent += OnDie;
 	}
@@ -26,7 +26,7 @@ public class Bullet : MonoBehaviour, IPoolingObject
 		_damageCaster.CastDamage(_damage);
 	}
 
-	public void OnPop()
+	public virtual void OnPop()
 	{
 		StartCoroutine(CoroutineMove());
 	}
