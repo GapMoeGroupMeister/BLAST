@@ -6,6 +6,7 @@ public class Bullet : MonoBehaviour, IPoolingObject
 {
 	public float speed = 100f;
 	public float duration = 5f;
+	public bool isPenetration = false; 
 
 	[SerializeField] private DamageCaster _damageCaster;
 	[SerializeField] private int _damage = 1;
@@ -55,6 +56,7 @@ public class Bullet : MonoBehaviour, IPoolingObject
 
 	private void OnDie()
 	{
+		if (isPenetration) return;
 		this.Push();
 	}
 }

@@ -118,6 +118,7 @@ GameObject:
   - component: {fileID: 613414120495980780}
   - component: {fileID: 4742955360590545240}
   - component: {fileID: 7639847113500702757}
+  - component: {fileID: 2085253495577532970}
   m_Layer: 0
   m_Name: PlayerDefaultBullet
   m_TagString: Untagged
@@ -176,10 +177,9 @@ MonoBehaviour:
     m_Bits: 512
   _usingExcludeCast: 0
   excludedDamageCasterList: []
-  effectStateDatas:
-  - effetStateType: 0
-    duration: 0
-    level: 0
+  effectStateType: 0
+  _effectDuration: 0
+  _effectLevel: 1
   center: {x: 0, y: 0, z: 0}
   radius: 0.53
 --- !u!114 &4742955360590545240
@@ -207,3 +207,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damageCaster: {fileID: 613414120495980780}
+--- !u!114 &2085253495577532970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8538479565421077914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2882c91955b44a34ca68f7f390a00c9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _effectStateTypeList: []

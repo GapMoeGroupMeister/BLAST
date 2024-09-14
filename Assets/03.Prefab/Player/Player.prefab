@@ -581,6 +581,7 @@ GameObject:
   - component: {fileID: 3421443643751951789}
   - component: {fileID: 3308960097668393135}
   - component: {fileID: 3008086090903353795}
+  - component: {fileID: 2601035507658518275}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -620,7 +621,6 @@ MonoBehaviour:
     type: 2}
   currentPlayerPart: {fileID: 0}
   _currentPartType: 0
-  PlayerPartController: {fileID: 0}
 --- !u!114 &6872490257994263261
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -727,6 +727,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _effectPanel: {fileID: 0}
+--- !u!114 &2601035507658518275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5726886297252109634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b460ff2554d92eb4fa2a2145bf222d8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _currentPlayerPart: {fileID: 0}
+  _playerPartList:
+  - {fileID: 294903427704956916, guid: 0a088780fd58b0b49b9aa8a59ca05833, type: 3}
+  - {fileID: 294903427704956916, guid: adb39cc5587a3c646a2f4361d3a8ca32, type: 3}
+  - {fileID: 3016868156403632621, guid: 53756cfabefb9994887b792335e77b68, type: 3}
+  - {fileID: 294903427704956916, guid: 02549dc8771b07446a6f2f3cb07bc1e1, type: 3}
+  _partPoint: {fileID: 0}
 --- !u!1 &6906133222992721433
 GameObject:
   m_ObjectHideFlags: 0

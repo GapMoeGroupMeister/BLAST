@@ -8,11 +8,13 @@ public class StatusDisplayManager : MonoBehaviour
     [SerializeField] private HealthUI _healthUI; 
         
     private PlayerPart _currentPart;
-    private CanvasGroup _canvasGroup;    
-    
+    private CanvasGroup _canvasGroup;
+    private PlayerPartController _playerPartController;
+
     private void Start()
     {
-        _currentPart = PlayerPartController.Instance.GetCurrentPlayerPart();
+        _playerPartController = FindObjectOfType<PlayerPartController>();
+        _currentPart = PlayerPartController.GetCurrentPlayerPart();
         _currentPart.magazineInfoL.playerOverloadEvent += _weaponDisplay_Left.HandleDisplayRefresh;
         _currentPart.magazineInfoR.playerOverloadEvent += _weaponDisplay_Right.HandleDisplayRefresh;
         GameManager.Instance.Player.HealthCompo.OnHealthChangedEvent.AddListener(_healthUI.Refresh);
