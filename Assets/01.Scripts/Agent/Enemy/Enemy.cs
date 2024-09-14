@@ -8,8 +8,7 @@ public abstract class Enemy : Agent, IPoolingObject
     public EnemyMovement EnemyMovementCompo { get; private set; }
 
     [Header("Common Setting")]
-    [SerializeField]
-    protected LayerMask _whatIsPlayer;
+    public LayerMask whatIsPlayer;
 
     [Header("Attack Setting")]
     public float attackDistance;

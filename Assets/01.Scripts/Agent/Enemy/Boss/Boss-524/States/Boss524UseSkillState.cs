@@ -17,7 +17,7 @@ public class Boss524UseSkillState : EnemyState<Boss524>
     public override void UpdateState()
     {
         base.UpdateState();
-        if(!_enemyBase.SkillManager.IsSkillUsing)
+        if(!_enemyBase.SkillManager.IsUsingSkill)
         {
             _stateMachine.ChangeState(Boss524StateEnum.Chase);
         }

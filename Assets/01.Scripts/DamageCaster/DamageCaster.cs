@@ -17,9 +17,10 @@ public abstract class DamageCaster : MonoBehaviour
 	public event Action OnDamageCastSuccessEvent;
 
 	[Header("DamageEffect")]
-	[SerializeField] private EffectStateTypeEnum _effectStateType = 0;
+	public EffectStateTypeEnum effectStateType = 0;
 	[SerializeField] private float _effectDuration = 0f;
 	[SerializeField] private int _effectLevel = 1;
+	private EffectCaster _effectCaster;
 
 	protected Vector3 GetFinalCenter(Vector3 center)
 	{
@@ -33,6 +34,8 @@ public abstract class DamageCaster : MonoBehaviour
 
 	protected virtual void Awake()
 	{
+		if (TryGetComponent(out EffectCaster effectCaster))
+			_effectCaster = effectCaster;
 		_castColliders = new Collider[allocationCount];
 	}
 
@@ -64,7 +67,11 @@ public abstract class DamageCaster : MonoBehaviour
 			}
 			if(_castColliders[i].TryGetComponent(out IEffectable effectable))
 			{
-				effectable.ApplyEffect(_effectStateType, _effectDuration, _effectLevel);
+				if (_effectCaster != null)
+				{
+					_effectCaster.TryApplyEffect(effectable);
+				}
+				effectable.ApplyEffect(effectStateType, _effectDuration, _effectLevel);
 			}
 			
 		}

@@ -89,6 +89,7 @@ MonoBehaviour:
   OnDieEvent:
     m_PersistentCalls:
       m_Calls: []
+  _maxHealth: 0
   _isDead: 0
 --- !u!195 &993008181239727985
 NavMeshAgent:
@@ -99,7 +100,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 7554849678795088332}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 3
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -170,6 +171,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -534592245459536454, guid: b2f47b9c5c65e9046b256171e2f975ed,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: cb3d08e4a3b6ede4499370504495bc2b, type: 2}
+    - target: {fileID: -534592245459536454, guid: b2f47b9c5c65e9046b256171e2f975ed,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: f47373f16ef9c2b4b8f1efc0592b8d6f, type: 2}
     - target: {fileID: 919132149155446097, guid: b2f47b9c5c65e9046b256171e2f975ed,
         type: 3}
       propertyPath: m_Name

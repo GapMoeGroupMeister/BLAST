@@ -4,6 +4,26 @@ using UnityEngine;
 
 namespace EffectSystem
 {
+    [Serializable]
+    public struct EffectStatePair
+    {
+        public EffectStatePair(EffectStateTypeEnum effectStateType, float duration, int level, float percent = 1f)
+		{
+            this.effectStateType = effectStateType;
+            this.duration = duration;
+            this.level = level;
+            this.percent = percent;
+		}
+
+        public EffectStateTypeEnum effectStateType;
+        public float duration;
+        public int level;
+
+        /// <summary>
+        /// percent : 0f ~ 1f
+        /// </summary>
+        public float percent;
+    }
     
     public class AgentEffectController : MonoBehaviour, IEffectable
     {
@@ -19,7 +39,11 @@ namespace EffectSystem
         private void Start()
         {
             Initialize();
+        }
 
+        public EffectState GetEffectState(EffectStateTypeEnum type)
+        {
+            return effectDictionary[type];
         }
 
         protected virtual  void Update()
@@ -77,9 +101,9 @@ namespace EffectSystem
          * 효과 부여 메서드
          * </summary>
          */
-        public virtual void ApplyEffect(EffectStateTypeEnum type, float duration, int level)
+        public virtual void ApplyEffect(EffectStateTypeEnum type, float duration, int level, float percent = 1f)
         {
-            effectDictionary[type].Start(level, duration);
+            effectDictionary[type].Start(level, duration, percent);
         }
     
     }
