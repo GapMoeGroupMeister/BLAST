@@ -10,6 +10,7 @@ public class EffectStatePanel : MonoBehaviour
     [SerializeField] private RectTransform _contentTrm;
     [SerializeField] private List<EffectStateSlot> slotList = new List<EffectStateSlot>();
     
+    
     public void GenerateSlot(EffectStateTypeEnum type, EffectState effect)
     {
         EffectStateSlot slot = Instantiate(_slotPrefab, _contentTrm);
