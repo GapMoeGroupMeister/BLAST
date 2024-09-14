@@ -6,6 +6,11 @@ public class EnemyHUD : MonoBehaviour
     [SerializeField] private EnemyHealthBar _enemyHealthBar;
     [SerializeField] private EnemyEffectStateUI _enemyEffectUI;
 
+    private void Awake(){
+        if(owner == null)
+            owner = transform.parent.GetComponent<Agent>();
+
+    }
 
     private void Start(){
 
