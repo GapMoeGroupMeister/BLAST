@@ -6,16 +6,17 @@ public class Player : Agent
     public PlayerStateMachine<PlayerStateEnum> StateMachine;
     public PlayerPart currentPlayerPart;
     [SerializeField] private PlayerPartType _currentPartType;
-    [HideInInspector] public PlayerPartController PlayerPartController;
+    private PlayerPartController _playerPartController;
 
     protected override void Awake()
     {
         base.Awake();
         StateMachine = new PlayerStateMachine<PlayerStateEnum>();
-        PlayerPartController = PlayerPartController.Instance;
+        _playerPartController = GetComponent<PlayerPartController>();
+
 
         //임시로 만든거
-        currentPlayerPart = PlayerPartController.Init(_currentPartType);
+        currentPlayerPart = _playerPartController.Init(_currentPartType);
         
         foreach (PlayerStateEnum stateEnum in Enum.GetValues(typeof(PlayerStateEnum)))
         {

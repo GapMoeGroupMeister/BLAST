@@ -76,7 +76,6 @@ public class MagazineInfo
 public abstract class PlayerPart : MonoBehaviour
 {
 	private InputReader _inputReader;
-	protected PlayerPartController _playerPartController;
     public PlayerPartType playerPartType;
 
 	[Header("MagazineL")] 
@@ -97,7 +96,6 @@ public abstract class PlayerPart : MonoBehaviour
 			_isNoFunc = true;
 			return;
 		}
-		_playerPartController = PlayerPartController.Instance;
 		
 		_inputReader = GameManager.Instance.InputReader;
 		_playerMovement = GameManager.Instance.Player.MovementCompo as PlayerMovement;
