@@ -11,7 +11,7 @@ public class EnemyEffectStateUI : MonoBehaviour
 
     [SerializeField] private EnemyEffectSlot _slotPrefab;
     private AgentEffectController _ownerController;
-    private RectTransform _contentTrm;
+    [SerializeField] private RectTransform _contentTrm;
     private List<EnemyEffectSlot> _slotList = new List<EnemyEffectSlot>();
 
     public void Initialize(AgentEffectController effectController)

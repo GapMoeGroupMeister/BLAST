@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyHUD : MonoBehaviour
@@ -12,6 +10,14 @@ public class EnemyHUD : MonoBehaviour
     private void Start(){
 
         _enemyHealthBar.Initialize(owner.HealthCompo);
+    }
+
+    private void FixedUpdate(){
+        SetDirection();
+    }
+
+    private void SetDirection(){
+        transform.rotation = Quaternion.LookRotation(Camera.main.transform.forward);
     }
 
 
