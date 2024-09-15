@@ -4,44 +4,80 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
+public struct EffectStatePair
+{
+	public EffectStatePair(float duration, int level, float percent = 1f)
+	{
+		this.duration = duration;
+		this.level = level;
+		this.percent = percent;
+	}
+
+	public float duration;
+	public int level;
+
+	/// <summary>
+	/// percent : 0f ~ 1f
+	/// </summary>
+	public float percent;
+}
+
 public class EffectCaster : MonoBehaviour
 {
-    [Header("DamageCaster랑 같이 쓰세요")]
-	//Dictionary로 바꾸기 꼭!!!!!!!!!!!!!!!!!!!!
-    [SerializeField] private List<EffectStatePair> _effectStateTypeList;
+	[Header("DamageCaster랑 같이 쓰세요")]
+	private Dictionary<EffectStateTypeEnum, EffectStatePair> _effectStateTypeDictionary = new Dictionary<EffectStateTypeEnum, EffectStatePair>();
 
 	public bool IsContainType(EffectStateTypeEnum effectStateType)
 	{
-		return _effectStateTypeList.Any(x => x.effectStateType == effectStateType);
+		return _effectStateTypeDictionary.ContainsKey(effectStateType);
 	}
 
-	public void AddEffectState(EffectStatePair effectStatePair)
+	public void AddEffectState(EffectStateTypeEnum type, EffectStatePair effectStatePair)
 	{
-		_effectStateTypeList.Add(effectStatePair);
+		if (_effectStateTypeDictionary.ContainsKey(type))
+		{
+			_effectStateTypeDictionary[type] = effectStatePair;
+		}
+		else
+		{
+			_effectStateTypeDictionary.Add(type, effectStatePair);
+		}
 	}
 
-	public void AddEffectState(EffectStateTypeEnum effectStateType, float duration, int level, float percent = 1f)
+	/// <summary>
+	/// EffectState를 추가합니다. 만약 기존에 EffectState가 존재한다면 값을 덮어씁니다.
+	/// </summary>
+	public void AddEffectState(EffectStateTypeEnum type, float duration, int level, float percent = 1f)
 	{
-		EffectStatePair effectStatePair = new EffectStatePair(effectStateType, duration, level, percent);
+		EffectStatePair effectStatePair = new EffectStatePair(duration, level, percent);
 
-		_effectStateTypeList.Add(effectStatePair);
+		if (_effectStateTypeDictionary.ContainsKey(type))
+		{
+			_effectStateTypeDictionary[type] = effectStatePair;
+		}
+		else
+		{
+			_effectStateTypeDictionary.Add(type, effectStatePair);
+		}
 	}
 
-	public void RemoveEffectState(EffectStateTypeEnum effectStateType)
+	public void RemoveEffectState(EffectStateTypeEnum type)
 	{
-		_effectStateTypeList.Remove(_effectStateTypeList.Find(x => x.effectStateType == effectStateType));
+		_effectStateTypeDictionary.Remove(type);
 	}
-
+	/// <summary>
+	/// 타입 중 NONE이 있으면 해당 값을 건너뛴다.
+	/// </summary>
 	public void TryApplyEffect(IEffectable effectable)
 	{
-		for (int i = 0; i < _effectStateTypeList.Count; ++i)
+		foreach (var elem in _effectStateTypeDictionary)
 		{
-			if (_effectStateTypeList[i].effectStateType == EffectStateTypeEnum.None) continue;
+			if (elem.Key == EffectStateTypeEnum.None) continue;
 			effectable.ApplyEffect(
-				_effectStateTypeList[i].effectStateType,
-				_effectStateTypeList[i].duration,
-				_effectStateTypeList[i].level,
-				_effectStateTypeList[i].percent);
+				elem.Key,
+				elem.Value.duration,
+				elem.Value.level,
+				elem.Value.percent);
 		}
 	}
 }

@@ -52,6 +52,7 @@ public class Bullet : MonoBehaviour, IPoolingObject
 
 	private void OnDie()
 	{
+		Debug.Log(isPenetration);
 		if (isPenetration) return;
 		this.Push();
 	}

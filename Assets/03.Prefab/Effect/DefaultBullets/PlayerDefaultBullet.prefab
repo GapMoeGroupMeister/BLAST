@@ -116,9 +116,10 @@ GameObject:
   - component: {fileID: 1109268814606962508}
   - component: {fileID: 8900650163879802125}
   - component: {fileID: 613414120495980780}
+  - component: {fileID: 2085253495577532970}
   - component: {fileID: 4742955360590545240}
   - component: {fileID: 7639847113500702757}
-  - component: {fileID: 2085253495577532970}
+  - component: {fileID: 829156611302993562}
   m_Layer: 0
   m_Name: PlayerDefaultBullet
   m_TagString: Untagged
@@ -156,6 +157,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 100
   duration: 3
+  isPenetration: 0
   _damageCaster: {fileID: 613414120495980780}
   _damage: 1
 --- !u!114 &613414120495980780
@@ -182,6 +184,18 @@ MonoBehaviour:
   _effectLevel: 1
   center: {x: 0, y: 0, z: 0}
   radius: 0.53
+--- !u!114 &2085253495577532970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8538479565421077914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2882c91955b44a34ca68f7f390a00c9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &4742955360590545240
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -207,7 +221,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damageCaster: {fileID: 613414120495980780}
---- !u!114 &2085253495577532970
+--- !u!114 &829156611302993562
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -216,7 +230,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 8538479565421077914}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2882c91955b44a34ca68f7f390a00c9a, type: 3}
+  m_Script: {fileID: 11500000, guid: d1d84a69ae53c4248a49a8607e87f5e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _effectStateTypeList: []

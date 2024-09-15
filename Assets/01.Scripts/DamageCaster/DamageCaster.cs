@@ -71,7 +71,10 @@ public abstract class DamageCaster : MonoBehaviour
 				{
 					_effectCaster.TryApplyEffect(effectable);
 				}
-				effectable.ApplyEffect(effectStateType, _effectDuration, _effectLevel);
+				else
+				{
+					effectable.ApplyEffect(effectStateType, _effectDuration, _effectLevel);
+				}
 			}
 			
 		}
