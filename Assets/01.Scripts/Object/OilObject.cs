@@ -115,7 +115,7 @@ public class OilObject : MonoBehaviour, IPoolingObject, IEffectable
         
     }
     
-    public void ApplyEffect(EffectStateTypeEnum type, float duration, int level)
+    public void ApplyEffect(EffectStateTypeEnum type, float duration, int level, float percent = 1f)
     {
         _fireLevel = level;
         if(_isFire || leftOilAmount <= 0) return;

@@ -2,18 +2,15 @@ using UnityEngine;
 
 public class ProjectileSizeUpEffect : ProjectileEffect
 {
-	private void OnEnable()
+	private void Start()
 	{
-		(WeaponManager.Instance.GetWeapon(WeaponType.BulletSizeUp) as BulletSizeUpWeapon).OnWeaponUseEvent += HandleOnSizeUp;
+		Init(WeaponType.BulletSizeUp);
+		_baseWeapon.OnWeaponUseEvent += OnEffect;
 	}
 
-	private void HandleOnSizeUp(uint level)
+	public override void OnEffect(float level)
 	{
-		transform.localScale = Vector3.one * (((level / 10f) * 0.55f) + 1f);
-	}
-
-	public override void OnEffect(float value)
-	{
-		base.OnEffect(value);
+		base.OnEffect(level);
+		transform.localScale = Vector3.one + (Vector3.one*(level / 10f));
 	}
 }

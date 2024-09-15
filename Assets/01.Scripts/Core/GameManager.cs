@@ -8,9 +8,9 @@ public class GameManager : MonoSingleton<GameManager>
 
 	private void Update()
 	{
-		if (Input.GetKeyDown(KeyCode.P))
+		if (Input.GetMouseButtonDown(2))
 		{
-			ZoomController.Instance.ForceZoomOut(60, 0.1f, 3);
+			ZoomController.Instance.ForceZoomOut(60, 0.5f, 3);
 		}
 
 		if(Input.GetKey(KeyCode.I))

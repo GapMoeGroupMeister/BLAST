@@ -8,9 +8,11 @@ public class WeaponManager : MonoSingleton<WeaponManager>
     private Dictionary<WeaponType, Weapon> _weapons;
 
     [SerializeField] private List<Weapon> _curWeapons; //해금된 자동발동 무기 리스트
+    PlayerPartController _playerPartController;
 
-	private void Awake()
+    private void Awake()
 	{
+        _playerPartController = FindObjectOfType<PlayerPartController>();
         _weapons = new Dictionary<WeaponType, Weapon>();
         _curWeapons = new List<Weapon>();
     }
@@ -69,7 +71,7 @@ public class WeaponManager : MonoSingleton<WeaponManager>
         //전용 무기라면
         if(_weapons[weapon].isUniqueWeapon)
 		{
-            PlayerPartType playerPartType = PlayerPartController.Instance.GetCurrentPlayerPart().playerPartType;
+            PlayerPartType playerPartType = PlayerPartController.GetCurrentPlayerPart().playerPartType;
             if(_weapons[weapon].partType != playerPartType)
 			{
                 //현재 파츠 타입과 같지 않다면 추가할 수 없음
