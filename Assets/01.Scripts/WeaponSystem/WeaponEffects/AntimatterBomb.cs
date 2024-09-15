@@ -28,10 +28,10 @@ public class AntimatterBomb : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.M))
-        {
-            Explosion();
-        }
+        //if (Input.GetKeyDown(KeyCode.M))
+        //{
+        //    Explosion();
+        //}
     }
 
     private void FixedUpdate()
@@ -40,9 +40,10 @@ public class AntimatterBomb : MonoBehaviour
 
         if (_prevAttackTime + _tickDelay < Time.time)
         {
-            int enemyCnt = Physics.OverlapSphereNonAlloc(transform.position, transform.localScale.x, _coll);
+            int enemyCnt = Physics.OverlapSphereNonAlloc(transform.position, transform.localScale.x / 2, _coll);
 
-            if(enemyCnt > 0)
+
+            if (enemyCnt > 0)
             {
                 for (int i = 0; i < enemyCnt; i++)
                 {
@@ -66,7 +67,7 @@ public class AntimatterBomb : MonoBehaviour
     //    }
     //}
 
-    private void Explosion()
+    public void Explosion()
     {
         if (_exSeq != null && _exSeq.active)
             _exSeq.Kill();
@@ -74,7 +75,7 @@ public class AntimatterBomb : MonoBehaviour
         _exSeq = DOTween.Sequence();
 
         _exSeq.Append(transform.DOMoveY(0.5f, _downTime).SetEase(Ease.Linear))
-            .AppendInterval(0.2f)
+            .AppendInterval(0.1f)
             .AppendCallback(() =>
             {
                 CameraShakeController.Instance.ShakeCam(2f, 0.15f);

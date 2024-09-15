@@ -28,6 +28,12 @@ public class AntimatterBombWeapon : Weapon
                     if (newDist < prevDist) closestColl = _enemyColl[i];
                 }
 
+                Vector3 bombPosition = closestColl.transform.position;
+                bombPosition.y = 15f;
+
+                AntimatterBomb bomb = Instantiate(bombPf, bombPosition, Quaternion.identity);
+                bomb.Explosion();
+
                 return true;
             }
 
