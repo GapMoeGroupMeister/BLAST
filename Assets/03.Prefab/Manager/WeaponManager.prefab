@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3866575627905435685}
-  - component: {fileID: 6265141247515088616}
   - component: {fileID: 5630484606518361002}
   - component: {fileID: 4675976240277001983}
   m_Layer: 0
@@ -34,32 +33,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6165231877111597868}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6265141247515088616
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 877809490449677630}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a6ebd31ea064e5fa2be1b7ffb136fcd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canUse: 0
-  weaponEnabled: 0
-  _cooldown: 0
-  level: 1
-  isUniqueWeapon: 1
-  partType: 3
-  isConditionalWeapon: 0
-  _autoUseType: 0
-  _compareMode: 0
-  _targetValue: 0
-  player: {fileID: 0}
-  whatIsEnemy:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &5630484606518361002
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86,6 +59,8 @@ MonoBehaviour:
   whatIsEnemy:
     serializedVersion: 2
     m_Bits: 0
+  _napalmPrefab: {fileID: 0}
+  _shootTerm: 0.7
 --- !u!114 &4675976240277001983
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -728,6 +703,9 @@ MonoBehaviour:
   whatIsEnemy:
     serializedVersion: 2
     m_Bits: 0
+  _damageCaster: {fileID: 0}
+  _explosionEffectPoolType: 0
+  _defaultDamage: 1
 --- !u!114 &1006913282202067868
 MonoBehaviour:
   m_ObjectHideFlags: 0
