@@ -7,6 +7,7 @@ public enum Boss524StateEnum
     Chase,
     Attack,
     UseSkill,
+    Stun
 }
 
 public enum Boss524SkillEnum
@@ -27,6 +28,18 @@ public class Boss524 : Boss<Boss524>
     public CirclePatternVisual CirclePatternVisual { get; private set; }
 
     public EnemySkillManager<Boss524> SkillManager { get; private set; }
+
+    public override void OnDie()
+    {
+        CanStateChangeable = false;
+        //DeadState∑Œ ¿Œ∞Ë
+    }
+
+    public override void Stun(float duration)
+    {
+        StunTime = duration;
+        StateMachine.ChangeState(Boss524StateEnum.Stun);
+    }
 
     protected override void Awake()
     {

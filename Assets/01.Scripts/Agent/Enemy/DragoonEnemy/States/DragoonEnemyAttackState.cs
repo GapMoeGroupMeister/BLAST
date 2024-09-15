@@ -11,6 +11,7 @@ public class DragoonEnemyAttackState : EnemyState<DragoonEnemy>
 
     private float _lastAttackTime = 0;
     private Vector3 _targetPos;
+    private TrailEffect _effect;
 
     public override void Enter()
     {
@@ -26,6 +27,8 @@ public class DragoonEnemyAttackState : EnemyState<DragoonEnemy>
 
     public override void Exit()
     {
+        _effect?.Push();
+        _effect = null;
         _lastAttackTime = Time.time;
         base.Exit();
     }
@@ -35,8 +38,8 @@ public class DragoonEnemyAttackState : EnemyState<DragoonEnemy>
         base.UpdateState();
         if(IsTriggerCalled(AnimationTriggerEnum.EffectTrigger))
         {
-            TrailEffect trail = _enemyBase.gameObject.Pop(PoolType.VFX_Trail, _enemyBase.firePosTrm, _enemyBase.firePosTrm.position, Quaternion.identity) as TrailEffect;
-            trail.SetTrail(_enemyBase.firePosTrm.position, _targetPos, 0.1f);
+            _effect = _enemyBase.gameObject.Pop(PoolType.VFX_Trail, _enemyBase.firePosTrm, _enemyBase.firePosTrm.position, Quaternion.identity) as TrailEffect;
+            _effect.SetTrail(_enemyBase.firePosTrm.position, _targetPos, 0.1f);
             RemoveTrigger(AnimationTriggerEnum.EffectTrigger);
         }
         if (IsTriggerCalled(AnimationTriggerEnum.EndTrigger))

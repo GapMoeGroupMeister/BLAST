@@ -2,8 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-public class Boss<T> : Enemy where T : Boss<T>
+public abstract class Boss<T> : Enemy where T : Boss<T>
 {
     public EnemyStateMachine<T> StateMachine { get; protected set; }
 
@@ -32,12 +33,5 @@ public class Boss<T> : Enemy where T : Boss<T>
     public override void AnimationEndTrigger(AnimationTriggerEnum triggerBit)
     {
         StateMachine.CurrentState.AnimationTrigger(triggerBit);
-    }
-
-	public override void OnDie()
-	{
-        //Á×´Â °Í Á» ºÎÅ¹
-        //StateMachine.ChangeState(Boss.Dead);
-        CanStateChangeable = false;
     }
 }
