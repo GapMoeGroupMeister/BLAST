@@ -588,10 +588,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -5367446765215496364, guid: c9abff9bcf16355419ca440043afd5ff,
+    - target: {fileID: 6812579954561548035, guid: c9abff9bcf16355419ca440043afd5ff,
         type: 3}
-      propertyPath: _maxHealth
-      value: 10
+      propertyPath: whatIsPlayer.m_Bits
+      value: 256
       objectReference: {fileID: 0}
     - target: {fileID: 7133687479449973321, guid: c9abff9bcf16355419ca440043afd5ff,
         type: 3}
@@ -648,49 +648,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WizardRobot (5)
       objectReference: {fileID: 0}
-    - target: {fileID: 7554849678795088332, guid: c9abff9bcf16355419ca440043afd5ff,
-        type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7554849678795088332, guid: c9abff9bcf16355419ca440043afd5ff,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 776362134}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c9abff9bcf16355419ca440043afd5ff, type: 3}
---- !u!1 &776362133 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7554849678795088332, guid: c9abff9bcf16355419ca440043afd5ff,
-    type: 3}
-  m_PrefabInstance: {fileID: 776362132}
-  m_PrefabAsset: {fileID: 0}
---- !u!136 &776362134
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 776362133}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 4
-  m_Height: 20
-  m_Direction: 1
-  m_Center: {x: 0, y: 10, z: 0}
 --- !u!114 &811994078 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4725199576335880306, guid: a26c55cfcafa7f44c9da997bcca03dd6,
@@ -1527,35 +1489,6 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
---- !u!1 &1160646285 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7554849678795088332, guid: c9abff9bcf16355419ca440043afd5ff,
-    type: 3}
-  m_PrefabInstance: {fileID: 1345150678}
-  m_PrefabAsset: {fileID: 0}
---- !u!136 &1160646291
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1160646285}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 4
-  m_Height: 20
-  m_Direction: 1
-  m_Center: {x: 0, y: 10, z: 0}
 --- !u!1 &1274551196
 GameObject:
   m_ObjectHideFlags: 0
@@ -1670,10 +1603,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -5367446765215496364, guid: c9abff9bcf16355419ca440043afd5ff,
+    - target: {fileID: 6812579954561548035, guid: c9abff9bcf16355419ca440043afd5ff,
         type: 3}
-      propertyPath: _maxHealth
-      value: 10
+      propertyPath: whatIsPlayer.m_Bits
+      value: 256
       objectReference: {fileID: 0}
     - target: {fileID: 7133687479449973321, guid: c9abff9bcf16355419ca440043afd5ff,
         type: 3}
@@ -1730,19 +1663,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WizardRobot
       objectReference: {fileID: 0}
-    - target: {fileID: 7554849678795088332, guid: c9abff9bcf16355419ca440043afd5ff,
-        type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7554849678795088332, guid: c9abff9bcf16355419ca440043afd5ff,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1160646291}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c9abff9bcf16355419ca440043afd5ff, type: 3}
 --- !u!1 &1479388296
 GameObject:
@@ -1789,74 +1713,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _virtualCamera: {fileID: 694662799}
---- !u!1001 &1572929559
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2855056854084109513, guid: 375552026b9d73c49ab097ae4bbb498a,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2855056854084109513, guid: 375552026b9d73c49ab097ae4bbb498a,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2855056854084109513, guid: 375552026b9d73c49ab097ae4bbb498a,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2855056854084109513, guid: 375552026b9d73c49ab097ae4bbb498a,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2855056854084109513, guid: 375552026b9d73c49ab097ae4bbb498a,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2855056854084109513, guid: 375552026b9d73c49ab097ae4bbb498a,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2855056854084109513, guid: 375552026b9d73c49ab097ae4bbb498a,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2855056854084109513, guid: 375552026b9d73c49ab097ae4bbb498a,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2855056854084109513, guid: 375552026b9d73c49ab097ae4bbb498a,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2855056854084109513, guid: 375552026b9d73c49ab097ae4bbb498a,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5953513163225344827, guid: 375552026b9d73c49ab097ae4bbb498a,
-        type: 3}
-      propertyPath: m_Name
-      value: Explode4
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 375552026b9d73c49ab097ae4bbb498a, type: 3}
 --- !u!1001 &1641216654
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1865,10 +1721,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -5367446765215496364, guid: c9abff9bcf16355419ca440043afd5ff,
+    - target: {fileID: 6812579954561548035, guid: c9abff9bcf16355419ca440043afd5ff,
         type: 3}
-      propertyPath: _maxHealth
-      value: 10
+      propertyPath: whatIsPlayer.m_Bits
+      value: 256
       objectReference: {fileID: 0}
     - target: {fileID: 7133687479449973321, guid: c9abff9bcf16355419ca440043afd5ff,
         type: 3}
@@ -1925,49 +1781,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WizardRobot (4)
       objectReference: {fileID: 0}
-    - target: {fileID: 7554849678795088332, guid: c9abff9bcf16355419ca440043afd5ff,
-        type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7554849678795088332, guid: c9abff9bcf16355419ca440043afd5ff,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1641216656}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c9abff9bcf16355419ca440043afd5ff, type: 3}
---- !u!1 &1641216655 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7554849678795088332, guid: c9abff9bcf16355419ca440043afd5ff,
-    type: 3}
-  m_PrefabInstance: {fileID: 1641216654}
-  m_PrefabAsset: {fileID: 0}
---- !u!136 &1641216656
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1641216655}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 4
-  m_Height: 20
-  m_Direction: 1
-  m_Center: {x: 0, y: 10, z: 0}
 --- !u!114 &1684598896 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1818484225686448684, guid: d715b0cde2ca3754eb7ea29b435422cf,
@@ -1994,10 +1812,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -5367446765215496364, guid: c9abff9bcf16355419ca440043afd5ff,
+    - target: {fileID: 6812579954561548035, guid: c9abff9bcf16355419ca440043afd5ff,
         type: 3}
-      propertyPath: _maxHealth
-      value: 10
+      propertyPath: whatIsPlayer.m_Bits
+      value: 256
       objectReference: {fileID: 0}
     - target: {fileID: 7133687479449973321, guid: c9abff9bcf16355419ca440043afd5ff,
         type: 3}
@@ -2054,49 +1872,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WizardRobot (7)
       objectReference: {fileID: 0}
-    - target: {fileID: 7554849678795088332, guid: c9abff9bcf16355419ca440043afd5ff,
-        type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7554849678795088332, guid: c9abff9bcf16355419ca440043afd5ff,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1708924812}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c9abff9bcf16355419ca440043afd5ff, type: 3}
---- !u!1 &1708924811 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7554849678795088332, guid: c9abff9bcf16355419ca440043afd5ff,
-    type: 3}
-  m_PrefabInstance: {fileID: 1708924810}
-  m_PrefabAsset: {fileID: 0}
---- !u!136 &1708924812
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1708924811}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 4
-  m_Height: 20
-  m_Direction: 1
-  m_Center: {x: 0, y: 10, z: 0}
 --- !u!1 &1788354647
 GameObject:
   m_ObjectHideFlags: 0
@@ -2357,10 +2137,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -5367446765215496364, guid: c9abff9bcf16355419ca440043afd5ff,
+    - target: {fileID: 6812579954561548035, guid: c9abff9bcf16355419ca440043afd5ff,
         type: 3}
-      propertyPath: _maxHealth
-      value: 10
+      propertyPath: whatIsPlayer.m_Bits
+      value: 256
       objectReference: {fileID: 0}
     - target: {fileID: 7133687479449973321, guid: c9abff9bcf16355419ca440043afd5ff,
         type: 3}
@@ -2417,49 +2197,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WizardRobot (6)
       objectReference: {fileID: 0}
-    - target: {fileID: 7554849678795088332, guid: c9abff9bcf16355419ca440043afd5ff,
-        type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7554849678795088332, guid: c9abff9bcf16355419ca440043afd5ff,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1941259058}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c9abff9bcf16355419ca440043afd5ff, type: 3}
---- !u!1 &1941259057 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7554849678795088332, guid: c9abff9bcf16355419ca440043afd5ff,
-    type: 3}
-  m_PrefabInstance: {fileID: 1941259056}
-  m_PrefabAsset: {fileID: 0}
---- !u!136 &1941259058
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1941259057}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 4
-  m_Height: 20
-  m_Direction: 1
-  m_Center: {x: 0, y: 10, z: 0}
 --- !u!1001 &1989161511
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2468,10 +2210,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -5367446765215496364, guid: c9abff9bcf16355419ca440043afd5ff,
+    - target: {fileID: 6812579954561548035, guid: c9abff9bcf16355419ca440043afd5ff,
         type: 3}
-      propertyPath: _maxHealth
-      value: 10
+      propertyPath: whatIsPlayer.m_Bits
+      value: 256
       objectReference: {fileID: 0}
     - target: {fileID: 7133687479449973321, guid: c9abff9bcf16355419ca440043afd5ff,
         type: 3}
@@ -2528,49 +2270,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WizardRobot (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 7554849678795088332, guid: c9abff9bcf16355419ca440043afd5ff,
-        type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7554849678795088332, guid: c9abff9bcf16355419ca440043afd5ff,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1989161513}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c9abff9bcf16355419ca440043afd5ff, type: 3}
---- !u!1 &1989161512 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7554849678795088332, guid: c9abff9bcf16355419ca440043afd5ff,
-    type: 3}
-  m_PrefabInstance: {fileID: 1989161511}
-  m_PrefabAsset: {fileID: 0}
---- !u!136 &1989161513
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1989161512}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 4
-  m_Height: 20
-  m_Direction: 1
-  m_Center: {x: 0, y: 10, z: 0}
 --- !u!1 &2038751325
 GameObject:
   m_ObjectHideFlags: 0
@@ -2801,10 +2505,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -5367446765215496364, guid: c9abff9bcf16355419ca440043afd5ff,
+    - target: {fileID: 6812579954561548035, guid: c9abff9bcf16355419ca440043afd5ff,
         type: 3}
-      propertyPath: _maxHealth
-      value: 10
+      propertyPath: whatIsPlayer.m_Bits
+      value: 256
       objectReference: {fileID: 0}
     - target: {fileID: 7133687479449973321, guid: c9abff9bcf16355419ca440043afd5ff,
         type: 3}
@@ -2861,49 +2565,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WizardRobot (2)
       objectReference: {fileID: 0}
-    - target: {fileID: 7554849678795088332, guid: c9abff9bcf16355419ca440043afd5ff,
-        type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7554849678795088332, guid: c9abff9bcf16355419ca440043afd5ff,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2102173517}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c9abff9bcf16355419ca440043afd5ff, type: 3}
---- !u!1 &2102173516 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7554849678795088332, guid: c9abff9bcf16355419ca440043afd5ff,
-    type: 3}
-  m_PrefabInstance: {fileID: 2102173515}
-  m_PrefabAsset: {fileID: 0}
---- !u!136 &2102173517
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2102173516}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 4
-  m_Height: 20
-  m_Direction: 1
-  m_Center: {x: 0, y: 10, z: 0}
 --- !u!224 &2120686374 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2229290250153757920, guid: a26c55cfcafa7f44c9da997bcca03dd6,
@@ -2918,10 +2584,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -5367446765215496364, guid: c9abff9bcf16355419ca440043afd5ff,
+    - target: {fileID: 6812579954561548035, guid: c9abff9bcf16355419ca440043afd5ff,
         type: 3}
-      propertyPath: _maxHealth
-      value: 10
+      propertyPath: whatIsPlayer.m_Bits
+      value: 256
       objectReference: {fileID: 0}
     - target: {fileID: 7133687479449973321, guid: c9abff9bcf16355419ca440043afd5ff,
         type: 3}
@@ -2978,49 +2644,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WizardRobot (3)
       objectReference: {fileID: 0}
-    - target: {fileID: 7554849678795088332, guid: c9abff9bcf16355419ca440043afd5ff,
-        type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7554849678795088332, guid: c9abff9bcf16355419ca440043afd5ff,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2145194260}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c9abff9bcf16355419ca440043afd5ff, type: 3}
---- !u!1 &2145194259 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7554849678795088332, guid: c9abff9bcf16355419ca440043afd5ff,
-    type: 3}
-  m_PrefabInstance: {fileID: 2145194258}
-  m_PrefabAsset: {fileID: 0}
---- !u!136 &2145194260
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2145194259}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 4
-  m_Height: 20
-  m_Direction: 1
-  m_Center: {x: 0, y: 10, z: 0}
 --- !u!1001 &587710720521019515
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3240,7 +2868,7 @@ PrefabInstance:
     - target: {fileID: 1774822119726090316, guid: 9ddb693b15025364d89aea50a130ce07,
         type: 3}
       propertyPath: canUse
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1774822119726090316, guid: 9ddb693b15025364d89aea50a130ce07,
         type: 3}
@@ -3251,6 +2879,37 @@ PrefabInstance:
         type: 3}
       propertyPath: weaponEnabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2767104573164048697, guid: 9ddb693b15025364d89aea50a130ce07,
+        type: 3}
+      propertyPath: canUse
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2929798281078525739, guid: 9ddb693b15025364d89aea50a130ce07,
+        type: 3}
+      propertyPath: canUse
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2929798281078525739, guid: 9ddb693b15025364d89aea50a130ce07,
+        type: 3}
+      propertyPath: _cooldown
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2929798281078525739, guid: 9ddb693b15025364d89aea50a130ce07,
+        type: 3}
+      propertyPath: dronePrefab
+      value: 
+      objectReference: {fileID: 604776981245127952, guid: 0351ae6386fb4484e83c288ba517eb16,
+        type: 3}
+    - target: {fileID: 2929798281078525739, guid: 9ddb693b15025364d89aea50a130ce07,
+        type: 3}
+      propertyPath: weaponEnabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2929798281078525739, guid: 9ddb693b15025364d89aea50a130ce07,
+        type: 3}
+      propertyPath: whatIsEnemy.m_Bits
+      value: 512
       objectReference: {fileID: 0}
     - target: {fileID: 4758979373639413987, guid: 9ddb693b15025364d89aea50a130ce07,
         type: 3}
@@ -3270,7 +2929,7 @@ PrefabInstance:
     - target: {fileID: 6085890847137210428, guid: 9ddb693b15025364d89aea50a130ce07,
         type: 3}
       propertyPath: canUse
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6085890847137210428, guid: 9ddb693b15025364d89aea50a130ce07,
         type: 3}
@@ -3340,7 +2999,7 @@ PrefabInstance:
     - target: {fileID: 7521690542071491873, guid: 9ddb693b15025364d89aea50a130ce07,
         type: 3}
       propertyPath: canUse
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7521690542071491873, guid: 9ddb693b15025364d89aea50a130ce07,
         type: 3}
@@ -3398,4 +3057,3 @@ SceneRoots:
   - {fileID: 2145194258}
   - {fileID: 776362132}
   - {fileID: 219507599}
-  - {fileID: 1572929559}

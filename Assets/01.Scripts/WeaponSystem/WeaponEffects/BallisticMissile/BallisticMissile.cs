@@ -52,7 +52,7 @@ public class BallisticMissile : WeaponEffect
 	private void MoveDown()
 	{
 		transform.forward = Vector3.down;
-		transform.DOLocalMoveY(0, _moveDuration).OnComplete(ExplosionEffect);
+		transform.DOLocalMoveY(0, _moveDuration).OnComplete(ExplosionEffect).SetEase(Ease.InCubic);
 	}
 
 	//Æø¹ßÇÏ±â
