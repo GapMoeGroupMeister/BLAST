@@ -3,28 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace EffectSystem
-{
-    [Serializable]
-    public struct EffectStatePair
-    {
-        public EffectStatePair(EffectStateTypeEnum effectStateType, float duration, int level, float percent = 1f)
-		{
-            this.effectStateType = effectStateType;
-            this.duration = duration;
-            this.level = level;
-            this.percent = percent;
-		}
-
-        public EffectStateTypeEnum effectStateType;
-        public float duration;
-        public int level;
-
-        /// <summary>
-        /// percent : 0f ~ 1f
-        /// </summary>
-        public float percent;
-    }
-    
+{   
     public class AgentEffectController : MonoBehaviour, IEffectable
     {
         public Dictionary<EffectStateTypeEnum, EffectState> effectDictionary = new Dictionary<EffectStateTypeEnum, EffectState>();

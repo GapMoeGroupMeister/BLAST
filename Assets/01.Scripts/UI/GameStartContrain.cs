@@ -8,6 +8,6 @@ public class GameStartContrain : MonoBehaviour
 
     public void OnGameStart()
 	{
-		SceneLoadingManager.LoadScene(_lobbyScene);
+		SceneLoadingManager.LoadScene("CrogenScene");
 	}
 }
