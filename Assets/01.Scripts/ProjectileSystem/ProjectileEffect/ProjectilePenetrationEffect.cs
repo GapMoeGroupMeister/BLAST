@@ -9,6 +9,7 @@ public class ProjectilePenetrationEffect : ProjectileEffect
 	private void Awake()
 	{
 		_bullet = GetComponent<Bullet>();
+		OnEffect(1);
 	}
 
 	private void Start()
@@ -20,6 +21,8 @@ public class ProjectilePenetrationEffect : ProjectileEffect
 	public override void OnEffect(float level)
 	{
 		base.OnEffect(level);
+		_bullet.penetrationPercent = (level / 10f);
+		if (_bullet.isPenetration) return;
 		_bullet.isPenetration = true;
 	}
 }
