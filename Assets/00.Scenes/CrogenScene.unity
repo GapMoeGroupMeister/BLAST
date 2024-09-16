@@ -572,7 +572,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 694662798}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.14865232, y: 0.8513282, z: -0.35887846, w: 0.35263172}
+  m_LocalRotation: {x: 0.14865234, y: 0.8513282, z: -0.35887846, w: 0.35263172}
   m_LocalPosition: {x: -80, y: 120, z: 80}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1404,7 +1404,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1106337031}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.14865232, y: 0.8513282, z: -0.35887846, w: 0.35263172}
+  m_LocalRotation: {x: 0.14865234, y: 0.8513282, z: -0.35887846, w: 0.35263172}
   m_LocalPosition: {x: -80, y: 120, z: 80}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2943,6 +2943,27 @@ PrefabInstance:
       propertyPath: _laserTailPointPrefab
       value: 
       objectReference: {fileID: 6406411851375914536, guid: ce713f9676cafc34487acdde8b918a39,
+        type: 3}
+    - target: {fileID: 6838086103775843688, guid: 9ddb693b15025364d89aea50a130ce07,
+        type: 3}
+      propertyPath: canUse
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6838086103775843688, guid: 9ddb693b15025364d89aea50a130ce07,
+        type: 3}
+      propertyPath: weaponEnabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6838086103775843688, guid: 9ddb693b15025364d89aea50a130ce07,
+        type: 3}
+      propertyPath: isConditionalWeapon
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6838086103775843688, guid: 9ddb693b15025364d89aea50a130ce07,
+        type: 3}
+      propertyPath: _dashExplosionPrefab
+      value: 
+      objectReference: {fileID: 778815023308791822, guid: 6581595191f458042b67b371a5cd3783,
         type: 3}
     - target: {fileID: 7521690542071491873, guid: 9ddb693b15025364d89aea50a130ce07,
         type: 3}
