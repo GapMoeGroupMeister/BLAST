@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class MagneticBlock : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class MagneticBlock : MonoBehaviour
     private Collider[] _colliders;
     private ParticleSystem _generateVFX;
     private ParticleSystem _magneticVFX;
+    private DecalProjector _rangeDecal;
     private bool _isActive;
     
 
@@ -19,29 +21,36 @@ public class MagneticBlock : MonoBehaviour
     {
         _generateVFX = transform.Find("GenerateVFX").GetComponent<ParticleSystem>();
         _magneticVFX = transform.Find("VFX").GetComponent<ParticleSystem>();
-        
+        _rangeDecal = transform.Find("RangeDecal").GetComponent<DecalProjector>();
         _colliders = new Collider[10];
     }
+    
 
-
-    public void Active(){
+    [ContextMenu("DebugActive")]
+    public void Active(Vector3 pos, float power, float range){
+        
+        transform.position = pos;
         _isActive = true;
         _generateVFX.Play();
+        _rangeDecal.enabled = true;
+        _rangeDecal.size = new Vector3(detectRange, detectRange, _rangeDecal.size.z);
         StartCoroutine(ActiveCoroutine());
     }
 
     private IEnumerator ActiveCoroutine()
     {
-
         _magneticVFX.Play();
         yield return new WaitForSeconds(duration);
         _magneticVFX.Stop();
         _isActive = false;
+        _rangeDecal.enabled = false;
     }
 
     private void FixedUpdate()
     {
-        Pull();
+        if(_isActive)
+            Pull();
+
     } 
 
     private void Pull()
