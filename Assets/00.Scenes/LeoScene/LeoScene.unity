@@ -585,9 +585,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0882b9a178a23d45ad0268609a23a05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <WeaponDataSO>k__BackingField: {fileID: 11400000, guid: 2e4ab1b1407c35e40b49c62daeae3afb,
-    type: 2}
-  startWeapon: 
+  _curWeapons: []
 --- !u!4 &684195472
 Transform:
   m_ObjectHideFlags: 0
@@ -614,17 +612,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: b8aa4ba6791d27f428e91909cb57a746,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.2959014
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b8aa4ba6791d27f428e91909cb57a746,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.084
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b8aa4ba6791d27f428e91909cb57a746,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.632
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b8aa4ba6791d27f428e91909cb57a746,
         type: 3}
@@ -639,12 +637,12 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: b8aa4ba6791d27f428e91909cb57a746,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b8aa4ba6791d27f428e91909cb57a746,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b8aa4ba6791d27f428e91909cb57a746,
         type: 3}

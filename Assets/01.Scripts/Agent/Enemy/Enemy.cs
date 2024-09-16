@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public abstract class Enemy : Agent, IPoolingObject
 {
@@ -16,6 +17,8 @@ public abstract class Enemy : Agent, IPoolingObject
     [HideInInspector]
     public CapsuleCollider capsuleCollider;
 
+    public float StunTime { get; protected set; }
+
     protected Collider[] _enemyCheckColliders;
 
     public PoolType OriginPoolType { get; set; }
@@ -25,6 +28,7 @@ public abstract class Enemy : Agent, IPoolingObject
     {
         Player player = FindObjectOfType<Player>();
         if (player != null) targetTrm = player.transform;
+
     }
 
     protected override void Awake()
@@ -39,6 +43,8 @@ public abstract class Enemy : Agent, IPoolingObject
     public abstract void OnDie();
 
     public abstract void AnimationEndTrigger(AnimationTriggerEnum triggerBit);
+
+    public abstract void Stun(float duration);
 
     public virtual void OnPop()
     {
