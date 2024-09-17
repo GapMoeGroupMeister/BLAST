@@ -31,11 +31,11 @@ public class Player : Agent
         }
 
         StateMachine.Initialize(PlayerStateEnum.Idle, this);
+        currentPlayerPart = _playerPartController.Init(_currentPartType);
     }
 
     private void Start()
     {
-        currentPlayerPart = _playerPartController.Init(_currentPartType);
 
     }
 
