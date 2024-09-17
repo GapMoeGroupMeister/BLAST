@@ -16,6 +16,8 @@ public class EnemyMovement : MovementController
     public NavMeshAgent NavAgent => _navAgent;
     private Rigidbody _rigidbodyCompo;
 
+    private Coroutine _forceMoveCoroutine;
+
     [SerializeField]
     private float _knockbackThreshold;
     [SerializeField]
@@ -98,7 +100,9 @@ public class EnemyMovement : MovementController
 
     public void ForceMove(Vector3 position)
     {
-        StartCoroutine(ForceMoveCoroutine(position));
+        if (_forceMoveCoroutine != null)
+            StopCoroutine(_forceMoveCoroutine);
+        _forceMoveCoroutine = StartCoroutine(ForceMoveCoroutine(position));
     }
 
     private IEnumerator ForceMoveCoroutine(Vector3 position)
