@@ -24,7 +24,6 @@ public class MagneticBlock : MonoBehaviour
         _rangeDecal = transform.Find("RangeDecal").GetComponent<DecalProjector>();
         _colliders = new Collider[10];
     }
-    
 
     [ContextMenu("DebugActive")]
     public void Active(Vector3 pos, float power, float range){
