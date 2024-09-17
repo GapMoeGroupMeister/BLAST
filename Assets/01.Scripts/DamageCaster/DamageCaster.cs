@@ -28,7 +28,6 @@ public abstract class DamageCaster : MonoBehaviour
 		finalCenter.x = center.x * transform.lossyScale.x;
 		finalCenter.y = center.y * transform.lossyScale.y;
 		finalCenter.z = center.z * transform.lossyScale.z;
-		finalCenter = transform.rotation * finalCenter;
 		return finalCenter;
 	}
 
