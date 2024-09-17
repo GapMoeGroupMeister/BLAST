@@ -2,11 +2,21 @@
 
 public class MassProductionDroneWeapon : Weapon
 {
+    [SerializeField] private WeaponEffect dronePrefab;
+
+    private int _currentDroneCount = 0;
+
     public override bool UseWeapon()
     {
         if(base.UseWeapon())
         {
-            //여기에 로직
+            if (level > _currentDroneCount)
+			{
+                var drone = Instantiate(dronePrefab);
+                drone.Init(level, this);
+                ++_currentDroneCount;
+			}
+
         }	
 
         return true;

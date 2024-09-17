@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Boss524BlastSkill : EnemySkill<Boss524>
 {
+    private Coroutine _skillCoroutine;
+
     private Collider[] _colliders;
     private int _maxDetactCount = 1;
 
@@ -29,10 +31,20 @@ public class Boss524BlastSkill : EnemySkill<Boss524>
         return false;
     }
 
+    public override void StopSkill()
+    {
+        if(_skillCoroutine !=null)
+        {
+            _owner.StopCoroutine(_skillCoroutine);
+        }
+        _lastUseTime = Time.time;
+        _skillManager.SetUsingSkill(false);
+    }
+
     public override void UseSkill()
     {
         base.UseSkill();
-        _owner.StartCoroutine(BlastSkillCoroutine());
+        _skillCoroutine = _owner.StartCoroutine(BlastSkillCoroutine());
     }
 
     private IEnumerator BlastSkillCoroutine()

@@ -23,6 +23,10 @@ public class EnemySkillManager<T> where T : Enemy
         }
     }
 
+    public void StopSkill()
+    {
+        _currentUsingSkill.StopSkill();
+    }
 
     public void AddSkill(Enum skillEnum, EnemySkill<T> skill)
     {

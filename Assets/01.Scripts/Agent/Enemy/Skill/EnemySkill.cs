@@ -33,6 +33,8 @@ public abstract class EnemySkill<T> where T : Enemy
 
     public abstract bool IsUseable();
 
+    public abstract void StopSkill();
+
     public virtual void UseSkill()
     {
         _skillManager.SetUsingSkill(true);
