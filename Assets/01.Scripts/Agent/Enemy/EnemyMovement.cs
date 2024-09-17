@@ -108,7 +108,7 @@ public class EnemyMovement : MovementController
     private IEnumerator ForceMoveCoroutine(Vector3 position)
     {
         _navAgent.enabled = false;
-        transform.position = position;
+        transform.position += position;
         yield return null;
         _navAgent.Warp(transform.position);
         _navAgent.enabled = true;
