@@ -1,12 +1,35 @@
-﻿using UnityEngine;
+﻿using Crogen.ObjectPooling;
+using System;
+using UnityEngine;
 
 public class DashExtensionWeapon : Weapon
 {
-    public override bool UseWeapon()
+    [SerializeField] private DashExplosionEffect _dashExplosionPrefab;
+    PlayerMovement _playerMovement;
+
+	private void Start()
+	{
+        _playerMovement = GameManager.Instance.Player.MovementCompo as PlayerMovement;
+        _playerMovement.OnDashEvent += OnDash;
+    }
+
+    private void OnDash(Vector3 dashDir)
+	{
+        if (isConditionalWeapon)
+		{
+            UseWeapon();
+        }
+	}
+
+	public override bool UseWeapon()
     {
         if(base.UseWeapon())
         {
-            //여기에 로직
+            DashExplosionEffect effect = 
+                Instantiate(_dashExplosionPrefab, 
+                _playerMovement.transform.position, 
+                Quaternion.identity);
+            effect.Init(level, this);
         }	
 
         return true;

@@ -6,8 +6,8 @@ public class Bullet : MonoBehaviour, IPoolingObject
 {
 	public float speed = 100f;
 	public float duration = 5f;
-	public bool isPenetration = false; 
-
+	public bool isPenetration = false;
+	public float penetrationPercent = 0f;
 	[SerializeField] protected DamageCaster _damageCaster;
 	[SerializeField] protected int _damage = 1;
 	public PoolType OriginPoolType { get; set; }
@@ -15,7 +15,7 @@ public class Bullet : MonoBehaviour, IPoolingObject
 
 	protected virtual void Awake()
 	{
-		_damageCaster.OnDamageCastSuccessEvent += OnDie;
+		_damageCaster.OnDamageCastSuccessEvent += OnCollision;
 	}
 
 	protected virtual void FixedUpdate()
@@ -31,6 +31,19 @@ public class Bullet : MonoBehaviour, IPoolingObject
 	public void OnPush()
 	{
 		StopAllCoroutines();
+	}
+
+	private void OnCollision()
+	{
+		if (isPenetration)
+		{
+			float random = Random.Range(0f, 1f);
+			if(penetrationPercent < random)
+			{
+				return;
+			}
+		}
+		OnDie();
 	}
 
 	private IEnumerator CoroutineMove()
@@ -52,7 +65,6 @@ public class Bullet : MonoBehaviour, IPoolingObject
 
 	private void OnDie()
 	{
-		if (isPenetration) return;
 		this.Push();
 	}
 }
