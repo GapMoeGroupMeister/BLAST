@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.InputSystem;
 
 public class EnemyMovement : MovementController
 {
@@ -32,6 +33,12 @@ public class EnemyMovement : MovementController
         _navAgent.speed = _enemy.Stat.GetValue(StatEnum.Speed);
 
         _rigidbodyCompo = GetComponent<Rigidbody>();
+    }
+
+    private void Update()
+    {
+        if (Keyboard.current.kKey.wasPressedThisFrame)
+            ForceMove(Vector3.zero);
     }
 
     public void DisableNavAgent()
@@ -67,7 +74,8 @@ public class EnemyMovement : MovementController
 
         _isKnockback = true;
 
-        yield return new WaitForSeconds(_physicsDelayTime);
+        yield return new WaitForFixedUpdate();
+        yield return new WaitForFixedUpdate();
 
         yield return new WaitUntil(() => _rigidbodyCompo.velocity.magnitude < _knockbackThreshold || Time.time > _currentKnockbackTime + _maxKnockbackTime);
 
@@ -86,6 +94,20 @@ public class EnemyMovement : MovementController
         if (!_navAgent.enabled) return;
         _navAgent.velocity = Vector3.zero;
         _navAgent.isStopped = true;
+    }
+
+    public void ForceMove(Vector3 position)
+    {
+        StartCoroutine(ForceMoveCoroutine(position));
+    }
+
+    private IEnumerator ForceMoveCoroutine(Vector3 position)
+    {
+        _navAgent.enabled = false;
+        transform.position = position;
+        yield return null;
+        _navAgent.Warp(transform.position);
+        _navAgent.enabled = true;
     }
 
     public override void SetMovement(Vector3 movement, bool isRotation = false)
