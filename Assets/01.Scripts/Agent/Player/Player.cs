@@ -14,10 +14,6 @@ public class Player : Agent
         StateMachine = new PlayerStateMachine<PlayerStateEnum>();
         _playerPartController = GetComponent<PlayerPartController>();
 
-
-        //임시로 만든거
-        currentPlayerPart = _playerPartController.Init(_currentPartType);
-        
         foreach (PlayerStateEnum stateEnum in Enum.GetValues(typeof(PlayerStateEnum)))
         {
             try
@@ -36,6 +32,13 @@ public class Player : Agent
 
         StateMachine.Initialize(PlayerStateEnum.Idle, this);
     }
+
+    private void Start()
+    {
+        currentPlayerPart = _playerPartController.Init(_currentPartType);
+
+    }
+
 
     private void FixedUpdate()
     {
