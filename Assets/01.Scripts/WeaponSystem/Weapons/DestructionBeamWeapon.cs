@@ -41,7 +41,7 @@ public class DestructionBeamWeapon : Weapon
         {
             var beamEffect = Instantiate(_beamEffect, t.transform);
             beamEffect.Play();
-            Destroy(beamEffect.gameObject, _beamDuration);
+            Destroy(beamEffect.gameObject, _beamDuration + 1);
         }
         float timer = 0;
         while (timer < _beamDuration)
