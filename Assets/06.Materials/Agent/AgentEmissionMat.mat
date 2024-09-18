@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: EnemyMat
+  m_Name: AgentEmissionMat
   m_Shader: {fileID: -6465566751694194690, guid: fce37ba79134c904a88a7e9a52d02862,
     type: 3}
   m_Parent: {fileID: 0}
@@ -64,6 +64,7 @@ Material:
     - _CastShadows: 1
     - _Cull: 2
     - _DstBlend: 0
+    - _IsDamaged: 0
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
@@ -74,5 +75,6 @@ Material:
     - _ZWrite: 1
     - _ZWriteControl: 0
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 4, g: 4, b: 4, a: 1}
+    - _DamagedColor: {r: 4, g: 4, b: 4, a: 1}
   m_BuildTextureStacks: []

@@ -84,6 +84,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec2e8163a86f4414b853f4241c9b4a04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _renderers:
+  - {fileID: 6303881482373206176}
   OnHealthChangedEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -266,6 +268,12 @@ MonoBehaviour:
 --- !u!4 &2910984097462305521 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b2f47b9c5c65e9046b256171e2f975ed,
+    type: 3}
+  m_PrefabInstance: {fileID: 3454082657660445978}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &6303881482373206176 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -534592245459536454, guid: b2f47b9c5c65e9046b256171e2f975ed,
     type: 3}
   m_PrefabInstance: {fileID: 3454082657660445978}
   m_PrefabAsset: {fileID: 0}

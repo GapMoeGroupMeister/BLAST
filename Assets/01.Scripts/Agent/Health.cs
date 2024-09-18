@@ -1,9 +1,12 @@
 ﻿using System;
 using UnityEngine;
+using System.Collections;
 using UnityEngine.Events;
 
 public class Health : MonoBehaviour, IDamageable
 {
+    [SerializeField] private Renderer[] _renderers;
+    [SerializeField] private float _damageDuration = 0.005f;
     public UnityEvent<int, int> OnHealthChangedEvent;
     public UnityEvent OnDieEvent;
     public bool IsInvincibility { get; set; }
@@ -15,6 +18,12 @@ public class Health : MonoBehaviour, IDamageable
     [SerializeField] private bool _isDead;
     private Agent _owner;
 
+    private int _damagedID;
+
+	private void Awake()
+	{
+        _damagedID = Shader.PropertyToID("_IsDamaged");
+    }
 
     public void Initialize(Agent owner, int health)
     {
@@ -30,6 +39,8 @@ public class Health : MonoBehaviour, IDamageable
         if (IsInvincibility) return;
         _currentHealth -= amount;
         OnHealthChangedEvent?.Invoke(_currentHealth, _maxHealth);
+        StopAllCoroutines();
+        StartCoroutine(CoroutineOnDamaged());
         CheckDie();
     }
 
@@ -48,6 +59,27 @@ public class Health : MonoBehaviour, IDamageable
         {
             _isDead = true;
             OnDieEvent?.Invoke();
+        }
+    }
+
+    private IEnumerator CoroutineOnDamaged()
+	{
+        foreach (var renderer in _renderers)
+        {
+            for (int i = 0; i < renderer.materials.Length; ++i)
+            {
+                renderer.materials[i].SetInt(_damagedID, 1);
+            }
+        }
+
+        yield return new WaitForSeconds(_damageDuration);
+
+        foreach (var renderer in _renderers)
+		{
+            for (int i = 0; i < renderer.materials.Length; ++i)
+            {
+                renderer.materials[i].SetInt(_damagedID, 0);
+            }
         }
     }
 }
