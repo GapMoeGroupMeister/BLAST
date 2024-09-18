@@ -505,8 +505,8 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: add569d79088fad44aa814f637e5616a, type: 2}
-  - {fileID: 2100000, guid: 3e18e374a3ad37e4dbd7ff0319743223, type: 2}
+  - {fileID: 2100000, guid: cb3d08e4a3b6ede4499370504495bc2b, type: 2}
+  - {fileID: 2100000, guid: f47373f16ef9c2b4b8f1efc0592b8d6f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -638,7 +638,7 @@ MonoBehaviour:
   <Stat>k__BackingField: {fileID: 11400000, guid: 08ba1e6f4bc538b4bbf931e970e89da3,
     type: 2}
   currentPlayerPart: {fileID: 0}
-  _currentPartType: 2
+  _currentPartType: 1
 --- !u!114 &6872490257994263261
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -659,7 +659,7 @@ MonoBehaviour:
     m_Bits: 64
   moveSpeed: 15
   _rotateSpeed: 5
-  dashPower: 200
+  dashPower: 400
   dashCooltime: 3
   canDash: 0
   lookDirection: {x: 0, y: 0, z: 0}
@@ -725,6 +725,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec2e8163a86f4414b853f4241c9b4a04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _renderers:
+  - {fileID: 1235018620942350079}
+  - {fileID: 0}
+  _damageDuration: 0.005
   OnHealthChangedEvent:
     m_PersistentCalls:
       m_Calls: []
