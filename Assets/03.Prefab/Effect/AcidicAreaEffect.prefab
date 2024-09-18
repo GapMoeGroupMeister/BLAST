@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 5216020614074819832}
   - component: {fileID: 3225127361740552660}
   - component: {fileID: 3421480972572366690}
+  - component: {fileID: 6165953989487565950}
+  - component: {fileID: 3211318589042124700}
   m_Layer: 0
   m_Name: AcidicAreaEffect
   m_TagString: Untagged
@@ -4834,6 +4836,50 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &6165953989487565950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2921975446456525529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 431cd93710a507b49a233e267e1525cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _level: 0
+  _damage: 1
+  _acidicAreaEffect: {fileID: 3225127361740552660}
+  _damageCaster: {fileID: 3211318589042124700}
+  _radius: 25
+  _acidicAreaDuration: 5
+  _acidicAreaDamage: 1
+  _tickCool: 0.5
+--- !u!114 &3211318589042124700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2921975446456525529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08c8979b85886904a8723800451519fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  excluded: 0
+  allocationCount: 32
+  _whatIsCastable:
+    serializedVersion: 2
+    m_Bits: 512
+  _usingExcludeCast: 0
+  excludedDamageCasterList: []
+  effectStateType: 4
+  _effectDuration: 5
+  _effectLevel: 1
+  center: {x: 0, y: 0, z: 0}
+  radius: 23
 --- !u!1 &3795542369003952244
 GameObject:
   m_ObjectHideFlags: 0

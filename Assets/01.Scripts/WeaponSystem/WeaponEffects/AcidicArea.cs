@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class AcidicArea : WeaponEffect
 {
+    [SerializeField] private ParticleSystem _acidicAreaEffect;
     [SerializeField] private SphereDamageCaster _damageCaster;
     [SerializeField] private float _radius = 5;
     [SerializeField] private float _acidicAreaDuration = 5;
     [SerializeField] private int _acidicAreaDamage = 1;
     [SerializeField] private float _tickCool = 0.5f;
     
+    public float AcidicAreaDuration => _acidicAreaDuration;
+    
     
     public void SpawnAcidicArea()
     {
+        _acidicAreaEffect.Play();
         StartCoroutine(GetAcidicArea());
     }
     

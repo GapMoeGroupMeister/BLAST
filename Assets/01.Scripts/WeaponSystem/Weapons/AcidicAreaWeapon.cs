@@ -13,8 +13,9 @@ public class AcidicAreaWeapon : Weapon
             {
                 player = FindObjectOfType<Player>();
             }
-            AcidicArea acidicArea = Instantiate(_acidicArea, player.transform.position, Quaternion.identity);
+            AcidicArea acidicArea = Instantiate(_acidicArea, player.transform.position + new Vector3(0,1,0) , Quaternion.identity);
             acidicArea.SpawnAcidicArea();
+            Destroy(acidicArea.gameObject, acidicArea.AcidicAreaDuration);
         }
         return true;
     }
