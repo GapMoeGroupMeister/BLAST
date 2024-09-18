@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PartSelectPanel : UIPanel
 {
+    [SerializeField] private PlayerPartDataListSO partData;
     [SerializeField] private float _defaultPosY;
     [SerializeField] private float _activePosY;
     [SerializeField] private float _duration = 0.2f;
@@ -38,11 +39,16 @@ public class PartSelectPanel : UIPanel
 
     private void GenerateSlots()
     {
+        GameDataManager.Instance.Load();
         // 가지고있는 파츠들에 대한 정보를 슬롯에 넣기
-        for (int i = 0; i < 5; i++)
+        List<PartSave> datas = GameDataManager.Instance.parts;
+
+        for (int i = 0; i < datas.Count; i++)
         {
-            PartSelectSlot slot = Instantiate(_slotPrefab, _contentTrm) as PartSelectSlot;
-            slot.Initialize(new PlayerPartDataSO()); // 파즈 정보를 넣는다
+            if(!datas[i].enabled) // 활성화 된 파츠가 아니면 생성 X
+                continue;
+            PartSelectSlot slot = Instantiate(_slotPrefab, _contentTrm);
+            slot.Initialize(partData.GetData(datas[i].id)); // 파즈 정보를 넣는다
             partSlotList.Add(slot);
         }
     }

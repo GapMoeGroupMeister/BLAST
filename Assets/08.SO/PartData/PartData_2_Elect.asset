@@ -10,14 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9ef1a8d813a746eb947150b81366a735, type: 3}
-  m_Name: PartData_2
+  m_Name: PartData_2_Elect
   m_EditorClassIdentifier: 
-  id: 0
-  partName: "\uAE30\uBCF8 \uD30C\uCE202"
-  partPrefab: {fileID: 294903427704956916, guid: 0a088780fd58b0b49b9aa8a59ca05833,
+  id: 2
+  partName: ELEC
+  partPrefab: {fileID: 294903427704956916, guid: adb39cc5587a3c646a2f4361d3a8ca32,
     type: 3}
   partImage: {fileID: 21300000, guid: 9f2a016c841c83247818ae47421708cb, type: 3}
-  damage: 1
-  mobility: 2
-  defence: 1
-  utility: 1
+  statData: {fileID: 11400000, guid: 08ba1e6f4bc538b4bbf931e970e89da3, type: 2}
+  damage: 88
+  mobility: 34
+  defence: 25
+  utility: 77
