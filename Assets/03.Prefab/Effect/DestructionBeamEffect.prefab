@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7081455666610978705}
   - component: {fileID: 3463200498175034818}
   - component: {fileID: 5091794907501163918}
+  - component: {fileID: 4529499419906734678}
   m_Layer: 0
   m_Name: DestructionBeamEffect
   m_TagString: Untagged
@@ -4831,6 +4832,30 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &4529499419906734678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5040955366455092310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d481d01d395fe44b892306644e38c13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  excluded: 0
+  allocationCount: 32
+  _whatIsCastable:
+    serializedVersion: 2
+    m_Bits: 512
+  _usingExcludeCast: 1
+  excludedDamageCasterList: []
+  effectStateType: 0
+  _effectDuration: 0
+  _effectLevel: 1
+  center: {x: 0, y: 0, z: 160}
+  size: {x: 2, y: 2, z: 320}
 --- !u!1 &7235650254955113224
 GameObject:
   m_ObjectHideFlags: 0
