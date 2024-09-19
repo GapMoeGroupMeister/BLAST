@@ -6,4 +6,5 @@ using DG.Tweening;
 public class DieContainer : MonoBehaviour
 {
 	[SerializeField] private DieInfoContainer _dieInfoContainer;
+
 }
