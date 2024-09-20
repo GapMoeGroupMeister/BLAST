@@ -86,7 +86,7 @@ public class PlayerMovement : MovementController
         transform.rotation = Quaternion.LookRotation(dashDir);
         _rigidbodyCompo.velocity = dashDir * dashPower;
         yield return new WaitForSeconds(duration);
-        _rigidbodyCompo.velocity = Vector3.zero;
+        StopImmediately();
         _canMove = true;
     }
 
