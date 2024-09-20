@@ -39,6 +39,7 @@ public class StageSelectPanel : UIPanel
     {
         if(_isActive) return;
         SetCanvasActive(true);
+        UIControlManager.Instance.overUIAmount ++;
         _rectTrm.DOAnchorPosX(_activeXDelta, _duration).OnComplete(() => _isActive = true);
     }
 
@@ -46,6 +47,7 @@ public class StageSelectPanel : UIPanel
     {
         if(!_isActive) return;
          SetCanvasActive(false);
+         UIControlManager.Instance.overUIAmount--;
         _rectTrm.DOAnchorPosX(_defaultXDelta, _duration).OnComplete(() => _isActive = false);
     }
 

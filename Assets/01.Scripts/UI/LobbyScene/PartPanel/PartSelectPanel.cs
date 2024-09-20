@@ -23,6 +23,7 @@ public class PartSelectPanel : UIPanel
     public override void Open()
     {
         if (_isActive) return;
+        UIControlManager.Instance.overUIAmount ++;
         _rectTrm.DOAnchorPosY(_activePosY, _duration).OnComplete(() => _isActive = true);
         SetCanvasActive(true);
         RefreshSlot();
@@ -31,6 +32,7 @@ public class PartSelectPanel : UIPanel
     public override void Close()
     {
         if (!_isActive) return;
+        UIControlManager.Instance.overUIAmount --;
         _rectTrm.DOAnchorPosY(_defaultPosY, _duration).OnComplete(() => _isActive = false);
         SetCanvasActive(false);
     }

@@ -1,7 +1,8 @@
 ﻿using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class UIControlManager : MonoBehaviour
+public class UIControlManager : MonoSingleton<UIControlManager>
 {
     public Vector3 mousePosition;
 
@@ -10,11 +11,18 @@ public class UIControlManager : MonoBehaviour
 
     private IClickable _prevObject;
     private IClickable _currentObject = null;
+    public int overUIAmount; // 오브젝트 UI보다 선행적으로 인식되어야하는 active된 Canvas UI의 개수
     private bool _isTargeted;
     private Ray _ray;
+
+    private void Awake()
+    {
+        overUIAmount = 0;
+    }
     
     private void Update()
     {
+        if(overUIAmount > 0) return;
         mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         _ray = Camera.main.ScreenPointToRay(Input.mousePosition);
