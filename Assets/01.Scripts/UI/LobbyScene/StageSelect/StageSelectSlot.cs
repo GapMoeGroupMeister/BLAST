@@ -11,6 +11,7 @@ public class StageSelectSlot : MonoBehaviour
 
     [SerializeField] private StageInfoSO _stageInfo;
     [SerializeField] private Image _image;
+    [SerializeField] private Image _lockPanel;
     [SerializeField] private TextMeshProUGUI _stageNameText;
     private Button _button;
     private StageSelectPanel _panel;
@@ -34,5 +35,9 @@ public class StageSelectSlot : MonoBehaviour
         _stageColorImage.color = info.stageColor;
         _image.sprite = info.stageImageSprite;
         _stageNameText.text = info.stageName;
+       
+       _lockPanel.gameObject.SetActive(_stageInfo.isLocked); 
+        // 나중에 스테이지 잠금 부분은 다른식으로 진도를 저장해서 구현해야함
+        // 현재는 StageInfoSO안에있는 bool값으로 강제 잠금임
     }
 }
