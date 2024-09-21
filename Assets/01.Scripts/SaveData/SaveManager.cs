@@ -2,16 +2,24 @@ using EasySave.Json;
 
 public class SaveManager : MonoSingleton<SaveManager>
 {
-    private SavePartData _data;
+    public SavePartData data;
     private readonly string fileName = "PartData";
 
     private void Start()
     {
-        _data = EasyToJson.FromJson<SavePartData>(fileName);
+        data = EasyToJson.FromJson<SavePartData>(fileName);
+        if(data == null)
+        data = new SavePartData();
     }
 
-    public void SaveData(SavePartData data)
+    public void SaveData()
     {
         EasyToJson.ToJson<SavePartData>(data, fileName);
+    }
+
+    public void SelectPlayerPart(int id)
+    {
+        data.partId = id;
+        SaveData();
     }
 }
