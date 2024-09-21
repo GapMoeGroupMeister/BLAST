@@ -34,7 +34,7 @@ public class WaveManager : MonoSingleton<WaveManager>
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            RemoveEnemy(_spawnedEnemies[0]);
+            DebugStartRandomWave();
         }
     }
 
