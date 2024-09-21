@@ -5,17 +5,24 @@ using UnityEngine;
 
 public class Turret : WeaponEffect, IPoolingObject
 {
+    [Header("Turret Trm Setting")]
     [SerializeField] private Transform _turretHeadTrm;
     [SerializeField] private Transform _turretFireTrm;
-    [SerializeField] private Transform _target;
-    [SerializeField] private PoolType _poolType; 
+    
+    [Header("Turret Setting")]
+    [SerializeField] private LayerMask whatIsEnemy;
+    [SerializeField] private PoolType _bulletPoolType;
+    [SerializeField] private float _enemyFindRadius = 20f;
     [SerializeField] private float _fireRate;
     [SerializeField] private float _dieTime;
+    
     public PoolType OriginPoolType { get; set; }
     public GameObject gameObject { get; set; }
     public bool IsPushed { get; private set; }
     
     private float _fireRateTimer;
+    private Collider[] _colliders = new Collider[2];
+    private Transform _target;
 
     private void Update()
     {
@@ -27,8 +34,11 @@ public class Turret : WeaponEffect, IPoolingObject
         }
         if (_target != null)
         {
-            
             RotateTurretHead(1f);
+        }
+        else
+        {
+            SetTarget(GetNearestEnemy(transform.position));
         }
     }
 
@@ -48,13 +58,15 @@ public class Turret : WeaponEffect, IPoolingObject
 
     private void Shot()
     {
-        gameObject.Pop(_poolType, _turretFireTrm.position, _turretHeadTrm.rotation);
+        gameObject.Pop(_bulletPoolType, _turretFireTrm.position, _turretHeadTrm.rotation);
+        
     }
 
     
     public void OnPop()
     {
         IsPushed = false;
+        SetTarget(GetNearestEnemy(transform.position));
         StartCoroutine(AutoDie());
     }
 
@@ -67,5 +79,15 @@ public class Turret : WeaponEffect, IPoolingObject
     public void OnPush()
     {
         IsPushed = true;
+    }
+    
+    private Transform GetNearestEnemy(Vector3 pos)
+    {
+        int count = Physics.OverlapSphereNonAlloc(pos, _enemyFindRadius, _colliders, whatIsEnemy);
+		
+        if (count == 0)
+            return null;
+        return _colliders[0].transform;
+
     }
 }

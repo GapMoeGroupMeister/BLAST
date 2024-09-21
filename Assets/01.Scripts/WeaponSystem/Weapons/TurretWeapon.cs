@@ -8,11 +8,11 @@ public class TurretWeapon : Weapon
 {
 	[SerializeField] private PoolType _turretPoolType;
 	[SerializeField] private int _turretMaxAmount = 10;
-	[SerializeField] private float _enemyFindRadius = 20f;
+	
 	
 	private int _turretAmount = 0;
 	private List<Turret> _turrets = new List<Turret>();
-	private Collider[] _colliders = new Collider[2];
+	
 	
 	[ContextMenu("UseWeapon")]
 	public override bool UseWeapon()
@@ -68,7 +68,6 @@ public class TurretWeapon : Weapon
 		_turretAmount++;
 		turret.Init(level, this);
 		Debug.Log("Turret Spawned");
-		turret.SetTarget(GetNearestEnemy(turret.transform.position));
 		return turret;
 	}
 	
@@ -77,15 +76,7 @@ public class TurretWeapon : Weapon
 		StopAllCoroutines();
 	}
 	
-	private Transform GetNearestEnemy(Vector3 pos)
-	{
-		int count = Physics.OverlapSphereNonAlloc(pos, _enemyFindRadius, _colliders, whatIsEnemy);
-		
-		if (count == 0)
-			return null;
-		return _colliders[0].transform;
-
-	}
+	
 	
 
 	protected override void Update()
@@ -103,8 +94,5 @@ public class TurretWeapon : Weapon
 
 	private void OnDrawGizmosSelected()
 	{
-		player ??= FindObjectOfType<Player>();
-		Gizmos.color = Color.red;
-		Gizmos.DrawWireSphere(player.transform.position, _enemyFindRadius);
 	}
 }

@@ -2050,6 +2050,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 567e5c0b4c1e65f4a875aa1a56ac9b71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1702435907 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5144747693960115713, guid: 9ddb693b15025364d89aea50a130ce07,
+    type: 3}
+  m_PrefabInstance: {fileID: 9030360122459302398}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcf76d0220ecab14590685fb9bb40cf5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1788354647
 GameObject:
   m_ObjectHideFlags: 0
@@ -3081,13 +3093,38 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5144747693960115713, guid: 9ddb693b15025364d89aea50a130ce07,
         type: 3}
+      propertyPath: level
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5144747693960115713, guid: 9ddb693b15025364d89aea50a130ce07,
+        type: 3}
+      propertyPath: canUse
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5144747693960115713, guid: 9ddb693b15025364d89aea50a130ce07,
+        type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 1684598896}
+    - target: {fileID: 5144747693960115713, guid: 9ddb693b15025364d89aea50a130ce07,
+        type: 3}
+      propertyPath: weaponEnabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5144747693960115713, guid: 9ddb693b15025364d89aea50a130ce07,
+        type: 3}
+      propertyPath: _turretPoolType
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5144747693960115713, guid: 9ddb693b15025364d89aea50a130ce07,
+        type: 3}
+      propertyPath: whatIsEnemy.m_Bits
+      value: 512
+      objectReference: {fileID: 0}
     - target: {fileID: 5381559122253746953, guid: 9ddb693b15025364d89aea50a130ce07,
         type: 3}
       propertyPath: _curWeapons.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5381559122253746953, guid: 9ddb693b15025364d89aea50a130ce07,
         type: 3}
@@ -3103,7 +3140,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _curWeapons.Array.data[2]
       value: 
-      objectReference: {fileID: 1702435906}
+      objectReference: {fileID: 1702435907}
     - target: {fileID: 6085890847137210428, guid: 9ddb693b15025364d89aea50a130ce07,
         type: 3}
       propertyPath: canUse
