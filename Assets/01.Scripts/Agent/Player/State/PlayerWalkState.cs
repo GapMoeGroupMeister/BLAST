@@ -2,13 +2,15 @@
 
 public class PlayerWalkState : PlayerState<PlayerStateEnum>
 {
+    PlayerMovement _playerMovement;
     private Vector3 _moveDirection;
     
     public PlayerWalkState(Player playerBase, PlayerStateMachine<PlayerStateEnum> stateMachine, string animBoolName) : base(playerBase, stateMachine, animBoolName)
     {
+        _playerMovement = _playerBase.MovementCompo as PlayerMovement;
     }
 
-	public override void Enter()
+    public override void Enter()
 	{
 		base.Enter();
         _gameManager.InputReader.DashEvent += HandleOnDash;
@@ -32,6 +34,7 @@ public class PlayerWalkState : PlayerState<PlayerStateEnum>
 
     private void HandleOnDash()
     {
-        _stateMachine.ChangeState(PlayerStateEnum.Dash);
+        if (_playerMovement.canDash)
+            _stateMachine.ChangeState(PlayerStateEnum.Dash);
     }
 }
