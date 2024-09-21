@@ -639,7 +639,8 @@ MonoBehaviour:
   <Stat>k__BackingField: {fileID: 11400000, guid: 08ba1e6f4bc538b4bbf931e970e89da3,
     type: 2}
   currentPlayerPart: {fileID: 0}
-  _currentPartType: 1
+  playerDashEffectCaster: {fileID: 0}
+  _currentPartType: 2
 --- !u!114 &6872490257994263261
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -685,7 +686,19 @@ MonoBehaviour:
       m_Calls: []
   OnDieEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: DieContainer, Assembly-CSharp
+        m_MethodName: ShowPanel
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0.4
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   _maxHealth: 0
   _isDead: 0
 --- !u!114 &3008086090903353795
@@ -781,10 +794,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20c3fe8e4aa2c2343bb54aaf2226af52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meshFilters: []
+  meshFilters:
+  - {fileID: 0}
   skinnedMeshRenderers:
   - {fileID: 1235018620942350079}
-  _playerDashEffectPrefab: {fileID: 0}
+  _playerDashEffectPrefab: {fileID: 5469778409981858398, guid: 5404ad792373812459b5561bb41432d2,
+    type: 3}
 --- !u!1 &6906133222992721433
 GameObject:
   m_ObjectHideFlags: 0
