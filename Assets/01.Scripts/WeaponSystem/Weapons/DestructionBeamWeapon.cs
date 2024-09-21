@@ -11,7 +11,7 @@ public class DestructionBeamWeapon : Weapon
     [SerializeField] private float _chargeTime = 1;
     [SerializeField] private float _beamDuration = 1;
 
-    private void Awake()
+    private void Start()
     {
         _beamTrm.AddRange(GameManager.Instance.Player.currentPlayerPart.magazineInfoL.bulletFirePositions);
         _beamTrm.AddRange(GameManager.Instance.Player.currentPlayerPart.magazineInfoR.bulletFirePositions);
