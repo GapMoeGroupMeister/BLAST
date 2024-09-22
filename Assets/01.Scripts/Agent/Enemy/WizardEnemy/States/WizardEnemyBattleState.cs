@@ -30,7 +30,7 @@ public class WizardEnemyBattleState : EnemyState<WizardEnemy>
         }
 
         float distance = (_targetDestination - _enemyBase.targetTrm.position).magnitude;
-
+    
         if (distance >= 0.5f)
         {
             SetDestination(_enemyBase.targetTrm.position);

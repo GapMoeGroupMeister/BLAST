@@ -1,12 +1,8 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public abstract class Enemy : Agent, IPoolingObject
 {
-    public SkinnedMeshRenderer MeshRendererCompo { get; private set; }
+    public Renderer RendererCompo { get; private set; }
     public EnemyMovement EnemyMovementCompo { get; private set; }
 
     [Header("Common Setting")]
@@ -39,7 +35,7 @@ public abstract class Enemy : Agent, IPoolingObject
         capsuleCollider = GetComponent<CapsuleCollider>();
         EnemyMovementCompo = MovementCompo as EnemyMovement;
         EnemyMovementCompo.Initialize(this);
-        MeshRendererCompo = transform.Find("Visual/BaseMesh").GetComponent<SkinnedMeshRenderer>();
+        RendererCompo = transform.Find("Visual/BaseMesh").GetComponent<Renderer>();
     }
 
     public abstract void OnDie();
@@ -50,6 +46,7 @@ public abstract class Enemy : Agent, IPoolingObject
 
     public virtual void OnPop()
     {
+        targetTrm  = GameManager.Instance.Player.transform;
         CanStateChangeable = true;
     }
 
