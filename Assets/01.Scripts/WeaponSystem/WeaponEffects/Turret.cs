@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using Crogen.ObjectPooling;
+using DG.Tweening;
 using UnityEngine;
 
 public class Turret : WeaponEffect, IPoolingObject
@@ -15,6 +16,9 @@ public class Turret : WeaponEffect, IPoolingObject
     [SerializeField] private float _enemyFindRadius = 20f;
     [SerializeField] private float _fireRate;
     [SerializeField] private float _dieTime;
+    
+    [Space(10)]
+    [SerializeField] private ParticleSystem _bombEffect;
     
     public PoolType OriginPoolType { get; set; }
     public GameObject gameObject { get; set; }
@@ -59,7 +63,6 @@ public class Turret : WeaponEffect, IPoolingObject
     private void Shot()
     {
         gameObject.Pop(_bulletPoolType, _turretFireTrm.position, _turretHeadTrm.rotation);
-        
     }
 
     
@@ -67,12 +70,16 @@ public class Turret : WeaponEffect, IPoolingObject
     {
         IsPushed = false;
         SetTarget(GetNearestEnemy(transform.position));
+        SpawnAnimation(new Vector3(5f, 5f, 5f), Ease.OutBounce);
         StartCoroutine(AutoDie());
     }
 
     private IEnumerator AutoDie()
     {
         yield return new WaitForSeconds(_dieTime);
+        SpawnAnimation(Vector3.zero, Ease.InSine);
+        Instantiate(_bombEffect, transform.position + new Vector3(0, 5, 0), Quaternion.identity);
+        yield return new WaitForSeconds(0.5f);
         this.Push();
     }
 
@@ -89,5 +96,10 @@ public class Turret : WeaponEffect, IPoolingObject
             return null;
         return _colliders[0].transform;
 
+    }
+
+    private void SpawnAnimation(Vector3 endScale, Ease ease)
+    {
+        transform.DOScale(endScale, 0.5f).SetEase(ease);
     }
 }
