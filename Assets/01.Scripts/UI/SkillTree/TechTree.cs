@@ -62,7 +62,7 @@ public class TechTree : MonoBehaviour, IWindowPanel
 
     public Node GetNode(int id)
     {
-        //ÀÏ´Ü ±âº»À¸·Î Ã¹¹øÂ° ³ð ¹ÝÈ¯
+        //ï¿½Ï´ï¿½ ï¿½âº»ï¿½ï¿½ï¿½ï¿½ Ã¹ï¿½ï¿½Â° ï¿½ï¿½ ï¿½ï¿½È¯
 
         for (int i = 0; i < treeSO.nodes.Count; i++)
         {
@@ -130,11 +130,13 @@ public class TechTree : MonoBehaviour, IWindowPanel
     public void Open()
     {
         _treeRect.DOAnchorPosY(0, 0.5f).SetEase(Ease.Linear);
+        UIControlManager.Instance.overUIAmount++;
     }
 
     public void Close()
     {
         _treeRect.DOAnchorPosY(-1080, 0.5f).SetEase(Ease.Linear);
+        UIControlManager.Instance.overUIAmount--;
     }
 
     #endregion
