@@ -2,7 +2,7 @@
 
 public class TeslaBladeWeapon : Weapon
 {
-    [SerializeField] private GameObject bladePf;
+    [SerializeField] private TeslaBlade bladePf;
     [SerializeField] private float _detectingRange = 40f;
     private Collider[] _enemyColl;
 
@@ -29,9 +29,9 @@ public class TeslaBladeWeapon : Weapon
                 }
 
                 Vector3 bombPosition = closestColl.transform.position;
-                bombPosition.y = 15f;
 
-                Instantiate(bladePf, bombPosition, Quaternion.identity);
+                TeslaBlade blade = Instantiate(bladePf, bombPosition, Quaternion.identity);
+                blade.Attack();
 
                 return true;
             }
