@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 
 public abstract class Enemy : Agent, IPoolingObject
 {
+    public SkinnedMeshRenderer MeshRendererCompo { get; private set; }
     public EnemyMovement EnemyMovementCompo { get; private set; }
 
     [Header("Common Setting")]
@@ -38,6 +39,7 @@ public abstract class Enemy : Agent, IPoolingObject
         capsuleCollider = GetComponent<CapsuleCollider>();
         EnemyMovementCompo = MovementCompo as EnemyMovement;
         EnemyMovementCompo.Initialize(this);
+        MeshRendererCompo = transform.Find("Visual/BaseMesh").GetComponent<SkinnedMeshRenderer>();
     }
 
     public abstract void OnDie();

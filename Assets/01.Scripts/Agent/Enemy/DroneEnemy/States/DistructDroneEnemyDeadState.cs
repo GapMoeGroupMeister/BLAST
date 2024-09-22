@@ -1,3 +1,4 @@
+using Crogen.ObjectPooling;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,6 @@ public class DistructDroneEnemyDeadState : EnemyState<DistructDroneEnemy>
     public override void Enter()
     {
         base.Enter();
-        GameObject.Destroy(_enemyBase.gameObject);
+        _enemyBase.Push();
     }
 }
