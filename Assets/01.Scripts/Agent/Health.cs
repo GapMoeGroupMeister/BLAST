@@ -62,6 +62,14 @@ public class Health : MonoBehaviour, IDamageable
         }
     }
 
+    [ContextMenu("즉사 디버깅")]
+    public void OnDie()
+	{
+        _currentHealth = 0;
+        _isDead = true;
+        OnDieEvent?.Invoke();
+    }
+
     private IEnumerator CoroutineOnDamaged()
 	{
         foreach (var renderer in _renderers)
