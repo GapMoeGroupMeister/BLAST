@@ -18,5 +18,11 @@ public class GameManager : MonoSingleton<GameManager>
 			Vector3 ranPos = new Vector3(Random.Range(-10, 10), 0, Random.Range(-10, 10));
 			XPManager.Instance.CreateXP(ranPos);
 		}
+
+		if (Input.GetKey(KeyCode.C))
+		{
+			Vector3 ranPos = new Vector3(Random.Range(-10, 10), 0, Random.Range(-10, 10));
+			ResourceManager.Instance.CreateCoin(ranPos);
+		}
 	}
 }

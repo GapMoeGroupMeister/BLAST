@@ -27,5 +27,7 @@ public class PartSelectSlot : MonoBehaviour
     {
         PartChanger.Instance.ChangePart(partSO);
         LobbySceneUIManager.Instance.RefreshSelectPartInfo(partSO);
+        SaveManager.Instance.SelectPlayerPart(partSO.id);
+        
     }
 }

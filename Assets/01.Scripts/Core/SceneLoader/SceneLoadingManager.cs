@@ -18,6 +18,12 @@ public class SceneLoadingManager : MonoBehaviour
 		SceneManager.LoadScene("LoadingScene");
 	}
 
+	public static void LoadScene()
+	{
+		_nextScene = SceneManager.GetActiveScene().name;
+		SceneManager.LoadScene("LoadingScene");
+	}
+
 	private void Start()
 	{
 		LoadSceneProcess();

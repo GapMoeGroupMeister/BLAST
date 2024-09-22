@@ -8,7 +8,7 @@ public class AntimatterBombWeapon : Weapon
 
     private void Awake()
     {
-        _enemyColl = new Collider[32];
+        _enemyColl = new Collider[16];
     }
 
     public override bool UseWeapon()
@@ -36,10 +36,8 @@ public class AntimatterBombWeapon : Weapon
 
                 return true;
             }
-
             return false;
         }
-
         return true;
     }
 
