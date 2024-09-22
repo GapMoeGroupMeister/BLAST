@@ -10,7 +10,7 @@ public class WizardEnemyDeadState : EnemyState<WizardEnemy>
 
     public WizardEnemyDeadState(WizardEnemy enemyBase, EnemyStateMachine<WizardEnemy> stateMachine, string animBoolName) : base(enemyBase, stateMachine, animBoolName)
     {
-        _dissolveMat = enemyBase.MeshRendererCompo.material;
+        _dissolveMat = enemyBase.RendererCompo.material;
     }
 
     public override void Enter()
