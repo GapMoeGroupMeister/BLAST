@@ -19,6 +19,7 @@ public class PlayerMovement : MovementController
     public float dashPower = 5f;
     public float dashCooltime = 2f;
     private float _curDashCooltime = 0;
+    public bool canDash;
     private InputReader _inputReader;
     
     private Player _player;
@@ -29,6 +30,7 @@ public class PlayerMovement : MovementController
 
     private void Awake()
     {
+        _curDashCooltime = dashCooltime;
         _inputReader = GameManager.Instance.InputReader;
         _rigidbodyCompo = GetComponent<Rigidbody>();
         _player = GetComponent<Player>();
@@ -37,7 +39,11 @@ public class PlayerMovement : MovementController
 	private void Update()
 	{
         _curDashCooltime += Time.deltaTime;
-        OnDashCoolTimePercentEvent?.Invoke(dashCooltime/_curDashCooltime);
+        if (_curDashCooltime > dashCooltime)
+            canDash = true;
+        else
+            canDash = false;
+        OnDashCoolTimePercentEvent?.Invoke(_curDashCooltime/dashCooltime);
     }
 
 	private void FixedUpdate()
@@ -69,7 +75,6 @@ public class PlayerMovement : MovementController
 
     public void OnDash(Vector3 dashDir, float duration, float dashPower)
 	{
-        if (_curDashCooltime < dashCooltime) return;
         _curDashCooltime = 0;
         OnDashEvent?.Invoke(dashDir);
         StartCoroutine(CoroutineOnDash(dashDir, duration, dashPower));
@@ -81,7 +86,7 @@ public class PlayerMovement : MovementController
         transform.rotation = Quaternion.LookRotation(dashDir);
         _rigidbodyCompo.velocity = dashDir * dashPower;
         yield return new WaitForSeconds(duration);
-        _rigidbodyCompo.velocity = Vector3.zero;
+        StopImmediately();
         _canMove = true;
     }
 

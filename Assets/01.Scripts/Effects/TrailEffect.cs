@@ -42,10 +42,7 @@ public class TrailEffect : MonoBehaviour, IPoolingObject
             yield return null;
         }
 
-        DOTween.To(() => _material.GetFloat(_alphaHash), v => _material.SetFloat(_alphaHash, v), 0, 1f).
-            OnComplete(() => { 
-                this.Push(); 
-            });
+        DOTween.To(() => _material.GetFloat(_alphaHash), v => _material.SetFloat(_alphaHash, v), 0, 1f);
     }
 
     public void OnPop()

@@ -2,8 +2,11 @@
 
 public class PlayerIdleState : PlayerState<PlayerStateEnum>
 {
+    PlayerMovement _playerMovement;
+
     public PlayerIdleState(Player playerBase, PlayerStateMachine<PlayerStateEnum> stateMachine, string animBoolName) : base(playerBase, stateMachine, animBoolName)
     {
+        _playerMovement = _playerBase.MovementCompo as PlayerMovement;
     }
 
     public override void Enter()
@@ -28,6 +31,7 @@ public class PlayerIdleState : PlayerState<PlayerStateEnum>
 
     private void HandleOnDash()
     {
-        _stateMachine.ChangeState(PlayerStateEnum.Dash);
+        if(_playerMovement.canDash)
+            _stateMachine.ChangeState(PlayerStateEnum.Dash);
     }
 }

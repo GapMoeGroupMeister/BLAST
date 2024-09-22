@@ -2,11 +2,21 @@
 
 public class PenetrationBulletWeapon : Weapon
 {
+    private bool _isFirstUse = true;
+
     public override bool UseWeapon()
     {
         if(base.UseWeapon())
         {
-            //여기에 로직
+            if(_isFirstUse)
+			{
+                ProjectilePenetrationEffect[] effects = FindObjectsOfType<ProjectilePenetrationEffect>(true);
+				foreach (var effect in effects)
+				{
+                    effect.OnEffect(level);
+                }
+                _isFirstUse = false;
+			}
         }	
 
         return true;

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Boss524LaserSkill : EnemySkill<Boss524>
 {
+    private Coroutine _skillCoroutine;
+
     public Boss524LaserSkill(Boss524 owner, EnemySkillManager<Boss524> skillManager) : base(owner, skillManager)
     {
         _cooltime = 15f;
@@ -24,10 +26,21 @@ public class Boss524LaserSkill : EnemySkill<Boss524>
         return false;
     }
 
+    public override void StopSkill()
+    {
+        if(_skillCoroutine != null)
+        {
+            _owner.StopCoroutine(_skillCoroutine);
+        }
+        _lastUseTime = Time.time;
+        _skillManager.SetUsingSkill(false);
+        _owner.laserVisualList.ForEach(x => x.gameObject.SetActive(false));
+    }
+
     public override void UseSkill()
     {
         base.UseSkill();
-        _owner.StartCoroutine(LaserSkillCoroutine());
+        _skillCoroutine = _owner.StartCoroutine(LaserSkillCoroutine());
     }
 
     private IEnumerator LaserSkillCoroutine()
@@ -48,7 +61,7 @@ public class Boss524LaserSkill : EnemySkill<Boss524>
         }
         _owner.laserVisualList.ForEach(x => x.gameObject.SetActive(false));
         yield return new WaitForSeconds(_afterDelay);
-        _owner.cannonTrm.rotation = Quaternion.identity;
+        _owner.cannonTrm.localRotation = Quaternion.identity;
         _lastUseTime = Time.time;
         _skillManager.SetUsingSkill(false);
     }

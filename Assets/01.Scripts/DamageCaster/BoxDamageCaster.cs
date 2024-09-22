@@ -18,16 +18,17 @@ public class BoxDamageCaster : DamageCaster
 
 	public override void CastOverlap()
 	{
-		Physics.OverlapBoxNonAlloc(GetFinalCenter(center) + transform.position, GetScaledSize(size) * 0.5f, _castColliders, Quaternion.identity, _whatIsCastable);
+		Physics.OverlapBoxNonAlloc(GetFinalCenter(center) + transform.position, GetScaledSize(size) * 0.5f, _castColliders, transform.rotation, _whatIsCastable);
 	}
 
 	private void OnDrawGizmos()
 	{
 		if (excluded) Gizmos.color = Color.red;
 		else Gizmos.color = Color.green;
-
-		Gizmos.DrawWireCube(GetFinalCenter(center) + transform.position, GetScaledSize(size));
-
+		Matrix4x4 oldMatrix = Gizmos.matrix;
+		Gizmos.matrix = Matrix4x4.TRS(Vector3.zero, transform.rotation, Vector3.one);
+		Gizmos.DrawWireCube((GetFinalCenter(center) + transform.localPosition), GetScaledSize(size));
+		Gizmos.matrix = oldMatrix;
 		Gizmos.color = Color.white;
 	}
 }

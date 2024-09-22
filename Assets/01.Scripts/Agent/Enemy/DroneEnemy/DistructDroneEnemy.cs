@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.Rendering.Universal;
 
 public enum DistructDroneEnemyStateEnum
@@ -9,7 +10,8 @@ public enum DistructDroneEnemyStateEnum
     Idle,
     Chase,
     Distruct,
-    Dead
+    Dead,
+    Stun
 }
 
 public class DistructDroneEnemy : Enemy
@@ -42,5 +44,10 @@ public class DistructDroneEnemy : Enemy
 	{
         StateMachine.ChangeState(DistructDroneEnemyStateEnum.Dead);
         CanStateChangeable = false;
+    }
+
+    public override void Stun(float duration)
+    {
+        StateMachine.ChangeState(DistructDroneEnemyStateEnum.Stun);
     }
 }
