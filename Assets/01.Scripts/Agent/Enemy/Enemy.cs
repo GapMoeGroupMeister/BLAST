@@ -48,6 +48,7 @@ public abstract class Enemy : Agent, IPoolingObject
 
     public virtual void OnPop()
     {
+        targetTrm  = GameManager.Instance.Player.transform;
         CanStateChangeable = true;
     }
 

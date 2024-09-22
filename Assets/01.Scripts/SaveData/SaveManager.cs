@@ -5,7 +5,7 @@ public class SaveManager : MonoSingleton<SaveManager>
     public SavePartData data;
     private readonly string fileName = "PartData";
 
-    private void Start()
+    private void Awake()
     {
         data = EasyToJson.FromJson<SavePartData>(fileName);
         if(data == null)

@@ -17,6 +17,12 @@ public class WaveManager : MonoSingleton<WaveManager>
     
     private int _currentWaveIndex;
     private int _currentEnemyCount;
+
+    private void Start()
+    {
+        StartWave(0, true);
+        
+    }
     
     [ContextMenu("DebugStartWave")]
     public void DebugStartWave()
