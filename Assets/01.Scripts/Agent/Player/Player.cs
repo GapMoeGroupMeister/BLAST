@@ -32,14 +32,16 @@ public class Player : Agent
         }
 
         StateMachine.Initialize(PlayerStateEnum.Idle, this);
+        
+        _currentPartType = (PlayerPartType)SaveManager.Instance.data.partId;
         currentPlayerPart = _playerPartController.Init(_currentPartType);
-
         playerDashEffectCaster.meshFilters.Add(currentPlayerPart.GetComponent<MeshFilter>());
+        
     }
 
     private void Start()
     {
-
+       
     }
 
 

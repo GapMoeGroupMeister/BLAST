@@ -21,6 +21,7 @@ public class DistructDroneEnemy : Enemy
 
     protected override void Awake()
     {
+        
         base.Awake();
         StateMachine = new EnemyStateMachine<DistructDroneEnemy>(this);
     }
