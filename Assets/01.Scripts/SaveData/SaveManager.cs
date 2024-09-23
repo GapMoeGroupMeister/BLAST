@@ -22,4 +22,6 @@ public class SaveManager : MonoSingleton<SaveManager>
         data.partId = id;
         SaveData();
     }
+
+    public int GetCurrentPlayerPart() => data.partId;
 }
