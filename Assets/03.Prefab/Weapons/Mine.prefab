@@ -152,6 +152,7 @@ GameObject:
   - component: {fileID: 8882472133907989164}
   - component: {fileID: 3129240616958993470}
   - component: {fileID: 8322726408798169739}
+  - component: {fileID: 8252177850541571839}
   m_Layer: 0
   m_Name: Mine
   m_TagString: Untagged
@@ -189,9 +190,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _level: 0
-  _damage: 0
+  _damage: 3
   _mainDamageCaster: {fileID: 3129240616958993470}
   _subDamageCaster: {fileID: 8322726408798169739}
+  _explosionPoolType: 28
 --- !u!114 &3129240616958993470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -205,12 +207,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   excluded: 0
-  allocationCount: 5
+  allocationCount: 3
   _whatIsCastable:
     serializedVersion: 2
     m_Bits: 512
   _usingExcludeCast: 0
   excludedDamageCasterList: []
+  effectStateType: 0
+  _effectDuration: 0
+  _effectLevel: 1
   center: {x: 0, y: 0, z: 0}
   radius: 4.3
 --- !u!114 &8322726408798169739
@@ -226,11 +231,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   excluded: 0
-  allocationCount: 32
+  allocationCount: 8
   _whatIsCastable:
     serializedVersion: 2
     m_Bits: 512
   _usingExcludeCast: 0
   excludedDamageCasterList: []
+  effectStateType: 0
+  _effectDuration: 0
+  _effectLevel: 1
   center: {x: 0, y: 0, z: 0}
   radius: 8
+--- !u!114 &8252177850541571839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6345484463924468307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2882c91955b44a34ca68f7f390a00c9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
