@@ -58,6 +58,21 @@ MonoBehaviour:
   penetrationPercent: 0
   _damageCaster: {fileID: 543290811550922874}
   _damage: 2
+  OnFireEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5618197000808906193}
+        m_TargetAssemblyTypeName: FeedbackPlayer, Assembly-CSharp
+        m_MethodName: PlayFeedback
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   _castTerm: 0.13
 --- !u!114 &543290811550922874
 MonoBehaviour:
@@ -78,7 +93,7 @@ MonoBehaviour:
     m_Bits: 1536
   _usingExcludeCast: 0
   excludedDamageCasterList: []
-  effectStateType: 3
+  effectStateType: 1
   _effectDuration: 3
   _effectLevel: 2
   center: {x: 0, y: 0, z: 4}

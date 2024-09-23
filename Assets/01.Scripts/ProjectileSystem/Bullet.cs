@@ -1,6 +1,7 @@
 using UnityEngine;
 using Crogen.ObjectPooling;
 using System.Collections;
+using UnityEngine.Events;
 
 public class Bullet : MonoBehaviour, IPoolingObject
 {
@@ -10,6 +11,7 @@ public class Bullet : MonoBehaviour, IPoolingObject
 	public float penetrationPercent = 0f;
 	[SerializeField] protected DamageCaster _damageCaster;
 	[SerializeField] protected int _damage = 1;
+	public UnityEvent OnFireEvent;
 	public PoolType OriginPoolType { get; set; }
 	GameObject IPoolingObject.gameObject { get; set; }
 
@@ -25,6 +27,7 @@ public class Bullet : MonoBehaviour, IPoolingObject
 
 	public virtual void OnPop()
 	{
+		OnFireEvent?.Invoke();
 		StartCoroutine(CoroutineMove());
 	}
 
