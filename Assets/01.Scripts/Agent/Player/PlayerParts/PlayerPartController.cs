@@ -3,10 +3,10 @@ using UnityEngine;
 
 public enum PlayerPartType
 {
-	Default,
+	Default = 0,
+	Fire,
 	Electronic,
 	HoleMaker,
-	Fire
 }
 
 public class PlayerPartController : MonoBehaviour

@@ -695,7 +695,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 694662798}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.14865232, y: 0.8513282, z: -0.35887846, w: 0.35263172}
+  m_LocalRotation: {x: 0.14865234, y: 0.8513282, z: -0.35887846, w: 0.35263172}
   m_LocalPosition: {x: -80, y: 120.22, z: 80}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1029,7 +1029,7 @@ MonoBehaviour:
       type: 3}
     poolCount: 5
   - poolType: SFXPlayer
-    prefab: {fileID: 3288226144765936843, guid: 03508103fc015dc4d8efb6f9723301d8,
+    prefab: {fileID: 7387021849737377057, guid: 642b4c47cbef453458e8a77b73f9bacf,
       type: 3}
     poolCount: 5
   - poolType: weaponEffect_Mine
@@ -1097,6 +1097,10 @@ MonoBehaviour:
     prefab: {fileID: 3951822659776513446, guid: b969ed21a7c27a040beb8a179fedbf42,
       type: 3}
     poolCount: 32
+  - poolType: Coin
+    prefab: {fileID: 4467924585902381935, guid: 95594987699f3464ab9c5f10d664d6d6,
+      type: 3}
+    poolCount: 50
 --- !u!1001 &962037325
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1462,7 +1466,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1106337031}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.14865232, y: 0.8513282, z: -0.35887846, w: 0.35263172}
+  m_LocalRotation: {x: 0.14865234, y: 0.8513282, z: -0.35887846, w: 0.35263172}
   m_LocalPosition: {x: -80, y: 120.22, z: 80}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2584,13 +2588,31 @@ PrefabInstance:
     - target: {fileID: 1818484225686448684, guid: d715b0cde2ca3754eb7ea29b435422cf,
         type: 3}
       propertyPath: _currentPartType
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2601035507658518275, guid: d715b0cde2ca3754eb7ea29b435422cf,
         type: 3}
       propertyPath: _partPoint
       value: 
       objectReference: {fileID: 682037872}
+    - target: {fileID: 2601035507658518275, guid: d715b0cde2ca3754eb7ea29b435422cf,
+        type: 3}
+      propertyPath: _playerPartList.Array.data[1]
+      value: 
+      objectReference: {fileID: 294903427704956916, guid: 02549dc8771b07446a6f2f3cb07bc1e1,
+        type: 3}
+    - target: {fileID: 2601035507658518275, guid: d715b0cde2ca3754eb7ea29b435422cf,
+        type: 3}
+      propertyPath: _playerPartList.Array.data[2]
+      value: 
+      objectReference: {fileID: 294903427704956916, guid: adb39cc5587a3c646a2f4361d3a8ca32,
+        type: 3}
+    - target: {fileID: 2601035507658518275, guid: d715b0cde2ca3754eb7ea29b435422cf,
+        type: 3}
+      propertyPath: _playerPartList.Array.data[3]
+      value: 
+      objectReference: {fileID: 3016868156403632621, guid: 53756cfabefb9994887b792335e77b68,
+        type: 3}
     - target: {fileID: 3008086090903353795, guid: d715b0cde2ca3754eb7ea29b435422cf,
         type: 3}
       propertyPath: _effectPanel
