@@ -88,14 +88,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec2e8163a86f4414b853f4241c9b4a04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _renderers: []
-  _damageDuration: 0.005
+  _renderers:
+  - {fileID: 6513592606279539034}
+  _damageDuration: 0.055
   OnHealthChangedEvent:
     m_PersistentCalls:
       m_Calls: []
   OnDieEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6270543725264798543}
+        m_TargetAssemblyTypeName: DistructDroneEnemy, Assembly-CSharp
+        m_MethodName: OnDie
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   _maxHealth: 0
   _isDead: 0
 --- !u!195 &6446611948878621683
@@ -624,6 +637,12 @@ Animator:
 --- !u!4 &5345703675974705717 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 635030e1e94db354ba3739aec71ec2ce,
+    type: 3}
+  m_PrefabInstance: {fileID: 5595010426435110366}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &6513592606279539034 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 635030e1e94db354ba3739aec71ec2ce,
     type: 3}
   m_PrefabInstance: {fileID: 5595010426435110366}
   m_PrefabAsset: {fileID: 0}
