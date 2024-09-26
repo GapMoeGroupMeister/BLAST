@@ -54,7 +54,6 @@ public class Health : MonoBehaviour, IDamageable
 
     public void CheckDie()
     {
-        
         if (_currentHealth <= 0)
         {
             _isDead = true;

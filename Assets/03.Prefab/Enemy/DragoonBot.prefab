@@ -118,14 +118,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec2e8163a86f4414b853f4241c9b4a04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _renderers: []
-  _damageDuration: 0.005
+  _renderers:
+  - {fileID: 5465718405563448284}
+  _damageDuration: 0.055
   OnHealthChangedEvent:
     m_PersistentCalls:
       m_Calls: []
   OnDieEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5643435964428425110}
+        m_TargetAssemblyTypeName: DragoonEnemy, Assembly-CSharp
+        m_MethodName: OnDie
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   _maxHealth: 0
   _isDead: 0
 --- !u!195 &2540701336388605630
@@ -770,6 +783,12 @@ MonoBehaviour:
 --- !u!4 &4915721151628267622 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8608270695403986432, guid: 146548b02a4258a41b35bde1ba6cccd2,
+    type: 3}
+  m_PrefabInstance: {fileID: 3697066895889452646}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &5465718405563448284 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -534592245459536454, guid: 146548b02a4258a41b35bde1ba6cccd2,
     type: 3}
   m_PrefabInstance: {fileID: 3697066895889452646}
   m_PrefabAsset: {fileID: 0}

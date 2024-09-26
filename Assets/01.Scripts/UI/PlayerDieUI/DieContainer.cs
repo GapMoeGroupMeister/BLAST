@@ -21,6 +21,7 @@ public class DieContainer : MonoBehaviour
 		seq.Append(_canvasGroup.DOFade(1, duration));
 		seq.AppendCallback(() =>
 		{
+			TimeManager.Instance.PauseTime();
 			_canvasGroup.interactable = true;
 			_canvasGroup.blocksRaycasts = true;
 			_dieInfoContainer.ShowButtonPanel();
