@@ -37,7 +37,7 @@ Transform:
   m_Children:
   - {fileID: 2637540984166832810}
   - {fileID: 6385465780698666549}
-  - {fileID: 7432011401275787607}
+  - {fileID: 2757570984867945989}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6270543725264798543
@@ -59,6 +59,9 @@ MonoBehaviour:
     m_Bits: 256
   attackDistance: 10
   targetTrm: {fileID: 0}
+  _damageAmount: 1
+  _damageCasters:
+  - {fileID: 528279682036364828}
   capsuleCollider: {fileID: 0}
   redLight: {fileID: 2068960083974424355}
 --- !u!114 &7182160893438680747
@@ -88,14 +91,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec2e8163a86f4414b853f4241c9b4a04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _renderers: []
-  _damageDuration: 0.005
+  _renderers:
+  - {fileID: 6513592606279539034}
+  _damageDuration: 0.055
   OnHealthChangedEvent:
     m_PersistentCalls:
       m_Calls: []
   OnDieEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6270543725264798543}
+        m_TargetAssemblyTypeName: DistructDroneEnemy, Assembly-CSharp
+        m_MethodName: OnDie
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   _maxHealth: 0
   _isDead: 0
 --- !u!195 &6446611948878621683
@@ -306,7 +322,7 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
---- !u!1 &7980263493305107941
+--- !u!1 &9106850980742567783
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -314,21 +330,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7432011401275787607}
-  m_Layer: 9
-  m_Name: GameObject
+  - component: {fileID: 2757570984867945989}
+  - component: {fileID: 528279682036364828}
+  m_Layer: 0
+  m_Name: DamageCast
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7432011401275787607
+--- !u!4 &2757570984867945989
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7980263493305107941}
+  m_GameObject: {fileID: 9106850980742567783}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -337,6 +354,30 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8485147330064131221}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &528279682036364828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9106850980742567783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08c8979b85886904a8723800451519fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  excluded: 0
+  allocationCount: 1
+  _whatIsCastable:
+    serializedVersion: 2
+    m_Bits: 256
+  _usingExcludeCast: 0
+  excludedDamageCasterList: []
+  effectStateType: 0
+  _effectDuration: 0
+  _effectLevel: 1
+  center: {x: 0, y: 4, z: 0}
+  radius: 3
 --- !u!1001 &545173236286205818
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -624,6 +665,12 @@ Animator:
 --- !u!4 &5345703675974705717 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 635030e1e94db354ba3739aec71ec2ce,
+    type: 3}
+  m_PrefabInstance: {fileID: 5595010426435110366}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &6513592606279539034 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 635030e1e94db354ba3739aec71ec2ce,
     type: 3}
   m_PrefabInstance: {fileID: 5595010426435110366}
   m_PrefabAsset: {fileID: 0}

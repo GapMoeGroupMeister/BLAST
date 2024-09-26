@@ -12,6 +12,7 @@ public class DistructDroneEnemyDeadState : EnemyState<DistructDroneEnemy>
     public override void Enter()
     {
         base.Enter();
+        _enemyBase.CastDamage();
         _enemyBase.Push();
     }
 }
