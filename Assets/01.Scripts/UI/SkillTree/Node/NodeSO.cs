@@ -11,4 +11,6 @@ public abstract class NodeSO : ScriptableObject
 
     [HideInInspector] public int id;
     [HideInInspector] public List<NodeSO> nextNodes;
+    public Sprite icon;
+    public int requireCoin;
 }

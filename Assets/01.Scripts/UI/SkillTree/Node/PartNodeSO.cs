@@ -5,4 +5,5 @@ using UnityEngine;
 public class PartNodeSO : NodeSO
 {
     public PlayerPartType openPart;
+    public string explain;
 }
