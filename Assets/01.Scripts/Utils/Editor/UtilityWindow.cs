@@ -54,7 +54,7 @@ public partial class UtilityWindow : EditorWindow
 
     private void SetUpUtility()
     {
-         foreach (UtilType type in Enum.GetValues(typeof(UtilType)))
+        foreach (UtilType type in Enum.GetValues(typeof(UtilType)))
         {
             if (scrollPositions.ContainsKey(type) == false)
                 scrollPositions[type] = Vector2.zero;
