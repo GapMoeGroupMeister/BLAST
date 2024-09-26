@@ -3,6 +3,7 @@ using Crogen.ObjectPooling;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class TrailEffect : MonoBehaviour, IPoolingObject
 {
@@ -22,15 +23,15 @@ public class TrailEffect : MonoBehaviour, IPoolingObject
         _trailRenderer.enabled = false;
     }
 
-    public void SetTrail(Vector3 startPos, Vector3 endPos, float duration)
+    public void SetTrail(Vector3 startPos, Vector3 endPos, float duration, Action EndEvent = null)
     {
         _trailRenderer.enabled = true;
         transform.position = startPos;
         _targetPos = endPos;
-        StartCoroutine(TrailCoroutine(duration));
+        StartCoroutine(TrailCoroutine(duration, EndEvent));
     }
 
-    private IEnumerator TrailCoroutine(float duration)
+    private IEnumerator TrailCoroutine(float duration, Action EndEvent = null)
     {
         Vector3 startPos = transform.position;
         float percent = 0;
@@ -41,8 +42,9 @@ public class TrailEffect : MonoBehaviour, IPoolingObject
             transform.position = Vector3.Lerp(startPos, _targetPos, percent);
             yield return null;
         }
-
         DOTween.To(() => _material.GetFloat(_alphaHash), v => _material.SetFloat(_alphaHash, v), 0, 1f);
+        yield return new WaitForSeconds(duration);
+        EndEvent?.Invoke();
     }
 
     public void OnPop()

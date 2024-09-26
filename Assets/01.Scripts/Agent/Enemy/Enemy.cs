@@ -11,6 +11,8 @@ public abstract class Enemy : Agent, IPoolingObject
     [Header("Attack Setting")]
     public float attackDistance;
     public Transform targetTrm;
+    [SerializeField] private int _damageAmount = 1;
+    [SerializeField] private DamageCaster[] _damageCasters;
     [HideInInspector]
     public CapsuleCollider capsuleCollider;
 
@@ -37,6 +39,14 @@ public abstract class Enemy : Agent, IPoolingObject
         EnemyMovementCompo.Initialize(this);
         RendererCompo = transform.Find("Visual/BaseMesh").GetComponent<Renderer>();
     }
+
+    public void CastDamage()
+	{
+		for (int i = 0; i < _damageCasters.Length; ++i)
+		{
+            _damageCasters[i]?.CastDamage(_damageAmount);
+		}
+	}
 
     public abstract void OnDie();
 
