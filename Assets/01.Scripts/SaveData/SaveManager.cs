@@ -1,5 +1,6 @@
 using EasySave.Json;
-
+using UnityEngine;
+using DG.Tweening;
 public class SaveManager : MonoSingleton<SaveManager>
 {
     public SavePartData data;
@@ -22,4 +23,6 @@ public class SaveManager : MonoSingleton<SaveManager>
         data.partId = id;
         SaveData();
     }
+
+    public int GetCurrentPlayerPart() => data.partId;
 }

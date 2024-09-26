@@ -10,4 +10,8 @@ public class LobbyManager : MonoBehaviour
         SceneLoadingManager.LoadScene("GameScene");
     } 
 
+    public void GameExit()
+	{
+
+	}
 }
