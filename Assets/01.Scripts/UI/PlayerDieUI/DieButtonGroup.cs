@@ -16,13 +16,13 @@ public class DieButtonGroup : MonoBehaviour
 	{
 		Sequence seq = DOTween.Sequence();
 
-		seq.Append(_canvasGroup.DOFade(1, 0.1f));
+		seq.Append(_canvasGroup.DOFade(1, 0.1f)).SetUpdate(true);
 		seq.AppendCallback(() =>
 		{
 			_canvasGroup.interactable = true;
 			_canvasGroup.blocksRaycasts = true;
-		});
-		seq.Append((_canvasGroup.transform as RectTransform)?.DOScale(1f, 1.1f));
+		}).SetUpdate(true);
+		seq.Append((_canvasGroup.transform as RectTransform)?.DOScale(1f, 1.1f)).SetUpdate(true);
 
 		return seq;
 	}

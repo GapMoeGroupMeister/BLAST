@@ -10,10 +10,12 @@ public class DieButtonPanel : MonoBehaviour
 	[SerializeField] private DieButtonGroup _dieButtonGroup;
 
 	[ContextMenu("ShowButtonPanel")]
-	public void ShowButtonPanel()
+	public Sequence ShowButtonPanel()
 	{
-		Sequence seq = DOTween.Sequence();
-		seq.Append(_dieTextTrm.DOAnchorPosY(_dieTextPosY, 1.6f));
+		Sequence seq = DOTween.Sequence().SetUpdate(true);
+		seq.Append(_dieTextTrm.DOAnchorPosY(_dieTextPosY, 1.6f)).SetUpdate(true);
 		seq.Append(_dieButtonGroup.ShowButtons());
+
+		return seq;
 	}
 }
