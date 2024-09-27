@@ -15,7 +15,7 @@ public class CinematicPanel : UIPanel
     [SerializeField] private Ease _ease;
 
     [ContextMenu("CutScene")]
-    public void ShowCutScene()
+    public void ShowStartCutScene()
     {
         _edgeUpImage.fillAmount = 1f;
         _edgeDownImage.fillAmount = 1f;
@@ -25,11 +25,20 @@ public class CinematicPanel : UIPanel
     private IEnumerator CutSceneCoroutine()
     {
         yield return new WaitForSeconds(_startDelay);
-         _edgeUpImage.fillAmount = 0.4f;
-        _edgeDownImage.fillAmount = 0.4f;
+         _edgeUpImage.fillAmount = 0.5f;
+        _edgeDownImage.fillAmount = 0.5f;
         _edgeUpImage.DOFillAmount(0f, _duration).SetEase(_ease);
         _edgeDownImage.DOFillAmount(0f, _duration).SetEase(_ease);
 
+    }
+
+    public void OpenCinematicEffect(float duration){
+        _edgeUpImage.DOFillAmount(0.1f, duration).SetUpdate(true);
+    }
+
+
+    public void CloseCinematicEffect(float duration){
+        _edgeUpImage.DOFillAmount(0f, duration).SetUpdate(true);
     }
 
 

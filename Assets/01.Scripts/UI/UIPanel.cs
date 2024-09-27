@@ -28,4 +28,11 @@ public class UIPanel : MonoBehaviour, IWindowPanel
         _canvasGroup.interactable = value;
         _canvasGroup.blocksRaycasts = value;
     }
+
+    public void SetCanvasActiveImmediately(bool value)
+    {
+        _canvasGroup.alpha = value ? 1f : 0f;
+        _canvasGroup.interactable = value;
+        _canvasGroup.blocksRaycasts = value;
+    }
 }
