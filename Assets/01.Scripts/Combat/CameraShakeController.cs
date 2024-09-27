@@ -44,5 +44,6 @@ public class CameraShakeController : MonoSingleton<CameraShakeController>
 
         _perlin.m_AmplitudeGain = 0;
         _perlin.m_FrequencyGain = 0;
+        _shakeRoutine = null;
     }
 }
