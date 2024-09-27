@@ -11,7 +11,7 @@ public class DragoonEnemyAttackState : EnemyState<DragoonEnemy>
 
     private float _lastAttackTime = 0;
     private Vector3 _targetPos;
-    private TrailEffect _effect;
+    private ParticlePlayer _effect;
 
     public override void Enter()
     {
@@ -38,9 +38,16 @@ public class DragoonEnemyAttackState : EnemyState<DragoonEnemy>
         base.UpdateState();
         if(IsTriggerCalled(AnimationTriggerEnum.EffectTrigger))
         {
-            _effect = _enemyBase.gameObject.Pop(PoolType.VFX_Trail, _enemyBase.firePosTrm, _enemyBase.firePosTrm.position, Quaternion.identity) as TrailEffect;
-            _effect.SetTrail(_enemyBase.firePosTrm.position, _targetPos, 0.1f);
+            _effect = _enemyBase.gameObject.Pop
+                (PoolType.DragoonLaser, 
+                _enemyBase.firePosTrm, 
+                _enemyBase.firePosTrm.position, 
+                _enemyBase.transform.rotation) as ParticlePlayer;
             RemoveTrigger(AnimationTriggerEnum.EffectTrigger);
+        }
+        if(IsTriggerCalled(AnimationTriggerEnum.AttackTrigger))
+		{
+            _enemyBase.CastDamage();
         }
         if (IsTriggerCalled(AnimationTriggerEnum.EndTrigger))
         {

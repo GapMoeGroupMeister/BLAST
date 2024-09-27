@@ -40,15 +40,16 @@ public class TechTreeGraphView : GraphView
         DeleteElements(graphElements);
         graphViewChanged += OnGraphViewChanged;
 
-        if(_tree.nodes.Count == 0)
+        if (_tree.nodes.Count == 0 || _tree.nodes[0] == null)
         {
-            StartNodeSO node = ScriptableObject.CreateInstance<StartNodeSO>();
+            StartNodeSO node = _tree.CreateNode(typeof(StartNodeSO)) as StartNodeSO;
             node.id = 0;
             node.name = "StartNode";
             node.guid = GUID.Generate().ToString();
             node.nextNodes = new List<NodeSO>();
 
-            _tree.nodes.Add(node);
+            if (_tree.nodes.Count == 0) _tree.nodes.Add(node);
+            if (_tree.nodes[0] == null) _tree.nodes[0] = node;
         }
 
         //Create Node View

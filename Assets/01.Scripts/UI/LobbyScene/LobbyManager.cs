@@ -12,6 +12,6 @@ public class LobbyManager : MonoBehaviour
 
     public void GameExit()
 	{
-
+        Application.Quit();
 	}
 }

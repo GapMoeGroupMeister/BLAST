@@ -27,8 +27,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 5}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5900541517376392908}
   - {fileID: 8343104821363570074}
@@ -57,6 +57,8 @@ MonoBehaviour:
   _enemyFindRadius: 20
   _fireRate: 0.4
   _dieTime: 10
+  _bombEffect: {fileID: 5185909016693646656, guid: e0cc3b08f14e1b04795905cbf7fa8054,
+    type: 3}
 --- !u!1 &1928858321687665400
 GameObject:
   m_ObjectHideFlags: 0

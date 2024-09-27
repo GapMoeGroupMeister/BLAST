@@ -31,6 +31,62 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4915721151628267622}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2003125213524786529
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2454453591563396936}
+  - component: {fileID: 8108250298047876431}
+  m_Layer: 9
+  m_Name: DamageCaster
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2454453591563396936
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2003125213524786529}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 3569790279375286571}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8108250298047876431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2003125213524786529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d481d01d395fe44b892306644e38c13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  excluded: 0
+  allocationCount: 1
+  _whatIsCastable:
+    serializedVersion: 2
+    m_Bits: 256
+  _usingExcludeCast: 0
+  excludedDamageCasterList: []
+  effectStateType: 0
+  _effectDuration: 0
+  _effectLevel: 1
+  center: {x: 0, y: 5, z: 150}
+  size: {x: 1, y: 10, z: 300}
 --- !u!1 &5273259378002957757
 GameObject:
   m_ObjectHideFlags: 0
@@ -62,12 +118,13 @@ Transform:
   m_GameObject: {fileID: 5273259378002957757}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.49, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3802207675943856525}
   - {fileID: 2922526880578804900}
+  - {fileID: 2454453591563396936}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5643435964428425110
@@ -89,6 +146,9 @@ MonoBehaviour:
     m_Bits: 256
   attackDistance: 50
   targetTrm: {fileID: 0}
+  _damageAmount: 1
+  _damageCasters:
+  - {fileID: 8108250298047876431}
   capsuleCollider: {fileID: 0}
   firePosTrm: {fileID: 6669945850423679157}
 --- !u!114 &7352450689115178033
