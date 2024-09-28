@@ -6572,10 +6572,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8515070857842178297, guid: 0a088780fd58b0b49b9aa8a59ca05833,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8517488567826268197, guid: 0a088780fd58b0b49b9aa8a59ca05833,
         type: 3}
       propertyPath: m_Name
       value: DefaultPlayerPart
+      objectReference: {fileID: 0}
+    - target: {fileID: 8517488567826268197, guid: 0a088780fd58b0b49b9aa8a59ca05833,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 294903427704956916, guid: 0a088780fd58b0b49b9aa8a59ca05833, type: 3}
@@ -15042,7 +15052,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &841111315
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15058,6 +15068,7 @@ MonoBehaviour:
   <InputReader>k__BackingField: {fileID: 11400000, guid: 836c45128fe44d04995e0341f944d184,
     type: 2}
   <Player>k__BackingField: {fileID: 0}
+  _cutSceneManager: {fileID: 0}
 --- !u!4 &841111316
 Transform:
   m_ObjectHideFlags: 0
@@ -48995,7 +49006,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1950017841}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.016293617, y: 0.94847554, z: -0.04944615, w: 0.312544}
+  m_LocalRotation: {x: 0.016293608, y: 0.94847554, z: -0.04944613, w: 0.31254396}
   m_LocalPosition: {x: -11.6, y: 9.3, z: 12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
