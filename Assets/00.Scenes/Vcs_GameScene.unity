@@ -27388,7 +27388,7 @@ PrefabInstance:
     - target: {fileID: 144204279329110225, guid: 9ddb693b15025364d89aea50a130ce07,
         type: 3}
       propertyPath: canUse
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 144204279329110225, guid: 9ddb693b15025364d89aea50a130ce07,
         type: 3}
@@ -27398,12 +27398,58 @@ PrefabInstance:
     - target: {fileID: 144204279329110225, guid: 9ddb693b15025364d89aea50a130ce07,
         type: 3}
       propertyPath: weaponEnabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4942398911378062715, guid: 9ddb693b15025364d89aea50a130ce07,
         type: 3}
       propertyPath: m_Name
       value: WeaponManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 5630484606518361002, guid: 9ddb693b15025364d89aea50a130ce07,
+        type: 3}
+      propertyPath: level
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5630484606518361002, guid: 9ddb693b15025364d89aea50a130ce07,
+        type: 3}
+      propertyPath: canUse
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5630484606518361002, guid: 9ddb693b15025364d89aea50a130ce07,
+        type: 3}
+      propertyPath: partType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5630484606518361002, guid: 9ddb693b15025364d89aea50a130ce07,
+        type: 3}
+      propertyPath: _cooldown
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5630484606518361002, guid: 9ddb693b15025364d89aea50a130ce07,
+        type: 3}
+      propertyPath: _shootTerm
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5630484606518361002, guid: 9ddb693b15025364d89aea50a130ce07,
+        type: 3}
+      propertyPath: _napalmPrefab
+      value: 
+      objectReference: {fileID: 2109600592507924881, guid: 105ea167341dd97419da17260939ec33,
+        type: 3}
+    - target: {fileID: 5630484606518361002, guid: 9ddb693b15025364d89aea50a130ce07,
+        type: 3}
+      propertyPath: weaponEnabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5630484606518361002, guid: 9ddb693b15025364d89aea50a130ce07,
+        type: 3}
+      propertyPath: isUniqueWeapon
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5630484606518361002, guid: 9ddb693b15025364d89aea50a130ce07,
+        type: 3}
+      propertyPath: whatIsEnemy.m_Bits
+      value: 512
       objectReference: {fileID: 0}
     - target: {fileID: 6165231877111597868, guid: 9ddb693b15025364d89aea50a130ce07,
         type: 3}
