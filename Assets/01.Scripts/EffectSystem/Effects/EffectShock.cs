@@ -36,11 +36,23 @@ namespace EffectSystem
 
         public override void UpdateBySecond()
         {
-            canChain = true;
+            if (WeaponManager.Instance.GetWeapon(WeaponType.ChainingLightning).enabled)
+            {
+                canChain = true;
+
+            }
+            else
+            {
+                _ownerHealth.TakeDamage(level);
+                PopupTextManager.Instance.GenerateDamagePopup(_ownerTrm.position, level, EffectStateTypeEnum.Shock, true);
+            }
         }
 
         private void ChainShock()
         {
+            int damage = (int)(level*1.5f);
+            _ownerHealth.TakeDamage(damage);
+            PopupTextManager.Instance.GenerateDamagePopup(_ownerTrm.position, damage, EffectStateTypeEnum.Shock, true);
             _owner.StartCoroutine(ChainShockCoroutine());
         }
 
@@ -59,8 +71,8 @@ namespace EffectSystem
                     EffectShock shock = effectController.GetEffectState(EffectStateTypeEnum.Shock) as EffectShock;
                     // effectController에서 GetEffectState해서 shock를 가져오고
                     // chain가능 여부, shock enable 여부를 따져보고 나서 아래를 실행
-                    if(!shock.canChain)
-                        continue;   
+                    if (!shock.canChain)
+                        continue;
 
                     if (shock.enabled)
                     {

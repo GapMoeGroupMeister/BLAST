@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class Napalm : MonoBehaviour
@@ -9,20 +8,24 @@ public class Napalm : MonoBehaviour
     public bool canUse;
     private DamageCaster _damageCaster;
     private ParticleSystem _explodeVFX;
+    private FeedbackPlayer _soundFeedbackPlayer;
+    // 
+    // 
 
-    private void Awake(){
+    private void Awake()
+    {
         _damageCaster = GetComponent<DamageCaster>();
         _explodeVFX = GetComponentInChildren<ParticleSystem>();
+        _soundFeedbackPlayer = GetComponentInChildren<FeedbackPlayer>();
     }
-
-
 
     public void Explode(Vector3 pos)
     {
-        canUse = true;
+        canUse = false;
         transform.position = pos;
-        _damageCaster.CastDamage(_damage); 
+        _damageCaster.CastDamage(_damage);
         _explodeVFX.Play();
+        _soundFeedbackPlayer.PlayFeedback();
         StartCoroutine(ExplodeCoroutine());
 
     }
@@ -30,7 +33,7 @@ public class Napalm : MonoBehaviour
     private IEnumerator ExplodeCoroutine()
     {
         yield return new WaitForSeconds(_lifeTime);
-        canUse = false;
+        canUse = true;
     }
 
 
