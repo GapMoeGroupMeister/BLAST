@@ -68,6 +68,8 @@ public class PlayerMovement : MovementController
         }
     }
 
+    public void SetCanMove(bool value) => _canMove = value;
+
     public override void StopImmediately()
     {
         _rigidbodyCompo.velocity = Vector3.zero;
