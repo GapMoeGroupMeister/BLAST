@@ -15094,6 +15094,79 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &408488676
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3569790279375286571, guid: 01a094297fba9264e9d41c3b66196d87,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -6.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3569790279375286571, guid: 01a094297fba9264e9d41c3b66196d87,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3569790279375286571, guid: 01a094297fba9264e9d41c3b66196d87,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 24.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3569790279375286571, guid: 01a094297fba9264e9d41c3b66196d87,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3569790279375286571, guid: 01a094297fba9264e9d41c3b66196d87,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3569790279375286571, guid: 01a094297fba9264e9d41c3b66196d87,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3569790279375286571, guid: 01a094297fba9264e9d41c3b66196d87,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3569790279375286571, guid: 01a094297fba9264e9d41c3b66196d87,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3569790279375286571, guid: 01a094297fba9264e9d41c3b66196d87,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3569790279375286571, guid: 01a094297fba9264e9d41c3b66196d87,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5273259378002957757, guid: 01a094297fba9264e9d41c3b66196d87,
+        type: 3}
+      propertyPath: m_Name
+      value: DragoonBot
+      objectReference: {fileID: 0}
+    - target: {fileID: 5643435964428425110, guid: 01a094297fba9264e9d41c3b66196d87,
+        type: 3}
+      propertyPath: targetTrm
+      value: 
+      objectReference: {fileID: 1684598897}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 01a094297fba9264e9d41c3b66196d87, type: 3}
 --- !u!1 &461387005
 GameObject:
   m_ObjectHideFlags: 0
@@ -27315,42 +27388,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6189036211398590185, guid: 694fe0a287e8b4f40a81ccd64be8ddad,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 4572937039726193387}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 694fe0a287e8b4f40a81ccd64be8ddad, type: 3}
---- !u!1 &4572937039726193386 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6189036211398590185, guid: 694fe0a287e8b4f40a81ccd64be8ddad,
-    type: 3}
-  m_PrefabInstance: {fileID: 4572937039726193385}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &4572937039726193387
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4572937039726193386}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08c8979b85886904a8723800451519fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  excluded: 0
-  allocationCount: 32
-  _whatIsCastable:
-    serializedVersion: 2
-    m_Bits: 512
-  _usingExcludeCast: 0
-  excludedDamageCasterList: []
-  effectStateType: 2
-  _effectDuration: 2.07
-  _effectLevel: 1
-  center: {x: 0, y: 0, z: 0}
-  radius: 23
 --- !u!23 &4572937039726193388 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 2668749542294837830, guid: 694fe0a287e8b4f40a81ccd64be8ddad,
@@ -27386,7 +27425,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _damageCaster
       value: 
-      objectReference: {fileID: 4572937039726193387}
+      objectReference: {fileID: 0}
     - target: {fileID: 4758979373639413987, guid: 9ddb693b15025364d89aea50a130ce07,
         type: 3}
       propertyPath: player
@@ -27489,3 +27528,4 @@ SceneRoots:
   - {fileID: 1827319298791523415}
   - {fileID: 20568813}
   - {fileID: 484480013}
+  - {fileID: 408488676}
