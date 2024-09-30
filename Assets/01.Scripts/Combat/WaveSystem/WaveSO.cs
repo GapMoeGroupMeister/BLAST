@@ -5,4 +5,6 @@ using UnityEngine;
 public class WaveSO : ScriptableObject
 {
     public List<WaveEnemy> waveEnemies;
+    public WaveBoss boss;
+    
 }
