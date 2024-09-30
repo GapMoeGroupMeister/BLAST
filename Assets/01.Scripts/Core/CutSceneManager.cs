@@ -10,14 +10,14 @@ public class CutSceneManager : MonoBehaviour
     private Transform _playerTrm;
     [Header("GameStart CutScene")]
     [SerializeField] private float _fallHeight = 300f;
-    [SerializeField] private ParticleSystem _landingVFX;
+    [SerializeField] private PlayerDropEffect _landingEffect;
     [SerializeField] private float _zoomOutSize = 35f;
     [SerializeField] private float _zoomOutDuration = 3f;
     private Transform _landingVFXTrm;
 
     private void Awake()
     {
-        _landingVFXTrm = _landingVFX.transform;
+        _landingVFXTrm = _landingEffect.transform;
     }
 
     public void Init(Player player)
@@ -38,7 +38,7 @@ public class CutSceneManager : MonoBehaviour
         Vector3 pos = new Vector3(0f, 0f, 0f);// 나중에 이를 스테이지 시작위치로 변경해야한다.
         _landingVFXTrm.position = pos;
         _playerTrm.position = pos + new Vector3(0, _fallHeight, 0);
-        _playerTrm.DOMoveY(0f, 5f).SetEase(Ease.InExpo).OnComplete(() => _landingVFX.Play());
+        _playerTrm.DOMoveY(0f, 5f).SetEase(Ease.InExpo).OnComplete(() => _landingEffect.Play());
         _gameCanvas.Close();
         _cinematicPanel.ShowStartCutScene();
         CameraShakeController.Instance.ShakeCam(1f, 4.5f);
