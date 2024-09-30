@@ -9,6 +9,9 @@ public class TechTree : MonoBehaviour, IWindowPanel
 {
     public TechTreeSO treeSO;
     public Dictionary<NodeSO, Node> nodeDic;
+    public WarningPanel warningPanel;
+    public TechTreeTooltipPanel tooltipPanel;
+    [SerializeField] private Node nodePf;
 
     public Transform edgeParent;
     private string _path;
@@ -38,15 +41,39 @@ public class TechTree : MonoBehaviour, IWindowPanel
             }
         }
 
-        for(int i = 0; i < treeSO.nodes.Count; i++)
+        for (int i = 0; i < treeSO.nodes.Count; i++)
         {
             NodeSO nodeSO = treeSO.nodes[i];
 
-            if(nodeDic.TryGetValue(nodeSO, out Node node))
+            if (nodeDic.TryGetValue(nodeSO, out Node node))
                 node.Init(this, node.node.id == 0);
         }
 
         Load();
+    }
+
+    [ContextMenu("CreateNodes")]
+    private void CreateNodes()
+    {
+        treeSO.nodes.ForEach(node =>
+        {
+            Node nodeInstance = Instantiate(nodePf, transform);
+            nodeInstance.node = node;
+
+            if (node is PartNodeSO part)
+            {
+                nodeInstance.name = part.openPart.ToString();
+            }
+            else if (node is WeaponNodeSO weapon)
+            {
+                nodeInstance.name = weapon.weapon.ToString();
+            }
+            else if (node is StartNodeSO)
+            {
+                nodeInstance.name = "StartNode";
+                nodeInstance.DestroyEdge();
+            }
+        });
     }
 
     public bool TryGetNode(NodeSO nodeSO, out Node node)

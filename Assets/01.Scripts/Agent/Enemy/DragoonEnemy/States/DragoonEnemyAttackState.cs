@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Crogen.ObjectPooling;
 
@@ -40,7 +38,6 @@ public class DragoonEnemyAttackState : EnemyState<DragoonEnemy>
         {
             _effect = _enemyBase.gameObject.Pop
                 (PoolType.DragoonLaser, 
-                _enemyBase.firePosTrm, 
                 _enemyBase.firePosTrm.position, 
                 _enemyBase.transform.rotation) as ParticlePlayer;
             RemoveTrigger(AnimationTriggerEnum.EffectTrigger);

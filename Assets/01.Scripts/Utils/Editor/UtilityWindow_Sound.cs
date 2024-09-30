@@ -84,7 +84,7 @@ public partial class UtilityWindow
                 ? _selectStyle
                 : GUIStyle.none;
             
-            EditorGUILayout.BeginHorizontal(style, GUILayout.Height(40f));
+            EditorGUILayout.BeginHorizontal();
             {
                 EditorGUILayout.LabelField(soundSO.name, GUILayout.Width(240f), GUILayout.Height(40f));
                 
