@@ -253,7 +253,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 962037325}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 2016743929}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 27d09665e1a3645498d7cc7bba831bb6, type: 3}
@@ -11298,10 +11298,24 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6583259603029474711, guid: a26c55cfcafa7f44c9da997bcca03dd6,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050763243591016528, guid: a26c55cfcafa7f44c9da997bcca03dd6,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8839262848835264824, guid: a26c55cfcafa7f44c9da997bcca03dd6,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2016743931}
   m_SourcePrefab: {fileID: 100100000, guid: a26c55cfcafa7f44c9da997bcca03dd6, type: 3}
 --- !u!114 &962037326 stripped
 MonoBehaviour:
@@ -26952,6 +26966,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 20568813}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2016743929 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8839262848835264824, guid: a26c55cfcafa7f44c9da997bcca03dd6,
+    type: 3}
+  m_PrefabInstance: {fileID: 962037325}
+  m_PrefabAsset: {fileID: 0}
+--- !u!225 &2016743931
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2016743929}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!114 &2049986451 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3704288009875788127, guid: a26c55cfcafa7f44c9da997bcca03dd6,
@@ -27685,6 +27717,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 144204279329110225, guid: 9ddb693b15025364d89aea50a130ce07,
+        type: 3}
+      propertyPath: _cooldown
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 4942398911378062715, guid: 9ddb693b15025364d89aea50a130ce07,
         type: 3}
       propertyPath: m_Name
