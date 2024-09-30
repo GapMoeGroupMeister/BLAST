@@ -11,6 +11,11 @@ public class VolumeEffectManager : MonoSingleton<VolumeEffectManager>
     private ChromaticAberration chromaticAb;
     private bool _isChomaEffect;
     private bool _isColorAdEffect;
+    [Header("Effect Setting")]
+    [SerializeField] private float _colorAdScale;
+    [SerializeField] private float _chromaticAbScale;
+    [SerializeField] private float _duration;
+    [SerializeField] private float _deltaDuration;
 
 
     private void Awake()
@@ -88,7 +93,8 @@ public class VolumeEffectManager : MonoSingleton<VolumeEffectManager>
 
     public void HandlePlayerHit()
     {
-        
+        SetGrayScale(_colorAdScale, _duration, _deltaDuration);
+        SetChromaticAb(_chromaticAbScale, _duration, _deltaDuration);
 
     }
 
