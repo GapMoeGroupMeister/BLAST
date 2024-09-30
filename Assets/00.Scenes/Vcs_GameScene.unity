@@ -27186,7 +27186,7 @@ PrefabInstance:
     - target: {fileID: 3308960097668393135, guid: d715b0cde2ca3754eb7ea29b435422cf,
         type: 3}
       propertyPath: OnHealthChangedEvent.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3308960097668393135, guid: d715b0cde2ca3754eb7ea29b435422cf,
         type: 3}
@@ -27196,6 +27196,11 @@ PrefabInstance:
     - target: {fileID: 3308960097668393135, guid: d715b0cde2ca3754eb7ea29b435422cf,
         type: 3}
       propertyPath: OnHealthChangedEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3308960097668393135, guid: d715b0cde2ca3754eb7ea29b435422cf,
+        type: 3}
+      propertyPath: OnHealthChangedEvent.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3308960097668393135, guid: d715b0cde2ca3754eb7ea29b435422cf,
@@ -27210,7 +27215,17 @@ PrefabInstance:
       objectReference: {fileID: 581912973}
     - target: {fileID: 3308960097668393135, guid: d715b0cde2ca3754eb7ea29b435422cf,
         type: 3}
+      propertyPath: OnHealthChangedEvent.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 1479388299}
+    - target: {fileID: 3308960097668393135, guid: d715b0cde2ca3754eb7ea29b435422cf,
+        type: 3}
       propertyPath: OnHealthChangedEvent.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3308960097668393135, guid: d715b0cde2ca3754eb7ea29b435422cf,
+        type: 3}
+      propertyPath: OnHealthChangedEvent.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3308960097668393135, guid: d715b0cde2ca3754eb7ea29b435422cf,
@@ -27220,12 +27235,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3308960097668393135, guid: d715b0cde2ca3754eb7ea29b435422cf,
         type: 3}
+      propertyPath: OnHealthChangedEvent.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: HandePlayerHit
+      objectReference: {fileID: 0}
+    - target: {fileID: 3308960097668393135, guid: d715b0cde2ca3754eb7ea29b435422cf,
+        type: 3}
       propertyPath: OnHealthChangedEvent.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: VolumeEffectManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 3308960097668393135, guid: d715b0cde2ca3754eb7ea29b435422cf,
         type: 3}
+      propertyPath: OnHealthChangedEvent.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: CameraShakeController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3308960097668393135, guid: d715b0cde2ca3754eb7ea29b435422cf,
+        type: 3}
       propertyPath: OnHealthChangedEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3308960097668393135, guid: d715b0cde2ca3754eb7ea29b435422cf,
+        type: 3}
+      propertyPath: OnHealthChangedEvent.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 3843327717804749356, guid: d715b0cde2ca3754eb7ea29b435422cf,
@@ -27326,7 +27356,7 @@ PrefabInstance:
     - target: {fileID: 8894572529226812299, guid: d715b0cde2ca3754eb7ea29b435422cf,
         type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 9188609135989693061, guid: d715b0cde2ca3754eb7ea29b435422cf,
         type: 3}
