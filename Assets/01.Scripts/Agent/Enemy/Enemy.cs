@@ -61,7 +61,7 @@ public abstract class Enemy : Agent, IPoolingObject
         foreach (var key in stat.statModifierDictionary.Keys)
         {
             float currentStat = stat.GetValue(key);
-            float statModifier = stat.GetModifierValue(key, 0)
+            float statModifier = stat.GetModifierValue(key, 0);
             stat.SetValue(key, currentStat * statModifier);
         }
         targetTrm = GameManager.Instance.Player.transform;
