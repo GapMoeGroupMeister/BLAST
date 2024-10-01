@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2452329730213990955}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: LegR.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7359004324547753570}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: LegR.003_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5033773318124843184}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: LegL.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -104,7 +104,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5699797740008973722}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: LegR.004_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -126,6 +126,64 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2452329730213990955}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &904379110082754421
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8388673702571787628}
+  - component: {fileID: 8510196016308986905}
+  - component: {fileID: 4157519235954152264}
+  m_Layer: 8
+  m_Name: HitFeedback
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8388673702571787628
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 904379110082754421}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8398965871751776}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8510196016308986905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 904379110082754421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a50d4dd25594d1e4a8e829e52ebb40c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4157519235954152264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 904379110082754421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9053788e7cb7e342a2cf2d34f26d2b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _soundData: {fileID: 11400000, guid: b55bdb5e1037e884c92088d38246ff74, type: 2}
 --- !u!1 &1217751436449589167
 GameObject:
   m_ObjectHideFlags: 0
@@ -135,7 +193,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1330769421618146267}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: LegL.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -167,7 +225,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3912009875928950924}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: LegLHandle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -199,7 +257,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7122710808147874102}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: LegR.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -231,7 +289,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7965511325992841614}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: LegRHandle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -263,7 +321,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4107246601406956638}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: LegL.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -295,7 +353,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6787429697239698975}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: LegL.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -318,6 +376,64 @@ Transform:
   - {fileID: 1330769421618146267}
   m_Father: {fileID: 5033773318124843184}
   m_LocalEulerAnglesHint: {x: 74.76452, y: -179.99995, z: -179.99997}
+--- !u!1 &4200154616327108162
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2502890005014086166}
+  - component: {fileID: 2995809498505016651}
+  - component: {fileID: 1096244155164342914}
+  m_Layer: 8
+  m_Name: DashFeedback
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2502890005014086166
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4200154616327108162}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8398965871751776}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2995809498505016651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4200154616327108162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a50d4dd25594d1e4a8e829e52ebb40c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1096244155164342914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4200154616327108162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9053788e7cb7e342a2cf2d34f26d2b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _soundData: {fileID: 11400000, guid: a0cf4d9be710ce24cb9329fd7393706b, type: 2}
 --- !u!1 &4631282874064078022
 GameObject:
   m_ObjectHideFlags: 0
@@ -327,7 +443,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4913819078278688902}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: LegL.004_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -360,7 +476,7 @@ GameObject:
   - component: {fileID: 8972335987180536376}
   - component: {fileID: 2811545922270044022}
   - component: {fileID: 5982444004513730779}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -417,6 +533,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b49a50e493d8497c8405204aaa96445c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _onStepEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 9212172532670027666}
+        m_TargetAssemblyTypeName: FeedbackPlayer, Assembly-CSharp
+        m_MethodName: PlayFeedback
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   _stepEffectR: {fileID: 5699797740008973722}
   _stepEffectL: {fileID: 4913819078278688902}
   _stepEffectPoolType: 25
@@ -430,7 +561,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8751416082296612209}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Bone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -463,7 +594,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6472469948450527349}
   - component: {fileID: 1235018620942350079}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Legs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -560,7 +691,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5910605827798852890}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: LegR.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -622,6 +753,7 @@ Transform:
   m_Children:
   - {fileID: 8972335987180536376}
   - {fileID: 337810555226859938}
+  - {fileID: 8398965871751776}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1818484225686448684
@@ -640,7 +772,7 @@ MonoBehaviour:
     type: 2}
   currentPlayerPart: {fileID: 0}
   playerDashEffectCaster: {fileID: 0}
-  _currentPartType: 2
+  _currentPartType: 0
 --- !u!114 &6872490257994263261
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -653,6 +785,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1db8289fe0c24d12951eaff84c47774e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnDashEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2995809498505016651}
+        m_TargetAssemblyTypeName: FeedbackPlayer, Assembly-CSharp
+        m_MethodName: PlayFeedback
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   _attackPointTrm: {fileID: 0}
   _attackPointOffset: {x: 0, y: 0.1, z: 0}
   _baseTrm: {fileID: 0}
@@ -680,10 +827,58 @@ MonoBehaviour:
   _renderers:
   - {fileID: 1235018620942350079}
   - {fileID: 0}
-  _damageDuration: 0.005
+  _damageDuration: 0.055
   OnHealthChangedEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: HealthUI, Assembly-CSharp
+        m_MethodName: Refresh
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: VolumeEffectManager, Assembly-CSharp
+        m_MethodName: HandlePlayerHit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: CameraShakeController, Assembly-CSharp
+        m_MethodName: HandePlayerHit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8510196016308986905}
+        m_TargetAssemblyTypeName: FeedbackPlayer, Assembly-CSharp
+        m_MethodName: PlayFeedback
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnDieEvent:
     m_PersistentCalls:
       m_Calls:
@@ -699,7 +894,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  _maxHealth: 0
+  _maxHealth: 100
   _isDead: 0
 --- !u!114 &3008086090903353795
 MonoBehaviour:
@@ -728,9 +923,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerPartList:
   - {fileID: 294903427704956916, guid: 0a088780fd58b0b49b9aa8a59ca05833, type: 3}
+  - {fileID: 294903427704956916, guid: 02549dc8771b07446a6f2f3cb07bc1e1, type: 3}
   - {fileID: 294903427704956916, guid: adb39cc5587a3c646a2f4361d3a8ca32, type: 3}
   - {fileID: 3016868156403632621, guid: 53756cfabefb9994887b792335e77b68, type: 3}
-  - {fileID: 294903427704956916, guid: 02549dc8771b07446a6f2f3cb07bc1e1, type: 3}
   _partPoint: {fileID: 0}
 --- !u!54 &4304136632676638823
 Rigidbody:
@@ -809,7 +1004,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6118074753015587686}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: LegL.003_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -840,7 +1035,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6190706206577957530}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Armature.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -874,7 +1069,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8354625608064950555}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Pelvis
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -898,6 +1093,98 @@ Transform:
   - {fileID: 5910605827798852890}
   m_Father: {fileID: 8751416082296612209}
   m_LocalEulerAnglesHint: {x: 0, y: -0.000002591576, z: 0}
+--- !u!1 &7963662550000984815
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3865799411476064243}
+  - component: {fileID: 9212172532670027666}
+  - component: {fileID: 4533975105044171783}
+  m_Layer: 8
+  m_Name: StepFeedback
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3865799411476064243
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7963662550000984815}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8398965871751776}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9212172532670027666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7963662550000984815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a50d4dd25594d1e4a8e829e52ebb40c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4533975105044171783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7963662550000984815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9053788e7cb7e342a2cf2d34f26d2b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _soundData: {fileID: 11400000, guid: 27d05f3cd448c9347832412facc3dd42, type: 2}
+--- !u!1 &8405815979117771259
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8398965871751776}
+  m_Layer: 8
+  m_Name: Feedback
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8398965871751776
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8405815979117771259}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 3865799411476064243}
+  - {fileID: 2502890005014086166}
+  - {fileID: 8388673702571787628}
+  m_Father: {fileID: 1111733988438842946}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8621404621447398283
 GameObject:
   m_ObjectHideFlags: 0
@@ -907,7 +1194,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5849276678574146607}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: LegR.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}

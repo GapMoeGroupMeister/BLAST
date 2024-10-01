@@ -73,8 +73,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1100e29d1564d018053acb1208ddedf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canUse: 1
-  weaponEnabled: 1
+  canUse: 0
+  weaponEnabled: 0
   _cooldown: 10
   level: 1
   isUniqueWeapon: 1
@@ -137,7 +137,7 @@ MonoBehaviour:
   canUse: 0
   weaponEnabled: 0
   _cooldown: 10
-  level: 1
+  level: 5
   isUniqueWeapon: 1
   partType: 2
   isConditionalWeapon: 0
@@ -147,10 +147,9 @@ MonoBehaviour:
   player: {fileID: 0}
   whatIsEnemy:
     serializedVersion: 2
-    m_Bits: 0
-  _turretPoolType: 0
+    m_Bits: 512
+  _turretPoolType: 15
   _turretMaxAmount: 10
-  _enemyFindRadius: 20
 --- !u!114 &1536740028326696760
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -165,7 +164,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canUse: 0
   weaponEnabled: 0
-  _cooldown: 0
+  _cooldown: 10
   level: 1
   isUniqueWeapon: 1
   partType: 2
@@ -176,7 +175,12 @@ MonoBehaviour:
   player: {fileID: 0}
   whatIsEnemy:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
+  _destructionBeam: {fileID: 8062669567916415063, guid: e9a2e02e29121414d99ff23da686b0b9,
+    type: 3}
+  _beamTrm: []
+  _chargeTime: 1.5
+  _beamDuration: 5
 --- !u!114 &397250888331419547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,7 +195,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canUse: 0
   weaponEnabled: 0
-  _cooldown: 0
+  _cooldown: 1
   level: 1
   isUniqueWeapon: 1
   partType: 2
@@ -276,7 +280,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25491bae6aaa480ba011cbe34822de72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canUse: 1
+  canUse: 0
   weaponEnabled: 0
   _cooldown: 15
   level: 1
@@ -306,7 +310,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canUse: 0
   weaponEnabled: 0
-  _cooldown: 0
+  _cooldown: 1
   level: 1
   isUniqueWeapon: 0
   partType: 0
@@ -317,7 +321,9 @@ MonoBehaviour:
   player: {fileID: 0}
   whatIsEnemy:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
+  bladePf: {fileID: 259497445423135046, guid: 87df5d12f87d4ee439499b99d7ae4242, type: 3}
+  _detectingRange: 40
 --- !u!114 &6838086103775843688
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -336,7 +342,7 @@ MonoBehaviour:
   level: 1
   isUniqueWeapon: 0
   partType: 0
-  isConditionalWeapon: 0
+  isConditionalWeapon: 1
   _autoUseType: 0
   _compareMode: 0
   _targetValue: 0
@@ -344,6 +350,8 @@ MonoBehaviour:
   whatIsEnemy:
     serializedVersion: 2
     m_Bits: 0
+  _dashExplosionPrefab: {fileID: 778815023308791822, guid: 6581595191f458042b67b371a5cd3783,
+    type: 3}
 --- !u!114 &3431340043160336752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -384,7 +392,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canUse: 0
   weaponEnabled: 0
-  _cooldown: 0
+  _cooldown: 1
   level: 1
   isUniqueWeapon: 0
   partType: 0
@@ -395,7 +403,9 @@ MonoBehaviour:
   player: {fileID: 0}
   whatIsEnemy:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
+  dronePrefab: {fileID: 604776981245127952, guid: 0351ae6386fb4484e83c288ba517eb16,
+    type: 3}
 --- !u!114 &6085890847137210428
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -410,7 +420,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canUse: 0
   weaponEnabled: 0
-  _cooldown: 3
+  _cooldown: 1
   level: 1
   isUniqueWeapon: 0
   partType: 0
@@ -463,7 +473,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canUse: 0
   weaponEnabled: 0
-  _cooldown: 0
+  _cooldown: 1
   level: 1
   isUniqueWeapon: 0
   partType: 0
@@ -475,6 +485,8 @@ MonoBehaviour:
   whatIsEnemy:
     serializedVersion: 2
     m_Bits: 0
+  _laserTailPointPrefab: {fileID: 6406411851375914536, guid: ce713f9676cafc34487acdde8b918a39,
+    type: 3}
 --- !u!114 &1774822119726090316
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -489,7 +501,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canUse: 0
   weaponEnabled: 0
-  _cooldown: 0
+  _cooldown: 1
   level: 1
   isUniqueWeapon: 0
   partType: 0
@@ -515,7 +527,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canUse: 0
   weaponEnabled: 0
-  _cooldown: 0
+  _cooldown: 10
   level: 1
   isUniqueWeapon: 0
   partType: 0
@@ -526,7 +538,9 @@ MonoBehaviour:
   player: {fileID: 0}
   whatIsEnemy:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
+  _acidicArea: {fileID: 6165953989487565950, guid: 3ae96958f1a37e14ba9e4366f97843db,
+    type: 3}
 --- !u!114 &1953694606132806691
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -541,7 +555,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canUse: 0
   weaponEnabled: 0
-  _cooldown: 0
+  _cooldown: 5
   level: 1
   isUniqueWeapon: 0
   partType: 0
@@ -552,7 +566,9 @@ MonoBehaviour:
   player: {fileID: 0}
   whatIsEnemy:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
+  bombPf: {fileID: 3950260447111159992, guid: 12bee4236a83fd1468983d4c97674491, type: 3}
+  _detectingRange: 40
 --- !u!114 &144204279329110225
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -578,7 +594,7 @@ MonoBehaviour:
   player: {fileID: 0}
   whatIsEnemy:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   _nuclear: {fileID: 7818928688725486981, guid: a81944314ba1d874f9f7169501e8d54d,
     type: 3}
 --- !u!1 &6445368848195410076
@@ -625,7 +641,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2896ca279df9467bac2d712f7030d3e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canUse: 1
+  canUse: 0
   weaponEnabled: 0
   _cooldown: 5
   level: 1
@@ -691,7 +707,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canUse: 0
   weaponEnabled: 0
-  _cooldown: 0
+  _cooldown: 2
   level: 1
   isUniqueWeapon: 1
   partType: 1
@@ -702,9 +718,9 @@ MonoBehaviour:
   player: {fileID: 0}
   whatIsEnemy:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   _damageCaster: {fileID: 0}
-  _explosionEffectPoolType: 0
+  _empEffect: {fileID: 0}
   _defaultDamage: 1
 --- !u!114 &1006913282202067868
 MonoBehaviour:
@@ -758,6 +774,11 @@ MonoBehaviour:
   whatIsEnemy:
     serializedVersion: 2
     m_Bits: 0
+  _randomRange: 0
+  _defaultPower: 0
+  _powerMultiplerByLevel: 0
+  _range: 0
+  _magneticBlockPrefab: {fileID: 0}
 --- !u!114 &7521690542071491873
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -772,7 +793,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canUse: 0
   weaponEnabled: 0
-  _cooldown: 0
+  _cooldown: 1
   level: 1
   isUniqueWeapon: 1
   partType: 1
@@ -783,4 +804,5 @@ MonoBehaviour:
   player: {fileID: 0}
   whatIsEnemy:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
+  _playerXPBodyTrm: {fileID: 0}

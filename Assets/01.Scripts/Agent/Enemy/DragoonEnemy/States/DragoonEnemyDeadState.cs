@@ -10,7 +10,7 @@ public class DragoonEnemyDeadState : EnemyState<DragoonEnemy>
 
     public DragoonEnemyDeadState(DragoonEnemy enemyBase, EnemyStateMachine<DragoonEnemy> stateMachine, string animBoolName) : base(enemyBase, stateMachine, animBoolName)
     {
-        _dissolveMat = enemyBase.MeshRendererCompo.material;
+        _dissolveMat = enemyBase.RendererCompo.material;
     }
 
     public override void Enter()

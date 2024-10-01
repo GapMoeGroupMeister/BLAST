@@ -12,18 +12,24 @@ public class WaveManager : MonoSingleton<WaveManager>
     [SerializeField] private SerializedDictionary<int, WaveSO> waveDictionary;
     [SerializeField] private List<Transform> spawnPoints;
     [SerializeField] private float _waveDelay = 5f;
-    
+
     private List<Enemy> _spawnedEnemies = new List<Enemy>();
-    
+
     private int _currentWaveIndex;
     private int _currentEnemyCount;
-    
+
+    private void Start()
+    {
+        StartWave(0, true);
+
+    }
+
     [ContextMenu("DebugStartWave")]
     public void DebugStartWave()
     {
         StartWave(0, false);
     }
-    
+
     [ContextMenu("DebugStartRandomWave")]
     public void DebugStartRandomWave()
     {
@@ -47,7 +53,7 @@ public class WaveManager : MonoSingleton<WaveManager>
     private IEnumerator SpawnEnemy(int wave, bool isRandomSpawn)
     {
         if (wave >= waveDictionary.Count) yield break;
-        
+
         int enemyIdx = 0;
         WaveSO waveSO = waveDictionary[wave];
         if (waveSO == null)
@@ -74,10 +80,16 @@ public class WaveManager : MonoSingleton<WaveManager>
             }
             yield return null;
         }
-        
+
         Debug.Log($"Wave {wave} Spawn Complete");
-        
+
         yield return new WaitUntil(() => _spawnedEnemies.Count == 0);
+        // Wave설정에  보스가 있으면 소환
+        if (waveSO.boss.bossPrefab != null)
+        {
+            // 보스 대충 소환해주는 코드
+            
+        }
         OnWaveClearEvent?.Invoke(wave);
         _currentEnemyCount = 0;
         yield return new WaitForSeconds(_waveDelay);
@@ -89,6 +101,8 @@ public class WaveManager : MonoSingleton<WaveManager>
         Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Count)];
         Enemy enemy =
             gameObject.Pop(waveEnemy.enemyType, spawnPoint.position, Quaternion.identity) as Enemy;
+        // Level 추가시 여기서 설정 해야디
+
         _spawnedEnemies.Add(enemy);
         _currentEnemyCount++;
         yield return new WaitForSeconds(waveEnemy.spawnDelay);
@@ -103,7 +117,7 @@ public class WaveManager : MonoSingleton<WaveManager>
         }
         return count;
     }
-    
+
     public void RemoveEnemy(Enemy enemy)
     {
         _spawnedEnemies.Remove(enemy);

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class CameraShakeController : MonoSingleton<CameraShakeController>
 {
-    [SerializeField]private CinemachineVirtualCamera _playerCam;
+    [SerializeField] private CinemachineVirtualCamera _playerCam;
     private CinemachineBasicMultiChannelPerlin _perlin;
 
     private float _power, _duration;
@@ -16,13 +16,7 @@ public class CameraShakeController : MonoSingleton<CameraShakeController>
         _perlin = _playerCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
     }
 
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.L))
-        {
-            ShakeCam(10, 0.1f);
-        }
-    }
+
 
     public void ShakeCam(float power, float duration)
     {
@@ -44,5 +38,14 @@ public class CameraShakeController : MonoSingleton<CameraShakeController>
 
         _perlin.m_AmplitudeGain = 0;
         _perlin.m_FrequencyGain = 0;
+        _shakeRoutine = null;
     }
+
+    #region 
+    public void HandePlayerHit()
+    {
+        ShakeCam(10f, 0.2f);
+    }
+
+    #endregion
 }

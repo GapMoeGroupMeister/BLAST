@@ -17,7 +17,15 @@ public class NodeView : UnityEditor.Experimental.GraphView.Node
     public NodeView(NodeSO node)
     {
         this.node = node;
-        title = node.name;
+
+        if (node is PartNodeSO part)
+            title = $"Part: {part.openPart.ToString()}";
+        else if (node is WeaponNodeSO weapon)
+            title = $"Weapon: {weapon.weapon.ToString()}";
+        else
+            title = "StartNode";
+
+        //title = node.name;
         viewDataKey = node.guid;
 
         style.left = node.position.x;

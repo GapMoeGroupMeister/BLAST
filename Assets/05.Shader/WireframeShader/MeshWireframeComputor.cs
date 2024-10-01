@@ -29,7 +29,7 @@ public class MeshWireframeComputor : MonoBehaviour
         Mesh m = GetComponent<MeshFilter>().sharedMesh;
         if (m == null) return;
 
-        // compute and store vertex colors for the
+        // compute and store _vertex colors for the
         // wireframe shader
         Color[] colors = SortedColoring(m);
 

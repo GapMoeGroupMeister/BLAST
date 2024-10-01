@@ -3,12 +3,14 @@ using UnityEngine;
 using DG.Tweening;
 using System;
 using System.Collections;
+using UnityEngine.Events;
 
 public class PlayerMovement : MovementController
 {
     public event Action<float> OnDistanceTravelledEvent;
     public event Action<float> OnDashCoolTimePercentEvent;
-    public event Action<Vector3> OnDashEvent;
+    public event Action<Vector3> OnDashDirectionEvent;
+    public UnityEvent OnDashEvent;
     [SerializeField] private Transform _attackPointTrm;
     [SerializeField] private Vector3 _attackPointOffset;
     [SerializeField] private Transform _baseTrm;
@@ -68,6 +70,8 @@ public class PlayerMovement : MovementController
         }
     }
 
+    public void SetCanMove(bool value) => _canMove = value;
+
     public override void StopImmediately()
     {
         _rigidbodyCompo.velocity = Vector3.zero;
@@ -76,7 +80,8 @@ public class PlayerMovement : MovementController
     public void OnDash(Vector3 dashDir, float duration, float dashPower)
 	{
         _curDashCooltime = 0;
-        OnDashEvent?.Invoke(dashDir);
+        OnDashDirectionEvent?.Invoke(dashDir);
+        OnDashEvent?.Invoke();
         StartCoroutine(CoroutineOnDash(dashDir, duration, dashPower));
 	}
 

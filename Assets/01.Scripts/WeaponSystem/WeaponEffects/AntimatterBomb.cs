@@ -2,6 +2,7 @@ using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class AntimatterBomb : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class AntimatterBomb : MonoBehaviour
     [SerializeField] private float _maxScale = 25f;
     //이거도 수정해주
     [SerializeField] private int _tickDamage = 5;
+
+    public UnityEvent soundFeedback;
 
     private bool _explosing = false;
     private float _prevAttackTime;
@@ -26,13 +29,13 @@ public class AntimatterBomb : MonoBehaviour
         _prevAttackTime = Time.time;
     }
 
-    private void Update()
-    {
-        //if (Input.GetKeyDown(KeyCode.M))
-        //{
-        //    Explosion();
-        //}
-    }
+    //private void Update()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.M))
+    //    {
+    //        Explosion();
+    //    }
+    //}
 
     private void FixedUpdate()
     {
@@ -78,6 +81,7 @@ public class AntimatterBomb : MonoBehaviour
             .AppendInterval(0.1f)
             .AppendCallback(() =>
             {
+                soundFeedback?.Invoke();
                 CameraShakeController.Instance.ShakeCam(2f, 0.15f);
                 _explosing = true;
             })

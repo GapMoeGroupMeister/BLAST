@@ -11,6 +11,7 @@ public class Nuclear : MonoBehaviour
     private DecalProjector _rangeMark;
     private Material _decalMaterial;
     private int _waveSpeedHash;
+    private FeedbackPlayer _soundFeedbackPlayer;
     private void Awake()
     {
         _waveSpeedHash = Shader.PropertyToID("_Speed");
@@ -19,6 +20,7 @@ public class Nuclear : MonoBehaviour
         _rangeMark = transform.Find("TargetMark").GetComponent<DecalProjector>();
         _decalMaterial = _rangeMark.material;
         _rangeMark.enabled = false;
+        _soundFeedbackPlayer = GetComponentInChildren<FeedbackPlayer>();
     }
 
     public void SetPos(Vector3 position)
@@ -47,6 +49,7 @@ public class Nuclear : MonoBehaviour
         _damageCaster.CastDamage(nuclearDamage);
         ZoomController.Instance.ForceZoomOut(60f, 0.5f, 4f);
         _nuclearVFX.Play();
+        _soundFeedbackPlayer.PlayFeedback();
         
     }
 

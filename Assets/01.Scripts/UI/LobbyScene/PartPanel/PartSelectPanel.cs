@@ -51,6 +51,7 @@ public class PartSelectPanel : UIPanel
                 continue;
             PartSelectSlot slot = Instantiate(_slotPrefab, _contentTrm);
             slot.Initialize(partData.GetData(datas[i].id)); // 파즈 정보를 넣는다
+            slot.AddOnClieckEvent(Close);
             partSlotList.Add(slot);
         }
     }
