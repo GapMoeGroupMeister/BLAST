@@ -17,7 +17,10 @@ public class EnemyStatDataSO : StatDataSO
 
         foreach (StatEnum stat in Enum.GetValues(typeof(StatEnum)))
         {
-            statModifierDictionary.Add(stat, new AnimationCurve());
+            AnimationCurve curve = new AnimationCurve();
+            curve.AddKey(0, 1);
+            curve.AddKey(1, 1);
+            statModifierDictionary.Add(stat, curve);
         }
     }
 
