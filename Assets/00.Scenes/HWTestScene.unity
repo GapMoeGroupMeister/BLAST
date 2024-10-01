@@ -555,6 +555,7 @@ MonoBehaviour:
   <InputReader>k__BackingField: {fileID: 11400000, guid: 836c45128fe44d04995e0341f944d184,
     type: 2}
   <Player>k__BackingField: {fileID: 0}
+  _cutSceneManager: {fileID: 0}
 --- !u!4 &407342182
 Transform:
   m_ObjectHideFlags: 0
@@ -785,7 +786,7 @@ PrefabInstance:
     - target: {fileID: 3569790279375286571, guid: 01a094297fba9264e9d41c3b66196d87,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -11.49
+      value: -10.12
       objectReference: {fileID: 0}
     - target: {fileID: 3569790279375286571, guid: 01a094297fba9264e9d41c3b66196d87,
         type: 3}
@@ -795,7 +796,7 @@ PrefabInstance:
     - target: {fileID: 3569790279375286571, guid: 01a094297fba9264e9d41c3b66196d87,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -8.08
       objectReference: {fileID: 0}
     - target: {fileID: 3569790279375286571, guid: 01a094297fba9264e9d41c3b66196d87,
         type: 3}
@@ -1281,6 +1282,8 @@ MonoBehaviour:
     m_Bits: 0
   attackDistance: 10
   targetTrm: {fileID: 949706603}
+  _damageAmount: 1
+  _damageCasters: []
   capsuleCollider: {fileID: 0}
   redLight: {fileID: 1320426500}
 --- !u!114 &1001207800
@@ -2976,6 +2979,8 @@ MonoBehaviour:
     m_Bits: 256
   attackDistance: 30
   targetTrm: {fileID: 949706603}
+  _damageAmount: 1
+  _damageCasters: []
   capsuleCollider: {fileID: 0}
   _secondStat: {fileID: 11400000, guid: 0ac816a15c4f3e54998b4911776de54f, type: 2}
   cannonTrm: {fileID: 0}
@@ -2996,6 +3001,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec2e8163a86f4414b853f4241c9b4a04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _renderers: []
+  _damageDuration: 0.005
   OnHealthChangedEvent:
     m_PersistentCalls:
       m_Calls: []

@@ -7,7 +7,8 @@ public enum Boss524StateEnum
     Chase,
     Attack,
     UseSkill,
-    Stun
+    Stun,
+    Dead
 }
 
 public enum Boss524SkillEnum
@@ -32,7 +33,7 @@ public class Boss524 : Boss<Boss524>
     public override void OnDie()
     {
         CanStateChangeable = false;
-        //DeadState∑Œ ¿Œ∞Ë
+        StateMachine.ChangeState(Boss524StateEnum.Dead);
     }
 
     public override void Stun(float duration)
