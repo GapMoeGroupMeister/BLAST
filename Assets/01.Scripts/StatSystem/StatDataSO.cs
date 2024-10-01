@@ -24,4 +24,9 @@ public class StatDataSO : ScriptableObject
             return value;
         return 0f;
     }
+
+    public void SetValue(StatEnum stat, float value)
+    {
+        statDictionary[stat] = value;
+    }
 }
