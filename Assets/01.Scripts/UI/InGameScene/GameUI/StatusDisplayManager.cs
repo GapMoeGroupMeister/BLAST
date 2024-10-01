@@ -15,8 +15,8 @@ public class StatusDisplayManager : MonoBehaviour
     {
         _playerPartController = FindObjectOfType<PlayerPartController>();
         _currentPart = PlayerPartController.GetCurrentPlayerPart();
-        _currentPart.magazineInfoL.playerOverloadEvent += _weaponDisplay_Left.HandleDisplayRefresh;
-        _currentPart.magazineInfoR.playerOverloadEvent += _weaponDisplay_Right.HandleDisplayRefresh;
+        _currentPart.magazineInfoL.PlayerOverloadEvent += _weaponDisplay_Left.HandleDisplayRefresh;
+        _currentPart.magazineInfoR.PlayerOverloadEvent += _weaponDisplay_Right.HandleDisplayRefresh;
         GameManager.Instance.Player.HealthCompo.OnHealthChangedEvent.AddListener(_healthUI.Refresh);
         // 체력 이벤트 등록하기
         _weaponDisplay_Left.HandleDisplayRefresh(0, 1);

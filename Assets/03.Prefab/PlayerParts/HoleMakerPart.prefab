@@ -199,6 +199,64 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3389667730939113789}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7600034022874000982
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 850929638833701143}
+  - component: {fileID: 3434428048886835872}
+  - component: {fileID: 5146030171139063470}
+  m_Layer: 0
+  m_Name: OverloadSoundFeedback
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &850929638833701143
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7600034022874000982}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3389667730939113789}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3434428048886835872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7600034022874000982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a50d4dd25594d1e4a8e829e52ebb40c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5146030171139063470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7600034022874000982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9053788e7cb7e342a2cf2d34f26d2b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _soundData: {fileID: 11400000, guid: f3eb0b882459ca9408c350284776b51b, type: 2}
 --- !u!1 &7607625157098458554
 GameObject:
   m_ObjectHideFlags: 0
@@ -404,6 +462,7 @@ Transform:
   - {fileID: 7520630712134425780}
   - {fileID: 209973233109825987}
   - {fileID: 3159477447243025612}
+  - {fileID: 850929638833701143}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5065626374008235485
@@ -474,6 +533,9 @@ MonoBehaviour:
     curOverload: 0
     maxOverload: 60
     overloadDelay: 0.33
+    OnOverloadEvent:
+      m_PersistentCalls:
+        m_Calls: []
     attackDelay: 0.1
     curAttackDelay: 0
     bulletFirePositions:
@@ -485,6 +547,9 @@ MonoBehaviour:
     curOverload: 0
     maxOverload: 60
     overloadDelay: 0.33
+    OnOverloadEvent:
+      m_PersistentCalls:
+        m_Calls: []
     attackDelay: 0.1
     curAttackDelay: 0
     bulletFirePositions:
