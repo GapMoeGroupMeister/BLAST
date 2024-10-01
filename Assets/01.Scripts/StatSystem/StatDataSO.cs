@@ -8,7 +8,7 @@ public class StatDataSO : ScriptableObject
     public SerializedDictionary<StatEnum, float> statDictionary;
 
     [ContextMenu("Reset")]
-    public void Reset()
+    public virtual void Reset()
     {
         statDictionary = new SerializedDictionary<StatEnum, float>();
 
