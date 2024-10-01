@@ -25,7 +25,6 @@ public class DragoonEnemyAttackState : EnemyState<DragoonEnemy>
 
     public override void Exit()
     {
-        _effect?.Push();
         _effect = null;
         _lastAttackTime = Time.time;
         base.Exit();
@@ -40,7 +39,6 @@ public class DragoonEnemyAttackState : EnemyState<DragoonEnemy>
                 (PoolType.DragoonLaser, 
                 _enemyBase.firePosTrm.position, 
                 _enemyBase.transform.rotation) as ParticlePlayer;
-            RemoveTrigger(AnimationTriggerEnum.EffectTrigger);
         }
         if(IsTriggerCalled(AnimationTriggerEnum.AttackTrigger))
 		{

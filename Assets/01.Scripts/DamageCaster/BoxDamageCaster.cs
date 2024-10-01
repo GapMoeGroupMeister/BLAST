@@ -18,7 +18,7 @@ public class BoxDamageCaster : DamageCaster
 
 	public override void CastOverlap()
 	{
-		Physics.OverlapBoxNonAlloc(GetFinalCenter(center) - transform.position, GetScaledSize(size) * 0.5f, _castColliders, transform.rotation, _whatIsCastable);
+		Physics.OverlapBoxNonAlloc(transform.position + transform.rotation*GetFinalCenter(center), GetScaledSize(size) * 0.5f, _castColliders, transform.rotation, _whatIsCastable);
 	}
 
 	private void OnDrawGizmos()
