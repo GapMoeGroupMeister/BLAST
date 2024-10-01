@@ -22,7 +22,7 @@ public class BossWarningPanel : UIPanel
 
     [ContextMenu("Close")]
     public override void Close()
-    {
+    { 
         base.Close();
         _rectTrm.DOAnchorPosY(_defaultYPos, _activeDuration).SetUpdate(true);
 

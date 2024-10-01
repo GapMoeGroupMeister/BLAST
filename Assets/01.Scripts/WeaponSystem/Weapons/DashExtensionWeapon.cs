@@ -10,7 +10,7 @@ public class DashExtensionWeapon : Weapon
 	private void Start()
 	{
         _playerMovement = GameManager.Instance.Player.MovementCompo as PlayerMovement;
-        _playerMovement.OnDashEvent += OnDash;
+        _playerMovement.OnDashDirectionEvent += OnDash;
     }
 
     private void OnDash(Vector3 dashDir)
