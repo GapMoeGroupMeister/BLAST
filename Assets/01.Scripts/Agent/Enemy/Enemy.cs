@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 
 public abstract class Enemy : Agent, IPoolingObject
@@ -56,6 +57,7 @@ public abstract class Enemy : Agent, IPoolingObject
 
     public virtual void OnPop()
     {
+        Stat.statDictionary.Values.ToList().Select(x => x /*대충 레벨연산*/);
         targetTrm  = GameManager.Instance.Player.transform;
         CanStateChangeable = true;
     }
