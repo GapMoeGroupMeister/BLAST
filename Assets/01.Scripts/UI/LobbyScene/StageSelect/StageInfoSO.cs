@@ -13,6 +13,7 @@ public class StageInfoSO : ScriptableObject
     public Color stageColor;
     public Sprite stageImageSprite;
     public StageDifficulty stageDifficulty;
+    public StageWaveSO stageWaves;
 
     public Vector3 startPos;
 
