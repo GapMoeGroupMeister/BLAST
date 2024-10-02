@@ -13,11 +13,6 @@ public class ParticlePlayer : MonoBehaviour, IPoolingObject
 	public PoolType OriginPoolType { get; set; }
 	GameObject IPoolingObject.gameObject { get; set; }
 
-	public void OnParticleSystemStopped()
-	{
-		this.Push();
-	}
-
 	public void OnPop()
 	{
 		StartCoroutine(CoroutineOnDie());

@@ -549,7 +549,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e064e8650160f746ba9b5c734a5a095, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Stat>k__BackingField: {fileID: 11400000, guid: 0ac816a15c4f3e54998b4911776de54f,
+  <Stat>k__BackingField: {fileID: 11400000, guid: b3c772f7a62b26d4f96012b18680b707,
     type: 2}
   whatIsPlayer:
     serializedVersion: 2
@@ -578,7 +578,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec2e8163a86f4414b853f4241c9b4a04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _renderers: []
+  rendererList:
+  - {fileID: 2186302428643550301}
+  - {fileID: 6935250390042057490}
   _damageDuration: 0.005
   OnHealthChangedEvent:
     m_PersistentCalls:

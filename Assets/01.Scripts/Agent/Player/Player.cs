@@ -36,7 +36,8 @@ public class Player : Agent
         _currentPartType = (PlayerPartType)SaveManager.Instance.data.partId;
         currentPlayerPart = _playerPartController.Init(_currentPartType);
         playerDashEffectCaster.meshFilters.Add(currentPlayerPart.GetComponent<MeshFilter>());
-        
+        Renderer[] renderers = currentPlayerPart.GetComponentsInChildren<Renderer>();
+        HealthCompo.rendererList.AddRange(renderers);
     }
 
     private void Start()
