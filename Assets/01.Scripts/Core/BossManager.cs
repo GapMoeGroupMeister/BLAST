@@ -1,13 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BossManager : MonoSingleton<BossManager>
 {
-    // [SerializeField] private Boss<T> _currentBoss;
+    [SerializeField] private Enemy _currentBoss;
 
-    // public void SpawnBoss(Boss bossPrefab) {
+    public void SpawnBoss(WaveBoss bossInfo)
+    {
+        _currentBoss = Instantiate(bossInfo.bossPrefab, bossInfo.generatePosition, Quaternion.identity);
+        
 
-    // }
+    }
 
 }
