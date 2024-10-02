@@ -578,7 +578,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec2e8163a86f4414b853f4241c9b4a04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _renderers: []
+  rendererList:
+  - {fileID: 2186302428643550301}
+  - {fileID: 6935250390042057490}
   _damageDuration: 0.005
   OnHealthChangedEvent:
     m_PersistentCalls:

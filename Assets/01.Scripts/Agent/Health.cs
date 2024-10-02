@@ -2,10 +2,11 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.Events;
+using System.Collections.Generic;
 
 public class Health : MonoBehaviour, IDamageable
 {
-    [SerializeField] private Renderer[] _renderers;
+    public List<Renderer> rendererList;
     [SerializeField] private float _damageDuration = 0.005f;
     public UnityEvent<int, int> OnHealthChangedEvent;
     public UnityEvent OnDieEvent;
@@ -71,7 +72,7 @@ public class Health : MonoBehaviour, IDamageable
 
     private IEnumerator CoroutineOnDamaged()
 	{
-        foreach (var renderer in _renderers)
+        foreach (var renderer in rendererList)
         {
             for (int i = 0; i < renderer.materials.Length; ++i)
             {
@@ -81,7 +82,7 @@ public class Health : MonoBehaviour, IDamageable
 
         yield return new WaitForSeconds(_damageDuration);
 
-        foreach (var renderer in _renderers)
+        foreach (var renderer in rendererList)
 		{
             for (int i = 0; i < renderer.materials.Length; ++i)
             {

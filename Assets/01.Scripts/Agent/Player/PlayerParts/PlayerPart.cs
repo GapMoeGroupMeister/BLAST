@@ -27,6 +27,7 @@ public class MagazineInfo
 	[HideInInspector] public Vector3 AttackDirection;
 
 	public bool IsAttack { get; private set; }
+	public bool CanAttack { get; set; }
 
 	[SerializeField] private PoolType _bulletPoolingType;
 	
@@ -38,6 +39,8 @@ public class MagazineInfo
 	
 	public void Attack()
 	{
+		if (CanAttack == false) return;
+
 		if (curAttackDelay > 0 || curOverload >= maxOverload) return;
 
 		curAttackDelay = attackDelay;
@@ -110,6 +113,9 @@ public abstract class PlayerPart : MonoBehaviour
 
 	protected virtual void OnEnable()
 	{
+		magazineInfoL.CanAttack = true;
+		magazineInfoR.CanAttack = true;
+
 		if (FindObjectOfType<PlayerPartController>() == null)
 		{
 			_isNoFunc = true;
