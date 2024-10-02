@@ -1,5 +1,6 @@
 using System.Linq;
 using UnityEngine;
+using static Cinemachine.DocumentationSortingAttribute;
 
 public abstract class Enemy : Agent, IPoolingObject
 {
@@ -18,11 +19,13 @@ public abstract class Enemy : Agent, IPoolingObject
     public CapsuleCollider capsuleCollider;
 
     public float StunTime { get; protected set; }
+    public float Level { get; protected set; }
 
     protected Collider[] _enemyCheckColliders;
 
     public PoolType OriginPoolType { get; set; }
     GameObject IPoolingObject.gameObject { get; set; }
+
 
     private void OnValidate()
     {
@@ -57,11 +60,12 @@ public abstract class Enemy : Agent, IPoolingObject
 
     public virtual void OnPop()
     {
+        Level = WaveManager.Instance.CurrentWave / WaveManager.Instance.stageWaves.wavelist.Length;
         EnemyStatDataSO stat = Stat as EnemyStatDataSO;
         foreach (var key in stat.statModifierDictionary.Keys)
         {
             float currentStat = stat.GetValue(key);
-            float statModifier = stat.GetModifierValue(key, 0);
+            float statModifier = stat.GetModifierValue(key, Level);
             stat.SetValue(key, currentStat * statModifier);
         }
         targetTrm = GameManager.Instance.Player.transform;
