@@ -7,7 +7,6 @@ public class BossManager : MonoSingleton<BossManager>
     public void SpawnBoss(WaveBoss bossInfo)
     {
         _currentBoss = Instantiate(bossInfo.bossPrefab, bossInfo.generatePosition, Quaternion.identity);
-        
 
     }
 

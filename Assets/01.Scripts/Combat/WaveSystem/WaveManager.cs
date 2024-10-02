@@ -58,10 +58,15 @@ public class WaveManager : MonoSingleton<WaveManager>
 
         int enemyIdx = 0;
         WaveSO waveSO = _waveList[wave];
+        bool isBossWave = (waveSO.boss.bossPrefab != null);
         if (waveSO == null)
         {
             Debug.LogError($"Wave {wave} is null");
             yield break;
+        }
+        if (isBossWave)
+        {
+            UIManager.Instance.Open(InGameUIEnum.BossWarning);
         }
         int allEnemy = AllEnemyCount(wave);
         while (_currentEnemyCount < allEnemy)
@@ -87,10 +92,10 @@ public class WaveManager : MonoSingleton<WaveManager>
 
         yield return new WaitUntil(() => _spawnedEnemies.Count == 0);
         // Wave설정에  보스가 있으면 소환
-        if (waveSO.boss.bossPrefab != null)
+        if (isBossWave)
         {
             // 보스 대충 소환해주는 코드
-
+            BossManager.Instance.SpawnBoss(waveSO.boss);
         }
         OnWaveClearEvent?.Invoke(wave);
         _currentEnemyCount = 0;
