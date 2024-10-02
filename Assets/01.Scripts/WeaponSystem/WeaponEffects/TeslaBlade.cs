@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class TeslaBlade : MonoBehaviour
 {
@@ -11,13 +12,25 @@ public class TeslaBlade : MonoBehaviour
     private ParticleSystem _parti;
     private Collider[] _enemies;
 
+    public UnityEvent soundFeedback;
+
     private void Awake()
     {
         _enemies = new Collider[4];
     }
 
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            Attack();
+        }
+    }
+
     public void Attack()
     {
+        soundFeedback?.Invoke();
         StartCoroutine(AttackRoutine());
     }
 
@@ -29,14 +42,12 @@ public class TeslaBlade : MonoBehaviour
         {
             if (_enemies[i].TryGetComponent(out IDamageable entity))
             {
-                Debug.Log(entity);
                 entity.TakeDamage(_damage);
             }
         }
 
         yield return new WaitForSeconds(1f);
 
-        Debug.Log(cnt);
         Destroy(gameObject);
     }
 

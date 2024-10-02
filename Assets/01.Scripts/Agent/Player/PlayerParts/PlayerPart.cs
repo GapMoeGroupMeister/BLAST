@@ -3,6 +3,7 @@ using System.Collections;
 using Crogen.PowerfulInput;
 using UnityEngine;
 using Crogen.ObjectPooling;
+using UnityEngine.Events;
 
 public delegate void PlayerOverloadEvent(int curOverload, int maxOverload);
 
@@ -13,7 +14,8 @@ public class MagazineInfo
 	public int curOverload;
 	public int maxOverload = 20;
 	public float overloadDelay = 0.5f;
-	public event PlayerOverloadEvent playerOverloadEvent;
+	public event PlayerOverloadEvent PlayerOverloadEvent;
+	public UnityEvent OnOverloadEvent;
 
 	[Header("Attack")]
 	public float attackDelay = 0.2f;
@@ -40,7 +42,7 @@ public class MagazineInfo
 
 		curAttackDelay = attackDelay;
 		++curOverload;
-		playerOverloadEvent?.Invoke(curOverload, maxOverload);
+		PlayerOverloadEvent?.Invoke(curOverload, maxOverload);
 		OnAttackEvent?.Invoke(AttackDirection);
 		for (int i = 0; i < bulletFirePositions.Length; ++i)
 		{
@@ -67,8 +69,12 @@ public class MagazineInfo
 	{
 		if (curOverload > 0 && IsAttack == false)
 		{
+			if(maxOverload <= curOverload)
+			{
+				OnOverloadEvent?.Invoke();
+			}
 			--curOverload;
-			playerOverloadEvent?.Invoke(curOverload, maxOverload);
+			PlayerOverloadEvent?.Invoke(curOverload, maxOverload);
 		}
 	}
 }
@@ -88,13 +94,33 @@ public abstract class PlayerPart : MonoBehaviour
 	public LayerMask whatIsEnemy;
 
 	private bool _isNoFunc; // Lobby씬을 위한 장치
-	
+
+	private FeedbackPlayer _feedbackPlayer;
+
+	[ContextMenu("FeedbackPlayer")]
+	private void GenerateFeedbackPlayer()
+	{
+		_feedbackPlayer = GetComponentInChildren<FeedbackPlayer>();
+		if(_feedbackPlayer is null)
+		{
+			var feedbackPlayer = new GameObject("OverloadSoundFeedback", typeof(FeedbackPlayer), typeof(SoundFeedback));
+			feedbackPlayer.transform.SetParent(transform);
+		}
+	}
+
 	protected virtual void OnEnable()
 	{
 		if (FindObjectOfType<PlayerPartController>() == null)
 		{
 			_isNoFunc = true;
 			return;
+		}
+
+		_feedbackPlayer = GetComponentInChildren<FeedbackPlayer>();
+		if (_feedbackPlayer)
+		{
+			magazineInfoL.OnOverloadEvent.AddListener(_feedbackPlayer.PlayFeedback);
+			magazineInfoR.OnOverloadEvent.AddListener(_feedbackPlayer.PlayFeedback);
 		}
 		
 		_inputReader = GameManager.Instance.InputReader;

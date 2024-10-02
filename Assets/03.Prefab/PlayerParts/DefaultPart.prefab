@@ -250,6 +250,64 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3389667730939113789}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8443704174333881501
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7478989759576652485}
+  - component: {fileID: 2302392755142322916}
+  - component: {fileID: 2283212908243372547}
+  m_Layer: 0
+  m_Name: OverloadSoundFeedback
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7478989759576652485
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8443704174333881501}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3389667730939113789}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2302392755142322916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8443704174333881501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a50d4dd25594d1e4a8e829e52ebb40c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2283212908243372547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8443704174333881501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9053788e7cb7e342a2cf2d34f26d2b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _soundData: {fileID: 0}
 --- !u!1 &8515070857842178297
 GameObject:
   m_ObjectHideFlags: 0
@@ -386,6 +444,7 @@ Transform:
   - {fileID: 2452334306918328598}
   - {fileID: 3159477447243025612}
   - {fileID: 487936316503632497}
+  - {fileID: 7478989759576652485}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5065626374008235485
@@ -456,6 +515,9 @@ MonoBehaviour:
     curOverload: 0
     maxOverload: 60
     overloadDelay: 0.33
+    OnOverloadEvent:
+      m_PersistentCalls:
+        m_Calls: []
     attackDelay: 0.1
     curAttackDelay: 0
     bulletFirePositions:
@@ -467,6 +529,9 @@ MonoBehaviour:
     curOverload: 0
     maxOverload: 60
     overloadDelay: 0.33
+    OnOverloadEvent:
+      m_PersistentCalls:
+        m_Calls: []
     attackDelay: 0.1
     curAttackDelay: 0
     bulletFirePositions:

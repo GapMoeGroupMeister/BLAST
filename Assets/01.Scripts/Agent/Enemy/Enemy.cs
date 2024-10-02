@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 
 public abstract class Enemy : Agent, IPoolingObject
@@ -41,12 +42,12 @@ public abstract class Enemy : Agent, IPoolingObject
     }
 
     public void CastDamage()
-	{
-		for (int i = 0; i < _damageCasters.Length; ++i)
-		{
+    {
+        for (int i = 0; i < _damageCasters.Length; ++i)
+        {
             _damageCasters[i]?.CastDamage(_damageAmount);
-		}
-	}
+        }
+    }
 
     public abstract void OnDie();
 
@@ -56,7 +57,14 @@ public abstract class Enemy : Agent, IPoolingObject
 
     public virtual void OnPop()
     {
-        targetTrm  = GameManager.Instance.Player.transform;
+        EnemyStatDataSO stat = Stat as EnemyStatDataSO;
+        foreach (var key in stat.statModifierDictionary.Keys)
+        {
+            float currentStat = stat.GetValue(key);
+            float statModifier = stat.GetModifierValue(key, 0);
+            stat.SetValue(key, currentStat * statModifier);
+        }
+        targetTrm = GameManager.Instance.Player.transform;
         CanStateChangeable = true;
     }
 
