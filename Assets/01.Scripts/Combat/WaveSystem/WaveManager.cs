@@ -91,6 +91,7 @@ public class WaveManager : MonoSingleton<WaveManager>
         Debug.Log($"Wave {wave} Spawn Complete");
 
         yield return new WaitUntil(() => _spawnedEnemies.Count == 0);
+        print("에너미 다죽음");
         // Wave설정에  보스가 있으면 소환
         if (isBossWave)
         {
@@ -100,6 +101,7 @@ public class WaveManager : MonoSingleton<WaveManager>
         OnWaveClearEvent?.Invoke(wave);
         _currentEnemyCount = 0;
         yield return new WaitForSeconds(stageWaves.waveTerm);
+        print("다음 웨이브");
         StartWave(CurrentWave + 1, isRandomSpawn);
     }
 
@@ -127,6 +129,12 @@ public class WaveManager : MonoSingleton<WaveManager>
 
     public void RemoveEnemy(Enemy enemy)
     {
-        _spawnedEnemies.Remove(enemy);
+        print("에너미 지워짐");
+        if (_spawnedEnemies.Contains(enemy))
+        {
+
+            _spawnedEnemies.Remove(enemy);
+            _currentEnemyCount--;
+        }
     }
 }
