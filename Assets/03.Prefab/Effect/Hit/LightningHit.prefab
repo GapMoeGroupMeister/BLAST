@@ -19591,7 +19591,7 @@ GameObject:
   - component: {fileID: 5977592190014054552}
   - component: {fileID: 577812841044345583}
   - component: {fileID: 5114901041107047426}
-  - component: {fileID: 8500516852594086204}
+  - component: {fileID: 7215075248659928595}
   m_Layer: 0
   m_Name: LightningHit
   m_TagString: Untagged
@@ -24532,7 +24532,7 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &8500516852594086204
+--- !u!114 &7215075248659928595
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -24541,13 +24541,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 5933602760919840800}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f439c72c0dea30409ed95ea8afd0013, type: 3}
+  m_Script: {fileID: 11500000, guid: 78d9a2fbe0a4bc24ba0c468568bfbaee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _duration: 1.1
   _particles:
   - {fileID: 577812841044345583}
   - {fileID: 7863042236650567020}
-  - {fileID: 1485587127908610146}
   - {fileID: 581636461318523911}
   - {fileID: 5486922242350784309}
+  _effects: []

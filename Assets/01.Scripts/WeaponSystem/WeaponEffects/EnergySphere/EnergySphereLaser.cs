@@ -20,6 +20,16 @@ public class EnergySphereLaser : MonoBehaviour, IPoolingObject
 	GameObject IPoolingObject.gameObject { get; set; }
 	[SerializeField] private PoolType _hitEffectPoolType;
 
+	private void Awake()
+	{
+		_damageCaster.OnDamageCastSuccessEvent += HandleDamageCast;
+	}
+
+	private void HandleDamageCast()
+	{
+		this.Push();
+	}
+
 	public void Init(Transform target, int damage)
 	{
 		SetTarget(target);
@@ -58,8 +68,6 @@ public class EnergySphereLaser : MonoBehaviour, IPoolingObject
 			_damageCasterTrm.position = _target.position;
 			_damageCaster.CastDamage(_damage);
 			gameObject.Pop(_hitEffectPoolType, effectAttackPoint, Quaternion.identity);
-			yield return new WaitForSeconds(0.01f);
-			this.Push();
 		}
 	}
 }
