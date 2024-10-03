@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Crogen.PowerfulInput;
+using System.Collections;
 using UnityEngine;
 
 public class PlayerDashState : PlayerState<PlayerStateEnum>
@@ -9,8 +10,11 @@ public class PlayerDashState : PlayerState<PlayerStateEnum>
 	private float _effectDelay = 0.025f;
 	private float _curEffectDelay = 0.1f;
 
+	private InputReader _inputReader;
+
     public PlayerDashState(Player playerBase, PlayerStateMachine<PlayerStateEnum> stateMachine, string animBoolName) : base(playerBase, stateMachine, animBoolName)
     {
+		_inputReader = GameManager.Instance.InputReader;
 		playerMovement = playerBase.MovementCompo as PlayerMovement;
 		_playerDashEffectCaster = playerBase.playerDashEffectCaster;
 	}
@@ -19,8 +23,20 @@ public class PlayerDashState : PlayerState<PlayerStateEnum>
 	{
 		base.Enter();
 		float duration = 0.65f;
-		playerMovement.OnDash(playerMovement.transform.forward, duration, playerMovement.dashPower);
-		_playerBase.StartCoroutine(CoroutineOnDashEnd(duration));
+		
+		playerMovement.OnDash(
+			playerMovement.transform.forward, 
+			duration, 
+			playerMovement.dashPower,
+			()=> OnDashEndHandle());
+	}
+
+	private void OnDashEndHandle()
+	{
+		if (Mathf.Approximately(_inputReader.Movement.sqrMagnitude, 0f))
+			_stateMachine.ChangeState(PlayerStateEnum.Idle);
+		else
+			_stateMachine.ChangeState(PlayerStateEnum.Walk);
 	}
 
 	public override void FixedUpdateState()
@@ -32,16 +48,5 @@ public class PlayerDashState : PlayerState<PlayerStateEnum>
 			_curEffectDelay = 0;
 			_playerDashEffectCaster.CreateDashEffect();
 		}
-	}
-
-	private IEnumerator CoroutineOnDashEnd(float dashDuration)
-	{
-		yield return new WaitForSeconds(dashDuration);
-		_stateMachine.ChangeState(PlayerStateEnum.Idle);
-	}
-
-	public override void Exit()
-	{
-		base.Exit();
 	}
 }
