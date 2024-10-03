@@ -55,6 +55,5 @@ public class DistructDroneEnemy : Enemy
     {
         base.OnPop();
         StateMachine.Initialize(DistructDroneEnemyStateEnum.Idle);
-        EnemyMovementCompo.EnableNavAgent();
     }
 }

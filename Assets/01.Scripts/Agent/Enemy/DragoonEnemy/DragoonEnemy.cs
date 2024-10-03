@@ -51,6 +51,5 @@ public class DragoonEnemy : Enemy
     {
         base.OnPop();
         StateMachine.Initialize(DragoonEnemyStateEnum.Battle);
-        EnemyMovementCompo.EnableNavAgent();
     }
 }
