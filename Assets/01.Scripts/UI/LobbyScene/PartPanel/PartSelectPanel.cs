@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
@@ -37,7 +38,11 @@ public class PartSelectPanel : UIPanel
         SetCanvasActive(false);
     }
 
-   
+    private void Update()
+    {
+        _canvasGroup.interactable = !PartChanger.Instance.IsChanging;
+    }
+
 
     private void GenerateSlots()
     {

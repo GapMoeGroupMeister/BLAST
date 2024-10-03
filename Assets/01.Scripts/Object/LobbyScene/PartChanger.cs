@@ -21,6 +21,8 @@ public class PartChanger : MonoSingleton<PartChanger>
     private Sequence _seq;
     [SerializeField] private PlayerPartDataSO _testSO;
     
+    public bool IsChanging => _isChanging;
+    
     [ContextMenu("DebugChange")]
     private void DebugChangePart()
     {
