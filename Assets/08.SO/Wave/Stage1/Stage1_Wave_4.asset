@@ -10,19 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 448595bd7a424f3786f18d2bbb0f6f14, type: 3}
-  m_Name: Stage1_Wave_2
+  m_Name: Stage1_Wave_4
   m_EditorClassIdentifier: 
   waveEnemies:
-  - enemyType: 3
+  - enemyType: 4
+    enemyLevel: 1
+    enemyAmount: 50
+    spawnDelay: 0
+  - enemyType: 4
+    enemyLevel: 1
+    enemyAmount: 20
+    spawnDelay: 0.1
+  - enemyType: 4
     enemyLevel: 1
     enemyAmount: 10
-    spawnDelay: 0.5
-  - enemyType: 5
-    enemyLevel: 1
-    enemyAmount: 10
-    spawnDelay: 1
+    spawnDelay: 0.06
   boss:
-    bossPrefab: {fileID: 738003130196019076, guid: 8e66823cda1a98846a077e4ec4495d9b,
-      type: 3}
+    bossPrefab: {fileID: 0}
     bossLevel: 1
     generatePosition: {x: 0, y: 0, z: 0}
