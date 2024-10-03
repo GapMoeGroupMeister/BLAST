@@ -30,14 +30,25 @@ public class Boss524 : Boss
     public CirclePatternVisual CirclePatternVisual { get; private set; }
 
     public EnemySkillManager<Boss524> SkillManager { get; private set; }
-
    
+    protected override void Awake()
+    {
+        base.Awake();
+        cannonTrm = transform.Find("CannonVisual");
+        StateMachine = new EnemyStateMachine<Boss524>(this);
+        StateMachine.Initialize(Boss524StateEnum.Chase);
+        SkillManager = new EnemySkillManager<Boss524>(this);
+    }
+
+    private void Update()
+    {
+        StateMachine.CurrentState.UpdateState();
+    }
 
     public override void OnDie()
     {
         base.OnDie();
         CanStateChangeable = false;
-        StateMachine = new EnemyStateMachine<Boss524>(this);
         StateMachine.ChangeState(Boss524StateEnum.Dead);
     }
 
@@ -47,18 +58,6 @@ public class Boss524 : Boss
         StateMachine.ChangeState(Boss524StateEnum.Stun);
     }
 
-    protected override void Awake()
-    {
-        base.Awake();
-        cannonTrm = transform.Find("CannonVisual");
-        StateMachine.Initialize(Boss524StateEnum.Chase);
-        SkillManager = new EnemySkillManager<Boss524>(this);
-    }
-
-    private void Update()
-    {
-        StateMachine.CurrentState.UpdateState();
-    }
 
     public override void AnimationEndTrigger(AnimationTriggerEnum triggerBit)
     {
