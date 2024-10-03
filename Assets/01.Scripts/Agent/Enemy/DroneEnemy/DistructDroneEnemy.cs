@@ -43,6 +43,7 @@ public class DistructDroneEnemy : Enemy
 
 	public override void OnDie()
 	{
+        base.OnDie();
         StateMachine.ChangeState(DistructDroneEnemyStateEnum.Dead);
         CanStateChangeable = false;
     }

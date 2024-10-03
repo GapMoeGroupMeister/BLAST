@@ -52,7 +52,10 @@ public abstract class Enemy : Agent, IPoolingObject
         }
     }
 
-    public abstract void OnDie();
+    public virtual void OnDie()
+    {
+        WaveManager.Instance.RemoveEnemy(this);
+    }
 
     public abstract void AnimationEndTrigger(AnimationTriggerEnum triggerBit);
 
