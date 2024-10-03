@@ -45,5 +45,6 @@ public class WizardEnemyDeadState : EnemyState<WizardEnemy>
             ResourceManager.Instance.CreateCoin(_enemyBase.transform.position);
         }
         _enemyBase.Push();
+        _dissolveMat.SetFloat(_burnedHash, 0);
     }
 }

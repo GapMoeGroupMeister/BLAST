@@ -56,6 +56,5 @@ public class WizardEnemy : Enemy
     {
         base.OnPop();
         StateMachine.Initialize(WizardEnemyStateEnum.Battle);
-        EnemyMovementCompo.EnableNavAgent();
     }
 }
