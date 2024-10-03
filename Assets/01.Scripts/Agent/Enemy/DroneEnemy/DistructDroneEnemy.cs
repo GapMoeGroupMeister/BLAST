@@ -25,10 +25,6 @@ public class DistructDroneEnemy : Enemy
         StateMachine = new EnemyStateMachine<DistructDroneEnemy>(this);
     }
 
-    private void Start()
-    {
-    }
-
     private void Update()
     {
         StateMachine.CurrentState.UpdateState();
@@ -48,6 +44,7 @@ public class DistructDroneEnemy : Enemy
 
     public override void Stun(float duration)
     {
+        StunTime = duration;
         StateMachine.ChangeState(DistructDroneEnemyStateEnum.Stun);
     }
 
