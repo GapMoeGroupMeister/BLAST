@@ -17,6 +17,7 @@ public class BossGauge : UIPanel
         this.owner = owner;
         owner.HealthCompo.OnHealthChangedEvent.AddListener(HandleGaugeRefresh);
         owner.HealthCompo.OnDieEvent.AddListener(DestroyGauge);
+        HandleGaugeRefresh(1,1);
     }
 
     private void HandleGaugeRefresh(int current, int max)
