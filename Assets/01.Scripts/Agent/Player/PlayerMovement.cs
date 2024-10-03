@@ -95,7 +95,7 @@ public class PlayerMovement : MovementController
 	{
         transform.rotation = Quaternion.LookRotation(dashDir);
         _rigidbodyCompo.AddForce(dashDir * dashPower * duration * _rigidbodyCompo.mass, ForceMode.Impulse);
-        yield return new WaitForSeconds(duration-(duration/8f));
+        yield return new WaitForSeconds(duration-(duration/6f));
         EndEvent?.Invoke();
     }
 
