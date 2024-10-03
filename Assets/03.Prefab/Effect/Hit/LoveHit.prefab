@@ -14720,7 +14720,7 @@ GameObject:
   - component: {fileID: 2128518839967418593}
   - component: {fileID: 3140209283490986460}
   - component: {fileID: 7151256889612630470}
-  - component: {fileID: 2125082919647513313}
+  - component: {fileID: -8152972958822974064}
   m_Layer: 0
   m_Name: LoveHit
   m_TagString: Untagged
@@ -19601,7 +19601,7 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &2125082919647513313
+--- !u!114 &-8152972958822974064
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -19610,12 +19610,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 7802979462468201273}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78d9a2fbe0a4bc24ba0c468568bfbaee, type: 3}
+  m_Script: {fileID: 11500000, guid: 8f439c72c0dea30409ed95ea8afd0013, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _duration: 1.1
   _particles:
   - {fileID: 3140209283490986460}
   - {fileID: 6897188774842475151}
   - {fileID: 5522905853602697824}
   - {fileID: 2078598563270560060}
-  _effects: []
