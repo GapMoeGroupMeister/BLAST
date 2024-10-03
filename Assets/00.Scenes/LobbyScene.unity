@@ -5197,9 +5197,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1315527698}
-        m_TargetAssemblyTypeName: LobbyManager, Assembly-CSharp
-        m_MethodName: GameStart
+      - m_Target: {fileID: 1312475746}
+        m_TargetAssemblyTypeName: StageSelectPanel, Assembly-CSharp
+        m_MethodName: Open
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -48080,10 +48080,10 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1312475743}
   - {fileID: 1308175897}
   - {fileID: 1587488046}
   - {fileID: 273596614}
+  - {fileID: 1312475743}
   - {fileID: 731461071}
   - {fileID: 6896300079159285200}
   - {fileID: 500474193}
@@ -49141,7 +49141,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1950017841}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.016293617, y: 0.94847554, z: -0.04944615, w: 0.312544}
+  m_LocalRotation: {x: 0.016293608, y: 0.94847554, z: -0.04944613, w: 0.31254396}
   m_LocalPosition: {x: -11.6, y: 9.3, z: 12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -51209,7 +51209,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2106395458
 RectTransform:
   m_ObjectHideFlags: 0
