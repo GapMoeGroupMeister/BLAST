@@ -1,11 +1,12 @@
 using Crogen.ObjectPooling;
 using System;
+using TMPro;
 using UnityEngine;
 
 public class XPManager : MonoSingleton<XPManager>
 {
 	[SerializeField] private PoolType _xpPoolType;
-
+	[SerializeField] private TextMeshProUGUI _lvText;
 	public event Action<float> OnXPPercentEvent;
 	public event Action<int> OnLevelUpEvent;
 
@@ -35,6 +36,7 @@ public class XPManager : MonoSingleton<XPManager>
 			else
 			{
 				_xp = value;
+				_lvText.text = $"lv.{_level.ToString("00")}";
 			}
 		}
 	}
@@ -45,8 +47,9 @@ public class XPManager : MonoSingleton<XPManager>
 		_maxXP = (int)(_maxXP * 1.75f);
 	}
 
-	public void CreateXP(Vector3 pos)
+	public void CreateXP(Vector3 pos, XPType xpType)
 	{
-		gameObject.Pop(_xpPoolType, pos + Vector3.up, Quaternion.identity);
+		XP xp = gameObject.Pop(_xpPoolType, pos + Vector3.up, Quaternion.identity) as XP;
+		xp.SetGrade(xpType);
 	}
 }

@@ -8,9 +8,11 @@ public class WeaponManager : MonoSingleton<WeaponManager>
     private Dictionary<WeaponType, Weapon> _weapons;
 
     [SerializeField] private List<Weapon> _curWeapons; //해금된 자동발동 무기 리스트
+    PlayerPartController _playerPartController;
 
-	private void Awake()
+    private void Awake()
 	{
+        _playerPartController = FindObjectOfType<PlayerPartController>();
         _weapons = new Dictionary<WeaponType, Weapon>();
         _curWeapons = new List<Weapon>();
     }
@@ -24,7 +26,7 @@ public class WeaponManager : MonoSingleton<WeaponManager>
             Weapon weaponCompo = GetComponentInChildren(t) as Weapon;
             _weapons.Add(weaponEnum, weaponCompo);
 
-            CheckCanUseForWeapon(weaponCompo);
+            CheckCanUseForWeapon(weaponEnum);
 
             //초반에 활성화된 무기 추가(거의 사실 상 디버그용)
             if (weaponCompo.weaponEnabled)
@@ -33,17 +35,26 @@ public class WeaponManager : MonoSingleton<WeaponManager>
     }
 
     //지금은 디버깅 땜시 하는 건 없음
-    private void CheckCanUseForWeapon(Weapon weaponCompo)
+    private void CheckCanUseForWeapon(WeaponType weaponType)
 	{
-        //해금이 안되면 false
-        //나중에 진순이가 코드 짜면 해금 정보 불러와서 쓱싹
+		//해금이 안되면 false
+		//나중에 진순이가 코드 짜면 해금 정보 불러와서 쓱싹
+        if(GameDataManager.Instance.TryGetWeapon(weaponType, out WeaponSave weaponSave))
+		{
+            Weapon weaponCompo = GetWeapon(weaponType);
 
-        //고유 무기인데 현재 파츠와 타입이 불일치하면 false
-        //if (weaponCompo.isUniqueWeapon)
-        //    weaponCompo.canUse = PlayerPartController.Instance.GetCurrentPlayerPart().playerPartType == weaponCompo.partType;
-        //else
-        //    weaponCompo.canUse = true;
-    }
+            //사용허가가 있으면 사용할 수 이씀
+            weaponCompo.canUse = weaponSave.enabled;
+
+            //고유 무기인데 현재 파츠와 타입이 불일치하면 false
+            if (weaponCompo.isUniqueWeapon)
+                weaponCompo.canUse = PlayerPartController.GetCurrentPlayerPart().playerPartType == weaponCompo.partType;
+            else
+                weaponCompo.canUse = true;
+		}
+
+        
+	}
 
     public Weapon GetWeapon(WeaponType weapon)
 	{
@@ -51,7 +62,6 @@ public class WeaponManager : MonoSingleton<WeaponManager>
 
         if(_weapons.TryGetValue(weapon, out Weapon weaponCompo))
 		{
-            
             return weaponCompo as Weapon;
         }
 
@@ -69,7 +79,7 @@ public class WeaponManager : MonoSingleton<WeaponManager>
         //전용 무기라면
         if(_weapons[weapon].isUniqueWeapon)
 		{
-            PlayerPartType playerPartType = PlayerPartController.Instance.GetCurrentPlayerPart().playerPartType;
+            PlayerPartType playerPartType = PlayerPartController.GetCurrentPlayerPart().playerPartType;
             if(_weapons[weapon].partType != playerPartType)
 			{
                 //현재 파츠 타입과 같지 않다면 추가할 수 없음

@@ -2,6 +2,6 @@
 {
     Idle, 
     Walk,
-    Fly,
+    Dash,
     Die
 }

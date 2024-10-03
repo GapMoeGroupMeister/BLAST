@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.InputSystem;
 
 public class EnemyMovement : MovementController
 {
@@ -14,6 +15,8 @@ public class EnemyMovement : MovementController
     private NavMeshAgent _navAgent;
     public NavMeshAgent NavAgent => _navAgent;
     private Rigidbody _rigidbodyCompo;
+
+    private Coroutine _forceMoveCoroutine;
 
     [SerializeField]
     private float _knockbackThreshold;
@@ -32,6 +35,17 @@ public class EnemyMovement : MovementController
         _navAgent.speed = _enemy.Stat.GetValue(StatEnum.Speed);
 
         _rigidbodyCompo = GetComponent<Rigidbody>();
+    }
+
+    private void Update()
+    {
+        if (Keyboard.current.kKey.wasPressedThisFrame)
+            ForceMove(Vector3.zero);
+    }
+
+    public void EnableNavAgent()
+    {
+        _navAgent.enabled = true;
     }
 
     public void DisableNavAgent()
@@ -67,7 +81,8 @@ public class EnemyMovement : MovementController
 
         _isKnockback = true;
 
-        yield return new WaitForSeconds(_physicsDelayTime);
+        yield return new WaitForFixedUpdate();
+        yield return new WaitForFixedUpdate();
 
         yield return new WaitUntil(() => _rigidbodyCompo.velocity.magnitude < _knockbackThreshold || Time.time > _currentKnockbackTime + _maxKnockbackTime);
 
@@ -86,6 +101,22 @@ public class EnemyMovement : MovementController
         if (!_navAgent.enabled) return;
         _navAgent.velocity = Vector3.zero;
         _navAgent.isStopped = true;
+    }
+
+    public void ForceMove(Vector3 position)
+    {
+        if (_forceMoveCoroutine != null)
+            StopCoroutine(_forceMoveCoroutine);
+        _forceMoveCoroutine = StartCoroutine(ForceMoveCoroutine(position));
+    }
+
+    private IEnumerator ForceMoveCoroutine(Vector3 position)
+    {
+        _navAgent.enabled = false;
+        transform.position += position;
+        yield return null;
+        _navAgent.Warp(transform.position);
+        _navAgent.enabled = true;
     }
 
     public override void SetMovement(Vector3 movement, bool isRotation = false)

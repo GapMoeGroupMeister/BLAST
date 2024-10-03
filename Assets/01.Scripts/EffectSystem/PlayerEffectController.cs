@@ -14,14 +14,9 @@ namespace EffectSystem
             _player = _owner as Player;
         }
 
-        [ContextMenu("DebugApplyBurn")]
-        private void DebugApplyBurnEffect()
+        public override void ApplyEffect(EffectStateTypeEnum type, float duration, int level, float percent = 1f)
         {
-            ApplyEffect(EffectStateTypeEnum.Burn, 10f, 1);
-        }
-        
-        public override void ApplyEffect(EffectStateTypeEnum type, float duration, int level)
-        {
+            if(type == 0) return;
             if(!effectDictionary[type].enabled)
                 _effectPanel.GenerateSlot(type, effectDictionary[type]);
             

@@ -2,13 +2,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public enum DragoonEnemyStateEnum
 {
     Idle,
     Battle,
     Attack,
-    Dead
+    Dead,
+    Stun
 }
 
 public class DragoonEnemy : Enemy
@@ -23,11 +25,6 @@ public class DragoonEnemy : Enemy
         StateMachine = new EnemyStateMachine<DragoonEnemy>(this);
     }
 
-    private void Start()
-    {
-        StateMachine.Initialize(DragoonEnemyStateEnum.Idle);
-    }
-
     private void Update()
     {
         StateMachine.CurrentState.UpdateState();
@@ -40,7 +37,19 @@ public class DragoonEnemy : Enemy
 
     public override void OnDie()
     {
+        base.OnDie();
         StateMachine.ChangeState(DragoonEnemyStateEnum.Dead);
         CanStateChangeable = false;
+    }
+
+    public override void Stun(float duration)
+    {
+        StateMachine.ChangeState(DragoonEnemyStateEnum.Stun);
+    }
+
+    public override void OnPop()
+    {
+        base.OnPop();
+        StateMachine.Initialize(DragoonEnemyStateEnum.Battle);
     }
 }

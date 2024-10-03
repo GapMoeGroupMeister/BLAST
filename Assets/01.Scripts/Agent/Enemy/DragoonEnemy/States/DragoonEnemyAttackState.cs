@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Crogen.ObjectPooling;
 
@@ -11,6 +9,7 @@ public class DragoonEnemyAttackState : EnemyState<DragoonEnemy>
 
     private float _lastAttackTime = 0;
     private Vector3 _targetPos;
+    private ParticlePlayer _effect;
 
     public override void Enter()
     {
@@ -26,6 +25,7 @@ public class DragoonEnemyAttackState : EnemyState<DragoonEnemy>
 
     public override void Exit()
     {
+        _effect = null;
         _lastAttackTime = Time.time;
         base.Exit();
     }
@@ -35,9 +35,25 @@ public class DragoonEnemyAttackState : EnemyState<DragoonEnemy>
         base.UpdateState();
         if(IsTriggerCalled(AnimationTriggerEnum.EffectTrigger))
         {
-            TrailEffect trail = _enemyBase.gameObject.Pop(PoolType.VFX_Trail, _enemyBase.firePosTrm, _enemyBase.firePosTrm.position, Quaternion.identity) as TrailEffect;
-            trail.SetTrail(_enemyBase.firePosTrm.position, _targetPos, 0.1f);
+            _effect = _enemyBase.gameObject.Pop
+                (PoolType.DragoonLaser, 
+                _enemyBase.firePosTrm.position, 
+                _enemyBase.transform.rotation) as ParticlePlayer;
             RemoveTrigger(AnimationTriggerEnum.EffectTrigger);
+        }
+        if(IsTriggerCalled(AnimationTriggerEnum.AttackTrigger))
+		{
+            Vector3 startPos = _enemyBase.transform.position;
+            startPos.y = 0;
+            Vector3 direction = _targetPos - startPos;
+            if (Physics.Raycast(startPos, direction.normalized, out RaycastHit hit, direction.magnitude, _enemyBase.whatIsPlayer))
+            {
+                if(hit.collider.TryGetComponent(out IDamageable damageable))
+                {
+                    damageable.TakeDamage((int)_enemyBase.Stat.GetValue(StatEnum.Attack));
+                }
+            }
+            RemoveTrigger(AnimationTriggerEnum.AttackTrigger);
         }
         if (IsTriggerCalled(AnimationTriggerEnum.EndTrigger))
         {

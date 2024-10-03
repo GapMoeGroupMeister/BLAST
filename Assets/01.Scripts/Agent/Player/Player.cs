@@ -5,18 +5,16 @@ public class Player : Agent
 {
     public PlayerStateMachine<PlayerStateEnum> StateMachine;
     public PlayerPart currentPlayerPart;
+    public PlayerDashEffectCaster playerDashEffectCaster;
     [SerializeField] private PlayerPartType _currentPartType;
-    [HideInInspector] public PlayerPartController PlayerPartController;
-
+    private PlayerPartController _playerPartController;
     protected override void Awake()
     {
         base.Awake();
         StateMachine = new PlayerStateMachine<PlayerStateEnum>();
-        PlayerPartController = PlayerPartController.Instance;
+        playerDashEffectCaster = GetComponent<PlayerDashEffectCaster>();
+        _playerPartController = GetComponent<PlayerPartController>();
 
-        //임시로 만든거
-        currentPlayerPart = PlayerPartController.Init(_currentPartType);
-        
         foreach (PlayerStateEnum stateEnum in Enum.GetValues(typeof(PlayerStateEnum)))
         {
             try
@@ -34,7 +32,19 @@ public class Player : Agent
         }
 
         StateMachine.Initialize(PlayerStateEnum.Idle, this);
+        
+        _currentPartType = (PlayerPartType)SaveManager.Instance.data.partId;
+        currentPlayerPart = _playerPartController.Init(_currentPartType);
+        playerDashEffectCaster.meshFilters.Add(currentPlayerPart.GetComponent<MeshFilter>());
+        Renderer[] renderers = currentPlayerPart.GetComponentsInChildren<Renderer>();
+        HealthCompo.rendererList.AddRange(renderers);
     }
+
+    private void Start()
+    {
+       
+    }
+
 
     private void FixedUpdate()
     {

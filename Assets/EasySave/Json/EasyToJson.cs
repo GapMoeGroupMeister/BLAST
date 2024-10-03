@@ -20,7 +20,7 @@ namespace EasySave.Json
             }
         }
 
-        private static string GetFilePath(string fileName)
+        public static string GetFilePath(string fileName)
         {
             return Path.Combine(LocalPath, $"{fileName}.json");
         }

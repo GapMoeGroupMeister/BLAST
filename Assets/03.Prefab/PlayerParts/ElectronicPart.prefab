@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 3524562652745679409}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.15, y: 0, z: 4.02}
+  m_LocalPosition: {x: 1.15, y: 0, z: 5.29}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -87,7 +87,7 @@ Transform:
   m_GameObject: {fileID: 8034859021925149815}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.15, y: -0, z: 4.02}
+  m_LocalPosition: {x: -1.15, y: -0, z: 5.29}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -105,7 +105,7 @@ GameObject:
   - component: {fileID: 5065626374008235485}
   - component: {fileID: 5785841590471671912}
   - component: {fileID: 294903427704956916}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ElectronicPart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -158,8 +158,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: add569d79088fad44aa814f637e5616a, type: 2}
-  - {fileID: 2100000, guid: 3e18e374a3ad37e4dbd7ff0319743223, type: 2}
+  - {fileID: 2100000, guid: cb3d08e4a3b6ede4499370504495bc2b, type: 2}
+  - {fileID: 2100000, guid: f47373f16ef9c2b4b8f1efc0592b8d6f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -193,27 +193,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 054dfac990be40ce8446c94befd22c3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPartType: 1
+  playerPartType: 2
   magazineInfoL:
     curOverload: 0
     maxOverload: 60
     overloadDelay: 0.33
-    attackDelay: 0.1
+    OnOverloadEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    attackDelay: 0.3
     curAttackDelay: 0
     bulletFirePositions:
     - {fileID: 3128271772544532723}
     AttackDirection: {x: 0, y: 0, z: 0}
-    _bulletPoolingType: 2
+    _bulletPoolingType: 26
   magazineInfoR:
     curOverload: 0
     maxOverload: 60
     overloadDelay: 0.33
-    attackDelay: 0.1
+    OnOverloadEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    attackDelay: 0.3
     curAttackDelay: 0
     bulletFirePositions:
     - {fileID: 7807962545353490545}
     AttackDirection: {x: 0, y: 0, z: 0}
-    _bulletPoolingType: 2
+    _bulletPoolingType: 26
   whatIsEnemy:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512

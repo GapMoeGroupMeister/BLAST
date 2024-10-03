@@ -13,12 +13,6 @@ public class ParticlePlayer : MonoBehaviour, IPoolingObject
 	public PoolType OriginPoolType { get; set; }
 	GameObject IPoolingObject.gameObject { get; set; }
 
-	public void OnParticleSystemStopped()
-	{
-		Debug.Log("dfdf");
-		this.Push();
-	}
-
 	public void OnPop()
 	{
 		StartCoroutine(CoroutineOnDie());

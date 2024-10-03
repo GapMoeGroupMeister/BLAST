@@ -17,9 +17,10 @@ public abstract class DamageCaster : MonoBehaviour
 	public event Action OnDamageCastSuccessEvent;
 
 	[Header("DamageEffect")]
-	[SerializeField] private EffectStateTypeEnum _effectStateType = 0;
+	public EffectStateTypeEnum effectStateType = 0;
 	[SerializeField] private float _effectDuration = 0f;
 	[SerializeField] private int _effectLevel = 1;
+	private EffectCaster _effectCaster;
 
 	protected Vector3 GetFinalCenter(Vector3 center)
 	{
@@ -27,12 +28,13 @@ public abstract class DamageCaster : MonoBehaviour
 		finalCenter.x = center.x * transform.lossyScale.x;
 		finalCenter.y = center.y * transform.lossyScale.y;
 		finalCenter.z = center.z * transform.lossyScale.z;
-		finalCenter = transform.rotation * finalCenter;
 		return finalCenter;
 	}
 
 	protected virtual void Awake()
 	{
+		if (TryGetComponent(out EffectCaster effectCaster))
+			_effectCaster = effectCaster;
 		_castColliders = new Collider[allocationCount];
 	}
 
@@ -42,12 +44,12 @@ public abstract class DamageCaster : MonoBehaviour
 	{
 		CastOverlap();
 
-		//Á¦¿Ü
+		//ì œì™¸
 		if(_usingExcludeCast)
 			ExcludeCast(_castColliders);
 
 
-		//µ¥¹ÌÁö ÀÔÈ÷±â
+		//ë°ë¯¸ì§€ ì…íˆê¸°
 		for (int i = 0; i < _castColliders.Length; ++i)
 		{
 			if (_castColliders[i] == null)
@@ -64,12 +66,21 @@ public abstract class DamageCaster : MonoBehaviour
 			}
 			if(_castColliders[i].TryGetComponent(out IEffectable effectable))
 			{
-				effectable.ApplyEffect(_effectStateType, _effectDuration, _effectLevel);
+				if (_effectCaster != null)
+				{
+					_effectCaster.TryApplyEffect(effectable);
+				}
+				else
+				{
+					effectable.ApplyEffect(effectStateType, _effectDuration, _effectLevel);
+				}
 			}
 			
 		}
 
 		OnCasterEvent?.Invoke();
+		//ì´ê±° ë‚´ë¶€ì ìœ¼ë¡œ ë©”ëª¨ë¦¬ë¥¼ ì§ì ‘ ì´ˆê¸°í™”í•´ì„œ ê°€ë²¼ì›€
+		Array.Clear(_castColliders, 0, _castColliders.Length);
 	}
 
 	protected void ExcludeCast(Collider[] colliders)

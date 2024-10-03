@@ -9,7 +9,8 @@ public enum InGameUIEnum
     Setting,
     Status,
     EffectSelect,
-    Fade
+    Fade, 
+    BossWarning
 }
 
 public class UIManager : MonoSingleton<UIManager>

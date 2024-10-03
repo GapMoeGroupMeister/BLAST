@@ -3,6 +3,7 @@ using System.Collections;
 using Crogen.PowerfulInput;
 using UnityEngine;
 using Crogen.ObjectPooling;
+using UnityEngine.Events;
 
 public delegate void PlayerOverloadEvent(int curOverload, int maxOverload);
 
@@ -13,7 +14,8 @@ public class MagazineInfo
 	public int curOverload;
 	public int maxOverload = 20;
 	public float overloadDelay = 0.5f;
-	public event PlayerOverloadEvent playerOverloadEvent;
+	public event PlayerOverloadEvent PlayerOverloadEvent;
+	public UnityEvent OnOverloadEvent;
 
 	[Header("Attack")]
 	public float attackDelay = 0.2f;
@@ -25,6 +27,7 @@ public class MagazineInfo
 	[HideInInspector] public Vector3 AttackDirection;
 
 	public bool IsAttack { get; private set; }
+	public bool CanAttack { get; set; }
 
 	[SerializeField] private PoolType _bulletPoolingType;
 	
@@ -36,11 +39,13 @@ public class MagazineInfo
 	
 	public void Attack()
 	{
+		if (CanAttack == false) return;
+
 		if (curAttackDelay > 0 || curOverload >= maxOverload) return;
 
 		curAttackDelay = attackDelay;
 		++curOverload;
-		playerOverloadEvent?.Invoke(curOverload, maxOverload);
+		PlayerOverloadEvent?.Invoke(curOverload, maxOverload);
 		OnAttackEvent?.Invoke(AttackDirection);
 		for (int i = 0; i < bulletFirePositions.Length; ++i)
 		{
@@ -67,8 +72,12 @@ public class MagazineInfo
 	{
 		if (curOverload > 0 && IsAttack == false)
 		{
+			if(maxOverload <= curOverload)
+			{
+				OnOverloadEvent?.Invoke();
+			}
 			--curOverload;
-			playerOverloadEvent?.Invoke(curOverload, maxOverload);
+			PlayerOverloadEvent?.Invoke(curOverload, maxOverload);
 		}
 	}
 }
@@ -76,7 +85,6 @@ public class MagazineInfo
 public abstract class PlayerPart : MonoBehaviour
 {
 	private InputReader _inputReader;
-	protected PlayerPartController _playerPartController;
     public PlayerPartType playerPartType;
 
 	[Header("MagazineL")] 
@@ -89,15 +97,37 @@ public abstract class PlayerPart : MonoBehaviour
 	public LayerMask whatIsEnemy;
 
 	private bool _isNoFunc; // Lobby씬을 위한 장치
-	
+
+	private FeedbackPlayer _feedbackPlayer;
+
+	[ContextMenu("FeedbackPlayer")]
+	private void GenerateFeedbackPlayer()
+	{
+		_feedbackPlayer = GetComponentInChildren<FeedbackPlayer>();
+		if(_feedbackPlayer is null)
+		{
+			var feedbackPlayer = new GameObject("OverloadSoundFeedback", typeof(FeedbackPlayer), typeof(SoundFeedback));
+			feedbackPlayer.transform.SetParent(transform);
+		}
+	}
+
 	protected virtual void OnEnable()
 	{
+		magazineInfoL.CanAttack = true;
+		magazineInfoR.CanAttack = true;
+
 		if (FindObjectOfType<PlayerPartController>() == null)
 		{
 			_isNoFunc = true;
 			return;
 		}
-		_playerPartController = PlayerPartController.Instance;
+
+		_feedbackPlayer = GetComponentInChildren<FeedbackPlayer>();
+		if (_feedbackPlayer)
+		{
+			magazineInfoL.OnOverloadEvent.AddListener(_feedbackPlayer.PlayFeedback);
+			magazineInfoR.OnOverloadEvent.AddListener(_feedbackPlayer.PlayFeedback);
+		}
 		
 		_inputReader = GameManager.Instance.InputReader;
 		_playerMovement = GameManager.Instance.Player.MovementCompo as PlayerMovement;
@@ -135,6 +165,8 @@ public abstract class PlayerPart : MonoBehaviour
 	{
 		magazineInfoL.AttackDirection = magazineInfoR.AttackDirection = transform.forward;
 	}
+
+	public Vector3 GetAttackDir() => transform.forward;
 
 	private IEnumerator CoroutineUpdateOverload()
 	{

@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Crogen.ObjectPooling;
 using UnityEngine;
 
 public class OilTerrorWeapon : Weapon
@@ -9,7 +10,6 @@ public class OilTerrorWeapon : Weapon
         if(base.UseWeapon())
         {
             //여기에 로직
-
             StartCoroutine(SpreadOilCoroutine());
         }	    
 
@@ -33,7 +33,7 @@ public class OilTerrorWeapon : Weapon
             if (shootCountTime > _oilShootTerm)
             {
                 shootCountTime = 0;
-                
+                PutOil();
             }
             yield return null;
         }
@@ -41,7 +41,11 @@ public class OilTerrorWeapon : Weapon
 
     private void PutOil()
     {
+
+        Vector3 position = -player.transform.forward.normalized * 2 + player.transform.position;
         
-        
+        OilObject oil = gameObject.Pop(PoolType.OilObject, position, Quaternion.identity) as OilObject;
+        oil.SetOil(100);
+
     }
 }

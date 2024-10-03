@@ -1,18 +1,17 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
 
 public class BulletSizeUpWeapon : Weapon
 {
-    public override bool UseWeapon()
+	public override bool UseWeapon()
     {
-        if(base.UseWeapon())
+        if (base.UseWeapon())
         {
         }	
 
         return true;
     }
-
-    protected override void Update()
-    {
-        base.Update();
-    }
 }
+   

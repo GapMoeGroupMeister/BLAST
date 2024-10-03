@@ -1,3 +1,4 @@
+using Crogen.ObjectPooling;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,13 @@ public class DistructDroneEnemyDeadState : EnemyState<DistructDroneEnemy>
     public override void Enter()
     {
         base.Enter();
-        GameObject.Destroy(_enemyBase.gameObject);
+        _enemyBase.CastDamage();
+        XPManager.Instance.CreateXP(_enemyBase.transform.position, (XPType)(int)(_enemyBase.Level * 4));
+        int rand = Random.Range(0, 100);
+        if (rand < 30)
+        {
+            ResourceManager.Instance.CreateCoin(_enemyBase.transform.position);
+        }
+        _enemyBase.Push();
     }
 }

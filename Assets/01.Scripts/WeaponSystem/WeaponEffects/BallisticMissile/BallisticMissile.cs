@@ -17,6 +17,7 @@ public class BallisticMissile : WeaponEffect
 	public override void Init(uint level, Weapon weaponBase)
 	{
 		base.Init(level, weaponBase);
+		_damage = 2;
 	}
 
 	public void SetTarget(Transform targetTrm)
@@ -51,7 +52,7 @@ public class BallisticMissile : WeaponEffect
 	private void MoveDown()
 	{
 		transform.forward = Vector3.down;
-		transform.DOLocalMoveY(0, _moveDuration).OnComplete(ExplosionEffect);
+		transform.DOLocalMoveY(0, _moveDuration).OnComplete(ExplosionEffect).SetEase(Ease.InCubic);
 	}
 
 	//Æø¹ßÇÏ±â

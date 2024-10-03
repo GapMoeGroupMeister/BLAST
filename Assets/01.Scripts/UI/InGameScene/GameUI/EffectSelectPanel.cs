@@ -55,8 +55,15 @@ public class EffectSelectPanel : UIPanel
         List<WeaponType> curWeaponTypes = new List<WeaponType>();
 		foreach (var weaponType in weaponTypes)
 		{
-            if(_weaponManager.GetWeapon(weaponType).canUse)
+            Weapon weapon = _weaponManager.GetWeapon(weaponType);
+
+            if (weapon.canUse)
 			{
+                if(weapon.isUniqueWeapon)
+				{
+                    if(weapon.partType != PlayerPartController.GetCurrentPlayerPart().playerPartType)
+                        continue;
+				}
                 curWeaponTypes.Add(weaponType);
             }
             if(curWeaponTypes.Count >= 3)

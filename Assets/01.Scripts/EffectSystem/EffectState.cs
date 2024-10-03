@@ -25,8 +25,8 @@ namespace EffectSystem
             this.isResist = isResist;
         }
 
-        
-        public virtual void Start(int level = 1, float duration = 10f)
+
+        public virtual void Start(int level = 1, float duration = 10f, float percent = 1f)
         {
             if (this.level < level)
                 this.level = level;

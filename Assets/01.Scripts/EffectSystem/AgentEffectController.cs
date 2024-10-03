@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace EffectSystem
-{
-    
+{   
     public class AgentEffectController : MonoBehaviour, IEffectable
     {
         public Dictionary<EffectStateTypeEnum, EffectState> effectDictionary = new Dictionary<EffectStateTypeEnum, EffectState>();
@@ -19,7 +18,11 @@ namespace EffectSystem
         private void Start()
         {
             Initialize();
+        }
 
+        public EffectState GetEffectState(EffectStateTypeEnum type)
+        {
+            return effectDictionary[type];
         }
 
         protected virtual  void Update()
@@ -77,9 +80,9 @@ namespace EffectSystem
          * 효과 부여 메서드
          * </summary>
          */
-        public virtual void ApplyEffect(EffectStateTypeEnum type, float duration, int level)
+        public virtual void ApplyEffect(EffectStateTypeEnum type, float duration, int level, float percent = 1f)
         {
-            effectDictionary[type].Start(level, duration);
+            effectDictionary[type].Start(level, duration, percent);
         }
     
     }
