@@ -28,6 +28,7 @@ public class Boss524 : Boss
     public LinePatternVisual LinePatternVisual { get; private set; }
     [field: SerializeField]
     public CirclePatternVisual CirclePatternVisual { get; private set; }
+    public EnemyContactHit ContactHitCompo { get; private set; }
 
     public EnemySkillManager<Boss524> SkillManager { get; private set; }
    
@@ -35,6 +36,7 @@ public class Boss524 : Boss
     {
         base.Awake();
         cannonTrm = transform.Find("CannonVisual");
+        ContactHitCompo = GetComponent<EnemyContactHit>();
         StateMachine = new EnemyStateMachine<Boss524>(this);
         StateMachine.Initialize(Boss524StateEnum.Chase);
         SkillManager = new EnemySkillManager<Boss524>(this);
