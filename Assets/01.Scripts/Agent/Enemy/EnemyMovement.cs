@@ -43,6 +43,11 @@ public class EnemyMovement : MovementController
             ForceMove(Vector3.zero);
     }
 
+    public void EnableNavAgent()
+    {
+        _navAgent.enabled = true;
+    }
+
     public void DisableNavAgent()
     {
         _navAgent.enabled = false;

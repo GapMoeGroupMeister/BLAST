@@ -25,11 +25,6 @@ public class DragoonEnemy : Enemy
         StateMachine = new EnemyStateMachine<DragoonEnemy>(this);
     }
 
-    private void Start()
-    {
-        StateMachine.Initialize(DragoonEnemyStateEnum.Idle);
-    }
-
     private void Update()
     {
         StateMachine.CurrentState.UpdateState();
@@ -50,5 +45,12 @@ public class DragoonEnemy : Enemy
     public override void Stun(float duration)
     {
         StateMachine.ChangeState(DragoonEnemyStateEnum.Stun);
+    }
+
+    public override void OnPop()
+    {
+        base.OnPop();
+        StateMachine.Initialize(DragoonEnemyStateEnum.Battle);
+        EnemyMovementCompo.EnableNavAgent();
     }
 }
