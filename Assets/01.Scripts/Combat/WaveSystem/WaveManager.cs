@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using AYellowpaper.SerializedCollections;
 using Crogen.ObjectPooling;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -9,17 +8,20 @@ using Random = UnityEngine.Random;
 public class WaveManager : MonoSingleton<WaveManager>
 {
     public event Action<int> OnWaveClearEvent;
-    [SerializeField] private SerializedDictionary<int, WaveSO> waveDictionary;
-    [SerializeField] private List<Transform> spawnPoints;
-    [SerializeField] private float _waveDelay = 5f;
+    public StageWaveSO stageWaves;
+    private WaveSO[] _waveList;
+    [SerializeField] private List<Transform> spawnPoints; // 나중에 이것도 스테이지 추가됨에 따라서 변경해야될 것으로 보임
 
     private List<Enemy> _spawnedEnemies = new List<Enemy>();
 
-    private int _currentWaveIndex;
+    public int CurrentWave { get; private set; }
     private int _currentEnemyCount;
 
     private void Start()
     {
+        // Stage관리자로 부터 WAve를 할당받음
+        _waveList = stageWaves.wavelist;
+
         StartWave(0, true);
 
     }
@@ -46,16 +48,16 @@ public class WaveManager : MonoSingleton<WaveManager>
 
     public void StartWave(int waveIndex, bool isRandomSpawn)
     {
-        _currentWaveIndex = waveIndex;
+        CurrentWave = waveIndex;
         StartCoroutine(SpawnEnemy(waveIndex, isRandomSpawn));
     }
 
     private IEnumerator SpawnEnemy(int wave, bool isRandomSpawn)
     {
-        if (wave >= waveDictionary.Count) yield break;
+        if (wave >= _waveList.Length) yield break;
 
         int enemyIdx = 0;
-        WaveSO waveSO = waveDictionary[wave];
+        WaveSO waveSO = _waveList[wave];
         if (waveSO == null)
         {
             Debug.LogError($"Wave {wave} is null");
@@ -88,12 +90,12 @@ public class WaveManager : MonoSingleton<WaveManager>
         if (waveSO.boss.bossPrefab != null)
         {
             // 보스 대충 소환해주는 코드
-            
+
         }
         OnWaveClearEvent?.Invoke(wave);
         _currentEnemyCount = 0;
-        yield return new WaitForSeconds(_waveDelay);
-        StartWave(_currentWaveIndex + 1, isRandomSpawn);
+        yield return new WaitForSeconds(stageWaves.waveTerm);
+        StartWave(CurrentWave + 1, isRandomSpawn);
     }
 
     private IEnumerator SpawnEnemy(WaveEnemy waveEnemy)
@@ -111,7 +113,7 @@ public class WaveManager : MonoSingleton<WaveManager>
     private int AllEnemyCount(int wave)
     {
         int count = 0;
-        foreach (var enemy in waveDictionary[wave].waveEnemies)
+        foreach (var enemy in _waveList[wave].waveEnemies)
         {
             count += enemy.enemyAmount;
         }

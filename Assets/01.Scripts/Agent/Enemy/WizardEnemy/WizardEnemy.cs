@@ -40,6 +40,7 @@ public class WizardEnemy : Enemy
 
     public override void OnDie()
 	{
+        base.OnDie();
         StateMachine.ChangeState(WizardEnemyStateEnum.Dead);
         CanStateChangeable = false;
     }

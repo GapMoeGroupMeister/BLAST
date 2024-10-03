@@ -54,6 +54,7 @@ public class PlayerMovement : MovementController
         if (lookDirection != Vector3.zero)
         {
             lookDirection.y = 0;
+            if (_canMove == false) return;
             _baseTrm.rotation = Quaternion.Lerp(this._baseTrm.rotation, Quaternion.LookRotation(lookDirection), Time.deltaTime * _rotateSpeed);
         }
 
@@ -66,11 +67,16 @@ public class PlayerMovement : MovementController
         if (Physics.Raycast(ray, out RaycastHit hit, 1000, _whatIsGround))
         {
             lookDirection = (hit.point - transform.position).normalized;
-            _attackPointTrm.position = hit.point + _attackPointOffset;
+            if(_attackPointTrm.gameObject.activeSelf)
+                _attackPointTrm.position = hit.point + _attackPointOffset;
         }
     }
 
-    public void SetCanMove(bool value) => _canMove = value;
+    public void SetCanMove(bool value)
+    {
+        _attackPointTrm.gameObject.SetActive(value);
+        _canMove = value;
+    }
 
     public override void StopImmediately()
     {

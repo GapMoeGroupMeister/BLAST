@@ -264,27 +264,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec2e8163a86f4414b853f4241c9b4a04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _renderers:
+  rendererList:
   - {fileID: 6303881482373206176}
-  _damageDuration: 0.055
+  _damageDuration: 0.015
   OnHealthChangedEvent:
     m_PersistentCalls:
       m_Calls: []
   OnDieEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6812579954561548035}
-        m_TargetAssemblyTypeName: WizardEnemy, Assembly-CSharp
-        m_MethodName: OnDie
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   _maxHealth: 10
   _isDead: 0
 --- !u!195 &993008181239727985

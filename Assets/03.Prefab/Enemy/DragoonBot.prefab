@@ -178,27 +178,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec2e8163a86f4414b853f4241c9b4a04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _renderers:
+  rendererList:
   - {fileID: 5465718405563448284}
-  _damageDuration: 0.055
+  _damageDuration: 0.015
   OnHealthChangedEvent:
     m_PersistentCalls:
       m_Calls: []
   OnDieEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5643435964428425110}
-        m_TargetAssemblyTypeName: DragoonEnemy, Assembly-CSharp
-        m_MethodName: OnDie
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   _maxHealth: 0
   _isDead: 0
 --- !u!195 &2540701336388605630
@@ -487,6 +475,16 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: -534592245459536454, guid: 146548b02a4258a41b35bde1ba6cccd2,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: cb3d08e4a3b6ede4499370504495bc2b, type: 2}
+    - target: {fileID: -534592245459536454, guid: 146548b02a4258a41b35bde1ba6cccd2,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: f47373f16ef9c2b4b8f1efc0592b8d6f, type: 2}
     - target: {fileID: -288804490931506543, guid: 146548b02a4258a41b35bde1ba6cccd2,
         type: 3}
       propertyPath: m_Layer
