@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
@@ -17,19 +15,20 @@ public class BossGauge : UIPanel
     public void Initialize(Agent owner)
     {
         this.owner = owner;
-        //owner.HealthCompo.OnHealthChangedEvent
+        owner.HealthCompo.OnHealthChangedEvent.AddListener(HandleGaugeRefresh);
         owner.HealthCompo.OnDieEvent.AddListener(DestroyGauge);
     }
-    
-    public void HandleRefresh()
-    {
-        
-    }
 
+    private void HandleGaugeRefresh(int current, int max)
+    {
+        float ratio = (float)current / max;
+        _gaugeImage.fillAmount = ratio;
+        _subGaugeImage.fillAmount = ratio;
+    }
 
     public void HandleRefreshShield()
     {
-        
+
     }
 
     private void DestroyGauge()
@@ -38,6 +37,8 @@ public class BossGauge : UIPanel
         seq.Append(transform.DOScaleX(0f, 1f));
         seq.JoinCallback(() => SetCanvasActive(false));
         seq.AppendCallback(() => Destroy(gameObject));
+        owner.HealthCompo.OnHealthChangedEvent.RemoveListener(HandleGaugeRefresh);
+        owner.HealthCompo.OnDieEvent.RemoveListener(DestroyGauge);
 
     }
 }
