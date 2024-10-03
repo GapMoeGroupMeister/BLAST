@@ -42,6 +42,7 @@ public class DragoonEnemy : Enemy
 
     public override void OnDie()
     {
+        base.OnDie();
         StateMachine.ChangeState(DragoonEnemyStateEnum.Dead);
         CanStateChangeable = false;
     }
