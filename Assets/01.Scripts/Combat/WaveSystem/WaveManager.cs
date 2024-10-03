@@ -38,14 +38,6 @@ public class WaveManager : MonoSingleton<WaveManager>
         StartWave(0, true);
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            DebugStartRandomWave();
-        }
-    }
-
     public void StartWave(int waveIndex, bool isRandomSpawn)
     {
         CurrentWave = waveIndex;
@@ -91,7 +83,6 @@ public class WaveManager : MonoSingleton<WaveManager>
         Debug.Log($"Wave {wave} Spawn Complete");
 
         yield return new WaitUntil(() => _spawnedEnemies.Count == 0);
-        print("에너미 다죽음");
         // Wave설정에  보스가 있으면 소환
         if (isBossWave)
         {
@@ -129,10 +120,8 @@ public class WaveManager : MonoSingleton<WaveManager>
 
     public void RemoveEnemy(Enemy enemy)
     {
-        print("에너미 지워짐");
         if (_spawnedEnemies.Contains(enemy))
         {
-
             _spawnedEnemies.Remove(enemy);
             _currentEnemyCount--;
         }

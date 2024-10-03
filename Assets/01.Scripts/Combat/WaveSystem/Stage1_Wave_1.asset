@@ -14,5 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waveEnemies:
   - enemyType: 5
+    enemyLevel: 0
     enemyAmount: 10
-    spawnDelay: 1
+    spawnDelay: 0.2
+  - enemyType: 5
+    enemyLevel: 0
+    enemyAmount: 10
+    spawnDelay: 0.5
+  boss:
+    bossPrefab: {fileID: 0}
+    bossLevel: 0
+    generatePosition: {x: 0, y: 0, z: 0}
