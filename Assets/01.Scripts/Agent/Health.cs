@@ -41,6 +41,13 @@ public class Health : MonoBehaviour, IDamageable
         _currentHealth -= amount;
         OnHealthChangedEvent?.Invoke(_currentHealth, _maxHealth);
         StopAllCoroutines();
+        foreach (var renderer in rendererList)
+        {
+            for (int i = 0; i < renderer.materials.Length; ++i)
+            {
+                renderer.materials[i].SetInt(_damagedID, 0);
+            }
+        }
         StartCoroutine(CoroutineOnDamaged());
         CheckDie();
     }
