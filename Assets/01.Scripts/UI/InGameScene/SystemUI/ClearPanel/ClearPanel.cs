@@ -17,4 +17,10 @@ public class ClearPanel : UIPanel
         _servivedText.text = data.servivalTime;
         _rankText.text = data.rank;
     }
+
+    public override void Open()
+    {
+        base.Open();
+        TimeManager.Instance.PauseTime();
+    }
 }
