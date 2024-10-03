@@ -9,4 +9,12 @@ public class ClearPanel : UIPanel
     [SerializeField] private TextMeshProUGUI _rankText;
     
     [SerializeField] private Transform _upgradesParent;
+    
+    public void SetUI(LevelData data)
+    {
+        _levelText.text = $"Level {data.level}";
+        _coinText.text = data.coin.ToString();
+        _servivedText.text = data.servivalTime;
+        _rankText.text = data.rank;
+    }
 }
