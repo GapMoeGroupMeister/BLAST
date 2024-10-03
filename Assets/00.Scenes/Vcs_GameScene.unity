@@ -5751,7 +5751,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 694662798}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.14865234, y: 0.8513282, z: -0.35887846, w: 0.35263172}
+  m_LocalRotation: {x: 0.14865232, y: 0.8513282, z: -0.35887846, w: 0.35263172}
   m_LocalPosition: {x: -80, y: 120.22, z: 80}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -16511,7 +16511,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1106337031}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.14865234, y: 0.8513282, z: -0.35887846, w: 0.35263172}
+  m_LocalRotation: {x: 0.14865232, y: 0.8513282, z: -0.35887846, w: 0.35263172}
   m_LocalPosition: {x: -80, y: 120.22, z: 80}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -27203,6 +27203,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &2087828147 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 337810555226859938, guid: d715b0cde2ca3754eb7ea29b435422cf,
+    type: 3}
+  m_PrefabInstance: {fileID: 587710720521019515}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2098081550
 GameObject:
   m_ObjectHideFlags: 0
@@ -27719,11 +27725,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 144204279329110225, guid: 9ddb693b15025364d89aea50a130ce07,
+    - target: {fileID: 4758979373639413987, guid: 9ddb693b15025364d89aea50a130ce07,
         type: 3}
-      propertyPath: _cooldown
-      value: 60
-      objectReference: {fileID: 0}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1684598896}
     - target: {fileID: 4942398911378062715, guid: 9ddb693b15025364d89aea50a130ce07,
         type: 3}
       propertyPath: m_Name
@@ -27779,6 +27785,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7521690542071491873, guid: 9ddb693b15025364d89aea50a130ce07,
+        type: 3}
+      propertyPath: _playerXPBodyTrm
+      value: 
+      objectReference: {fileID: 2087828147}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
