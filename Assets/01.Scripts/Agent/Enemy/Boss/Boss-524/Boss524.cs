@@ -32,6 +32,7 @@ public class Boss524 : Boss<Boss524>
 
     public override void OnDie()
     {
+        base.OnDie();
         CanStateChangeable = false;
         StateMachine.ChangeState(Boss524StateEnum.Dead);
     }
