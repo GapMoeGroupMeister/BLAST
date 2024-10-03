@@ -44,6 +44,7 @@ public class DragoonEnemy : Enemy
 
     public override void Stun(float duration)
     {
+        StunTime = duration;
         StateMachine.ChangeState(DragoonEnemyStateEnum.Stun);
     }
 
