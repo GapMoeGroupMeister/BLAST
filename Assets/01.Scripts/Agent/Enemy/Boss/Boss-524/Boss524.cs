@@ -18,8 +18,9 @@ public enum Boss524SkillEnum
     Laser,
 }
 
-public class Boss524 : Boss<Boss524>
+public class Boss524 : Boss
 {
+    public EnemyStateMachine<Boss524> StateMachine;
     [HideInInspector]
     public Transform cannonTrm;
     public List<EnemyLaser> laserVisualList;
@@ -30,10 +31,13 @@ public class Boss524 : Boss<Boss524>
 
     public EnemySkillManager<Boss524> SkillManager { get; private set; }
 
+   
+
     public override void OnDie()
     {
         base.OnDie();
         CanStateChangeable = false;
+        StateMachine = new EnemyStateMachine<Boss524>(this);
         StateMachine.ChangeState(Boss524StateEnum.Dead);
     }
 
@@ -49,5 +53,15 @@ public class Boss524 : Boss<Boss524>
         cannonTrm = transform.Find("CannonVisual");
         StateMachine.Initialize(Boss524StateEnum.Chase);
         SkillManager = new EnemySkillManager<Boss524>(this);
+    }
+
+    private void Update()
+    {
+        StateMachine.CurrentState.UpdateState();
+    }
+
+    public override void AnimationEndTrigger(AnimationTriggerEnum triggerBit)
+    {
+        StateMachine.CurrentState.AnimationTrigger(triggerBit);
     }
 }
