@@ -708,7 +708,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canUse: 0
   weaponEnabled: 0
-  _cooldown: 2
+  _cooldown: 10
   level: 1
   isUniqueWeapon: 1
   partType: 2
@@ -720,8 +720,10 @@ MonoBehaviour:
   whatIsEnemy:
     serializedVersion: 2
     m_Bits: 512
-  _damageCaster: {fileID: 0}
-  _empEffect: {fileID: 0}
+  _damageCaster: {fileID: 1733151700548121950, guid: 19fa3d89eb6621f4bbf178cb5a2c48a5,
+    type: 3}
+  _empEffect: {fileID: 7241893749186972951, guid: 19fa3d89eb6621f4bbf178cb5a2c48a5,
+    type: 3}
   _defaultDamage: 1
 --- !u!114 &1006913282202067868
 MonoBehaviour:
