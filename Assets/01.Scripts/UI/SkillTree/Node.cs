@@ -157,11 +157,23 @@ public class Node : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     public void OnPointerExit(PointerEventData eventData)
     {
         _vertex.transform.parent.localScale = Vector3.one;
+
+        if (_isNodeEnable == false)
+        {
+            int coin = GameDataManager.Instance.Coin;
+            _tree.selectNodeEvent?.Invoke(coin, 0);
+        }
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
         _vertex.transform.parent.localScale = Vector3.one * 1.05f;
+
+        if (_isNodeEnable == false)
+        {
+            int coin = GameDataManager.Instance.Coin;
+            _tree.selectNodeEvent?.Invoke(coin, node.requireCoin);
+        }
     }
 
     public void OnPointerUp(PointerEventData eventData)

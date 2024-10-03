@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.Events;
 
 public class TechTree : MonoBehaviour, IWindowPanel
 {
@@ -17,6 +18,7 @@ public class TechTree : MonoBehaviour, IWindowPanel
     private string _path;
 
     [SerializeField] private RectTransform _treeRect;
+    public UnityEvent<int, int> selectNodeEvent;
 
     private void Awake()
     {
