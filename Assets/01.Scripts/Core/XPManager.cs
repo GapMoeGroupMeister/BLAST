@@ -45,7 +45,7 @@ public class XPManager : MonoSingleton<XPManager>
 	//³ªÁß¿¡ ¹ë·±½Ì!
 	private void MaxXPUp()
 	{
-		_maxXP = (int)(_maxXP * 1.75f);
+		_maxXP = (int)(_maxXP * 1.25f);
 	}
 
 	public void CreateXP(Vector3 pos, XPType xpType)

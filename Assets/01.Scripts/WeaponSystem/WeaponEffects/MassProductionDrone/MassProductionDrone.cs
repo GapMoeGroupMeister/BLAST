@@ -17,12 +17,6 @@ public class MassProductionDrone : WeaponEffect
 		Init();
 	}
 
-	private void Start()
-	{
-		_player = GameManager.Instance.Player;
-		_weaponBase = WeaponManager.Instance.GetWeapon(WeaponType.MassProductionDrone) as MassProductionDroneWeapon;
-	}
-
 	private void Init()
 	{
 		foreach (IMassProductionDroneCompo compo in _massProductionDroneCompos)
@@ -30,4 +24,10 @@ public class MassProductionDrone : WeaponEffect
 			compo.Init(this, (int)_level);
 		}
 	}
+
+	private void Start()
+	{
+		_player = GameManager.Instance.Player;
+		_weaponBase = WeaponManager.Instance.GetWeapon(WeaponType.MassProductionDrone) as MassProductionDroneWeapon;
+	}	
 }
