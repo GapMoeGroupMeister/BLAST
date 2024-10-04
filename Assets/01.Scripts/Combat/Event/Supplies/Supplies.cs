@@ -42,7 +42,6 @@ public class Supplies : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.LogError(other.gameObject.name);
         if (_isDrop) return;
         Debug.Log("Get Supplies");
         for (int i = 0; i < _dropItemCount; i++)

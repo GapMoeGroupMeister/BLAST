@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using Crogen.ObjectPooling;
+using ItemManage;
 
 public enum XPType
 {
@@ -12,7 +13,7 @@ public enum XPType
 	Red
 }
 
-public class XP : MonoBehaviour, IPoolingObject
+public class XP : Item, IPoolingObject
 {
 	[SerializeField] private float _radius;
     [SerializeField] private LayerMask _whatIsPlayer;
@@ -57,6 +58,11 @@ public class XP : MonoBehaviour, IPoolingObject
 				_xpAmount = 8;
 				break;
 		}
+	}
+
+	protected override void GetEffect()
+	{
+		this.Push();
 	}
 
 	public void OnPop()
