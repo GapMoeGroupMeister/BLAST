@@ -26,7 +26,7 @@ namespace ItemManage
                 Vector3 randomPosition = point.position;
                 Supplies supply = Instantiate(_supplyPrefab);
                 supply.Initialize(waveSO.dropItemAmount);
-                supply.SendSupply(randomPosition, 10f);
+                supply.SendSupply(randomPosition, 1.3f);
             }
             _alertPanel.ShowAlert(stringBuilder.ToString());
         }

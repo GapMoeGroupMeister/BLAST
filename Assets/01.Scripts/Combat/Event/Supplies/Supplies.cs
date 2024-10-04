@@ -7,6 +7,8 @@ public class Supplies : MonoBehaviour, IDamageable
 {
     [SerializeField] private SuppliesDropItemSO _supplies;
     [SerializeField] private int _dropItemCount = 3;
+    [SerializeField] private FeedbackPlayer _flyFeedback;
+    [SerializeField] private FeedbackPlayer _arriveFeedback;
     private bool _isDrop;
     private bool _isDestroy;
     private float _speed = 1f;
@@ -26,11 +28,16 @@ public class Supplies : MonoBehaviour, IDamageable
     public void SendSupply(Vector3 targetPosition, float speed = 1f)
     {
         _speed = speed;
+        _flyFeedback.PlayFeedback();
         Vector3 startPos = targetPosition + _dropOffset;
         transform.position = startPos;
         Vector3 direction = (targetPosition - startPos).normalized;
         transform.rotation = Quaternion.LookRotation(direction);
-        transform.DOMove(targetPosition, 2f / speed).SetEase(Ease.InExpo);
+        transform.DOMove(targetPosition, 2f / speed).SetEase(Ease.InExpo).OnComplete(() =>
+        {
+            _arriveFeedback.PlayFeedback();
+            _flyFeedback.FinishFeedback();
+        });
     }
 
 
