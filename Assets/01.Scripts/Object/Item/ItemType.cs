@@ -5,5 +5,6 @@
         HealItem,
         Skill,
         SpeedUp,
+        XP
     }
 }
