@@ -19,7 +19,7 @@ public class MassProductionDroneMovement : MonoBehaviour, IMassProductionDroneCo
 
 	private void FixedUpdate()
 	{
-		if (_droneBase.currentTarget == null)
+		if (_droneBase.currentTarget == null || _droneBase.currentTarget.gameObject.activeSelf == false)
 		{
 			_moveComplete = false;
 			FindTarget();
@@ -55,6 +55,11 @@ public class MassProductionDroneMovement : MonoBehaviour, IMassProductionDroneCo
 
 	private void FindTarget()
 	{
-		_droneBase.currentTarget = FindObjectOfType<Enemy>().transform;
+		Collider[] colliders = new Collider[1];
+		if (Physics.OverlapSphereNonAlloc(transform.position, 100f, colliders, _whatIsTarget) > 0)
+		{
+			_droneBase.currentTarget = colliders[0].transform;
+		}
+		//_droneBase.currentTarget = FindObjectOfType<Enemy>(false).transform;
 	}
 }

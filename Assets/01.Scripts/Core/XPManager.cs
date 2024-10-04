@@ -11,7 +11,7 @@ public class XPManager : MonoSingleton<XPManager>
 	public event Action<int> OnLevelUpEvent;
 
 	private int _level = 1;
-	[SerializeField] private int _maxXP = 20;
+	[SerializeField] private int _maxXP = 5;
 	[SerializeField] private int _xp;
 
 	public int GetLevel => _level;
