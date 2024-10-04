@@ -23,9 +23,8 @@ public class MassProductionDroneMovement : MonoBehaviour, IMassProductionDroneCo
 		{
 			_moveComplete = false;
 			FindTarget();
-		}
-		else
 			SetDestination();
+		}
 	}
 
 	private void SetDestination()
@@ -56,10 +55,6 @@ public class MassProductionDroneMovement : MonoBehaviour, IMassProductionDroneCo
 
 	private void FindTarget()
 	{
-		Collider[] colliders = new Collider[1];
-		if (Physics.OverlapSphereNonAlloc(transform.position, 100f, colliders, _whatIsTarget) > 0)
-		{
-			_droneBase.currentTarget = colliders[0].transform;
-		}
+		_droneBase.currentTarget = FindObjectOfType<Enemy>().transform;
 	}
 }

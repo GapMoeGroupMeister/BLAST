@@ -31,7 +31,7 @@ namespace ItemManage
 
         private IEnumerator PushCoRoutine()
         {
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(_itemEffectDuration);
             this.Push();
         }
 
