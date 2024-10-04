@@ -15,6 +15,7 @@ public class DistructDroneEnemyDistructState : EnemyState<DistructDroneEnemy>
     {
         base.Enter();
         _enemyBase.MovementCompo.StopImmediately();
+        _distructTimer = 0;
     }
 
     public override void UpdateState()
