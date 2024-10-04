@@ -8,6 +8,9 @@ public class EMPWeapon : Weapon
     [SerializeField] private SphereDamageCaster _damageCaster;
     [SerializeField] private ParticleSystem _empEffect;
     [SerializeField] private int _defaultDamage = 1;
+    
+    [Space(20)]
+    [SerializeField] private FeedbackPlayer _feedbackPlayer;
 
     private void Awake()
     {
@@ -30,6 +33,7 @@ public class EMPWeapon : Weapon
             SphereDamageCaster sphereDamageCaster = Instantiate(_damageCaster, player.transform.position, Quaternion.identity);
             sphereDamageCaster.CastDamage(_defaultDamage);
             _empEffect.Play();
+            _feedbackPlayer.PlayFeedback();
         }	
 
         return true;

@@ -76,9 +76,6 @@ public class TurretWeapon : Weapon
 		StopAllCoroutines();
 	}
 	
-	
-	
-
 	protected override void Update()
 	{
 		base.Update();

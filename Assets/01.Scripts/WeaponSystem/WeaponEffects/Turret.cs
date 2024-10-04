@@ -20,6 +20,8 @@ public class Turret : WeaponEffect, IPoolingObject
     [Space(10)]
     [SerializeField] private ParticleSystem _bombEffect;
     
+    [SerializeField] private FeedbackPlayer _feedbackPlayer;
+    
     public PoolType OriginPoolType { get; set; }
     public GameObject gameObject { get; set; }
     public bool IsPushed { get; private set; }
@@ -63,6 +65,7 @@ public class Turret : WeaponEffect, IPoolingObject
     private void Shot()
     {
         gameObject.Pop(_bulletPoolType, _turretFireTrm.position, _turretHeadTrm.rotation);
+        _feedbackPlayer.PlayFeedback();
     }
 
     
