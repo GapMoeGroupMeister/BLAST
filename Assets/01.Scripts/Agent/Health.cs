@@ -39,6 +39,7 @@ public class Health : MonoBehaviour, IDamageable
         if (_isDead) return;
         if (IsInvincibility) return;
         _currentHealth -= amount;
+        _currentHealth = Mathf.Clamp(_currentHealth, 0, _maxHealth);
         OnHealthChangedEvent?.Invoke(_currentHealth, _maxHealth);
         StopAllCoroutines();
         foreach (var renderer in rendererList)
@@ -55,6 +56,7 @@ public class Health : MonoBehaviour, IDamageable
     public void RestoreHealth(int amount)
     {
         if (_isDead) return;
+        _currentHealth = Mathf.Clamp(_currentHealth, 0, _maxHealth);
         _currentHealth += amount;
         OnHealthChangedEvent?.Invoke(_currentHealth, _maxHealth);
         CheckDie();
