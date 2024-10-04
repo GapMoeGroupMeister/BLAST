@@ -21566,8 +21566,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gameCanvas: {fileID: 736741465}
   _cinematicPanel: {fileID: 178403195}
-  _player: {fileID: 0}
-  _playerbase: {fileID: 0}
+  _player: {fileID: 1684598896}
+  _playerbase: {fileID: 4572937039726193391}
   _fallHeight: 300
   _landingEffect: {fileID: 555116510}
   _zoomOutSize: 50
@@ -21881,7 +21881,19 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1065959728224274804, guid: bbbc4d5036cbab047ba74f2b5a0ecc3e,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 28023073734226448, guid: bbbc4d5036cbab047ba74f2b5a0ecc3e,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 4856903442996827407, guid: bbbc4d5036cbab047ba74f2b5a0ecc3e,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: bbbc4d5036cbab047ba74f2b5a0ecc3e, type: 3}
 --- !u!114 &1684598896 stripped
 MonoBehaviour:
@@ -27096,6 +27108,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _weaponUIDataSO: {fileID: 11400000, guid: 2e4ab1b1407c35e40b49c62daeae3afb, type: 2}
   parts: []
+  onCoinChange:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &1991486309
 Transform:
   m_ObjectHideFlags: 0
@@ -27203,6 +27218,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &2087828147 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 337810555226859938, guid: d715b0cde2ca3754eb7ea29b435422cf,
+    type: 3}
+  m_PrefabInstance: {fileID: 587710720521019515}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2098081550
 GameObject:
   m_ObjectHideFlags: 0
@@ -27705,6 +27726,18 @@ MeshFilter:
     type: 3}
   m_PrefabInstance: {fileID: 4572937039726193385}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4572937039726193391 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4687669506684828805, guid: 694fe0a287e8b4f40a81ccd64be8ddad,
+    type: 3}
+  m_PrefabInstance: {fileID: 4572937039726193385}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4572937039726193386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2908ecb70323e724ba18d0a998671d32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &6517374847129304766 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8972335987180536376, guid: d715b0cde2ca3754eb7ea29b435422cf,
@@ -27719,11 +27752,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 144204279329110225, guid: 9ddb693b15025364d89aea50a130ce07,
+    - target: {fileID: 4758979373639413987, guid: 9ddb693b15025364d89aea50a130ce07,
         type: 3}
-      propertyPath: _cooldown
-      value: 60
-      objectReference: {fileID: 0}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1684598896}
     - target: {fileID: 4942398911378062715, guid: 9ddb693b15025364d89aea50a130ce07,
         type: 3}
       propertyPath: m_Name
@@ -27779,6 +27812,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7521690542071491873, guid: 9ddb693b15025364d89aea50a130ce07,
+        type: 3}
+      propertyPath: _playerXPBodyTrm
+      value: 
+      objectReference: {fileID: 2087828147}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -27794,6 +27832,10 @@ SceneRoots:
   - {fileID: 274697059}
   - {fileID: 1269043807}
   - {fileID: 653971372}
+  - {fileID: 1991486309}
+  - {fileID: 571867989}
+  - {fileID: 581912972}
+  - {fileID: 206092658}
   - {fileID: 9030360122459302398}
   - {fileID: 1860280906}
   - {fileID: 2098081552}
@@ -27810,9 +27852,5 @@ SceneRoots:
   - {fileID: 1827319298791523415}
   - {fileID: 20568813}
   - {fileID: 484480013}
-  - {fileID: 1991486309}
-  - {fileID: 571867989}
   - {fileID: 2531008932274104205}
-  - {fileID: 581912972}
   - {fileID: 805526586}
-  - {fileID: 206092658}
