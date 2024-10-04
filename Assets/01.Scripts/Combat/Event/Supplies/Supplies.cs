@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using DG.Tweening;
+﻿using System.Collections;
 using ItemManage;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -54,6 +50,7 @@ public class Supplies : MonoBehaviour
             DropSupplies();
         }
         _isDrop = true;
+        Destroy(gameObject);
     }
 
     private void DropSupplies()
