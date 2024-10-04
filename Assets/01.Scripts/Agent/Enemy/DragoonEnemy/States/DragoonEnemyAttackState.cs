@@ -39,10 +39,21 @@ public class DragoonEnemyAttackState : EnemyState<DragoonEnemy>
                 (PoolType.DragoonLaser, 
                 _enemyBase.firePosTrm.position, 
                 _enemyBase.transform.rotation) as ParticlePlayer;
+            RemoveTrigger(AnimationTriggerEnum.EffectTrigger);
         }
         if(IsTriggerCalled(AnimationTriggerEnum.AttackTrigger))
 		{
-            _enemyBase.CastDamage();
+            Vector3 startPos = _enemyBase.transform.position;
+            startPos.y = 0;
+            Vector3 direction = _targetPos - startPos;
+            if (Physics.Raycast(startPos, direction.normalized, out RaycastHit hit, direction.magnitude, _enemyBase.whatIsPlayer))
+            {
+                if(hit.collider.TryGetComponent(out IDamageable damageable))
+                {
+                    damageable.TakeDamage((int)_enemyBase.Stat.GetValue(StatEnum.Attack));
+                }
+            }
+            RemoveTrigger(AnimationTriggerEnum.AttackTrigger);
         }
         if (IsTriggerCalled(AnimationTriggerEnum.EndTrigger))
         {

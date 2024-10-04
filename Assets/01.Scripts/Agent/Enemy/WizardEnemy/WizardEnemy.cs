@@ -49,6 +49,11 @@ public class WizardEnemy : Enemy
     {
         StunTime = duration;
         StateMachine.ChangeState(WizardEnemyStateEnum.Stun);
-        CanStateChangeable = false;
+    }
+
+    public override void OnPop()
+    {
+        base.OnPop();
+        StateMachine.Initialize(WizardEnemyStateEnum.Battle);
     }
 }

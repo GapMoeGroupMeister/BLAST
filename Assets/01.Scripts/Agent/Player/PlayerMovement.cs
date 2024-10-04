@@ -36,6 +36,7 @@ public class PlayerMovement : MovementController
         _inputReader = GameManager.Instance.InputReader;
         _rigidbodyCompo = GetComponent<Rigidbody>();
         _player = GetComponent<Player>();
+        moveSpeed = _player.Stat.GetValue(StatEnum.Speed);
     }
 
 	private void Update()
@@ -83,22 +84,20 @@ public class PlayerMovement : MovementController
         _rigidbodyCompo.velocity = Vector3.zero;
     }
 
-    public void OnDash(Vector3 dashDir, float duration, float dashPower)
+    public void OnDash(Vector3 dashDir, float duration, float dashPower, Action EndEvent = null)
 	{
         _curDashCooltime = 0;
         OnDashDirectionEvent?.Invoke(dashDir);
         OnDashEvent?.Invoke();
-        StartCoroutine(CoroutineOnDash(dashDir, duration, dashPower));
+        StartCoroutine(CoroutineOnDash(dashDir, duration, dashPower, EndEvent));
 	}
 
-    private IEnumerator CoroutineOnDash(Vector3 dashDir, float duration, float dashPower)
+    private IEnumerator CoroutineOnDash(Vector3 dashDir, float duration, float dashPower, Action EndEvent)
 	{
-        _canMove = false;
         transform.rotation = Quaternion.LookRotation(dashDir);
-        _rigidbodyCompo.velocity = dashDir * dashPower;
-        yield return new WaitForSeconds(duration);
-        StopImmediately();
-        _canMove = true;
+        _rigidbodyCompo.AddForce(dashDir * dashPower * duration * _rigidbodyCompo.mass, ForceMode.Impulse);
+        yield return new WaitForSeconds(duration-(duration/6f));
+        EndEvent?.Invoke();
     }
 
     private Vector3 _startPos;

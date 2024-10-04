@@ -11,6 +11,8 @@ public class Node : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     public NodeSO node;
     private TechTree _tree;
 
+    private RectTransform _rectTrm;
+    private RectTransform _edgeRectTrm;
     private Image _edge;
     private Image _vertex;
     private Image _icon;
@@ -34,6 +36,9 @@ public class Node : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
         _vertex = transform.Find("Vertex/VertexFill").GetComponent<Image>();
         _icon = transform.Find("Vertex/Icon").GetComponent<Image>();
         _icon.sprite = node.icon;
+
+        _rectTrm = transform as RectTransform;
+        _edgeRectTrm = transform.Find("Edge") as RectTransform;
     }
 
     public void StartEnableNode()
@@ -122,20 +127,53 @@ public class Node : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 
     public void DestroyEdge()
     {
-        Destroy(_edge.gameObject);
+        DestroyImmediate(transform.Find("Edge").gameObject);
         _edge = null;
     }
+
+
+    #region Debug
+
+    public void SetPosition(Vector2 position) => (transform as RectTransform).anchoredPosition = position;
+    public void SetEdgePosition(Vector2 position)
+    {
+        if (transform.Find("Edge") != null)
+            (transform.Find("Edge") as RectTransform).anchoredPosition = position;
+    }
+    public Vector2 GetPosition() => (transform as RectTransform).anchoredPosition;
+    public Vector2 GetEdgePosition()
+    {
+        if (transform.Find("Edge") != null)
+            return (transform.Find("Edge") as RectTransform).anchoredPosition;
+
+        return Vector2.zero;
+    }
+
+    #endregion
+
 
     #region InputEvent
 
     public void OnPointerExit(PointerEventData eventData)
     {
         _vertex.transform.parent.localScale = Vector3.one;
+
+        if (_isNodeEnable == false)
+        {
+            int coin = GameDataManager.Instance.Coin;
+            _tree.selectNodeEvent?.Invoke(coin, 0);
+        }
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
         _vertex.transform.parent.localScale = Vector3.one * 1.05f;
+
+        if (_isNodeEnable == false)
+        {
+            int coin = GameDataManager.Instance.Coin;
+            _tree.selectNodeEvent?.Invoke(coin, node.requireCoin);
+        }
     }
 
     public void OnPointerUp(PointerEventData eventData)

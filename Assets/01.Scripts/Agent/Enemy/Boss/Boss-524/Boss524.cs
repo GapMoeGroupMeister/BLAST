@@ -18,8 +18,9 @@ public enum Boss524SkillEnum
     Laser,
 }
 
-public class Boss524 : Boss<Boss524>
+public class Boss524 : Boss
 {
+    public EnemyStateMachine<Boss524> StateMachine;
     [HideInInspector]
     public Transform cannonTrm;
     public List<EnemyLaser> laserVisualList;
@@ -27,8 +28,24 @@ public class Boss524 : Boss<Boss524>
     public LinePatternVisual LinePatternVisual { get; private set; }
     [field: SerializeField]
     public CirclePatternVisual CirclePatternVisual { get; private set; }
+    public EnemyContactHit ContactHitCompo { get; private set; }
 
     public EnemySkillManager<Boss524> SkillManager { get; private set; }
+   
+    protected override void Awake()
+    {
+        base.Awake();
+        cannonTrm = transform.Find("CannonVisual");
+        ContactHitCompo = GetComponent<EnemyContactHit>();
+        StateMachine = new EnemyStateMachine<Boss524>(this);
+        StateMachine.Initialize(Boss524StateEnum.Chase);
+        SkillManager = new EnemySkillManager<Boss524>(this);
+    }
+
+    private void Update()
+    {
+        StateMachine.CurrentState.UpdateState();
+    }
 
     public override void OnDie()
     {
@@ -43,11 +60,9 @@ public class Boss524 : Boss<Boss524>
         StateMachine.ChangeState(Boss524StateEnum.Stun);
     }
 
-    protected override void Awake()
+
+    public override void AnimationEndTrigger(AnimationTriggerEnum triggerBit)
     {
-        base.Awake();
-        cannonTrm = transform.Find("CannonVisual");
-        StateMachine.Initialize(Boss524StateEnum.Chase);
-        SkillManager = new EnemySkillManager<Boss524>(this);
+        StateMachine.CurrentState.AnimationTrigger(triggerBit);
     }
 }

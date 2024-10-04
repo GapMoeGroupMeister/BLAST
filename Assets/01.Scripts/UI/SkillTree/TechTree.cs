@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.Events;
 
 public class TechTree : MonoBehaviour, IWindowPanel
 {
@@ -17,6 +18,7 @@ public class TechTree : MonoBehaviour, IWindowPanel
     private string _path;
 
     [SerializeField] private RectTransform _treeRect;
+    public UnityEvent<int, int> selectNodeEvent;
 
     private void Awake()
     {
@@ -74,6 +76,40 @@ public class TechTree : MonoBehaviour, IWindowPanel
                 nodeInstance.DestroyEdge();
             }
         });
+    }
+
+    [ContextMenu("RefreshNodes")]
+    private void RefreshNode()
+    {
+        for(int i = 0; i < transform.childCount; i++)
+        {
+            if(transform.GetChild(i).TryGetComponent(out Node node))
+            {
+                Node nodeInstance = Instantiate(nodePf, transform);
+                nodeInstance.SetEdgePosition(node.GetEdgePosition());
+                nodeInstance.SetPosition(node.GetPosition());
+                nodeInstance.transform.SetSiblingIndex(i);
+
+                nodeInstance.node = node.node;
+
+                if (node.node is PartNodeSO part)
+                {
+                    nodeInstance.name = part.openPart.ToString();
+                }
+                else if (node.node is WeaponNodeSO weapon)
+                {
+                    nodeInstance.name = weapon.weapon.ToString();
+                }
+                else if (node.node is StartNodeSO)
+                {
+                    nodeInstance.name = "StartNode";
+                    nodeInstance.DestroyEdge();
+                }
+
+                DestroyImmediate(node.gameObject);
+                //Destroy(node.gameObject);
+            }
+        }
     }
 
     public bool TryGetNode(NodeSO nodeSO, out Node node)

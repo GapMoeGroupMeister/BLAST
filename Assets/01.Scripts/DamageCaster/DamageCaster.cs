@@ -63,6 +63,7 @@ public abstract class DamageCaster : MonoBehaviour
 			if (_castColliders[i].TryGetComponent(out Agent agent))
 			{
 				agent.HealthCompo.TakeDamage(damage);
+				PopupTextManager.Instance.GenerateDamagePopup(transform.position, damage, effectStateType, false);
 			}
 			if(_castColliders[i].TryGetComponent(out IEffectable effectable))
 			{

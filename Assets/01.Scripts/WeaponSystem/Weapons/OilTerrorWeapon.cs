@@ -45,7 +45,7 @@ public class OilTerrorWeapon : Weapon
         Vector3 position = -player.transform.forward.normalized * 2 + player.transform.position;
         
         OilObject oil = gameObject.Pop(PoolType.OilObject, position, Quaternion.identity) as OilObject;
-        oil.SetOil(100);
+        oil.SetOil(10);
 
     }
 }

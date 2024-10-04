@@ -22,7 +22,6 @@ public class Boss524ChaseState : EnemyState<Boss524>
     {
         base.Enter();
         SetDestination(_enemyBase.targetTrm.position);
-        Debug.Log("¾ö");
     }
 
     public override void UpdateState()

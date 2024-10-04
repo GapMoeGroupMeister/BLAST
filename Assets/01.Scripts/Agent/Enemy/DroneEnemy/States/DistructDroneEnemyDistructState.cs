@@ -15,6 +15,7 @@ public class DistructDroneEnemyDistructState : EnemyState<DistructDroneEnemy>
     {
         base.Enter();
         _enemyBase.MovementCompo.StopImmediately();
+        _distructTimer = 0;
     }
 
     public override void UpdateState()
@@ -26,8 +27,7 @@ public class DistructDroneEnemyDistructState : EnemyState<DistructDroneEnemy>
         
         if(_distructTimer > _distructTime)
         {
-            //폭발 하는 코드. VFX내놓으십시오.
-            _stateMachine.ChangeState(DistructDroneEnemyStateEnum.Dead);
+            _enemyBase.HealthCompo.TakeDamage((int)_enemyBase.Stat.GetValue(StatEnum.MaxHP));
         }
     }
 }

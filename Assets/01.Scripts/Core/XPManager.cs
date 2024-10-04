@@ -11,7 +11,7 @@ public class XPManager : MonoSingleton<XPManager>
 	public event Action<int> OnLevelUpEvent;
 
 	private int _level = 1;
-	private int _maxXP = 20;
+	[SerializeField] private int _maxXP = 20;
 	[SerializeField] private int _xp;
 
 	public int GetLevel => _level;
@@ -21,8 +21,6 @@ public class XPManager : MonoSingleton<XPManager>
 		get => _xp;
 		set
 		{
-			//이벤트 실행
-			OnXPPercentEvent?.Invoke((float)_xp / _maxXP);
 
 			//경험치 최대치 갱신
 
@@ -38,13 +36,16 @@ public class XPManager : MonoSingleton<XPManager>
 				_xp = value;
 				_lvText.text = $"lv.{_level.ToString("00")}";
 			}
+
+			//이벤트 실행
+			OnXPPercentEvent?.Invoke((float)_xp / _maxXP);
 		}
 	}
 
 	//나중에 밸런싱!
 	private void MaxXPUp()
 	{
-		_maxXP = (int)(_maxXP * 1.75f);
+		_maxXP = (int)(_maxXP * 1.25f);
 	}
 
 	public void CreateXP(Vector3 pos, XPType xpType)
