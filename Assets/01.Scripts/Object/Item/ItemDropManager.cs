@@ -18,6 +18,7 @@ namespace ItemManage
             var item = gameObject.Pop(type, transform) as Item;
             item.transform.position = startPos;
             item.transform.DOJump(item.GetRandomPosition(10f), 1, 1, 1);
+            Debug.Log("DropItem");
             return item;
         }
     }
