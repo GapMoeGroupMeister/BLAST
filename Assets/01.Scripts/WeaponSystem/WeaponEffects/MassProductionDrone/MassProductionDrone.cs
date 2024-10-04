@@ -11,14 +11,11 @@ public class MassProductionDrone : WeaponEffect
 	//Components
 	private IMassProductionDroneCompo[] _massProductionDroneCompos;
 	public bool isAttacking;
-	private void Awake()
-	{
-		_massProductionDroneCompos = GetComponentsInChildren<IMassProductionDroneCompo>();
-		Init();
-	}
 
-	private void Init()
+	public override void Init(uint level, Weapon weaponBase)
 	{
+		base.Init(level, weaponBase);
+		_massProductionDroneCompos = GetComponentsInChildren<IMassProductionDroneCompo>();
 		foreach (IMassProductionDroneCompo compo in _massProductionDroneCompos)
 		{
 			compo.Init(this, (int)_level);
@@ -28,6 +25,5 @@ public class MassProductionDrone : WeaponEffect
 	private void Start()
 	{
 		_player = GameManager.Instance.Player;
-		_weaponBase = WeaponManager.Instance.GetWeapon(WeaponType.MassProductionDrone) as MassProductionDroneWeapon;
 	}	
 }

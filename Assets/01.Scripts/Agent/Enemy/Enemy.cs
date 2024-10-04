@@ -54,6 +54,7 @@ public abstract class Enemy : Agent, IPoolingObject
 
     public virtual void OnDie()
     {
+        capsuleCollider.enabled = false;
         WaveManager.Instance.RemoveEnemy(this);
     }
 
@@ -63,6 +64,7 @@ public abstract class Enemy : Agent, IPoolingObject
 
     public virtual void OnPop()
     {
+        capsuleCollider.enabled = true;
         Level = WaveManager.Instance.CurrentWave / WaveManager.Instance.stageWaves.wavelist.Length;
         EnemyStatDataSO stat = Stat as EnemyStatDataSO;
         foreach (var key in stat.statModifierDictionary.Keys)
