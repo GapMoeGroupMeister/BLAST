@@ -207,6 +207,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Multiply",
+                    "type": "Button",
+                    "id": "0bcc0323-fab9-4fd4-885c-0f3a0da74383",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -218,6 +227,17 @@
                     "processors": "",
                     "groups": "PC",
                     "action": "Esc",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5fd091be-f808-49ee-bf44-015ad63c1918",
+                    "path": "<Keyboard>/t",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "Multiply",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -229,6 +229,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Multiply"",
+                    ""type"": ""Button"",
+                    ""id"": ""0bcc0323-fab9-4fd4-885c-0f3a0da74383"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -240,6 +249,17 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""PC"",
                     ""action"": ""Esc"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5fd091be-f808-49ee-bf44-015ad63c1918"",
+                    ""path"": ""<Keyboard>/t"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""PC"",
+                    ""action"": ""Multiply"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -287,6 +307,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Esc = m_UI.FindAction("Esc", throwIfNotFound: true);
+        m_UI_Multiply = m_UI.FindAction("Multiply", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -435,11 +456,13 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_UI;
     private List<IUIActions> m_UIActionsCallbackInterfaces = new List<IUIActions>();
     private readonly InputAction m_UI_Esc;
+    private readonly InputAction m_UI_Multiply;
     public struct UIActions
     {
         private @Controls m_Wrapper;
         public UIActions(@Controls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Esc => m_Wrapper.m_UI_Esc;
+        public InputAction @Multiply => m_Wrapper.m_UI_Multiply;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -452,6 +475,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Esc.started += instance.OnEsc;
             @Esc.performed += instance.OnEsc;
             @Esc.canceled += instance.OnEsc;
+            @Multiply.started += instance.OnMultiply;
+            @Multiply.performed += instance.OnMultiply;
+            @Multiply.canceled += instance.OnMultiply;
         }
 
         private void UnregisterCallbacks(IUIActions instance)
@@ -459,6 +485,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Esc.started -= instance.OnEsc;
             @Esc.performed -= instance.OnEsc;
             @Esc.canceled -= instance.OnEsc;
+            @Multiply.started -= instance.OnMultiply;
+            @Multiply.performed -= instance.OnMultiply;
+            @Multiply.canceled -= instance.OnMultiply;
         }
 
         public void RemoveCallbacks(IUIActions instance)
@@ -506,5 +535,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     public interface IUIActions
     {
         void OnEsc(InputAction.CallbackContext context);
+        void OnMultiply(InputAction.CallbackContext context);
     }
 }

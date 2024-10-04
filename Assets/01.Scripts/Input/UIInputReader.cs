@@ -6,9 +6,10 @@ using UnityEngine.InputSystem;
 public class UIInputReader : ScriptableObject, Controls.IUIActions
 {
     public event Action OnEscEvent;
-    public event Action OnMultiplyEvent;
+    public event Action<int> OnMultiplyEvent;
 
     private Controls _controls;
+    private int _multiplyValue = 1;
 
     private void OnEnable()
     {
@@ -29,5 +30,19 @@ public class UIInputReader : ScriptableObject, Controls.IUIActions
     public void OnEsc(InputAction.CallbackContext context)
     {
         OnEscEvent?.Invoke();
+    }
+
+    public void OnMultiply(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            if (_multiplyValue >= 3)
+            {
+                _multiplyValue = 0;
+            }
+
+            _multiplyValue++;
+            OnMultiplyEvent?.Invoke(_multiplyValue);
+        }
     }
 }
