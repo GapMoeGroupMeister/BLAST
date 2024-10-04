@@ -10,7 +10,7 @@ namespace ItemManage
         [SerializeField] private Supplies _supplyPrefab;
         public List<SupplyDropPoint> dropPositions;
 
-        public void SentSupply()
+        public void SendSupply()
         {
             
         }
