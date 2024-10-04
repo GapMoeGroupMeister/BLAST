@@ -6,9 +6,9 @@ using Random = UnityEngine.Random;
 public class Supplies : MonoBehaviour
 {
     [SerializeField] private SuppliesDropItemSO _supplies;
-    [SerializeField] private float _speed = 1f;
     [SerializeField] private int _dropItemCount = 3;
     private bool _isDrop;
+    private float _speed = 1f;
 
     private void OnEnable()
     {
