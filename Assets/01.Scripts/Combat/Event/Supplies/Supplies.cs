@@ -18,6 +18,12 @@ public class Supplies : MonoBehaviour
     {
         _isDrop = false;
     }
+    
+    [ContextMenu("Get Supplies")]
+    public void GetSupplies()
+    {
+        GetSupplies(new Vector3(0, 100, 0), Vector3.zero, 10f);
+    }
 
     public void GetSupplies(Vector3 startPos, Vector3 position, float speed)
     {
@@ -61,7 +67,8 @@ public class Supplies : MonoBehaviour
             rate += supplies[i].dropRate;
             if (dropRate <= rate)
             {
-                var item = ItemDropManager.Instance.DropItem(supplies[i].poolType);
+                var item = ItemDropManager.Instance.DropItem(supplies[i].poolType, transform.position);
+                Debug.Log(item.name);
                 break;
             }
         }
