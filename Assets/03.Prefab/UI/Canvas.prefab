@@ -3287,6 +3287,8 @@ GameObject:
   - component: {fileID: 4767567427500072445}
   - component: {fileID: 2188439637550024279}
   - component: {fileID: 7260582544995012235}
+  - component: {fileID: 428745028698427101}
+  - component: {fileID: 3595994224444791811}
   m_Layer: 5
   m_Name: SupplyAlertPanel
   m_TagString: Untagged
@@ -3313,7 +3315,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 300, y: -190}
+  m_AnchoredPosition: {x: -349.99994, y: -190}
   m_SizeDelta: {x: 560, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2188439637550024279
@@ -3354,6 +3356,36 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1.4
+--- !u!114 &428745028698427101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3053231188309663323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa5c24e2751c6e742bab8bf9ac3f4f06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _useUnscaledTime: 0
+  _activeDuration: 1
+  _defaultXDelta: -350
+  _activeXDelta: 300
+  _showDuration: 3
+  _messageContentText: {fileID: 6086511116114574302}
+--- !u!225 &3595994224444791811
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3053231188309663323}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &3125323244174703862
 GameObject:
   m_ObjectHideFlags: 0

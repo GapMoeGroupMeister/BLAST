@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8219902702325779459}
   - component: {fileID: 8078270725820495889}
   - component: {fileID: 6210260262095392476}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Sparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4839,7 +4839,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2525452885447903988}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Effect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4873,8 +4873,8 @@ GameObject:
   - component: {fileID: 4748827986917148422}
   - component: {fileID: 1882408487797233014}
   - component: {fileID: 3280236956526400992}
-  m_Layer: 0
-  m_Name: Smoke
+  m_Layer: 10
+  m_Name: DropSmoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9703,9 +9703,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6298640893055689445}
   - component: {fileID: 7796559070188476298}
-  - component: {fileID: 378062120720280950}
+  - component: {fileID: 643623035516382931}
   - component: {fileID: 1427688291945364568}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Supplies
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9742,10 +9742,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _supplies: {fileID: 11400000, guid: 7a2b85ca651b40f4982e3d22df3b3165, type: 2}
-  _speed: 10
   _dropItemCount: 3
---- !u!136 &378062120720280950
-CapsuleCollider:
+--- !u!135 &643623035516382931
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -9762,11 +9761,9 @@ CapsuleCollider:
   m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 1.04
-  m_Height: 4.19
-  m_Direction: 2
-  m_Center: {x: 0, y: 0, z: 0}
+  serializedVersion: 3
+  m_Radius: 9
+  m_Center: {x: 0, y: 2, z: 0}
 --- !u!54 &1427688291945364568
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -9856,6 +9853,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Supply
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a583d5f02528cad4ba3a28a92702f37e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
