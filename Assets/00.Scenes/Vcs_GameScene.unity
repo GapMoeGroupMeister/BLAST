@@ -21566,8 +21566,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gameCanvas: {fileID: 736741465}
   _cinematicPanel: {fileID: 178403195}
-  _player: {fileID: 0}
-  _playerbase: {fileID: 0}
+  _player: {fileID: 1684598896}
+  _playerbase: {fileID: 4572937039726193391}
   _fallHeight: 300
   _landingEffect: {fileID: 555116510}
   _zoomOutSize: 50
@@ -27711,6 +27711,18 @@ MeshFilter:
     type: 3}
   m_PrefabInstance: {fileID: 4572937039726193385}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4572937039726193391 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4687669506684828805, guid: 694fe0a287e8b4f40a81ccd64be8ddad,
+    type: 3}
+  m_PrefabInstance: {fileID: 4572937039726193385}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4572937039726193386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2908ecb70323e724ba18d0a998671d32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &6517374847129304766 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8972335987180536376, guid: d715b0cde2ca3754eb7ea29b435422cf,
@@ -27805,6 +27817,10 @@ SceneRoots:
   - {fileID: 274697059}
   - {fileID: 1269043807}
   - {fileID: 653971372}
+  - {fileID: 1991486309}
+  - {fileID: 571867989}
+  - {fileID: 581912972}
+  - {fileID: 206092658}
   - {fileID: 9030360122459302398}
   - {fileID: 1860280906}
   - {fileID: 2098081552}
@@ -27821,9 +27837,5 @@ SceneRoots:
   - {fileID: 1827319298791523415}
   - {fileID: 20568813}
   - {fileID: 484480013}
-  - {fileID: 1991486309}
-  - {fileID: 571867989}
   - {fileID: 2531008932274104205}
-  - {fileID: 581912972}
   - {fileID: 805526586}
-  - {fileID: 206092658}
