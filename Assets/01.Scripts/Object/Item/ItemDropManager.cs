@@ -30,6 +30,8 @@ namespace ItemManage
             }
             _alertPanel.ShowAlert(stringBuilder.ToString());
         }
+
+        
         public Item DropItem(PoolType type)
         {
             var item = gameObject.Pop(type, transform) as Item;
