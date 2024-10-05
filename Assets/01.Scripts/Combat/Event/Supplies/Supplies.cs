@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using DG.Tweening;
+﻿using System.Collections;
 using ItemManage;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -10,13 +6,19 @@ using Random = UnityEngine.Random;
 public class Supplies : MonoBehaviour
 {
     [SerializeField] private SuppliesDropItemSO _supplies;
-    [SerializeField] private float _speed = 1f;
     [SerializeField] private int _dropItemCount = 3;
     private bool _isDrop;
+    private float _speed = 1f;
 
     private void OnEnable()
     {
         _isDrop = false;
+    }
+    
+    [ContextMenu("Get Supplies")]
+    public void GetSupplies()
+    {
+        GetSupplies(new Vector3(0, 100, 0), Vector3.zero, 10f);
     }
 
     public void GetSupplies(Vector3 startPos, Vector3 position, float speed)
@@ -40,7 +42,6 @@ public class Supplies : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.LogError(other.gameObject.name);
         if (_isDrop) return;
         Debug.Log("Get Supplies");
         for (int i = 0; i < _dropItemCount; i++)
@@ -48,6 +49,7 @@ public class Supplies : MonoBehaviour
             DropSupplies();
         }
         _isDrop = true;
+        Destroy(gameObject);
     }
 
     private void DropSupplies()
@@ -61,7 +63,8 @@ public class Supplies : MonoBehaviour
             rate += supplies[i].dropRate;
             if (dropRate <= rate)
             {
-                var item = ItemDropManager.Instance.DropItem(supplies[i].poolType);
+                var item = ItemDropManager.Instance.DropItem(supplies[i].poolType, transform.position);
+                Debug.Log(item.name);
                 break;
             }
         }

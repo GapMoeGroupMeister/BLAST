@@ -26,6 +26,7 @@ public class MassProductionDroneAttack : MonoBehaviour, IMassProductionDroneComp
 		if(_droneBase.isAttacking == false)
 			_currentAttackTime += Time.deltaTime;
 		if (attackDelay > _currentAttackTime) return;
+		if (_droneBase.currentTarget == null) return;
 		if(Vector3.Distance(_droneBase.currentTarget.position, transform.position) < _attackRadius)
 		{
 			if(CanAttack(_droneBase.currentTarget.position))

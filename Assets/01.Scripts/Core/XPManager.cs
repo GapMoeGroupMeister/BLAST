@@ -11,7 +11,7 @@ public class XPManager : MonoSingleton<XPManager>
 	public event Action<int> OnLevelUpEvent;
 
 	private int _level = 1;
-	[SerializeField] private int _maxXP = 20;
+	[SerializeField] private int _maxXP = 5;
 	[SerializeField] private int _xp;
 
 	public int GetLevel => _level;
@@ -45,7 +45,7 @@ public class XPManager : MonoSingleton<XPManager>
 	//³ªÁß¿¡ ¹ë·±½Ì!
 	private void MaxXPUp()
 	{
-		_maxXP = (int)(_maxXP * 1.75f);
+		_maxXP = (int)(_maxXP * 1.25f);
 	}
 
 	public void CreateXP(Vector3 pos, XPType xpType)

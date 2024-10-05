@@ -10,10 +10,16 @@ public class Mine : WeaponEffect, IPoolingObject
 	[SerializeField] private DamageCaster _mainDamageCaster;
 	[SerializeField] private DamageCaster _subDamageCaster;
 	[SerializeField] private PoolType _explosionPoolType = PoolType.BlueExplosion;
+	private FeedbackPlayer feedbackPlayer;
 
 	public override void Init(uint level, Weapon weaponBase)
 	{
 		base.Init(level, weaponBase);
+	}
+
+	private void Awake()
+	{
+		feedbackPlayer = GetComponentInChildren<FeedbackPlayer>();
 	}
 
 	public void OnPop()
@@ -25,6 +31,7 @@ public class Mine : WeaponEffect, IPoolingObject
 	public void OnPush()
 	{
 		_mainDamageCaster.OnDamageCastSuccessEvent -= OnExplosion;
+		feedbackPlayer.PlayFeedback();
 		StopAllCoroutines();
 	}
 

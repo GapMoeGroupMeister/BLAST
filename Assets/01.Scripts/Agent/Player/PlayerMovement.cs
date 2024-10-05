@@ -36,6 +36,7 @@ public class PlayerMovement : MovementController
         _inputReader = GameManager.Instance.InputReader;
         _rigidbodyCompo = GetComponent<Rigidbody>();
         _player = GetComponent<Player>();
+        moveSpeed = _player.Stat.GetValue(StatEnum.Speed);
     }
 
 	private void Update()
