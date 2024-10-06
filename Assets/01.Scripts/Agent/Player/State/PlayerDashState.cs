@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerDashState : PlayerState<PlayerStateEnum>
 {
 	PlayerMovement playerMovement;
-	PlayerDashEffectCaster _playerDashEffectCaster;
+	AgentDashEffectCaster _playerDashEffectCaster;
 
 	private float _effectDelay = 0.025f;
 	private float _curEffectDelay = 0.1f;

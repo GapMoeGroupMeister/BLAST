@@ -2,7 +2,7 @@
 
 public class MassProductionDroneWeapon : Weapon
 {
-    [SerializeField] private WeaponEffect dronePrefab;
+    [SerializeField] private MassProductionDrone dronePrefab;
 
     private int _currentDroneCount = 0;
 
@@ -13,7 +13,7 @@ public class MassProductionDroneWeapon : Weapon
             if (level > _currentDroneCount)
 			{
                 var drone = Instantiate(dronePrefab);
-                drone.Init(level, this);
+                drone.InitLevel(level);
                 ++_currentDroneCount;
 			}
 

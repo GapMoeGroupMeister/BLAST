@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerDashEffect : MonoBehaviour
+public class AgentDashEffect : MonoBehaviour
 {
 	private MeshFilter _meshFilter;
 	[SerializeField] private float _duration = 0.3f;
