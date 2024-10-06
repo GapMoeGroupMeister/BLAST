@@ -513,6 +513,7 @@ GameObject:
   - component: {fileID: 8537312499280597012}
   - component: {fileID: 4862892490910873895}
   - component: {fileID: 8276365123328781628}
+  - component: {fileID: 4846363423132052252}
   m_Layer: 0
   m_Name: Boss-524
   m_TagString: Untagged
@@ -663,6 +664,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 0
+--- !u!114 &4846363423132052252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2721136252331505411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20c3fe8e4aa2c2343bb54aaf2226af52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meshFilters:
+  - {fileID: 4721868976844646913}
+  skinnedMeshRenderers:
+  - {fileID: 2186302428643550301}
+  _playerDashEffectPrefab: {fileID: 5469778409981858398, guid: 5404ad792373812459b5561bb41432d2,
+    type: 3}
 --- !u!1 &3219892673216128615
 GameObject:
   m_ObjectHideFlags: 0
