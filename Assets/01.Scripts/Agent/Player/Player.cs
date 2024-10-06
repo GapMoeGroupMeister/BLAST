@@ -5,14 +5,14 @@ public class Player : Agent
 {
     public PlayerStateMachine<PlayerStateEnum> StateMachine;
     public PlayerPart currentPlayerPart;
-    public PlayerDashEffectCaster playerDashEffectCaster;
+    public AgentDashEffectCaster playerDashEffectCaster;
     [SerializeField] private PlayerPartType _currentPartType;
     private PlayerPartController _playerPartController;
     protected override void Awake()
     {
         base.Awake();
         StateMachine = new PlayerStateMachine<PlayerStateEnum>();
-        playerDashEffectCaster = GetComponent<PlayerDashEffectCaster>();
+        playerDashEffectCaster = GetComponent<AgentDashEffectCaster>();
         _playerPartController = GetComponent<PlayerPartController>();
 
         foreach (PlayerStateEnum stateEnum in Enum.GetValues(typeof(PlayerStateEnum)))

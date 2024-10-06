@@ -3,27 +3,38 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class MassProductionDrone : WeaponEffect
+public class MassProductionDrone : MonoBehaviour
 {
 	private Player _player;
 	public Transform currentTarget;
 
-	//Components
-	private IMassProductionDroneCompo[] _massProductionDroneCompos;
 	public bool isAttacking;
+	private uint _level;
 
-	public override void Init(uint level, Weapon weaponBase)
+	private MPDroneStateMachine _mpStateMachine;
+
+	public MassProductionDroneAttack attackCompo;
+	public MassProductionDroneMovement movementCompo;
+
+	public void InitLevel(uint level)
 	{
-		base.Init(level, weaponBase);
-		_massProductionDroneCompos = GetComponentsInChildren<IMassProductionDroneCompo>();
-		foreach (IMassProductionDroneCompo compo in _massProductionDroneCompos)
-		{
-			compo.Init(this, (int)_level);
-		}
+		_level = level;
+	}
+
+	private void Awake()
+	{
+		attackCompo = GetComponent<MassProductionDroneAttack>();
+		movementCompo = GetComponent<MassProductionDroneMovement>();
 	}
 
 	private void Start()
 	{
 		_player = GameManager.Instance.Player;
-	}	
+		_mpStateMachine = new MPDroneStateMachine(this);
+	}
+
+	private void Update()
+	{
+		_mpStateMachine?.StateUpdate();
+	}
 }

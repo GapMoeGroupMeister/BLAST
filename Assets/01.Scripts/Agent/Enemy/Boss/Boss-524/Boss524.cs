@@ -31,7 +31,9 @@ public class Boss524 : Boss
     public EnemyContactHit ContactHitCompo { get; private set; }
 
     public EnemySkillManager<Boss524> SkillManager { get; private set; }
-   
+
+    public AgentDashEffectCaster dashEffectCaster;
+
     protected override void Awake()
     {
         base.Awake();
