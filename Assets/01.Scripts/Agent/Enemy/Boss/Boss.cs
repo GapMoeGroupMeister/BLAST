@@ -16,9 +16,9 @@ public abstract class Boss: Enemy
 
     private void HandleOnHealthChangedEvent(int prev, int cur)
     {
-        if(cur <= Mathf.CeilToInt(Stat.GetValue(StatEnum.MaxHP)) / 30)
-        {
-            Stat = _secondStat;
-        }
+        //if(cur <= Mathf.CeilToInt(Stat.GetValue(StatEnum.MaxHP)) / 30)
+        //{
+        //    Stat = _secondStat;
+        //}
     }
 }

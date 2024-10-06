@@ -531,7 +531,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -16.26, y: 0, z: -0.18}
-  m_LocalScale: {x: 0.15384614, y: 0.1538461, z: 0.1538461}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4230019582378210516}
@@ -562,13 +562,14 @@ MonoBehaviour:
   _damageAmount: 1
   _damageCasters: []
   capsuleCollider: {fileID: 0}
-  _secondStat: {fileID: 11400000, guid: 0ac816a15c4f3e54998b4911776de54f, type: 2}
+  _secondStat: {fileID: 0}
   cannonTrm: {fileID: 0}
   laserVisualList:
   - {fileID: 986817916151976495}
   - {fileID: 6842867610515746612}
   <LinePatternVisual>k__BackingField: {fileID: 3803521663857065481}
   <CirclePatternVisual>k__BackingField: {fileID: 4314100406632519205}
+  dashEffectCaster: {fileID: 0}
 --- !u!114 &8620870515650176402
 MonoBehaviour:
   m_ObjectHideFlags: 0
