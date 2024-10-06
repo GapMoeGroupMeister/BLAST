@@ -17,6 +17,7 @@ public class WaveManager : MonoSingleton<WaveManager>
 
     public int CurrentWave { get; private set; }
     private int _currentEnemyCount;
+    private Coroutine _waveCoroutine;
 
     private void Start()
     {
@@ -24,6 +25,10 @@ public class WaveManager : MonoSingleton<WaveManager>
         _waveList = stageWaves.wavelist;
         StartWave(0, true);
 
+    }
+
+    private void OnDestroy() {
+        StopCoroutine(_waveCoroutine);
     }
 
     /**
@@ -34,7 +39,7 @@ public class WaveManager : MonoSingleton<WaveManager>
     public void StartWave(int waveIndex, bool isRandomSpawn)
     {
         CurrentWave = waveIndex;
-        StartCoroutine(WaveCoroutine(waveIndex, isRandomSpawn));
+        _waveCoroutine = StartCoroutine(WaveCoroutine(waveIndex, isRandomSpawn));
     }
 
     private IEnumerator WaveCoroutine(int wave, bool isRandomSpawn)
