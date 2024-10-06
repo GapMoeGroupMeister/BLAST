@@ -24,7 +24,7 @@ public class DestructionBeamWeapon : Weapon
     {
         if(base.UseWeapon())
         {
-            _feedbackPlayer.PlayFeedback();
+            _feedbackPlayer?.PlayFeedback();
             foreach (var trm in _beamTrm)
             {
                 DestructionBeam destructionBeam = Instantiate(_destructionBeam, trm.position, trm.rotation);

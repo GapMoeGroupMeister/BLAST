@@ -86,9 +86,9 @@ public class SceneLoadingManager : MonoBehaviour
 			{
 				float randomNum = 0.1f;
 				if(randomNum < Random.Range(0f, 1f))
-					await Task.Delay(5);
+					await Task.Delay(3);
 				else
-					await Task.Delay(80);
+					await Task.Delay(40);
 			}
 
 			cnt++;

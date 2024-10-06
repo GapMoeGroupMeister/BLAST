@@ -16,6 +16,8 @@ public class XPManager : MonoSingleton<XPManager>
 
 	public int GetLevel => _level;
 
+	private bool _canSelectWeapon = true;
+
 	public int XP
 	{
 		get => _xp;
@@ -28,7 +30,10 @@ public class XPManager : MonoSingleton<XPManager>
 			{
 				_xp = 0;
 				++_level;
-				OnLevelUpEvent?.Invoke(_level);
+				if (_canSelectWeapon)
+					_canSelectWeapon = false;
+				else
+					OnLevelUpEvent?.Invoke(_level);
 				MaxXPUp();
 			}
 			else
@@ -45,7 +50,7 @@ public class XPManager : MonoSingleton<XPManager>
 	//³ªÁß¿¡ ¹ë·±½Ì!
 	private void MaxXPUp()
 	{
-		_maxXP = (int)(_maxXP * 1.25f);
+		_maxXP = (int)(_maxXP * 1.37f);
 	}
 
 	public void CreateXP(Vector3 pos, XPType xpType)
@@ -53,4 +58,5 @@ public class XPManager : MonoSingleton<XPManager>
 		XP xp = gameObject.Pop(_xpPoolType, pos + Vector3.up, Quaternion.identity) as XP;
 		xp.SetGrade(xpType);
 	}
+
 }

@@ -8,20 +8,16 @@ public class MPDroneIdleState : MPDroneState
 	{
 	}
 
-	public override void Enter()
-	{
-		
-	}
-
-	public override void Exit()
-	{
-	}
-
 	public override void Update()
 	{
 		if (_mpDrone.movementCompo.FindTarget())
 		{
 			_stateMachine.ChangeState(MPDroneStateType.Move);
 		}
+	}
+
+	private void ChangeToIdleState()
+	{
+		_stateMachine.ChangeState(MPDroneStateType.Idle);
 	}
 }

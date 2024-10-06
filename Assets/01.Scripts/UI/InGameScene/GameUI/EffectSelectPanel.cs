@@ -13,6 +13,8 @@ public class EffectSelectPanel : UIPanel
     private WeaponManager _weaponManager;
     private TimeManager _timeManager;
 
+    private int _openCount = 0;
+
     private void Start()
     {
         _weaponManager = WeaponManager.Instance;
@@ -39,8 +41,9 @@ public class EffectSelectPanel : UIPanel
         }
     }
 
-    private void HandleLevelUp(int _)
+    private void HandleLevelUp(int level)
 	{
+        ++_openCount;
         Open();
     }
 
@@ -57,15 +60,27 @@ public class EffectSelectPanel : UIPanel
 		{
             Weapon weapon = _weaponManager.GetWeapon(weaponType);
 
+            //등록할 수 있는 무기인가
             if (weapon.canUse)
 			{
-                if(weapon.isUniqueWeapon)
+                //등록 가능한 자리가 없다면
+                if(WeaponManager.Instance.GetCurWeaponCount() == 10)
+				{
+                    //새로운 무기를 추가하지 않겠다.
+                    if (weapon.level == 1)
+                        continue;
+				}
+
+                //전용 무기인가
+                if (weapon.isUniqueWeapon)
 				{
                     if(weapon.partType != PlayerPartController.GetCurrentPlayerPart().playerPartType)
                         continue;
 				}
+                //전용 무기가 아니라면
                 curWeaponTypes.Add(weaponType);
             }
+            //등록을 모두 마쳤다면
             if(curWeaponTypes.Count >= 3)
 			{
                 break;
@@ -83,13 +98,23 @@ public class EffectSelectPanel : UIPanel
             slots[i].SetWeaponInfo(
                 curWeaponTypes[i], 
                 uiDataSO[curWeaponTypes[i]]);
+            slots[i].OnSelectedEndEvent += HandleSelected;
         }
 
         //멈추기
         _timeManager.PauseTime();
     }
 
-    public List<WeaponType> WeaponTypeShuffle(List<WeaponType> list)
+	private void HandleSelected()
+	{
+        for (int i = 0; i < slots.Length; ++i)
+        {
+            slots[i].OnSelectedEndEvent -= HandleSelected;
+        }
+        --_openCount;
+    }
+
+	public List<WeaponType> WeaponTypeShuffle(List<WeaponType> list)
     {
         // Random 인스턴스 생성 (Unity에서 Random.Range를 사용할 수도 있지만, 시스템의 랜덤 클래스를 사용하는 것이 일반적)
         System.Random rng = new System.Random();
