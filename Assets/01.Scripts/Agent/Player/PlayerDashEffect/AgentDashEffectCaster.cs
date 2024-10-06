@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerDashEffectCaster : MonoBehaviour
+public class AgentDashEffectCaster : MonoBehaviour
 {
 	public List<MeshFilter> meshFilters;
 	public List<SkinnedMeshRenderer> skinnedMeshRenderers;
 
-	[SerializeField] private PlayerDashEffect _playerDashEffectPrefab;
+	[SerializeField] private AgentDashEffect _playerDashEffectPrefab;
 
 	[ContextMenu("CreateDashEffect")]
 	public void CreateDashEffect()

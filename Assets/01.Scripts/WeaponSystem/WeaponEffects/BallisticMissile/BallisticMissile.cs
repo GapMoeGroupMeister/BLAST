@@ -14,6 +14,9 @@ public class BallisticMissile : WeaponEffect
 	[SerializeField] private float _maxPosY = 150f;
 	[SerializeField] private DamageCaster _damageCaster;
 
+	[SerializeField] private FeedbackPlayer _startFeedbackPlayer;
+	[SerializeField] private FeedbackPlayer _endFeedbackPlayer;
+
 	public override void Init(uint level, Weapon weaponBase)
 	{
 		base.Init(level, weaponBase);
@@ -29,6 +32,7 @@ public class BallisticMissile : WeaponEffect
 	//À§·Î »ó½Â
 	private void MoevUp()
 	{
+		_startFeedbackPlayer?.PlayFeedback();
 		transform.DOMoveY(_maxPosY, _moveDuration).OnComplete(AttackTarget).SetEase(Ease.InCubic);
 	}
 
@@ -58,6 +62,7 @@ public class BallisticMissile : WeaponEffect
 	//Æø¹ßÇÏ±â
 	private void ExplosionEffect()
 	{
+		_endFeedbackPlayer?.PlayFeedback();
 		_damageCaster.CastDamage(_damage);
 		gameObject.Pop(_explosionPoolType, transform.position, Quaternion.identity);
 		Destroy(gameObject);
