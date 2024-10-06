@@ -12,7 +12,7 @@ public class WaveManager : MonoSingleton<WaveManager>
     public StageWaveSO stageWaves;
     private WaveSO[] _waveList;
     [SerializeField] private List<Transform> spawnPoints; // 나중에 이것도 스테이지 추가됨에 따라서 변경해야될 것으로 보임
-
+    [SerializeField] private ClearPanel _clearPanel;
     private List<Enemy> _spawnedEnemies = new List<Enemy>();
 
     public int CurrentWave { get; private set; }
@@ -27,7 +27,8 @@ public class WaveManager : MonoSingleton<WaveManager>
 
     }
 
-    private void OnDestroy() {
+    private void OnDestroy()
+    {
         StopCoroutine(_waveCoroutine);
     }
 
@@ -44,8 +45,12 @@ public class WaveManager : MonoSingleton<WaveManager>
 
     private IEnumerator WaveCoroutine(int wave, bool isRandomSpawn)
     {
-        if (wave >= _waveList.Length) yield break;
-
+        if (wave >= _waveList.Length)
+        {
+            // 게임 클리어
+            _clearPanel.Open();
+            yield break;
+        }
         int enemyIdx = 0;
         WaveSO waveSO = _waveList[wave];
         bool isBossWave = (waveSO.boss.bossPrefab != null);
@@ -58,7 +63,7 @@ public class WaveManager : MonoSingleton<WaveManager>
         {
             UIManager.Instance.Open(InGameUIEnum.BossWarning);
         }
-        if(waveSO.supplyAmount > 0) // 보급이 있을때
+        if (waveSO.supplyAmount > 0) // 보급이 있을때
         {
             ItemDropManager.Instance.SendSupply(waveSO);
         }

@@ -21,6 +21,10 @@ public class ClearPanel : UIPanel
     public override void Open()
     {
         base.Open();
+        
+        _levelText.text = $"Level {XPManager.Instance.GetLevel.ToString()}";
+        _coinText.text = ResourceManager.Instance.GetCoin().ToString();
+        _servivedText.text = TimeManager.Instance.CurrentGlobalTimerString;
         TimeManager.Instance.PauseTime();
     }
 }
