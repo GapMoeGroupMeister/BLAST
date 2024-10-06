@@ -56,6 +56,10 @@ public class Boss524DashSkill : EnemySkill<Boss524>
         yield return new WaitForSeconds(_beforeDelay);
         _owner.ContactHitCompo.SetActive(true);
         _moveTween = _owner.transform.DOMove(destination, 1.3f);
+        _moveTween.OnUpdate(() =>
+        {
+            _owner.dashEffectCaster.CreateDashEffect();
+        });
         yield return new WaitForSeconds(1.3f + _afterDelay);
         _owner.ContactHitCompo.SetActive(false);
         _skillManager.SetUsingSkill(false);
