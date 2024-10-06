@@ -75,6 +75,7 @@ public abstract class Enemy : Agent, IPoolingObject
         }
         targetTrm = GameManager.Instance.Player.transform;
         HealthCompo.Initialize(this, (int)stat.GetValue(StatEnum.MaxHP));
+        HealthCompo.TakeDamage(0);
         EnemyMovementCompo.EnableNavAgent();
         CanStateChangeable = true;
     }
