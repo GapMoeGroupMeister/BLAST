@@ -12,6 +12,7 @@ public class SpinCircle : MonoBehaviour
     
     private void Update()
     {
-        _circleRect.Rotate(0, 0, _speed * Time.deltaTime);
+        _circleRect.Rotate(0, 0, _speed * Time.unscaledDeltaTime);
     }
+
 }
