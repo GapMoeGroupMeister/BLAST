@@ -28,7 +28,7 @@ public class MassProductionDroneAttack : MonoBehaviour
 
 	private IEnumerator CoroutineOnAttack(Vector3 targetPos, float duration)
 	{
-		_laserEffect.SetPosition(0, transform.position);
+		_laserEffect.SetPosition(0, transform.position + Vector3.up *10f);
 		_laserEffect.SetPosition(1, targetPos);
 		_caster.transform.position = targetPos;
 		_laserEffect.gameObject.SetActive(true);

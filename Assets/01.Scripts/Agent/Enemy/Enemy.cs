@@ -48,7 +48,7 @@ public abstract class Enemy : Agent, IPoolingObject
     {
         for (int i = 0; i < _damageCasters.Length; ++i)
         {
-            _damageCasters[i]?.CastDamage(_damageAmount);
+            _damageCasters[i]?.CastDamage((int)Stat.GetValue(StatEnum.Attack));
         }
     }
 

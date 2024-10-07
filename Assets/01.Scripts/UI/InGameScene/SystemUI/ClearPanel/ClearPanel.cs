@@ -1,5 +1,6 @@
 ﻿using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ClearPanel : UIPanel
 {
@@ -8,8 +9,22 @@ public class ClearPanel : UIPanel
     [SerializeField] private TextMeshProUGUI _servivedText;
     [SerializeField] private TextMeshProUGUI _rankText;
     
-    [SerializeField] private Transform _upgradesParent;
+    [SerializeField] private Button _gameEndButton;
     
+    [SerializeField] private Transform _upgradesParent;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        _gameEndButton.onClick.AddListener(GameEnd);
+    }
+
+    private void GameEnd()
+    {
+        ResourceManager.Instance.SaveCoin();
+        SceneLoadingManager.LoadScene("LobbyScene");
+    }
+
     public void SetUI(LevelData data)
     {
         _levelText.text = $"Level {data.level}";
@@ -27,4 +42,6 @@ public class ClearPanel : UIPanel
         _servivedText.text = TimeManager.Instance.CurrentGlobalTimerString;
         TimeManager.Instance.PauseTime();
     }
+    
+    
 }

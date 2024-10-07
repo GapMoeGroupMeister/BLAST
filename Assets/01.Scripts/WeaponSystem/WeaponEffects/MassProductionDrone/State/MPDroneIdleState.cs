@@ -15,9 +15,4 @@ public class MPDroneIdleState : MPDroneState
 			_stateMachine.ChangeState(MPDroneStateType.Move);
 		}
 	}
-
-	private void ChangeToIdleState()
-	{
-		_stateMachine.ChangeState(MPDroneStateType.Idle);
-	}
 }
