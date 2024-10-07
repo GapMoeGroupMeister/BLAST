@@ -37,6 +37,7 @@ public class AcidicArea : WeaponEffect
             coolTimer += Time.deltaTime;
             yield return null;
         }
+        yield return new WaitForSeconds(_acidicAreaDuration);
         DOTween.To(() => _damageCaster.radius, x => _damageCaster.radius = x, 0, 0.5f);
     }
 }
