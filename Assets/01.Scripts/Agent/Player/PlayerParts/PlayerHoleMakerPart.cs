@@ -3,6 +3,7 @@ using DG.Tweening;
 
 public class PlayerHoleMakerPart : PlayerPart
 {
+	
 	protected override void OnEnable()
 	{
 		base.OnEnable();

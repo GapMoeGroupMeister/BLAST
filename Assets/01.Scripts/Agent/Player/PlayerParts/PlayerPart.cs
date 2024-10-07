@@ -15,7 +15,15 @@ public class MagazineInfo
 	public int maxOverload = 20;
 	public float overloadDelay = 0.5f;
 	public event PlayerOverloadEvent PlayerOverloadEvent;
+	/// <summary>
+	/// 탄 쿨링타이밍의 비주얼과 연출을 위한 유니티 이벤트 
+	/// </summary>
 	public UnityEvent OnOverloadEvent;
+	
+	/// <summary>
+	/// 발사됐을때 비주얼을 위한 유니티 이밴트
+	/// </summary>
+	public UnityEvent OnFireEvent; 
 
 	[Header("Attack")]
 	public float attackDelay = 0.2f;
