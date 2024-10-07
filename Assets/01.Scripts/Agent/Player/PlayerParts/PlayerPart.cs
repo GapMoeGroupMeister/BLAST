@@ -55,6 +55,7 @@ public class MagazineInfo
 		++curOverload;
 		PlayerOverloadEvent?.Invoke(curOverload, maxOverload);
 		OnAttackEvent?.Invoke(AttackDirection);
+		OnFireEvent?.Invoke();
 		for (int i = 0; i < bulletFirePositions.Length; ++i)
 		{
 			bulletFirePositions[i].gameObject.Pop(
