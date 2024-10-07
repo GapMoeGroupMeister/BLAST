@@ -19,6 +19,16 @@ public class MassProductionDroneMovement : MonoBehaviour
 		_droneBase = GetComponent<MassProductionDrone>();
 	}
 
+	public void TargetToDirectionMove()
+	{
+		if (_droneBase.currentTarget == null) return;
+
+		Vector3 dir = (_droneBase.currentTarget.position - transform.position).normalized;
+		transform.forward = dir;
+
+		transform.position += dir * _speed * Time.deltaTime;
+	}
+
 	public void SetDestination(Action EndEvent)
 	{
 		Vector3 target = _droneBase.currentTarget.position - transform.forward * 4.5f;
@@ -43,7 +53,9 @@ public class MassProductionDroneMovement : MonoBehaviour
 
 	public bool FindTarget()
 	{
-		if (Physics.OverlapSphereNonAlloc(transform.position, 100f, _targetColliders, _whatIsTarget) > 0)
+		Vector3 playerPos = GameManager.Instance.Player.transform.position;
+
+		if (Physics.OverlapSphereNonAlloc(playerPos, 100f, _targetColliders, _whatIsTarget) > 0)
 		{
 			_droneBase.currentTarget = _targetColliders[0].transform;
 			return true;
