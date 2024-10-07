@@ -67,6 +67,7 @@ public class PartSelectPanel : UIPanel
         {
             Destroy(slot.gameObject);
         }
+        partSlotList.Clear();
     }
     
     public void RefreshSlot()
