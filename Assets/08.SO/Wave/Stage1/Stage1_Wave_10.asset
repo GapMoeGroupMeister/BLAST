@@ -13,13 +13,9 @@ MonoBehaviour:
   m_Name: Stage1_Wave_10
   m_EditorClassIdentifier: 
   waveEnemies:
-  - enemyType: 4
-    enemyLevel: 2
-    enemyAmount: 30
-    spawnDelay: 0.05
   - enemyType: 5
     enemyLevel: 2
-    enemyAmount: 30
+    enemyAmount: 5
     spawnDelay: 0.05
   - enemyType: 3
     enemyLevel: 3
@@ -30,3 +26,5 @@ MonoBehaviour:
       type: 3}
     bossLevel: 1
     generatePosition: {x: 0, y: 0, z: 0}
+  supplyAmount: 0
+  dropItemAmount: 0
