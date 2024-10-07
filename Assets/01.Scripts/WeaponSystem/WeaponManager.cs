@@ -17,6 +17,8 @@ public class WeaponManager : MonoSingleton<WeaponManager>
         _curWeapons = new List<Weapon>();
     }
 
+    public int GetCurWeaponCount() => _curWeapons.Count;
+
 	private void Start()
     {
         foreach (WeaponType weaponEnum in Enum.GetValues(typeof(WeaponType)))

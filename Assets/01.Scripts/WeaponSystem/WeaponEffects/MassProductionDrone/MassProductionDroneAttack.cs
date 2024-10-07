@@ -21,7 +21,7 @@ public class MassProductionDroneAttack : MonoBehaviour
 		_laserEffect.gameObject.SetActive(false);
 	}
 
-	public void OnAttack(Vector3 targetPos, float duration = 0.1f)
+	public void OnAttack(Vector3 targetPos, float duration = 0.3f)
 	{
 		StartCoroutine(CoroutineOnAttack(targetPos, duration));
 	}

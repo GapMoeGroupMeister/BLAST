@@ -21,13 +21,23 @@ public class MassProductionDroneMovement : MonoBehaviour
 
 	public void SetDestination(Action EndEvent)
 	{
-		Vector3 target = _droneBase.currentTarget.position;
+		Vector3 target = _droneBase.currentTarget.position - transform.forward * 4.5f;
 		float duration = Vector3.Distance(transform.position, target) / _speed;
 
-		transform.DOMove(target, duration).OnComplete(()=> 
-		{ 
-			transform.parent = _droneBase.currentTarget;
+		Tween curTween = null;
+
+		curTween = transform.DOMove(target, duration).OnComplete(()=> 
+		{
 			EndEvent?.Invoke();
+		})
+		.OnUpdate(()=>
+		{
+			if (_droneBase.currentTarget.gameObject.activeSelf == false)
+			{
+				_droneBase.currentTarget = null;
+				curTween.Kill(true);
+				return;
+			}
 		});
 	}
 

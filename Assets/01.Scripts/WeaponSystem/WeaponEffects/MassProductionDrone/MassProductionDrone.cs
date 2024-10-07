@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
 public class MassProductionDrone : MonoBehaviour
 {
@@ -16,9 +15,16 @@ public class MassProductionDrone : MonoBehaviour
 	public MassProductionDroneAttack attackCompo;
 	public MassProductionDroneMovement movementCompo;
 
+	public event Action OnEnabledEvent;
+
 	public void InitLevel(uint level)
 	{
 		_level = level;
+	}
+
+	private void OnEnable()
+	{
+		OnEnabledEvent?.Invoke();
 	}
 
 	private void Awake()
