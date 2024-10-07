@@ -29,7 +29,8 @@ public class WaveManager : MonoSingleton<WaveManager>
 
     private void OnDestroy()
     {
-        StopCoroutine(_waveCoroutine);
+        if(_waveCoroutine != null)
+            StopCoroutine(_waveCoroutine);
     }
 
     /**
