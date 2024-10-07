@@ -1,7 +1,6 @@
 using System.Collections;
 using DG.Tweening;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class PartChanger : MonoSingleton<PartChanger>
 {
@@ -59,6 +58,11 @@ public class PartChanger : MonoSingleton<PartChanger>
         {
             Destroy(_currentPartTrm.gameObject);
             _currentPartTrm = Instantiate(data.partPrefab, _tongsTrm).transform;
+            _currentPartTrm.gameObject.layer = 0;
+            foreach(Transform child in _currentPartTrm)
+            {
+                child.gameObject.layer = 0;
+            }
             // 생성이 먼저되어버려서 enable에서 말이 많다
             Destroy(_currentPartTrm.gameObject.GetComponent<PlayerPart>());
             _currentPartTrm.position = _partGenerateTrm.position;

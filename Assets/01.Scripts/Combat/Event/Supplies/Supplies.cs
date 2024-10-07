@@ -1,60 +1,60 @@
-﻿using System.Collections;
+﻿using DG.Tweening;
 using ItemManage;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class Supplies : MonoBehaviour
+public class Supplies : MonoBehaviour, IDamageable
 {
     [SerializeField] private SuppliesDropItemSO _supplies;
     [SerializeField] private int _dropItemCount = 3;
+    [SerializeField] private FeedbackPlayer _flyFeedback;
+    [SerializeField] private FeedbackPlayer _arriveFeedback;
     private bool _isDrop;
+    private bool _isDestroy;
     private float _speed = 1f;
+    private readonly Vector3 _dropOffset = new Vector3(-70f, 200f, -70f);
 
     private void OnEnable()
     {
         _isDrop = false;
     }
-    
-    [ContextMenu("Get Supplies")]
-    public void GetSupplies()
+
+
+    public void Initialize(int dropAmount)
     {
-        GetSupplies(new Vector3(0, 100, 0), Vector3.zero, 10f);
+        _dropItemCount = dropAmount;
     }
 
-    public void GetSupplies(Vector3 startPos, Vector3 position, float speed)
+    public void SendSupply(Vector3 targetPosition, float speed = 1f)
     {
         _speed = speed;
-        StartCoroutine(SuppliesEffect(startPos, position));
-    }
-
-    private IEnumerator SuppliesEffect(Vector3 startPos, Vector3 endPos)
-    {
+        _flyFeedback.PlayFeedback();
+        Vector3 startPos = targetPosition + _dropOffset;
         transform.position = startPos;
-        Vector3 direction = (endPos - startPos).normalized;
+        Vector3 direction = (targetPosition - startPos).normalized;
         transform.rotation = Quaternion.LookRotation(direction);
-
-        while (transform.position != endPos)
+        transform.DOMove(targetPosition, 2f / speed).SetEase(Ease.InExpo).OnComplete(() =>
         {
-            transform.position = Vector3.MoveTowards(transform.position, endPos, _speed * Time.deltaTime);
-            yield return null;
-        }
+            _arriveFeedback.PlayFeedback();
+            _flyFeedback.FinishFeedback();
+        });
     }
 
-    private void OnTriggerEnter(Collider other)
+
+    private void DestroySupply()
     {
-        if (_isDrop) return;
-        Debug.Log("Get Supplies");
+        if (_isDestroy) return;
         for (int i = 0; i < _dropItemCount; i++)
         {
             DropSupplies();
         }
-        _isDrop = true;
+        _isDestroy = true;
         Destroy(gameObject);
+
     }
 
     private void DropSupplies()
     {
-        float max = 100f;
         float rate = 0f;
         var supplies = _supplies.suppliesDropItemSOList;
         for (int i = 0; i < supplies.Count; i++)
@@ -68,5 +68,20 @@ public class Supplies : MonoBehaviour
                 break;
             }
         }
+    }
+
+    public void TakeDamage(int amount)
+    {
+        DestroySupply();
+    }
+
+    public void RestoreHealth(int amount)
+    {
+        // SOLID위반이긴 한데. 어쩔티비 어쩔냉장고
+    }
+
+    public void CheckDie()
+    {
+        // 니 또한
     }
 }
