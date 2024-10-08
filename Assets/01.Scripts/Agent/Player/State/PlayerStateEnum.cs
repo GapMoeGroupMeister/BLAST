@@ -3,5 +3,4 @@
     Idle, 
     Walk,
     Dash,
-    Die
 }
