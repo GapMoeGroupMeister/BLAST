@@ -10,6 +10,7 @@ public class AcidicArea : WeaponEffect
     [SerializeField] private float _acidicAreaDuration = 5;
     [SerializeField] private int _acidicAreaDamage = 1;
     [SerializeField] private float _tickCool = 0.5f;
+    [SerializeField] private FeedbackPlayer _feedbackPlayer;
     
     public float AcidicAreaDuration => _acidicAreaDuration;
     
@@ -17,6 +18,7 @@ public class AcidicArea : WeaponEffect
     public void SpawnAcidicArea()
     {
         _acidicAreaEffect.Play();
+        _feedbackPlayer.PlayFeedback();
         StartCoroutine(GetAcidicArea());
     }
     
