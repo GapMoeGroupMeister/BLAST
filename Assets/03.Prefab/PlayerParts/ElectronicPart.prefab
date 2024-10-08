@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 3524562652745679409}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.15, y: 0, z: 5.29}
+  m_LocalPosition: {x: 1.15, y: 0, z: 5.92}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -145,7 +145,7 @@ Transform:
   m_GameObject: {fileID: 8034859021925149815}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.15, y: -0, z: 5.29}
+  m_LocalPosition: {x: -1.15, y: -0, z: 5.92}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -260,6 +260,9 @@ MonoBehaviour:
     OnOverloadEvent:
       m_PersistentCalls:
         m_Calls: []
+    OnFireEvent:
+      m_PersistentCalls:
+        m_Calls: []
     attackDelay: 0.3
     curAttackDelay: 0
     bulletFirePositions:
@@ -271,6 +274,9 @@ MonoBehaviour:
     maxOverload: 60
     overloadDelay: 0.33
     OnOverloadEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    OnFireEvent:
       m_PersistentCalls:
         m_Calls: []
     attackDelay: 0.3

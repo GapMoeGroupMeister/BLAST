@@ -151,11 +151,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1109268814606962508}
   - component: {fileID: 8900650163879802125}
-  - component: {fileID: 613414120495980780}
   - component: {fileID: 2085253495577532970}
   - component: {fileID: 4742955360590545240}
   - component: {fileID: 829156611302993562}
   - component: {fileID: 7639847113500702757}
+  - component: {fileID: 2657116010886510415}
   m_Layer: 0
   m_Name: PlayerDefaultBullet
   m_TagString: Untagged
@@ -196,7 +196,7 @@ MonoBehaviour:
   duration: 3
   isPenetration: 0
   penetrationPercent: 0
-  _damageCaster: {fileID: 613414120495980780}
+  _damageCaster: {fileID: 2657116010886510415}
   _damage: 1
   OnFireEvent:
     m_PersistentCalls:
@@ -213,30 +213,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &613414120495980780
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8538479565421077914}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08c8979b85886904a8723800451519fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  excluded: 0
-  allocationCount: 1
-  _whatIsCastable:
-    serializedVersion: 2
-    m_Bits: 512
-  _usingExcludeCast: 0
-  excludedDamageCasterList: []
-  effectStateType: 0
-  _effectDuration: 0
-  _effectLevel: 1
-  center: {x: 0, y: 0, z: 0}
-  radius: 0.53
 --- !u!114 &2085253495577532970
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -285,4 +261,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 260b2715021f24549aed1a3fa205efd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damageCaster: {fileID: 613414120495980780}
+  _damageCaster: {fileID: 0}
+--- !u!114 &2657116010886510415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8538479565421077914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d481d01d395fe44b892306644e38c13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  excluded: 0
+  allocationCount: 1
+  _whatIsCastable:
+    serializedVersion: 2
+    m_Bits: 513
+  _usingExcludeCast: 0
+  excludedDamageCasterList: []
+  effectStateType: 0
+  _effectDuration: 0
+  _effectLevel: 1
+  center: {x: 0, y: 0, z: 0}
+  size: {x: 0.5, y: 0.5, z: 3.1}

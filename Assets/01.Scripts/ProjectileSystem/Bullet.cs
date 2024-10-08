@@ -17,7 +17,12 @@ public class Bullet : MonoBehaviour, IPoolingObject
 
 	protected virtual void Awake()
 	{
-		_damageCaster.OnDamageCastSuccessEvent += OnCollision;
+		_damageCaster.OnCasterEvent += OnCollision;
+	}
+
+	protected virtual void OnDestroy()
+	{
+		_damageCaster.OnCasterEvent -= OnCollision;
 	}
 
 	protected virtual void FixedUpdate()

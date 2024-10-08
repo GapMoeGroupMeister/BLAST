@@ -58,10 +58,13 @@ public class MagazineInfo
 		OnFireEvent?.Invoke();
 		for (int i = 0; i < bulletFirePositions.Length; ++i)
 		{
-			bulletFirePositions[i].gameObject.Pop(
-				_bulletPoolingType,
-				bulletFirePositions[i].position, 
-				Quaternion.LookRotation(AttackDirection));
+			if (bulletFirePositions[i] != null)
+			{
+				bulletFirePositions[i].gameObject.Pop(
+					_bulletPoolingType,
+					bulletFirePositions[i].position, 
+					Quaternion.LookRotation(AttackDirection));
+			}
 		}
 	}
 
