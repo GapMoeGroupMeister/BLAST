@@ -14,6 +14,7 @@ public abstract class DamageCaster : MonoBehaviour
     public List<DamageCaster> excludedDamageCasterList;
 
 	public event Action OnCasterEvent;
+	public event Action OnCasterSuccessEvent;
 	public event Action OnDamageCastSuccessEvent;
 
 	[Header("DamageEffect")]
@@ -76,6 +77,8 @@ public abstract class DamageCaster : MonoBehaviour
 					effectable.ApplyEffect(effectStateType, _effectDuration, _effectLevel);
 				}
 			}
+			if(_castColliders[i] != null)
+				OnCasterSuccessEvent?.Invoke();
 			
 		}
 
