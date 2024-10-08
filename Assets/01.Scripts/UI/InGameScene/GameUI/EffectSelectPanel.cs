@@ -63,11 +63,12 @@ public class EffectSelectPanel : UIPanel
             //등록할 수 있는 무기인가
             if (weapon.canUse)
 			{
-                //등록 가능한 자리가 없다면
+                //등록 가능한 자리가 없고
                 if(WeaponManager.Instance.GetCurWeaponCount() == 10)
 				{
-                    //새로운 무기를 추가하지 않겠다.
-                    if (weapon.level == 1)
+                    Debug.Log("sfsf");
+                    //새로운 무기를 만난다면 추가하지 않겠다.
+                    if (weapon.weaponEnabled == false)
                         continue;
 				}
 

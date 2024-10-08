@@ -9,7 +9,6 @@ public class ProjectilePenetrationEffect : ProjectileEffect
 	private void Awake()
 	{
 		_bullet = GetComponent<Bullet>();
-		OnEffect(1);
 	}
 
 	private void Start()
