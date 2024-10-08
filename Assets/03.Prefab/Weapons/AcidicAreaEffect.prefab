@@ -38,6 +38,7 @@ Transform:
   - {fileID: 3466890745515717068}
   - {fileID: 8972178118455088518}
   - {fileID: 5110916774057111482}
+  - {fileID: 3619009448062828210}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!198 &3225127361740552660
@@ -4857,6 +4858,7 @@ MonoBehaviour:
   _acidicAreaDuration: 7
   _acidicAreaDamage: 1
   _tickCool: 0.5
+  _feedbackPlayer: {fileID: 6643840173876822849}
 --- !u!114 &3211318589042124700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19371,6 +19373,64 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!1 &7412413240071856679
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3619009448062828210}
+  - component: {fileID: 6643840173876822849}
+  - component: {fileID: 3699112990422140367}
+  m_Layer: 0
+  m_Name: Feedback
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3619009448062828210
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7412413240071856679}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5216020614074819832}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6643840173876822849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7412413240071856679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a50d4dd25594d1e4a8e829e52ebb40c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3699112990422140367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7412413240071856679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9053788e7cb7e342a2cf2d34f26d2b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _soundData: {fileID: 11400000, guid: 2937693e07a3e38478b4a00d4a32bd53, type: 2}
 --- !u!1 &7464159802555950448
 GameObject:
   m_ObjectHideFlags: 0
