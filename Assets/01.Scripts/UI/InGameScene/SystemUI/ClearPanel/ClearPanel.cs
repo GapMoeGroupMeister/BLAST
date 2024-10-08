@@ -22,6 +22,7 @@ public class ClearPanel : UIPanel
 
     private void GameEnd()
     {
+        TimeManager.Instance.PlayTime();
         ResourceManager.Instance.SaveCoin();
         SceneLoadingManager.LoadScene("LobbyScene");
     }
