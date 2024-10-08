@@ -96,7 +96,9 @@ public class WaveManager : MonoSingleton<WaveManager>
         if (isBossWave)
         {
             // 보스 대충 소환해주는 코드
-            BossManager.Instance.SpawnBoss(waveSO.boss);
+            Enemy boss = BossManager.Instance.SpawnBoss(waveSO.boss);
+            _spawnedEnemies.Add(boss);
+             yield return new WaitUntil(() => _spawnedEnemies.Count == 0);
         }
         OnWaveClearEvent?.Invoke(wave);
         _currentEnemyCount = 0;
