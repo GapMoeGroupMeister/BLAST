@@ -50,7 +50,7 @@ namespace ItemManage
         
         public Vector3 GetRandomPosition(float radius)
         {
-            var randomPos = UnityEngine.Random.insideUnitSphere * radius;
+            var randomPos = UnityEngine.Random.insideUnitSphere * radius + transform.position;
             randomPos.y = 0;
             return randomPos;
         }
