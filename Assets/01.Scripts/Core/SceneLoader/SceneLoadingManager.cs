@@ -81,16 +81,7 @@ public class SceneLoadingManager : MonoBehaviour
 			_descriptionText.text += '_';
 
 			if(_description[cnt].Equals('\n'))
-				await Task.Delay(50);
-			else
-			{
-				float randomNum = 0.1f;
-				if(randomNum < Random.Range(0f, 1f))
-					await Task.Delay(3);
-				else
-					await Task.Delay(20);
-			}
-
+				await Task.Delay(Random.Range(50, 150));
 			cnt++;
 		}
 		TMPRemoveLastChar(_descriptionText);
