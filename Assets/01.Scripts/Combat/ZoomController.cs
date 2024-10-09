@@ -9,8 +9,9 @@ public class ZoomController : MonoSingleton<ZoomController>
 	[SerializeField] private CinemachineVirtualCamera _virtualCamera;
 	private InputReader _inputReader;
 
-	private void Awake()
+	protected override void Awake()
 	{
+		base.Awake();	
 		_inputReader = GameManager.Instance.InputReader;
 	}
 

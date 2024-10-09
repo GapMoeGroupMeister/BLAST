@@ -13,8 +13,9 @@ public class ResourceManager : MonoSingleton<ResourceManager>
 
 	public int GetCoin() => _coin;
 
-	private void Awake()
+	protected override void Awake()
 	{
+		base.Awake();
 		_goldText.text = "0";
 	}
 

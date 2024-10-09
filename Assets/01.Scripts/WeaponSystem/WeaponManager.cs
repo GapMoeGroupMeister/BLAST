@@ -10,8 +10,9 @@ public class WeaponManager : MonoSingleton<WeaponManager>
     [SerializeField] private List<Weapon> _curWeapons; //해금된 자동발동 무기 리스트
     PlayerPartController _playerPartController;
 
-    private void Awake()
+    protected override void Awake()
 	{
+        base.Awake();
         _playerPartController = FindObjectOfType<PlayerPartController>();
         _weapons = new Dictionary<WeaponType, Weapon>();
         _curWeapons = new List<Weapon>();
