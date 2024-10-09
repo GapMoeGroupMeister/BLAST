@@ -31,19 +31,10 @@ namespace ItemManage
             _alertPanel.ShowAlert(stringBuilder.ToString());
         }
 
-        
-        public Item DropItem(PoolType type)
-        {
-            var item = gameObject.Pop(type, transform) as Item;
-            item.transform.position = transform.position;
-            return item;
-        }
-
         public Item DropItem(PoolType type, Vector3 startPos)
         {
-            var item = gameObject.Pop(type, transform) as Item;
-            item.transform.position = startPos;
-            item.transform.DOJump(item.GetRandomPosition(10f), 1, 1, 1);
+            var item = gameObject.Pop(type, startPos, Quaternion.identity) as Item;
+            item.transform.DOJump(item.GetRandomPosition(5f), 1, 1, 1);
             Debug.Log("DropItem");
             return item;
         }

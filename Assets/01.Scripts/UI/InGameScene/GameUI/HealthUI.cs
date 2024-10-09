@@ -31,7 +31,8 @@ public class HealthUI : MonoBehaviour
     
     public void Refresh(int value, int maxValue)
     {
-        float ratio = (float)value / maxValue;
+        //나중에 연출용으로 100%를 넘도록 표시할 수 있는데 현재는 아직 그런 거 없으니 Clamp하겠음. - 2023.10.10(목) 동아리 제출 당일
+        float ratio = Mathf.Clamp01((float)value / maxValue);
         _percentText.text = $"{(int)(ratio * 100f)}%";
         Color targetColor = Color.Lerp(_minColor, _maxColor, ratio);
         if (_gaugeImage.fillAmount < ratio)
