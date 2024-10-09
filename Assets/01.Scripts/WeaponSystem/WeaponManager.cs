@@ -41,7 +41,6 @@ public class WeaponManager : MonoSingleton<WeaponManager>
     private void CheckCanUseForWeapon(WeaponType weaponType)
 	{
 		//해금이 안되면 false
-		//나중에 진순이가 코드 짜면 해금 정보 불러와서 쓱싹
         if(GameDataManager.Instance.TryGetWeapon(weaponType, out WeaponSave weaponSave))
 		{
             Weapon weaponCompo = GetWeapon(weaponType);
@@ -52,8 +51,6 @@ public class WeaponManager : MonoSingleton<WeaponManager>
             //고유 무기인데 현재 파츠와 타입이 불일치하면 false
             if (weaponCompo.isUniqueWeapon)
                 weaponCompo.canUse = PlayerPartController.GetCurrentPlayerPart().playerPartType == weaponCompo.partType;
-            else
-                weaponCompo.canUse = true;
 		}
 
         

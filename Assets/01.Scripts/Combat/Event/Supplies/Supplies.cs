@@ -9,11 +9,13 @@ public class Supplies : MonoBehaviour, IDamageable
     [SerializeField] private int _dropItemCount = 3;
     [SerializeField] private FeedbackPlayer _flyFeedback;
     [SerializeField] private FeedbackPlayer _arriveFeedback;
+    [SerializeField] private SupplyUI _supplyUIPf;
     private bool _isDrop;
     private bool _isDestroy;
     private float _speed = 1f;
     private readonly Vector3 _dropOffset = new Vector3(-70f, 200f, -70f);
-
+    private SupplyUI _uiInstance;
+    
     private void OnEnable()
     {
         _isDrop = false;
@@ -38,6 +40,8 @@ public class Supplies : MonoBehaviour, IDamageable
             _arriveFeedback.PlayFeedback();
             _flyFeedback.FinishFeedback();
         });
+        _uiInstance = Instantiate(_supplyUIPf, UIManager.Instance.canvasTrm);
+        _uiInstance.Init(transform);
     }
 
 
@@ -49,6 +53,7 @@ public class Supplies : MonoBehaviour, IDamageable
             DropSupplies();
         }
         _isDestroy = true;
+        Destroy(_uiInstance);
         Destroy(gameObject);
 
     }

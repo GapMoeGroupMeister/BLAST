@@ -27,7 +27,7 @@ public class PlayerMovement : MovementController
     private Player _player;
     [SerializeField] private Rigidbody _rigidbodyCompo;
     public Vector3 lookDirection;
-    private bool _canMove = true;
+    public bool _canMove = true;
     private float _distanceTravelled;
 
     private void Awake()
