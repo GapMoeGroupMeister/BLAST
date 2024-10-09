@@ -135,7 +135,7 @@ public class EffectSelectPanel : UIPanel
 
 	private void SetUpWeaponCards(List<WeaponType> curWeaponTypes)
     {
-		for (int i = 0; i < slots.Length; ++i)
+		for (int i = 0; i < curWeaponTypes.Count; ++i)
 		{
             slots[i].SetWeaponInfo(
                 curWeaponTypes[i], 

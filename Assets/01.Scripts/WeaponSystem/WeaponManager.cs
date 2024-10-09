@@ -45,6 +45,8 @@ public class WeaponManager : MonoSingleton<WeaponManager>
 		{
             Weapon weaponCompo = GetWeapon(weaponType);
 
+            weaponCompo.canUse = true;
+
             //사용허가가 있으면 사용할 수 이씀
             weaponCompo.canUse = weaponSave.enabled;
 
