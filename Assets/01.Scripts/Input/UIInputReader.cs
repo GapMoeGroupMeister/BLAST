@@ -23,6 +23,9 @@ public class UIInputReader : ScriptableObject, Controls.IUIActions
 
     private void OnDisable()
     {
+        OnEscEvent = null;
+        OnMultiplyEvent = null;
+        
         _controls.Disable();
     }
 

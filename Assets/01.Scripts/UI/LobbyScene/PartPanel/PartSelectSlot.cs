@@ -11,7 +11,7 @@ public class PartSelectSlot : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _partNameText;
     [SerializeField] private Image _selectIcon;
     [SerializeField] private Button _button;
-
+    
     public void AddOnClieckEvent(UnityAction action) => _button.onClick.AddListener(action);
 
     public void Initialize(PlayerPartDataSO data)

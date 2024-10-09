@@ -77,6 +77,7 @@ public class PlayerMovement : MovementController
     {
         _attackPointTrm.gameObject.SetActive(value);
         _canMove = value;
+        canDash = value;
     }
 
     public override void StopImmediately()
