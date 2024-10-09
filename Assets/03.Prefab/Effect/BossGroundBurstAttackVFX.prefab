@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8088152050008812529}
   - component: {fileID: 4573748936905869144}
   - component: {fileID: 7186308147039390282}
+  - component: {fileID: -8595459165435134133}
   m_Layer: 0
   m_Name: BossGroundBurstAttackVFX
   m_TagString: Untagged
@@ -4918,6 +4919,25 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &-8595459165435134133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 89794959303907977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f439c72c0dea30409ed95ea8afd0013, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _duration: 5
+  _particles:
+  - {fileID: 4573748936905869144}
+  - {fileID: 3150842918929483836}
+  - {fileID: 7791280389904061820}
+  - {fileID: 10313725179756746}
+  _feedbackPlayers: []
 --- !u!1 &560310348131378170
 GameObject:
   m_ObjectHideFlags: 0
