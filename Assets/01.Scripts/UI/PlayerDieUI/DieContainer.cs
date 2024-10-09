@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using TMPro;
 
 public class DieContainer : MonoBehaviour
 {
 	[SerializeField] private DieButtonPanel _dieInfoContainer;
+	[SerializeField] private TextMeshProUGUI _timeText;
+	[SerializeField] private TextMeshProUGUI _coinText;
 
 	//Components
 	private CanvasGroup _canvasGroup;
@@ -17,8 +20,10 @@ public class DieContainer : MonoBehaviour
 
 	public void ShowPanel(float duration = 0.4f)
 	{
+		_timeText.text = TimeManager.Instance.CurrentGlobalTimerString;
+		_coinText.text = ResourceManager.Instance.GetCoin().ToString();
 		Sequence seq = DOTween.Sequence().SetUpdate(true);
-		seq.Append(_canvasGroup.DOFade(1, duration));
+		seq.Append(_canvasGroup.DOFade(1, duration).SetUpdate(true));
 		seq.AppendCallback(() =>
 		{
 			TimeManager.Instance.PauseTime();

@@ -21,7 +21,6 @@ public class QuadMeshDrawer : MonoBehaviour
     private void Start()
     {
         DrawBackGround();
-        DrawQuadGraph(new float[]{0.3f,1f,0.5f,0.8f});
     }
 
     private void DrawBackGround()

@@ -10,6 +10,9 @@ public class DestructionBeamWeapon : Weapon
     
     [SerializeField] private float _chargeTime = 1;
     [SerializeField] private float _beamDuration = 1;
+    
+    [Space(20)]
+    [SerializeField] private FeedbackPlayer _feedbackPlayer;
 
     private void Start()
     {
@@ -21,6 +24,7 @@ public class DestructionBeamWeapon : Weapon
     {
         if(base.UseWeapon())
         {
+            _feedbackPlayer?.PlayFeedback();
             foreach (var trm in _beamTrm)
             {
                 DestructionBeam destructionBeam = Instantiate(_destructionBeam, trm.position, trm.rotation);

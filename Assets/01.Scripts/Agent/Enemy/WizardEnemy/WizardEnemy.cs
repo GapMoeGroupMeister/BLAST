@@ -40,6 +40,7 @@ public class WizardEnemy : Enemy
 
     public override void OnDie()
 	{
+        base.OnDie();
         StateMachine.ChangeState(WizardEnemyStateEnum.Dead);
         CanStateChangeable = false;
     }
@@ -48,6 +49,11 @@ public class WizardEnemy : Enemy
     {
         StunTime = duration;
         StateMachine.ChangeState(WizardEnemyStateEnum.Stun);
-        CanStateChangeable = false;
+    }
+
+    public override void OnPop()
+    {
+        base.OnPop();
+        StateMachine.Initialize(WizardEnemyStateEnum.Battle);
     }
 }

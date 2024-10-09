@@ -17,7 +17,12 @@ public class Bullet : MonoBehaviour, IPoolingObject
 
 	protected virtual void Awake()
 	{
-		_damageCaster.OnDamageCastSuccessEvent += OnCollision;
+		_damageCaster.OnCasterSuccessEvent += OnCollision;
+	}
+
+	protected virtual void OnDestroy()
+	{
+		_damageCaster.OnCasterSuccessEvent -= OnCollision;
 	}
 
 	protected virtual void FixedUpdate()
@@ -38,6 +43,8 @@ public class Bullet : MonoBehaviour, IPoolingObject
 
 	private void OnCollision()
 	{
+		Debug.Log("dfdf");
+
 		if (isPenetration)
 		{
 			float random = Random.Range(0f, 1f);

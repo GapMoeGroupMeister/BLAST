@@ -2,10 +2,11 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.Events;
+using System.Collections.Generic;
 
 public class Health : MonoBehaviour, IDamageable
 {
-    [SerializeField] private Renderer[] _renderers;
+    public List<Renderer> rendererList;
     [SerializeField] private float _damageDuration = 0.005f;
     public UnityEvent<int, int> OnHealthChangedEvent;
     public UnityEvent OnDieEvent;
@@ -38,8 +39,16 @@ public class Health : MonoBehaviour, IDamageable
         if (_isDead) return;
         if (IsInvincibility) return;
         _currentHealth -= amount;
+        _currentHealth = Mathf.Clamp(_currentHealth, 0, _maxHealth);
         OnHealthChangedEvent?.Invoke(_currentHealth, _maxHealth);
         StopAllCoroutines();
+        foreach (var renderer in rendererList)
+        {
+            for (int i = 0; i < renderer.materials.Length; ++i)
+            {
+                renderer.materials[i].SetInt(_damagedID, 0);
+            }
+        }
         StartCoroutine(CoroutineOnDamaged());
         CheckDie();
     }
@@ -47,6 +56,7 @@ public class Health : MonoBehaviour, IDamageable
     public void RestoreHealth(int amount)
     {
         if (_isDead) return;
+        _currentHealth = Mathf.Clamp(_currentHealth, 0, _maxHealth);
         _currentHealth += amount;
         OnHealthChangedEvent?.Invoke(_currentHealth, _maxHealth);
         CheckDie();
@@ -71,7 +81,7 @@ public class Health : MonoBehaviour, IDamageable
 
     private IEnumerator CoroutineOnDamaged()
 	{
-        foreach (var renderer in _renderers)
+        foreach (var renderer in rendererList)
         {
             for (int i = 0; i < renderer.materials.Length; ++i)
             {
@@ -81,7 +91,7 @@ public class Health : MonoBehaviour, IDamageable
 
         yield return new WaitForSeconds(_damageDuration);
 
-        foreach (var renderer in _renderers)
+        foreach (var renderer in rendererList)
 		{
             for (int i = 0; i < renderer.materials.Length; ++i)
             {

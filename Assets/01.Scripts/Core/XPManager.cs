@@ -11,18 +11,18 @@ public class XPManager : MonoSingleton<XPManager>
 	public event Action<int> OnLevelUpEvent;
 
 	private int _level = 1;
-	private int _maxXP = 20;
+	[SerializeField] private int _maxXP = 5;
 	[SerializeField] private int _xp;
 
 	public int GetLevel => _level;
+
+	private bool _canSelectWeapon = true;
 
 	public int XP
 	{
 		get => _xp;
 		set
 		{
-			//이벤트 실행
-			OnXPPercentEvent?.Invoke((float)_xp / _maxXP);
 
 			//경험치 최대치 갱신
 
@@ -30,7 +30,10 @@ public class XPManager : MonoSingleton<XPManager>
 			{
 				_xp = 0;
 				++_level;
-				OnLevelUpEvent?.Invoke(_level);
+				if (_canSelectWeapon)
+					_canSelectWeapon = false;
+				else
+					OnLevelUpEvent?.Invoke(_level);
 				MaxXPUp();
 			}
 			else
@@ -38,13 +41,16 @@ public class XPManager : MonoSingleton<XPManager>
 				_xp = value;
 				_lvText.text = $"lv.{_level.ToString("00")}";
 			}
+
+			//이벤트 실행
+			OnXPPercentEvent?.Invoke((float)_xp / _maxXP);
 		}
 	}
 
 	//나중에 밸런싱!
 	private void MaxXPUp()
 	{
-		_maxXP = (int)(_maxXP * 1.75f);
+		_maxXP = (int)(_maxXP * 1.37f);
 	}
 
 	public void CreateXP(Vector3 pos, XPType xpType)
@@ -52,4 +58,5 @@ public class XPManager : MonoSingleton<XPManager>
 		XP xp = gameObject.Pop(_xpPoolType, pos + Vector3.up, Quaternion.identity) as XP;
 		xp.SetGrade(xpType);
 	}
+
 }

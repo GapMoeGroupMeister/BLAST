@@ -1,4 +1,6 @@
+using System.Linq;
 using UnityEngine;
+using static Cinemachine.DocumentationSortingAttribute;
 
 public abstract class Enemy : Agent, IPoolingObject
 {
@@ -17,11 +19,13 @@ public abstract class Enemy : Agent, IPoolingObject
     public CapsuleCollider capsuleCollider;
 
     public float StunTime { get; protected set; }
+    public float Level { get; protected set; }
 
     protected Collider[] _enemyCheckColliders;
 
     public PoolType OriginPoolType { get; set; }
     GameObject IPoolingObject.gameObject { get; set; }
+
 
     private void OnValidate()
     {
@@ -41,14 +45,18 @@ public abstract class Enemy : Agent, IPoolingObject
     }
 
     public void CastDamage()
-	{
-		for (int i = 0; i < _damageCasters.Length; ++i)
-		{
-            _damageCasters[i]?.CastDamage(_damageAmount);
-		}
-	}
+    {
+        for (int i = 0; i < _damageCasters.Length; ++i)
+        {
+            _damageCasters[i]?.CastDamage((int)Stat.GetValue(StatEnum.Attack));
+        }
+    }
 
-    public abstract void OnDie();
+    public virtual void OnDie()
+    {
+        capsuleCollider.enabled = false;
+        WaveManager.Instance.RemoveEnemy(this);
+    }
 
     public abstract void AnimationEndTrigger(AnimationTriggerEnum triggerBit);
 
@@ -56,7 +64,19 @@ public abstract class Enemy : Agent, IPoolingObject
 
     public virtual void OnPop()
     {
-        targetTrm  = GameManager.Instance.Player.transform;
+        capsuleCollider.enabled = true;
+        Level = WaveManager.Instance.CurrentWave / WaveManager.Instance.stageWaves.wavelist.Length;
+        EnemyStatDataSO stat = Stat as EnemyStatDataSO;
+        foreach (var key in stat.statModifierDictionary.Keys)
+        {
+            float currentStat = stat.GetValue(key);
+            float statModifier = stat.GetModifierValue(key, Level);
+            stat.SetValue(key, currentStat * statModifier);
+        }
+        targetTrm = GameManager.Instance.Player.transform;
+        HealthCompo.Initialize(this, (int)stat.GetValue(StatEnum.MaxHP));
+        HealthCompo.TakeDamage(0);
+        EnemyMovementCompo.EnableNavAgent();
         CanStateChangeable = true;
     }
 

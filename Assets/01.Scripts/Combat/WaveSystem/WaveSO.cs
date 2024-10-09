@@ -5,4 +5,12 @@ using UnityEngine;
 public class WaveSO : ScriptableObject
 {
     public List<WaveEnemy> waveEnemies;
+    public WaveBoss boss;
+
+    [Header("Supply Setting")]
+
+    public int supplyAmount;
+    public int dropItemAmount;
+
+    
 }

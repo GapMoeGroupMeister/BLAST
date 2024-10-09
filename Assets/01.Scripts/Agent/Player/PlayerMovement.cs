@@ -3,12 +3,14 @@ using UnityEngine;
 using DG.Tweening;
 using System;
 using System.Collections;
+using UnityEngine.Events;
 
 public class PlayerMovement : MovementController
 {
     public event Action<float> OnDistanceTravelledEvent;
     public event Action<float> OnDashCoolTimePercentEvent;
-    public event Action<Vector3> OnDashEvent;
+    public event Action<Vector3> OnDashDirectionEvent;
+    public UnityEvent OnDashEvent;
     [SerializeField] private Transform _attackPointTrm;
     [SerializeField] private Vector3 _attackPointOffset;
     [SerializeField] private Transform _baseTrm;
@@ -23,7 +25,7 @@ public class PlayerMovement : MovementController
     private InputReader _inputReader;
     
     private Player _player;
-    private Rigidbody _rigidbodyCompo;
+    [SerializeField] private Rigidbody _rigidbodyCompo;
     public Vector3 lookDirection;
     private bool _canMove = true;
     private float _distanceTravelled;
@@ -32,8 +34,9 @@ public class PlayerMovement : MovementController
     {
         _curDashCooltime = dashCooltime;
         _inputReader = GameManager.Instance.InputReader;
-        _rigidbodyCompo = GetComponent<Rigidbody>();
+        //_rigidbodyCompo = GetComponent<Rigidbody>();
         _player = GetComponent<Player>();
+        moveSpeed = _player.Stat.GetValue(StatEnum.Speed);
     }
 
 	private void Update()
@@ -52,6 +55,7 @@ public class PlayerMovement : MovementController
         if (lookDirection != Vector3.zero)
         {
             lookDirection.y = 0;
+            if (_canMove == false) return;
             _baseTrm.rotation = Quaternion.Lerp(this._baseTrm.rotation, Quaternion.LookRotation(lookDirection), Time.deltaTime * _rotateSpeed);
         }
 
@@ -64,32 +68,36 @@ public class PlayerMovement : MovementController
         if (Physics.Raycast(ray, out RaycastHit hit, 1000, _whatIsGround))
         {
             lookDirection = (hit.point - transform.position).normalized;
-            _attackPointTrm.position = hit.point + _attackPointOffset;
+            if(_attackPointTrm.gameObject.activeSelf)
+                _attackPointTrm.position = hit.point + _attackPointOffset;
         }
     }
 
-    public void SetCanMove(bool value) => _canMove = value;
+    public void SetCanMove(bool value)
+    {
+        _attackPointTrm.gameObject.SetActive(value);
+        _canMove = value;
+    }
 
     public override void StopImmediately()
     {
         _rigidbodyCompo.velocity = Vector3.zero;
     }
 
-    public void OnDash(Vector3 dashDir, float duration, float dashPower)
+    public void OnDash(Vector3 dashDir, float duration, float dashPower, Action EndEvent = null)
 	{
         _curDashCooltime = 0;
-        OnDashEvent?.Invoke(dashDir);
-        StartCoroutine(CoroutineOnDash(dashDir, duration, dashPower));
+        OnDashDirectionEvent?.Invoke(dashDir);
+        OnDashEvent?.Invoke();
+        StartCoroutine(CoroutineOnDash(dashDir, duration, dashPower, EndEvent));
 	}
 
-    private IEnumerator CoroutineOnDash(Vector3 dashDir, float duration, float dashPower)
+    private IEnumerator CoroutineOnDash(Vector3 dashDir, float duration, float dashPower, Action EndEvent)
 	{
-        _canMove = false;
         transform.rotation = Quaternion.LookRotation(dashDir);
-        _rigidbodyCompo.velocity = dashDir * dashPower;
-        yield return new WaitForSeconds(duration);
-        StopImmediately();
-        _canMove = true;
+        _rigidbodyCompo.AddForce(dashDir * dashPower * duration * _rigidbodyCompo.mass, ForceMode.Impulse);
+        yield return new WaitForSeconds(duration-(duration/6f));
+        EndEvent?.Invoke();
     }
 
     private Vector3 _startPos;

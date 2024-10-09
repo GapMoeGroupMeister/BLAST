@@ -22,7 +22,7 @@ public class DragoonEnemyDeadState : EnemyState<DragoonEnemy>
     public override void UpdateState()
     {
         base.UpdateState();
-        if(IsTriggerCalled(AnimationTriggerEnum.EndTrigger))
+        if (IsTriggerCalled(AnimationTriggerEnum.EndTrigger))
         {
             _enemyBase.StartCoroutine(BurnedCoroutine());
             RemoveTrigger(AnimationTriggerEnum.EndTrigger);
@@ -32,12 +32,19 @@ public class DragoonEnemyDeadState : EnemyState<DragoonEnemy>
     private IEnumerator BurnedCoroutine()
     {
         float percent = 0;
-        while(percent < 1)
+        while (percent < 1)
         {
             _dissolveMat.SetFloat(_burnedHash, percent);
             percent += Time.deltaTime * 2;
             yield return null;
         }
+        XPManager.Instance.CreateXP(_enemyBase.transform.position, (XPType)(int)(_enemyBase.Level * 3));
+        int rand = Random.Range(0, 100);
+        if (rand < 30)
+        {
+            ResourceManager.Instance.CreateCoin(_enemyBase.transform.position);
+        }
         _enemyBase.Push();
+        _dissolveMat.SetFloat(_burnedHash, 0);
     }
 }

@@ -38,6 +38,13 @@ public class WizardEnemyDeadState : EnemyState<WizardEnemy>
             percent += Time.deltaTime * 2;
             yield return null;
         }
+        XPManager.Instance.CreateXP(_enemyBase.transform.position, (XPType)(int)(_enemyBase.Level * 4));
+        int rand = Random.Range(0, 100);
+        if (rand < 30)
+        {
+            ResourceManager.Instance.CreateCoin(_enemyBase.transform.position);
+        }
         _enemyBase.Push();
+        _dissolveMat.SetFloat(_burnedHash, 0);
     }
 }

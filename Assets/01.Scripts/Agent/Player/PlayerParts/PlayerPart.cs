@@ -3,6 +3,7 @@ using System.Collections;
 using Crogen.PowerfulInput;
 using UnityEngine;
 using Crogen.ObjectPooling;
+using UnityEngine.Events;
 
 public delegate void PlayerOverloadEvent(int curOverload, int maxOverload);
 
@@ -13,7 +14,16 @@ public class MagazineInfo
 	public int curOverload;
 	public int maxOverload = 20;
 	public float overloadDelay = 0.5f;
-	public event PlayerOverloadEvent playerOverloadEvent;
+	public event PlayerOverloadEvent PlayerOverloadEvent;
+	/// <summary>
+	/// 탄 쿨링타이밍의 비주얼과 연출을 위한 유니티 이벤트 
+	/// </summary>
+	public UnityEvent OnOverloadEvent;
+	
+	/// <summary>
+	/// 발사됐을때 비주얼을 위한 유니티 이밴트
+	/// </summary>
+	public UnityEvent OnFireEvent; 
 
 	[Header("Attack")]
 	public float attackDelay = 0.2f;
@@ -25,6 +35,7 @@ public class MagazineInfo
 	[HideInInspector] public Vector3 AttackDirection;
 
 	public bool IsAttack { get; private set; }
+	public bool CanAttack { get; set; }
 
 	[SerializeField] private PoolType _bulletPoolingType;
 	
@@ -36,18 +47,24 @@ public class MagazineInfo
 	
 	public void Attack()
 	{
+		if (CanAttack == false) return;
+
 		if (curAttackDelay > 0 || curOverload >= maxOverload) return;
 
 		curAttackDelay = attackDelay;
 		++curOverload;
-		playerOverloadEvent?.Invoke(curOverload, maxOverload);
+		PlayerOverloadEvent?.Invoke(curOverload, maxOverload);
 		OnAttackEvent?.Invoke(AttackDirection);
+		OnFireEvent?.Invoke();
 		for (int i = 0; i < bulletFirePositions.Length; ++i)
 		{
-			bulletFirePositions[i].gameObject.Pop(
-				_bulletPoolingType,
-				bulletFirePositions[i].position, 
-				Quaternion.LookRotation(AttackDirection));
+			if (bulletFirePositions[i] != null)
+			{
+				bulletFirePositions[i].gameObject.Pop(
+					_bulletPoolingType,
+					bulletFirePositions[i].position, 
+					Quaternion.LookRotation(AttackDirection));
+			}
 		}
 	}
 
@@ -67,8 +84,12 @@ public class MagazineInfo
 	{
 		if (curOverload > 0 && IsAttack == false)
 		{
+			if(maxOverload <= curOverload)
+			{
+				OnOverloadEvent?.Invoke();
+			}
 			--curOverload;
-			playerOverloadEvent?.Invoke(curOverload, maxOverload);
+			PlayerOverloadEvent?.Invoke(curOverload, maxOverload);
 		}
 	}
 }
@@ -88,13 +109,36 @@ public abstract class PlayerPart : MonoBehaviour
 	public LayerMask whatIsEnemy;
 
 	private bool _isNoFunc; // Lobby씬을 위한 장치
-	
+
+	private FeedbackPlayer _feedbackPlayer;
+
+	[ContextMenu("FeedbackPlayer")]
+	private void GenerateFeedbackPlayer()
+	{
+		_feedbackPlayer = GetComponentInChildren<FeedbackPlayer>();
+		if(_feedbackPlayer is null)
+		{
+			var feedbackPlayer = new GameObject("OverloadSoundFeedback", typeof(FeedbackPlayer), typeof(SoundFeedback));
+			feedbackPlayer.transform.SetParent(transform);
+		}
+	}
+
 	protected virtual void OnEnable()
 	{
+		magazineInfoL.CanAttack = true;
+		magazineInfoR.CanAttack = true;
+
 		if (FindObjectOfType<PlayerPartController>() == null)
 		{
 			_isNoFunc = true;
 			return;
+		}
+
+		_feedbackPlayer = GetComponentInChildren<FeedbackPlayer>();
+		if (_feedbackPlayer)
+		{
+			magazineInfoL.OnOverloadEvent.AddListener(_feedbackPlayer.PlayFeedback);
+			magazineInfoR.OnOverloadEvent.AddListener(_feedbackPlayer.PlayFeedback);
 		}
 		
 		_inputReader = GameManager.Instance.InputReader;

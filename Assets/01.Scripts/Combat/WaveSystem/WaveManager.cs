@@ -1,66 +1,74 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using AYellowpaper.SerializedCollections;
 using Crogen.ObjectPooling;
+using ItemManage;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class WaveManager : MonoSingleton<WaveManager>
 {
     public event Action<int> OnWaveClearEvent;
-    [SerializeField] private SerializedDictionary<int, WaveSO> waveDictionary;
-    [SerializeField] private List<Transform> spawnPoints;
-    [SerializeField] private float _waveDelay = 5f;
-    
+    public StageWaveSO stageWaves;
+    private WaveSO[] _waveList;
+    [SerializeField] private List<Transform> spawnPoints; // 나중에 이것도 스테이지 추가됨에 따라서 변경해야될 것으로 보임
+    [SerializeField] private ClearPanel _clearPanel;
     private List<Enemy> _spawnedEnemies = new List<Enemy>();
-    
-    private int _currentWaveIndex;
+
+    public int CurrentWave { get; private set; }
     private int _currentEnemyCount;
+    private Coroutine _waveCoroutine;
 
     private void Start()
     {
+        // Stage관리자로 부터 WAve를 할당받음
+        _waveList = stageWaves.wavelist;
         StartWave(0, true);
-        
-    }
-    
-    [ContextMenu("DebugStartWave")]
-    public void DebugStartWave()
-    {
-        StartWave(0, false);
-    }
-    
-    [ContextMenu("DebugStartRandomWave")]
-    public void DebugStartRandomWave()
-    {
-        StartWave(0, true);
+
     }
 
-    private void Update()
+    private void OnDestroy()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            DebugStartRandomWave();
-        }
+        if(_waveCoroutine != null)
+            StopCoroutine(_waveCoroutine);
     }
 
+    /**
+    * <summary> 
+    * 실질적으로 웨이브를 동작시켜주는 로직
+    * </summary>
+    */
     public void StartWave(int waveIndex, bool isRandomSpawn)
     {
-        _currentWaveIndex = waveIndex;
-        StartCoroutine(SpawnEnemy(waveIndex, isRandomSpawn));
+        CurrentWave = waveIndex;
+        _waveCoroutine = StartCoroutine(WaveCoroutine(waveIndex, isRandomSpawn));
     }
 
-    private IEnumerator SpawnEnemy(int wave, bool isRandomSpawn)
+    private IEnumerator WaveCoroutine(int wave, bool isRandomSpawn)
     {
-        if (wave >= waveDictionary.Count) yield break;
-        
+        if (wave >= _waveList.Length)
+        {
+            // 게임 클리어
+            _clearPanel.Open();
+            yield break;
+        }
         int enemyIdx = 0;
-        WaveSO waveSO = waveDictionary[wave];
+        WaveSO waveSO = _waveList[wave];
+        bool isBossWave = (waveSO.boss.bossPrefab != null);
         if (waveSO == null)
         {
             Debug.LogError($"Wave {wave} is null");
             yield break;
         }
+        if (isBossWave) // 보스가 있는 웨이브 일떄
+        {
+            UIManager.Instance.Open(InGameUIEnum.BossWarning);
+        }
+        if (waveSO.supplyAmount > 0) // 보급이 있을때
+        {
+            ItemDropManager.Instance.SendSupply(waveSO);
+        }
+
         int allEnemy = AllEnemyCount(wave);
         while (_currentEnemyCount < allEnemy)
         {
@@ -80,14 +88,23 @@ public class WaveManager : MonoSingleton<WaveManager>
             }
             yield return null;
         }
-        
+
         Debug.Log($"Wave {wave} Spawn Complete");
-        
+
         yield return new WaitUntil(() => _spawnedEnemies.Count == 0);
+        // Wave설정에  보스가 있으면 소환
+        if (isBossWave)
+        {
+            // 보스 대충 소환해주는 코드
+            Enemy boss = BossManager.Instance.SpawnBoss(waveSO.boss);
+            _spawnedEnemies.Add(boss);
+             yield return new WaitUntil(() => _spawnedEnemies.Count == 0);
+        }
         OnWaveClearEvent?.Invoke(wave);
         _currentEnemyCount = 0;
-        yield return new WaitForSeconds(_waveDelay);
-        StartWave(_currentWaveIndex + 1, isRandomSpawn);
+        yield return new WaitForSeconds(stageWaves.waveTerm);
+        print("다음 웨이브");
+        StartWave(CurrentWave + 1, isRandomSpawn);
     }
 
     private IEnumerator SpawnEnemy(WaveEnemy waveEnemy)
@@ -95,6 +112,8 @@ public class WaveManager : MonoSingleton<WaveManager>
         Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Count)];
         Enemy enemy =
             gameObject.Pop(waveEnemy.enemyType, spawnPoint.position, Quaternion.identity) as Enemy;
+        // Level 추가시 여기서 설정 해야디
+
         _spawnedEnemies.Add(enemy);
         _currentEnemyCount++;
         yield return new WaitForSeconds(waveEnemy.spawnDelay);
@@ -103,15 +122,19 @@ public class WaveManager : MonoSingleton<WaveManager>
     private int AllEnemyCount(int wave)
     {
         int count = 0;
-        foreach (var enemy in waveDictionary[wave].waveEnemies)
+        foreach (var enemy in _waveList[wave].waveEnemies)
         {
             count += enemy.enemyAmount;
         }
         return count;
     }
-    
+
     public void RemoveEnemy(Enemy enemy)
     {
-        _spawnedEnemies.Remove(enemy);
+        if (_spawnedEnemies.Contains(enemy)) // 혹시 모를 예외처리
+        {
+            _spawnedEnemies.Remove(enemy);
+            _currentEnemyCount--;
+        }
     }
 }

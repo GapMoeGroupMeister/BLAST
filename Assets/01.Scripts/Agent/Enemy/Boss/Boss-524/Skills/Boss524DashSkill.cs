@@ -54,8 +54,15 @@ public class Boss524DashSkill : EnemySkill<Boss524>
         _owner.LinePatternVisual.gameObject.SetActive(true);
         _owner.LinePatternVisual.StartLinePattern(startPos, destination, 1.5f, 0.5f, 1.5f);
         yield return new WaitForSeconds(_beforeDelay);
+        _owner.ContactHitCompo.SetActive(true);
         _moveTween = _owner.transform.DOMove(destination, 1.3f);
+        _moveTween.OnUpdate(() =>
+        {
+            Debug.Log("djdjdjd");
+            _owner.dashEffectCaster.CreateDashEffect();
+        });
         yield return new WaitForSeconds(1.3f + _afterDelay);
+        _owner.ContactHitCompo.SetActive(false);
         _skillManager.SetUsingSkill(false);
         _lastUseTime = Time.time;
     }

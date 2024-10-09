@@ -25,7 +25,6 @@ public class DragoonEnemyAttackState : EnemyState<DragoonEnemy>
 
     public override void Exit()
     {
-        _effect?.Push();
         _effect = null;
         _lastAttackTime = Time.time;
         base.Exit();
@@ -44,7 +43,11 @@ public class DragoonEnemyAttackState : EnemyState<DragoonEnemy>
         }
         if(IsTriggerCalled(AnimationTriggerEnum.AttackTrigger))
 		{
+            Vector3 startPos = _enemyBase.transform.position;
+            startPos.y = 0;
+            Vector3 direction = _targetPos - startPos;
             _enemyBase.CastDamage();
+            RemoveTrigger(AnimationTriggerEnum.AttackTrigger);
         }
         if (IsTriggerCalled(AnimationTriggerEnum.EndTrigger))
         {

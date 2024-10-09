@@ -21,14 +21,8 @@ public class DistructDroneEnemy : Enemy
 
     protected override void Awake()
     {
-        
         base.Awake();
         StateMachine = new EnemyStateMachine<DistructDroneEnemy>(this);
-    }
-
-    private void Start()
-    {
-        StateMachine.Initialize(DistructDroneEnemyStateEnum.Idle);
     }
 
     private void Update()
@@ -43,12 +37,20 @@ public class DistructDroneEnemy : Enemy
 
 	public override void OnDie()
 	{
+        base.OnDie();
         StateMachine.ChangeState(DistructDroneEnemyStateEnum.Dead);
         CanStateChangeable = false;
     }
 
     public override void Stun(float duration)
     {
+        StunTime = duration;
         StateMachine.ChangeState(DistructDroneEnemyStateEnum.Stun);
+    }
+
+    public override void OnPop()
+    {
+        base.OnPop();
+        StateMachine.Initialize(DistructDroneEnemyStateEnum.Idle);
     }
 }

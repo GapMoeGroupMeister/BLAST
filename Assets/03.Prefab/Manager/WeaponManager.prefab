@@ -47,10 +47,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canUse: 0
   weaponEnabled: 0
-  _cooldown: 0
+  _cooldown: 20
   level: 1
   isUniqueWeapon: 1
-  partType: 3
+  partType: 1
   isConditionalWeapon: 0
   _autoUseType: 0
   _compareMode: 0
@@ -58,9 +58,10 @@ MonoBehaviour:
   player: {fileID: 0}
   whatIsEnemy:
     serializedVersion: 2
-    m_Bits: 0
-  _napalmPrefab: {fileID: 0}
-  _shootTerm: 0.7
+    m_Bits: 512
+  _napalmPrefab: {fileID: 2109600592507924881, guid: 105ea167341dd97419da17260939ec33,
+    type: 3}
+  _shootTerm: 0.3
 --- !u!114 &4675976240277001983
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75,10 +76,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canUse: 0
   weaponEnabled: 0
-  _cooldown: 10
+  _cooldown: 20
   level: 1
   isUniqueWeapon: 1
-  partType: 3
+  partType: 1
   isConditionalWeapon: 0
   _autoUseType: 0
   _compareMode: 0
@@ -86,7 +87,7 @@ MonoBehaviour:
   player: {fileID: 0}
   whatIsEnemy:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   _oilShootTerm: 0.2
 --- !u!1 &2923285216936907121
 GameObject:
@@ -136,10 +137,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canUse: 0
   weaponEnabled: 0
-  _cooldown: 10
-  level: 5
+  _cooldown: 15
+  level: 1
   isUniqueWeapon: 1
-  partType: 2
+  partType: 3
   isConditionalWeapon: 0
   _autoUseType: 0
   _compareMode: 0
@@ -164,10 +165,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canUse: 0
   weaponEnabled: 0
-  _cooldown: 10
+  _cooldown: 15
   level: 1
   isUniqueWeapon: 1
-  partType: 2
+  partType: 3
   isConditionalWeapon: 0
   _autoUseType: 0
   _compareMode: 0
@@ -181,6 +182,7 @@ MonoBehaviour:
   _beamTrm: []
   _chargeTime: 1.5
   _beamDuration: 5
+  _feedbackPlayer: {fileID: 7624023167472649217}
 --- !u!114 &397250888331419547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -198,7 +200,7 @@ MonoBehaviour:
   _cooldown: 1
   level: 1
   isUniqueWeapon: 1
-  partType: 2
+  partType: 3
   isConditionalWeapon: 0
   _autoUseType: 0
   _compareMode: 0
@@ -206,7 +208,65 @@ MonoBehaviour:
   player: {fileID: 0}
   whatIsEnemy:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
+--- !u!1 &4474485064539057102
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5140730628465777045}
+  - component: {fileID: 7624023167472649217}
+  - component: {fileID: 3132500891667096829}
+  m_Layer: 0
+  m_Name: DestructionBeamFeedback
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5140730628465777045
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4474485064539057102}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4493460350588204496}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7624023167472649217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4474485064539057102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a50d4dd25594d1e4a8e829e52ebb40c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3132500891667096829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4474485064539057102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9053788e7cb7e342a2cf2d34f26d2b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _soundData: {fileID: 0}
 --- !u!1 &4942398911378062715
 GameObject:
   m_ObjectHideFlags: 0
@@ -253,6 +313,7 @@ Transform:
   - {fileID: 3866575627905435685}
   - {fileID: 3348596925788104567}
   - {fileID: 8708447336408435625}
+  - {fileID: 4493460350588204496}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5381559122253746953
@@ -310,7 +371,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canUse: 0
   weaponEnabled: 0
-  _cooldown: 1
+  _cooldown: 2
   level: 1
   isUniqueWeapon: 0
   partType: 0
@@ -349,7 +410,7 @@ MonoBehaviour:
   player: {fileID: 0}
   whatIsEnemy:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   _dashExplosionPrefab: {fileID: 778815023308791822, guid: 6581595191f458042b67b371a5cd3783,
     type: 3}
 --- !u!114 &3431340043160336752
@@ -512,7 +573,7 @@ MonoBehaviour:
   player: {fileID: 0}
   whatIsEnemy:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
 --- !u!114 &7658873785039511361
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -555,7 +616,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canUse: 0
   weaponEnabled: 0
-  _cooldown: 5
+  _cooldown: 13
   level: 1
   isUniqueWeapon: 0
   partType: 0
@@ -583,7 +644,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canUse: 0
   weaponEnabled: 0
-  _cooldown: 0
+  _cooldown: 60
   level: 1
   isUniqueWeapon: 0
   partType: 0
@@ -597,6 +658,97 @@ MonoBehaviour:
     m_Bits: 512
   _nuclear: {fileID: 7818928688725486981, guid: a81944314ba1d874f9f7169501e8d54d,
     type: 3}
+--- !u!1 &5817447826826500837
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1168119355314764734}
+  - component: {fileID: 5850868263687050974}
+  - component: {fileID: 8922931586169900367}
+  m_Layer: 0
+  m_Name: EMPFeedback
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1168119355314764734
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5817447826826500837}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4493460350588204496}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5850868263687050974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5817447826826500837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a50d4dd25594d1e4a8e829e52ebb40c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8922931586169900367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5817447826826500837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9053788e7cb7e342a2cf2d34f26d2b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _soundData: {fileID: 11400000, guid: 86ee04cfa3dd5e04ca3ca3622bf2a384, type: 2}
+--- !u!1 &6351253383520538468
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4493460350588204496}
+  m_Layer: 0
+  m_Name: WeaponFeedback
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4493460350588204496
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6351253383520538468}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1168119355314764734}
+  - {fileID: 5140730628465777045}
+  m_Father: {fileID: 6165231877111597868}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6445368848195410076
 GameObject:
   m_ObjectHideFlags: 0
@@ -707,10 +859,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canUse: 0
   weaponEnabled: 0
-  _cooldown: 2
+  _cooldown: 10
   level: 1
   isUniqueWeapon: 1
-  partType: 1
+  partType: 2
   isConditionalWeapon: 0
   _autoUseType: 0
   _compareMode: 0
@@ -719,9 +871,12 @@ MonoBehaviour:
   whatIsEnemy:
     serializedVersion: 2
     m_Bits: 512
-  _damageCaster: {fileID: 0}
-  _empEffect: {fileID: 0}
+  _damageCaster: {fileID: 1733151700548121950, guid: 19fa3d89eb6621f4bbf178cb5a2c48a5,
+    type: 3}
+  _empEffect: {fileID: 7241893749186972951, guid: 19fa3d89eb6621f4bbf178cb5a2c48a5,
+    type: 3}
   _defaultDamage: 1
+  _feedbackPlayer: {fileID: 0}
 --- !u!114 &1006913282202067868
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -739,7 +894,7 @@ MonoBehaviour:
   _cooldown: 0
   level: 1
   isUniqueWeapon: 1
-  partType: 1
+  partType: 2
   isConditionalWeapon: 0
   _autoUseType: 0
   _compareMode: 0
@@ -747,7 +902,7 @@ MonoBehaviour:
   player: {fileID: 0}
   whatIsEnemy:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
 --- !u!114 &6442630648383318298
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -762,7 +917,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canUse: 0
   weaponEnabled: 0
-  _cooldown: 0
+  _cooldown: 15
   level: 1
   isUniqueWeapon: 1
   partType: 1
@@ -773,12 +928,13 @@ MonoBehaviour:
   player: {fileID: 0}
   whatIsEnemy:
     serializedVersion: 2
-    m_Bits: 0
-  _randomRange: 0
-  _defaultPower: 0
-  _powerMultiplerByLevel: 0
-  _range: 0
-  _magneticBlockPrefab: {fileID: 0}
+    m_Bits: 512
+  _randomRange: 3
+  _defaultPower: 5
+  _powerMultiplerByLevel: 1
+  _range: 20
+  _magneticBlockPrefab: {fileID: 8757613413035984613, guid: 60312253893c5df499668b1b113edbe0,
+    type: 3}
 --- !u!114 &7521690542071491873
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -796,7 +952,7 @@ MonoBehaviour:
   _cooldown: 1
   level: 1
   isUniqueWeapon: 1
-  partType: 1
+  partType: 2
   isConditionalWeapon: 0
   _autoUseType: 0
   _compareMode: 0

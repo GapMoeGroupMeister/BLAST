@@ -19,7 +19,9 @@ public class Agent : MonoBehaviour
     {
         Transform visualTrm = transform.Find("Visual");
         AnimatorCompo = visualTrm.GetComponent<Animator>();
-        
+
+        Stat = Instantiate(Stat);
+
         MovementCompo = GetComponent<MovementController>();
         HealthCompo = GetComponent<Health>();
         HealthCompo.Initialize(this, Mathf.CeilToInt(Stat.GetValue(StatEnum.MaxHP)));

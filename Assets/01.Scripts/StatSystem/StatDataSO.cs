@@ -8,7 +8,7 @@ public class StatDataSO : ScriptableObject
     public SerializedDictionary<StatEnum, float> statDictionary;
 
     [ContextMenu("Reset")]
-    public void Reset()
+    public virtual void Reset()
     {
         statDictionary = new SerializedDictionary<StatEnum, float>();
 
@@ -23,5 +23,10 @@ public class StatDataSO : ScriptableObject
         if (statDictionary.TryGetValue(stat, out float value)) 
             return value;
         return 0f;
+    }
+
+    public void SetValue(StatEnum stat, float value)
+    {
+        statDictionary[stat] = value;
     }
 }
