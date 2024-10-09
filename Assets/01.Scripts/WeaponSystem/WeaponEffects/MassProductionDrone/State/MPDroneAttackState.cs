@@ -27,6 +27,7 @@ public class MPDroneAttackState : MPDroneState
 		_curAttackTime += Time.deltaTime;
 		if(_curAttackTime > _mpDrone.attackCompo.attackDelay)
 		{
+			_curAttackTime = 0;
 			_mpDrone.attackCompo.OnAttack(_mpDrone.currentTarget.position);
 		}
 

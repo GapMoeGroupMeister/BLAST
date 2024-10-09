@@ -1,6 +1,4 @@
 using DG.Tweening;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -15,6 +13,7 @@ public class AntimatterBomb : MonoBehaviour
 
     private bool _explosing = false;
     private float _prevAttackTime;
+    [SerializeField]
     private float _tickDelay = 0.25f;
     private Sequence _exSeq;
     private Collider[] _coll;
