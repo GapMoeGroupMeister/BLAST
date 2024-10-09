@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class LobbyManager : MonoBehaviour
 {
-
+    [SerializeField] private PartChanger _partChanager;
     public void GameStart()
     {
         SaveManager.Instance.SaveData();
@@ -14,4 +14,8 @@ public class LobbyManager : MonoBehaviour
 	{
         Application.Quit();
 	}
+
+    public void PartChanger()
+    {
+    }
 }

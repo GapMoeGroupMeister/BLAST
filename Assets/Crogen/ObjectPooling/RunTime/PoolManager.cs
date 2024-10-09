@@ -18,7 +18,12 @@ public class PoolManager : MonoBehaviour
         MakeObj();
     }
 
-	private void MakeObj()
+    private void OnDestroy()
+    {
+        poolDic.Clear();
+    }
+
+    private void MakeObj()
     {
         PoolPair[] poolPairs = poolBase.pairs.ToArray();
 
