@@ -7,7 +7,7 @@ public class LobbyManager : MonoBehaviour
     public void GameStart()
     {
         SaveManager.Instance.SaveData();
-        SceneLoadingManager.LoadScene("GameScene");
+        SceneLoadingManager.LoadScene("Vcs_GameScene");
     } 
 
     public void GameExit()
