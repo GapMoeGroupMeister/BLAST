@@ -51,7 +51,7 @@ public class Boss524BlastSkill : EnemySkill<Boss524>
     {
         _owner.CirclePatternVisual.StartCirclePattern(_owner.transform.position, 5, 2.5f, 0.5f);
         yield return new WaitForSeconds(_beforeDelay);
-        int count = Physics.OverlapSphereNonAlloc(_owner.transform.position, 5, _colliders, _owner.whatIsPlayer);
+        int count = Physics.OverlapSphereNonAlloc(_owner.transform.position, 40, _colliders, _owner.whatIsPlayer);
         if (count > 0)
         {
             if(_colliders[0].TryGetComponent(out IDamageable health))
