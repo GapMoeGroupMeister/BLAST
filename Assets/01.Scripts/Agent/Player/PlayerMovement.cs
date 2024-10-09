@@ -25,7 +25,7 @@ public class PlayerMovement : MovementController
     private InputReader _inputReader;
     
     private Player _player;
-    private Rigidbody _rigidbodyCompo;
+    [SerializeField] private Rigidbody _rigidbodyCompo;
     public Vector3 lookDirection;
     private bool _canMove = true;
     private float _distanceTravelled;
@@ -34,7 +34,7 @@ public class PlayerMovement : MovementController
     {
         _curDashCooltime = dashCooltime;
         _inputReader = GameManager.Instance.InputReader;
-        _rigidbodyCompo = GetComponent<Rigidbody>();
+        //_rigidbodyCompo = GetComponent<Rigidbody>();
         _player = GetComponent<Player>();
         moveSpeed = _player.Stat.GetValue(StatEnum.Speed);
     }

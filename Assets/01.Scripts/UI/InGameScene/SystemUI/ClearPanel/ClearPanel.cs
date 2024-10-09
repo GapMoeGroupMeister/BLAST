@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using DG.Tweening;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -25,21 +26,19 @@ public class ClearPanel : UIPanel
         SceneLoadingManager.LoadScene("LobbyScene");
     }
 
-    public void SetUI(LevelData data)
+    public void SetUI()
     {
-        _levelText.text = $"Level {data.level}";
-        _coinText.text = data.coin.ToString();
-        _servivedText.text = data.servivalTime;
-        _rankText.text = data.rank;
+        _levelText.text = $"Level {XPManager.Instance.GetLevel.ToString()}";
+        _coinText.text = ResourceManager.Instance.GetCoin().ToString();
+        _servivedText.text = TimeManager.Instance.CurrentGlobalTimerString;
     }
 
     public override void Open()
     {
+        Sequence seq = DOTween.Sequence();
         base.Open();
+        SetUI();
         
-        _levelText.text = $"Level {XPManager.Instance.GetLevel.ToString()}";
-        _coinText.text = ResourceManager.Instance.GetCoin().ToString();
-        _servivedText.text = TimeManager.Instance.CurrentGlobalTimerString;
         TimeManager.Instance.PauseTime();
     }
     
