@@ -67,8 +67,11 @@ public class SettingPanel : UIPanel
         if (_currentSetting == null)
             _currentSetting = new SettingData();
         HandleBGMChanged(_currentSetting.bgmVolume);
+        _bgmSlider.value = _currentSetting.bgmVolume;
         HandleSFXChanged(_currentSetting.sfxVolume);
+        _sfxSlider.value = _currentSetting.sfxVolume;
         HandleScreenSizeChanged(_currentSetting.screenSizeIndex);
+        _screenSettingDropDown.value = _currentSetting.screenSizeIndex;
     }
     
     public void SaveSetting()
