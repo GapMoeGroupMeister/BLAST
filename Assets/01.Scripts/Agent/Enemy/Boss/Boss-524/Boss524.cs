@@ -55,8 +55,8 @@ public class Boss524 : Boss
     public override void OnDie()
     {
         base.OnDie();
-        CanStateChangeable = false;
         StateMachine.ChangeState(Boss524StateEnum.Dead);
+        CanStateChangeable = false;
     }
 
     public override void Stun(float duration)

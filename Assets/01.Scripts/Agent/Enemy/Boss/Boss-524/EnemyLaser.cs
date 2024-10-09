@@ -37,7 +37,6 @@ public class EnemyLaser : MonoBehaviour
     {
         _isEnable = true;
         _length = length / 8;
-        _laserTrm.gameObject.SetActive(true);
         _laserTrm.localScale = new Vector3(1, _length, 1);
         _laserTrm.localPosition = Vector3.up * _length;
     }
@@ -45,7 +44,6 @@ public class EnemyLaser : MonoBehaviour
     public void DisableLaser()
     {
         _isEnable = false;
-        _laserTrm.gameObject.SetActive(false);
     }
 
     private void OnTriggerEnter(Collider other)
