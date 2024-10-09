@@ -5092,7 +5092,7 @@ MonoBehaviour:
     uiType: 3
   - canvasType: 2
     uiType: 5
-  _canvasTrm: {fileID: 2120686374}
+  canvasTrm: {fileID: 0}
 --- !u!4 &24343483
 Transform:
   m_ObjectHideFlags: 0
@@ -15878,7 +15878,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 694662798}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.14865234, y: 0.8513282, z: -0.35887846, w: 0.35263172}
+  m_LocalRotation: {x: 0.14865232, y: 0.8513282, z: -0.35887846, w: 0.35263172}
   m_LocalPosition: {x: -80, y: 120.22, z: 80}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -16574,6 +16574,21 @@ MonoBehaviour:
     poolCount: 10
   - poolType: DragoonLaser
     prefab: {fileID: 561551428290271870, guid: b599a3ce60ec6494fbf831f555faf077, type: 3}
+    poolCount: 10
+  - poolType: WizardAttackHitVFX
+    prefab: {fileID: 3818103532411360883, guid: a0ecdbf8c41609f4f880e0e74eed2eea,
+      type: 3}
+    poolCount: 10
+  - poolType: WizardAttackVFX
+    prefab: {fileID: 9191461038121309271, guid: f9b55c1b3f3372545bf2ba20238947ca,
+      type: 3}
+    poolCount: 10
+  - poolType: BossBlastVFX
+    prefab: {fileID: 89794959303907977, guid: 0118c55b9eda26746a9c48ddcaafb746, type: 3}
+    poolCount: 1
+  - poolType: DistructDroneVFX
+    prefab: {fileID: 6733917338718449129, guid: e6ec1730e7d4ba942a90aab5030e7192,
+      type: 3}
     poolCount: 10
 --- !u!1 &959530757
 GameObject:
@@ -17333,7 +17348,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1106337031}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.14865234, y: 0.8513282, z: -0.35887846, w: 0.35263172}
+  m_LocalRotation: {x: 0.14865232, y: 0.8513282, z: -0.35887846, w: 0.35263172}
   m_LocalPosition: {x: -80, y: 120.22, z: 80}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -30030,12 +30045,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f67796a032d8d4f469487e3fd8cd435d, type: 3}
---- !u!224 &2120686374 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 2229290250153757920, guid: a26c55cfcafa7f44c9da997bcca03dd6,
-    type: 3}
-  m_PrefabInstance: {fileID: 962037325}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &587710720521019515
 PrefabInstance:
   m_ObjectHideFlags: 0
