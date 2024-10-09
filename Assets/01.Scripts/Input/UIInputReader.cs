@@ -32,7 +32,8 @@ public class UIInputReader : ScriptableObject, Controls.IUIActions
 
     public void OnEsc(InputAction.CallbackContext context)
     {
-        OnEscEvent?.Invoke();
+        if(context.started)
+            OnEscEvent?.Invoke();
     }
 
     public void OnMultiply(InputAction.CallbackContext context)
