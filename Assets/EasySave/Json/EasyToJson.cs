@@ -7,7 +7,11 @@ namespace EasySave.Json
 {
     public static class EasyToJson
     {
+        #if UNITY_EDITOR
         private static readonly string LocalPath = Application.dataPath + "/10.Database/Json/";
+        #else
+        private static readonly string LocalPath = Application.persistentDataPath + "/Json/";
+        #endif
         
         public static void CreateJsonFolder()
         {

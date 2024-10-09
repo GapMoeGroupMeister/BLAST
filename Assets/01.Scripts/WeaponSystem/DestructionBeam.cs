@@ -7,6 +7,7 @@ public class DestructionBeam : WeaponEffect
     [SerializeField] private ParticleSystem _chargeEffect;
     [SerializeField] private ParticleSystem _beamEffect;
     [SerializeField] private BoxDamageCaster _damageCaster;
+    [SerializeField] private FeedbackPlayer _feedbackPlayer;
     
     [ContextMenu("StartBeam")]
     public void TestB()
@@ -25,6 +26,7 @@ public class DestructionBeam : WeaponEffect
         _chargeEffect.Play();
         yield return new WaitForSeconds(chargeTime);
         _beamEffect.Play();
+        _feedbackPlayer.PlayFeedback();
         yield return new WaitForSeconds(beamDuration);
         _beamEffect.Stop();
     }
