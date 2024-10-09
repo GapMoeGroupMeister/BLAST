@@ -28639,6 +28639,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rotationSpeed: 50
+  _playerPartController: {fileID: 0}
 --- !u!224 &2120686374 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2229290250153757920, guid: a26c55cfcafa7f44c9da997bcca03dd6,
@@ -28702,6 +28703,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1818484225686448684, guid: d715b0cde2ca3754eb7ea29b435422cf,
+        type: 3}
+      propertyPath: _currentPartType
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2601035507658518275, guid: d715b0cde2ca3754eb7ea29b435422cf,
         type: 3}

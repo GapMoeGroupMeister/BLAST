@@ -25,6 +25,8 @@ public class Boss524 : Boss
     public Transform cannonTrm;
     public List<EnemyLaser> laserVisualList;
     [field: SerializeField]
+    public LaserAligner LaserAlignerCompo { get; private set; }
+    [field: SerializeField]
     public LinePatternVisual LinePatternVisual { get; private set; }
     [field: SerializeField]
     public CirclePatternVisual CirclePatternVisual { get; private set; }
@@ -37,6 +39,7 @@ public class Boss524 : Boss
     protected override void Awake()
     {
         base.Awake();
+        LaserAlignerCompo.transform.SetParent(null);
         cannonTrm = transform.Find("CannonVisual");
         ContactHitCompo = GetComponent<EnemyContactHit>();
         StateMachine = new EnemyStateMachine<Boss524>(this);
