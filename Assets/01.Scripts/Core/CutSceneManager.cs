@@ -31,6 +31,7 @@ public class CutSceneManager : MonoBehaviour
 	{
         var movent = (_player.MovementCompo as PlayerMovement);
         movent.SetCanMove(canMove);
+        PlayerPartController.GetCurrentPlayerPart().SetCanAttackValue(canMove);
         _player.currentPlayerPart.magazineInfoL.CanAttack = canMove;
         _player.currentPlayerPart.magazineInfoR.CanAttack = canMove;
     }
