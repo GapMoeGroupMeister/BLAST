@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyContactHit : MonoBehaviour
 {
-    private bool _isActive = false;
+    private bool _isActive = true;
     public int damage;
 
     public void SetActive(bool isActive)
