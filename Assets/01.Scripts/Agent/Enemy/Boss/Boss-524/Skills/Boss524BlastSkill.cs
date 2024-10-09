@@ -1,3 +1,4 @@
+using Crogen.ObjectPooling;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -51,6 +52,7 @@ public class Boss524BlastSkill : EnemySkill<Boss524>
     {
         _owner.CirclePatternVisual.StartCirclePattern(_owner.transform.position, 5, 2.5f, 0.5f);
         yield return new WaitForSeconds(_beforeDelay);
+        _owner.gameObject.Pop(PoolType.BossBlastVFX, _owner.transform.position, Quaternion.identity);
         int count = Physics.OverlapSphereNonAlloc(_owner.transform.position, 40, _colliders, _owner.whatIsPlayer);
         if (count > 0)
         {
