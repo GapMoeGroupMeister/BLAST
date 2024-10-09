@@ -18,8 +18,9 @@ public class VolumeEffectManager : MonoSingleton<VolumeEffectManager>
     [SerializeField] private float _deltaDuration;
 
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         _globalVolume.profile.TryGet(out colorAd);
         _globalVolume.profile.TryGet(out chromaticAb);
 

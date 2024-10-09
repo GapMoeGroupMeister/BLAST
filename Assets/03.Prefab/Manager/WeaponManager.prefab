@@ -182,7 +182,6 @@ MonoBehaviour:
   _beamTrm: []
   _chargeTime: 1.5
   _beamDuration: 5
-  _feedbackPlayer: {fileID: 7624023167472649217}
 --- !u!114 &397250888331419547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -615,7 +614,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canUse: 0
-  weaponEnabled: 0
+  weaponEnabled: 1
   _cooldown: 13
   level: 1
   isUniqueWeapon: 0
@@ -876,7 +875,6 @@ MonoBehaviour:
   _empEffect: {fileID: 7241893749186972951, guid: 19fa3d89eb6621f4bbf178cb5a2c48a5,
     type: 3}
   _defaultDamage: 1
-  _feedbackPlayer: {fileID: 0}
 --- !u!114 &1006913282202067868
 MonoBehaviour:
   m_ObjectHideFlags: 0

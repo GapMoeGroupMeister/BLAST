@@ -4,8 +4,9 @@ public class MultiplyManager : MonoSingleton<MultiplyManager>
 {
     [SerializeField] private UIInputReader _inputReader;
     
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         _inputReader.OnMultiplyEvent += HandleMultiply;
     }
 
