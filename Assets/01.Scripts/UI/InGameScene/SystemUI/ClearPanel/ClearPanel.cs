@@ -42,11 +42,10 @@ public class ClearPanel : UIPanel
         _bgmController.EndAudio();
         yield return new WaitForSeconds(3f);
         _feedbackPlayer.PlayFeedback();
-        TimeManager.Instance.PauseTime();
         yield return new WaitForSecondsRealtime(13f);
         base.Open();
         SetUI();
-        
+        TimeManager.Instance.PauseTime();
     }
 
     public override void Open()
