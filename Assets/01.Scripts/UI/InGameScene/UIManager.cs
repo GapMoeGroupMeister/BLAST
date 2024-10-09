@@ -22,8 +22,11 @@ public class UIManager : MonoSingleton<UIManager>
     private Transform _gameCanvasTrm;
     private Transform _eventCanvasTrm;
     private Transform _systemCanvasTrm;
-    private void Awake()
+    
+    protected override void Awake()
     {
+        base.Awake();
+        uiPanelsDictionary.Clear();
         _gameCanvasTrm = _canvasTrm.Find("GameCanvas");
         _eventCanvasTrm = _canvasTrm.Find("EventCanvas");
         _systemCanvasTrm = _canvasTrm.Find("SystemCanvas");
@@ -34,7 +37,10 @@ public class UIManager : MonoSingleton<UIManager>
 
     }
 
-   
+    private void OnDisable()
+    {
+        inputReader.OnEscEvent -= HandleOpenPause;
+    }
 
     private void Initialize()
     {

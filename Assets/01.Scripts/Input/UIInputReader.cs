@@ -23,13 +23,17 @@ public class UIInputReader : ScriptableObject, Controls.IUIActions
 
     private void OnDisable()
     {
+        OnEscEvent = null;
+        OnMultiplyEvent = null;
+        
         _controls.Disable();
     }
 
 
     public void OnEsc(InputAction.CallbackContext context)
     {
-        OnEscEvent?.Invoke();
+        if(context.started)
+            OnEscEvent?.Invoke();
     }
 
     public void OnMultiply(InputAction.CallbackContext context)

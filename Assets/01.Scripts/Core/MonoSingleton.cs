@@ -35,4 +35,19 @@ public class MonoSingleton<T> : MonoBehaviour where T : MonoBehaviour
     {
         IsDestroyed = true;
     }
+    
+    protected virtual void Awake()
+    {
+        if (_instance == null)
+        {
+            _instance = this as T;
+            //DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            ///Destroy(gameObject);
+        }
+    }
+    
+    
 }

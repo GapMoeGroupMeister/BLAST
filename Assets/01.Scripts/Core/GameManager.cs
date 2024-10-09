@@ -40,4 +40,9 @@ public class GameManager : MonoSingleton<GameManager>
 		_cutSceneManager.PlayGameStartCutScene();
 		
 	}
+
+	public void GameExit()
+	{
+		SceneLoadingManager.LoadScene("LobbyScene");
+	}
 }

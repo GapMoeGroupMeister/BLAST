@@ -78,7 +78,9 @@ public abstract class DamageCaster : MonoBehaviour
 				}
 			}
 			if(_castColliders[i] != null)
+			{
 				OnCasterSuccessEvent?.Invoke();
+			}
 			
 		}
 

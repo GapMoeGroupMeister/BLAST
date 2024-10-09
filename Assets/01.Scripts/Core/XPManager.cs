@@ -16,7 +16,6 @@ public class XPManager : MonoSingleton<XPManager>
 
 	public int GetLevel => _level;
 
-	private bool _canSelectWeapon = true;
 
 	public int XP
 	{
@@ -30,10 +29,7 @@ public class XPManager : MonoSingleton<XPManager>
 			{
 				_xp = 0;
 				++_level;
-				if (_canSelectWeapon)
-					_canSelectWeapon = false;
-				else
-					OnLevelUpEvent?.Invoke(_level);
+				OnLevelUpEvent?.Invoke(_level);
 				MaxXPUp();
 			}
 			else

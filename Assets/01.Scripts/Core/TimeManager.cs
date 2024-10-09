@@ -31,7 +31,7 @@ public class TimeManager : MonoSingleton<TimeManager>
 
 	[SerializeField] private TextMeshProUGUI _timeText;
 
-	private void Awake()
+	protected override void Awake()
 	{
 		PlayTime();
 	}

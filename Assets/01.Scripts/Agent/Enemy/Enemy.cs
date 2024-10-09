@@ -16,7 +16,7 @@ public abstract class Enemy : Agent, IPoolingObject
     [SerializeField] private int _damageAmount = 1;
     [SerializeField] private DamageCaster[] _damageCasters;
     [HideInInspector]
-    public CapsuleCollider capsuleCollider;
+    public Collider colliderCompo;
 
     public float StunTime { get; protected set; }
     public float Level { get; protected set; }
@@ -26,19 +26,12 @@ public abstract class Enemy : Agent, IPoolingObject
     public PoolType OriginPoolType { get; set; }
     GameObject IPoolingObject.gameObject { get; set; }
 
-
-    private void OnValidate()
-    {
-        Player player = FindObjectOfType<Player>();
-        if (player != null) targetTrm = player.transform;
-
-    }
-
     protected override void Awake()
     {
         base.Awake();
+        targetTrm = GameManager.Instance.Player.transform;
         HealthCompo.OnDieEvent.AddListener(OnDie);
-        capsuleCollider = GetComponent<CapsuleCollider>();
+        colliderCompo = GetComponent<Collider>();
         EnemyMovementCompo = MovementCompo as EnemyMovement;
         EnemyMovementCompo.Initialize(this);
         RendererCompo = transform.Find("Visual/BaseMesh").GetComponent<Renderer>();
@@ -54,7 +47,7 @@ public abstract class Enemy : Agent, IPoolingObject
 
     public virtual void OnDie()
     {
-        capsuleCollider.enabled = false;
+        colliderCompo.enabled = false;
         WaveManager.Instance.RemoveEnemy(this);
     }
 
@@ -64,7 +57,7 @@ public abstract class Enemy : Agent, IPoolingObject
 
     public virtual void OnPop()
     {
-        capsuleCollider.enabled = true;
+        colliderCompo.enabled = true;
         Level = WaveManager.Instance.CurrentWave / WaveManager.Instance.stageWaves.wavelist.Length;
         EnemyStatDataSO stat = Stat as EnemyStatDataSO;
         foreach (var key in stat.statModifierDictionary.Keys)
@@ -73,7 +66,6 @@ public abstract class Enemy : Agent, IPoolingObject
             float statModifier = stat.GetModifierValue(key, Level);
             stat.SetValue(key, currentStat * statModifier);
         }
-        targetTrm = GameManager.Instance.Player.transform;
         HealthCompo.Initialize(this, (int)stat.GetValue(StatEnum.MaxHP));
         HealthCompo.TakeDamage(0);
         EnemyMovementCompo.EnableNavAgent();

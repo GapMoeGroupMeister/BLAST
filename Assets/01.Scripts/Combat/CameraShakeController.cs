@@ -11,8 +11,9 @@ public class CameraShakeController : MonoSingleton<CameraShakeController>
     private float _power, _duration;
     private Coroutine _shakeRoutine;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         _perlin = _playerCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
     }
 

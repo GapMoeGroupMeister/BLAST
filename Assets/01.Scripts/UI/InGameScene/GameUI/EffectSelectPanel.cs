@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,7 @@ public class EffectSelectPanel : UIPanel
     private TimeManager _timeManager;
 
     private int _openCount = 0;
+    public bool isOpenedSelectPanel = false;
 
     private void Start()
     {
@@ -33,24 +35,32 @@ public class EffectSelectPanel : UIPanel
         }
     }
 
-	private void OnDestroy()
-	{
+    private void OnDestroy()
+    {
         for (int i = 0; i < slots.Length; ++i)
         {
             slots[i].OnSelectedEndEvent -= HandleSelectedEnd;
         }
     }
 
+    private void Update()
+	{
+        if (_openCount > 0 && isOpenedSelectPanel == false)
+        {
+            PlayerPartController.GetCurrentPlayerPart().SetCanAttackValue(false);
+            isOpenedSelectPanel = true;
+            Open();
+        }
+    }
+
+
     private void HandleLevelUp(int level)
 	{
         ++_openCount;
-        Open();
     }
 
     public override void Open()
     {
-        base.Open();
-
         //셔플
         WeaponTypeShuffle(weaponTypes);
 
@@ -63,11 +73,12 @@ public class EffectSelectPanel : UIPanel
             //등록할 수 있는 무기인가
             if (weapon.canUse)
 			{
-                //등록 가능한 자리가 없다면
+                //등록 가능한 자리가 없고
                 if(WeaponManager.Instance.GetCurWeaponCount() == 10)
 				{
-                    //새로운 무기를 추가하지 않겠다.
-                    if (weapon.level == 1)
+                    Debug.Log("sfsf");
+                    //새로운 무기를 만난다면 추가하지 않겠다.
+                    if (weapon.weaponEnabled == false)
                         continue;
 				}
 
@@ -89,29 +100,50 @@ public class EffectSelectPanel : UIPanel
 
         //카드 셋팅
         SetUpWeaponCards(curWeaponTypes);
+
+        RectTransform rectTrm = transform as RectTransform;
+        rectTrm.anchoredPosition = new Vector2(0f, -400f);
+        Sequence seq = DOTween.Sequence();
+        seq.SetUpdate(true);
+        seq.Append(rectTrm.DOAnchorPosY(0f, 0.3f));
+        seq.Join(_canvasGroup.DOFade(1, _activeDuration).SetUpdate(_useUnscaledTime));
+        seq.AppendInterval(0.3f);
+        seq.AppendCallback(() =>
+        {
+            _canvasGroup.interactable = true;
+            _canvasGroup.blocksRaycasts = true;
+        });
     }
-    
-    private void SetUpWeaponCards(List<WeaponType> curWeaponTypes)
+
+	public override void Close()
+	{
+        RectTransform rectTrm = transform as RectTransform;
+        rectTrm.anchoredPosition =  new Vector2(0f, 0f);
+        _canvasGroup.interactable = false;
+        _canvasGroup.blocksRaycasts = false;
+        Sequence seq = DOTween.Sequence();
+        seq.SetUpdate(true);
+        seq.Append(rectTrm.DOAnchorPosY(-400f, 0.3f));
+        seq.Join(_canvasGroup.DOFade(0, _activeDuration).SetUpdate(_useUnscaledTime));
+        seq.AppendCallback(() => 
+        {
+            --_openCount;
+            isOpenedSelectPanel = false;
+            PlayerPartController.GetCurrentPlayerPart().SetCanAttackValue(true);
+        });
+    }
+
+	private void SetUpWeaponCards(List<WeaponType> curWeaponTypes)
     {
 		for (int i = 0; i < slots.Length; ++i)
 		{
             slots[i].SetWeaponInfo(
                 curWeaponTypes[i], 
                 uiDataSO[curWeaponTypes[i]]);
-            slots[i].OnSelectedEndEvent += HandleSelected;
         }
 
         //멈추기
         _timeManager.PauseTime();
-    }
-
-	private void HandleSelected()
-	{
-        for (int i = 0; i < slots.Length; ++i)
-        {
-            slots[i].OnSelectedEndEvent -= HandleSelected;
-        }
-        --_openCount;
     }
 
 	public List<WeaponType> WeaponTypeShuffle(List<WeaponType> list)

@@ -20,6 +20,7 @@ public class DieContainer : MonoBehaviour
 
 	public void ShowPanel(float duration = 0.4f)
 	{
+		ResourceManager.Instance.SaveCoin();
 		_timeText.text = TimeManager.Instance.CurrentGlobalTimerString;
 		_coinText.text = ResourceManager.Instance.GetCoin().ToString();
 		Sequence seq = DOTween.Sequence().SetUpdate(true);

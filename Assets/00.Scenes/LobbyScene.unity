@@ -7198,7 +7198,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1107245001}
   m_HandleRect: {fileID: 1107245000}
   m_Direction: 0
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -14696,54 +14696,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1842102298}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!1 &841111314
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 841111316}
-  - component: {fileID: 841111315}
-  m_Layer: 0
-  m_Name: GameManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &841111315
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 841111314}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6007ab315147d874fb0ec4c38a1db2cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <InputReader>k__BackingField: {fileID: 11400000, guid: 836c45128fe44d04995e0341f944d184,
-    type: 2}
-  <Player>k__BackingField: {fileID: 0}
-  _cutSceneManager: {fileID: 0}
---- !u!4 &841111316
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 841111314}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.9970337, y: 8.753454, z: -6.951042}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &842583071
 GameObject:
   m_ObjectHideFlags: 0
@@ -36640,6 +36592,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7753c5edc40e04142862f06064ca5e79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _partChanager: {fileID: 0}
 --- !u!1 &1318209891
 GameObject:
   m_ObjectHideFlags: 0
@@ -54010,6 +53963,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 6246947125576457569}
+        m_TargetAssemblyTypeName: SettingPanel, Assembly-CSharp
+        m_MethodName: SaveSetting
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4803347527261982719
 GameObject:
   m_ObjectHideFlags: 0
@@ -55605,7 +55570,6 @@ SceneRoots:
   - {fileID: 181535276}
   - {fileID: 1375416737119453946}
   - {fileID: 1402251488}
-  - {fileID: 841111316}
   - {fileID: 1402692171}
   - {fileID: 350601426}
   - {fileID: 1315527697}

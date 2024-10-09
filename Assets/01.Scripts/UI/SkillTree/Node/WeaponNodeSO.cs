@@ -5,5 +5,6 @@ using UnityEngine;
 public class WeaponNodeSO : NodeSO
 {
     public WeaponType weapon;
-    internal string explain;
+    [TextArea]
+    public string explain;
 }
