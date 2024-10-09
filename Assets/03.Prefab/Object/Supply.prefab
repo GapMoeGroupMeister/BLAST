@@ -96,7 +96,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c86755307ef8473eb3eeb2ccefe5bba2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   _isDestroy: 0
   _destroyParticlePoolType: 0
 --- !u!114 &6432957555243073725
@@ -111,6 +110,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec2e8163a86f4414b853f4241c9b4a04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _renderers: []
+  _damageDuration: 0.005
+  OnHealthChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDieEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  _maxHealth: 0
+  _isDead: 0
 --- !u!1001 &5259457210251923157
 PrefabInstance:
   m_ObjectHideFlags: 0

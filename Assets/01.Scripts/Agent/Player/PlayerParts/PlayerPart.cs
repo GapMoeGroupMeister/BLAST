@@ -123,6 +123,12 @@ public abstract class PlayerPart : MonoBehaviour
 		}
 	}
 
+	public void SetCanAttackValue(bool value)
+	{
+		magazineInfoL.CanAttack = value;
+		magazineInfoR.CanAttack = value;
+	}
+
 	protected virtual void OnEnable()
 	{
 		magazineInfoL.CanAttack = true;
