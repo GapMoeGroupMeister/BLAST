@@ -55,7 +55,7 @@ public class CutSceneManager : MonoBehaviour
         ZoomController.Instance.ForceZoomOut(_zoomOutSize, _zoomOutDuration, 1f);
         yield return new WaitForSeconds(5f);
         CameraShakeController.Instance.ShakeCam(20f, 0.35f);
-        _gameCanvas.Open();
         PlayerSetMovementOption(true);
+        _gameCanvas.Open();
     }
 }
