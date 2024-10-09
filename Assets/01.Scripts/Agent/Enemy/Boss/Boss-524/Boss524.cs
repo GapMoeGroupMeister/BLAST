@@ -42,6 +42,7 @@ public class Boss524 : Boss
         LaserAlignerCompo.transform.SetParent(null);
         cannonTrm = transform.Find("CannonVisual");
         ContactHitCompo = GetComponent<EnemyContactHit>();
+        ContactHitCompo.SetActive(false);
         StateMachine = new EnemyStateMachine<Boss524>(this);
         StateMachine.Initialize(Boss524StateEnum.Chase);
         SkillManager = new EnemySkillManager<Boss524>(this);
