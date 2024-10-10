@@ -27,7 +27,6 @@ public class Nuclear : MonoBehaviour
     {
         transform.position  = position;
     }
-    [ContextMenu("DebugExplode")]    
     public void ExplodeNuclear()
     {
         StartCoroutine(ExplodeCoroutine());
@@ -36,18 +35,18 @@ public class Nuclear : MonoBehaviour
     private IEnumerator ExplodeCoroutine()
     {
         _rangeMark.enabled = true;
-        _decalMaterial.SetFloat(_waveSpeedHash, 0f);
+        _decalMaterial.SetFloat(_waveSpeedHash, 2f);
         float currentTime = 0;
         while (currentTime < _waitDelay)
         {
             currentTime += Time.deltaTime;
 
-            _decalMaterial.SetFloat(_waveSpeedHash, Mathf.Lerp(1f, 5f, currentTime / _waitDelay));
+            //_decalMaterial.SetFloat(_waveSpeedHash, Mathf.Lerp(1f, 5f, currentTime / _waitDelay));
             yield return null;
         }
         _rangeMark.enabled = false;
         _damageCaster.CastDamage(nuclearDamage);
-        ZoomController.Instance.ForceZoomOut(60f, 0.5f, 4f);
+        //ZoomController.Instance.ForceZoomOut(60f, 0.5f, 4f);
         _nuclearVFX.Play();
         _soundFeedbackPlayer.PlayFeedback();
         
