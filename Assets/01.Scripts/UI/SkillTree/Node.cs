@@ -2,6 +2,7 @@ using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -11,6 +12,8 @@ public class Node : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     public NodeSO node;
     private TechTree _tree;
 
+    private Stack<Node> _nodes = new Stack<Node>();
+    private Node _curEnableNode;
     private RectTransform _rectTrm;
     private RectTransform _edgeRectTrm;
     private Image _edge;
@@ -23,10 +26,14 @@ public class Node : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 
     private bool _isNodeEnable = false;         //현재 노드가 뚫려있는지
     private bool _isNodeActive = false;         //현재 노드를 뚫을준비가 되있는지
+
     public bool IsNodeEnable => _isNodeEnable;
     public bool IsNodeActive => _isNodeActive;
 
+    private Coroutine _enableCoroutine;
     private Sequence _seq;
+    private int _requireCoin;
+
 
     private void Awake()
     {
@@ -43,9 +50,35 @@ public class Node : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 
 
 
+    private IEnumerator StartEnableAllNodes()
+    {
+        if (_isNodeEnable) yield break;
+
+        if (_requireCoin > GameDataManager.Instance.Coin)
+        {
+            _tree.warningPanel.SetText(_coinLackTxt);
+            _tree.warningPanel.Open();
+            yield break;
+        }
+
+        while (_nodes.TryPop(out _curEnableNode))
+        {
+            _curEnableNode.StartEnableNode();
+            yield return new WaitUntil(() => _curEnableNode.IsNodeEnable);
+        }
+    }
+
+    private void StopEnableAllNodes()
+    {
+        if (_enableCoroutine != null) StopCoroutine(_enableCoroutine);
+        _curEnableNode?.StopEnableNode();
+        _nodes.Clear();
+    }
+
+
     public void StartEnableNode()
     {
-        if (_isNodeEnable || _isNodeActive == false) return;
+        if (_isNodeEnable) return;
 
         //코인 부족
         if (node.requireCoin > GameDataManager.Instance.Coin)
@@ -67,7 +100,7 @@ public class Node : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 
     public void StopEnableNode()
     {
-        if (_isNodeEnable || IsNodeActive == false) return;
+        if (_isNodeEnable) return;
 
         if (_seq != null && _seq.active)
             _seq.Kill();
@@ -77,6 +110,8 @@ public class Node : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
         _seq.Append(_vertex.DOFillAmount(0, _disableDuration / 2).SetEase(Ease.Linear))
             .Append(_edge.DOFillAmount(0, _disableDuration / 2).SetEase(Ease.Linear));
     }
+
+
 
     public void EnableNode()
     {
@@ -173,29 +208,34 @@ public class Node : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 
         if (_isNodeEnable == false)
         {
-            int requireCoin = 0;
+            _requireCoin = 0;
             NodeSO curNode = node;
 
-            while (!_tree.GetNode(curNode.id)._isNodeEnable)
+            while (curNode != null && !_tree.GetNode(curNode.id)._isNodeEnable)
             {
-                requireCoin += curNode.requireCoin;
+                _requireCoin += curNode.requireCoin;
+                _nodes.Push(_tree.GetNode(curNode.id));
+
+                curNode = _tree.treeSO.nodes.Find(node => node.nextNodes.Contains(curNode));
             }
 
             int coin = GameDataManager.Instance.Coin;
-            _tree.selectNodeEvent?.Invoke(coin, requireCoin);
+            _tree.selectNodeEvent?.Invoke(coin, _requireCoin);
         }
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
         if (eventData.button != PointerEventData.InputButton.Left) return;
-        StopEnableNode();
+        StopEnableAllNodes();
+        //StopEnableNode();
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
         if (eventData.button != PointerEventData.InputButton.Left) return;
-        StartEnableNode();
+        _enableCoroutine = StartCoroutine(StartEnableAllNodes());
+        //StartEnableNode();
     }
 
     public void OnPointerClick(PointerEventData eventData)
