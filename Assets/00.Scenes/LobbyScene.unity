@@ -36943,6 +36943,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 500474195}
+        m_TargetAssemblyTypeName: WarningPanel, Assembly-CSharp
+        m_MethodName: Close
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &1351814140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37832,6 +37844,7 @@ MonoBehaviour:
   _upDuration: 2
   _upDistance: 13
   _testSO: {fileID: 11400000, guid: 46bcd6d338148844b9c8c3d6dd64840c, type: 2}
+  partData: {fileID: 0}
 --- !u!1 &1402692169
 GameObject:
   m_ObjectHideFlags: 0
@@ -37862,7 +37875,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _weaponUIDataSO: {fileID: 11400000, guid: 2e4ab1b1407c35e40b49c62daeae3afb, type: 2}
-  _treeSO: {fileID: 11400000, guid: b3d20ea938f950b4a8f62eb53c0f5f9a, type: 2}
+  _treeSO: {fileID: 0}
   parts: []
   onCoinChange:
     m_PersistentCalls:
