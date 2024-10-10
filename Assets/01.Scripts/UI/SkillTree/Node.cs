@@ -41,6 +41,8 @@ public class Node : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
         _edgeRectTrm = transform.Find("Edge") as RectTransform;
     }
 
+
+
     public void StartEnableNode()
     {
         if (_isNodeEnable || _isNodeActive == false) return;
@@ -171,8 +173,16 @@ public class Node : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 
         if (_isNodeEnable == false)
         {
+            int requireCoin = 0;
+            NodeSO curNode = node;
+
+            while (!_tree.GetNode(curNode.id)._isNodeEnable)
+            {
+                requireCoin += curNode.requireCoin;
+            }
+
             int coin = GameDataManager.Instance.Coin;
-            _tree.selectNodeEvent?.Invoke(coin, node.requireCoin);
+            _tree.selectNodeEvent?.Invoke(coin, requireCoin);
         }
     }
 
