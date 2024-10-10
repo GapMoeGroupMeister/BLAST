@@ -15,16 +15,23 @@ public class TimeManager : MonoSingleton<TimeManager>
 		{
 			_currentGlobalTimer = value;
 
+			_timeText.text = CurrentGlobalTimerString;
+		}
+	}
+	public string CurrentGlobalTimerString 
+	{
+		get {
+			
 			int min = (int)_currentGlobalTimer / 60;
 			int sec = (int)_currentGlobalTimer % 60;
 
-			_timeText.text = $"{min.ToString("00")} : {sec.ToString("00")}";
+			return $"{min.ToString("00")} : {sec.ToString("00")}";
 		}
 	}
 
 	[SerializeField] private TextMeshProUGUI _timeText;
 
-	private void Awake()
+	protected override void Awake()
 	{
 		PlayTime();
 	}

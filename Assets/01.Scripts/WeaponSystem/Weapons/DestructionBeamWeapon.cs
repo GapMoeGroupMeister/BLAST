@@ -10,6 +10,7 @@ public class DestructionBeamWeapon : Weapon
     
     [SerializeField] private float _chargeTime = 1;
     [SerializeField] private float _beamDuration = 1;
+    
 
     private void Start()
     {

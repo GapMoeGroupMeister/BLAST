@@ -14,6 +14,7 @@ public abstract class DamageCaster : MonoBehaviour
     public List<DamageCaster> excludedDamageCasterList;
 
 	public event Action OnCasterEvent;
+	public event Action OnCasterSuccessEvent;
 	public event Action OnDamageCastSuccessEvent;
 
 	[Header("DamageEffect")]
@@ -60,9 +61,10 @@ public abstract class DamageCaster : MonoBehaviour
 			{
 				OnDamageCastSuccessEvent?.Invoke();
 			}
-			if (_castColliders[i].TryGetComponent(out Agent agent))
+			if (_castColliders[i].TryGetComponent(out IDamageable damageable))
 			{
-				agent.HealthCompo.TakeDamage(damage);
+				damageable.TakeDamage(damage);
+				PopupTextManager.Instance.GenerateDamagePopup(transform.position, damage, effectStateType, false);
 			}
 			if(_castColliders[i].TryGetComponent(out IEffectable effectable))
 			{
@@ -74,6 +76,10 @@ public abstract class DamageCaster : MonoBehaviour
 				{
 					effectable.ApplyEffect(effectStateType, _effectDuration, _effectLevel);
 				}
+			}
+			if(_castColliders[i] != null)
+			{
+				OnCasterSuccessEvent?.Invoke();
 			}
 			
 		}

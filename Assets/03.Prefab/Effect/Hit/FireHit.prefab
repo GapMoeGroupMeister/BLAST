@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2378385045970906311}
   - component: {fileID: 1301697207402410478}
   - component: {fileID: 630240670755586313}
-  - component: {fileID: 339846806225043144}
+  - component: {fileID: 3951701277066519813}
   m_Layer: 0
   m_Name: FireHit
   m_TagString: Untagged
@@ -4951,7 +4951,7 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &339846806225043144
+--- !u!114 &3951701277066519813
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4960,16 +4960,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 162584487599433031}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78d9a2fbe0a4bc24ba0c468568bfbaee, type: 3}
+  m_Script: {fileID: 11500000, guid: 8f439c72c0dea30409ed95ea8afd0013, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _duration: 1.1
   _particles:
   - {fileID: 1301697207402410478}
   - {fileID: 8984914868575819726}
   - {fileID: 2818786546583640234}
   - {fileID: 2596476896121613433}
   - {fileID: 1163100820633013457}
-  _effects: []
 --- !u!1 &184910779077419236
 GameObject:
   m_ObjectHideFlags: 0

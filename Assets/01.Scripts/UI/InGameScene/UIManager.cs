@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Crogen.PowerfulInput;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public enum InGameUIEnum
 {
@@ -17,16 +18,19 @@ public class UIManager : MonoSingleton<UIManager>
 {
     public UIInputReader inputReader;
     [SerializeField] private InGameUIInfo[] _UIs;
-    [SerializeField] private Transform _canvasTrm;
+    public Transform canvasTrm;
     private Dictionary<InGameUIEnum, IWindowPanel> uiPanelsDictionary = new Dictionary<InGameUIEnum, IWindowPanel>();
     private Transform _gameCanvasTrm;
     private Transform _eventCanvasTrm;
     private Transform _systemCanvasTrm;
-    private void Awake()
+    
+    protected override void Awake()
     {
-        _gameCanvasTrm = _canvasTrm.Find("GameCanvas");
-        _eventCanvasTrm = _canvasTrm.Find("EventCanvas");
-        _systemCanvasTrm = _canvasTrm.Find("SystemCanvas");
+        base.Awake();
+        uiPanelsDictionary.Clear();
+        _gameCanvasTrm = canvasTrm.Find("GameCanvas");
+        _eventCanvasTrm = canvasTrm.Find("EventCanvas");
+        _systemCanvasTrm = canvasTrm.Find("SystemCanvas");
         
         Initialize();
 
@@ -34,7 +38,10 @@ public class UIManager : MonoSingleton<UIManager>
 
     }
 
-   
+    private void OnDisable()
+    {
+        inputReader.OnEscEvent -= HandleOpenPause;
+    }
 
     private void Initialize()
     {

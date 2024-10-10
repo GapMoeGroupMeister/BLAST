@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,9 @@ public class EffectSelectPanel : UIPanel
     //Managements
     private WeaponManager _weaponManager;
     private TimeManager _timeManager;
+
+    private int _openCount = 0;
+    public bool isOpenedSelectPanel = false;
 
     private void Start()
     {
@@ -31,23 +35,32 @@ public class EffectSelectPanel : UIPanel
         }
     }
 
-	private void OnDestroy()
-	{
+    private void OnDestroy()
+    {
         for (int i = 0; i < slots.Length; ++i)
         {
             slots[i].OnSelectedEndEvent -= HandleSelectedEnd;
         }
     }
 
-    private void HandleLevelUp(int _)
+    private void Update()
 	{
-        Open();
+        if (_openCount > 0 && isOpenedSelectPanel == false)
+        {
+            PlayerPartController.GetCurrentPlayerPart().SetCanAttackValue(false);
+            isOpenedSelectPanel = true;
+            Open();
+        }
+    }
+
+
+    private void HandleLevelUp(int level)
+	{
+        ++_openCount;
     }
 
     public override void Open()
     {
-        base.Open();
-
         //셔플
         WeaponTypeShuffle(weaponTypes);
 
@@ -57,15 +70,28 @@ public class EffectSelectPanel : UIPanel
 		{
             Weapon weapon = _weaponManager.GetWeapon(weaponType);
 
+            //등록할 수 있는 무기인가
             if (weapon.canUse)
 			{
-                if(weapon.isUniqueWeapon)
+                //등록 가능한 자리가 없고
+                if(WeaponManager.Instance.GetCurWeaponCount() == 10)
+				{
+                    Debug.Log("sfsf");
+                    //새로운 무기를 만난다면 추가하지 않겠다.
+                    if (weapon.weaponEnabled == false)
+                        continue;
+				}
+
+                //전용 무기인가
+                if (weapon.isUniqueWeapon)
 				{
                     if(weapon.partType != PlayerPartController.GetCurrentPlayerPart().playerPartType)
                         continue;
 				}
+                //전용 무기가 아니라면
                 curWeaponTypes.Add(weaponType);
             }
+            //등록을 모두 마쳤다면
             if(curWeaponTypes.Count >= 3)
 			{
                 break;
@@ -74,11 +100,42 @@ public class EffectSelectPanel : UIPanel
 
         //카드 셋팅
         SetUpWeaponCards(curWeaponTypes);
+
+        RectTransform rectTrm = transform as RectTransform;
+        rectTrm.anchoredPosition = new Vector2(0f, -400f);
+        Sequence seq = DOTween.Sequence();
+        seq.SetUpdate(true);
+        seq.Append(rectTrm.DOAnchorPosY(0f, 0.3f));
+        seq.Join(_canvasGroup.DOFade(1, _activeDuration).SetUpdate(_useUnscaledTime));
+        seq.AppendInterval(0.3f);
+        seq.AppendCallback(() =>
+        {
+            _canvasGroup.interactable = true;
+            _canvasGroup.blocksRaycasts = true;
+        });
     }
-    
-    private void SetUpWeaponCards(List<WeaponType> curWeaponTypes)
+
+	public override void Close()
+	{
+        RectTransform rectTrm = transform as RectTransform;
+        rectTrm.anchoredPosition =  new Vector2(0f, 0f);
+        _canvasGroup.interactable = false;
+        _canvasGroup.blocksRaycasts = false;
+        Sequence seq = DOTween.Sequence();
+        seq.SetUpdate(true);
+        seq.Append(rectTrm.DOAnchorPosY(-400f, 0.3f));
+        seq.Join(_canvasGroup.DOFade(0, _activeDuration).SetUpdate(_useUnscaledTime));
+        seq.AppendCallback(() => 
+        {
+            --_openCount;
+            isOpenedSelectPanel = false;
+            PlayerPartController.GetCurrentPlayerPart().SetCanAttackValue(true);
+        });
+    }
+
+	private void SetUpWeaponCards(List<WeaponType> curWeaponTypes)
     {
-		for (int i = 0; i < slots.Length; ++i)
+		for (int i = 0; i < curWeaponTypes.Count; ++i)
 		{
             slots[i].SetWeaponInfo(
                 curWeaponTypes[i], 
@@ -89,7 +146,7 @@ public class EffectSelectPanel : UIPanel
         _timeManager.PauseTime();
     }
 
-    public List<WeaponType> WeaponTypeShuffle(List<WeaponType> list)
+	public List<WeaponType> WeaponTypeShuffle(List<WeaponType> list)
     {
         // Random 인스턴스 생성 (Unity에서 Random.Range를 사용할 수도 있지만, 시스템의 랜덤 클래스를 사용하는 것이 일반적)
         System.Random rng = new System.Random();

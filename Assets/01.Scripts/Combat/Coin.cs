@@ -6,7 +6,7 @@ public class Coin : MonoBehaviour, IPoolingObject
 {
 	public PoolType OriginPoolType { get; set; }
 	GameObject IPoolingObject.gameObject { get; set; }
-
+	[SerializeField] private int _coinAmount = 15;
 	[SerializeField] private float _radius;
 	[SerializeField] private LayerMask _whatIsPlayer;
 	private Collider[] _colliders;
@@ -28,7 +28,7 @@ public class Coin : MonoBehaviour, IPoolingObject
 
 	public void OnPush()
 	{
-		_resourceManager.AddCoin(5);
+		_resourceManager.AddCoin(_coinAmount);
 	}
 
 	private void FixedUpdate()

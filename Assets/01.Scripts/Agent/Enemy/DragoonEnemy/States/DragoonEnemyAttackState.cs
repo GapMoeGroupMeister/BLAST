@@ -46,13 +46,7 @@ public class DragoonEnemyAttackState : EnemyState<DragoonEnemy>
             Vector3 startPos = _enemyBase.transform.position;
             startPos.y = 0;
             Vector3 direction = _targetPos - startPos;
-            if (Physics.Raycast(startPos, direction.normalized, out RaycastHit hit, direction.magnitude, _enemyBase.whatIsPlayer))
-            {
-                if(hit.collider.TryGetComponent(out IDamageable damageable))
-                {
-                    damageable.TakeDamage((int)_enemyBase.Stat.GetValue(StatEnum.Attack));
-                }
-            }
+            _enemyBase.CastDamage();
             RemoveTrigger(AnimationTriggerEnum.AttackTrigger);
         }
         if (IsTriggerCalled(AnimationTriggerEnum.EndTrigger))

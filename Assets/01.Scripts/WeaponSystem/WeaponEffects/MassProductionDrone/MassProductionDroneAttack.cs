@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MassProductionDroneAttack : MonoBehaviour, IMassProductionDroneCompo
+public class MassProductionDroneAttack : MonoBehaviour
 {
 	private MassProductionDrone _droneBase;
 	[SerializeField] private float _attackRadius = 15f;
@@ -12,60 +12,30 @@ public class MassProductionDroneAttack : MonoBehaviour, IMassProductionDroneComp
 	public int damage = 1;
 
 	[Header("Effect")]
-	[SerializeField] private ParticleSystem _fireEffect;
+	[SerializeField] private LineRenderer _laserEffect;
 	[SerializeField] private DamageCaster _caster;
 
-	public void Init(MassProductionDrone droneBase, int level)
+	private void Awake()
 	{
-		_droneBase ??= droneBase;
-		_attackRadius = 15f + 15f * (level / 10f);
+		_droneBase = GetComponent<MassProductionDrone>();
+		_laserEffect.gameObject.SetActive(false);
 	}
 
-	private void Update()
-	{
-		if(_droneBase.isAttacking == false)
-			_currentAttackTime += Time.deltaTime;
-		if (attackDelay > _currentAttackTime) return;
-		if(Vector3.Distance(_droneBase.currentTarget.position, transform.position) < _attackRadius)
-		{
-			if(CanAttack(_droneBase.currentTarget.position))
-			{
-				OnAttack(_droneBase.currentTarget.position, attackDuration);
-				_currentAttackTime = 0f;
-			}
-		}
-	}
-
-	private bool CanAttack(Vector3 targetPos)
-	{
-		Vector3 dir = (targetPos - transform.position).normalized;
-		return Vector3.Dot(dir, transform.forward) > 0 && !_droneBase.isAttacking;
-	}
-
-	private void OnAttack(Vector3 targetPos, float duration)
+	public void OnAttack(Vector3 targetPos, float duration = 0.3f)
 	{
 		StartCoroutine(CoroutineOnAttack(targetPos, duration));
 	}
 
 	private IEnumerator CoroutineOnAttack(Vector3 targetPos, float duration)
 	{
-		transform.rotation = Quaternion.LookRotation(targetPos - transform.position);
-
-		_droneBase.isAttacking = true;
-		_fireEffect.gameObject.SetActive(true);
-		_fireEffect.Play(true);
+		_laserEffect.SetPosition(0, transform.position + Vector3.up *10f);
+		_laserEffect.SetPosition(1, targetPos);
 		_caster.transform.position = targetPos;
-
-		for (int i = 0; i < 5; ++i)
-		{
-			_caster.CastDamage(damage);
-			yield return new WaitForSeconds(duration/5f);
-		}
-
-		_fireEffect.gameObject.SetActive(false);
-		_droneBase.isAttacking = false;
+		_laserEffect.gameObject.SetActive(true);
+		_caster.CastDamage(damage);
+		yield return new WaitForSeconds(duration);
+		_laserEffect.gameObject.SetActive(false);
 	}
-
 
 #if UNITY_EDITOR
 	private void OnDrawGizmosSelected()

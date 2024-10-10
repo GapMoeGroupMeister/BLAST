@@ -36,7 +36,11 @@ public class SettingPanel : UIPanel
     private void HandleSFXChanged(float value)
     {
         _currentSetting.sfxVolume = (int)value;
+        if (value <= -40f)
+            value = -80f;
         _audioMixer.SetFloat("Volume_SFX", value);
+        
+        
     }
     
     private void HandleScreenSizeChanged(int selectIndex)
@@ -63,11 +67,15 @@ public class SettingPanel : UIPanel
         if (_currentSetting == null)
             _currentSetting = new SettingData();
         HandleBGMChanged(_currentSetting.bgmVolume);
+        _bgmSlider.value = _currentSetting.bgmVolume;
         HandleSFXChanged(_currentSetting.sfxVolume);
+        _sfxSlider.value = _currentSetting.sfxVolume;
         HandleScreenSizeChanged(_currentSetting.screenSizeIndex);
+        _screenSettingDropDown.value = _currentSetting.screenSizeIndex;
     }
     
     public void SaveSetting()
     {
+        EasyToJson.ToJson<SettingData>(_currentSetting, dataPath);        
     }
 }

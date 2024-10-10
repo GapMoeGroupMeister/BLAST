@@ -1,6 +1,4 @@
 using DG.Tweening;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DieButtonGroup : MonoBehaviour
@@ -35,5 +33,6 @@ public class DieButtonGroup : MonoBehaviour
 	public void OnContinue()
 	{
 		SceneLoadingManager.LoadScene("LobbyScene");
+		Time.timeScale = 1f;
 	}
 }

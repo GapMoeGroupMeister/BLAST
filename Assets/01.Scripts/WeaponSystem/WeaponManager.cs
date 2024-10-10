@@ -10,12 +10,15 @@ public class WeaponManager : MonoSingleton<WeaponManager>
     [SerializeField] private List<Weapon> _curWeapons; //해금된 자동발동 무기 리스트
     PlayerPartController _playerPartController;
 
-    private void Awake()
+    protected override void Awake()
 	{
+        base.Awake();
         _playerPartController = FindObjectOfType<PlayerPartController>();
         _weapons = new Dictionary<WeaponType, Weapon>();
         _curWeapons = new List<Weapon>();
     }
+
+    public int GetCurWeaponCount() => _curWeapons.Count;
 
 	private void Start()
     {
@@ -38,19 +41,18 @@ public class WeaponManager : MonoSingleton<WeaponManager>
     private void CheckCanUseForWeapon(WeaponType weaponType)
 	{
 		//해금이 안되면 false
-		//나중에 진순이가 코드 짜면 해금 정보 불러와서 쓱싹
         if(GameDataManager.Instance.TryGetWeapon(weaponType, out WeaponSave weaponSave))
 		{
             Weapon weaponCompo = GetWeapon(weaponType);
+
+            weaponCompo.canUse = true;
 
             //사용허가가 있으면 사용할 수 이씀
             weaponCompo.canUse = weaponSave.enabled;
 
             //고유 무기인데 현재 파츠와 타입이 불일치하면 false
             if (weaponCompo.isUniqueWeapon)
-                weaponCompo.canUse = PlayerPartController.GetCurrentPlayerPart().playerPartType == weaponCompo.partType;
-            else
-                weaponCompo.canUse = true;
+                weaponCompo.canUse = PlayerPartController.GetCurrentPlayerPart().playerPartType == weaponCompo.partType && weaponCompo.canUse;
 		}
 
         

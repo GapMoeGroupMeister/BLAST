@@ -15,7 +15,15 @@ public class MagazineInfo
 	public int maxOverload = 20;
 	public float overloadDelay = 0.5f;
 	public event PlayerOverloadEvent PlayerOverloadEvent;
+	/// <summary>
+	/// 탄 쿨링타이밍의 비주얼과 연출을 위한 유니티 이벤트 
+	/// </summary>
 	public UnityEvent OnOverloadEvent;
+	
+	/// <summary>
+	/// 발사됐을때 비주얼을 위한 유니티 이밴트
+	/// </summary>
+	public UnityEvent OnFireEvent; 
 
 	[Header("Attack")]
 	public float attackDelay = 0.2f;
@@ -47,12 +55,16 @@ public class MagazineInfo
 		++curOverload;
 		PlayerOverloadEvent?.Invoke(curOverload, maxOverload);
 		OnAttackEvent?.Invoke(AttackDirection);
+		OnFireEvent?.Invoke();
 		for (int i = 0; i < bulletFirePositions.Length; ++i)
 		{
-			bulletFirePositions[i].gameObject.Pop(
-				_bulletPoolingType,
-				bulletFirePositions[i].position, 
-				Quaternion.LookRotation(AttackDirection));
+			if (bulletFirePositions[i] != null)
+			{
+				bulletFirePositions[i].gameObject.Pop(
+					_bulletPoolingType,
+					bulletFirePositions[i].position, 
+					Quaternion.LookRotation(AttackDirection));
+			}
 		}
 	}
 
@@ -109,6 +121,12 @@ public abstract class PlayerPart : MonoBehaviour
 			var feedbackPlayer = new GameObject("OverloadSoundFeedback", typeof(FeedbackPlayer), typeof(SoundFeedback));
 			feedbackPlayer.transform.SetParent(transform);
 		}
+	}
+
+	public void SetCanAttackValue(bool value)
+	{
+		magazineInfoL.CanAttack = value;
+		magazineInfoR.CanAttack = value;
 	}
 
 	protected virtual void OnEnable()

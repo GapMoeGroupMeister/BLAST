@@ -1,3 +1,4 @@
+using Crogen.ObjectPooling;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,6 +16,7 @@ public class DistructDroneEnemyDistructState : EnemyState<DistructDroneEnemy>
     {
         base.Enter();
         _enemyBase.MovementCompo.StopImmediately();
+        _distructTimer = 0;
     }
 
     public override void UpdateState()
@@ -26,8 +28,9 @@ public class DistructDroneEnemyDistructState : EnemyState<DistructDroneEnemy>
         
         if(_distructTimer > _distructTime)
         {
-            //폭발 하는 코드. VFX내놓으십시오.
-            _stateMachine.ChangeState(DistructDroneEnemyStateEnum.Dead);
+            _enemyBase.CastDamage();
+            _enemyBase.gameObject.Pop(PoolType.DistructDroneVFX, _enemyBase.transform.position + Vector3.up*10, Quaternion.identity);
+            _enemyBase.HealthCompo.TakeDamage((int)_enemyBase.Stat.GetValue(StatEnum.MaxHP));
         }
     }
 }

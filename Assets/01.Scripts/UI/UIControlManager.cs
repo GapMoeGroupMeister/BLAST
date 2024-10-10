@@ -15,7 +15,7 @@ public class UIControlManager : MonoSingleton<UIControlManager>
     private bool _isTargeted;
     private Ray _ray;
 
-    private void Awake()
+    protected override void Awake()
     {
         overUIAmount = 0;
     }

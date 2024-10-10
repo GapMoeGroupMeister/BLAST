@@ -26,6 +26,7 @@ namespace Crogen.PowerfulInput
 
         private void OnEnable()
         {
+            
             if (_controls == null)
             {
                 _controls = new Controls();
@@ -36,6 +37,12 @@ namespace Crogen.PowerfulInput
 
         private void OnDisable()
         {
+            MoveStartEvent = null;
+            DashEvent = null;
+            ZoomEvent = null;
+            AttackLEvent = null;
+            AttackREvent = null; // 이벤트 초기화
+            
             _controls.Disable();
         }
 

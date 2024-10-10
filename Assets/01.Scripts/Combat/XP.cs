@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using Crogen.ObjectPooling;
+using ItemManage;
 
 public enum XPType
 {
@@ -12,7 +13,7 @@ public enum XPType
 	Red
 }
 
-public class XP : MonoBehaviour, IPoolingObject
+public class XP : Item
 {
 	[SerializeField] private float _radius;
     [SerializeField] private LayerMask _whatIsPlayer;
@@ -26,8 +27,6 @@ public class XP : MonoBehaviour, IPoolingObject
 	//Managements
 	private XPManager _xpManager;
 	private int _colorID;
-	public PoolType OriginPoolType { get; set; }
-	GameObject IPoolingObject.gameObject { get; set; }
 
 	private void Awake()
 	{
@@ -59,13 +58,18 @@ public class XP : MonoBehaviour, IPoolingObject
 		}
 	}
 
-	public void OnPop()
+	protected override void GetEffect()
+	{
+		this.Push();
+	}
+
+	public override void OnPop()
 	{
 		_xpManager ??= XPManager.Instance;
 		_isMoving = false;
 	}
 
-	public void OnPush()
+	public override void OnPush()
 	{
 		_xpManager.XP += _xpAmount;
 	}
