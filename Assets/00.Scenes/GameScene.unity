@@ -15878,7 +15878,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 694662798}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.14865232, y: 0.8513282, z: -0.35887846, w: 0.35263172}
+  m_LocalRotation: {x: 0.14865234, y: 0.8513282, z: -0.35887846, w: 0.35263172}
   m_LocalPosition: {x: -80, y: 120.22, z: 80}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -17348,7 +17348,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1106337031}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.14865232, y: 0.8513282, z: -0.35887846, w: 0.35263172}
+  m_LocalRotation: {x: 0.14865234, y: 0.8513282, z: -0.35887846, w: 0.35263172}
   m_LocalPosition: {x: -80, y: 120.22, z: 80}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -22588,6 +22588,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _weaponUIDataSO: {fileID: 11400000, guid: 2e4ab1b1407c35e40b49c62daeae3afb, type: 2}
+  _treeSO: {fileID: 0}
   parts: []
   onCoinChange:
     m_PersistentCalls:
@@ -29552,8 +29553,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1860280906}
   - component: {fileID: 1860280905}
-  - component: {fileID: 1860280908}
-  - component: {fileID: 1860280907}
   m_Layer: 0
   m_Name: XPManager
   m_TagString: Untagged
@@ -29592,42 +29591,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1860280907
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1860280904}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2882c91955b44a34ca68f7f390a00c9a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1860280908
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1860280904}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08c8979b85886904a8723800451519fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  excluded: 0
-  allocationCount: 32
-  _whatIsCastable:
-    serializedVersion: 2
-    m_Bits: 0
-  _usingExcludeCast: 1
-  excludedDamageCasterList: []
-  effectStateType: 0
-  _effectDuration: 0
-  _effectLevel: 1
-  center: {x: 0, y: 0, z: 0}
-  radius: 1
 --- !u!1 &1881772154
 GameObject:
   m_ObjectHideFlags: 0

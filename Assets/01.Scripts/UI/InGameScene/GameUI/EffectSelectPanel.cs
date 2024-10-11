@@ -12,7 +12,6 @@ public class EffectSelectPanel : UIPanel
 
     //Managements
     private WeaponManager _weaponManager;
-    private TimeManager _timeManager;
 
     private int _openCount = 0;
     public bool isOpenedSelectPanel = false;
@@ -20,7 +19,6 @@ public class EffectSelectPanel : UIPanel
     private void Start()
     {
         _weaponManager = WeaponManager.Instance;
-        _timeManager = TimeManager.Instance;
 
         for (int i = 0; i < slots.Length; ++i)
         {
@@ -143,7 +141,7 @@ public class EffectSelectPanel : UIPanel
         }
 
         //멈추기
-        _timeManager.PauseTime();
+        TimeManager.PauseTime();
     }
 
 	public List<WeaponType> WeaponTypeShuffle(List<WeaponType> list)
@@ -166,7 +164,7 @@ public class EffectSelectPanel : UIPanel
 
     private void HandleSelectedEnd()
 	{
-        _timeManager.PlayTime();
+        TimeManager.PlayTime();
         Close();
 	}
 }

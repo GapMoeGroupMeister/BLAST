@@ -12,8 +12,8 @@ public class MultiplyManager : MonoSingleton<MultiplyManager>
 
     private void HandleMultiply(int value)
     {
-        TimeManager.Instance.SetDefaultTimeScale(value);
-        TimeManager.Instance.PlayTime();
+        TimeManager.SetDefaultTimeScale(value);
+        TimeManager.PlayTime();
         Debug.Log($"Time Scale: {value}");
     }
 }
