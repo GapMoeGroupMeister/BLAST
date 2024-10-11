@@ -1,14 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class TimeManager : MonoSingleton<TimeManager>
+public class TimeManager : MonoBehaviour
 {
-	private float _defaultTimeScale = 1f;
-	public float GetDefaultTimeScale => _defaultTimeScale;
-	private float _currentGlobalTimer = 0;
-	public float CurrentGlobalTimer
+	private static float _defaultTimeScale = 1f;
+	public static float GetDefaultTimeScale => _defaultTimeScale;
+	private static float _currentGlobalTimer = 0;
+
+	private float CurrentGlobalTimer
 	{
 		get => _currentGlobalTimer;
 		set
@@ -18,7 +17,7 @@ public class TimeManager : MonoSingleton<TimeManager>
 			_timeText.text = CurrentGlobalTimerString;
 		}
 	}
-	public string CurrentGlobalTimerString 
+	public static string CurrentGlobalTimerString 
 	{
 		get {
 			
@@ -31,22 +30,24 @@ public class TimeManager : MonoSingleton<TimeManager>
 
 	[SerializeField] private TextMeshProUGUI _timeText;
 
-	protected override void Awake()
+	private void Awake()
 	{
+		_currentGlobalTimer = 0f;
+		SetDefaultTimeScale(1f);
 		PlayTime();
 	}
 
-	public void SetDefaultTimeScale(float timescale)
+	public static void SetDefaultTimeScale(float timescale)
 	{
 		_defaultTimeScale = timescale;
 	}
 
-	public void PlayTime()
+	public static void PlayTime()
 	{
 		Time.timeScale = _defaultTimeScale;
 	}
 
-	public void PauseTime()
+	public static void PauseTime()
 	{
 		Time.timeScale = 0;
 	}
