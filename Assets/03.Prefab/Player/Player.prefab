@@ -805,7 +805,7 @@ MonoBehaviour:
   _baseTrm: {fileID: 0}
   _whatIsGround:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 4160
   moveSpeed: 15
   _rotateSpeed: 5
   dashPower: 400
@@ -935,11 +935,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b460ff2554d92eb4fa2a2145bf222d8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerPartList:
-  - {fileID: 294903427704956916, guid: 0a088780fd58b0b49b9aa8a59ca05833, type: 3}
-  - {fileID: 294903427704956916, guid: 02549dc8771b07446a6f2f3cb07bc1e1, type: 3}
-  - {fileID: 294903427704956916, guid: adb39cc5587a3c646a2f4361d3a8ca32, type: 3}
-  - {fileID: 3016868156403632621, guid: 53756cfabefb9994887b792335e77b68, type: 3}
+  _playerPartListSO: {fileID: 11400000, guid: d5e9ef358b15e9945b5dffecf875ecfd, type: 2}
   _partPoint: {fileID: 0}
 --- !u!54 &4304136632676638823
 Rigidbody:
