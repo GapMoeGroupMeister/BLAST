@@ -5,11 +5,22 @@ using UnityEngine;
 
 public class BulletSizeUpWeapon : Weapon
 {
-	public override bool UseWeapon()
+    private bool _isFirstUse = true;
+
+    public override bool UseWeapon()
     {
         if (base.UseWeapon())
         {
-        }	
+            if (_isFirstUse)
+            {
+                ProjectileSizeUpEffect[] effects = FindObjectsOfType<ProjectileSizeUpEffect>(true);
+                foreach (var effect in effects)
+                {
+                    effect.OnEffect(level);
+                }
+                _isFirstUse = false;
+            }
+        }
 
         return true;
     }
