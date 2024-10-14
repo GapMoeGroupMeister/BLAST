@@ -18,7 +18,7 @@ public class PlayerPartController : MonoBehaviour
 
 	public PlayerPart Init(PlayerPartType playerPartType)
 	{
-		_currentPlayerPart = Instantiate(_playerPartListSO.GetData((int)playerPartType).partPrefab);
+		_currentPlayerPart = Instantiate(_playerPartListSO.GetData((int)playerPartType).partPrefab, _partPoint);
 		_currentPlayerPart.transform.localPosition = Vector3.zero;
 		_currentPlayerPart.transform.localScale = Vector3.one;
 
