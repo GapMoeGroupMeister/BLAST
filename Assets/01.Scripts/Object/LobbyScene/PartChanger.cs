@@ -83,7 +83,7 @@ public class PartChanger : MonoSingleton<PartChanger>
             _currentPartTrm.position = _partGenerateTrm.position;
         });
         _seq.AppendInterval(0.6f);
-        _seq.Append(_tongsTrm.DOMoveY(0f, _upDuration));
+        _seq.Append(_tongsTrm.DOMoveY(-2, _upDuration));
         _seq.AppendCallback(() =>
         {
             ShakeTongs();
