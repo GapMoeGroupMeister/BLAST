@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 
+namespace LobbyScene
+{
+    
 public class PartSelectPanel : UIPanel
 {
     [SerializeField] private PlayerPartDataListSO partData;
@@ -75,4 +78,6 @@ public class PartSelectPanel : UIPanel
         ClearSlots();
         GenerateSlots();
     }
+}
+
 }

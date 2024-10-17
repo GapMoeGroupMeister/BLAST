@@ -1,11 +1,21 @@
 ﻿using UnityEngine;
 
-public class LobbySceneUIManager : MonoSingleton<LobbySceneUIManager>
+namespace LobbyScene
 {
-    [SerializeField] private SelectDisplayPanel _selectDisplayPanel;
-
-    public void RefreshSelectPartInfo(PlayerPartDataSO data)
+    
+    public class LobbySceneUIManager : MonoSingleton<LobbySceneUIManager>
     {
-        _selectDisplayPanel.SelectPart(data);
+        [SerializeField] private SelectDisplayPanel _selectDisplayPanel;
+        public LobbyCameraController camController;
+
+        public void RefreshSelectPartInfo(PlayerPartDataSO data)
+        {
+            _selectDisplayPanel.SelectPart(data);
+        }
+
+        public void HandleMovePartPanel()
+        {
+            camController.ChangeCamType(LobbyCameraEnum.PartSelect);
+        }
     }
 }
