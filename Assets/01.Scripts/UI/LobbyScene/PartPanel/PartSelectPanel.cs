@@ -9,14 +9,14 @@ namespace LobbyScene
 public class PartSelectPanel : UIPanel
 {
     [SerializeField] private PlayerPartDataListSO partData;
-    [SerializeField] private float _defaultPosY;
-    [SerializeField] private float _activePosY;
+    [SerializeField] private float _defaultPosX;
+    [SerializeField] private float _activePosX;
     [SerializeField] private float _duration = 0.2f;
     [SerializeField] private PartSelectSlot _slotPrefab;
     private RectTransform _rectTrm;
     [SerializeField] private RectTransform _contentTrm;
     [SerializeField] private bool _isActive;
-    private List<PartSelectSlot> partSlotList = new();
+    private List<PartSelectSlot> _partSlotList = new();
     
     protected override void Awake()
     {
@@ -28,7 +28,7 @@ public class PartSelectPanel : UIPanel
     {
         if (_isActive) return;
         UIControlManager.Instance.overUIAmount ++;
-        _rectTrm.DOAnchorPosY(_activePosY, _duration).OnComplete(() => _isActive = true);
+        _rectTrm.DOAnchorPosX(_activePosX, _duration).OnComplete(() => _isActive = true);
         SetCanvasActive(true);
         RefreshSlot();
     }
@@ -37,7 +37,7 @@ public class PartSelectPanel : UIPanel
     {
         if (!_isActive) return;
         UIControlManager.Instance.overUIAmount --;
-        _rectTrm.DOAnchorPosY(_defaultPosY, _duration).OnComplete(() => _isActive = false);
+        _rectTrm.DOAnchorPosX(_defaultPosX, _duration).OnComplete(() => _isActive = false);
         SetCanvasActive(false);
     }
 
@@ -60,17 +60,17 @@ public class PartSelectPanel : UIPanel
             PartSelectSlot slot = Instantiate(_slotPrefab, _contentTrm);
             slot.Initialize(partData.GetData(datas[i].id)); // 파즈 정보를 넣는다
             slot.AddOnClieckEvent(Close);
-            partSlotList.Add(slot);
+            _partSlotList.Add(slot);
         }
     }
 
     private void ClearSlots()
     {
-        foreach (PartSelectSlot slot in partSlotList)
+        foreach (PartSelectSlot slot in _partSlotList)
         {
             Destroy(slot.gameObject);
         }
-        partSlotList.Clear();
+        _partSlotList.Clear();
     }
     
     public void RefreshSlot()
