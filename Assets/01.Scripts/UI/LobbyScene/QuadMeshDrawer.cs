@@ -1,6 +1,4 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class QuadMeshDrawer : MonoBehaviour
@@ -52,6 +50,34 @@ public class QuadMeshDrawer : MonoBehaviour
         mesh.triangles = triangles;
         mesh.RecalculateNormals();
         _backgroundMeshFilter.mesh = mesh;
+    }
+
+    public void ShowQuadGraph(float[] values, float duration)
+    {
+        if (values.Length < 4)
+        {
+            Debug.LogError("Can't Draw Quad. Value is not Enough");
+            return;
+        }
+        StartCoroutine(ShowQuadGraphCoroutine(values, duration));
+    }
+
+    private IEnumerator ShowQuadGraphCoroutine(float[] values, float duration)
+    {
+        float currentTime = 0;
+        while (currentTime < duration)
+        {
+            currentTime += Time.deltaTime;
+            float ratio = currentTime / duration;
+            DrawQuadGraph(new float[4]{
+                Mathf.Lerp(0,values[0], ratio),
+                Mathf.Lerp(0,values[1], ratio),
+                Mathf.Lerp(0,values[2], ratio),
+                Mathf.Lerp(0,values[3], ratio)
+            });
+            
+            yield return null;
+        }
     }
 
     /**

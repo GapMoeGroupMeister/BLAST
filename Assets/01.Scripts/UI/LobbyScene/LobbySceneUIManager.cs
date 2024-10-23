@@ -6,6 +6,7 @@ namespace LobbyScene
     public class LobbySceneUIManager : MonoSingleton<LobbySceneUIManager>
     {
         [SerializeField] private SelectDisplayPanel _selectDisplayPanel;
+        [SerializeField] private PartSelectPanel _partSelectPanel;
         public LobbyCameraController camController;
 
         public void RefreshSelectPartInfo(PlayerPartDataSO data)
