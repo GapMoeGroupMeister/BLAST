@@ -27,7 +27,6 @@ namespace LobbyScene
             _quadDrawer.ShowQuadGraph(new float[]{def, atk, utl, std}, 1f);
         }
 
-
         public void Open()
         {
             transform.DOScaleY(1f, _activeDuration);

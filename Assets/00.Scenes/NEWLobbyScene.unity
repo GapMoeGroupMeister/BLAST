@@ -4030,6 +4030,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isActive: 0
+  _activeDuration: 1
   _quadDrawer: {fileID: 468492181}
   _nameText: {fileID: 2038718225}
   _descriptionText: {fileID: 0}
@@ -24624,6 +24625,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _selectDisplayPanel: {fileID: 383392465}
+  _partSelectPanel: {fileID: 245370493}
+  _menuButtonGroup: {fileID: 1816399683}
   camController: {fileID: 916120408}
 --- !u!4 &1045164131
 Transform:
@@ -54139,7 +54142,7 @@ PrefabInstance:
     - target: {fileID: 2834376566025804709, guid: a0a730c19b434e54ab67a945baaa1799,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2834376566025804709, guid: a0a730c19b434e54ab67a945baaa1799,
         type: 3}
@@ -54149,12 +54152,12 @@ PrefabInstance:
     - target: {fileID: 2834376566025804709, guid: a0a730c19b434e54ab67a945baaa1799,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2834376566025804709, guid: a0a730c19b434e54ab67a945baaa1799,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 720
       objectReference: {fileID: 0}
     - target: {fileID: 2834376566025804709, guid: a0a730c19b434e54ab67a945baaa1799,
         type: 3}
@@ -54199,12 +54202,12 @@ PrefabInstance:
     - target: {fileID: 2834376566025804709, guid: a0a730c19b434e54ab67a945baaa1799,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 380
       objectReference: {fileID: 0}
     - target: {fileID: 2834376566025804709, guid: a0a730c19b434e54ab67a945baaa1799,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -105
       objectReference: {fileID: 0}
     - target: {fileID: 2834376566025804709, guid: a0a730c19b434e54ab67a945baaa1799,
         type: 3}
