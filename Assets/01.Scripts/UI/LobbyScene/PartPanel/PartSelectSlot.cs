@@ -34,7 +34,7 @@ namespace LobbyScene
 
         public void PartSelect()
         {
-            PartChanger.Instance.ChangePart(partSO);
+            LobbySceneUIManager.Instance.ChangePart(partSO);
             LobbySceneUIManager.Instance.RefreshSelectPartInfo(partSO);
             SaveManager.Instance.SelectPlayerPart(partSO.id);
         }
