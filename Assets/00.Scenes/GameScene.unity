@@ -10827,6 +10827,12 @@ MonoBehaviour:
   m_DeselectOnBackgroundClick: 1
   m_PointerBehavior: 0
   m_CursorLockBehavior: 0
+--- !u!4 &577918488 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1920636850698753298, guid: d715b0cde2ca3754eb7ea29b435422cf,
+    type: 3}
+  m_PrefabInstance: {fileID: 587710720521019515}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &582963144
 GameObject:
   m_ObjectHideFlags: 0
@@ -17260,7 +17266,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b460ff2554d92eb4fa2a2145bf222d8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerPartListSO: {fileID: 0}
+  _playerPartListSO: {fileID: 11400000, guid: d5e9ef358b15e9945b5dffecf875ecfd, type: 2}
   _partPoint: {fileID: 944572433}
 --- !u!1 &1106337031
 GameObject:
@@ -30117,11 +30123,6 @@ PrefabInstance:
       propertyPath: _attackPointTrm
       value: 
       objectReference: {fileID: 461387009}
-    - target: {fileID: 6872490257994263261, guid: d715b0cde2ca3754eb7ea29b435422cf,
-        type: 3}
-      propertyPath: _whatIsGround.m_Bits
-      value: 4160
-      objectReference: {fileID: 0}
     - target: {fileID: 9188609135989693061, guid: d715b0cde2ca3754eb7ea29b435422cf,
         type: 3}
       propertyPath: meshFilters.Array.data[0]
@@ -30196,26 +30197,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6412183432917180298, guid: 1cebb268bf198104dbc20d320e59a8e8,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6412183432917180298, guid: 1cebb268bf198104dbc20d320e59a8e8,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6412183432917180298, guid: 1cebb268bf198104dbc20d320e59a8e8,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6412183432917180298, guid: 1cebb268bf198104dbc20d320e59a8e8,
-        type: 3}
-      propertyPath: m_Intensity
-      value: 1.9
-      objectReference: {fileID: 0}
     - target: {fileID: 8310380229787624605, guid: 1cebb268bf198104dbc20d320e59a8e8,
         type: 3}
       propertyPath: m_Name
@@ -30231,12 +30212,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4556139669170323855, guid: 694fe0a287e8b4f40a81ccd64be8ddad,
     type: 3}
   m_PrefabInstance: {fileID: 4572937039726193385}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &4374050956861705845 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8354625608064950555, guid: d715b0cde2ca3754eb7ea29b435422cf,
-    type: 3}
-  m_PrefabInstance: {fileID: 587710720521019515}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4572937039726193385
 PrefabInstance:
@@ -30300,7 +30275,12 @@ PrefabInstance:
         type: 3}
       propertyPath: _target
       value: 
-      objectReference: {fileID: 4374050956861705845}
+      objectReference: {fileID: 577918488}
+    - target: {fileID: 4687669506684828805, guid: 694fe0a287e8b4f40a81ccd64be8ddad,
+        type: 3}
+      propertyPath: _offset.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6189036211398590185, guid: 694fe0a287e8b4f40a81ccd64be8ddad,
         type: 3}
       propertyPath: m_Name
