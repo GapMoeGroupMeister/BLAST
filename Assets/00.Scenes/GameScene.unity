@@ -30185,6 +30185,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1818484225686448684, guid: d715b0cde2ca3754eb7ea29b435422cf,
+        type: 3}
+      propertyPath: _isDebugMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1818484225686448684, guid: d715b0cde2ca3754eb7ea29b435422cf,
+        type: 3}
+      propertyPath: _currentPartType
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 2601035507658518275, guid: d715b0cde2ca3754eb7ea29b435422cf,
         type: 3}
       propertyPath: _partPoint
@@ -30393,6 +30403,11 @@ PrefabInstance:
       propertyPath: _offset.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4687669506684828805, guid: 694fe0a287e8b4f40a81ccd64be8ddad,
+        type: 3}
+      propertyPath: _isLateUpdate
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6189036211398590185, guid: 694fe0a287e8b4f40a81ccd64be8ddad,
         type: 3}
       propertyPath: m_Name
@@ -30543,10 +30558,10 @@ SceneRoots:
   - {fileID: 1529980461}
   - {fileID: 1151185012}
   - {fileID: 1811138471}
+  - {fileID: 2117037099}
   - {fileID: 219507599}
   - {fileID: 461387009}
   - {fileID: 1342911438}
-  - {fileID: 2117037099}
   - {fileID: 1479388297}
   - {fileID: 694662800}
   - {fileID: 1661634220}

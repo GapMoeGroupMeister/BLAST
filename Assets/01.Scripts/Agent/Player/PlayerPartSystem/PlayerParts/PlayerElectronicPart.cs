@@ -11,13 +11,13 @@ public class PlayerElectronicPart : PlayerPart
     private float _subEngineLNeglectedCurrentTime = 0;
     private float _subEngineRNeglectedCurrentTime = 0;
     
-    private Sequence _subEngineLSequence;
-    private Sequence _subEngineRSequence;
+    private Tween _subEngineLTween;
+    private Tween _subEngineRTween;
 
     private void Awake()
     {
-        _subEngineLSequence = DOTween.Sequence();
-        _subEngineRSequence = DOTween.Sequence();
+        _subEngineLTween = DOTween.Sequence();
+        _subEngineRTween = DOTween.Sequence();
     }
 
     protected override void OnEnable()
@@ -27,32 +27,36 @@ public class PlayerElectronicPart : PlayerPart
 
     protected override void HandleAttackUpdateL(bool isAttack)
     {
-        _subEngineLSequence?.Kill();
-        _subEngineLSequence.Append(_subEngineLTrm.DOLocalMoveX(-3.6f, 0.1f).OnComplete(() =>
+        _subEngineLTween?.Pause();
+        _subEngineLTween?.Kill();
+        _subEngineLTween = _subEngineLTrm.DOLocalMoveX(-3.6f, 0.1f).OnComplete(() =>
         {
             base.HandleAttackUpdateL(isAttack);
-        }));
+        });
     }
 
     protected override void HandleAttackUpdateR(bool isAttack)
     {
-        _subEngineRSequence?.Kill();
-        _subEngineRSequence.Append(_subEngineRTrm.DOLocalMoveX(3.6f, 0.1f).OnComplete(() =>
+        _subEngineRTween?.Pause();
+        _subEngineRTween?.Kill();
+        _subEngineRTween = _subEngineRTrm.DOLocalMoveX(3.6f, 0.1f).OnComplete(() =>
         {
             base.HandleAttackUpdateR(isAttack);
-        }));
+        });
     }
 
-    public void SubEngineLDisable()
+    private void SubEngineLDisable()
     {
-        _subEngineLSequence?.Kill();
-        _subEngineLSequence.Append(_subEngineLTrm.DOLocalMoveX(-2.52f, 1f));   
+        _subEngineLTween?.Pause();
+        _subEngineLTween?.Kill();
+        _subEngineLTween = _subEngineLTrm.DOLocalMoveX(-2.52f, 1f);   
     }
 
-    public void SubEngineRDisable()
+    private void SubEngineRDisable()
     {
-        _subEngineRSequence?.Kill();
-        _subEngineRSequence.Append(_subEngineRTrm.DOLocalMoveX(2.52f, 1f));   
+        _subEngineRTween?.Pause();
+        _subEngineRTween?.Kill();
+        _subEngineRTween = _subEngineRTrm.DOLocalMoveX(2.52f, 1f);   
     }
     
     protected override void Update()
