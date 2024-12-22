@@ -2,7 +2,7 @@ using System.Collections;
 using DG.Tweening;
 using UnityEngine;
 
-public class PartChanger : MonoSingleton<PartChanger>
+public class PartChanger : MonoBehaviour
 {
     [SerializeField] private Transform _partConnecterTrm;
     [SerializeField] private Transform _tongsTrm;
@@ -23,7 +23,7 @@ public class PartChanger : MonoSingleton<PartChanger>
     public bool IsChanging => _isChanging;
     [SerializeField] private PlayerPartDataListSO partData;
 
-    protected override void Awake()
+    private void Awake()
 	{
         //이거 하드 코딩 나중에 수정 바람. - 2023.10.10 / 12:58 / 최영환
         int index = SaveManager.Instance.GetCurrentPlayerPart();

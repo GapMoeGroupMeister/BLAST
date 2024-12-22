@@ -17,7 +17,7 @@ namespace LobbyScene
     
         public void AddOnClieckEvent(UnityAction action) => _button.onClick.AddListener(action);
 
-        public void Initialize(PlayerPartDataSO data)
+        public void Initialize(PartSelectPanel selectPanel, PlayerPartDataSO data)
         {
             partSO = data;
             _partNameText.text = data.partName;

@@ -43,7 +43,7 @@ public class PartSelectPanel : UIPanel
 
     private void Update()
     {
-        _canvasGroup.interactable = !PartChanger.Instance.IsChanging;
+        //_canvasGroup.interactable = !PartChanger.Instance.IsChanging;
     }
 
 
@@ -58,7 +58,7 @@ public class PartSelectPanel : UIPanel
             if(!datas[i].enabled) // 활성화 된 파츠가 아니면 생성 X
                 continue;
             PartSelectSlot slot = Instantiate(_slotPrefab, _contentTrm);
-            slot.Initialize(partData.GetData(datas[i].id)); // 파즈 정보를 넣는다
+            slot.Initialize(this, partData.GetData(datas[i].id)); // 파즈 정보를 넣는다
             slot.AddOnClieckEvent(Close);
             _partSlotList.Add(slot);
         }
@@ -71,6 +71,11 @@ public class PartSelectPanel : UIPanel
             Destroy(slot.gameObject);
         }
         _partSlotList.Clear();
+    }
+
+    public void SetButtonsActive(bool value)
+    {
+        _canvasGroup.interactable = value;
     }
     
     public void RefreshSlot()
