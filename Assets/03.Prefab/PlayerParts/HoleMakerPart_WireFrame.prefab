@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 1098333879547140971}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.265, y: -1.327, z: 3.15}
+  m_LocalPosition: {x: -3.265, y: 0.7659999, z: 3.15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -125,7 +125,7 @@ Transform:
   m_GameObject: {fileID: 1599338907014317737}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.265, y: 1.327, z: 3.15}
+  m_LocalPosition: {x: 3.265, y: 3.42, z: 3.15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -222,7 +222,7 @@ Transform:
   m_GameObject: {fileID: 7607625157098458554}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.265, y: -1.327, z: 3.15}
+  m_LocalPosition: {x: 3.265, y: 0.7659999, z: 3.15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -319,7 +319,7 @@ Transform:
   m_GameObject: {fileID: 8034859021925149815}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.265, y: 1.327, z: 3.15}
+  m_LocalPosition: {x: -3.265, y: 3.42, z: 3.15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -456,7 +456,6 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: b6ddff69ca55401479b0ef468ee520db, type: 2}
-  - {fileID: 2100000, guid: b6ddff69ca55401479b0ef468ee520db, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -498,6 +497,9 @@ MonoBehaviour:
     OnOverloadEvent:
       m_PersistentCalls:
         m_Calls: []
+    OnFireEvent:
+      m_PersistentCalls:
+        m_Calls: []
     attackDelay: 0.1
     curAttackDelay: 0
     bulletFirePositions:
@@ -510,6 +512,9 @@ MonoBehaviour:
     maxOverload: 60
     overloadDelay: 0.33
     OnOverloadEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    OnFireEvent:
       m_PersistentCalls:
         m_Calls: []
     attackDelay: 0.1
