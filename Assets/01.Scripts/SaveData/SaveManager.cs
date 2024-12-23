@@ -1,18 +1,9 @@
 using EasySave.Json;
-using UnityEngine;
-using DG.Tweening;
-public class SaveManager : MonoSingleton<SaveManager>
+public static class SaveManager
 {
     public static SavePartData data;
     private static readonly string fileName = "PartData";
 
-    protected override void Awake()
-    {
-        base.Awake();
-
-        if (data == null)
-            data = new SavePartData();
-    }
 
     public static void SaveData()
     {
@@ -30,7 +21,7 @@ public class SaveManager : MonoSingleton<SaveManager>
         if (data == null)
         {
             data = EasyToJson.FromJson<SavePartData>(fileName);
-            if(data == null)
+            if (data == null)
             {
                 data = new SavePartData();
             }
