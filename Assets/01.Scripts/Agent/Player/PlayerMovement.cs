@@ -82,7 +82,7 @@ public class PlayerMovement : MovementController
 
     public override void StopImmediately()
     {
-        _rigidbodyCompo.velocity = Vector3.zero;
+        _rigidbodyCompo.linearVelocity = Vector3.zero;
     }
 
     public void OnDash(Vector3 dashDir, float duration, float dashPower, Action EndEvent = null)
@@ -111,7 +111,7 @@ public class PlayerMovement : MovementController
 
 		movement = Quaternion.Euler(0, -45, 0) * movement;
         transform.DORotateQuaternion(Quaternion.LookRotation(-movement), 0.85f);
-        _rigidbodyCompo.velocity = -movement * moveSpeed;
+        _rigidbodyCompo.linearVelocity = -movement * moveSpeed;
 
         _distanceTravelled += (_startPos - _endPos).magnitude;
         OnDistanceTravelledEvent?.Invoke(_distanceTravelled);
