@@ -14,12 +14,14 @@ namespace LobbyScene
         [SerializeField] private TextMeshProUGUI _partNameText;
         [SerializeField] private Image _selectIcon;
         [SerializeField] private Button _button;
+        private PartSelectPanel _partSelectPanel;
     
         public void AddOnClieckEvent(UnityAction action) => _button.onClick.AddListener(action);
 
         public void Initialize(PartSelectPanel selectPanel, PlayerPartDataSO data)
         {
             partSO = data;
+            _partSelectPanel = selectPanel;
             _partNameText.text = data.partName;
             Refresh();
         }
@@ -34,8 +36,7 @@ namespace LobbyScene
 
         public void PartSelect()
         {
-            LobbySceneUIManager.Instance.ChangePart(partSO);
-            LobbySceneUIManager.Instance.RefreshSelectPartInfo(partSO);
+            _partSelectPanel.SelectPart(partSO);
             SaveManager.Instance.SelectPlayerPart(partSO.id);
         }
     }
