@@ -64,7 +64,6 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: b6ddff69ca55401479b0ef468ee520db, type: 2}
-  - {fileID: 2100000, guid: b6ddff69ca55401479b0ef468ee520db, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -106,6 +105,9 @@ MonoBehaviour:
     OnOverloadEvent:
       m_PersistentCalls:
         m_Calls: []
+    OnFireEvent:
+      m_PersistentCalls:
+        m_Calls: []
     attackDelay: 0.1
     curAttackDelay: 0
     bulletFirePositions:
@@ -117,6 +119,9 @@ MonoBehaviour:
     maxOverload: 200
     overloadDelay: 0.06
     OnOverloadEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    OnFireEvent:
       m_PersistentCalls:
         m_Calls: []
     attackDelay: 0.1
