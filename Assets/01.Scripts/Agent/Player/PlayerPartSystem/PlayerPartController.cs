@@ -7,6 +7,7 @@ public enum PlayerPartType
 	Fire,
 	Electronic,
 	HoleMaker,
+	AntiMatter
 }
 
 public class PlayerPartController : MonoBehaviour

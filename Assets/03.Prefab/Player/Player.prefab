@@ -239,7 +239,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: cb3d08e4a3b6ede4499370504495bc2b, type: 2}
+  - {fileID: 2100000, guid: 7b21ee123885a6b41aa9d4655e86f71b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -650,8 +650,9 @@ MonoBehaviour:
   <Stat>k__BackingField: {fileID: 11400000, guid: 08ba1e6f4bc538b4bbf931e970e89da3,
     type: 2}
   currentPlayerPart: {fileID: 0}
-  playerDashEffectCaster: {fileID: 0}
-  _currentPartType: 0
+  playerDashEffectCaster: {fileID: 9188609135989693061}
+  _isDebugMode: 1
+  _currentPartType: 2
 --- !u!114 &6872490257994263261
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -706,7 +707,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rendererList:
-  - {fileID: 0}
+  - {fileID: 5805899769124970951}
   - {fileID: 0}
   _damageDuration: 0.055
   OnHealthChangedEvent:
@@ -881,7 +882,7 @@ MonoBehaviour:
   meshFilters:
   - {fileID: 0}
   skinnedMeshRenderers:
-  - {fileID: 0}
+  - {fileID: 5805899769124970951}
   _playerDashEffectPrefab: {fileID: 5469778409981858398, guid: 5404ad792373812459b5561bb41432d2,
     type: 3}
 --- !u!1 &5973427671056515236

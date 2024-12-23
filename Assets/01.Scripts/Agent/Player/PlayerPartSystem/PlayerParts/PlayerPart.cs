@@ -96,7 +96,7 @@ public class MagazineInfo
 
 public abstract class PlayerPart : MonoBehaviour
 {
-	private InputReader _inputReader;
+	protected InputReader _inputReader;
     public PlayerPartType playerPartType;
 
 	[Header("MagazineL")] 
@@ -105,12 +105,12 @@ public abstract class PlayerPart : MonoBehaviour
 	[Header("MagazineR")] 
 	public MagazineInfo magazineInfoR;
 
-	private PlayerMovement _playerMovement;
+	protected PlayerMovement _playerMovement;
 	public LayerMask whatIsEnemy;
 
-	private bool _isNoFunc; // Lobby씬을 위한 장치
+	protected bool _isNoFunc; // Lobby씬을 위한 장치
 
-	private FeedbackPlayer _feedbackPlayer;
+	protected FeedbackPlayer _feedbackPlayer;
 
 	[ContextMenu("FeedbackPlayer")]
 	private void GenerateFeedbackPlayer()
@@ -149,12 +149,21 @@ public abstract class PlayerPart : MonoBehaviour
 		
 		_inputReader = GameManager.Instance.InputReader;
 		_playerMovement = GameManager.Instance.Player.MovementCompo as PlayerMovement;
-		
-		_inputReader.AttackLEvent += magazineInfoL.HandleAttackUpdate;
-		_inputReader.AttackREvent += magazineInfoR.HandleAttackUpdate;
+		_inputReader.AttackLEvent += HandleAttackUpdateL;
+		_inputReader.AttackREvent += HandleAttackUpdateR;
 		StartCoroutine(CoroutineUpdateOverload());
 	}
 
+	protected virtual void HandleAttackUpdateL(bool isAttack)
+	{
+		magazineInfoL.HandleAttackUpdate(isAttack);
+	}
+	
+	protected virtual void HandleAttackUpdateR(bool isAttack)
+	{
+		magazineInfoR.HandleAttackUpdate(isAttack);
+	}
+	
 	private void OnDestroy()
 	{
 		// 음 근데 이렇게 체크하게되면 나중에 씬 바꼈을때 어떻게 문제가 다른게 터질지 모르겠다
