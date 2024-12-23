@@ -9,7 +9,7 @@ public class CameraRotation : MonoBehaviour
 
     private void Start()
     {
-        _playerPartController.Init((PlayerPartType)SaveManager.Instance.data.partId);
+        _playerPartController.Init((PlayerPartType)SaveManager.data.partId);
     }
 
     private void Update()

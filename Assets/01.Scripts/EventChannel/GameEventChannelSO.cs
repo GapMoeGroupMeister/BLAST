@@ -10,7 +10,7 @@ namespace GameEventSystem
         //empty class
     }
 
-    [CreateAssetMenu(fileName = "IGameEventDataChannelSO", menuName = "SO/Events/IGameEventDataChannelSO")]
+    [CreateAssetMenu(fileName = "GameEventDataChannelSO", menuName = "SO/Events/GameEventDataChannelSO")]
     public class GameEventChannelSO : ScriptableObject
     {
         private Dictionary<Type, Action<IGameEventData>> _events = new();

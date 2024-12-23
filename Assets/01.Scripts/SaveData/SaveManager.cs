@@ -3,27 +3,38 @@ using UnityEngine;
 using DG.Tweening;
 public class SaveManager : MonoSingleton<SaveManager>
 {
-    public SavePartData data;
-    private readonly string fileName = "PartData";
+    public static SavePartData data;
+    private static readonly string fileName = "PartData";
 
     protected override void Awake()
     {
         base.Awake();
-        data = EasyToJson.FromJson<SavePartData>(fileName);
-        if(data == null)
-        data = new SavePartData();
+
+        if (data == null)
+            data = new SavePartData();
     }
 
-    public void SaveData()
+    public static void SaveData()
     {
         EasyToJson.ToJson<SavePartData>(data, fileName);
     }
 
-    public void SelectPlayerPart(int id)
+    public static void SelectPlayerPart(int id)
     {
         data.partId = id;
         SaveData();
     }
 
-    public int GetCurrentPlayerPart() => data.partId;
+    public static int GetCurrentPlayerPart()
+    {
+        if (data == null)
+        {
+            data = EasyToJson.FromJson<SavePartData>(fileName);
+            if(data == null)
+            {
+                data = new SavePartData();
+            }
+        }
+        return data.partId;
+    }
 }

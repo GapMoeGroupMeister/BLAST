@@ -1,4 +1,5 @@
 ﻿using System;
+using Objects.PartSelect;
 using UnityEngine;
 
 namespace LobbyScene

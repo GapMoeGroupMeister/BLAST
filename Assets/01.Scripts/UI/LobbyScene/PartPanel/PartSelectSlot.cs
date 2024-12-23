@@ -31,13 +31,18 @@ namespace LobbyScene
             _partImage.sprite = partSO.partImage;
             _partNameText.text = partSO.partName;
 
-            _selectIcon.gameObject.SetActive(SaveManager.Instance.GetCurrentPlayerPart() == partSO.id);
+            //_selectIcon.gameObject.SetActive(SaveManager.Instance.GetCurrentPlayerPart() == partSO.id);
         }
 
         public void PartSelect()
         {
             _partSelectPanel.SelectPart(partSO);
-            SaveManager.Instance.SelectPlayerPart(partSO.id);
+            SaveManager.SelectPlayerPart(partSO.id);
+        }
+
+        public void SetSelectIcon(bool value)
+        {
+            _selectIcon.enabled = value;
         }
     }
 

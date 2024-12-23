@@ -29,7 +29,7 @@ namespace Objects.PartSelect
         private void Awake()
         {
             //이거 하드 코딩 나중에 수정 바람. - 2023.10.10 / 12:58 / 최영환
-            int index = SaveManager.Instance.GetCurrentPlayerPart();
+            int index = SaveManager.GetCurrentPlayerPart();
             _currentPartTrm = Instantiate(partData.partPairList[index].partPrefab, _tongsTrm).transform;
             _currentPartTrm.gameObject.layer = 0;
             foreach (Transform trm in _currentPartTrm)

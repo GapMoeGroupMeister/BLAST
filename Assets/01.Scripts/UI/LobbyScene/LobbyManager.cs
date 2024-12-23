@@ -1,5 +1,5 @@
+using Objects.PartSelect;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace  LobbyScene
 {
@@ -9,7 +9,7 @@ namespace  LobbyScene
         [SerializeField] private PartChanger _partChanager;
         public void GameStart()
         {
-            SaveManager.Instance.SaveData();
+            SaveManager.SaveData();
             SceneLoadingManager.LoadScene("Vcs_GameScene");
         } 
 

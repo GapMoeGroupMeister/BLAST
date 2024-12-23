@@ -10,12 +10,13 @@ namespace Objects.PartSelect
 
         private void Awake()
         {
-
+            _partSelectEventChannel.AddListener<PlayerPartDataSO>(ChangePart);
             
         }
 
         public void ChangePart(PlayerPartDataSO dataSO)
         {
+
         }
 
     }

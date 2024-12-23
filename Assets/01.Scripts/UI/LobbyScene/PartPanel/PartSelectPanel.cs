@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using DG.Tweening;
+using GameEventSystem;
 using Objects.PartSelect;
 using UnityEngine;
 
@@ -19,6 +20,7 @@ namespace LobbyScene
         [SerializeField] private bool _isActive;
         private List<PartSelectSlot> _partSlotList = new();
         [SerializeField] private PartSelectController _partSelector;
+        [SerializeField] private GameEventChannelSO _partSelectEvent;
 
         protected override void Awake()
         {
@@ -54,6 +56,7 @@ namespace LobbyScene
             GameDataManager.Instance.Load();
             // 가지고있는 파츠들에 대한 정보를 슬롯에 넣기
             List<PartSave> datas = GameDataManager.Instance.parts;
+            int currentPartID = SaveManager.GetCurrentPlayerPart();
 
             for (int i = 0; i < datas.Count; i++)
             {
@@ -61,6 +64,10 @@ namespace LobbyScene
                     continue;
                 PartSelectSlot slot = Instantiate(_slotPrefab, _contentTrm);
                 slot.Initialize(this, partData.GetData(datas[i].id)); // 파즈 정보를 넣는다
+                if(currentPartID == datas[i].id)
+                {
+                    slot.SetSelectIcon(true);
+                }
                 slot.AddOnClieckEvent(Close);
                 _partSlotList.Add(slot);
             }
@@ -88,7 +95,7 @@ namespace LobbyScene
 
         public void SelectPart(PlayerPartDataSO data)
         {
-            _partSelector.ChangePart(data);
+            _partSelectEvent.RaiseEvent(data);
         }
     }
 
