@@ -39,7 +39,7 @@ public class Player : Agent
 
         StateMachine.Initialize(PlayerStateEnum.Idle, this);
         if(_isDebugMode == false) //디버깅할 때는 인스펙터에서 걍 정해버리기~
-            _currentPartType = (PlayerPartType)SaveManager.Instance.data.partId;
+            _currentPartType = (PlayerPartType)SaveManager.data.partId;
         currentPlayerPart = _playerPartController.Init(_currentPartType);
         playerDashEffectCaster.meshFilters.Add(currentPlayerPart.GetComponent<MeshFilter>());
         Renderer[] renderers = currentPlayerPart.GetComponentsInChildren<Renderer>();

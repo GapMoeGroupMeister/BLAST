@@ -19,32 +19,7 @@ namespace EffectSystem
         {
             Initialize();
         }
-
-        public EffectState GetEffectState(EffectStateTypeEnum type)
-        {
-            return effectDictionary[type];
-        }
-
-        protected virtual  void Update()
-        {
-            _currentTime += Time.deltaTime;
-            foreach (EffectState effect in effectDictionary.Values)
-            {
-                if (effect.enabled)
-                {
-                    effect.Update();
-                    if (_currentTime > 1f)
-                    {
-                        _currentTime = 0f;
-                        effect.UpdateBySecond();
-                    }    
-                }
-                
-            }
-
-            
-        }
-
+        
         private void Initialize()
         {
             foreach (EffectStateTypeEnum effectEnum in Enum.GetValues(typeof(EffectStateTypeEnum)))
@@ -66,6 +41,26 @@ namespace EffectSystem
             }
         }
 
+
+       
+        protected virtual void Update()
+        {
+            _currentTime += Time.deltaTime;
+            bool isOneSecond = _currentTime > 1f;
+            foreach (EffectState effect in effectDictionary.Values)
+            {
+                if (effect.enabled)
+                {
+                    effect.Update();
+                    if (isOneSecond)
+                        effect.UpdateBySecond();
+                }
+            }
+            if (isOneSecond)
+                _currentTime = 0f;
+        }
+
+        
         /**
          * <param name="type">
          * 효과 타입 enum
@@ -84,7 +79,16 @@ namespace EffectSystem
         {
             effectDictionary[type].Start(level, duration, percent);
         }
-    
-    }
 
+        public virtual void RemoveEffect(EffectStateTypeEnum type)
+        {
+            effectDictionary[type].Over();
+        }
+    
+        public EffectState GetEffectState(EffectStateTypeEnum type)
+        {
+            return effectDictionary[type];
+        }
+        
+    }
 }
