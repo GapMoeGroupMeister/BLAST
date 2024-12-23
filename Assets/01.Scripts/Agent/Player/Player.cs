@@ -1,13 +1,19 @@
 ﻿using System;
+using Crogen.AttributeExtension;
 using UnityEngine;
 
 public class Player : Agent
 {
     public PlayerStateMachine<PlayerStateEnum> StateMachine;
-    public PlayerPart currentPlayerPart;
+    [HideInInspector]public PlayerPart currentPlayerPart;
     public AgentDashEffectCaster playerDashEffectCaster;
+    
+    [SerializeField] private bool _isDebugMode = false;
+    [HideInInspectorByCondition(nameof(_isDebugMode))]
     [SerializeField] private PlayerPartType _currentPartType;
+    
     private PlayerPartController _playerPartController;
+    
     protected override void Awake()
     {
         base.Awake();
@@ -32,8 +38,8 @@ public class Player : Agent
         }
 
         StateMachine.Initialize(PlayerStateEnum.Idle, this);
-        
-        _currentPartType = (PlayerPartType)SaveManager.Instance.data.partId;
+        if(_isDebugMode == false) //디버깅할 때는 인스펙터에서 걍 정해버리기~
+            _currentPartType = (PlayerPartType)SaveManager.Instance.data.partId;
         currentPlayerPart = _playerPartController.Init(_currentPartType);
         playerDashEffectCaster.meshFilters.Add(currentPlayerPart.GetComponent<MeshFilter>());
         Renderer[] renderers = currentPlayerPart.GetComponentsInChildren<Renderer>();

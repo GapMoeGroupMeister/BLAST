@@ -21,8 +21,23 @@ public class PartChanger : MonoSingleton<PartChanger>
     [SerializeField] private PlayerPartDataSO _testSO;
     
     public bool IsChanging => _isChanging;
-    
-    [ContextMenu("DebugChange")]
+    [SerializeField] private PlayerPartDataListSO partData;
+
+    protected override void Awake()
+	{
+        //이거 하드 코딩 나중에 수정 바람. - 2023.10.10 / 12:58 / 최영환
+        int index = SaveManager.Instance.GetCurrentPlayerPart();
+        _currentPartTrm = Instantiate(partData.partPairList[index].partPrefab, _tongsTrm).transform;
+        _currentPartTrm.gameObject.layer = 0;
+        foreach (Transform trm in _currentPartTrm)
+		{
+            trm.gameObject.layer = 0;
+        }
+        _currentPartTrm.SetParent(_partConnecterTrm);
+        _currentPartTrm.localPosition = Vector3.zero;
+    }
+
+	[ContextMenu("DebugChange")]
     private void DebugChangePart()
     {
         ChangePart(_testSO);
@@ -68,7 +83,7 @@ public class PartChanger : MonoSingleton<PartChanger>
             _currentPartTrm.position = _partGenerateTrm.position;
         });
         _seq.AppendInterval(0.6f);
-        _seq.Append(_tongsTrm.DOMoveY(0f, _upDuration));
+        _seq.Append(_tongsTrm.DOMoveY(-2, _upDuration));
         _seq.AppendCallback(() =>
         {
             ShakeTongs();
