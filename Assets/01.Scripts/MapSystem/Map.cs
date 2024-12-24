@@ -19,10 +19,8 @@ namespace BLAST.MapSystem
 
         public void SpawnObjects()
         {
-            // 랜덤 시드 설정
             Random.InitState(_seed);
 
-            // 맵 오브젝트 생성 - 오브젝트끼리 겹치지 않게 생성
             for (int i = 0; i < 100; i++)
             {
                 Vector3 pos = new Vector3(Random.Range(-MapSize / 2, MapSize / 2), 1, Random.Range(-MapSize / 2, MapSize / 2)) + transform.position;
@@ -48,21 +46,17 @@ namespace BLAST.MapSystem
             float diffX = playerPos.x - mapPos.x;
             float diffZ = playerPos.z - mapPos.z;
 
-            // 이동할 축을 결정
             if (Mathf.Abs(diffX) > Mathf.Abs(diffZ))
             {
-                // X축 방향 이동
                 float moveX = diffX > 0 ? MapSize * 3 : -MapSize * 3;
                 transform.position += new Vector3(moveX, 0, 0);
             }
             else
             {
-                // Z축 방향 이동
                 float moveZ = diffZ > 0 ? MapSize * 3 : -MapSize * 3;
                 transform.position += new Vector3(0, 0, moveZ);
             }
 
-            // 새 위치에서 오브젝트 생성 (옵션)
             SpawnObjects();
         }
 

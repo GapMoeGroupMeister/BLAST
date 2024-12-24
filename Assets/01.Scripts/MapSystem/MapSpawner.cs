@@ -28,7 +28,6 @@ namespace BLAST.MapSystem
                 0,
                 Mathf.Round(playerPos.z / _mapSize) * _mapSize);
 
-            // 9개의 맵 타일 생성
             for (int i = 0; i < 9; i++)
             {
                 Vector3 spawnPos = centerPos + new Vector3(
@@ -50,11 +49,9 @@ namespace BLAST.MapSystem
             {
                 Vector3 tilePos = tile.transform.position;
 
-                // 플레이어와 타일 간 거리를 계산
                 float distX = Mathf.Abs(playerPos.x - tilePos.x);
                 float distZ = Mathf.Abs(playerPos.z - tilePos.z);
 
-                // 맵 타일을 플레이어 중심으로 이동
                 if (distX > _mapSize * 1.5f)
                 {
                     float offsetX = playerPos.x > tilePos.x ? _mapSize * 3 : -_mapSize * 3;
