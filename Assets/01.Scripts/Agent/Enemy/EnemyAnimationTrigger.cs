@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[Flags]
 public enum AnimationTriggerEnum
 {
     EndTrigger = 1,
@@ -12,11 +14,10 @@ public enum AnimationTriggerEnum
 
 public class EnemyAnimationTrigger : MonoBehaviour
 {
-    [SerializeField]
-    private Enemy _enemy;
+    public event Action<AnimationTriggerEnum> OnAnimationTriggerEvent;
 
     private void AnimationTrigger(AnimationTriggerEnum triggerBit)
     {
-        _enemy.AnimationEndTrigger(triggerBit);
+        OnAnimationTriggerEvent?.Invoke(triggerBit);
     }
 }

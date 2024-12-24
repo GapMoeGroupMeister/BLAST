@@ -51,8 +51,6 @@ public abstract class Enemy : Agent, IPoolingObject
         WaveManager.Instance.RemoveEnemy(this);
     }
 
-    public abstract void AnimationEndTrigger(AnimationTriggerEnum triggerBit);
-
     public abstract void Stun(float duration);
 
     public virtual void OnPop()
