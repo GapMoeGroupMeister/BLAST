@@ -36,17 +36,22 @@ public class TechTreeSO : ScriptableObject
     }
 
     public List<NodeSO> GetConnectedScripts(NodeSO n) => n.nextNodes.ToList();
+    public NodeSO GetPrevNode(NodeSO n) => n.prevNode;
 
     public void RemoveNextNode(NodeSO parent, NodeSO child)
     {
         //if (child.lastNodes.Contains(parent))
         //    child.lastNodes.Remove(parent);
 
-
         parent.nextNodes
             .Where((node) => node.id == child.id)
-            .Select((node) => parent.nextNodes.Remove(node));
-
+            .ToList()
+            .ForEach((node) =>
+            {
+                parent.nextNodes.Remove(node);
+                node.prevNode = null;
+            });
+        
         //if (parent.nextNodes.Contains(child) == false)
         //    parent.nextNodes.Remove(child);
     }
@@ -55,8 +60,13 @@ public class TechTreeSO : ScriptableObject
         //if (child.lastNodes.Contains(parent) == false)
         //    child.lastNodes.Add(parent);
 
+
         bool isExsist = parent.nextNodes.Where((node) => node.id == child.id).Count() > 0;
-        if (!isExsist) parent.nextNodes.Add(child);
+        if (!isExsist)
+        {
+            parent.nextNodes.Add(child);
+            child.prevNode = parent;
+        }
 
         //if (parent.nextNodes.Contains(child) == false)
         //    parent.nextNodes.Add(child);

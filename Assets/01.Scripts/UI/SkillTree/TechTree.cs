@@ -9,12 +9,11 @@ using UnityEngine.Events;
 public class TechTree : MonoBehaviour, IWindowPanel
 {
     public TechTreeSO treeSO;
-    public Dictionary<NodeSO, Node> nodeDic;
+    public Dictionary<NodeSO, Node> nodeDic = new Dictionary<NodeSO, Node>();
     public WarningPanel warningPanel;
     public TechTreeTooltipPanel tooltipPanel;
     [SerializeField] private Node nodePf;
 
-    public Transform edgeParent;
     private string _path;
 
     [SerializeField] private RectTransform _treeRect;
@@ -22,13 +21,17 @@ public class TechTree : MonoBehaviour, IWindowPanel
 
     private void Awake()
     {
-        nodeDic = new Dictionary<NodeSO, Node>();
         _path = Path.Combine(Application.dataPath, "TechTree.json");
+        Load();
     }
 
-    private void Start()
+
+
+    private void OnValidate()
     {
+        Debug.Log("코코다요~");
         int childCnt = transform.childCount;
+        nodeDic.Clear();
 
         for (int i = 0; i < treeSO.nodes.Count; i++)
         {
@@ -36,9 +39,8 @@ public class TechTree : MonoBehaviour, IWindowPanel
             {
                 if (transform.GetChild(j).TryGetComponent(out Node node))
                 {
-                    if (treeSO.nodes[i].id != node.node.id) continue;
-
-                    nodeDic.Add(node.node, node);
+                    if (treeSO.nodes[i].id != node.NodeType.id) continue;
+                    nodeDic.Add(node.NodeType, node);
                 }
             }
         }
@@ -46,12 +48,8 @@ public class TechTree : MonoBehaviour, IWindowPanel
         for (int i = 0; i < treeSO.nodes.Count; i++)
         {
             NodeSO nodeSO = treeSO.nodes[i];
-
-            if (nodeDic.TryGetValue(nodeSO, out Node node))
-                node.Init(this, node.node.id == 0);
+            nodeDic[nodeSO].SetEdge();
         }
-
-        Load();
     }
 
     [ContextMenu("CreateNodes")]
@@ -60,7 +58,7 @@ public class TechTree : MonoBehaviour, IWindowPanel
         treeSO.nodes.ForEach(node =>
         {
             Node nodeInstance = Instantiate(nodePf, transform);
-            nodeInstance.node = node;
+            nodeInstance.SetNode(node);
 
             if (node is PartNodeSO part)
             {
@@ -73,7 +71,7 @@ public class TechTree : MonoBehaviour, IWindowPanel
             else if (node is StartNodeSO)
             {
                 nodeInstance.name = "StartNode";
-                nodeInstance.DestroyEdge();
+                //nodeInstance.DestroyEdge();
             }
         });
     }
@@ -81,33 +79,32 @@ public class TechTree : MonoBehaviour, IWindowPanel
     [ContextMenu("RefreshNodes")]
     private void RefreshNode()
     {
-        for(int i = 0; i < transform.childCount; i++)
+        for (int i = 0; i < transform.childCount; i++)
         {
-            if(transform.GetChild(i).TryGetComponent(out Node node))
+            if (transform.GetChild(i).TryGetComponent(out Node node))
             {
                 Node nodeInstance = Instantiate(nodePf, transform);
-                nodeInstance.SetEdgePosition(node.GetEdgePosition());
-                nodeInstance.SetPosition(node.GetPosition());
-                nodeInstance.transform.SetSiblingIndex(i);
+                //nodeInstance.SetEdgePosition(node.GetEdgePosition());
+                //nodeInstance.SetPosition(node.GetPosition());
+                //nodeInstance.transform.SetSiblingIndex(i);
 
-                nodeInstance.node = node.node;
+                //nodeInstance.node = node.NodeType;
 
-                if (node.node is PartNodeSO part)
+                if (node.NodeType is PartNodeSO part)
                 {
                     nodeInstance.name = part.openPart.ToString();
                 }
-                else if (node.node is WeaponNodeSO weapon)
+                else if (node.NodeType is WeaponNodeSO weapon)
                 {
                     nodeInstance.name = weapon.weapon.ToString();
                 }
-                else if (node.node is StartNodeSO)
+                else if (node.NodeType is StartNodeSO)
                 {
                     nodeInstance.name = "StartNode";
-                    nodeInstance.DestroyEdge();
                 }
 
                 DestroyImmediate(node.gameObject);
-                //Destroy(node.gameObject);
+                //Destroy(NodeType.gameObject);
             }
         }
     }
@@ -169,23 +166,23 @@ public class TechTree : MonoBehaviour, IWindowPanel
 
     public void Load()
     {
-        treeSO.nodes.ForEach(n =>
-        {
-            if (n is PartNodeSO part)
-            {
-                if (GameDataManager.Instance.TryGetPart(part.openPart, out PartSave p))
-                {
-                    nodeDic[n].Init(this, p.enabled);
-                }
-            }
-            else if (n is WeaponNodeSO weapon)
-            {
-                if (GameDataManager.Instance.TryGetWeapon(weapon.weapon, out WeaponSave w))
-                {
-                    nodeDic[n].Init(this, w.enabled);
-                }
-            }
-        });
+        //treeSO.nodes.ForEach(n =>
+        //{
+        //    if (n is PartNodeSO part)
+        //    {
+        //        if (GameDataManager.Instance.TryGetPart(part.openPart, out PartSave p))
+        //        {
+        //            //nodeDic[n].Init(this, p.enabled);
+        //        }
+        //    }
+        //    else if (n is WeaponNodeSO weapon)
+        //    {
+        //        if (GameDataManager.Instance.TryGetWeapon(weapon.weapon, out WeaponSave w))
+        //        {
+        //            //nodeDic[n].Init(this, w.enabled);
+        //        }
+        //    }
+        //});
     }
 
     #region UI

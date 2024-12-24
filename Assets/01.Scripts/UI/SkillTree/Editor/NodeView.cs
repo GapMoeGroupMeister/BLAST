@@ -25,7 +25,7 @@ public class NodeView : UnityEditor.Experimental.GraphView.Node
         else
             title = "StartNode";
 
-        //title = node.name;
+        //title = NodeType.name;
         viewDataKey = node.guid;
 
         style.left = node.position.x;
