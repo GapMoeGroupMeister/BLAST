@@ -12,8 +12,6 @@ public class Coin : MonoBehaviour, IPoolingObject
 	private Collider[] _colliders;
 	private bool _isMoving = false;
 
-	//Managements
-	private ResourceManager _resourceManager;
 
 	private void Awake()
 	{
@@ -22,13 +20,12 @@ public class Coin : MonoBehaviour, IPoolingObject
 
 	public void OnPop()
 	{
-		_resourceManager ??= ResourceManager.Instance;
 		_isMoving = false;
 	}
 
 	public void OnPush()
 	{
-		_resourceManager.AddCoin(_coinAmount);
+		ResourceManager.AddCoin(_coinAmount);
 	}
 
 	private void FixedUpdate()
