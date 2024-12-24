@@ -1,21 +1,26 @@
+using Objects.PartSelect;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class LobbyManager : MonoBehaviour
+namespace  LobbyScene
 {
-    [SerializeField] private PartChanger _partChanager;
-    public void GameStart()
+    
+    public class LobbyManager : MonoBehaviour
     {
-        SaveManager.Instance.SaveData();
-        SceneLoadingManager.LoadScene("Vcs_GameScene");
-    } 
+        [SerializeField] private PartChanger _partChanager;
+        public void GameStart()
+        {
+            SaveManager.SaveData();
+            SceneLoadingManager.LoadScene("Vcs_GameScene");
+        } 
 
-    public void GameExit()
-	{
-        Application.Quit();
-	}
+        public void GameExit()
+        {
+            Application.Quit();
+        }
 
-    public void PartChanger()
-    {
+        public void PartChanger()
+        {
+        }
     }
+
 }

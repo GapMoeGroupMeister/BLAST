@@ -11,6 +11,7 @@ public class EffectStateSlot : MonoBehaviour
     [SerializeField] private Image _bgImage;
     private EffectState _effect;
     private RectTransform _rectTrm;
+    public bool IsActive { get; private set; }
 
     private void Awake()
     {
@@ -20,8 +21,9 @@ public class EffectStateSlot : MonoBehaviour
 
     public void Initialize(EffectStateSlotUIDataSO uiData, EffectState effect)
     {
+        IsActive = true;
+        gameObject.SetActive(true);
         _effect = effect;
-
         _iconImage.sprite = uiData.icon;
         _iconImage.color = uiData.iconColor;
         _bgImage.color = uiData.color;
@@ -32,13 +34,13 @@ public class EffectStateSlot : MonoBehaviour
     public void HandleRefresh(int duration, int level)
     {
         _timeText.text = duration.ToString();
-        
     }
 
     private void HandleDestroy()
     {
         _effect.OnUpdateEvent -= HandleRefresh;
         _effect.OnOverEvent -= HandleDestroy;
-        Destroy(gameObject);
+        IsActive = false;
+        gameObject.SetActive(false);
     }
 }
