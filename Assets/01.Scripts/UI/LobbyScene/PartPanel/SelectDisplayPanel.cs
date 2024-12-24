@@ -7,8 +7,7 @@ namespace LobbyScene
     
     public class SelectDisplayPanel : MonoBehaviour, IWindowPanel
     {
-        [SerializeField]
-        private bool _isActive;
+        [SerializeField] private bool _isActive;
 
         [SerializeField] private float _activeDuration = 1f;
 
@@ -16,6 +15,11 @@ namespace LobbyScene
 
         [SerializeField] private TextMeshPro _nameText;
         [SerializeField] private TextMeshPro _descriptionText;
+
+        public void ResetGraph()
+        {
+            _quadDrawer.DrawQuadGraph(new float[]{0, 0, 0, 0});
+        }
 
         public void SelectPart(PlayerPartDataSO data)
         {

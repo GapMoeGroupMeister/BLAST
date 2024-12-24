@@ -68,7 +68,7 @@ namespace LobbyScene
                 {
                     slot.SetSelectIcon(true);
                 }
-                slot.AddOnClieckEvent(Close);
+                //slot.AddOnClieckEvent(Close);
                 _partSlotList.Add(slot);
             }
         }
@@ -95,6 +95,7 @@ namespace LobbyScene
 
         public void SelectPart(PlayerPartDataSO data)
         {
+            RefreshSlot();
             _partSelectEvent.RaiseEvent(data);
         }
     }
