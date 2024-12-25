@@ -9,10 +9,11 @@ public class StageSelectSlot : MonoBehaviour
     [SerializeField] private StageInfoSO _stageInfo;
     [SerializeField] private Image _image;
     [SerializeField] private Image _lockPanel;
+    [SerializeField] private TextMeshProUGUI _stageIndexText;
+    [SerializeField] private TextMeshProUGUI _stageIndexText2;
     private Button _button;
     private StageSelectPanel _panel;
 
-    
 
     public void Initialize(StageSelectPanel panel, StageInfoSO info)
     {
@@ -20,8 +21,11 @@ public class StageSelectSlot : MonoBehaviour
         _stageInfo = info;
         _stageColorImage.color = info.stageColor;
         _image.sprite = info.stageImageSprite;
-       
-       _lockPanel.gameObject.SetActive(_stageInfo.isLocked); 
+        _stageIndexText.text = $"Stage - {(info.id + 1).ToString("00")}";
+        _stageIndexText2.text  = (info.id + 1).ToString("00");
+
+
+       _lockPanel.gameObject.SetActive(_stageInfo.isLocked);
         // 나중에 스테이지 잠금 부분은 다른식으로 진도를 저장해서 구현해야함
         // 현재는 StageInfoSO안에있는 bool값으로 강제 잠금임
     }
