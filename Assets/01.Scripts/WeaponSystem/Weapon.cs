@@ -34,7 +34,6 @@ public abstract class Weapon : MonoBehaviour
 	[HideInInspectorByCondition(nameof(isUniqueWeapon))]
 	public PlayerPartType partType;
 
-
 	[HideInInspector] public Player player;
 	public event CooldownInfoEvent OnCooldownEvent;
 	public event Action<float> OnWeaponUseEvent;

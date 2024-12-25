@@ -4,7 +4,7 @@ using UnityEngine;
 public enum PlayerPartType
 {
 	TITAN = 0,
-	Fire,
+	BARBECUEOFFRIDAY,
 	AMPERE,
 	HOLEMAKER,
 	FIRSTNOVA

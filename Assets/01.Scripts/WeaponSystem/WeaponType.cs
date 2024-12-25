@@ -25,11 +25,18 @@
 	DashExtension,
 	CoolingSpeedUp,
 	MassProductionDrone,
-	BulletSizeUp,
+	AutoRepairKit,
 	Mine,
 	LaserTail,
 	StunBullet,
 	AcidicArea,
 	AntimatterBomb,
 	NewClear, //최종병기(핵무기)
+	
+	//Ult
+	TTUlt,
+	BOFUlt,
+	APUlt,
+	HMUlt,
+	FNUlt
 }
