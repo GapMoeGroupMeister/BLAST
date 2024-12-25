@@ -20,9 +20,9 @@ public class DieContainer : MonoBehaviour
 
 	public void ShowPanel(float duration = 0.4f)
 	{
-		ResourceManager.Instance.SaveCoin();
+		ResourceManager.SaveCoin();
 		_timeText.text = TimeManager.CurrentGlobalTimerString;
-		_coinText.text = ResourceManager.Instance.GetCoin().ToString();
+		_coinText.text = ResourceManager.GetCoin().ToString();
 		Sequence seq = DOTween.Sequence().SetUpdate(true);
 		seq.Append(_canvasGroup.DOFade(1, duration).SetUpdate(true));
 		seq.AppendCallback(() =>

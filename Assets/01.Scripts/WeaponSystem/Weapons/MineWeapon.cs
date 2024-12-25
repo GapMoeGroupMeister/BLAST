@@ -5,13 +5,24 @@ public class MineWeapon : Weapon
 {
     [Header("----------------------------------------")]
     [SerializeField] private PoolType _minePoolType;
-
+    [SerializeField] private float _distance = 10f;
+    private int _distanceCount = 1;
 	public override void WeaponInit()
 	{
 		base.WeaponInit();
-        (player.MovementCompo as PlayerMovement).OnDistanceTravelledEvent += AutoUseWeaponByValueCheck;
+        WeaponConditionalEventManager.AddListener("MineWeapon", HandleUseWeaponByTravelled);
     }
 
+    private void HandleUseWeaponByTravelled(object distance)
+    {
+        if (((float)distance / _distance) > _distanceCount)
+        {
+            Debug.Log("dfdf");
+            _distanceCount++;
+            UseWeapon();
+        }
+    }
+    
     public override bool UseWeapon()
     {
         if (base.UseWeapon())

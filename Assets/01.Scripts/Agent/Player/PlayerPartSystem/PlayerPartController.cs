@@ -3,11 +3,11 @@ using UnityEngine;
 
 public enum PlayerPartType
 {
-	Default = 0,
-	Fire,
-	Electronic,
-	HoleMaker,
-	AntiMatter
+	TITAN = 0,
+	BARBECUEOFFRIDAY,
+	AMPERE,
+	HOLEMAKER,
+	FIRSTNOVA
 }
 
 public class PlayerPartController : MonoBehaviour

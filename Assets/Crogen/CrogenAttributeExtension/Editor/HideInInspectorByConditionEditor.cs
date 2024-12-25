@@ -19,19 +19,15 @@ namespace Crogen.AttributeExtension.Editor
                 return;
             }
 
-            if (hideInInspectorByCondition.Reversed)
+            if(!hideInInspectorByCondition.Reversed)
             {
-                if (boolProperty.boolValue == false)
-                {
+                if(boolProperty.boolValue)
                     EditorGUI.PropertyField(position, property);
-                } 
             }
             else
             {
-                if (boolProperty.boolValue)
-                {
+                if(boolProperty.boolValue == false)
                     EditorGUI.PropertyField(position, property);
-                }    
             }
         }
 
@@ -40,10 +36,20 @@ namespace Crogen.AttributeExtension.Editor
             HideInInspectorByCondition hideInInspectorByCondition = attribute as HideInInspectorByCondition;
             SerializedProperty boolProperty = property.serializedObject.FindProperty(hideInInspectorByCondition.BooleanPropertyName);
       
-            if(!boolProperty.boolValue)
-                return 0f;
+            if(hideInInspectorByCondition.Reversed)
+            {
+                if(boolProperty.boolValue)
+                    return 0f;
+            }
+            else
+            {
+                if(boolProperty.boolValue == false)
+                    return 0f;
+            }
+            
 
-            return EditorGUI.GetPropertyHeight(property);        }
+            return EditorGUI.GetPropertyHeight(property);        
+        }
     }
 }
 #endif

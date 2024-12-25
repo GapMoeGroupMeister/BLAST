@@ -9,7 +9,7 @@ public class Player : Agent
     public AgentDashEffectCaster playerDashEffectCaster;
     
     [SerializeField] private bool _isDebugMode = false;
-    [HideInInspectorByCondition(nameof(_isDebugMode))]
+    [HideInInspectorByCondition(nameof(_isDebugMode), false)]
     [SerializeField] private PlayerPartType _currentPartType;
     
     private PlayerPartController _playerPartController;

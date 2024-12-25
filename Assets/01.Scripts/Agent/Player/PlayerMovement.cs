@@ -7,7 +7,6 @@ using UnityEngine.Events;
 
 public class PlayerMovement : MovementController
 {
-    public event Action<float> OnDistanceTravelledEvent;
     public event Action<float> OnDashCoolTimePercentEvent;
     public event Action<Vector3> OnDashDirectionEvent;
     public UnityEvent OnDashEvent;
@@ -114,7 +113,7 @@ public class PlayerMovement : MovementController
         _rigidbodyCompo.linearVelocity = -movement * moveSpeed;
 
         _distanceTravelled += (_startPos - _endPos).magnitude;
-        OnDistanceTravelledEvent?.Invoke(_distanceTravelled);
+        WeaponConditionalEventManager.Invoke("MineWeapon", _distanceTravelled);
         _endPos = _startPos;
     }
 }
