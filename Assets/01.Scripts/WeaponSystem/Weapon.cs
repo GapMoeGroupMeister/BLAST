@@ -1,4 +1,5 @@
 ﻿using System;
+using Crogen.AttributeExtension;
 using UnityEngine;
 
 public enum CompareMode
@@ -31,18 +32,20 @@ public abstract class Weapon : MonoBehaviour
 	[Range(1, 10)]
 	public uint level=1;
 
-	[Header("전용무기인가?")]
+	[Header("전용무기?")]
 	[Tooltip("체크하면 이 무기는 전용무기가 됩니다.")]
 	public bool isUniqueWeapon;
+	[HideInInspectorByCondition(nameof(isUniqueWeapon))]
 	public PlayerPartType partType;
 
-	[Header("조건부로 발동하는 무기인가?")]
+	[Header("조건부")]
 	[Tooltip("체크하면 쿨다운뿐만 아니라 조건부까지 같이 고려하여 무기를 사용합니다.")]
 	public bool isConditionalWeapon;
-
-	[Header("조건부")]
+	[HideInInspectorByCondition(nameof(isConditionalWeapon))]
 	[SerializeField] protected AutoUseType _autoUseType;
+	[HideInInspectorByCondition(nameof(isConditionalWeapon))]
 	[SerializeField] protected CompareMode _compareMode;
+	[HideInInspectorByCondition(nameof(isConditionalWeapon))]
 	[SerializeField] protected float _targetValue;
 
 	[HideInInspector] public Player player;

@@ -9,10 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3866575627905435685}
+  - component: {fileID: 7370477218331018473}
   - component: {fileID: 5630484606518361002}
   - component: {fileID: 4675976240277001983}
   m_Layer: 0
-  m_Name: Fire
+  m_Name: BOF
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,6 +34,32 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6165231877111597868}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7370477218331018473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 877809490449677630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dbc76988a8c42e468de93a24578cacd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canUse: 1
+  weaponEnabled: 0
+  _cooldown: 0
+  level: 10
+  isUniqueWeapon: 1
+  partType: 1
+  isConditionalWeapon: 0
+  _autoUseType: 0
+  _compareMode: 0
+  _targetValue: 0
+  player: {fileID: 0}
+  whatIsEnemy:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!114 &5630484606518361002
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -98,11 +125,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5074084765419918853}
+  - component: {fileID: 8056811077931355138}
   - component: {fileID: 5144747693960115713}
   - component: {fileID: 1536740028326696760}
   - component: {fileID: 397250888331419547}
   m_Layer: 0
-  m_Name: HoleMaker
+  m_Name: HM
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -123,6 +151,32 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6165231877111597868}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8056811077931355138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2923285216936907121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c090966f5ccba144b8709356f3682f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canUse: 1
+  weaponEnabled: 1
+  _cooldown: 0
+  level: 10
+  isUniqueWeapon: 1
+  partType: 3
+  isConditionalWeapon: 0
+  _autoUseType: 0
+  _compareMode: 0
+  _targetValue: 0
+  player: {fileID: 0}
+  whatIsEnemy:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!114 &5144747693960115713
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -308,10 +362,11 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5074084765419918853}
+  - {fileID: 8708447336408435625}
   - {fileID: 3866575627905435685}
   - {fileID: 3348596925788104567}
-  - {fileID: 8708447336408435625}
+  - {fileID: 5074084765419918853}
+  - {fileID: 3065085228724756410}
   - {fileID: 4493460350588204496}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -657,6 +712,64 @@ MonoBehaviour:
     m_Bits: 512
   _nuclear: {fileID: 7818928688725486981, guid: a81944314ba1d874f9f7169501e8d54d,
     type: 3}
+--- !u!1 &5616064788415714682
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3065085228724756410}
+  - component: {fileID: 6792829731449300584}
+  m_Layer: 0
+  m_Name: FN
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3065085228724756410
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5616064788415714682}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6165231877111597868}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6792829731449300584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5616064788415714682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d13b121c05351d14cbcb66da2fd64c0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canUse: 1
+  weaponEnabled: 1
+  _cooldown: 0
+  level: 10
+  isUniqueWeapon: 1
+  partType: 4
+  isConditionalWeapon: 0
+  _autoUseType: 0
+  _compareMode: 0
+  _targetValue: 0
+  player: {fileID: 0}
+  whatIsEnemy:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!1 &5817447826826500837
 GameObject:
   m_ObjectHideFlags: 0
@@ -757,9 +870,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8708447336408435625}
+  - component: {fileID: 1699926553620518377}
   - component: {fileID: 4758979373639413987}
   m_Layer: 0
-  m_Name: Default
+  m_Name: TT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -780,6 +894,32 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6165231877111597868}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1699926553620518377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6445368848195410076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c325d42e2aba7442992c1a47f6e6aad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canUse: 1
+  weaponEnabled: 1
+  _cooldown: 0
+  level: 10
+  isUniqueWeapon: 1
+  partType: 0
+  isConditionalWeapon: 0
+  _autoUseType: 0
+  _compareMode: 0
+  _targetValue: 0
+  player: {fileID: 0}
+  whatIsEnemy:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!114 &4758979373639413987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -818,12 +958,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3348596925788104567}
+  - component: {fileID: 1090120355763790770}
   - component: {fileID: 3787118304392525895}
   - component: {fileID: 1006913282202067868}
   - component: {fileID: 6442630648383318298}
   - component: {fileID: 7521690542071491873}
   m_Layer: 0
-  m_Name: Electronic
+  m_Name: AP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -844,6 +985,32 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6165231877111597868}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1090120355763790770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7992053496910435731}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e59a26081a986c4cbdae0a5d11263d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canUse: 1
+  weaponEnabled: 1
+  _cooldown: 0
+  level: 10
+  isUniqueWeapon: 1
+  partType: 2
+  isConditionalWeapon: 0
+  _autoUseType: 0
+  _compareMode: 0
+  _targetValue: 0
+  player: {fileID: 0}
+  whatIsEnemy:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!114 &3787118304392525895
 MonoBehaviour:
   m_ObjectHideFlags: 0
