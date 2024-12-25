@@ -48,14 +48,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canUse: 1
   weaponEnabled: 0
+  isConditionalWeapon: 0
   _cooldown: 0
   level: 10
   isUniqueWeapon: 1
   partType: 1
-  isConditionalWeapon: 0
-  _autoUseType: 0
-  _compareMode: 0
-  _targetValue: 0
   player: {fileID: 0}
   whatIsEnemy:
     serializedVersion: 2
@@ -74,14 +71,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canUse: 0
   weaponEnabled: 0
+  isConditionalWeapon: 0
   _cooldown: 20
   level: 1
   isUniqueWeapon: 1
   partType: 1
-  isConditionalWeapon: 0
-  _autoUseType: 0
-  _compareMode: 0
-  _targetValue: 0
   player: {fileID: 0}
   whatIsEnemy:
     serializedVersion: 2
@@ -103,14 +97,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canUse: 0
   weaponEnabled: 0
+  isConditionalWeapon: 0
   _cooldown: 20
   level: 1
   isUniqueWeapon: 1
   partType: 1
-  isConditionalWeapon: 0
-  _autoUseType: 0
-  _compareMode: 0
-  _targetValue: 0
   player: {fileID: 0}
   whatIsEnemy:
     serializedVersion: 2
@@ -165,14 +156,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canUse: 1
   weaponEnabled: 1
+  isConditionalWeapon: 0
   _cooldown: 0
   level: 10
   isUniqueWeapon: 1
   partType: 3
-  isConditionalWeapon: 0
-  _autoUseType: 0
-  _compareMode: 0
-  _targetValue: 0
   player: {fileID: 0}
   whatIsEnemy:
     serializedVersion: 2
@@ -191,14 +179,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canUse: 0
   weaponEnabled: 0
+  isConditionalWeapon: 0
   _cooldown: 15
   level: 1
   isUniqueWeapon: 1
   partType: 3
-  isConditionalWeapon: 0
-  _autoUseType: 0
-  _compareMode: 0
-  _targetValue: 0
   player: {fileID: 0}
   whatIsEnemy:
     serializedVersion: 2
@@ -219,14 +204,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canUse: 0
   weaponEnabled: 0
+  isConditionalWeapon: 0
   _cooldown: 15
   level: 1
   isUniqueWeapon: 1
   partType: 3
-  isConditionalWeapon: 0
-  _autoUseType: 0
-  _compareMode: 0
-  _targetValue: 0
   player: {fileID: 0}
   whatIsEnemy:
     serializedVersion: 2
@@ -250,76 +232,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canUse: 0
   weaponEnabled: 0
+  isConditionalWeapon: 0
   _cooldown: 1
   level: 1
   isUniqueWeapon: 1
   partType: 3
-  isConditionalWeapon: 0
-  _autoUseType: 0
-  _compareMode: 0
-  _targetValue: 0
   player: {fileID: 0}
   whatIsEnemy:
     serializedVersion: 2
     m_Bits: 512
---- !u!1 &4474485064539057102
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5140730628465777045}
-  - component: {fileID: 7624023167472649217}
-  - component: {fileID: 3132500891667096829}
-  m_Layer: 0
-  m_Name: DestructionBeamFeedback
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5140730628465777045
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4474485064539057102}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 4493460350588204496}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7624023167472649217
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4474485064539057102}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a50d4dd25594d1e4a8e829e52ebb40c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &3132500891667096829
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4474485064539057102}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9053788e7cb7e342a2cf2d34f26d2b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _soundData: {fileID: 0}
 --- !u!1 &4942398911378062715
 GameObject:
   m_ObjectHideFlags: 0
@@ -367,7 +288,6 @@ Transform:
   - {fileID: 3348596925788104567}
   - {fileID: 5074084765419918853}
   - {fileID: 3065085228724756410}
-  - {fileID: 4493460350588204496}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5381559122253746953
@@ -397,14 +317,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canUse: 0
   weaponEnabled: 0
+  isConditionalWeapon: 0
   _cooldown: 15
   level: 1
   isUniqueWeapon: 0
   partType: 0
-  isConditionalWeapon: 0
-  _autoUseType: 0
-  _compareMode: 0
-  _targetValue: 0
   player: {fileID: 0}
   whatIsEnemy:
     serializedVersion: 2
@@ -425,14 +342,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canUse: 0
   weaponEnabled: 0
+  isConditionalWeapon: 0
   _cooldown: 2
   level: 1
   isUniqueWeapon: 0
   partType: 0
-  isConditionalWeapon: 0
-  _autoUseType: 0
-  _compareMode: 0
-  _targetValue: 0
   player: {fileID: 0}
   whatIsEnemy:
     serializedVersion: 2
@@ -453,14 +367,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canUse: 0
   weaponEnabled: 0
+  isConditionalWeapon: 1
   _cooldown: 0
   level: 1
   isUniqueWeapon: 0
   partType: 0
-  isConditionalWeapon: 1
-  _autoUseType: 0
-  _compareMode: 0
-  _targetValue: 0
   player: {fileID: 0}
   whatIsEnemy:
     serializedVersion: 2
@@ -481,14 +392,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canUse: 0
   weaponEnabled: 0
+  isConditionalWeapon: 0
   _cooldown: 3
   level: 1
   isUniqueWeapon: 0
   partType: 0
-  isConditionalWeapon: 0
-  _autoUseType: 0
-  _compareMode: 0
-  _targetValue: 0
   player: {fileID: 0}
   whatIsEnemy:
     serializedVersion: 2
@@ -507,14 +415,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canUse: 0
   weaponEnabled: 0
+  isConditionalWeapon: 0
   _cooldown: 1
   level: 1
   isUniqueWeapon: 0
   partType: 0
-  isConditionalWeapon: 0
-  _autoUseType: 0
-  _compareMode: 0
-  _targetValue: 0
   player: {fileID: 0}
   whatIsEnemy:
     serializedVersion: 2
@@ -535,14 +440,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canUse: 0
   weaponEnabled: 0
+  isConditionalWeapon: 0
   _cooldown: 1
   level: 1
   isUniqueWeapon: 0
   partType: 0
-  isConditionalWeapon: 0
-  _autoUseType: 0
-  _compareMode: 0
-  _targetValue: 0
   player: {fileID: 0}
   whatIsEnemy:
     serializedVersion: 2
@@ -561,19 +463,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canUse: 0
   weaponEnabled: 0
-  _cooldown: 5
+  isConditionalWeapon: 1
+  _cooldown: 0
   level: 1
   isUniqueWeapon: 0
   partType: 0
-  isConditionalWeapon: 1
-  _autoUseType: 1
-  _compareMode: 0
-  _targetValue: 20
   player: {fileID: 0}
   whatIsEnemy:
     serializedVersion: 2
     m_Bits: 512
   _minePoolType: 10
+  _distance: 50
 --- !u!114 &6522967500531535053
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -588,14 +488,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canUse: 0
   weaponEnabled: 0
+  isConditionalWeapon: 0
   _cooldown: 1
   level: 1
   isUniqueWeapon: 0
   partType: 0
-  isConditionalWeapon: 0
-  _autoUseType: 0
-  _compareMode: 0
-  _targetValue: 0
   player: {fileID: 0}
   whatIsEnemy:
     serializedVersion: 2
@@ -616,14 +513,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canUse: 0
   weaponEnabled: 0
+  isConditionalWeapon: 0
   _cooldown: 1
   level: 1
   isUniqueWeapon: 0
   partType: 0
-  isConditionalWeapon: 0
-  _autoUseType: 0
-  _compareMode: 0
-  _targetValue: 0
   player: {fileID: 0}
   whatIsEnemy:
     serializedVersion: 2
@@ -642,14 +536,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canUse: 0
   weaponEnabled: 0
+  isConditionalWeapon: 0
   _cooldown: 10
   level: 1
   isUniqueWeapon: 0
   partType: 0
-  isConditionalWeapon: 0
-  _autoUseType: 0
-  _compareMode: 0
-  _targetValue: 0
   player: {fileID: 0}
   whatIsEnemy:
     serializedVersion: 2
@@ -670,14 +561,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canUse: 0
   weaponEnabled: 0
+  isConditionalWeapon: 0
   _cooldown: 13
   level: 1
   isUniqueWeapon: 0
   partType: 0
-  isConditionalWeapon: 0
-  _autoUseType: 0
-  _compareMode: 0
-  _targetValue: 0
   player: {fileID: 0}
   whatIsEnemy:
     serializedVersion: 2
@@ -698,14 +586,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canUse: 0
   weaponEnabled: 0
+  isConditionalWeapon: 0
   _cooldown: 60
   level: 1
   isUniqueWeapon: 0
   partType: 0
-  isConditionalWeapon: 0
-  _autoUseType: 0
-  _compareMode: 0
-  _targetValue: 0
   player: {fileID: 0}
   whatIsEnemy:
     serializedVersion: 2
@@ -758,109 +643,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canUse: 1
   weaponEnabled: 1
+  isConditionalWeapon: 1
   _cooldown: 0
   level: 10
   isUniqueWeapon: 1
   partType: 4
-  isConditionalWeapon: 0
-  _autoUseType: 0
-  _compareMode: 0
-  _targetValue: 0
   player: {fileID: 0}
   whatIsEnemy:
     serializedVersion: 2
     m_Bits: 512
---- !u!1 &5817447826826500837
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1168119355314764734}
-  - component: {fileID: 5850868263687050974}
-  - component: {fileID: 8922931586169900367}
-  m_Layer: 0
-  m_Name: EMPFeedback
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1168119355314764734
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5817447826826500837}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 4493460350588204496}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5850868263687050974
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5817447826826500837}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a50d4dd25594d1e4a8e829e52ebb40c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &8922931586169900367
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5817447826826500837}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9053788e7cb7e342a2cf2d34f26d2b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _soundData: {fileID: 11400000, guid: 86ee04cfa3dd5e04ca3ca3622bf2a384, type: 2}
---- !u!1 &6351253383520538468
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4493460350588204496}
-  m_Layer: 0
-  m_Name: WeaponFeedback
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4493460350588204496
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6351253383520538468}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1168119355314764734}
-  - {fileID: 5140730628465777045}
-  m_Father: {fileID: 6165231877111597868}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6445368848195410076
 GameObject:
   m_ObjectHideFlags: 0
@@ -908,14 +699,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canUse: 1
   weaponEnabled: 1
+  isConditionalWeapon: 0
   _cooldown: 0
   level: 10
   isUniqueWeapon: 1
   partType: 0
-  isConditionalWeapon: 0
-  _autoUseType: 0
-  _compareMode: 0
-  _targetValue: 0
   player: {fileID: 0}
   whatIsEnemy:
     serializedVersion: 2
@@ -934,14 +722,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canUse: 0
   weaponEnabled: 0
+  isConditionalWeapon: 0
   _cooldown: 5
   level: 1
   isUniqueWeapon: 1
   partType: 0
-  isConditionalWeapon: 0
-  _autoUseType: 0
-  _compareMode: 0
-  _targetValue: 0
   player: {fileID: 0}
   whatIsEnemy:
     serializedVersion: 2
@@ -999,14 +784,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canUse: 1
   weaponEnabled: 1
+  isConditionalWeapon: 0
   _cooldown: 0
   level: 10
   isUniqueWeapon: 1
   partType: 2
-  isConditionalWeapon: 0
-  _autoUseType: 0
-  _compareMode: 0
-  _targetValue: 0
   player: {fileID: 0}
   whatIsEnemy:
     serializedVersion: 2
@@ -1025,14 +807,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canUse: 0
   weaponEnabled: 0
+  isConditionalWeapon: 0
   _cooldown: 10
   level: 1
   isUniqueWeapon: 1
   partType: 2
-  isConditionalWeapon: 0
-  _autoUseType: 0
-  _compareMode: 0
-  _targetValue: 0
   player: {fileID: 0}
   whatIsEnemy:
     serializedVersion: 2
@@ -1056,14 +835,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canUse: 0
   weaponEnabled: 0
+  isConditionalWeapon: 0
   _cooldown: 0
   level: 1
   isUniqueWeapon: 1
   partType: 2
-  isConditionalWeapon: 0
-  _autoUseType: 0
-  _compareMode: 0
-  _targetValue: 0
   player: {fileID: 0}
   whatIsEnemy:
     serializedVersion: 2
@@ -1082,14 +858,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canUse: 0
   weaponEnabled: 0
+  isConditionalWeapon: 0
   _cooldown: 15
   level: 1
   isUniqueWeapon: 1
   partType: 1
-  isConditionalWeapon: 0
-  _autoUseType: 0
-  _compareMode: 0
-  _targetValue: 0
   player: {fileID: 0}
   whatIsEnemy:
     serializedVersion: 2
@@ -1114,14 +887,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canUse: 0
   weaponEnabled: 0
+  isConditionalWeapon: 0
   _cooldown: 1
   level: 1
   isUniqueWeapon: 1
   partType: 2
-  isConditionalWeapon: 0
-  _autoUseType: 0
-  _compareMode: 0
-  _targetValue: 0
   player: {fileID: 0}
   whatIsEnemy:
     serializedVersion: 2

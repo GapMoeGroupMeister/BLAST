@@ -16595,6 +16595,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 57484530772936518, guid: a26c55cfcafa7f44c9da997bcca03dd6,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 12.379883
+      objectReference: {fileID: 0}
     - target: {fileID: 1391651560702060029, guid: a26c55cfcafa7f44c9da997bcca03dd6,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -16769,6 +16774,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 11.399902
+      objectReference: {fileID: 0}
+    - target: {fileID: 3390177791961316071, guid: a26c55cfcafa7f44c9da997bcca03dd6,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -22.600098
       objectReference: {fileID: 0}
     - target: {fileID: 3924130015969050302, guid: a26c55cfcafa7f44c9da997bcca03dd6,
         type: 3}
@@ -30151,7 +30161,7 @@ PrefabInstance:
     - target: {fileID: 1818484225686448684, guid: d715b0cde2ca3754eb7ea29b435422cf,
         type: 3}
       propertyPath: _currentPartType
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2601035507658518275, guid: d715b0cde2ca3754eb7ea29b435422cf,
         type: 3}
@@ -30484,15 +30494,8 @@ PrefabInstance:
       propertyPath: _playerXPBodyTrm
       value: 
       objectReference: {fileID: 587710720521019516}
-    - target: {fileID: 7658873785039511361, guid: 9ddb693b15025364d89aea50a130ce07,
-        type: 3}
-      propertyPath: _acidicArea
-      value: 
-      objectReference: {fileID: 6165953989487565950, guid: 3ae96958f1a37e14ba9e4366f97843db,
-        type: 3}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 6351253383520538468, guid: 9ddb693b15025364d89aea50a130ce07, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ddb693b15025364d89aea50a130ce07, type: 3}
