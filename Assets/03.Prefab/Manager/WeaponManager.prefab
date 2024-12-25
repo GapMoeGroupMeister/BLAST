@@ -256,13 +256,13 @@ GameObject:
   - component: {fileID: 6838086103775843688}
   - component: {fileID: 3431340043160336752}
   - component: {fileID: 2929798281078525739}
-  - component: {fileID: 6085890847137210428}
   - component: {fileID: 5246632227947119379}
   - component: {fileID: 6522967500531535053}
   - component: {fileID: 1774822119726090316}
   - component: {fileID: 7658873785039511361}
   - component: {fileID: 1953694606132806691}
   - component: {fileID: 144204279329110225}
+  - component: {fileID: 9183279205965358617}
   m_Layer: 0
   m_Name: WeaponManager
   m_TagString: Untagged
@@ -426,29 +426,6 @@ MonoBehaviour:
     m_Bits: 512
   dronePrefab: {fileID: 604776981245127952, guid: 0351ae6386fb4484e83c288ba517eb16,
     type: 3}
---- !u!114 &6085890847137210428
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4942398911378062715}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d9a7716e69548e0a73515dc1e1f7d6d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canUse: 0
-  weaponEnabled: 0
-  isConditionalWeapon: 0
-  _cooldown: 1
-  level: 1
-  isUniqueWeapon: 0
-  partType: 0
-  player: {fileID: 0}
-  whatIsEnemy:
-    serializedVersion: 2
-    m_Bits: 512
 --- !u!114 &5246632227947119379
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -597,6 +574,29 @@ MonoBehaviour:
     m_Bits: 512
   _nuclear: {fileID: 7818928688725486981, guid: a81944314ba1d874f9f7169501e8d54d,
     type: 3}
+--- !u!114 &9183279205965358617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4942398911378062715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a77ec0648ac9dc44eae3334738cbc141, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canUse: 0
+  weaponEnabled: 0
+  isConditionalWeapon: 1
+  _cooldown: 0
+  level: 1
+  isUniqueWeapon: 0
+  partType: 0
+  player: {fileID: 0}
+  whatIsEnemy:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &5616064788415714682
 GameObject:
   m_ObjectHideFlags: 0

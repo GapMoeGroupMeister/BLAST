@@ -31,7 +31,7 @@ public abstract class Weapon : MonoBehaviour
 	[Header("전용무기?")]
 	[Tooltip("체크하면 이 무기는 전용무기가 됩니다.")]
 	public bool isUniqueWeapon;
-	[HideInInspectorByCondition(nameof(isUniqueWeapon), true)]
+	[HideInInspectorByCondition(nameof(isUniqueWeapon))]
 	public PlayerPartType partType;
 
 
