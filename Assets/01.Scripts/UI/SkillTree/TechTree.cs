@@ -6,6 +6,10 @@ using UnityEngine;
 using DG.Tweening;
 using UnityEngine.Events;
 
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
 public class TechTree : MonoBehaviour, IWindowPanel
 {
     public TechTreeSO treeSO;
@@ -19,7 +23,7 @@ public class TechTree : MonoBehaviour, IWindowPanel
     [SerializeField] private RectTransform _treeRect;
     public UnityEvent<int, int> selectNodeEvent;
 
-    private void Awake()
+    private void Start()
     {
         _path = Path.Combine(Application.dataPath, "TechTree.json");
         Load();
@@ -52,12 +56,13 @@ public class TechTree : MonoBehaviour, IWindowPanel
         }
     }
 
+#if UNITY_EDITOR
     [ContextMenu("CreateNodes")]
     private void CreateNodes()
     {
         treeSO.nodes.ForEach(node =>
         {
-            Node nodeInstance = Instantiate(nodePf, transform);
+            Node nodeInstance = PrefabUtility.InstantiatePrefab(nodePf, transform) as Node;
             nodeInstance.SetNode(node);
 
             if (node is PartNodeSO part)
@@ -83,7 +88,7 @@ public class TechTree : MonoBehaviour, IWindowPanel
         {
             if (transform.GetChild(i).TryGetComponent(out Node node))
             {
-                Node nodeInstance = Instantiate(nodePf, transform);
+                Node nodeInstance = PrefabUtility.InstantiatePrefab(nodePf, transform) as Node;
                 //nodeInstance.SetEdgePosition(node.GetEdgePosition());
                 //nodeInstance.SetPosition(node.GetPosition());
                 //nodeInstance.transform.SetSiblingIndex(i);
@@ -108,6 +113,7 @@ public class TechTree : MonoBehaviour, IWindowPanel
             }
         }
     }
+    #endif
 
     public bool TryGetNode(NodeSO nodeSO, out Node node)
     {
@@ -122,8 +128,6 @@ public class TechTree : MonoBehaviour, IWindowPanel
 
     public Node GetNode(int id)
     {
-        //�ϴ� �⺻���� ù��° �� ��ȯ
-
         for (int i = 0; i < treeSO.nodes.Count; i++)
         {
             if (treeSO.nodes[i].id == id)
@@ -166,23 +170,25 @@ public class TechTree : MonoBehaviour, IWindowPanel
 
     public void Load()
     {
-        //treeSO.nodes.ForEach(n =>
-        //{
-        //    if (n is PartNodeSO part)
-        //    {
-        //        if (GameDataManager.Instance.TryGetPart(part.openPart, out PartSave p))
-        //        {
-        //            //nodeDic[n].Init(this, p.enabled);
-        //        }
-        //    }
-        //    else if (n is WeaponNodeSO weapon)
-        //    {
-        //        if (GameDataManager.Instance.TryGetWeapon(weapon.weapon, out WeaponSave w))
-        //        {
-        //            //nodeDic[n].Init(this, w.enabled);
-        //        }
-        //    }
-        //});
+        treeSO.nodes.ForEach(n =>
+        {
+            if (n is PartNodeSO part)
+            {
+                if (GameDataManager.Instance.TryGetPart(part.openPart, out PartSave p))
+                {
+                    Debug.Log(p.enabled);
+                    nodeDic[n].Init(p.enabled);
+                }
+            }
+            else if (n is WeaponNodeSO weapon)
+            {
+                if (GameDataManager.Instance.TryGetWeapon(weapon.weapon, out WeaponSave w))
+                {
+                    Debug.Log(w.enabled);
+                    nodeDic[n].Init(w.enabled);
+                }
+            }
+        });
     }
 
     #region UI
