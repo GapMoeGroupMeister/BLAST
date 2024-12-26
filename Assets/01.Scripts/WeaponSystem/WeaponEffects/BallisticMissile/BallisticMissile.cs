@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using Crogen.CrogenPooling;
@@ -9,7 +7,7 @@ public class BallisticMissile : WeaponEffect
 {
 	private Transform _target;
 	[SerializeField] private BallisticMissileSign _ballisticMissileSignPrefab;
-	//[SerializeField] private PoolType _explosionPoolType;
+	[SerializeField] private EffectPoolType _explosionPoolType;
 	[SerializeField] private float _moveDuration = 1f;
 	[SerializeField] private float _maxPosY = 150f;
 	[SerializeField] private DamageCaster _damageCaster;
@@ -62,9 +60,9 @@ public class BallisticMissile : WeaponEffect
 	//Æø¹ßÇÏ±â
 	private void ExplosionEffect()
 	{
-		// _endFeedbackPlayer?.PlayFeedback();
-		// _damageCaster.CastDamage(_damage);
-		// gameObject.Pop(_explosionPoolType, transform.position, Quaternion.identity);
-		// Destroy(gameObject);
+		_endFeedbackPlayer?.PlayFeedback();
+		_damageCaster.CastDamage(_damage);
+		gameObject.Pop(_explosionPoolType, transform.position, Quaternion.identity);
+		Destroy(gameObject);
 	}
 }

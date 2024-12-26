@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Crogen.CrogenPooling;
 using Crogen.PowerfulInput;
 using UnityEngine;
 using UnityEngine.Events;
@@ -36,7 +37,7 @@ public class MagazineInfo
 	public bool IsAttack { get; private set; }
 	public bool CanAttack { get; set; }
 
-	//[SerializeField] private PoolType _bulletPoolingType;
+	[SerializeField] private ProjectilePoolType _bulletPoolingType;
 	
 	public void HandleAttackUpdate(bool value)
 	{
@@ -59,10 +60,10 @@ public class MagazineInfo
 		{
 			if (bulletFirePositions[i] != null)
 			{
-				// bulletFirePositions[i].gameObject.Pop(
-				// 	_bulletPoolingType,
-				// 	bulletFirePositions[i].position, 
-				// 	Quaternion.LookRotation(AttackDirection));
+				bulletFirePositions[i].gameObject.Pop(
+					_bulletPoolingType,
+					bulletFirePositions[i].position, 
+					Quaternion.LookRotation(AttackDirection));
 			}
 		}
 	}

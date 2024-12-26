@@ -16,7 +16,7 @@ public class EnergySphere : WeaponEffect
 	[SerializeField] private float _attackDelay = 0.35f;
 	[SerializeField] private float _curAttacktime = 0;
 	[SerializeField] private int _maxAttackableCount = 5;
-	//[SerializeField] private PoolType _laserPoolType;
+	[SerializeField] private EffectPoolType _laserPoolType;
 	private Vector3 _moveDir;
 
 	public override void Init(uint level, Weapon weaponBase)
@@ -56,12 +56,12 @@ public class EnergySphere : WeaponEffect
 		{
 			if (colliders[i] == null) break;
 			yield return new WaitForSeconds(0.01f);
-			// EnergySphereLaser laser = 
-			// 	gameObject.Pop(_laserPoolType, 
-			// 	transform.position, 
-			// 	Quaternion.identity) as EnergySphereLaser;
-			//
-			// laser.Init(colliders[i].transform, _damage);
+			EnergySphereLaser laser = 
+				gameObject.Pop(_laserPoolType, 
+				transform.position, 
+				Quaternion.identity) as EnergySphereLaser;
+			
+			laser.Init(colliders[i].transform, _damage);
 		}
 	}
 

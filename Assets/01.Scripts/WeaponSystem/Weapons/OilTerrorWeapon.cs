@@ -16,11 +16,6 @@ public class OilTerrorWeapon : Weapon
         return true;
     }
 
-    protected override void Update()
-    {
-        base.Update();
-    }
-
     private IEnumerator SpreadOilCoroutine()
     {
         float duration = level * 2f + 3f;
@@ -41,11 +36,10 @@ public class OilTerrorWeapon : Weapon
 
     private void PutOil()
     {
-        //
-        // Vector3 position = -player.transform.forward.normalized * 2 + player.transform.position;
-        //
-        // OilObject oil = gameObject.Pop(PoolType.OilObject, position, Quaternion.identity) as OilObject;
-        // oil.SetOil(10);
+        Vector3 position = -player.transform.forward.normalized * 2 + player.transform.position;
+        
+        OilObject oil = gameObject.Pop(WeaponEffectPoolType.OilObject, position, Quaternion.identity) as OilObject;
+        oil.SetOil(10);
 
     }
 }

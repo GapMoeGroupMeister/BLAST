@@ -1,6 +1,4 @@
-﻿using Crogen.CrogenPooling;
-using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class DashExtensionWeapon : Weapon
 {
@@ -33,10 +31,5 @@ public class DashExtensionWeapon : Weapon
         }	
 
         return true;
-    }
-
-    protected override void Update()
-    {
-        base.Update();
     }
 }

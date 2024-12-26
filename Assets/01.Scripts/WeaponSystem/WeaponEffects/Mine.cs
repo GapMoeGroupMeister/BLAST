@@ -9,7 +9,7 @@ public class Mine : WeaponEffect, IPoolingObject
 
 	[SerializeField] private DamageCaster _mainDamageCaster;
 	[SerializeField] private DamageCaster _subDamageCaster;
-	//[SerializeField] private PoolType _explosionPoolType = PoolType.BlueExplosion;
+	[SerializeField] private EffectPoolType _explosionPoolType = EffectPoolType.BlueExplosionEffect;
 	private FeedbackPlayer feedbackPlayer;
 
 	public override void Init(uint level, Weapon weaponBase)
@@ -42,9 +42,9 @@ public class Mine : WeaponEffect, IPoolingObject
 
 	private void OnExplosion()
 	{
-		// _subDamageCaster.CastDamage((int)((_damage + (_damage * ((_level - 1) / 10f))) * 0.6f));
-		// gameObject.Pop(_explosionPoolType,transform.position, Quaternion.identity);
-		// this.Push();
+		_subDamageCaster.CastDamage((int)((_damage + (_damage * ((_level - 1) / 10f))) * 0.6f));
+		gameObject.Pop(_explosionPoolType,transform.position, Quaternion.identity);
+		this.Push();
 	}
 
 	private IEnumerator CoroutineAutoDie()

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7852680745779079594}
   - component: {fileID: 5417583518770823462}
   m_Layer: 0
-  m_Name: EnergyBall_Laser
+  m_Name: EnergySphereLaserEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -50,7 +50,7 @@ MonoBehaviour:
   _damageCasterTrm: {fileID: 1174675933637038160}
   _damageCaster: {fileID: 9139093928431361307}
   _lineRenderer: {fileID: 2055999361898107538}
-  _hitEffectPoolType: 22
+  _hitEffectPoolType: 4
 --- !u!1 &7013561922882538668
 GameObject:
   m_ObjectHideFlags: 0
@@ -157,6 +157,9 @@ LineRenderer:
   m_ReflectionProbeUsage: 0
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:

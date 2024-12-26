@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Text;
+﻿using System.Text;
 using Crogen.CrogenPooling;
 using DG.Tweening;
 using UnityEngine;
@@ -30,12 +29,12 @@ namespace ItemManage
             _alertPanel.ShowAlert(stringBuilder.ToString());
         }
 
-        // public Item DropItem(PoolType type, Vector3 startPos)
-        // {
-        //     var item = gameObject.Pop(type, startPos, Quaternion.identity) as Item;
-        //     item.transform.DOJump(item.GetRandomPosition(5f), 1, 1, 1);
-        //     Debug.Log("DropItem");
-        //     return item;
-        // }
+        public Item DropItem(ItemPoolType type, Vector3 startPos)
+        {
+            var item = gameObject.Pop(type, startPos, Quaternion.identity) as Item;
+            item.transform.DOJump(item.GetRandomPosition(5f), 1, 1, 1);
+            Debug.Log("DropItem");
+            return item;
+        }
     }
 }

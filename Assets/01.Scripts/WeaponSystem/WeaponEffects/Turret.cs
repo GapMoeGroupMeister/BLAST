@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using Crogen.CrogenPooling;
 using DG.Tweening;
 using UnityEngine;
@@ -12,7 +11,7 @@ public class Turret : WeaponEffect, IPoolingObject
     
     [Header("Turret Setting")]
     [SerializeField] private LayerMask whatIsEnemy;
-    //[SerializeField] private PoolType _bulletPoolType;
+    [SerializeField] private ProjectilePoolType _bulletPoolType;
     [SerializeField] private float _enemyFindRadius = 20f;
     [SerializeField] private float _fireRate;
     [SerializeField] private float _dieTime;
@@ -64,8 +63,8 @@ public class Turret : WeaponEffect, IPoolingObject
 
     private void Shot()
     {
-        // gameObject.Pop(_bulletPoolType, _turretFireTrm.position, _turretHeadTrm.rotation);
-        // _feedbackPlayer.PlayFeedback();
+        gameObject.Pop(_bulletPoolType, _turretFireTrm.position, _turretHeadTrm.rotation);
+        _feedbackPlayer.PlayFeedback();
     }
 
     

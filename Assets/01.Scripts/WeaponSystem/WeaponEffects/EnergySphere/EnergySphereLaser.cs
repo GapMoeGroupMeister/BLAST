@@ -16,7 +16,7 @@ public class EnergySphereLaser : MonoBehaviour, IPoolingObject
 
 	public string OriginPoolType { get; set; }
 	GameObject IPoolingObject.gameObject { get; set; }
-	//[SerializeField] private PoolType _hitEffectPoolType;
+	[SerializeField] private HitEffectPoolType _hitEffectPoolType;
 
 	public void Init(Transform target, int damage)
 	{
@@ -57,7 +57,7 @@ public class EnergySphereLaser : MonoBehaviour, IPoolingObject
 			_damageCasterTrm.position = _target.position;
 			_damageCaster.CastDamage(_damage);
 			this.Push();
-			//gameObject.Pop(_hitEffectPoolType, effectAttackPoint, Quaternion.identity);
+			gameObject.Pop(_hitEffectPoolType, effectAttackPoint, Quaternion.identity);
 		}
 	}
 }

@@ -8,7 +8,7 @@ public abstract class FieldObject : MonoBehaviour, IPoolingObject
     public string OriginPoolType { get; set; }
     GameObject IPoolingObject.gameObject { get; set; }
 
-    //[SerializeField] protected PoolType _destroyParticlePoolType;
+    [SerializeField] protected EffectPoolType _destroyParticlePoolType;
 
     private void Awake()
     {
@@ -25,8 +25,8 @@ public abstract class FieldObject : MonoBehaviour, IPoolingObject
         if (_isDestroy) return;
         _isDestroy = true;
         DestroyEvent();
-        // EffectObject effectObject = gameObject.Pop(_destroyParticlePoolType, null, Vector3.zero, Quaternion.identity) as EffectObject;
-        // effectObject.Play();
+        EffectObject effectObject = gameObject.Pop(_destroyParticlePoolType, Vector3.zero, Quaternion.identity) as EffectObject;
+        effectObject.Play();
         this.Push();
     }
 

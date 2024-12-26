@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 2251960463986830986}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.236, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -97,7 +97,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isDestroy: 0
-  _destroyParticlePoolType: 0
+  _destroyParticlePoolType: 5
+  _supplyUIPf: {fileID: -3393405037326781871, guid: d7c02fa2ca3cea24b88610e32f4d88f4,
+    type: 3}
 --- !u!114 &6432957555243073725
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110,7 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec2e8163a86f4414b853f4241c9b4a04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _renderers: []
+  rendererList: []
   _damageDuration: 0.005
   OnHealthChangedEvent:
     m_PersistentCalls:

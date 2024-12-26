@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef843ff4ebdeee344a631d7c1ad9917f, type: 3}
+  m_Name: WeaponEffect
+  m_EditorClassIdentifier: 
+  pairs:
+  - poolType: Mine
+    prefab: {fileID: 6345484463924468307, guid: 0b833bef354221a4fbc2308e665996e3,
+      type: 3}
+    poolCount: 10
+  - poolType: OilObject
+    prefab: {fileID: 772679227044409652, guid: 4dbf66e48480d01408a78fbb1035857a, type: 3}
+    poolCount: 15
+  - poolType: Turret
+    prefab: {fileID: 55155931996995198, guid: 1ba1ea050c6642446bd4a5cc934561a2, type: 3}
+    poolCount: 10

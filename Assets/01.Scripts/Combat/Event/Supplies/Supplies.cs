@@ -68,8 +68,8 @@ public class Supplies : MonoBehaviour, IDamageable
             rate += supplies[i].dropRate;
             if (dropRate <= rate)
             {
-                // var item = ItemDropManager.Instance.DropItem(supplies[i].poolType, transform.position);
-                // Debug.Log(item.name);
+                var item = ItemDropManager.Instance.DropItem(supplies[i].poolType, transform.position);
+                Debug.Log(item.name);
                 break;
             }
         }

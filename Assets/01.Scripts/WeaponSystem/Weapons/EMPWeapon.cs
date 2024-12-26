@@ -1,7 +1,4 @@
-﻿using System;
-using Crogen.CrogenPooling;
-using EffectSystem;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class EMPWeapon : Weapon
 {
