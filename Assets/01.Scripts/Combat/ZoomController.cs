@@ -8,7 +8,8 @@ public class ZoomController : MonoSingleton<ZoomController>
 {
 	[SerializeField] private CinemachineVirtualCamera _virtualCamera;
 	private InputReader _inputReader;
-
+	[SerializeField] private float _minFOV = 10f;
+	[SerializeField] private float _maxFOV = 50f;
 	protected override void Awake()
 	{
 		base.Awake();	
@@ -27,8 +28,8 @@ public class ZoomController : MonoSingleton<ZoomController>
 
 	private void HandleZoom(float axis)
 	{
-		_virtualCamera.m_Lens.OrthographicSize -= axis;
-		_virtualCamera.m_Lens.OrthographicSize = Mathf.Clamp(_virtualCamera.m_Lens.OrthographicSize, 20, 60);
+		_virtualCamera.m_Lens.FieldOfView -= axis;
+		_virtualCamera.m_Lens.FieldOfView = Mathf.Clamp(_virtualCamera.m_Lens.FieldOfView, _minFOV, _maxFOV);
 	}
 
 	public void ForceZoomOut(float orthographicSize, float time, float duration)

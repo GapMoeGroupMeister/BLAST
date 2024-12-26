@@ -35,7 +35,6 @@ public class OilObject : MonoBehaviour, IPoolingObject, IEffectable
         _dissolveHash = Shader.PropertyToID("_DissolveHeight");
         _randomSeedHash = Shader.PropertyToID("_RandomSeed");
         _decalCompo = GetComponentInChildren<DecalProjector>();
-        Debug.Log(_decalCompo.material); 
         _decalMaterial = Instantiate(_decalCompo.material); // sharedMaterial이 아닌데 모든 객체의 메테리얼에 참조된 속성의 값이 변경됨.
         _decalCompo.material = _decalMaterial;
         _fireVFX = transform.Find("FireVFX").GetComponent<ParticleSystem>();
