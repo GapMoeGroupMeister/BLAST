@@ -82,9 +82,9 @@ public class EnemyMovement : MovementController
         yield return new WaitForFixedUpdate();
         yield return new WaitForFixedUpdate();
 
-        yield return new WaitUntil(() => _rigidbodyCompo.velocity.magnitude < _knockbackThreshold || Time.time > _currentKnockbackTime + _maxKnockbackTime);
+        yield return new WaitUntil(() => _rigidbodyCompo.linearVelocity.magnitude < _knockbackThreshold || Time.time > _currentKnockbackTime + _maxKnockbackTime);
 
-        _rigidbodyCompo.velocity = Vector3.zero;
+        _rigidbodyCompo.linearVelocity = Vector3.zero;
         _rigidbodyCompo.angularVelocity = Vector3.zero;
         _rigidbodyCompo.useGravity = false;
         _rigidbodyCompo.isKinematic = true;

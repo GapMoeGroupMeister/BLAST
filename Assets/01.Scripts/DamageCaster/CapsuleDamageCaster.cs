@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class CapsuleDamageCaster : DamageCaster
 {
-	[Header("»ç¿ëÇÏÁö ¸¶¼¼¿ä.")]
+	[Header("ì‚¬ìš©í•˜ì§€ ë§ˆì„¸ìš”.")]
 	public int a;
 
 	public override void CastOverlap()

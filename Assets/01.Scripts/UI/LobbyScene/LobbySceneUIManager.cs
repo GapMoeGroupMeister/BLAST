@@ -1,11 +1,38 @@
-﻿using UnityEngine;
+﻿using System;
+using Objects.PartSelect;
+using UnityEngine;
 
-public class LobbySceneUIManager : MonoSingleton<LobbySceneUIManager>
+namespace LobbyScene
 {
-    [SerializeField] private SelectDisplayPanel _selectDisplayPanel;
-
-    public void RefreshSelectPartInfo(PlayerPartDataSO data)
+    
+    public class LobbySceneUIManager : MonoSingleton<LobbySceneUIManager>
     {
-        _selectDisplayPanel.SelectPart(data);
+        [SerializeField] private PartChanger _partChanger;
+        [SerializeField] private SelectDisplayPanel _selectDisplayPanel;
+        [SerializeField] private PartSelectController _partSelectController;
+        [SerializeField] private PartSelectPanel _partSelectPanel;
+        [SerializeField] private MenuButtonGroup _menuButtonGroup;
+        
+        public LobbyCameraController camController;
+
+        // public void RefreshSelectPartInfo(PlayerPartDataSO data)
+        // {
+        //     _selectDisplayPanel.Open();
+        //     _selectDisplayPanel.SelectPart(data);
+        // }
+
+        public void HandleMovePartPanel()
+        {
+            _partSelectPanel.Open();
+            camController.ChangeCamType(LobbyCameraEnum.PartSelect);
+        }
+        public void HandleMoveMenuPanel()
+        {
+            _menuButtonGroup.Open();
+            camController.ChangeCamType(LobbyCameraEnum.Default);
+            _partSelectPanel.Close();
+
+        }
+
     }
 }

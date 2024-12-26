@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System;
+using System.Linq;
 using UnityEngine;
 
 public class WeaponManager : MonoSingleton<WeaponManager>
@@ -8,20 +9,20 @@ public class WeaponManager : MonoSingleton<WeaponManager>
     private Dictionary<WeaponType, Weapon> _weapons;
 
     [SerializeField] private List<Weapon> _curWeapons; //해금된 자동발동 무기 리스트
-    PlayerPartController _playerPartController;
-
+    private UltWeapon _curUltWeapon;
+    
     protected override void Awake()
 	{
         base.Awake();
-        _playerPartController = FindObjectOfType<PlayerPartController>();
         _weapons = new Dictionary<WeaponType, Weapon>();
         _curWeapons = new List<Weapon>();
     }
-
-    public int GetCurWeaponCount() => _curWeapons.Count;
-
-	private void Start()
+    
+    private void Start()
     {
+        _curUltWeapon = GetComponentsInChildren<UltWeapon>().FirstOrDefault(x => 
+            x.partType == PlayerPartController.GetCurrentPlayerPart().playerPartType);
+        
         foreach (WeaponType weaponEnum in Enum.GetValues(typeof(WeaponType)))
         {
             if (weaponEnum == WeaponType.None) continue;
@@ -35,9 +36,12 @@ public class WeaponManager : MonoSingleton<WeaponManager>
             if (weaponCompo.weaponEnabled)
                 AppendWeapon(weaponEnum);
         }
+        
+        _curWeapons.Add(_curUltWeapon);
     }
 
-    //지금은 디버깅 땜시 하는 건 없음
+    public int GetCurWeaponCount() => _curWeapons.Count;
+
     private void CheckCanUseForWeapon(WeaponType weaponType)
 	{
 		//해금이 안되면 false
@@ -54,22 +58,25 @@ public class WeaponManager : MonoSingleton<WeaponManager>
             if (weaponCompo.isUniqueWeapon)
                 weaponCompo.canUse = PlayerPartController.GetCurrentPlayerPart().playerPartType == weaponCompo.partType && weaponCompo.canUse;
 		}
-
-        
 	}
 
-    public Weapon GetWeapon(WeaponType weapon)
+    //isEnable를 활성화해서 현재 장착되어 있는 Weapon만 검색할 수 있음
+    public Weapon GetWeapon(WeaponType weapon, bool isEnable = false)
 	{
         if (weapon == WeaponType.None) return null;
 
         if(_weapons.TryGetValue(weapon, out Weapon weaponCompo))
 		{
+            //현재 활성화된 Weapon을 찾는다면 _curWeapon에 포함이 되어있는지 확인ㄱㄱ
+            if (isEnable && _curWeapons.Contains(weaponCompo) == false) return null;
             return weaponCompo as Weapon;
         }
 
         return null;
     }
 
+    public UltWeapon GetCurrentUltWeapon() => _curUltWeapon;
+    
     [ContextMenu("DebugAppendWeapon")]
     private void AppendWeapon()
     {
@@ -97,6 +104,11 @@ public class WeaponManager : MonoSingleton<WeaponManager>
 		}
 
         //전에 없다면 초기화
+        AppendWeaponImmediately(weapon);
+    }
+
+    private void AppendWeaponImmediately(WeaponType weapon)
+    {
         _weapons[weapon].player = GameManager.Instance.Player;
         _weapons[weapon].WeaponInit();
         _weapons[weapon].weaponEnabled = true;

@@ -1,7 +1,8 @@
-﻿using UnityEngine;
+﻿using GameEventSystem;
+using UnityEngine;
 
 [CreateAssetMenu(menuName = "SO/PartData/PlayerPartData")]
-public class PlayerPartDataSO : ScriptableObject
+public class PlayerPartDataSO : ScriptableObject, IGameEventData
 {
     public int id;
     public string partName;

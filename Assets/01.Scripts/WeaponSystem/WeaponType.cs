@@ -25,7 +25,7 @@
 	DashExtension,
 	CoolingSpeedUp,
 	MassProductionDrone,
-	BulletSizeUp,
+	AutoRepairKit,
 	Mine,
 	LaserTail,
 	StunBullet,

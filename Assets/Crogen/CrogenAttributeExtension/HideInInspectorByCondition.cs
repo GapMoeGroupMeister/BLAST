@@ -9,12 +9,7 @@ namespace Crogen.AttributeExtension
         public bool Reversed { get; private set; }
         public string BooleanPropertyName { get; private set; }
 
-        public HideInInspectorByCondition(string booleanPropertyName)
-        {
-            this.BooleanPropertyName = booleanPropertyName;
-        }
-        
-        public HideInInspectorByCondition(string booleanPropertyName, bool reversed)
+        public HideInInspectorByCondition(string booleanPropertyName, bool reversed = false)
         {
             this.BooleanPropertyName = booleanPropertyName;
             this.Reversed = reversed;
