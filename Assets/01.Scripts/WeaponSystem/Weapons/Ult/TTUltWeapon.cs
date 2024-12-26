@@ -2,18 +2,8 @@ using UnityEngine;
 
 public class TTUltWeapon : UltWeapon
 {
-    protected override void Update()
+    protected override void UseUltWeapon()
     {
-        base.Update();
-    }
-
-    public override void WeaponInit()
-    {
-        base.WeaponInit();
-    }
-
-    public override bool UseWeapon()
-    {
-        return base.UseWeapon();
+        base.UseUltWeapon();
     }
 }

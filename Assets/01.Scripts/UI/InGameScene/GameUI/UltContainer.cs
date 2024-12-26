@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -31,7 +30,7 @@ public class UltContainer : MonoBehaviour
 
     private void HandleOnUltGauge(float current, float total)
     {
-        _ultGauge.value = current / total;
+        _ultGauge.value = 1 - current / total;
         if (_ultGauge.value >= 1)
         {
             _ultCompleteUI.color = _activeColor;

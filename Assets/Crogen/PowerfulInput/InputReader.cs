@@ -15,6 +15,7 @@ namespace Crogen.PowerfulInput
 
         public event Action<bool> AttackLEvent;
         public event Action<bool> AttackREvent;
+        public event Action UseUltEvent;
         
         public Vector3 Movement { get; private set; }
         public Vector2 MousePosition { get; private set; }
@@ -75,7 +76,13 @@ namespace Crogen.PowerfulInput
             if(context.canceled)
                 AttackLEvent?.Invoke(false);
         }
-        
+
+        public void OnUseUlt(InputAction.CallbackContext context)
+        {
+            if(context.performed)
+                UseUltEvent?.Invoke();
+        }
+
         public void OnAttackR(InputAction.CallbackContext context)
         {
             if(context.started)
