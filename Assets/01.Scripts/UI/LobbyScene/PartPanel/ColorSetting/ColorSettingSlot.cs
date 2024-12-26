@@ -16,14 +16,13 @@ namespace LobbyScene.ColorSettings
         [SerializeField] private Image _color3Image;
         [SerializeField] private Image _color4Image;
         private ColorSettingData _data;
-
+        
 
         
 
         public void OnPointerClick(PointerEventData eventData)
         {
-            Material ming;
-            
+
             
         }
     }
