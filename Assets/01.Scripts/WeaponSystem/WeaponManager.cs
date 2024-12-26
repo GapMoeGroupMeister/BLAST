@@ -16,17 +16,13 @@ public class WeaponManager : MonoSingleton<WeaponManager>
         _playerPartController = FindObjectOfType<PlayerPartController>();
         _weapons = new Dictionary<WeaponType, Weapon>();
         _curWeapons = new List<Weapon>();
-    }
-
-    public int GetCurWeaponCount() => _curWeapons.Count;
-
-	private void Start()
-    {
+        
         foreach (WeaponType weaponEnum in Enum.GetValues(typeof(WeaponType)))
         {
             if (weaponEnum == WeaponType.None) continue;
             Type t = Type.GetType($"{weaponEnum.ToString()}Weapon");
             Weapon weaponCompo = GetComponentInChildren(t) as Weapon;
+            Debug.Log(t.Name);
             _weapons.Add(weaponEnum, weaponCompo);
 
             CheckCanUseForWeapon(weaponEnum);
@@ -37,7 +33,8 @@ public class WeaponManager : MonoSingleton<WeaponManager>
         }
     }
 
-    //지금은 디버깅 땜시 하는 건 없음
+    public int GetCurWeaponCount() => _curWeapons.Count;
+
     private void CheckCanUseForWeapon(WeaponType weaponType)
 	{
 		//해금이 안되면 false
@@ -54,22 +51,42 @@ public class WeaponManager : MonoSingleton<WeaponManager>
             if (weaponCompo.isUniqueWeapon)
                 weaponCompo.canUse = PlayerPartController.GetCurrentPlayerPart().playerPartType == weaponCompo.partType && weaponCompo.canUse;
 		}
-
-        
 	}
 
-    public Weapon GetWeapon(WeaponType weapon)
+    //isEnable를 활성화해서 현재 장착되어 있는 Weapon만 검색할 수 있음
+    public Weapon GetWeapon(WeaponType weapon, bool isEnable = false)
 	{
         if (weapon == WeaponType.None) return null;
 
         if(_weapons.TryGetValue(weapon, out Weapon weaponCompo))
 		{
+            //현재 활성화된 Weapon을 찾는다면 _curWeapon에 포함이 되어있는지 확인ㄱㄱ
+            if (isEnable && _curWeapons.Contains(weaponCompo) == false) return null;
             return weaponCompo as Weapon;
         }
 
         return null;
     }
 
+    //현재 타입과 맞지 않은 UltWeapon은 AppendWeapon() 딴에서 처리한다. (걍 신경쓰지 않아도 된다는 뜻)
+    public UltWeapon GetCurrentUltWeapon()
+    {
+        foreach (var item in _curWeapons)
+        {
+            Debug.Log(item.ToString());
+        }
+        
+        foreach (var curWeapon in _curWeapons)
+        {
+            if (curWeapon.TryGetComponent(out UltWeapon ultWeapon))
+            {
+                return ultWeapon;
+            }
+        }
+
+        return null;
+    }
+    
     [ContextMenu("DebugAppendWeapon")]
     private void AppendWeapon()
     {

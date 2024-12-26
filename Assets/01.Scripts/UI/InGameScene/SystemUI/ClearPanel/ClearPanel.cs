@@ -26,14 +26,14 @@ public class ClearPanel : UIPanel
     private void GameEnd()
     {
         TimeManager.PlayTime();
-        ResourceManager.Instance.SaveCoin();
+        ResourceManager.SaveCoin();
         SceneLoadingManager.LoadScene("LobbyScene");
     }
 
     public void SetUI()
     {
         _levelText.text = $"Level {XPManager.Instance.GetLevel.ToString()}";
-        _coinText.text = ResourceManager.Instance.GetCoin().ToString();
+        _coinText.text = ResourceManager.GetCoin().ToString();
         _servivedText.text = TimeManager.CurrentGlobalTimerString;
     }
 

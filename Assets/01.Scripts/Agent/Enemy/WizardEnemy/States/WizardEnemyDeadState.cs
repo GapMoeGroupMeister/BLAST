@@ -42,7 +42,7 @@ public class WizardEnemyDeadState : EnemyState<WizardEnemy>
         int rand = Random.Range(0, 100);
         if (rand < 30)
         {
-            ResourceManager.Instance.CreateCoin(_enemyBase.transform.position);
+            ResourceManager.CreateCoin(_enemyBase.transform.position);
         }
         _enemyBase.Push();
         _dissolveMat.SetFloat(_burnedHash, 0);
