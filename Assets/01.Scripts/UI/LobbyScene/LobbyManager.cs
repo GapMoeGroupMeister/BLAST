@@ -10,7 +10,7 @@ namespace  LobbyScene
         public void GameStart()
         {
             SaveManager.SaveData();
-            SceneLoadingManager.LoadScene("Vcs_GameScene");
+            SceneLoadingManager.LoadScene("GameScene");
         } 
 
         public void GameExit()

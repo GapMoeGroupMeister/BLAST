@@ -9,6 +9,7 @@ namespace LobbyScene
     {
         [SerializeField] private PartChanger _partChanger;
         [SerializeField] private SelectDisplayPanel _selectDisplayPanel;
+        [SerializeField] private PartSelectController _partSelectController;
         [SerializeField] private PartSelectPanel _partSelectPanel;
         [SerializeField] private MenuButtonGroup _menuButtonGroup;
         
@@ -20,11 +21,11 @@ namespace LobbyScene
         //     _selectDisplayPanel.SelectPart(data);
         // }
 
-        // public void HandleMovePartPanel()
-        // {
-        //     _partSelectPanel.Open();
-        //     camController.ChangeCamType(LobbyCameraEnum.PartSelect);
-        // }
+        public void HandleMovePartPanel()
+        {
+            _partSelectPanel.Open();
+            camController.ChangeCamType(LobbyCameraEnum.PartSelect);
+        }
         public void HandleMoveMenuPanel()
         {
             _menuButtonGroup.Open();
@@ -33,9 +34,5 @@ namespace LobbyScene
 
         }
 
-        public void ChangePart(PlayerPartDataSO partSO)
-        {
-            _partChanger.ChangePart(partSO);
-        }
     }
 }

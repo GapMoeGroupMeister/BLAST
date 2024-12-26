@@ -64,11 +64,8 @@ namespace LobbyScene
                     continue;
                 PartSelectSlot slot = Instantiate(_slotPrefab, _contentTrm);
                 slot.Initialize(this, partData.GetData(datas[i].id)); // 파즈 정보를 넣는다
-                if(currentPartID == datas[i].id)
-                {
-                    slot.SetSelectIcon(true);
-                }
-                slot.AddOnClieckEvent(Close);
+                slot.SetSelectIcon(currentPartID == datas[i].id);
+                //slot.AddOnClieckEvent(Close);
                 _partSlotList.Add(slot);
             }
         }
@@ -96,6 +93,7 @@ namespace LobbyScene
         public void SelectPart(PlayerPartDataSO data)
         {
             _partSelectEvent.RaiseEvent(data);
+            RefreshSlot();
         }
     }
 
