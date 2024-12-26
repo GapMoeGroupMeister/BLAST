@@ -10,7 +10,6 @@ namespace ItemManage
     {
         [SerializeField] private Supplies _supplyPrefab;
         [SerializeField] private SupplyAlertPanel _alertPanel;
-        public List<SupplyDropPoint> dropPositions;
 
         public void SendSupply(WaveSO waveSO)
         {
@@ -21,9 +20,9 @@ namespace ItemManage
                 { // 처음엔 제외
                     stringBuilder.Append(", ");
                 }
-                SupplyDropPoint point = dropPositions[Random.Range(0, dropPositions.Count)];
-                stringBuilder.Append(point.pointName);
-                Vector3 randomPosition = point.position;
+                Transform player = GameManager.Instance.Player.transform;
+                Vector3 point = player.position + new Vector3(Random.Range(-5f, 5f), 0, Random.Range(-5f, 5f));
+                Vector3 randomPosition = point;
                 Supplies supply = Instantiate(_supplyPrefab);
                 supply.Initialize(waveSO.dropItemAmount);
                 supply.SendSupply(randomPosition, 1.3f);
