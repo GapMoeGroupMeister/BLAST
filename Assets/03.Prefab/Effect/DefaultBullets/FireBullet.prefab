@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 543290811550922874}
   - component: {fileID: -5361769368171741706}
   - component: {fileID: 6122178055350237928}
-  - component: {fileID: 5462706344532984049}
   m_Layer: 0
   m_Name: FireBullet
   m_TagString: Untagged
@@ -122,18 +121,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1d84a69ae53c4248a49a8607e87f5e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5462706344532984049
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2756234889255895914}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5373fc824e9aa2646b2ed5e776aa40d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &3817578365520106697
 GameObject:
   m_ObjectHideFlags: 0
@@ -192,6 +179,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -5000,6 +4990,9 @@ ParticleSystemRenderer:
   m_ReflectionProbeUsage: 0
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -9831,6 +9824,9 @@ ParticleSystemRenderer:
   m_ReflectionProbeUsage: 0
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:

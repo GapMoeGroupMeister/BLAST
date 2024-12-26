@@ -10,6 +10,7 @@ public enum PlayerPartType
 	FIRSTNOVA
 }
 
+
 public class PlayerPartController : MonoBehaviour
 {
 	[SerializeField] private PlayerPartDataListSO _playerPartListSO;
