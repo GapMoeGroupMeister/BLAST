@@ -22420,6 +22420,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _virtualCamera: {fileID: 694662799}
+  _minFOV: 10
+  _maxFOV: 50
 --- !u!114 &1479388299
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29360,7 +29362,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rotationSpeed: 50
-  _playerPartController: {fileID: 1082095083}
 --- !u!1 &2060947608
 GameObject:
   m_ObjectHideFlags: 0
@@ -30033,7 +30034,7 @@ PrefabInstance:
     - target: {fileID: 1699926553620518377, guid: 9ddb693b15025364d89aea50a130ce07,
         type: 3}
       propertyPath: _cooldown
-      value: 20
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4758979373639413987, guid: 9ddb693b15025364d89aea50a130ce07,
         type: 3}

@@ -8,11 +8,6 @@ public class UltWeapon : Weapon
         GameManager.Instance.InputReader.UseUltEvent += UseUltWeapon;
     }
 
-    protected void OnDestroy()
-    {
-        GameManager.Instance.InputReader.UseUltEvent -= UseUltWeapon;
-    }
-
     protected virtual void UseUltWeapon()
     {
         UseWeapon();
