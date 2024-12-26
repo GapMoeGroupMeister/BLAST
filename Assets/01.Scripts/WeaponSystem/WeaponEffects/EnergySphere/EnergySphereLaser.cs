@@ -1,7 +1,5 @@
-using Crogen.ObjectPooling;
-using System;
+using Crogen.CrogenPooling;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnergySphereLaser : MonoBehaviour, IPoolingObject
@@ -16,9 +14,9 @@ public class EnergySphereLaser : MonoBehaviour, IPoolingObject
 	[SerializeField] private LineRenderer _lineRenderer;
 	private Transform _target;
 
-	public PoolType OriginPoolType { get; set; }
+	public string OriginPoolType { get; set; }
 	GameObject IPoolingObject.gameObject { get; set; }
-	[SerializeField] private PoolType _hitEffectPoolType;
+	//[SerializeField] private PoolType _hitEffectPoolType;
 
 	public void Init(Transform target, int damage)
 	{
@@ -59,7 +57,7 @@ public class EnergySphereLaser : MonoBehaviour, IPoolingObject
 			_damageCasterTrm.position = _target.position;
 			_damageCaster.CastDamage(_damage);
 			this.Push();
-			gameObject.Pop(_hitEffectPoolType, effectAttackPoint, Quaternion.identity);
+			//gameObject.Pop(_hitEffectPoolType, effectAttackPoint, Quaternion.identity);
 		}
 	}
 }

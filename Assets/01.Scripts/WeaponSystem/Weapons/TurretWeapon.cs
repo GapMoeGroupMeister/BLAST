@@ -1,12 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Crogen.ObjectPooling;
+using Crogen.CrogenPooling;
 using UnityEngine;
 
 public class TurretWeapon : Weapon
 {
-	[SerializeField] private PoolType _turretPoolType;
+	//[SerializeField] private PoolType _turretPoolType;
 	[SerializeField] private int _turretMaxAmount = 10;
 	
 	
@@ -64,11 +64,12 @@ public class TurretWeapon : Weapon
 	
 	private Turret SpawnTurretObj(Vector3 position)
 	{
-		Turret turret = gameObject.Pop(_turretPoolType, position, Quaternion.identity) as Turret;
-		_turretAmount++;
-		turret.Init(level, this);
-		Debug.Log("Turret Spawned");
-		return turret;
+		// Turret turret = gameObject.Pop(_turretPoolType, position, Quaternion.identity) as Turret;
+		// _turretAmount++;
+		// turret.Init(level, this);
+		// Debug.Log("Turret Spawned");
+		// return turret;
+		return null;
 	}
 	
 	private void OnDisable()

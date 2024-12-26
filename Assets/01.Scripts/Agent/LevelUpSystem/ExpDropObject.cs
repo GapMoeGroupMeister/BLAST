@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using Crogen.CrogenPooling;
 
 public class ExpDropObject : MonoBehaviour, IPoolingObject
 {
@@ -7,7 +8,7 @@ public class ExpDropObject : MonoBehaviour, IPoolingObject
     [SerializeField] private int _exp;
     public int Exp => _exp;
 
-    public PoolType OriginPoolType { get; set; }
+    public string OriginPoolType { get; set; }
     GameObject IPoolingObject.gameObject { get; set; }
 
     public void Follow()

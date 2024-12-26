@@ -1,7 +1,6 @@
 using DG.Tweening;
-using Crogen.ObjectPooling;
+using Crogen.CrogenPooling;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using System;
 
@@ -12,7 +11,7 @@ public class TrailEffect : MonoBehaviour, IPoolingObject
     private Material _material;
     private readonly int _alphaHash = Shader.PropertyToID("_Alpha");
 
-    public PoolType OriginPoolType { get; set; }
+    public string OriginPoolType { get; set; }
     GameObject IPoolingObject.gameObject { get; set ; }
 
     private void Awake()

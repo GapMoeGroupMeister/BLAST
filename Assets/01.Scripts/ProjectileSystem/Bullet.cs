@@ -1,5 +1,5 @@
 using UnityEngine;
-using Crogen.ObjectPooling;
+using Crogen.CrogenPooling;
 using System.Collections;
 using UnityEngine.Events;
 
@@ -12,7 +12,7 @@ public class Bullet : MonoBehaviour, IPoolingObject
 	[SerializeField] protected DamageCaster _damageCaster;
 	[SerializeField] protected int _damage = 1;
 	public UnityEvent OnFireEvent;
-	public PoolType OriginPoolType { get; set; }
+	public string OriginPoolType { get; set; }
 	GameObject IPoolingObject.gameObject { get; set; }
 
 	protected virtual void Awake()

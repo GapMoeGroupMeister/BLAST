@@ -10,6 +10,6 @@ public class SuppliesDropItemSO : ScriptableObject
 [System.Serializable]
 public struct SuppliesDropItem
 {
-    public PoolType poolType;
+    //public PoolType poolType;
     public float dropRate;
 }

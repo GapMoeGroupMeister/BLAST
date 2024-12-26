@@ -1,5 +1,5 @@
 using System;
-using Crogen.ObjectPooling;
+using Crogen.CrogenPooling;
 using UnityEngine;
 
 public class ResourceManager : MonoBehaviour
@@ -28,6 +28,6 @@ public class ResourceManager : MonoBehaviour
 
 	public static void CreateCoin(Vector3 pos)
 	{
-		_dummyObject.Pop(PoolType.Coin, pos + Vector3.up, Quaternion.identity);
+		//_dummyObject.Pop(PoolType.Coin, pos + Vector3.up, Quaternion.identity);
 	}
 }

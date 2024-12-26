@@ -1,13 +1,13 @@
 using UnityEngine;
 using DG.Tweening;
-using Crogen.ObjectPooling;
+using Crogen.CrogenPooling;
 
 public class Footprint : MonoBehaviour, IPoolingObject
 {
 	[SerializeField] private Material _decalMat;
 	[SerializeField] private float _lifeTime = 3f;
 
-	public PoolType OriginPoolType { get; set; }
+	public string OriginPoolType { get; set; }
 	GameObject IPoolingObject.gameObject { get; set; }
 	private int _alphaID;
 

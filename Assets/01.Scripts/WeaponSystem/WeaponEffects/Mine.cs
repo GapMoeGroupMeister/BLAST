@@ -1,15 +1,15 @@
-using Crogen.ObjectPooling;
+using Crogen.CrogenPooling;
 using UnityEngine;
 using System.Collections;
 
 public class Mine : WeaponEffect, IPoolingObject
 {
-	public PoolType OriginPoolType { get; set; }
+	public string OriginPoolType { get; set; }
 	GameObject IPoolingObject.gameObject { get; set; }
 
 	[SerializeField] private DamageCaster _mainDamageCaster;
 	[SerializeField] private DamageCaster _subDamageCaster;
-	[SerializeField] private PoolType _explosionPoolType = PoolType.BlueExplosion;
+	//[SerializeField] private PoolType _explosionPoolType = PoolType.BlueExplosion;
 	private FeedbackPlayer feedbackPlayer;
 
 	public override void Init(uint level, Weapon weaponBase)
@@ -42,9 +42,9 @@ public class Mine : WeaponEffect, IPoolingObject
 
 	private void OnExplosion()
 	{
-		_subDamageCaster.CastDamage((int)((_damage + (_damage * ((_level - 1) / 10f))) * 0.6f));
-		gameObject.Pop(_explosionPoolType,transform.position, Quaternion.identity);
-		this.Push();
+		// _subDamageCaster.CastDamage((int)((_damage + (_damage * ((_level - 1) / 10f))) * 0.6f));
+		// gameObject.Pop(_explosionPoolType,transform.position, Quaternion.identity);
+		// this.Push();
 	}
 
 	private IEnumerator CoroutineAutoDie()

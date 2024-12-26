@@ -1,4 +1,4 @@
-using Crogen.ObjectPooling;
+using Crogen.CrogenPooling;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,7 +10,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField]
     private float _radius;
     [SerializeField]
-    private List<PoolType> _enemyList;
+    //private List<PoolType> _enemyList;
 
     private void Start()
     {
@@ -31,7 +31,7 @@ public class EnemySpawner : MonoBehaviour
         Vector3 pos = new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f));
         pos.Normalize();
         pos *= _radius;
-        Enemy enemy = gameObject.Pop(_enemyList[Random.Range(0, _enemyList.Count)], transform) as Enemy;
-        enemy.transform.position = pos;
+        // Enemy enemy = gameObject.Pop(_enemyList[Random.Range(0, _enemyList.Count)], transform) as Enemy;
+        // enemy.transform.position = pos;
     }
 }

@@ -1,6 +1,6 @@
 using System.Linq;
 using UnityEngine;
-using static Cinemachine.DocumentationSortingAttribute;
+using Crogen.CrogenPooling;
 
 public abstract class Enemy : Agent, IPoolingObject
 {
@@ -23,7 +23,7 @@ public abstract class Enemy : Agent, IPoolingObject
 
     protected Collider[] _enemyCheckColliders;
 
-    public PoolType OriginPoolType { get; set; }
+    public string OriginPoolType { get; set; }
     GameObject IPoolingObject.gameObject { get; set; }
 
     protected override void Awake()

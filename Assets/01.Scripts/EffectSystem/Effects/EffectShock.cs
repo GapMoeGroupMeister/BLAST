@@ -1,5 +1,5 @@
 ﻿using System.Collections;
-using Crogen.ObjectPooling;
+using Crogen.CrogenPooling;
 using UnityEngine;
 
 namespace EffectSystem
@@ -76,11 +76,11 @@ namespace EffectSystem
                     if (shock.enabled)
                     {
                         chained++;
-                        EnergySphereLaser laser = _owner.gameObject.Pop(PoolType.EnergyBall_Laser, _ownerTrm.position + Vector3.up * 3, Quaternion.identity) as EnergySphereLaser;
-                        laser.Init(_targets[i].transform, 1);
-                        effectController.ApplyEffect(EffectStateTypeEnum.Shock, 1f, 1);
-                        yield return new WaitForSeconds(0.2f);
-                        laser.Push();
+                        // EnergySphereLaser laser = _owner.gameObject.Pop(PoolType.EnergyBall_Laser, _ownerTrm.position + Vector3.up * 3, Quaternion.identity) as EnergySphereLaser;
+                        // laser.Init(_targets[i].transform, 1);
+                        // effectController.ApplyEffect(EffectStateTypeEnum.Shock, 1f, 1);
+                        // yield return new WaitForSeconds(0.2f);
+                        // laser.Push();
 
                     }
                 }

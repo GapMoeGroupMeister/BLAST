@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Crogen.ObjectPooling;
+using Crogen.CrogenPooling;
 using ItemManage;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -111,12 +111,12 @@ public class WaveManager : MonoSingleton<WaveManager>
 
     private IEnumerator SpawnEnemy(WaveEnemy waveEnemy, Vector3 spawnPoint)
     {
-        Enemy enemy =
-            gameObject.Pop(waveEnemy.enemyType, spawnPoint, Quaternion.identity) as Enemy;
+        // Enemy enemy =
+        //     gameObject.Pop(waveEnemy.enemyType, spawnPoint, Quaternion.identity) as Enemy;
         // Level 추가시 여기서 설정 해야디
 
-        _spawnedEnemies.Add(enemy);
-        _currentEnemyCount++;
+        // _spawnedEnemies.Add(enemy);
+        // _currentEnemyCount++;
         yield return new WaitForSeconds(waveEnemy.spawnDelay);
     }
 

@@ -1,4 +1,4 @@
-using Crogen.ObjectPooling;
+using Crogen.CrogenPooling;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -29,7 +29,7 @@ public class DistructDroneEnemyDistructState : EnemyState<DistructDroneEnemy>
         if(_distructTimer > _distructTime)
         {
             _enemyBase.CastDamage();
-            _enemyBase.gameObject.Pop(PoolType.DistructDroneVFX, _enemyBase.transform.position + Vector3.up*10, Quaternion.identity);
+            //_enemyBase.gameObject.Pop(PoolType.DistructDroneVFX, _enemyBase.transform.position + Vector3.up*10, Quaternion.identity);
             _enemyBase.HealthCompo.TakeDamage((int)_enemyBase.Stat.GetValue(StatEnum.MaxHP));
         }
     }
