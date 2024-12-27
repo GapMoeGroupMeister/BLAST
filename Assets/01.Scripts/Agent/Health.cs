@@ -17,6 +17,7 @@ public class Health : MonoBehaviour, IDamageable
     public int MaxHealth => _maxHealth;
     
     [SerializeField] private bool _isDead;
+    public bool IsDead => _isDead;
     private Agent _owner;
 
     private int _damagedID;

@@ -1,14 +1,20 @@
 using System.Linq;
 using UnityEngine;
 using Crogen.CrogenPooling;
+using Unity.Behavior;
+using System.Collections;
 
 public abstract class Enemy : Agent, IPoolingObject
 {
+    protected BehaviorGraphAgent _btAgent;
+
     public Renderer RendererCompo { get; private set; }
     public EnemyMovement EnemyMovementCompo { get; private set; }
+    public EnemyAnimatorTrigger AnimatorTriggerCompo { get; private set; }
 
     [Header("Common Setting")]
     public LayerMask whatIsPlayer;
+    public LayerMask whatIsObstacle;
 
     [Header("Attack Setting")]
     public float attackDistance;
@@ -29,12 +35,16 @@ public abstract class Enemy : Agent, IPoolingObject
     protected override void Awake()
     {
         base.Awake();
+        _btAgent = GetComponent<BehaviorGraphAgent>();
+        RestartBehaviorTree();
         targetTrm = GameManager.Instance.Player.transform;
         HealthCompo.OnDieEvent.AddListener(OnDie);
         colliderCompo = GetComponent<Collider>();
         EnemyMovementCompo = MovementCompo as EnemyMovement;
         EnemyMovementCompo.Initialize(this);
-        RendererCompo = transform.Find("Visual/BaseMesh").GetComponent<Renderer>();
+        Transform visualTrm = transform.Find("Visual");
+        AnimatorTriggerCompo = visualTrm.GetComponent<EnemyAnimatorTrigger>();
+        RendererCompo = visualTrm.GetComponent<Renderer>();
     }
 
     public void CastDamage()
@@ -50,8 +60,6 @@ public abstract class Enemy : Agent, IPoolingObject
         colliderCompo.enabled = false;
         WaveManager.Instance.RemoveEnemy(this);
     }
-
-    public abstract void AnimationEndTrigger(AnimationTriggerEnum triggerBit);
 
     public abstract void Stun(float duration);
 
@@ -69,10 +77,34 @@ public abstract class Enemy : Agent, IPoolingObject
         HealthCompo.Initialize(this, (int)stat.GetValue(StatEnum.MaxHP));
         HealthCompo.TakeDamage(0);
         EnemyMovementCompo.EnableNavAgent();
+        RestartBehaviorTree();
         CanStateChangeable = true;
+
     }
 
     public virtual void OnPush()
     {
+    }
+
+    public BlackboardVariable<T> GetVariable<T>(string variableName)
+    {
+        if (_btAgent.GetVariable(variableName, out BlackboardVariable<T> variable))
+        {
+            return variable;
+        }
+        return null;
+    }
+
+    public void RestartBehaviorTree()
+    {
+        StartCoroutine(RestartCoroutine());
+    }
+
+    private IEnumerator RestartCoroutine()
+    {
+        _btAgent.End();
+        yield return null;
+        _btAgent.Graph.Restart();
+        
     }
 }
