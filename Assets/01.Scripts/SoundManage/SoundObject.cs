@@ -1,5 +1,5 @@
 ﻿using System.Collections;
-using Crogen.ObjectPooling;
+using Crogen.CrogenPooling;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -7,7 +7,7 @@ namespace SoundManage
 {
     public class SoundObject : MonoBehaviour, IPoolingObject
     {
-        [field:SerializeField] public PoolType OriginPoolType { get; set; }
+        [field:SerializeField] public string OriginPoolType { get; set; }
         GameObject IPoolingObject.gameObject { get; set; }
         
         

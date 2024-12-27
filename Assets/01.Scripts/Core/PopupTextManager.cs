@@ -1,4 +1,4 @@
-﻿using Crogen.ObjectPooling;
+﻿using Crogen.CrogenPooling;
 using EffectSystem;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -17,7 +17,7 @@ public class PopupTextManager : MonoSingleton<PopupTextManager>
     
     public void GenerateDamagePopup(Vector3 origin, int damage, EffectStateTypeEnum effectType, bool isCritical)
     {
-        TextPopUp popUp = gameObject.Pop(PoolType.TextPopup, origin, Quaternion.identity) as TextPopUp;
+        TextPopUp popUp = gameObject.Pop(OtherPoolType.TextPopup, origin, Quaternion.identity) as TextPopUp;
         Color color = Color.white;
         switch (effectType)
         {

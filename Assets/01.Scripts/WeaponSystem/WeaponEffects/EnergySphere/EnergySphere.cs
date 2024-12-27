@@ -1,4 +1,4 @@
-using Crogen.ObjectPooling;
+using Crogen.CrogenPooling;
 using System;
 using System.Collections;
 using UnityEngine;
@@ -16,7 +16,7 @@ public class EnergySphere : WeaponEffect
 	[SerializeField] private float _attackDelay = 0.35f;
 	[SerializeField] private float _curAttacktime = 0;
 	[SerializeField] private int _maxAttackableCount = 5;
-	[SerializeField] private PoolType _laserPoolType;
+	[SerializeField] private EffectPoolType _laserPoolType;
 	private Vector3 _moveDir;
 
 	public override void Init(uint level, Weapon weaponBase)
@@ -60,7 +60,7 @@ public class EnergySphere : WeaponEffect
 				gameObject.Pop(_laserPoolType, 
 				transform.position, 
 				Quaternion.identity) as EnergySphereLaser;
-
+			
 			laser.Init(colliders[i].transform, _damage);
 		}
 	}

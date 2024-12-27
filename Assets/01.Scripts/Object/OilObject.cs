@@ -1,6 +1,5 @@
-using System;
 using System.Collections;
-using Crogen.ObjectPooling;
+using Crogen.CrogenPooling;
 using EffectSystem;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
@@ -8,7 +7,7 @@ using Random = UnityEngine.Random;
 
 public class OilObject : MonoBehaviour, IPoolingObject, IEffectable
 {
-    public PoolType OriginPoolType { get; set; }
+    public string OriginPoolType { get; set; }
     public GameObject gameObject { get; set; }
 
     private DecalProjector _decalCompo;

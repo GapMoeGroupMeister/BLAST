@@ -1,5 +1,5 @@
 ﻿using System.Collections;
-using Crogen.ObjectPooling;
+using Crogen.CrogenPooling;
 using UnityEngine;
 
 public class OilTerrorWeapon : Weapon
@@ -14,11 +14,6 @@ public class OilTerrorWeapon : Weapon
         }	    
 
         return true;
-    }
-
-    protected override void Update()
-    {
-        base.Update();
     }
 
     private IEnumerator SpreadOilCoroutine()
@@ -41,10 +36,9 @@ public class OilTerrorWeapon : Weapon
 
     private void PutOil()
     {
-
         Vector3 position = -player.transform.forward.normalized * 2 + player.transform.position;
         
-        OilObject oil = gameObject.Pop(PoolType.OilObject, position, Quaternion.identity) as OilObject;
+        OilObject oil = gameObject.Pop(WeaponEffectPoolType.OilObject, position, Quaternion.identity) as OilObject;
         oil.SetOil(10);
 
     }
