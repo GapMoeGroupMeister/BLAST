@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Stage1_Wave_7
   m_EditorClassIdentifier: 
   waveEnemies:
-  - enemyType: 3
+  - enemyType: 1
     enemyLevel: 2
     enemyAmount: 20
     spawnDelay: 0.2
@@ -21,3 +21,5 @@ MonoBehaviour:
     bossPrefab: {fileID: 0}
     bossLevel: 1
     generatePosition: {x: 0, y: 0, z: 0}
+  supplyAmount: 0
+  dropItemAmount: 0

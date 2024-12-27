@@ -37,7 +37,7 @@ public class DragoonEnemyDeadState : EnemyState<DragoonEnemy>
             percent += Time.deltaTime * 2;
             yield return null;
         }
-        XPManager.Instance.CreateXP(_enemyBase.transform.position, (XPType)(int)(_enemyBase.Level * 3));
+        XPManager.CreateXP(_enemyBase.transform.position, (XPType)(int)(_enemyBase.Level * 3));
         int rand = Random.Range(0, 100);
         if (rand < 30)
         {

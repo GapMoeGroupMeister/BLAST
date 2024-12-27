@@ -1,4 +1,3 @@
-using System;
 using Crogen.CrogenPooling;
 using DG.Tweening;
 using UnityEngine;
@@ -6,7 +5,7 @@ using UnityEngine;
 public class MissileMine : WeaponEffect, IPoolingObject
 {
     public string OriginPoolType { get; set; }
-    public GameObject gameObject { get; set; }
+    GameObject IPoolingObject.gameObject { get; set; }
 
     [SerializeField] private EffectPoolType _destroyEffectPoolType;
     [SerializeField] private float _endRange = 50;

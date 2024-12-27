@@ -25,7 +25,7 @@ public class GameManager : MonoSingleton<GameManager>
 		if(Input.GetKey(KeyCode.I))
 		{
 			Vector3 ranPos = new Vector3(Random.Range(-10, 10), 0, Random.Range(-10, 10));
-			XPManager.Instance.CreateXP(ranPos, XPType.Red);
+			XPManager.CreateXP(ranPos, XPType.Red);
 		}
 
 		if (Input.GetKey(KeyCode.C))

@@ -11,7 +11,7 @@ public class DistructDroneEnemyDeadState : EnemyState<DistructDroneEnemy>
     {
         base.Enter();
         _enemyBase.CastDamage();
-        XPManager.Instance.CreateXP(_enemyBase.transform.position, (XPType)(int)(_enemyBase.Level * 4));
+        XPManager.CreateXP(_enemyBase.transform.position, (XPType)(int)(_enemyBase.Level * 4));
         int rand = Random.Range(0, 100);
         if (rand < 30)
         {

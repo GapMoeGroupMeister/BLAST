@@ -25,7 +25,7 @@ public class EffectSelectPanel : UIPanel
             slots[i].OnSelectedEndEvent += HandleSelectedEnd;
         }
 
-        XPManager.Instance.OnLevelUpEvent += HandleLevelUp;
+        XPManager.OnLevelUpEvent += HandleLevelUp;
         foreach (WeaponType type in Enum.GetValues(typeof(WeaponType)))
         {
             if (type == 0) continue;
@@ -35,9 +35,10 @@ public class EffectSelectPanel : UIPanel
 
     private void OnDestroy()
     {
-        for (int i = 0; i < slots.Length; ++i)
+        XPManager.OnLevelUpEvent -= HandleLevelUp;
+        foreach (var slot in slots)
         {
-            slots[i].OnSelectedEndEvent -= HandleSelectedEnd;
+            slot.OnSelectedEndEvent -= HandleSelectedEnd;
         }
     }
 
