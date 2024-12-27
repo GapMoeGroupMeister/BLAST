@@ -2,6 +2,7 @@ using System.Linq;
 using UnityEngine;
 using Crogen.CrogenPooling;
 using Unity.Behavior;
+using System.Collections;
 
 public abstract class Enemy : Agent, IPoolingObject
 {
@@ -35,6 +36,7 @@ public abstract class Enemy : Agent, IPoolingObject
     {
         base.Awake();
         _btAgent = GetComponent<BehaviorGraphAgent>();
+        RestartBehaviorTree();
         targetTrm = GameManager.Instance.Player.transform;
         HealthCompo.OnDieEvent.AddListener(OnDie);
         colliderCompo = GetComponent<Collider>();
@@ -75,14 +77,13 @@ public abstract class Enemy : Agent, IPoolingObject
         HealthCompo.Initialize(this, (int)stat.GetValue(StatEnum.MaxHP));
         HealthCompo.TakeDamage(0);
         EnemyMovementCompo.EnableNavAgent();
-        _btAgent.Start();
+        RestartBehaviorTree();
         CanStateChangeable = true;
 
     }
 
     public virtual void OnPush()
     {
-        _btAgent.End();
     }
 
     public BlackboardVariable<T> GetVariable<T>(string variableName)
@@ -96,6 +97,14 @@ public abstract class Enemy : Agent, IPoolingObject
 
     public void RestartBehaviorTree()
     {
-        _btAgent.Restart();
+        StartCoroutine(RestartCoroutine());
+    }
+
+    private IEnumerator RestartCoroutine()
+    {
+        _btAgent.End();
+        yield return null;
+        _btAgent.Graph.Restart();
+        
     }
 }

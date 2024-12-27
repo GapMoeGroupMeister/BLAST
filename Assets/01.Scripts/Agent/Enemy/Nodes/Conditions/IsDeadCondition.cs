@@ -10,14 +10,6 @@ public partial class IsDeadCondition : Condition
 
     public override bool IsTrue()
     {
-        return true;
-    }
-
-    public override void OnStart()
-    {
-    }
-
-    public override void OnEnd()
-    {
+        return Health.Value.IsDead;
     }
 }
