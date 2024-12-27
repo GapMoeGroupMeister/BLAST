@@ -23,8 +23,8 @@ public class TTUltWeapon : UltWeapon
 
     protected override void UseUltWeapon()
     {
-        base.UseUltWeapon();
-
+        if (UseWeapon() == false) return;
+        
         StartCoroutine(CoroutineFireMissiles());
     }
 

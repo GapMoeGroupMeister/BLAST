@@ -10,7 +10,6 @@ public class UltWeapon : Weapon
 
     protected virtual void UseUltWeapon()
     {
-        UseWeapon();
     }
 
     protected override void Update()
