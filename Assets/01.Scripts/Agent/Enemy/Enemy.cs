@@ -1,14 +1,19 @@
 using System.Linq;
 using UnityEngine;
 using Crogen.CrogenPooling;
+using Unity.Behavior;
 
 public abstract class Enemy : Agent, IPoolingObject
 {
+    protected BehaviorGraphAgent _btAgent;
+
     public Renderer RendererCompo { get; private set; }
     public EnemyMovement EnemyMovementCompo { get; private set; }
+    public EnemyAnimatorTrigger AnimatorTriggerCompo { get; private set; }
 
     [Header("Common Setting")]
     public LayerMask whatIsPlayer;
+    public LayerMask whatIsObstacle;
 
     [Header("Attack Setting")]
     public float attackDistance;
@@ -29,12 +34,15 @@ public abstract class Enemy : Agent, IPoolingObject
     protected override void Awake()
     {
         base.Awake();
+        _btAgent = GetComponent<BehaviorGraphAgent>();
         targetTrm = GameManager.Instance.Player.transform;
         HealthCompo.OnDieEvent.AddListener(OnDie);
         colliderCompo = GetComponent<Collider>();
         EnemyMovementCompo = MovementCompo as EnemyMovement;
         EnemyMovementCompo.Initialize(this);
-        RendererCompo = transform.Find("Visual/BaseMesh").GetComponent<Renderer>();
+        Transform visualTrm = transform.Find("Visual");
+        AnimatorTriggerCompo = visualTrm.GetComponent<EnemyAnimatorTrigger>();
+        RendererCompo = visualTrm.GetComponent<Renderer>();
     }
 
     public void CastDamage()
@@ -67,10 +75,27 @@ public abstract class Enemy : Agent, IPoolingObject
         HealthCompo.Initialize(this, (int)stat.GetValue(StatEnum.MaxHP));
         HealthCompo.TakeDamage(0);
         EnemyMovementCompo.EnableNavAgent();
+        _btAgent.Start();
         CanStateChangeable = true;
+
     }
 
     public virtual void OnPush()
     {
+        _btAgent.End();
+    }
+
+    public BlackboardVariable<T> GetVariable<T>(string variableName)
+    {
+        if (_btAgent.GetVariable(variableName, out BlackboardVariable<T> variable))
+        {
+            return variable;
+        }
+        return null;
+    }
+
+    public void RestartBehaviorTree()
+    {
+        _btAgent.Restart();
     }
 }

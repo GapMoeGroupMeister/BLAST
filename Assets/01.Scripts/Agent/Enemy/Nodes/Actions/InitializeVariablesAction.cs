@@ -12,16 +12,13 @@ public partial class InitializeVariablesAction : Action
 
     protected override Status OnStart()
     {
-        return Status.Running;
-    }
-
-    protected override Status OnUpdate()
-    {
+        Self.Value.GetVariable<Enemy>("Owner").Value = Self.Value;
+        Self.Value.GetVariable<Transform>("Target").Value = Self.Value.targetTrm;
+        Self.Value.GetVariable<Health>("Health").Value = Self.Value.HealthCompo;
+        Self.Value.GetVariable<EnemyMovement>("Movement").Value = Self.Value.MovementCompo as EnemyMovement;
+        Self.Value.GetVariable<Animator>("Animator").Value = Self.Value.AnimatorCompo;
+        Self.Value.GetVariable<EnemyAnimatorTrigger>("AnimatorTrigger").Value = Self.Value.AnimatorTriggerCompo;
         return Status.Success;
-    }
-
-    protected override void OnEnd()
-    {
     }
 }
 
