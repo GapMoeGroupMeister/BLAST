@@ -18,9 +18,6 @@ public class PlayerCustomColorLoader : MonoBehaviour
     {
         _rendererList = new List<Renderer>();
 
-        var colorSetDataGroup = EasyToJson.FromJson<ColorSetDataGroup>("ColorSet");
-        _colorSettingData = colorSetDataGroup.currentData;
-        
         foreach (Renderer renderer in _defaultRendererList)
         {
             AddRenderer(renderer);
@@ -31,12 +28,8 @@ public class PlayerCustomColorLoader : MonoBehaviour
     {
         _rendererList.Add(renderer);
         Color[] colors = LoadCustomColors();
-        renderer.material.SetColor(Color1, colors[0]);
-        renderer.material.SetColor(Color2, colors[1]);
-        renderer.material.SetColor(Color3, colors[2]);
-        renderer.material.SetColor(Light1, colors[3] + new Color(1.5f, 1.5f, 1.5f)); //HDR
+        SetColor(renderer, colors);
     }
-
     public static void AddRenderers(Transform trm)
     {
         foreach (var renderer in trm.GetComponentsInChildren<Renderer>())
@@ -45,5 +38,32 @@ public class PlayerCustomColorLoader : MonoBehaviour
         }
     }
 
-    private static Color[] LoadCustomColors() => _colorSettingData.colors;
+    private static void SetColor(Renderer renderer, Color[] colors)
+    {
+        renderer.material.SetColor(Color1, colors[0]);
+        renderer.material.SetColor(Color2, colors[1]);
+        renderer.material.SetColor(Color3, colors[2]);
+        renderer.material.SetColor(Light1, colors[3] + new Color(1.5f, 1.5f, 1.5f)); //HDR
+    }
+
+    public static void LoadAndSetColor(Color[] colors)
+    {
+        foreach (Renderer renderer in _rendererList)
+        {
+            SetColor(renderer, colors);
+        }
+    }
+    
+    private static void LoadAndSetColor()
+    {
+        Color[] colors = LoadCustomColors();
+        LoadAndSetColor(colors);
+    }
+
+    private static Color[] LoadCustomColors()
+    {
+        Color[] colors = EasyToJson.FromJson<ColorSetDataGroup>("ColorSet").currentData.colors;
+        
+        return colors;  
+    } 
 }

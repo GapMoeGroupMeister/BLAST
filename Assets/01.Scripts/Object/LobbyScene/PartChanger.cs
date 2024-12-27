@@ -38,6 +38,7 @@ namespace Objects.PartSelect
             }
             _currentPartTrm.SetParent(_partConnecterTrm);
             _currentPartTrm.localPosition = Vector3.zero;
+            PlayerCustomColorLoader.AddRenderers(_currentPartTrm);
         }
 
         [ContextMenu("DebugChange")]

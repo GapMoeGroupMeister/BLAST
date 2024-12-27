@@ -102,7 +102,9 @@ namespace LobbyScene.ColorSettings
             SetActiveDetailPanel(true);
 
             // 나중에 이쪽에서 _currentSelectedSlot.data 가져와서
+            _colorSetDataGroup.currentData = _currentSelectedSlot.data;
             // 색 변경 하셈ww
+            PlayerCustomColorLoader.LoadAndSetColor(_currentSelectedSlot.data.colors);
         }
 
         public void HandleUnSelectColorSet()
