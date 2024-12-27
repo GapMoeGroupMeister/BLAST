@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Boss : Enemy
+public class Enemy01 : Enemy
 {
     public override void Stun(float duration)
     {
