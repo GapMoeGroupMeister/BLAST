@@ -63,8 +63,8 @@ namespace LobbyScene
                 if (!datas[i].enabled) // 활성화 된 파츠가 아니면 생성 X
                     continue;
                 PartSelectSlot slot = Instantiate(_slotPrefab, _contentTrm);
-                slot.Initialize(this, partData.GetData(datas[i].id)); // 파즈 정보를 넣는다
-                slot.SetSelectIcon(currentPartID == datas[i].id);
+                slot.Initialize(this, partData.GetData(datas[i].partType)); // 파즈 정보를 넣는다
+                slot.SetSelectIcon(currentPartID == datas[i].partType);
                 //slot.AddOnClieckEvent(Close);
                 _partSlotList.Add(slot);
             }

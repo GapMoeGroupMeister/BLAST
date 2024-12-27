@@ -43,7 +43,6 @@ namespace EasySave.Json
             string path = GetFilePath(jsonFileName);
             string json = JsonUtility.ToJson(obj, prettyPrint);
             File.WriteAllText(path, json);
-            Debug.Log(json);
         }
         
         /**

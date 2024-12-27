@@ -36,7 +36,7 @@ namespace LobbyScene
             _partImage.sprite = partSO.partImage;
             _partNameText.text = partSO.partName;
 
-            //_selectIcon.gameObject.SetActive(SaveManager.Instance.GetCurrentPlayerPart() == partSO.id);
+            //_selectIcon.gameObject.SetActive(SaveManager.Instance.GetCurrentPlayerPart() == partSO.weaponType);
         }
 
         public void PartSelect()

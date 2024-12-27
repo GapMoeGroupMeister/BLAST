@@ -19,6 +19,7 @@ public class Node : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     [SerializeField] private Image _icon;
     [SerializeField] private Image _vertexFill;
     [SerializeField] private float _enableTime = 0.5f;
+    [SerializeField] private Material _lineMaterial;
 
     private Vector2[] _offsets;
     private bool _isNodeEnable;
@@ -37,7 +38,6 @@ public class Node : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     private bool _tryNodeEnable = false;
     private readonly string CoinLackText = $"코인이 부족합니다ㅠㅠ";
 
-
     #region Property
 
     private TechTree _techTree => GetComponentInParent<TechTree>();
@@ -51,8 +51,13 @@ public class Node : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     {
         _prevNodes = new Stack<Node>();
 
-        _edgeFill.SetFillAmount(0);
+        _edge.transform.SetParent(_techTree.EdgeParent);
+        _edgeFill.transform.SetParent(_techTree.EdgeFillParent);
+
+        _edge.material = Instantiate(_lineMaterial);
+        _edgeFill.material = Instantiate(_lineMaterial);
         _edge.SetFillAmount(1);
+        _edgeFill.SetFillAmount(0);
     }
 
     #region EnableNode
@@ -67,6 +72,7 @@ public class Node : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 
         GetPrevNodes();
         _enabledNodes = new Stack<Node>();
+
         //_prevNodes에 활성화 시킬 노드들을 순차적으로 꺼내서 활성화시키기 시도
         while (_prevNodes.TryPop(out _curEnableNode))
         {
@@ -78,7 +84,9 @@ public class Node : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
         //전부 활성화 됬다면, 한번에 데이터상에서 활성화 시켜주기
         //취소했을 때 전부 사라져야하기 때문
         while (_enabledNodes.TryPop(out _curEnableNode))
+        {
             _curEnableNode.EnableNode();
+        }
     }
 
     public IEnumerator EnableNodeRoutine()
@@ -87,6 +95,7 @@ public class Node : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 
         if (_nodeType is not StartNodeSO)
         {
+            _edgeFill.transform.SetAsLastSibling();
             while (process < 1)
             {
                 process += Time.deltaTime / (_enableTime / 2);
@@ -106,12 +115,15 @@ public class Node : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 
     public void EnableNode()
     {
+        //재화 사용
         _isNodeEnable = true;
         GameDataManager.Instance.UseCoin(NodeType.requireCoin);
 
+        //fillAmount 1로 초기화
         _vertexFill.fillAmount = 1;
         _edgeFill.SetFillAmount(1);
 
+        //다음 노드가 활성화 되었다고 알려줌
         for (int i = 0; i < NodeType.nextNodes.Count; i++)
         {
             if (_techTree.TryGetNode(NodeType.nextNodes[i], out Node prevNode))
@@ -120,6 +132,7 @@ public class Node : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
             }
         }
 
+        //파츠 혹은 무기 활성화시켜주기
         if (NodeType is PartNodeSO part)
             GameDataManager.Instance.EnablePart(part.openPart);
         if (NodeType is WeaponNodeSO weapon)
@@ -173,7 +186,7 @@ public class Node : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 
     private void GetPrevNodes()
     {
-        _prevNodes.Clear();
+        _prevNodes = new Stack<Node>();
         if (IsNodeEnable == false)
         {
             int requireCoin = 0;
@@ -279,10 +292,29 @@ public class Node : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     public void Init(bool isEnable)
     {
         if (isEnable)
-            EnableNode();
+        {
+            _isNodeEnable = true;
+
+            _vertexFill.fillAmount = 1;
+            _edgeFill.SetFillAmount(1);
+
+            for (int i = 0; i < NodeType.nextNodes.Count; i++)
+            {
+                if (_techTree.TryGetNode(NodeType.nextNodes[i], out Node prevNode))
+                {
+                    prevNode.ActiveNode();
+                }
+            }
+
+            //파츠 혹은 무기 활성화시켜주기
+            if (NodeType is PartNodeSO part)
+                GameDataManager.Instance.EnablePart(part.openPart);
+            if (NodeType is WeaponNodeSO weapon)
+                GameDataManager.Instance.EnableWeapon(weapon.weapon);
+        }
     }
 
-    #region InputRegion
+     #region InputRegion
 
     public void OnPointerClick(PointerEventData eventData)
     {
@@ -299,18 +331,22 @@ public class Node : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        _prevNodes.Clear();
+        _prevNodes = new Stack<Node>();
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
         if (eventData.button != PointerEventData.InputButton.Left) return;
+        if (_requireCoin > GameDataManager.Instance.Coin) return;
+
         _enableCoroutine = StartCoroutine(StartEnableAllNodes());
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
         if (eventData.button != PointerEventData.InputButton.Left) return;
+        if (_requireCoin > GameDataManager.Instance.Coin) return;
+        
         _cancelCoroutine = StartCoroutine(CancelEnableNode());
     }
 
