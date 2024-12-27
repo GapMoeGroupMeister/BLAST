@@ -32,9 +32,8 @@ namespace LobbyScene.ColorSettings
         private float _valueLevel;
 
 
-        private void Awake()
+        protected void Awake()
         {
-
             _image = _pickingPanelTrm.GetComponent<Image>();
             _pickingPanelMaterial = _image.material;
             _hueColorHash = Shader.PropertyToID("_Color");
@@ -135,6 +134,7 @@ namespace LobbyScene.ColorSettings
         {
             _isClick = true;
         }
+
 
     }
 
