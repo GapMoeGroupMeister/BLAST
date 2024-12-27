@@ -15741,7 +15741,7 @@ MonoBehaviour:
   m_LookAt: {fileID: 6517374847129304766}
   m_Follow: {fileID: 1684598897}
   m_Lens:
-    FieldOfView: 60
+    FieldOfView: 20
     OrthographicSize: 20
     NearClipPlane: 0.3
     FarClipPlane: 1000
@@ -16232,182 +16232,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 250821673}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &955857826
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 955857828}
-  - component: {fileID: 955857829}
-  m_Layer: 0
-  m_Name: PoolingManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &955857828
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 955857826}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &955857829
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 955857826}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4889394bf6bb225498bb7f1958045b37, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  poolBase: {fileID: 11400000, guid: 7caa77fff4d3a8442b19db7e99401de3, type: 2}
-  poolingPairs:
-  - poolType: VFX_Trail
-    prefab: {fileID: 2159627337749470773, guid: dbc01cc6a1c7d8343b3f8a9a7963692f,
-      type: 3}
-    poolCount: 3
-  - poolType: VFX_Charge
-    prefab: {fileID: 6914194330204579595, guid: f8bbfc3828d9a4f429481dd83e3026a1,
-      type: 3}
-    poolCount: 3
-  - poolType: PlayerDefaultBullet
-    prefab: {fileID: 8538479565421077914, guid: 493b7b28f1b066a48853885a0c424227,
-      type: 3}
-    poolCount: 40
-  - poolType: Enemy_Dragoon
-    prefab: {fileID: 5273259378002957757, guid: 01a094297fba9264e9d41c3b66196d87,
-      type: 3}
-    poolCount: 5
-  - poolType: Enemy_DistructDrone
-    prefab: {fileID: 3469917630753008567, guid: cfc2d5b4c2b1dad48908792071eb3c66,
-      type: 3}
-    poolCount: 5
-  - poolType: Enemy_WizardBot
-    prefab: {fileID: 7554849678795088332, guid: c9abff9bcf16355419ca440043afd5ff,
-      type: 3}
-    poolCount: 5
-  - poolType: Item_Speed
-    prefab: {fileID: 8247759671278569473, guid: e12c2075af2d08d4c93efcd39a6bc55b,
-      type: 3}
-    poolCount: 5
-  - poolType: Item_Skill
-    prefab: {fileID: 2847848300834198667, guid: 8f8e646e32ce1b1479f38f61d6ab2a4c,
-      type: 3}
-    poolCount: 5
-  - poolType: Item_Heal
-    prefab: {fileID: 3288226144765936843, guid: 03508103fc015dc4d8efb6f9723301d8,
-      type: 3}
-    poolCount: 5
-  - poolType: SFXPlayer
-    prefab: {fileID: 7387021849737377057, guid: 642b4c47cbef453458e8a77b73f9bacf,
-      type: 3}
-    poolCount: 5
-  - poolType: weaponEffect_Mine
-    prefab: {fileID: 6345484463924468307, guid: 0b833bef354221a4fbc2308e665996e3,
-      type: 3}
-    poolCount: 10
-  - poolType: TextPopup
-    prefab: {fileID: 1739656464416565096, guid: 1275162f751d3354eafaaaf82d0b7a62,
-      type: 3}
-    poolCount: 50
-  - poolType: XP
-    prefab: {fileID: 8144055955327006744, guid: 8a4664e99b7c48d4788f7d8fcbaeae1b,
-      type: 3}
-    poolCount: 100
-  - poolType: OilObject
-    prefab: {fileID: 772679227044409652, guid: 4dbf66e48480d01408a78fbb1035857a, type: 3}
-    poolCount: 5
-  - poolType: DefaultExplosion
-    prefab: {fileID: 6849960665822617967, guid: f5cc09e6664fd854788aaaeba38a9b24,
-      type: 3}
-    poolCount: 10
-  - poolType: Turret
-    prefab: {fileID: 55155931996995198, guid: 1ba1ea050c6642446bd4a5cc934561a2, type: 3}
-    poolCount: 10
-  - poolType: EnergyBall_Laser
-    prefab: {fileID: 3789575531813594740, guid: ffc0dc3a02acc46468c10db23f0a5334,
-      type: 3}
-    poolCount: 12
-  - poolType: FireBullet
-    prefab: {fileID: 2756234889255895914, guid: b8a5fabc58236344591e81ef8e1a9dd9,
-      type: 3}
-    poolCount: 12
-  - poolType: BasicHit
-    prefab: {fileID: 3463157229188906966, guid: 47096eff328e11a418ace7db2d72aa97,
-      type: 3}
-    poolCount: 16
-  - poolType: BasicHit2
-    prefab: {fileID: 7728366230342544413, guid: 212ef1a41838ce044a9ac54994866708,
-      type: 3}
-    poolCount: 16
-  - poolType: FireHit
-    prefab: {fileID: 162584487599433031, guid: 39f852c28f9c3fd45a427c24f3564ba7, type: 3}
-    poolCount: 16
-  - poolType: IceHit
-    prefab: {fileID: 6675302182551818641, guid: 5bc9a0bf98f67d240a936bf476ba2082,
-      type: 3}
-    poolCount: 16
-  - poolType: LightningHit
-    prefab: {fileID: 5933602760919840800, guid: fcb74f28d107e284e80af037bfec14ca,
-      type: 3}
-    poolCount: 16
-  - poolType: LoveHit
-    prefab: {fileID: 7802979462468201273, guid: bddb971e34eb14d48be30c7b922eb077,
-      type: 3}
-    poolCount: 1
-  - poolType: Explode4
-    prefab: {fileID: 5953513163225344827, guid: 375552026b9d73c49ab097ae4bbb498a,
-      type: 3}
-    poolCount: 1
-  - poolType: StepSmokeEffect
-    prefab: {fileID: 9153772284012517598, guid: 9b098f092ba57fa4c93176afe9cadae0,
-      type: 3}
-    poolCount: 4
-  - poolType: ElectricityBullet
-    prefab: {fileID: 3951822659776513446, guid: b969ed21a7c27a040beb8a179fedbf42,
-      type: 3}
-    poolCount: 32
-  - poolType: Coin
-    prefab: {fileID: 4467924585902381935, guid: 95594987699f3464ab9c5f10d664d6d6,
-      type: 3}
-    poolCount: 50
-  - poolType: BlueExplosion
-    prefab: {fileID: 448162410302841328, guid: 325cb2a87b59b494f86ee03d6358f3f9, type: 3}
-    poolCount: 10
-  - poolType: DragoonLaser
-    prefab: {fileID: 561551428290271870, guid: b599a3ce60ec6494fbf831f555faf077, type: 3}
-    poolCount: 10
-  - poolType: WizardAttackHitVFX
-    prefab: {fileID: 3818103532411360883, guid: a0ecdbf8c41609f4f880e0e74eed2eea,
-      type: 3}
-    poolCount: 10
-  - poolType: WizardAttackVFX
-    prefab: {fileID: 9191461038121309271, guid: f9b55c1b3f3372545bf2ba20238947ca,
-      type: 3}
-    poolCount: 10
-  - poolType: BossBlastVFX
-    prefab: {fileID: 89794959303907977, guid: 0118c55b9eda26746a9c48ddcaafb746, type: 3}
-    poolCount: 1
-  - poolType: DistructDroneVFX
-    prefab: {fileID: 7389055491661498923, guid: e0cc3b08f14e1b04795905cbf7fa8054,
-      type: 3}
-    poolCount: 10
 --- !u!1 &959530757
 GameObject:
   m_ObjectHideFlags: 0
@@ -16598,11 +16422,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3269948854969632259, guid: a26c55cfcafa7f44c9da997bcca03dd6,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3326416804484728525, guid: a26c55cfcafa7f44c9da997bcca03dd6,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -16616,7 +16435,7 @@ PrefabInstance:
     - target: {fileID: 3924130015969050302, guid: a26c55cfcafa7f44c9da997bcca03dd6,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.000006198883
+      value: -0.00002670288
       objectReference: {fileID: 0}
     - target: {fileID: 4027813962418492439, guid: a26c55cfcafa7f44c9da997bcca03dd6,
         type: 3}
@@ -16736,6 +16555,11 @@ PrefabInstance:
     - target: {fileID: 8838189342667062027, guid: a26c55cfcafa7f44c9da997bcca03dd6,
         type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8838189342667062027, guid: a26c55cfcafa7f44c9da997bcca03dd6,
+        type: 3}
+      propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -16963,6 +16787,98 @@ Transform:
   - {fileID: 862309680}
   m_Father: {fileID: 1523070064}
   m_LocalEulerAnglesHint: {x: 12.464111, y: -179.99998, z: -179.99998}
+--- !u!1 &1051158397
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1051158399}
+  - component: {fileID: 1051158398}
+  m_Layer: 0
+  m_Name: PoolManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1051158398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1051158397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4889394bf6bb225498bb7f1958045b37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  poolBaseList:
+  - {fileID: 11400000, guid: e6b53e2ebe4e6034f9407518fce7e84b, type: 2}
+  - {fileID: 11400000, guid: 96051d6e5c3a2b84ab5d17fb760a470d, type: 2}
+  - {fileID: 11400000, guid: d4fd2ff67d946c34399898a82450466c, type: 2}
+  - {fileID: 11400000, guid: fa0a8e1654bd2764697f698221860e22, type: 2}
+  - {fileID: 11400000, guid: f2269d257a2e4694ba3e114827b1f99a, type: 2}
+  - {fileID: 11400000, guid: 3929c56fe9f39ff489547768c71a0d98, type: 2}
+  - {fileID: 11400000, guid: a42e2dff97eb53c409d40dd31104febd, type: 2}
+  - {fileID: 11400000, guid: 0a98ae3fb0a26f84d9bfdafa90cdbb56, type: 2}
+  - {fileID: 11400000, guid: b071f39352979384d96c11a9c3721097, type: 2}
+  poolingPairs:
+  - poolType: StepSmokeEffect
+    prefab: {fileID: 9153772284012517598, guid: 9b098f092ba57fa4c93176afe9cadae0,
+      type: 3}
+    poolCount: 3
+  - poolType: EMPEffect
+    prefab: {fileID: 5953513163225344827, guid: 375552026b9d73c49ab097ae4bbb498a,
+      type: 3}
+    poolCount: 3
+  - poolType: BlueExplosionEffect
+    prefab: {fileID: 448162410302841328, guid: 325cb2a87b59b494f86ee03d6358f3f9, type: 3}
+    poolCount: 5
+  - poolType: Enemy02LaserEffect
+    prefab: {fileID: 561551428290271870, guid: b599a3ce60ec6494fbf831f555faf077, type: 3}
+    poolCount: 10
+  - poolType: EnergySphereLaserEffect
+    prefab: {fileID: 3789575531813594740, guid: ffc0dc3a02acc46468c10db23f0a5334,
+      type: 3}
+    poolCount: 10
+  - poolType: DefaultExplosionEffect
+    prefab: {fileID: 6849960665822617967, guid: f5cc09e6664fd854788aaaeba38a9b24,
+      type: 3}
+    poolCount: 10
+  - poolType: GroundBurstEffect
+    prefab: {fileID: 89794959303907977, guid: 0118c55b9eda26746a9c48ddcaafb746, type: 3}
+    poolCount: 10
+  - poolType: Enemy01AttackEffect
+    prefab: {fileID: 9191461038121309271, guid: f9b55c1b3f3372545bf2ba20238947ca,
+      type: 3}
+    poolCount: 20
+  - poolType: Enemy02ChargeEffect
+    prefab: {fileID: 6914194330204579595, guid: f8bbfc3828d9a4f429481dd83e3026a1,
+      type: 3}
+    poolCount: 20
+  - poolType: GroundExplosionEffect
+    prefab: {fileID: 3463582952199357174, guid: 0b6e1673d0ba6534f8f3d58f472c6e22,
+      type: 3}
+    poolCount: 50
+--- !u!4 &1051158399
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1051158397}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1082095081
 GameObject:
   m_ObjectHideFlags: 0
@@ -17071,8 +16987,8 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
-  orthographic: 1
+  field of view: 20
+  orthographic: 0
   orthographic size: 20
   m_Depth: -1
   m_CullingMask:
@@ -17097,7 +17013,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1106337031}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.14865234, y: 0.8513282, z: -0.35887846, w: 0.35263172}
+  m_LocalRotation: {x: 0.14865233, y: 0.8513282, z: -0.35887852, w: 0.3526317}
   m_LocalPosition: {x: -80, y: 120.22, z: 80}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -22444,7 +22360,7 @@ GameObject:
   - component: {fileID: 1479388298}
   - component: {fileID: 1479388299}
   m_Layer: 0
-  m_Name: ZoomController
+  m_Name: CameraController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22478,6 +22394,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _virtualCamera: {fileID: 694662799}
+  _minFOV: 10
+  _maxFOV: 50
 --- !u!114 &1479388299
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27807,7 +27725,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b92f5ebb2f1b09446863bebdc30c35e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _xpPoolType: 12
   _lvText: {fileID: 962037328}
   _maxXP: 5
   _xp: 0
@@ -27948,7 +27865,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rotationSpeed: 50
-  _playerPartController: {fileID: 1082095083}
 --- !u!1 &2060947608
 GameObject:
   m_ObjectHideFlags: 0
@@ -29951,6 +29867,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 5982444004513730779, guid: d715b0cde2ca3754eb7ea29b435422cf,
+        type: 3}
+      propertyPath: _baseTrm
+      value: 
+      objectReference: {fileID: 3098980553347185658}
     - target: {fileID: 6872490257994263261, guid: d715b0cde2ca3754eb7ea29b435422cf,
         type: 3}
       propertyPath: _baseTrm
@@ -53445,7 +53366,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!65 &8794172060017314379
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -54525,9 +54446,9 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1106337034}
-  - {fileID: 955857828}
   - {fileID: 407342182}
   - {fileID: 823982252}
+  - {fileID: 1051158399}
   - {fileID: 830469505}
   - {fileID: 274697059}
   - {fileID: 9030360122459302398}
@@ -54538,6 +54459,7 @@ SceneRoots:
   - {fileID: 642647691}
   - {fileID: 1529980461}
   - {fileID: 1151185012}
+  - {fileID: 2064197579}
   - {fileID: 1811138471}
   - {fileID: 2117037099}
   - {fileID: 219507599}
@@ -54554,4 +54476,3 @@ SceneRoots:
   - {fileID: 2110381885}
   - {fileID: 1881772155}
   - {fileID: 692024435}
-  - {fileID: 2064197579}

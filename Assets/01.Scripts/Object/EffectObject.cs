@@ -1,4 +1,4 @@
-﻿using Crogen.ObjectPooling;
+﻿using Crogen.CrogenPooling;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.VFX;
@@ -11,7 +11,7 @@ public class EffectObject : MonoBehaviour, IPoolingObject
     [SerializeField] private float _lifeTime;
     private bool _isStarted;
 
-    public PoolType OriginPoolType { get; set; }
+    public string OriginPoolType { get; set; }
     GameObject IPoolingObject.gameObject { get; set; }
 
 

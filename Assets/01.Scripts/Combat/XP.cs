@@ -1,9 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
-using Crogen.ObjectPooling;
 using ItemManage;
+using Crogen.CrogenPooling;
 
 public enum XPType
 {

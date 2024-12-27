@@ -9,7 +9,7 @@
                     "name": "Dash",
                     "type": "Button",
                     "id": "2f32c5e7-314c-4e11-9bbb-147493b71862",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -54,10 +54,19 @@
                     "name": "AttackL",
                     "type": "Button",
                     "id": "ba14dfe1-f2aa-4737-94d4-b9f8a17c2f92",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "UseUlt",
+                    "type": "Button",
+                    "id": "12164a3d-8ea4-4263-87f4-92743a174be5",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -190,6 +199,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Dash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b399f26e-d17a-4f28-a9fe-c905c06f9969",
+                    "path": "<Keyboard>/leftShift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";PC",
+                    "action": "UseUlt",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

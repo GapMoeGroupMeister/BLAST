@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Crogen.CrogenPooling;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "SO/SuppliesDropItemSO")]
@@ -10,6 +11,6 @@ public class SuppliesDropItemSO : ScriptableObject
 [System.Serializable]
 public struct SuppliesDropItem
 {
-    public PoolType poolType;
+    public ItemPoolType poolType;
     public float dropRate;
 }

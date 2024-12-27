@@ -1,4 +1,4 @@
-using Crogen.ObjectPooling;
+using Crogen.CrogenPooling;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,7 +10,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField]
     private float _radius;
     [SerializeField]
-    private List<PoolType> _enemyList;
+    private List<EnemyPoolType> _enemyList;
 
     private void Start()
     {

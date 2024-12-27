@@ -58,6 +58,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -152,7 +155,6 @@ GameObject:
   - component: {fileID: 1109268814606962508}
   - component: {fileID: 8900650163879802125}
   - component: {fileID: 2085253495577532970}
-  - component: {fileID: 4742955360590545240}
   - component: {fileID: 829156611302993562}
   - component: {fileID: 7639847113500702757}
   - component: {fileID: 2657116010886510415}
@@ -223,18 +225,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2882c91955b44a34ca68f7f390a00c9a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &4742955360590545240
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8538479565421077914}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5373fc824e9aa2646b2ed5e776aa40d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &829156611302993562

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections;
-using Crogen.ObjectPooling;
+using Crogen.CrogenPooling;
 using UnityEngine;
 
 namespace ItemManage
@@ -9,7 +9,7 @@ namespace ItemManage
     {
         [field:SerializeField] public ItemType ItemType { get; set; }
         [SerializeField] protected float _itemEffectDuration;
-        public PoolType OriginPoolType { get; set; }
+        public string OriginPoolType { get; set; }
         GameObject IPoolingObject.gameObject { get; set; }
         
         protected Player _player;

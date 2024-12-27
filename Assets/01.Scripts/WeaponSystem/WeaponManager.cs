@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System;
+using System.Linq;
 using UnityEngine;
 
 public class WeaponManager : MonoSingleton<WeaponManager>
@@ -8,21 +9,25 @@ public class WeaponManager : MonoSingleton<WeaponManager>
     private Dictionary<WeaponType, Weapon> _weapons;
 
     [SerializeField] private List<Weapon> _curWeapons; //해금된 자동발동 무기 리스트
-    PlayerPartController _playerPartController;
-
+    private UltWeapon _curUltWeapon;
+    
     protected override void Awake()
 	{
         base.Awake();
-        _playerPartController = FindObjectOfType<PlayerPartController>();
         _weapons = new Dictionary<WeaponType, Weapon>();
         _curWeapons = new List<Weapon>();
+    }
+    
+    private void Start()
+    {
+        _curUltWeapon = GetComponentsInChildren<UltWeapon>().FirstOrDefault(x => 
+            x.partType == PlayerPartController.GetCurrentPlayerPart().playerPartType);
         
         foreach (WeaponType weaponEnum in Enum.GetValues(typeof(WeaponType)))
         {
             if (weaponEnum == WeaponType.None) continue;
             Type t = Type.GetType($"{weaponEnum.ToString()}Weapon");
             Weapon weaponCompo = GetComponentInChildren(t) as Weapon;
-            Debug.Log(t.Name);
             _weapons.Add(weaponEnum, weaponCompo);
 
             CheckCanUseForWeapon(weaponEnum);
@@ -31,6 +36,8 @@ public class WeaponManager : MonoSingleton<WeaponManager>
             if (weaponCompo.weaponEnabled)
                 AppendWeapon(weaponEnum);
         }
+        
+        _curWeapons.Add(_curUltWeapon);
     }
 
     public int GetCurWeaponCount() => _curWeapons.Count;
@@ -68,24 +75,7 @@ public class WeaponManager : MonoSingleton<WeaponManager>
         return null;
     }
 
-    //현재 타입과 맞지 않은 UltWeapon은 AppendWeapon() 딴에서 처리한다. (걍 신경쓰지 않아도 된다는 뜻)
-    public UltWeapon GetCurrentUltWeapon()
-    {
-        foreach (var item in _curWeapons)
-        {
-            Debug.Log(item.ToString());
-        }
-        
-        foreach (var curWeapon in _curWeapons)
-        {
-            if (curWeapon.TryGetComponent(out UltWeapon ultWeapon))
-            {
-                return ultWeapon;
-            }
-        }
-
-        return null;
-    }
+    public UltWeapon GetCurrentUltWeapon() => _curUltWeapon;
     
     [ContextMenu("DebugAppendWeapon")]
     private void AppendWeapon()
@@ -114,6 +104,11 @@ public class WeaponManager : MonoSingleton<WeaponManager>
 		}
 
         //전에 없다면 초기화
+        AppendWeaponImmediately(weapon);
+    }
+
+    private void AppendWeaponImmediately(WeaponType weapon)
+    {
         _weapons[weapon].player = GameManager.Instance.Player;
         _weapons[weapon].WeaponInit();
         _weapons[weapon].weaponEnabled = true;

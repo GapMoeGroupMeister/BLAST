@@ -20,7 +20,6 @@ public abstract class Weapon : MonoBehaviour
 	
 	[Header("스킬 실행")]
 	public bool isConditionalWeapon;
-	[HideInInspectorByCondition(nameof(isConditionalWeapon), true)]
 	[SerializeField] protected float _cooldown;
 	protected float _curCooldown;
 
@@ -42,20 +41,16 @@ public abstract class Weapon : MonoBehaviour
 
 	protected virtual void Update()
 	{
-		if (isConditionalWeapon) return;
-		if (_cooldown > 0)
+		if (_cooldown <= 0) return;
+		
+		if (_curCooldown > 0)
 		{
 			_curCooldown -= Time.deltaTime;
-			if (_curCooldown <= 0)
-			{
-				_curCooldown = 0;
-			}
 			OnCooldownEvent?.Invoke(_curCooldown, _cooldown);
 		}
 	}
 
 	public virtual void WeaponInit() { }
-
 
 	private float valueCheckPoint = 0;
 

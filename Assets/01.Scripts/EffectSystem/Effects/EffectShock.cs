@@ -1,16 +1,16 @@
 ﻿using System.Collections;
-using Crogen.ObjectPooling;
+using Crogen.CrogenPooling;
 using UnityEngine;
 
 namespace EffectSystem
 {
     public class EffectShock : EffectState
     {
-        private int _maxChainLinkAmount = 3;
-        private float _targetDetectRange = 20f;
-        private Collider[] _targets;
-        private LayerMask _enemyLayer;
-        public bool canChain;
+        private readonly int _maxChainLinkAmount = 3;
+        private readonly float _targetDetectRange = 20f;
+        private readonly Collider[] _targets;
+        private readonly LayerMask _enemyLayer;
+        private bool _canChain;
         private bool _isChained;
 
         public EffectShock(Agent agent, bool isResist) : base(agent, isResist)
@@ -23,9 +23,9 @@ namespace EffectSystem
         {
             if (enabled)
             {
-                if (canChain)
+                if (_canChain)
                 {
-                    canChain = false;
+                    _canChain = false;
                     ChainShock();
                 }
             }
@@ -37,7 +37,7 @@ namespace EffectSystem
         {
             if (WeaponManager.Instance.GetWeapon(WeaponType.ChainingLightning).enabled)
             {
-                canChain = true;
+                _canChain = true;
 
             }
             else
@@ -70,13 +70,13 @@ namespace EffectSystem
                     EffectShock shock = effectController.GetEffectState(EffectStateTypeEnum.Shock) as EffectShock;
                     // effectController에서 GetEffectState해서 shock를 가져오고
                     // chain가능 여부, shock enable 여부를 따져보고 나서 아래를 실행
-                    if (!shock.canChain)
+                    if (!shock._canChain)
                         continue;
 
                     if (shock.enabled)
                     {
                         chained++;
-                        EnergySphereLaser laser = _owner.gameObject.Pop(PoolType.EnergyBall_Laser, _ownerTrm.position + Vector3.up * 3, Quaternion.identity) as EnergySphereLaser;
+                        EnergySphereLaser laser = _owner.gameObject.Pop(EffectPoolType.EnergySphereLaserEffect, _ownerTrm.position + Vector3.up * 3, Quaternion.identity) as EnergySphereLaser;
                         laser.Init(_targets[i].transform, 1);
                         effectController.ApplyEffect(EffectStateTypeEnum.Shock, 1f, 1);
                         yield return new WaitForSeconds(0.2f);

@@ -1,15 +1,15 @@
-using Crogen.ObjectPooling;
+using Crogen.CrogenPooling;
 using UnityEngine;
 using System.Collections;
 
 public class Mine : WeaponEffect, IPoolingObject
 {
-	public PoolType OriginPoolType { get; set; }
+	public string OriginPoolType { get; set; }
 	GameObject IPoolingObject.gameObject { get; set; }
 
 	[SerializeField] private DamageCaster _mainDamageCaster;
 	[SerializeField] private DamageCaster _subDamageCaster;
-	[SerializeField] private PoolType _explosionPoolType = PoolType.BlueExplosion;
+	[SerializeField] private EffectPoolType _explosionPoolType = EffectPoolType.BlueExplosionEffect;
 	private FeedbackPlayer feedbackPlayer;
 
 	public override void Init(uint level, Weapon weaponBase)
