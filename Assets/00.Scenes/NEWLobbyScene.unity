@@ -17179,16 +17179,12 @@ MonoBehaviour:
   _colorPicker: {fileID: 134097485}
   _defaultData:
     colorSetName: new Color
-    color1: {r: 0.77254903, g: 0.7647059, b: 0.7764706, a: 1}
-    color2: {r: 0.27450982, g: 0.28627452, b: 0.29803923, a: 1}
-    color3: {r: 0.29803923, g: 0.36078432, b: 0.40784314, a: 1}
-    lightColor: {r: 0.75, g: 0.75, b: 0.75, a: 1}
-  datas:
-  - colorSetName: Ming
-    color1: {r: 1, g: 0, b: 0, a: 1}
-    color2: {r: 0, g: 1, b: 0.1346817, a: 1}
-    color3: {r: 1, g: 0.8900727, b: 0, a: 1}
-    lightColor: {r: 0.37294388, g: 0, b: 1, a: 1}
+    colors:
+    - {r: 1, g: 0, b: 0, a: 1}
+    - {r: 1, g: 0.9718938, b: 0, a: 1}
+    - {r: 1, g: 0.5907354, b: 0, a: 1}
+    - {r: 0.036990643, g: 1, b: 0, a: 1}
+  _currentSelectedSlot: {fileID: 0}
 --- !u!114 &789532502
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -7,7 +7,12 @@ namespace LobbyScene.ColorSettings
     {
         public List<ColorSettingData> datas;
 
-        public ColorSettingData currnetData;
+        public ColorSettingData currentData;
+
+        public ColorSetDataGroup()
+        {
+            datas = new List<ColorSettingData>();
+        }
     }
 
     [System.Serializable]

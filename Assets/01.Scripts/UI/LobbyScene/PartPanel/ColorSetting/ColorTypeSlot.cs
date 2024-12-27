@@ -10,17 +10,25 @@ namespace LobbyScene.ColorSettings
     public class ColorTypeSlot : MonoBehaviour, IPointerClickHandler
     {
         [SerializeField] private TextMeshProUGUI _colorTypeText;
-        
-        public Action<ColorTypeSlot> OnClickEvent;
+        public event Action<int, Color> OnColorChanged;
+        public event Action<ColorTypeSlot> OnClickEvent;
         private Image _image;
         private Color _color;
         public Color Color => _color;
+        private int _index;
+        private RectTransform _rectTrm;
+        public RectTransform RectTrm => _rectTrm;
 
         private void Awake()
         {
-
+            _rectTrm = transform as RectTransform;
             _image = GetComponent<Image>();
 
+        }
+
+        public void Initialize(int index)
+        {
+            _index = index;
         }
 
 
@@ -28,6 +36,7 @@ namespace LobbyScene.ColorSettings
         {
             _color = color;
             _image.color = color;
+            OnColorChanged?.Invoke(_index, color);
         }
 
         public void OnPointerClick(PointerEventData eventData)

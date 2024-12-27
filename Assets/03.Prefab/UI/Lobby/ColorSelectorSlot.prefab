@@ -95,10 +95,12 @@ MonoBehaviour:
   _nameInputField: {fileID: 1863186237996192623}
   _colorSetNameText: {fileID: 2080131551941402973}
   _selectMarker: {fileID: 6752638773454858514}
-  _colorSlot1: {fileID: 7373317277652902308}
-  _colorSlot2: {fileID: 4496956501874617087}
-  _colorSlot3: {fileID: 3203770878205009352}
-  _colorSlot4: {fileID: 5513344335895054155}
+  _colorTypeSelecterTrm: {fileID: 8293313170589295679}
+  _colorSlots:
+  - {fileID: 7373317277652902308}
+  - {fileID: 4496956501874617087}
+  - {fileID: 3203770878205009352}
+  - {fileID: 5513344335895054155}
 --- !u!114 &1903819713354594668
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1964,7 +1966,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8293313170589295679
 RectTransform:
   m_ObjectHideFlags: 0

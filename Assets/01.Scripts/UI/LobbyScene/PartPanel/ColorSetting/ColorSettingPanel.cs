@@ -33,15 +33,26 @@ namespace LobbyScene.ColorSettings
             // 처음 저장되어있던 색을 불러와야됨
             // 다만 가장 초기상태이거나 팔레트 정보가 없을떄는 강제로 팔레트를 하나 만들어주고
             // 그 데이터를 적용하는 방식으로 가야할 듯 함.
-            if(_colorSetDataGroup.datas == null)
+            if (_colorSetDataGroup == null)
             {
-                _colorSetDataGroup.datas = new List<ColorSettingData>();
+                _colorSetDataGroup = new ColorSetDataGroup();
+            }
+            if (_colorSetDataGroup.datas.Count < 1)
+            {
+                ColorSettingData data = new ColorSettingData(_defaultData);
+                _colorSetDataGroup.datas.Add(data);
             }
 
             _detailPanel.OnEditModeEvent += HandleEditMode;
             _detailPanel.OnDeleteColorSetEvent += HandleDeleteSlot;
-            
+
             Initialize();
+        }
+
+        private void OnDestroy()
+        {
+
+            HandleSaveColorSetData();
         }
 
         private void Initialize()
@@ -56,7 +67,7 @@ namespace LobbyScene.ColorSettings
             {
                 ColorSettingSlot slot = AddColorSet();
                 slot.Initialize(_colorSetDataGroup.datas[i]);
-                
+
                 AddEventHandlersColorSettingSlot(slot);
             }
         }
@@ -101,6 +112,7 @@ namespace LobbyScene.ColorSettings
         public void HandleUnSelectColorSet()
         {
             _scrollRect.enabled = true;
+            _currentSelectedSlot.HandleDisableEditorMode();
             SetActiveDetailPanel(false);
             SetActiveColorPicker(false);
         }
@@ -110,6 +122,7 @@ namespace LobbyScene.ColorSettings
         private void HandleEditMode()
         {
             _colorPalette.transform.SetParent(_currentSelectedSlot.transform);
+            _currentSelectedSlot.HandleEditorMode(); // TypeSelector 켜주기
             SetActiveColorPicker(true);
         }
 
@@ -152,10 +165,11 @@ namespace LobbyScene.ColorSettings
 
         public void HandleSaveColorSetData()
         {
-            if(_colorSetDataGroup == null) 
+            if (_colorSetDataGroup == null)
                 _colorSetDataGroup = new ColorSetDataGroup();
 
-            _colorSetDataGroup.currnetData = _currentSelectedSlot.data;
+            if (_currentSelectedSlot != null)
+                _colorSetDataGroup.currentData = _currentSelectedSlot.data;
 
             EasyToJson.ToJson<ColorSetDataGroup>(_colorSetDataGroup, path, true);
 

@@ -1,4 +1,5 @@
 using System;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -15,6 +16,7 @@ namespace LobbyScene.ColorSettings
         [SerializeField] private TMP_InputField _nameInputField;
         [SerializeField] private TextMeshProUGUI _colorSetNameText;
         [SerializeField] private GameObject _selectMarker;
+        [SerializeField] private RectTransform _colorTypeSelecterTrm;
 
         [Header("ColorSet Slots")]
         [SerializeField] private ColorTypeSlot[] _colorSlots;
@@ -27,6 +29,17 @@ namespace LobbyScene.ColorSettings
         private bool _isActive;
         public bool IsActive => _isActive;
 
+
+        private void Awake()
+        {
+            _nameInputField.onValueChanged.AddListener(HandleTextChanged);
+        }
+
+        private void HandleTextChanged(string newName)
+        {
+            _data.colorSetName = newName;
+        }
+
         public void Initialize(ColorSettingData data)
         {
             _data = data;
@@ -35,17 +48,24 @@ namespace LobbyScene.ColorSettings
             for (int i = 0; i < _colorSlots.Length; i++)
             {
                 ColorTypeSlot slot = _colorSlots[i];
+                slot.Initialize(i);
                 slot.SetColor(data.colors[i]);
+                _nameInputField.text = data.colorSetName;
                 slot.OnClickEvent += HandleSelectColorType;
+                slot.OnColorChanged += HandleColorChanged;
             }
+        }
 
-
-
+        private void HandleColorChanged(int index, Color color)
+        {
+            _data.colors[index] = color;
         }
 
         private void HandleSelectColorType(ColorTypeSlot slot)
         {
             OnColorTypeSelectEvent?.Invoke(slot);
+            _currentColorType = slot;
+            _colorTypeSelecterTrm.DOAnchorPosX(slot.RectTrm.anchoredPosition.x, 0.1f);
         }
 
         public void HandleToggleSlot()
@@ -54,6 +74,7 @@ namespace LobbyScene.ColorSettings
 
             if (_isActive)
             {
+
                 HandleOpenColorSet();
             }
             else
@@ -66,8 +87,17 @@ namespace LobbyScene.ColorSettings
         public void HandleOpenColorSet()
         {
             OnSelectEvent?.Invoke(this);
-            _currentColorType = _colorSlots[0];
-            OnColorTypeSelectEvent?.Invoke(_currentColorType);
+            HandleSelectColorType(_colorSlots[0]);
+        }
+
+        public void HandleEditorMode()
+        {
+            _colorTypeSelecterTrm.gameObject.SetActive(true);
+        }
+
+        public void HandleDisableEditorMode()
+        {
+            _colorTypeSelecterTrm.gameObject.SetActive(false);
         }
 
 
