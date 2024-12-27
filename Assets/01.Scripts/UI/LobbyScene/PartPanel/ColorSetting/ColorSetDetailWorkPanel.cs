@@ -30,7 +30,6 @@ namespace LobbyScene.ColorSettings
         public void HandleEditMode() // Call By Buttons
         {
             OnEditModeEvent?.Invoke();
-            print   ("mingm,ing");
         }
 
         public void HandleDeleteColorSet()

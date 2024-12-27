@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using EasySave.Json;
 using UnityEngine;
+using UnityEngine.UI;
 namespace LobbyScene.ColorSettings
 {
 
@@ -10,41 +11,64 @@ namespace LobbyScene.ColorSettings
 
 
         [SerializeField] private ColorSetDetailWorkPanel _detailPanel;
+        private ColorSelector _colorSelector;
+        [SerializeField] private ScrollRect _scrollRect;
         [SerializeField] private RectTransform _contentTrm;
         [SerializeField] private RectTransform _addColorButtonTrm;
         [SerializeField] private ColorPalette _colorPalette; // Picker와 등등의 것들을 들고있는놈
         [SerializeField] private ColorPicker _colorPicker;
         [SerializeField] private ColorSettingData _defaultData;
 
+        private ColorSetDataGroup _colorSetDataGroup;
         private List<ColorSettingSlot> _slotList = new();
         [SerializeField]
-        private List<ColorSettingData> datas;
 
         private ColorSettingSlot _currentSelectedSlot;
+        private readonly string path = "ColorSet";
 
         private void Awake()
         {
-            Initialize();
-            //datas = EasyToJson.ListFromJson<ColorSettingData>("ColorSet");
+            _colorSelector = GetComponent<ColorSelector>();
+            _colorSetDataGroup = EasyToJson.FromJson<ColorSetDataGroup>(path);
+            // 처음 저장되어있던 색을 불러와야됨
+            // 다만 가장 초기상태이거나 팔레트 정보가 없을떄는 강제로 팔레트를 하나 만들어주고
+            // 그 데이터를 적용하는 방식으로 가야할 듯 함.
+            if (_colorSetDataGroup == null)
+            {
+                _colorSetDataGroup = new ColorSetDataGroup();
+            }
+            if (_colorSetDataGroup.datas.Count < 1)
+            {
+                ColorSettingData data = new ColorSettingData(_defaultData);
+                _colorSetDataGroup.datas.Add(data);
+            }
 
             _detailPanel.OnEditModeEvent += HandleEditMode;
             _detailPanel.OnDeleteColorSetEvent += HandleDeleteSlot;
+
+            Initialize();
+        }
+
+        private void OnDestroy()
+        {
+
+            HandleSaveColorSetData();
         }
 
         private void Initialize()
         {
-            if (datas == null)
+            if (_colorSetDataGroup.datas == null)
             {
                 Debug.LogError("Datas is Null");
                 return;
             }
 
-            for (int i = 0; i < datas.Count; i++)
+            for (int i = 0; i < _colorSetDataGroup.datas.Count; i++)
             {
                 ColorSettingSlot slot = AddColorSet();
-                slot.Initialize(datas[i]);
-                slot.OnSelectEvent += HandleSelectColorSet;
-                slot.OnCancleEvent += HandleUnSelectColorSet;
+                slot.Initialize(_colorSetDataGroup.datas[i]);
+
+                AddEventHandlersColorSettingSlot(slot);
             }
         }
 
@@ -62,24 +86,35 @@ namespace LobbyScene.ColorSettings
             ColorSettingData data = new ColorSettingData(_defaultData);
 
             _slotList.Add(slot);
-            datas.Add(data);
+            _colorSetDataGroup.datas.Add(data);
             slot.Initialize(data);
+            AddEventHandlersColorSettingSlot(slot);
+        }
+
+        private void AddEventHandlersColorSettingSlot(ColorSettingSlot slot)
+        {
             slot.OnSelectEvent += HandleSelectColorSet;
             slot.OnCancleEvent += HandleUnSelectColorSet;
+            slot.OnColorTypeSelectEvent += SetColorType;
         }
-        //
 
         private void HandleSelectColorSet(ColorSettingSlot slot)
         {
             _currentSelectedSlot = slot;
             _detailPanel.SetSlotParent(slot.transform);
+            _scrollRect.enabled = false;
             SetActiveDetailPanel(true);
+
+            // 나중에 이쪽에서 _currentSelectedSlot.data 가져와서
+            // 색 변경 하셈ww
         }
 
-        private void HandleUnSelectColorSet()
+        public void HandleUnSelectColorSet()
         {
-            // SetActiveDetailPanel(false);
-            // SetActiveColorPicker(false);
+            _scrollRect.enabled = true;
+            _currentSelectedSlot.HandleDisableEditorMode();
+            SetActiveDetailPanel(false);
+            SetActiveColorPicker(false);
         }
 
 
@@ -87,6 +122,7 @@ namespace LobbyScene.ColorSettings
         private void HandleEditMode()
         {
             _colorPalette.transform.SetParent(_currentSelectedSlot.transform);
+            _currentSelectedSlot.HandleEditorMode(); // TypeSelector 켜주기
             SetActiveColorPicker(true);
         }
 
@@ -94,7 +130,7 @@ namespace LobbyScene.ColorSettings
         {
             SetActiveDetailPanel(false);
             SetActiveColorPicker(false);
-            datas.Remove(_currentSelectedSlot.data);
+            _colorSetDataGroup.datas.Remove(_currentSelectedSlot.data);
             _slotList.Remove(_currentSelectedSlot);
             _currentSelectedSlot.DestroySlot();
         }
@@ -119,8 +155,24 @@ namespace LobbyScene.ColorSettings
             {
                 _colorPalette.SetCanvasActiveImmediately(false);
                 _colorPalette.transform.SetParent(transform);
-
             }
+        }
+
+        public void SetColorType(ColorTypeSlot colorType)
+        {
+            _colorSelector.SetColorType(colorType);
+        }
+
+        public void HandleSaveColorSetData()
+        {
+            if (_colorSetDataGroup == null)
+                _colorSetDataGroup = new ColorSetDataGroup();
+
+            if (_currentSelectedSlot != null)
+                _colorSetDataGroup.currentData = _currentSelectedSlot.data;
+
+            EasyToJson.ToJson<ColorSetDataGroup>(_colorSetDataGroup, path, true);
+
         }
 
     }

@@ -9,6 +9,7 @@ namespace LobbyScene.ColorSettings
 
     public class ColorPicker : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
+        public event Action<Color> OnColorChangedEvent; // Panel -> TypeSlot.SetColor()
         [SerializeField] private InputReader _input;
         [SerializeField] private HueSlider _hueSlider;
         [SerializeField] private Slider _saturationSlider;
@@ -21,7 +22,6 @@ namespace LobbyScene.ColorSettings
         private Material _pickerMaterial;
         private int _hueColorHash;
         private int _pickerColorHash;
-        Action<float, float, float> OnPickerChangeEvent;// S, V
         [Header("Current Status")]
         [SerializeField] private Color _currentColor;
         private bool _isClick;
@@ -46,13 +46,8 @@ namespace LobbyScene.ColorSettings
             _saturationSlider.onValueChanged.AddListener(HandleSaturationChanged);
             _valueSlider.onValueChanged.AddListener(HandleValueChanged);
 
-            OnPickerChangeEvent += HandleChangedColor;
         }
 
-        public void OnPointerClick(PointerEventData eventData)
-        {
-
-        }
 
         public void SetColor(Color newColor)
         {
@@ -61,10 +56,14 @@ namespace LobbyScene.ColorSettings
             _hueSlider.SetHueValue(_hueLevel);
             _saturationSlider.value = _saturationLevel;
             _valueSlider.value = _valueLevel;
-            InvokeColorChanged();
+            SetPickerPosition(_saturationLevel * 400f, _valueLevel * 400f);
+            _currentColor = newColor;
+            _pickerMaterial.SetColor(_pickerColorHash, _currentColor);
+            OnColorChangedEvent?.Invoke(_currentColor);
+            //InvokeColorChanged();
         }
 
-        // Event Funcs
+        #region  Event Funcs
         private void HandleHueChanged(float value)
         {
             _hueLevel = value;
@@ -85,9 +84,11 @@ namespace LobbyScene.ColorSettings
 
             InvokeColorChanged();
         }
+
+        #endregion
         private void InvokeColorChanged()
         {
-            OnPickerChangeEvent?.Invoke(_hueLevel, _saturationLevel, _valueLevel);
+            HandleChangedColor(_hueLevel, _saturationLevel, _valueLevel);
         }
 
         private void SetPickerPosition(float x, float y)
@@ -102,6 +103,7 @@ namespace LobbyScene.ColorSettings
         {
             _currentColor = Color.HSVToRGB(h, s, v);
             _pickerMaterial.SetColor(_pickerColorHash, _currentColor);
+            OnColorChangedEvent?.Invoke(_currentColor);
         }
 
 
@@ -121,19 +123,23 @@ namespace LobbyScene.ColorSettings
 
             _saturationSlider.value = newSaturation;
             _valueSlider.value = newValue;
-            OnPickerChangeEvent?.Invoke(_hueLevel, newSaturation, newValue);
+            HandleChangedColor(_hueLevel, newSaturation, newValue);
         }
 
 
         public void OnPointerUp(PointerEventData eventData)
         {
             _isClick = false;
+            eventData.Use();
         }
 
         public void OnPointerDown(PointerEventData eventData)
         {
             _isClick = true;
+            eventData.Use();
+
         }
+
 
 
     }
