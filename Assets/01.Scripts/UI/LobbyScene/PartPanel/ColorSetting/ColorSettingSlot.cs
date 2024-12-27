@@ -8,6 +8,7 @@ namespace LobbyScene.ColorSettings
 
     public class ColorSettingSlot : MonoBehaviour, IPointerClickHandler
     {
+        public event Action<ColorTypeSlot> OnColorTypeSelectEvent;
         public event Action<ColorSettingSlot> OnSelectEvent;
         public event Action OnCancleEvent;
         private Action OnDataChanged;
@@ -23,6 +24,9 @@ namespace LobbyScene.ColorSettings
         private ColorSettingData _data;
         public ColorSettingData data => _data;
 
+
+        private ColorTypeSlot _currentColorType;
+
         private bool _isActive;
         public bool IsActive => _isActive;
 
@@ -34,10 +38,19 @@ namespace LobbyScene.ColorSettings
             _colorSlot2.SetColor(data.color2);
             _colorSlot3.SetColor(data.color3);
             _colorSlot4.SetColor(data.lightColor);
+
+            _colorSlot1.OnClickEvent += HandleSelectColorType;
+            _colorSlot2.OnClickEvent += HandleSelectColorType;
+            _colorSlot3.OnClickEvent += HandleSelectColorType;
+            _colorSlot4.OnClickEvent += HandleSelectColorType;
         }
 
+        private void HandleSelectColorType(ColorTypeSlot slot)
+        {
+            OnColorTypeSelectEvent?.Invoke(slot);
+        }
 
-        public void OnPointerClick(PointerEventData eventData)
+        public void HandleToggleSlot()
         {
             _isActive = !_isActive;
 
@@ -55,6 +68,8 @@ namespace LobbyScene.ColorSettings
         public void HandleOpenColorSet()
         {
             OnSelectEvent?.Invoke(this);
+            _currentColorType = _colorSlot1;
+            OnColorTypeSelectEvent?.Invoke(_currentColorType);
         }
 
 
@@ -70,6 +85,10 @@ namespace LobbyScene.ColorSettings
             Destroy(gameObject);
         }
 
+        public void OnPointerClick(PointerEventData eventData)
+        {
+            HandleToggleSlot();
+        }
     }
 
 }

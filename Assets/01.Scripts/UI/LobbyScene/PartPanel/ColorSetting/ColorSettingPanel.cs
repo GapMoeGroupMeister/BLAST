@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using EasySave.Json;
 using UnityEngine;
+using UnityEngine.UI;
 namespace LobbyScene.ColorSettings
 {
 
@@ -10,6 +11,8 @@ namespace LobbyScene.ColorSettings
 
 
         [SerializeField] private ColorSetDetailWorkPanel _detailPanel;
+        private ColorSelector _colorSelector;
+        [SerializeField] private ScrollRect _scrollRect;
         [SerializeField] private RectTransform _contentTrm;
         [SerializeField] private RectTransform _addColorButtonTrm;
         [SerializeField] private ColorPalette _colorPalette; // Picker와 등등의 것들을 들고있는놈
@@ -24,6 +27,7 @@ namespace LobbyScene.ColorSettings
 
         private void Awake()
         {
+            _colorSelector = GetComponent<ColorSelector>();
             Initialize();
             //datas = EasyToJson.ListFromJson<ColorSettingData>("ColorSet");
 
@@ -43,8 +47,7 @@ namespace LobbyScene.ColorSettings
             {
                 ColorSettingSlot slot = AddColorSet();
                 slot.Initialize(datas[i]);
-                slot.OnSelectEvent += HandleSelectColorSet;
-                slot.OnCancleEvent += HandleUnSelectColorSet;
+                AddEventHandlersColorSettingSlot(slot);
             }
         }
 
@@ -64,20 +67,30 @@ namespace LobbyScene.ColorSettings
             _slotList.Add(slot);
             datas.Add(data);
             slot.Initialize(data);
+            AddEventHandlersColorSettingSlot(slot);
+        }
+
+        private void AddEventHandlersColorSettingSlot(ColorSettingSlot slot)
+        {
             slot.OnSelectEvent += HandleSelectColorSet;
             slot.OnCancleEvent += HandleUnSelectColorSet;
+            slot.OnColorTypeSelectEvent += SetColorType;
         }
-        //
 
         private void HandleSelectColorSet(ColorSettingSlot slot)
         {
             _currentSelectedSlot = slot;
             _detailPanel.SetSlotParent(slot.transform);
+            _scrollRect.enabled = false;
             SetActiveDetailPanel(true);
+
+            // 나중에 이쪽에서 _currentSelectedSlot.data 가져와서
+            // 색 변경 하셈ww
         }
 
         private void HandleUnSelectColorSet()
         {
+            _scrollRect.enabled = true;
             // SetActiveDetailPanel(false);
             // SetActiveColorPicker(false);
         }
@@ -121,6 +134,12 @@ namespace LobbyScene.ColorSettings
                 _colorPalette.transform.SetParent(transform);
 
             }
+        }
+
+        public void SetColorType(ColorTypeSlot colorType)
+        {
+            print("???");
+            _colorSelector.SetColorType(colorType);
         }
 
     }

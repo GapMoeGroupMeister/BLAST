@@ -8,6 +8,7 @@ namespace LobbyScene.ColorSettings
 
         public ColorSettingData currnetData;
     }
+    
     [System.Serializable]
     public class ColorSettingData
     {
@@ -17,7 +18,7 @@ namespace LobbyScene.ColorSettings
         public Color color1;
         public Color color2;
         public Color color3;
-        public Color lightColor = new Color(191, 191, 191);
+        public Color lightColor;
     
     
         public ColorSettingData(ColorSettingData originData)
