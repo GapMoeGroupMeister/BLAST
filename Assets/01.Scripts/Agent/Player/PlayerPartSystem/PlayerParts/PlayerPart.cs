@@ -152,6 +152,8 @@ public abstract class PlayerPart : MonoBehaviour
 		_inputReader.AttackLEvent += HandleAttackUpdateL;
 		_inputReader.AttackREvent += HandleAttackUpdateR;
 		StartCoroutine(CoroutineUpdateOverload());
+		
+		PlayerCustomColorLoader.AddRenderers(transform);
 	}
 
 	protected virtual void HandleAttackUpdateL(bool isAttack)
