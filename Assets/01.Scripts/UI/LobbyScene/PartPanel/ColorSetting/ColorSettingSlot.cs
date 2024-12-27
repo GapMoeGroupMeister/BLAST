@@ -17,10 +17,7 @@ namespace LobbyScene.ColorSettings
         [SerializeField] private GameObject _selectMarker;
 
         [Header("ColorSet Slots")]
-        [SerializeField] private ColorTypeSlot _colorSlot1;
-        [SerializeField] private ColorTypeSlot _colorSlot2;
-        [SerializeField] private ColorTypeSlot _colorSlot3;
-        [SerializeField] private ColorTypeSlot _colorSlot4;
+        [SerializeField] private ColorTypeSlot[] _colorSlots;
         private ColorSettingData _data;
         public ColorSettingData data => _data;
 
@@ -34,15 +31,16 @@ namespace LobbyScene.ColorSettings
         {
             _data = data;
             OnDataChanged?.Invoke();
-            _colorSlot1.SetColor(data.color1);
-            _colorSlot2.SetColor(data.color2);
-            _colorSlot3.SetColor(data.color3);
-            _colorSlot4.SetColor(data.lightColor);
 
-            _colorSlot1.OnClickEvent += HandleSelectColorType;
-            _colorSlot2.OnClickEvent += HandleSelectColorType;
-            _colorSlot3.OnClickEvent += HandleSelectColorType;
-            _colorSlot4.OnClickEvent += HandleSelectColorType;
+            for (int i = 0; i < _colorSlots.Length; i++)
+            {
+                ColorTypeSlot slot = _colorSlots[i];
+                slot.SetColor(data.colors[i]);
+                slot.OnClickEvent += HandleSelectColorType;
+            }
+
+
+
         }
 
         private void HandleSelectColorType(ColorTypeSlot slot)
@@ -68,7 +66,7 @@ namespace LobbyScene.ColorSettings
         public void HandleOpenColorSet()
         {
             OnSelectEvent?.Invoke(this);
-            _currentColorType = _colorSlot1;
+            _currentColorType = _colorSlots[0];
             OnColorTypeSelectEvent?.Invoke(_currentColorType);
         }
 
