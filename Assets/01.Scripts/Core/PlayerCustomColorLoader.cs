@@ -17,9 +17,14 @@ public class PlayerCustomColorLoader : MonoBehaviour
     private void Awake()
     {
         _rendererList = new List<Renderer>();
-        _rendererList.AddRange(_defaultRendererList);
+
         var colorSetDataGroup = EasyToJson.FromJson<ColorSetDataGroup>("ColorSet");
-        _colorSettingData = colorSetDataGroup.currnetData;
+        _colorSettingData = colorSetDataGroup.currentData;
+        
+        foreach (Renderer renderer in _defaultRendererList)
+        {
+            AddRenderer(renderer);
+        }
     }
 
     private static void AddRenderer(Renderer renderer)
@@ -39,16 +44,6 @@ public class PlayerCustomColorLoader : MonoBehaviour
             AddRenderer(renderer);
         }
     }
-    
-    private static Color[] LoadCustomColors()
-    {
-        Color[] colors = new Color[4];
-        
-        colors[0] = _colorSettingData.color1;
-        colors[1] = _colorSettingData.color2;
-        colors[2] = _colorSettingData.color3;
-        colors[3] = _colorSettingData.lightColor;
-        
-        return colors;
-    }
+
+    private static Color[] LoadCustomColors() => _colorSettingData.colors;
 }
