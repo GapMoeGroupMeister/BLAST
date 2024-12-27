@@ -1,5 +1,5 @@
 using UnityEngine;
-using Crogen.ObjectPooling;
+using Crogen.CrogenPooling;
 
 public class DragoonEnemyAttackState : EnemyState<DragoonEnemy>
 {
@@ -15,7 +15,9 @@ public class DragoonEnemyAttackState : EnemyState<DragoonEnemy>
     {
         base.Enter();
         _enemyBase.transform.rotation = Quaternion.LookRotation((_enemyBase.targetTrm.position - _enemyBase.transform.position).normalized);
-        EffectPlayer effect = _enemyBase.gameObject.Pop(PoolType.VFX_Charge, _enemyBase.firePosTrm, Vector3.zero, Quaternion.identity) as EffectPlayer;
+        EffectPlayer effect = _enemyBase.gameObject.Pop(EffectPoolType.Enemy02ChargeEffect, _enemyBase.firePosTrm) as EffectPlayer;
+        effect.transform.localPosition = Vector3.zero;
+        effect.transform.localRotation = Quaternion.identity;
         effect.StartPlay(4f);
         _targetPos = _enemyBase.targetTrm.position;
         _targetPos *= 5;
@@ -36,7 +38,7 @@ public class DragoonEnemyAttackState : EnemyState<DragoonEnemy>
         if(IsTriggerCalled(AnimationTriggerEnum.EffectTrigger))
         {
             _effect = _enemyBase.gameObject.Pop
-                (PoolType.DragoonLaser, 
+                (EffectPoolType.Enemy02LaserEffect, 
                 _enemyBase.firePosTrm.position, 
                 _enemyBase.transform.rotation) as ParticlePlayer;
             RemoveTrigger(AnimationTriggerEnum.EffectTrigger);

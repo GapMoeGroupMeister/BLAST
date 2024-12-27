@@ -214,6 +214,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -267,7 +270,7 @@ MonoBehaviour:
     bulletFirePositions:
     - {fileID: 3128271772544532723}
     AttackDirection: {x: 0, y: 0, z: 0}
-    _bulletPoolingType: 17
+    _bulletPoolingType: 1
   magazineInfoR:
     curOverload: 0
     maxOverload: 200
@@ -283,7 +286,7 @@ MonoBehaviour:
     bulletFirePositions:
     - {fileID: 3237912284228254232}
     AttackDirection: {x: 0, y: 0, z: 0}
-    _bulletPoolingType: 17
+    _bulletPoolingType: 1
   whatIsEnemy:
     serializedVersion: 2
     m_Bits: 512

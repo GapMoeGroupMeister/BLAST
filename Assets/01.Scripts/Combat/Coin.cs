@@ -1,10 +1,10 @@
-using Crogen.ObjectPooling;
+using Crogen.CrogenPooling;
 using DG.Tweening;
 using UnityEngine;
 
 public class Coin : MonoBehaviour, IPoolingObject
 {
-	public PoolType OriginPoolType { get; set; }
+	public string OriginPoolType { get; set; }
 	GameObject IPoolingObject.gameObject { get; set; }
 	[SerializeField] private int _coinAmount = 15;
 	[SerializeField] private float _radius;

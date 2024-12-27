@@ -188,7 +188,6 @@ MonoBehaviour:
   whatIsEnemy:
     serializedVersion: 2
     m_Bits: 512
-  _turretPoolType: 15
   _turretMaxAmount: 10
 --- !u!114 &1536740028326696760
 MonoBehaviour:
@@ -449,7 +448,7 @@ MonoBehaviour:
   whatIsEnemy:
     serializedVersion: 2
     m_Bits: 512
-  _minePoolType: 10
+  _minePoolType: 0
   _distance: 50
 --- !u!114 &6522967500531535053
 MonoBehaviour:
@@ -700,7 +699,7 @@ MonoBehaviour:
   canUse: 1
   weaponEnabled: 1
   isConditionalWeapon: 1
-  _cooldown: 60
+  _cooldown: 80
   level: 10
   isUniqueWeapon: 1
   partType: 0
@@ -708,6 +707,7 @@ MonoBehaviour:
   whatIsEnemy:
     serializedVersion: 2
     m_Bits: 512
+  _count: 200
 --- !u!114 &4758979373639413987
 MonoBehaviour:
   m_ObjectHideFlags: 0
