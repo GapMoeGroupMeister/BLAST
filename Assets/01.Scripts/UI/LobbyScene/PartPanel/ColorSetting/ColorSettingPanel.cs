@@ -20,10 +20,7 @@ namespace LobbyScene.ColorSettings
         [SerializeField] private ColorSettingData _defaultData;
 
         private ColorSetDataGroup _colorSetDataGroup;
-        private List<ColorSettingSlot> _slotList = new();
-        [SerializeField]
-
-        private ColorSettingSlot _currentSelectedSlot;
+        [SerializeField] private ColorSettingSlot _currentSelectedSlot;
         private readonly string path = "ColorSet";
 
         private void Awake()
@@ -85,7 +82,6 @@ namespace LobbyScene.ColorSettings
             ColorSettingSlot slot = AddColorSet();
             ColorSettingData data = new ColorSettingData(_defaultData);
 
-            _slotList.Add(slot);
             _colorSetDataGroup.datas.Add(data);
             slot.Initialize(data);
             AddEventHandlersColorSettingSlot(slot);
@@ -123,6 +119,7 @@ namespace LobbyScene.ColorSettings
         {
             _colorPalette.transform.SetParent(_currentSelectedSlot.transform);
             _currentSelectedSlot.HandleEditorMode(); // TypeSelector 켜주기
+            SetActiveDetailPanel(false);
             SetActiveColorPicker(true);
         }
 
@@ -131,7 +128,6 @@ namespace LobbyScene.ColorSettings
             SetActiveDetailPanel(false);
             SetActiveColorPicker(false);
             _colorSetDataGroup.datas.Remove(_currentSelectedSlot.data);
-            _slotList.Remove(_currentSelectedSlot);
             _currentSelectedSlot.DestroySlot();
         }
 

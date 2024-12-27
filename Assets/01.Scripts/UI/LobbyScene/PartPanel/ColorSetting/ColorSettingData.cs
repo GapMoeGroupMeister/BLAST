@@ -32,7 +32,11 @@ namespace LobbyScene.ColorSettings
         public ColorSettingData(ColorSettingData originData)
         {
             colorSetName = originData.colorSetName;
-            colors = originData.colors;
+            colors = new Color[4];
+            for (int i = 0; i < colors.Length; i++)
+            {
+                colors[i] = originData.colors[i];
+            }
         }
     }
 }
