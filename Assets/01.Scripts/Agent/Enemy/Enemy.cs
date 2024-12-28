@@ -86,6 +86,14 @@ public abstract class Enemy : Agent, IPoolingObject
 
     public virtual void OnPush()
     {
+        XP xp = gameObject.Pop(OtherPoolType.XP, transform.position, Quaternion.identity) as XP;
+        xp.SetGrade((XPType)(int)(Level * 3));
+
+        int rand = Random.Range(0, 100);
+        if (rand < 20)
+        {
+            gameObject.Pop(OtherPoolType.Coin, transform.position, Quaternion.identity);
+        }
     }
 
     public BlackboardVariable<T> GetVariable<T>(string variableName)

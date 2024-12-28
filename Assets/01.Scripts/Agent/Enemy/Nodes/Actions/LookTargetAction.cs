@@ -13,7 +13,11 @@ public partial class LookTargetAction : Action
 
     protected override Status OnStart()
     {
-        Face.Value.LookAt(Target.Value);
+        Vector3 direction = Target.Value.position - Face.Value.position;
+        direction.y = 0;
+        direction.Normalize();
+        float angle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
+        Face.Value.rotation = Quaternion.Euler(0, angle, 0);
         return Status.Success;
     }
 }

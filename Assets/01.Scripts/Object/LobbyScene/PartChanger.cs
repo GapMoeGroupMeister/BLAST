@@ -83,6 +83,9 @@ namespace Objects.PartSelect
                 Destroy(_currentPartTrm.gameObject);
                 _currentPartTrm = Instantiate(data.partPrefab, _tongsTrm).transform;
                 _currentPartTrm.gameObject.layer = 0;
+                PlayerCustomColorLoader.AddRenderers(_currentPartTrm);
+                PlayerCustomColorLoader.LoadAndSetColor();
+                Debug.Log("Load");
                 foreach (Transform child in _currentPartTrm)
                 {
                     child.gameObject.layer = 0;
