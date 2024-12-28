@@ -4,6 +4,7 @@ using Crogen.CrogenPooling;
 using Crogen.PowerfulInput;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 public delegate void PlayerOverloadEvent(int curOverload, int maxOverload);
 
@@ -37,7 +38,7 @@ public class MagazineInfo
 	public bool IsAttack { get; private set; }
 	public bool CanAttack { get; set; }
 
-	[SerializeField] private ProjectilePoolType _bulletPoolingType;
+	public ProjectilePoolType bulletPoolingType;
 	
 	public void HandleAttackUpdate(bool value)
 	{
@@ -61,7 +62,7 @@ public class MagazineInfo
 			if (bulletFirePositions[i] != null)
 			{
 				bulletFirePositions[i].gameObject.Pop(
-					_bulletPoolingType,
+					bulletPoolingType,
 					bulletFirePositions[i].position, 
 					Quaternion.LookRotation(AttackDirection));
 			}
@@ -152,7 +153,10 @@ public abstract class PlayerPart : MonoBehaviour
 		_inputReader.AttackLEvent += HandleAttackUpdateL;
 		_inputReader.AttackREvent += HandleAttackUpdateR;
 		StartCoroutine(CoroutineUpdateOverload());
-		
+	}
+
+	private void Start()
+	{
 		PlayerCustomColorLoader.AddRenderers(transform);
 	}
 
