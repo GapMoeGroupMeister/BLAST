@@ -18,8 +18,8 @@ public partial class ShootBulletAction : Action
         Vector3 direction = Target.Value.position - Muzzle.Value.position;
         direction.y = 0;
         direction.Normalize();
-        float angle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
-        Bullet bullet = GameObject.Pop(Bullet.Value, Muzzle.Value.position, Quaternion.Euler(0, angle + 180, 0)) as Bullet;
+        float angle = Mathf.Atan2(direction.z, direction.x) * Mathf.Rad2Deg;
+        Bullet bullet = GameObject.Pop(Bullet.Value, Muzzle.Value.position, Quaternion.Euler(0, angle, 0)) as Bullet;
         return Status.Success;
     }
 }
