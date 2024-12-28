@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 7
+  version: 9
 --- !u!21 &2100000
 Material:
   serializedVersion: 8
@@ -55,15 +55,16 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Amount: -5
+    - _Amount: -10.68
     - _DecalMeshBiasType: 0
     - _DecalMeshDepthBias: 0
     - _DecalMeshViewBias: 0
     - _DrawOrder: 0
     - _Radius: 1
-    - _Speed: 5
+    - _Speed: 2
     - _Width: 0.1
     m_Colors:
     - _BGColor: {r: 0.4666667, g: 0.47058827, b: 0.4666667, a: 1}
     - _BaseColor: {r: 3.1406243, g: 0.058543254, b: 0, a: 0}
   m_BuildTextureStacks: []
+  m_AllowLocking: 1

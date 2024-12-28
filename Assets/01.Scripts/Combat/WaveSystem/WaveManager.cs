@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Crogen.ObjectPooling;
+using Crogen.CrogenPooling;
 using ItemManage;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -70,6 +70,8 @@ public class WaveManager : MonoSingleton<WaveManager>
         }
 
         int allEnemy = AllEnemyCount(wave);
+        Transform player = GameManager.Instance.Player.transform;
+        Vector3 spawnPos = player.position + Random.insideUnitSphere * 10;
         while (_currentEnemyCount < allEnemy)
         {
             if (!isRandomSpawn)
@@ -77,14 +79,14 @@ public class WaveManager : MonoSingleton<WaveManager>
                 WaveEnemy waveEnemy = waveSO.waveEnemies[enemyIdx];
                 for (int i = 0; i < waveEnemy.enemyAmount; i++)
                 {
-                    yield return StartCoroutine(SpawnEnemy(waveEnemy));
+                    yield return StartCoroutine(SpawnEnemy(waveEnemy, spawnPos));
                 }
                 enemyIdx++;
             }
             else
             {
                 WaveEnemy waveEnemy = waveSO.waveEnemies[Random.Range(0, waveSO.waveEnemies.Count)];
-                yield return StartCoroutine(SpawnEnemy(waveEnemy));
+                yield return StartCoroutine(SpawnEnemy(waveEnemy, spawnPos));
             }
             yield return null;
         }
@@ -107,11 +109,10 @@ public class WaveManager : MonoSingleton<WaveManager>
         StartWave(CurrentWave + 1, isRandomSpawn);
     }
 
-    private IEnumerator SpawnEnemy(WaveEnemy waveEnemy)
+    private IEnumerator SpawnEnemy(WaveEnemy waveEnemy, Vector3 spawnPoint)
     {
-        Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Count)];
         Enemy enemy =
-            gameObject.Pop(waveEnemy.enemyType, spawnPoint.position, Quaternion.identity) as Enemy;
+            gameObject.Pop(waveEnemy.enemyType, spawnPoint, Quaternion.identity) as Enemy;
         // Level 추가시 여기서 설정 해야디
 
         _spawnedEnemies.Add(enemy);

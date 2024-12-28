@@ -1,10 +1,10 @@
-using Crogen.ObjectPooling;
+using Crogen.CrogenPooling;
 using DG.Tweening;
 using UnityEngine;
 
 public class Coin : MonoBehaviour, IPoolingObject
 {
-	public PoolType OriginPoolType { get; set; }
+	public string OriginPoolType { get; set; }
 	GameObject IPoolingObject.gameObject { get; set; }
 	[SerializeField] private int _coinAmount = 15;
 	[SerializeField] private float _radius;
@@ -12,8 +12,6 @@ public class Coin : MonoBehaviour, IPoolingObject
 	private Collider[] _colliders;
 	private bool _isMoving = false;
 
-	//Managements
-	private ResourceManager _resourceManager;
 
 	private void Awake()
 	{
@@ -22,13 +20,12 @@ public class Coin : MonoBehaviour, IPoolingObject
 
 	public void OnPop()
 	{
-		_resourceManager ??= ResourceManager.Instance;
 		_isMoving = false;
 	}
 
 	public void OnPush()
 	{
-		_resourceManager.AddCoin(_coinAmount);
+		ResourceManager.AddCoin(_coinAmount);
 	}
 
 	private void FixedUpdate()

@@ -1,4 +1,4 @@
-using Crogen.ObjectPooling;
+using Crogen.CrogenPooling;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
@@ -30,7 +30,7 @@ public class TextPopUp : MonoBehaviour, IPoolingObject
             _text.fontStyle = FontStyles.Normal;
     }
 
-    public PoolType OriginPoolType { get; set; }
+    public string OriginPoolType { get; set; }
 	GameObject IPoolingObject.gameObject { get; set; }
 
 	public void OnPop()

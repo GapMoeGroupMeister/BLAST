@@ -5,12 +5,6 @@ using UnityEngine;
 public class CameraRotation : MonoBehaviour
 {
     [SerializeField] private float _rotationSpeed;
-    [SerializeField] private PlayerPartController _playerPartController;
-
-    private void Start()
-    {
-        _playerPartController.Init((PlayerPartType)SaveManager.Instance.data.partId);
-    }
 
     private void Update()
     {

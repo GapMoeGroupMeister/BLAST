@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef843ff4ebdeee344a631d7c1ad9917f, type: 3}
+  m_Name: Effect
+  m_EditorClassIdentifier: 
+  pairs:
+  - poolType: StepSmokeEffect
+    prefab: {fileID: 9153772284012517598, guid: 9b098f092ba57fa4c93176afe9cadae0,
+      type: 3}
+    poolCount: 3
+  - poolType: EMPEffect
+    prefab: {fileID: 5953513163225344827, guid: 375552026b9d73c49ab097ae4bbb498a,
+      type: 3}
+    poolCount: 3
+  - poolType: BlueExplosionEffect
+    prefab: {fileID: 448162410302841328, guid: 325cb2a87b59b494f86ee03d6358f3f9, type: 3}
+    poolCount: 5
+  - poolType: Enemy02LaserEffect
+    prefab: {fileID: 561551428290271870, guid: b599a3ce60ec6494fbf831f555faf077, type: 3}
+    poolCount: 10
+  - poolType: EnergySphereLaserEffect
+    prefab: {fileID: 3789575531813594740, guid: ffc0dc3a02acc46468c10db23f0a5334,
+      type: 3}
+    poolCount: 10
+  - poolType: DefaultExplosionEffect
+    prefab: {fileID: 6849960665822617967, guid: f5cc09e6664fd854788aaaeba38a9b24,
+      type: 3}
+    poolCount: 10
+  - poolType: GroundBurstEffect
+    prefab: {fileID: 89794959303907977, guid: 0118c55b9eda26746a9c48ddcaafb746, type: 3}
+    poolCount: 10
+  - poolType: Enemy01AttackEffect
+    prefab: {fileID: 9191461038121309271, guid: f9b55c1b3f3372545bf2ba20238947ca,
+      type: 3}
+    poolCount: 20
+  - poolType: Enemy02ChargeEffect
+    prefab: {fileID: 6914194330204579595, guid: f8bbfc3828d9a4f429481dd83e3026a1,
+      type: 3}
+    poolCount: 20
+  - poolType: GroundExplosionEffect
+    prefab: {fileID: 3463582952199357174, guid: 0b6e1673d0ba6534f8f3d58f472c6e22,
+      type: 3}
+    poolCount: 50
+  - poolType: PowerfulEMPEffect
+    prefab: {fileID: 4205529707291263623, guid: 64236d280354bf84da72d1771c580e07,
+      type: 3}
+    poolCount: 1
+  - poolType: PowerfulEMPChargeEffect
+    prefab: {fileID: 3156276206530062120, guid: 437b1bce5709e4145aac3ad89b51dc91,
+      type: 3}
+    poolCount: 1

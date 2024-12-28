@@ -1,37 +1,33 @@
-using Crogen.ObjectPooling;
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
+using Crogen.CrogenPooling;
 using UnityEngine;
 
-public class ResourceManager : MonoSingleton<ResourceManager>
+public class ResourceManager : MonoBehaviour
 {
-	[SerializeField] private TextMeshProUGUI _goldText;
-	private int _coin = 0;
-	[SerializeField] private PoolType _coinPoolType = PoolType.Coin;
-
-	public int GetCoin() => _coin;
-
-	protected override void Awake()
+	private static int _coin = 0;
+	public static int GetCoin() => _coin;
+	private static GameObject _dummyObject;
+	public static Action<int> OnCoinCountChangedEvent;
+	
+	private void Awake()
 	{
-		base.Awake();
-		_goldText.text = "0";
+		_dummyObject = gameObject;
+		_coin = 0;
 	}
 
-	public void AddCoin(int value)
+	public static void AddCoin(int value)
 	{
 		_coin += value;
-		_goldText.text = $"{_coin}";
+		OnCoinCountChangedEvent?.Invoke(_coin);
 	}	
 
-	public void SaveCoin()
+	public static void SaveCoin()
 	{
 		GameDataManager.Instance.AddCoin(_coin);
 	}
 
-	public void CreateCoin(Vector3 pos)
+	public static void CreateCoin(Vector3 pos)
 	{
-		gameObject.Pop(_coinPoolType, pos + Vector3.up, Quaternion.identity);
+		_dummyObject.Pop(OtherPoolType.Coin, pos + Vector3.up, Quaternion.identity);
 	}
 }

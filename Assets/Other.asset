@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef843ff4ebdeee344a631d7c1ad9917f, type: 3}
+  m_Name: Other
+  m_EditorClassIdentifier: 
+  pairs:
+  - poolType: TextPopup
+    prefab: {fileID: 1739656464416565096, guid: 1275162f751d3354eafaaaf82d0b7a62,
+      type: 3}
+    poolCount: 20
+  - poolType: XP
+    prefab: {fileID: 8144055955327006744, guid: 8a4664e99b7c48d4788f7d8fcbaeae1b,
+      type: 3}
+    poolCount: 20
+  - poolType: Coin
+    prefab: {fileID: 4467924585902381935, guid: 95594987699f3464ab9c5f10d664d6d6,
+      type: 3}
+    poolCount: 20

@@ -1,14 +1,20 @@
 using System.Linq;
 using UnityEngine;
-using static Cinemachine.DocumentationSortingAttribute;
+using Crogen.CrogenPooling;
+using Unity.Behavior;
+using System.Collections;
 
 public abstract class Enemy : Agent, IPoolingObject
 {
+    protected BehaviorGraphAgent _btAgent;
+
     public Renderer RendererCompo { get; private set; }
     public EnemyMovement EnemyMovementCompo { get; private set; }
+    public EnemyAnimatorTrigger AnimatorTriggerCompo { get; private set; }
 
     [Header("Common Setting")]
     public LayerMask whatIsPlayer;
+    public LayerMask whatIsObstacle;
 
     [Header("Attack Setting")]
     public float attackDistance;
@@ -23,18 +29,24 @@ public abstract class Enemy : Agent, IPoolingObject
 
     protected Collider[] _enemyCheckColliders;
 
-    public PoolType OriginPoolType { get; set; }
+    public string OriginPoolType { get; set; }
     GameObject IPoolingObject.gameObject { get; set; }
+
+    private readonly int _burnedID = Shader.PropertyToID("_Burned");
 
     protected override void Awake()
     {
         base.Awake();
+        _btAgent = GetComponent<BehaviorGraphAgent>();
+        RestartBehaviorTree();
         targetTrm = GameManager.Instance.Player.transform;
         HealthCompo.OnDieEvent.AddListener(OnDie);
         colliderCompo = GetComponent<Collider>();
         EnemyMovementCompo = MovementCompo as EnemyMovement;
         EnemyMovementCompo.Initialize(this);
-        RendererCompo = transform.Find("Visual/BaseMesh").GetComponent<Renderer>();
+        Transform visualTrm = transform.Find("Visual");
+        AnimatorTriggerCompo = visualTrm.GetComponent<EnemyAnimatorTrigger>();
+        RendererCompo = visualTrm.GetComponent<Renderer>();
     }
 
     public void CastDamage()
@@ -51,8 +63,6 @@ public abstract class Enemy : Agent, IPoolingObject
         WaveManager.Instance.RemoveEnemy(this);
     }
 
-    public abstract void AnimationEndTrigger(AnimationTriggerEnum triggerBit);
-
     public abstract void Stun(float duration);
 
     public virtual void OnPop()
@@ -68,11 +78,43 @@ public abstract class Enemy : Agent, IPoolingObject
         }
         HealthCompo.Initialize(this, (int)stat.GetValue(StatEnum.MaxHP));
         HealthCompo.TakeDamage(0);
+        RendererCompo.materials[0].SetFloat(_burnedID, 0);
         EnemyMovementCompo.EnableNavAgent();
+        RestartBehaviorTree();
         CanStateChangeable = true;
     }
 
     public virtual void OnPush()
     {
+        XP xp = gameObject.Pop(OtherPoolType.XP, transform.position, Quaternion.identity) as XP;
+        xp.SetGrade((XPType)(int)(Level * 3));
+
+        int rand = Random.Range(0, 100);
+        if (rand < 20)
+        {
+            gameObject.Pop(OtherPoolType.Coin, transform.position, Quaternion.identity);
+        }
+    }
+
+    public BlackboardVariable<T> GetVariable<T>(string variableName)
+    {
+        if (_btAgent.GetVariable(variableName, out BlackboardVariable<T> variable))
+        {
+            return variable;
+        }
+        return null;
+    }
+
+    public void RestartBehaviorTree()
+    {
+        StartCoroutine(RestartCoroutine());
+    }
+
+    private IEnumerator RestartCoroutine()
+    {
+        _btAgent.End();
+        yield return null;
+        _btAgent.Graph.Restart();
+
     }
 }

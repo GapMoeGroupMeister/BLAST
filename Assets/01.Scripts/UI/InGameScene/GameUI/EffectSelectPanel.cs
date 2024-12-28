@@ -12,7 +12,6 @@ public class EffectSelectPanel : UIPanel
 
     //Managements
     private WeaponManager _weaponManager;
-    private TimeManager _timeManager;
 
     private int _openCount = 0;
     public bool isOpenedSelectPanel = false;
@@ -20,14 +19,13 @@ public class EffectSelectPanel : UIPanel
     private void Start()
     {
         _weaponManager = WeaponManager.Instance;
-        _timeManager = TimeManager.Instance;
 
         for (int i = 0; i < slots.Length; ++i)
         {
             slots[i].OnSelectedEndEvent += HandleSelectedEnd;
         }
 
-        XPManager.Instance.OnLevelUpEvent += HandleLevelUp;
+        XPManager.OnLevelUpEvent += HandleLevelUp;
         foreach (WeaponType type in Enum.GetValues(typeof(WeaponType)))
         {
             if (type == 0) continue;
@@ -37,9 +35,10 @@ public class EffectSelectPanel : UIPanel
 
     private void OnDestroy()
     {
-        for (int i = 0; i < slots.Length; ++i)
+        XPManager.OnLevelUpEvent -= HandleLevelUp;
+        foreach (var slot in slots)
         {
-            slots[i].OnSelectedEndEvent -= HandleSelectedEnd;
+            slot.OnSelectedEndEvent -= HandleSelectedEnd;
         }
     }
 
@@ -143,7 +142,7 @@ public class EffectSelectPanel : UIPanel
         }
 
         //멈추기
-        _timeManager.PauseTime();
+        TimeManager.PauseTime();
     }
 
 	public List<WeaponType> WeaponTypeShuffle(List<WeaponType> list)
@@ -166,7 +165,7 @@ public class EffectSelectPanel : UIPanel
 
     private void HandleSelectedEnd()
 	{
-        _timeManager.PlayTime();
+        TimeManager.PlayTime();
         Close();
 	}
 }

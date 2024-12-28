@@ -1,4 +1,4 @@
-using Crogen.ObjectPooling;
+using Crogen.CrogenPooling;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,7 +11,7 @@ public class EffectPlayer : MonoBehaviour, IPoolingObject
     [SerializeField]
     protected List<VisualEffect> _effects;
 
-    public PoolType OriginPoolType { get; set; }
+    public string OriginPoolType { get; set; }
     GameObject IPoolingObject.gameObject { get; set; }
 
     public void StartPlay(float endTime)

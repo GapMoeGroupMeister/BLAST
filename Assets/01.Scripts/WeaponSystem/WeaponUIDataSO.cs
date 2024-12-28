@@ -1,6 +1,7 @@
 using UnityEngine;
 using System;
 using AYellowpaper.SerializedCollections;
+using Crogen.AttributeExtension;
 
 [Serializable]
 public struct WeaponUIData

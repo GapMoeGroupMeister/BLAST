@@ -1,52 +1,43 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class TimeManager : MonoSingleton<TimeManager>
+public class TimeManager : MonoBehaviour
 {
-	private float _defaultTimeScale = 1f;
-	public float GetDefaultTimeScale => _defaultTimeScale;
-	private float _currentGlobalTimer = 0;
-	public float CurrentGlobalTimer
-	{
-		get => _currentGlobalTimer;
-		set
-		{
-			_currentGlobalTimer = value;
-
-			_timeText.text = CurrentGlobalTimerString;
-		}
-	}
-	public string CurrentGlobalTimerString 
+	private static float _defaultTimeScale = 1f;
+	public static float GetDefaultTimeScale => _defaultTimeScale;
+	public static float CurrentGlobalTimer { get; private set; }
+	
+	public static string CurrentGlobalTimerString 
 	{
 		get {
 			
-			int min = (int)_currentGlobalTimer / 60;
-			int sec = (int)_currentGlobalTimer % 60;
+			int min = (int)CurrentGlobalTimer / 60;
+			int sec = (int)CurrentGlobalTimer % 60;
 
-			return $"{min.ToString("00")} : {sec.ToString("00")}";
+			return $"{min:00} : {sec:00}";
 		}
 	}
 
-	[SerializeField] private TextMeshProUGUI _timeText;
 
-	protected override void Awake()
+	private void Awake()
 	{
+		CurrentGlobalTimer = 0f;
+		SetDefaultTimeScale(1f);
 		PlayTime();
 	}
 
-	public void SetDefaultTimeScale(float timescale)
+	public static void SetDefaultTimeScale(float timescale)
 	{
 		_defaultTimeScale = timescale;
 	}
 
-	public void PlayTime()
+	public static void PlayTime()
 	{
 		Time.timeScale = _defaultTimeScale;
 	}
 
-	public void PauseTime()
+	public static void PauseTime()
 	{
 		Time.timeScale = 0;
 	}

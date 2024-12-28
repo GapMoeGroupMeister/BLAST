@@ -1,9 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
-using Crogen.ObjectPooling;
 using ItemManage;
+using Crogen.CrogenPooling;
 
 public enum XPType
 {
@@ -24,8 +22,6 @@ public class XP : Item
 
 	private int _xpAmount;
 
-	//Managements
-	private XPManager _xpManager;
 	private int _colorID;
 
 	private void Awake()
@@ -65,13 +61,12 @@ public class XP : Item
 
 	public override void OnPop()
 	{
-		_xpManager ??= XPManager.Instance;
 		_isMoving = false;
 	}
 
 	public override void OnPush()
 	{
-		_xpManager.XP += _xpAmount;
+		XPManager.XP += _xpAmount;
 	}
 
 	private void FixedUpdate()
@@ -80,13 +75,17 @@ public class XP : Item
 
 		if (Physics.OverlapSphereNonAlloc(transform.position, _radius, _colliders, _whatIsPlayer) > 0)
 		{
-			transform.DOMove(_colliders[0].transform.position, 0.1f).OnComplete(()=> 
-			{
-				this.Push();
-			});
-			_isMoving = true;
+			MoveTo(_colliders[0].transform.position);
 		}
 	}
+
+	public void MoveTo(Vector3 target)
+	{
+		float distance = Vector3.Distance(transform.position, target);
+		transform.DOMove(target, distance/_radius * 0.03f).OnComplete(this.Push);
+		_isMoving = true;
+	}
+	
 
 	private void OnDrawGizmosSelected()
 	{

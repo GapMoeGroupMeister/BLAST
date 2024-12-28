@@ -25,16 +25,16 @@ public class ClearPanel : UIPanel
 
     private void GameEnd()
     {
-        TimeManager.Instance.PlayTime();
-        ResourceManager.Instance.SaveCoin();
+        TimeManager.PlayTime();
+        ResourceManager.SaveCoin();
         SceneLoadingManager.LoadScene("LobbyScene");
     }
 
     public void SetUI()
     {
-        _levelText.text = $"Level {XPManager.Instance.GetLevel.ToString()}";
-        _coinText.text = ResourceManager.Instance.GetCoin().ToString();
-        _servivedText.text = TimeManager.Instance.CurrentGlobalTimerString;
+        _levelText.text = $"Level {XPManager.GetLevel.ToString()}";
+        _coinText.text = ResourceManager.GetCoin().ToString();
+        _servivedText.text = TimeManager.CurrentGlobalTimerString;
     }
 
     public IEnumerator OpenUIBGM()
@@ -45,7 +45,7 @@ public class ClearPanel : UIPanel
         yield return new WaitForSecondsRealtime(13f);
         base.Open();
         SetUI();
-        TimeManager.Instance.PauseTime();
+        TimeManager.PauseTime();
     }
 
     public override void Open()
