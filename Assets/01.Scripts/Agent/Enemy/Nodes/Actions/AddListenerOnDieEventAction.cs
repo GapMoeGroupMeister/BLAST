@@ -19,7 +19,6 @@ public partial class AddListenerOnDieEventAction : Action
 
     private void HandleOnDieEvent()
     {
-        Debug.Log("µØÂ¢");
         Health.Value.OnDieEvent.RemoveListener(HandleOnDieEvent);
         Event.Value.SendEventMessage();
     }

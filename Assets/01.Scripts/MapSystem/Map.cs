@@ -1,43 +1,66 @@
 using System;
+using System.Collections;
 using Crogen.PowerfulInput;
+using Unity.AI.Navigation;
 using UnityEngine;
+using UnityEngine.AI;
 using Random = UnityEngine.Random;
 
 namespace BLAST.MapSystem
 {
     public class Map : MonoBehaviour
     {
-        [SerializeField] private GameObject[] _mapObjs;
+        [SerializeField] private MapObstacle[] _mapObjs;
         [SerializeField] private int _seed;
         [field:SerializeField] public int MapSize { get; private set; }
         [SerializeField] private float _minObjSize = 0.1f;
         [SerializeField] private float _maxObjSize = 0.15f;
-        [SerializeField] private int _mapObjCount = 100;
         private InputReader _inputReader;
+        private NavMeshSurface _nav;
+        private NavMeshData _navMeshData;
+        private bool _isBaked = false;
         
         private void Awake()
         {
             _inputReader = GameManager.Instance.InputReader;
+            _nav = GetComponent<NavMeshSurface>();
+            _navMeshData = new NavMeshData();
+            _nav.navMeshData = _navMeshData;
         }
 
         public void SpawnObjects()
         {
             Random.InitState(_seed);
 
-            for (int i = 0; i < _mapObjCount; i++)
+            for (int i = 0; i < 100; i++)
             {
                 Vector3 pos = new Vector3(Random.Range(-MapSize / 2, MapSize / 2), 1, Random.Range(-MapSize / 2, MapSize / 2)) + transform.position;
-                Collider[] colliders = Physics.OverlapSphere(pos, 0.5f, LayerMask.GetMask("Map"));
-
-                {
-                    GameObject obj = Instantiate(_mapObjs[Random.Range(0, _mapObjs.Length)], pos, Quaternion.identity);
-                    obj.transform.SetParent(transform);
-                    obj.transform.localScale = Vector3.one * Random.Range(_minObjSize, _maxObjSize);
-                    obj.transform.rotation = Quaternion.Euler(0, Random.Range(0, 360), 0);
-                }
+                int randomIdx = Random.Range(0, _mapObjs.Length);
+                Vector3 scale = Vector3.one * Random.Range(_minObjSize, _maxObjSize);
+                Vector3 rotation = new Vector3(0, Random.Range(0, 360), 0);
+                _mapObjs[randomIdx].Spawn(pos, transform, scale, rotation);
+            }
+            if (!_isBaked)
+            {
+                _isBaked = true;
+                StartCoroutine(BakeNavMesh());
+            }
+            else 
+            {
+                StartCoroutine(UpdateNavMesh());
             }
         }
 
+        private IEnumerator BakeNavMesh()
+        {
+            yield return null;
+            _nav.BuildNavMesh();
+        }
+
+        private IEnumerator UpdateNavMesh()
+        {
+            yield return _nav.UpdateNavMesh(_navMeshData);
+        }
 
 
         private void OnCollisionExit(Collision other)
