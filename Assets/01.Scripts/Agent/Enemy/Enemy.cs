@@ -79,7 +79,6 @@ public abstract class Enemy : Agent, IPoolingObject
         EnemyMovementCompo.EnableNavAgent();
         RestartBehaviorTree();
         CanStateChangeable = true;
-
     }
 
     public virtual void OnPush()
