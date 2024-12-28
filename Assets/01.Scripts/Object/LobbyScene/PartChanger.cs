@@ -38,6 +38,11 @@ namespace Objects.PartSelect
             }
             _currentPartTrm.SetParent(_partConnecterTrm);
             _currentPartTrm.localPosition = Vector3.zero;
+        }
+
+
+        private void Start() 
+        {
             PlayerCustomColorLoader.AddRenderers(_currentPartTrm);
         }
 

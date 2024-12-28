@@ -1,11 +1,10 @@
-using System.Collections.Generic;
 using EasySave.Json;
 using UnityEngine;
 using UnityEngine.UI;
 namespace LobbyScene.ColorSettings
 {
 
-    public class ColorSettingPanel : MonoBehaviour
+    public class ColorSettingPanel : UIPanel
     {
         [SerializeField] private ColorSettingSlot _colorSlotPrefab;
 
@@ -23,8 +22,9 @@ namespace LobbyScene.ColorSettings
         [SerializeField] private ColorSettingSlot _currentSelectedSlot;
         private readonly string path = "ColorSet";
 
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
             _colorSelector = GetComponent<ColorSelector>();
             _colorSetDataGroup = EasyToJson.FromJson<ColorSetDataGroup>(path);
             // 처음 저장되어있던 색을 불러와야됨
@@ -40,6 +40,7 @@ namespace LobbyScene.ColorSettings
                 _colorSetDataGroup.datas.Add(data);
             }
 
+            _detailPanel.OnSelectConfirmEvent += HandleSelectSlot;
             _detailPanel.OnEditModeEvent += HandleEditMode;
             _detailPanel.OnDeleteColorSetEvent += HandleDeleteSlot;
 
@@ -101,10 +102,7 @@ namespace LobbyScene.ColorSettings
             _scrollRect.enabled = false;
             SetActiveDetailPanel(true);
 
-            // 나중에 이쪽에서 _currentSelectedSlot.data 가져와서
-            _colorSetDataGroup.currentData = _currentSelectedSlot.data;
-            // 색 변경 하셈ww
-            PlayerCustomColorLoader.LoadAndSetColor(_currentSelectedSlot.data.colors);
+
         }
 
         public void HandleUnSelectColorSet()
@@ -115,7 +113,14 @@ namespace LobbyScene.ColorSettings
             SetActiveColorPicker(false);
         }
 
-
+        private void HandleSelectSlot()
+        {
+            // _currentSelectedSlot.data 
+            _colorSetDataGroup.currentData = _currentSelectedSlot.data;
+            // 색 변경
+            PlayerCustomColorLoader.LoadAndSetColor(_currentSelectedSlot.data.colors);
+            SetActiveDetailPanel(false);
+        }
 
         private void HandleEditMode()
         {

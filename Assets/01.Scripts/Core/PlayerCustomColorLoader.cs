@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using EasySave.Json;
 using LobbyScene.ColorSettings;
+using Mono.Cecil.Cil;
 using UnityEngine;
 
 public class PlayerCustomColorLoader : MonoBehaviour
@@ -26,6 +27,8 @@ public class PlayerCustomColorLoader : MonoBehaviour
 
     private static void AddRenderer(Renderer renderer)
     {
+        Debug.Log("_rendererList == null : " + (_rendererList == null).ToString());
+        Debug.Log("renderer == null : " + (renderer == null).ToString());
         _rendererList.Add(renderer);
         Color[] colors = LoadCustomColors();
         SetColor(renderer, colors);
