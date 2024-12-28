@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using EasySave.Json;
 using LobbyScene.ColorSettings;
 using UnityEngine;
@@ -12,8 +13,6 @@ public class PlayerCustomColorLoader : MonoBehaviour
     private static readonly int Color3 = Shader.PropertyToID("_Color3");
     private static readonly int Light1 = Shader.PropertyToID("_Light");
     
-    private static ColorSettingData _colorSettingData;
-    
     private void Awake()
     {
         _rendererList = new List<Renderer>();
@@ -26,14 +25,14 @@ public class PlayerCustomColorLoader : MonoBehaviour
 
     private static void AddRenderer(Renderer renderer)
     {
-        Debug.Log("_rendererList == null : " + (_rendererList == null).ToString());
-        Debug.Log("renderer == null : " + (renderer == null).ToString());
         _rendererList.Add(renderer);
         Color[] colors = LoadCustomColors();
         SetColor(renderer, colors);
     }
     public static void AddRenderers(Transform trm)
     {
+        _rendererList = _rendererList.FindAll(x => x != null).ToList();
+
         foreach (var renderer in trm.GetComponentsInChildren<Renderer>())
         {
             AddRenderer(renderer);
@@ -50,13 +49,14 @@ public class PlayerCustomColorLoader : MonoBehaviour
 
     public static void LoadAndSetColor(Color[] colors)
     {
+        _rendererList = _rendererList.FindAll(x => x != null).ToList();
         foreach (Renderer renderer in _rendererList)
         {
             SetColor(renderer, colors);
         }
     }
     
-    private static void LoadAndSetColor()
+    public static void LoadAndSetColor()
     {
         Color[] colors = LoadCustomColors();
         LoadAndSetColor(colors);
