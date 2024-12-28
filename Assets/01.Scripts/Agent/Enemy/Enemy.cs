@@ -32,6 +32,8 @@ public abstract class Enemy : Agent, IPoolingObject
     public string OriginPoolType { get; set; }
     GameObject IPoolingObject.gameObject { get; set; }
 
+    private readonly int _burnedID = Shader.PropertyToID("_Burned");
+
     protected override void Awake()
     {
         base.Awake();
@@ -76,6 +78,7 @@ public abstract class Enemy : Agent, IPoolingObject
         }
         HealthCompo.Initialize(this, (int)stat.GetValue(StatEnum.MaxHP));
         HealthCompo.TakeDamage(0);
+        RendererCompo.materials[0].SetFloat(_burnedID, 0);
         EnemyMovementCompo.EnableNavAgent();
         RestartBehaviorTree();
         CanStateChangeable = true;
@@ -104,6 +107,6 @@ public abstract class Enemy : Agent, IPoolingObject
         _btAgent.End();
         yield return null;
         _btAgent.Graph.Restart();
-        
+
     }
 }

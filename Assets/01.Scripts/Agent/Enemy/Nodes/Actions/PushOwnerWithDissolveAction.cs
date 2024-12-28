@@ -4,6 +4,7 @@ using UnityEngine;
 using Action = Unity.Behavior.Action;
 using Unity.Properties;
 using DG.Tweening;
+using Crogen.CrogenPooling;
 
 [Serializable, GeneratePropertyBag]
 [NodeDescription(name: "PushOwnerWithDissolve", story: "Push [Owner] with Dissolve at [N] Seconds", category: "Action", id: "fcb334561ccf8e3ea9d12ed9219039ac")]
@@ -26,7 +27,10 @@ public partial class PushOwnerWithDissolveAction : Action
     protected override Status OnUpdate()
     {
         if (_isComplete)
+        {
+            Owner.Value.Push();
             return Status.Success;
+        }
         return Status.Running;
     }
 
