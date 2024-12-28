@@ -20,6 +20,8 @@ public partial class PlayEffectAction : Action
         {
             effect.gameObject.transform.SetParent(Position.Value);
             effect.gameObject.transform.localPosition = Vector3.zero;
+            effect.gameObject.transform.localRotation = Quaternion.Euler(0, 90, 0);
+            effect.gameObject.transform.localScale = Vector3.one;
         }
         return Status.Success;
     }
