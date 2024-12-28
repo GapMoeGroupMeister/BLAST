@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4705896415682891992}
   - component: {fileID: 5342415133075573980}
   - component: {fileID: -9186750183459431739}
+  - component: {fileID: 262805165355272071}
   m_Layer: 0
   m_Name: Bunker
   m_TagString: Untagged
@@ -121,7 +122,19 @@ NavMeshObstacle:
   m_Shape: 1
   m_Extents: {x: 0.95500004, y: 1.072, z: 1.519}
   m_MoveThreshold: 0.1
-  m_Carve: 0
+  m_Carve: 1
   m_CarveOnlyStationary: 1
   m_Center: {x: -0.072000004, y: 1.072, z: 0.089}
   m_TimeToStationary: 0.5
+--- !u!114 &262805165355272071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7705749711883035559}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a0a82161e884b87b7eaefa7ca8a81fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

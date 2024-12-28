@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8161015195077345336}
   - component: {fileID: 7943219161404717243}
   - component: {fileID: 2684972991879755970}
+  - component: {fileID: 7341692406010085971}
   m_Layer: 0
   m_Name: BreakBuilding_3
   m_TagString: Untagged
@@ -121,7 +122,19 @@ NavMeshObstacle:
   m_Shape: 1
   m_Extents: {x: 1, y: 1.5180001, z: 1.029}
   m_MoveThreshold: 0.1
-  m_Carve: 0
+  m_Carve: 1
   m_CarveOnlyStationary: 1
   m_Center: {x: 0.010000001, y: 1.5180001, z: 0.015000001}
   m_TimeToStationary: 0.5
+--- !u!114 &7341692406010085971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4026149452548815482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a0a82161e884b87b7eaefa7ca8a81fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
