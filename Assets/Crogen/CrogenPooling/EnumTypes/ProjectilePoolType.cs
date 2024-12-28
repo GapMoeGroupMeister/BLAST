@@ -2,6 +2,6 @@ namespace Crogen.CrogenPooling
 {
     public enum ProjectilePoolType
     {
-        ElectricityBullet, FireBullet, PlayerDefaultBullet, 
+        ElectricityBullet, FireBullet, PlayerDefaultBullet, BOFUltFireBullet, 
     }
 }
