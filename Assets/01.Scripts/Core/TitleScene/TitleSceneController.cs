@@ -5,7 +5,7 @@ using UnityEngine;
 public class TitleSceneController : MonoBehaviour
 {
 	private bool _isGameStart = false;
-
+	[SerializeField] private string _lobbySceneName;
 	private void Update()
 	{
 		if (_isGameStart == true) return;
@@ -19,6 +19,6 @@ public class TitleSceneController : MonoBehaviour
 	private void OnStartGame()
 	{
 		//나중에 Fade 기능 추가...
-		SceneLoadingManager.LoadScene("LobbyScene");
+		SceneLoadingManager.LoadScene(_lobbySceneName);
 	}
 }
