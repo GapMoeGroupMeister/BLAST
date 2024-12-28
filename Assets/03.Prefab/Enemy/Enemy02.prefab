@@ -295,7 +295,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3773652371605890443}
-  - component: {fileID: 6361568357021554242}
   - component: {fileID: 8618601352916124225}
   - component: {fileID: 8878793007680538256}
   - component: {fileID: 8489541177564064265}
@@ -325,31 +324,6 @@ Transform:
   - {fileID: 1838697098576481888}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6361568357021554242
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2390365597539587489}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4a99a50978ddf346a14474c8429d9ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <Stat>k__BackingField: {fileID: 11400000, guid: 119b614cd6ad3064b97b73ae2d0d9153,
-    type: 2}
-  whatIsPlayer:
-    serializedVersion: 2
-    m_Bits: 256
-  whatIsObstacle:
-    serializedVersion: 2
-    m_Bits: 4096
-  attackDistance: 0
-  targetTrm: {fileID: 0}
-  _damageAmount: 1
-  _damageCasters: []
-  colliderCompo: {fileID: 0}
 --- !u!114 &8618601352916124225
 MonoBehaviour:
   m_ObjectHideFlags: 0
