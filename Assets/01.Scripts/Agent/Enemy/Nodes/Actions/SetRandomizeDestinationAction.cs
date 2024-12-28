@@ -15,6 +15,8 @@ public partial class SetRandomizeDestinationAction : Action
 
     protected override Status OnStart()
     {
+        if (!Movement.Value.NavAgent.isStopped)
+            return Status.Success;
         Vector3 random = Random.insideUnitCircle;
         random.z = random.y;
         random.y = 0;
