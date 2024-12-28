@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7178618093100611773}
   - component: {fileID: 2967228629693331155}
   - component: {fileID: 2820675723253807145}
+  - component: {fileID: -1827009988302311039}
   m_Layer: 0
   m_Name: SandRubblePile_1
   m_TagString: Untagged
@@ -108,3 +109,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.7069464, y: 0.16370037, z: 0.6084428}
   m_Center: {x: -0.06704283, y: 0.095900506, z: -0.06936336}
+--- !u!208 &-1827009988302311039
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3250054861618916935}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.54300004, y: 0.21700001, z: 0.38500002}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.001, y: 0.231, z: -0.1}
+  m_TimeToStationary: 0.5

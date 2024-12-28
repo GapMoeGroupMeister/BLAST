@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5620460153673250434}
   - component: {fileID: 263662637495779499}
   - component: {fileID: 3036062926810020485}
+  - component: {fileID: 3821910627993816340}
   m_Layer: 0
   m_Name: rock.003
   m_TagString: Untagged
@@ -108,3 +109,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3.4971857, y: 1.8651664, z: 3.9007473}
   m_Center: {x: -0.11825991, y: -0.41209185, z: -0.074793816}
+--- !u!208 &3821910627993816340
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1659141524959159410}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 2.147, y: 1.393, z: 2.348}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -0.030000001, y: 0.048, z: 0.030000001}
+  m_TimeToStationary: 0.5

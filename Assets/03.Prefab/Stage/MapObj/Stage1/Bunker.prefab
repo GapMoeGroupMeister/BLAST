@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8154514069197890702}
   - component: {fileID: 4705896415682891992}
   - component: {fileID: 5342415133075573980}
+  - component: {fileID: -9186750183459431739}
   m_Layer: 0
   m_Name: Bunker
   m_TagString: Untagged
@@ -108,3 +109,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.9092643, y: 2.1432796, z: 3.0377336}
   m_Center: {x: -0.07212031, y: 1.0716395, z: 0.08863628}
+--- !u!208 &-9186750183459431739
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7705749711883035559}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.95500004, y: 1.072, z: 1.519}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -0.072000004, y: 1.072, z: 0.089}
+  m_TimeToStationary: 0.5

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2476454231319101915}
   - component: {fileID: 8161015195077345336}
   - component: {fileID: 7943219161404717243}
+  - component: {fileID: 2684972991879755970}
   m_Layer: 0
   m_Name: BreakBuilding_3
   m_TagString: Untagged
@@ -108,3 +109,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.9990675, y: 2.2518897, z: 1.9432409}
   m_Center: {x: 0.009948492, y: 1.1259449, z: 0.07251799}
+--- !u!208 &2684972991879755970
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4026149452548815482}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1, y: 1.5180001, z: 1.029}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.010000001, y: 1.5180001, z: 0.015000001}
+  m_TimeToStationary: 0.5
