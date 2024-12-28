@@ -10,9 +10,7 @@ namespace BLAST.MapSystem
         [SerializeField] private GameObject[] _mapObjs;
         [SerializeField] private int _seed;
         [field:SerializeField] public int MapSize { get; private set; }
-        [SerializeField] private float _minObjSize = 0.1f;
-        [SerializeField] private float _maxObjSize = 0.15f;
-        private InputReader _inputReader;
+        [SerializeField] private InputReader _inputReader;
         
         private void Awake()
         {
@@ -31,7 +29,7 @@ namespace BLAST.MapSystem
                 {
                     GameObject obj = Instantiate(_mapObjs[Random.Range(0, _mapObjs.Length)], pos, Quaternion.identity);
                     obj.transform.SetParent(transform);
-                    obj.transform.localScale = Vector3.one * Random.Range(_minObjSize, _maxObjSize);
+                    obj.transform.localScale = Vector3.one * Random.Range(0.1f, 0.15f);
                 }
             }
         }
