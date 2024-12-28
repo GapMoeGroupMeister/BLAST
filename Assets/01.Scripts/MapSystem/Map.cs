@@ -3,6 +3,7 @@ using System.Collections;
 using Crogen.PowerfulInput;
 using Unity.AI.Navigation;
 using UnityEngine;
+using UnityEngine.AI;
 using Random = UnityEngine.Random;
 
 namespace BLAST.MapSystem
@@ -16,11 +17,15 @@ namespace BLAST.MapSystem
         [SerializeField] private float _maxObjSize = 0.15f;
         private InputReader _inputReader;
         private NavMeshSurface _nav;
+        private NavMeshData _navMeshData;
+        private bool _isBaked = false;
         
         private void Awake()
         {
             _inputReader = GameManager.Instance.InputReader;
             _nav = GetComponent<NavMeshSurface>();
+            _navMeshData = new NavMeshData();
+            _nav.navMeshData = _navMeshData;
         }
 
         public void SpawnObjects()
@@ -35,14 +40,26 @@ namespace BLAST.MapSystem
                 Vector3 rotation = new Vector3(0, Random.Range(0, 360), 0);
                 _mapObjs[randomIdx].Spawn(pos, transform, scale, rotation);
             }
+            if (!_isBaked)
+            {
+                _isBaked = true;
+                StartCoroutine(BakeNavMesh());
+            }
+            else 
+            {
+                StartCoroutine(UpdateNavMesh());
+            }
+        }
 
+        private IEnumerator BakeNavMesh()
+        {
+            yield return null;
             _nav.BuildNavMesh();
         }
 
-        private IEnumerator DelayBake()
+        private IEnumerator UpdateNavMesh()
         {
-            yield return new WaitForSeconds(0.1f);
-            
+            yield return _nav.UpdateNavMesh(_navMeshData);
         }
 
 
