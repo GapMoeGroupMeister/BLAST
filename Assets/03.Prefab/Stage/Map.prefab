@@ -117,7 +117,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 3
       scalar: 2
-      minScalar: 6
+      minScalar: 5
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -4846,6 +4846,7 @@ GameObject:
   - component: {fileID: 5340267054308884215}
   - component: {fileID: 3791661159239887158}
   - component: {fileID: 9197791535504786655}
+  - component: {fileID: 5471151434469296151}
   m_Layer: 12
   m_Name: Map
   m_TagString: Untagged
@@ -4935,18 +4936,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mapObjs:
-  - {fileID: 919132149155446097, guid: d28c723a95f0f0146b17d9d87340058d, type: 3}
-  - {fileID: -4986584675020064226, guid: 3e83bb3474bec94468ae43a7cd700ab2, type: 3}
-  - {fileID: -173297895428636658, guid: 3e83bb3474bec94468ae43a7cd700ab2, type: 3}
-  - {fileID: -390663476510613284, guid: 3e83bb3474bec94468ae43a7cd700ab2, type: 3}
-  - {fileID: 547988393504894607, guid: 3e83bb3474bec94468ae43a7cd700ab2, type: 3}
-  - {fileID: -6554381411084177428, guid: 3e83bb3474bec94468ae43a7cd700ab2, type: 3}
-  - {fileID: 1418942787793536512, guid: 3e83bb3474bec94468ae43a7cd700ab2, type: 3}
+  - {fileID: 7341692406010085971, guid: 9730e277909120d48b2342e9c9c86d61, type: 3}
+  - {fileID: 8747517573584999637, guid: c3ba8ab296daa5b4bb949e1dc40c82d1, type: 3}
+  - {fileID: 262805165355272071, guid: 9a48d3fb90a066941806c0c1a1075b99, type: 3}
+  - {fileID: -218833442428516374, guid: 2471397c664cff54e80209d8e232433a, type: 3}
+  - {fileID: -1047466603063066552, guid: 882e8c3ab6e89404797eed3ab5121563, type: 3}
+  - {fileID: 5446757084555656553, guid: 0e967048d55bd564582ce836fb29a2e2, type: 3}
+  - {fileID: -4846264659565139493, guid: 8ab41fd36c8ae5a408258ffdf8dfd20d, type: 3}
   _seed: 0
   <MapSize>k__BackingField: 1000
   _minObjSize: 0.1
   _maxObjSize: 0.15
-  _mapObjCount: 30
 --- !u!64 &9197791535504786655
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4969,3 +4969,35 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &5471151434469296151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8165608896023328043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_AgentTypeID: 0
+  m_CollectObjects: 2
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 0}
+  m_BuildHeightMesh: 0
