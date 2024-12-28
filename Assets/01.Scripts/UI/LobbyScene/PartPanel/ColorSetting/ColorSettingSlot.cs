@@ -12,6 +12,7 @@ namespace LobbyScene.ColorSettings
         public event Action<ColorTypeSlot> OnColorTypeSelectEvent;
         public event Action<ColorSettingSlot> OnSelectEvent;
         public event Action OnCancleEvent;
+        public event Action OnSelectConfirmEvent;
         private Action OnDataChanged;
         [SerializeField] private TMP_InputField _nameInputField;
         [SerializeField] private TextMeshProUGUI _colorSetNameText;
@@ -88,6 +89,11 @@ namespace LobbyScene.ColorSettings
         {
             OnSelectEvent?.Invoke(this);
             HandleSelectColorType(_colorSlots[0]);
+        }
+
+        public void HandleSelectConfirm()
+        {
+            OnSelectConfirmEvent?.Invoke();
         }
 
         public void HandleEditorMode()
