@@ -40,7 +40,7 @@ public class XPManager : MonoBehaviour
 				_xp = value;
 			}
 
-			//OnXPPercentEvent?.Invoke((float)_xp / _maxXP);
+			OnXPPercentEvent?.Invoke((float)_xp / _maxXP);
 		}
 	}
 
