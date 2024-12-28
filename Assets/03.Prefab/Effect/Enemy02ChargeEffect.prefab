@@ -4850,10 +4850,13 @@ ParticleSystemRenderer:
   m_ReflectionProbeUsage: 0
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2c53abbc6811a4e4e8d8814dfae2cd34, type: 2}
+  - {fileID: 2100000, guid: 50dd1d2c9da50aa46897bc75fe46ec9d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4917,7 +4920,7 @@ GameObject:
   - component: {fileID: 3913727620127157367}
   - component: {fileID: 2297534576606704142}
   m_Layer: 0
-  m_Name: ChargeEffect
+  m_Name: Enemy02ChargeEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4951,7 +4954,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78d9a2fbe0a4bc24ba0c468568bfbaee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   _particles:
   - {fileID: 5547025957642403859}
   _effects: []

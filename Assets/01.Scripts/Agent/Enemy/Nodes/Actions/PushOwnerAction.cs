@@ -13,6 +13,7 @@ public partial class PushOwnerAction : Action
 
     protected override Status OnStart()
     {
+        Debug.Log("PUSH");
         Owner.Value.Push();
         return Status.Success;
     }
