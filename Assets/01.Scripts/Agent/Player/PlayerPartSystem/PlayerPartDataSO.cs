@@ -6,6 +6,8 @@ public class PlayerPartDataSO : ScriptableObject, IGameEventData
 {
     public int id;
     public string partName;
+    [TextArea]
+    public string partDescription;
     public PlayerPart partPrefab;
     public Sprite partImage;
     public StatDataSO statData;

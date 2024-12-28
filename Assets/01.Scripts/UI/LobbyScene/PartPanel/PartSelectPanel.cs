@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using DG.Tweening;
 using GameEventSystem;
 using Objects.PartSelect;
+using TMPro;
 using UnityEngine;
 
 namespace LobbyScene
@@ -19,6 +20,7 @@ namespace LobbyScene
         [SerializeField] private RectTransform _contentTrm;
         [SerializeField] private bool _isActive;
         private List<PartSelectSlot> _partSlotList = new();
+        [SerializeField] private TextMeshProUGUI _partDescriptionText;
         [SerializeField] private PartSelectController _partSelector;
         [SerializeField] private GameEventChannelSO _partSelectEvent;
 
@@ -92,6 +94,7 @@ namespace LobbyScene
 
         public void SelectPart(PlayerPartDataSO data)
         {
+            _partDescriptionText.text = data.partDescription;
             _partSelectEvent.RaiseEvent(data);
             RefreshSlot();
         }
