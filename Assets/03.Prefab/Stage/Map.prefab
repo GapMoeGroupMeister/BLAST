@@ -117,7 +117,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 3
       scalar: 2
-      minScalar: 5
+      minScalar: 6
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -4944,7 +4944,9 @@ MonoBehaviour:
   - {fileID: 4026149452548815482, guid: 9730e277909120d48b2342e9c9c86d61, type: 3}
   _seed: 0
   <MapSize>k__BackingField: 1000
-  _inputReader: {fileID: 11400000, guid: 836c45128fe44d04995e0341f944d184, type: 2}
+  _minObjSize: 0.1
+  _maxObjSize: 0.15
+  _mapObjCount: 30
 --- !u!64 &9197791535504786655
 MeshCollider:
   m_ObjectHideFlags: 0

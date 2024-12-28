@@ -12,6 +12,7 @@ namespace BLAST.MapSystem
         [field:SerializeField] public int MapSize { get; private set; }
         [SerializeField] private float _minObjSize = 0.1f;
         [SerializeField] private float _maxObjSize = 0.15f;
+        [SerializeField] private int _mapObjCount = 100;
         private InputReader _inputReader;
         
         private void Awake()
@@ -23,7 +24,7 @@ namespace BLAST.MapSystem
         {
             Random.InitState(_seed);
 
-            for (int i = 0; i < 100; i++)
+            for (int i = 0; i < _mapObjCount; i++)
             {
                 Vector3 pos = new Vector3(Random.Range(-MapSize / 2, MapSize / 2), 1, Random.Range(-MapSize / 2, MapSize / 2)) + transform.position;
                 Collider[] colliders = Physics.OverlapSphere(pos, 0.5f, LayerMask.GetMask("Map"));
@@ -32,6 +33,7 @@ namespace BLAST.MapSystem
                     GameObject obj = Instantiate(_mapObjs[Random.Range(0, _mapObjs.Length)], pos, Quaternion.identity);
                     obj.transform.SetParent(transform);
                     obj.transform.localScale = Vector3.one * Random.Range(_minObjSize, _maxObjSize);
+                    obj.transform.rotation = Quaternion.Euler(0, Random.Range(0, 360), 0);
                 }
             }
         }
