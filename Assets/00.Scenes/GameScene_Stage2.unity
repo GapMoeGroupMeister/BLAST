@@ -21086,6 +21086,11 @@ PrefabInstance:
       propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3269948854969632259, guid: a26c55cfcafa7f44c9da997bcca03dd6,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3326416804484728525, guid: a26c55cfcafa7f44c9da997bcca03dd6,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -21664,10 +21669,16 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0a98ae3fb0a26f84d9bfdafa90cdbb56, type: 2}
   - {fileID: 11400000, guid: b071f39352979384d96c11a9c3721097, type: 2}
   poolingPairs:
-  - poolType: SFXPlayer
-    prefab: {fileID: 7387021849737377057, guid: 642b4c47cbef453458e8a77b73f9bacf,
+  - poolType: Enemy01
+    prefab: {fileID: 919132149155446097, guid: c03bd7a41c506264994b71940ce810b7, type: 3}
+    poolCount: 10
+  - poolType: Enemy02
+    prefab: {fileID: 2390365597539587489, guid: f8c3c3fb05bf5494daab72d077e7c068,
       type: 3}
-    poolCount: 20
+    poolCount: 10
+  - poolType: Enemy03
+    prefab: {fileID: 442907044330329228, guid: 0e174d8ed06dedd4eaddeb9e156448b5, type: 3}
+    poolCount: 10
 --- !u!4 &1051158399
 Transform:
   m_ObjectHideFlags: 0
