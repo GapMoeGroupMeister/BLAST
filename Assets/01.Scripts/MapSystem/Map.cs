@@ -34,7 +34,7 @@ namespace BLAST.MapSystem
 
             for (int i = 0; i < 100; i++)
             {
-                Vector3 pos = new Vector3(Random.Range(-MapSize / 2, MapSize / 2), 1, Random.Range(-MapSize / 2, MapSize / 2)) + transform.position;
+                Vector3 pos = new Vector3(Random.Range(-MapSize / 2, MapSize / 2), 0, Random.Range(-MapSize / 2, MapSize / 2)) + transform.position;
                 int randomIdx = Random.Range(0, _mapObjs.Length);
                 Vector3 scale = Vector3.one * Random.Range(_minObjSize, _maxObjSize);
                 Vector3 rotation = new Vector3(0, Random.Range(0, 360), 0);
