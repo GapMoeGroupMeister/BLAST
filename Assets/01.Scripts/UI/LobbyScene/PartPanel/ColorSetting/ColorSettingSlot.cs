@@ -1,4 +1,5 @@
 using System;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -8,41 +9,73 @@ namespace LobbyScene.ColorSettings
 
     public class ColorSettingSlot : MonoBehaviour, IPointerClickHandler
     {
+        public event Action<ColorTypeSlot> OnColorTypeSelectEvent;
         public event Action<ColorSettingSlot> OnSelectEvent;
         public event Action OnCancleEvent;
+        public event Action OnSelectConfirmEvent;
         private Action OnDataChanged;
         [SerializeField] private TMP_InputField _nameInputField;
         [SerializeField] private TextMeshProUGUI _colorSetNameText;
         [SerializeField] private GameObject _selectMarker;
+        [SerializeField] private RectTransform _colorTypeSelecterTrm;
 
         [Header("ColorSet Slots")]
-        [SerializeField] private ColorTypeSlot _colorSlot1;
-        [SerializeField] private ColorTypeSlot _colorSlot2;
-        [SerializeField] private ColorTypeSlot _colorSlot3;
-        [SerializeField] private ColorTypeSlot _colorSlot4;
+        [SerializeField] private ColorTypeSlot[] _colorSlots;
         private ColorSettingData _data;
         public ColorSettingData data => _data;
 
+
+        private ColorTypeSlot _currentColorType;
+
         private bool _isActive;
         public bool IsActive => _isActive;
+
+
+        private void Awake()
+        {
+            _nameInputField.onValueChanged.AddListener(HandleTextChanged);
+        }
+
+        private void HandleTextChanged(string newName)
+        {
+            _data.colorSetName = newName;
+        }
 
         public void Initialize(ColorSettingData data)
         {
             _data = data;
             OnDataChanged?.Invoke();
-            _colorSlot1.SetColor(data.color1);
-            _colorSlot2.SetColor(data.color2);
-            _colorSlot3.SetColor(data.color3);
-            _colorSlot4.SetColor(data.lightColor);
+
+            for (int i = 0; i < _colorSlots.Length; i++)
+            {
+                ColorTypeSlot slot = _colorSlots[i];
+                slot.Initialize(i);
+                slot.SetColor(data.colors[i]);
+                _nameInputField.text = data.colorSetName;
+                slot.OnClickEvent += HandleSelectColorType;
+                slot.OnColorChanged += HandleColorChanged;
+            }
         }
 
+        private void HandleColorChanged(int index, Color color)
+        {
+            _data.colors[index] = color;
+        }
 
-        public void OnPointerClick(PointerEventData eventData)
+        private void HandleSelectColorType(ColorTypeSlot slot)
+        {
+            OnColorTypeSelectEvent?.Invoke(slot);
+            _currentColorType = slot;
+            _colorTypeSelecterTrm.DOAnchorPosX(slot.RectTrm.anchoredPosition.x, 0.1f);
+        }
+
+        public void HandleToggleSlot()
         {
             _isActive = !_isActive;
 
             if (_isActive)
             {
+
                 HandleOpenColorSet();
             }
             else
@@ -55,6 +88,22 @@ namespace LobbyScene.ColorSettings
         public void HandleOpenColorSet()
         {
             OnSelectEvent?.Invoke(this);
+            HandleSelectColorType(_colorSlots[0]);
+        }
+
+        public void HandleSelectConfirm()
+        {
+            OnSelectConfirmEvent?.Invoke();
+        }
+
+        public void HandleEditorMode()
+        {
+            _colorTypeSelecterTrm.gameObject.SetActive(true);
+        }
+
+        public void HandleDisableEditorMode()
+        {
+            _colorTypeSelecterTrm.gameObject.SetActive(false);
         }
 
 
@@ -70,6 +119,10 @@ namespace LobbyScene.ColorSettings
             Destroy(gameObject);
         }
 
+        public void OnPointerClick(PointerEventData eventData)
+        {
+            HandleToggleSlot();
+        }
     }
 
 }

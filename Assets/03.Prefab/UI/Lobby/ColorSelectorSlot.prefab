@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6273378296091897120}
   - component: {fileID: 3885433326269260918}
   - component: {fileID: 1903819713354594668}
+  - component: {fileID: 7453880489299302996}
   m_Layer: 5
   m_Name: ColorSelectorSlot
   m_TagString: Untagged
@@ -94,10 +95,12 @@ MonoBehaviour:
   _nameInputField: {fileID: 1863186237996192623}
   _colorSetNameText: {fileID: 2080131551941402973}
   _selectMarker: {fileID: 6752638773454858514}
-  _colorSlot1: {fileID: 7373317277652902308}
-  _colorSlot2: {fileID: 4496956501874617087}
-  _colorSlot3: {fileID: 3203770878205009352}
-  _colorSlot4: {fileID: 5513344335895054155}
+  _colorTypeSelecterTrm: {fileID: 8293313170589295679}
+  _colorSlots:
+  - {fileID: 7373317277652902308}
+  - {fileID: 4496956501874617087}
+  - {fileID: 3203770878205009352}
+  - {fileID: 5513344335895054155}
 --- !u!114 &1903819713354594668
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,6 +127,62 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &7453880489299302996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 480397125485235453}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 6273378296091897120}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3885433326269260918}
+        m_TargetAssemblyTypeName: LobbyScene.ColorSettings.ColorSettingSlot, Assembly-CSharp
+        m_MethodName: HandleToggleSlot
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &672254456001750413
 GameObject:
   m_ObjectHideFlags: 0
@@ -465,8 +524,8 @@ CanvasGroup:
   m_GameObject: {fileID: 1658502916079404492}
   m_Enabled: 1
   m_Alpha: 1
-  m_Interactable: 0
-  m_BlocksRaycasts: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
 --- !u!1 &4736288403032994251
 GameObject:
@@ -741,7 +800,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.6245283, g: 0.90613204, b: 1, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -770,6 +829,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e275ecfe214e2fb4bb9fad8b03f9697f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _colorTypeText: {fileID: 6330467507006827644}
 --- !u!1 &5285357224183648373
 GameObject:
   m_ObjectHideFlags: 0
@@ -831,7 +891,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.03553574, g: 0.46454427, b: 0.6075471, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -860,6 +920,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e275ecfe214e2fb4bb9fad8b03f9697f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _colorTypeText: {fileID: 8555395614216848950}
 --- !u!1 &6099957288584964425
 GameObject:
   m_ObjectHideFlags: 0
@@ -1059,7 +1120,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1430,7 +1491,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.79622644, g: 0.3795529, b: 0, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1459,6 +1520,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e275ecfe214e2fb4bb9fad8b03f9697f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _colorTypeText: {fileID: 567339061517013893}
 --- !u!1 &8113182913271082118
 GameObject:
   m_ObjectHideFlags: 0
@@ -1520,7 +1582,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.5661303, g: 0.8745514, b: 0.97735846, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1549,6 +1611,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e275ecfe214e2fb4bb9fad8b03f9697f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _colorTypeText: {fileID: 4157096984778923148}
 --- !u!1 &8525276538650819366
 GameObject:
   m_ObjectHideFlags: 0
@@ -1741,7 +1804,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_IgnoreLayout: 0
-  m_MinWidth: 280
+  m_MinWidth: 240
   m_MinHeight: -1
   m_PreferredWidth: -1
   m_PreferredHeight: -1
@@ -1903,7 +1966,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8293313170589295679
 RectTransform:
   m_ObjectHideFlags: 0

@@ -35,12 +35,6 @@ public class EnemyMovement : MovementController
         _rigidbodyCompo = GetComponent<Rigidbody>();
     }
 
-    private void Update()
-    {
-        if (Keyboard.current.kKey.wasPressedThisFrame)
-            ForceMove(Vector3.zero);
-    }
-
     public void EnableNavAgent()
     {
         _navAgent.enabled = true;

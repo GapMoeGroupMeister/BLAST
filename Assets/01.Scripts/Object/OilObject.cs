@@ -8,7 +8,7 @@ using Random = UnityEngine.Random;
 public class OilObject : MonoBehaviour, IPoolingObject, IEffectable
 {
     public string OriginPoolType { get; set; }
-    public GameObject gameObject { get; set; }
+    GameObject IPoolingObject.gameObject { get; set; }
 
     private DecalProjector _decalCompo;
     private Material _decalMaterial;

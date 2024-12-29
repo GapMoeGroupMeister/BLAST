@@ -26,7 +26,7 @@ namespace ItemManage
                 supply.Initialize(waveSO.dropItemAmount);
                 supply.SendSupply(randomPosition, 1.3f);
             }
-            _alertPanel.ShowAlert(stringBuilder.ToString());
+            //_alertPanel.ShowAlert(stringBuilder.ToString());
         }
 
         public Item DropItem(ItemPoolType type, Vector3 startPos)

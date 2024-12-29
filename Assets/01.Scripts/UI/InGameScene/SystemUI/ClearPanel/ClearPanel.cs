@@ -32,7 +32,7 @@ public class ClearPanel : UIPanel
 
     public void SetUI()
     {
-        _levelText.text = $"Level {XPManager.Instance.GetLevel.ToString()}";
+        _levelText.text = $"Level {XPManager.GetLevel.ToString()}";
         _coinText.text = ResourceManager.GetCoin().ToString();
         _servivedText.text = TimeManager.CurrentGlobalTimerString;
     }

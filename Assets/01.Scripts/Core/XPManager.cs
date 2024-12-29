@@ -1,29 +1,33 @@
 using Crogen.CrogenPooling;
 using System;
-using TMPro;
 using UnityEngine;
 
-public class XPManager : MonoSingleton<XPManager>
+public class XPManager : MonoBehaviour
 {
-	[SerializeField] private TextMeshProUGUI _lvText;
-	public event Action<float> OnXPPercentEvent;
-	public event Action<int> OnLevelUpEvent;
+	public static event Action<float> OnXPPercentEvent;
+	public static event Action<int> OnLevelUpEvent;
 
-	private int _level = 1;
-	[SerializeField] private int _maxXP = 5;
-	[SerializeField] private int _xp;
+	private static int _level = 1;
+	[SerializeField] private static int _maxXP = 5;
+	[SerializeField] private static int _xp;
 
-	public int GetLevel => _level;
+	public static int GetLevel => _level;
+	private static GameObject _dummyObject;
 
+	private void Awake()
+	{
+		_dummyObject = gameObject;
+		_xp = 0;
+		_level = 1;
+		_maxXP = 5;
+	}
 
-	public int XP
+	public static int XP
 	{
 		get => _xp;
 		set
 		{
-
 			//경험치 최대치 갱신
-
 			if(_xp >= _maxXP)
 			{
 				_xp = 0;
@@ -34,23 +38,21 @@ public class XPManager : MonoSingleton<XPManager>
 			else
 			{
 				_xp = value;
-				_lvText.text = $"lv.{_level.ToString("00")}";
 			}
 
-			//이벤트 실행
 			OnXPPercentEvent?.Invoke((float)_xp / _maxXP);
 		}
 	}
 
 	//나중에 밸런싱!
-	private void MaxXPUp()
+	private static void MaxXPUp()
 	{
 		_maxXP = (int)(_maxXP * 1.37f);
 	}
 
-	public void CreateXP(Vector3 pos, XPType xpType)
+	public static void CreateXP(Vector3 pos, XPType xpType)
 	{
-		XP xp = gameObject.Pop(OtherPoolType.XP, pos + Vector3.up, Quaternion.identity) as XP;
+		XP xp = _dummyObject.gameObject.Pop(OtherPoolType.XP, pos + Vector3.up, Quaternion.identity) as XP;
 		xp.SetGrade(xpType);
 	}
 
