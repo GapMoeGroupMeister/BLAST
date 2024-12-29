@@ -25,13 +25,17 @@ public class UIPanel : MonoBehaviour, IWindowPanel
     public void SetCanvasActive(bool value)
     {
         _canvasGroup.DOFade(value ? 1f : 0f, _activeDuration).SetUpdate(_useUnscaledTime);
-        _canvasGroup.interactable = value;
-        _canvasGroup.blocksRaycasts = value;
+        SetInteractable(value);
     }
 
     public void SetCanvasActiveImmediately(bool value)
     {
         _canvasGroup.alpha = value ? 1f : 0f;
+        SetInteractable(value);
+    }
+
+    protected void SetInteractable(bool value)
+    {
         _canvasGroup.interactable = value;
         _canvasGroup.blocksRaycasts = value;
     }
