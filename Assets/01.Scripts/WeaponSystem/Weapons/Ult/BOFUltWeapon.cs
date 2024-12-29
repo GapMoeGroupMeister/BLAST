@@ -14,6 +14,7 @@ public class BOFUltWeapon : UltWeapon
     protected override void Start()
     {
         base.Start();
+        if(enabled == false) return;
         _playerBOFPart = PlayerPartController.GetCurrentPlayerPart() as PlayerBOFPart;
         _defaultProjectileLPoolType = _playerBOFPart.magazineInfoL.bulletPoolingType;
         _defaultProjectileRPoolType = _playerBOFPart.magazineInfoR.bulletPoolingType;
