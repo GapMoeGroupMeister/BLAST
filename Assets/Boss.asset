@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef843ff4ebdeee344a631d7c1ad9917f, type: 3}
   m_Name: Boss
   m_EditorClassIdentifier: 
-  pairs: []
+  pairs:
+  - poolType: Boss01
+    prefab: {fileID: 7423257834096639481, guid: b1710736ee5a2b54aa48eaf004dab8ba,
+      type: 3}
+    poolCount: 1

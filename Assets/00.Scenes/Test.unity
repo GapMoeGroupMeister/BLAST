@@ -10646,8 +10646,8 @@ Transform:
   m_GameObject: {fileID: 559308238}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: -0, z: 8.4703295e-22, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 50}
-  m_LocalScale: {x: 0.2, y: 50, z: 0.20000002}
+  m_LocalPosition: {x: 0, y: 0, z: 100}
+  m_LocalScale: {x: 0.2, y: 100, z: 0.20000002}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7156334035182806618}
@@ -21755,16 +21755,30 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0a98ae3fb0a26f84d9bfdafa90cdbb56, type: 2}
   - {fileID: 11400000, guid: b071f39352979384d96c11a9c3721097, type: 2}
   poolingPairs:
-  - poolType: Enemy01
-    prefab: {fileID: 919132149155446097, guid: c03bd7a41c506264994b71940ce810b7, type: 3}
-    poolCount: 10
-  - poolType: Enemy02
-    prefab: {fileID: 2390365597539587489, guid: f8c3c3fb05bf5494daab72d077e7c068,
+  - poolType: ElectricityBullet
+    prefab: {fileID: 3951822659776513446, guid: b969ed21a7c27a040beb8a179fedbf42,
       type: 3}
     poolCount: 10
-  - poolType: Enemy03
-    prefab: {fileID: 442907044330329228, guid: 0e174d8ed06dedd4eaddeb9e156448b5, type: 3}
+  - poolType: FireBullet
+    prefab: {fileID: 2756234889255895914, guid: b8a5fabc58236344591e81ef8e1a9dd9,
+      type: 3}
     poolCount: 10
+  - poolType: PlayerDefaultBullet
+    prefab: {fileID: 8538479565421077914, guid: 493b7b28f1b066a48853885a0c424227,
+      type: 3}
+    poolCount: 10
+  - poolType: BOFUltFireBullet
+    prefab: {fileID: 8603955334882096177, guid: 42778e0d1931cb8448219169105e18c7,
+      type: 3}
+    poolCount: 30
+  - poolType: EnemyBullet
+    prefab: {fileID: 7739532845950986674, guid: 31a286094ffa7b54191a77553f8a1bea,
+      type: 3}
+    poolCount: 20
+  - poolType: BossBullet
+    prefab: {fileID: 7739532845950986674, guid: 2c188b58d3371f0418418b865cb4752a,
+      type: 3}
+    poolCount: 12
 --- !u!4 &1051158399
 Transform:
   m_ObjectHideFlags: 0
@@ -37188,7 +37202,7 @@ Animator:
   m_GameObject: {fileID: 7100424150824712732}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6d437944eb279154cb53323a5a221f2d, type: 2}
+  m_Controller: {fileID: 9100000, guid: c37bff59344ace24e8293f1b30d1befe, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -42958,7 +42972,7 @@ Transform:
   m_Children:
   - {fileID: 5565884021111161762}
   m_Father: {fileID: 6693719840194604237}
-  m_LocalEulerAnglesHint: {x: 8.45338e-15, y: 179.99995, z: 180}
+  m_LocalEulerAnglesHint: {x: -70.67563, y: 179.9999, z: -179.9999}
 --- !u!33 &3013416624399153145
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -43648,7 +43662,7 @@ Transform:
   m_Children:
   - {fileID: 8454695978660529323}
   m_Father: {fileID: 7030092175865786739}
-  m_LocalEulerAnglesHint: {x: -69.72794, y: -183.43742, z: 183.4374}
+  m_LocalEulerAnglesHint: {x: -82.076324, y: -179.9999, z: 179.99988}
 --- !u!114 &3234938829180892169
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47096,7 +47110,7 @@ Transform:
   m_Children:
   - {fileID: 7660330269382422060}
   m_Father: {fileID: 8059911638230899768}
-  m_LocalEulerAnglesHint: {x: -69.72794, y: 183.43742, z: -183.4374}
+  m_LocalEulerAnglesHint: {x: -89.78329, y: 179.9955, z: -179.99548}
 --- !u!33 &4429626383071564635
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -48908,7 +48922,7 @@ Transform:
   m_Children:
   - {fileID: 5654808213851520089}
   m_Father: {fileID: 6324671052343276137}
-  m_LocalEulerAnglesHint: {x: 89.89164, y: -0.000038277325, z: 0}
+  m_LocalEulerAnglesHint: {x: 89.89164, y: -0.00003695854, z: 0}
 --- !u!114 &4791148416254436977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50801,8 +50815,8 @@ Transform:
   m_GameObject: {fileID: 4873747607104494666}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: -0, z: 8.4703295e-22, w: 0.7071068}
-  m_LocalPosition: {x: -0, y: 0, z: 50}
-  m_LocalScale: {x: 0.2, y: 50, z: 0.2}
+  m_LocalPosition: {x: -0, y: 0, z: 100}
+  m_LocalScale: {x: 0.2, y: 100, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 692474794624876147}
@@ -50884,7 +50898,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8532294b98b9f4343b5cd6c3b1121f0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _owner: {fileID: 0}
+  _owner: {fileID: 7774891325920701305}
   _offset: {x: 0, y: 8, z: 0}
   _rotateSpeed: 40
   _radius: 9
@@ -51179,7 +51193,7 @@ Transform:
   m_Children:
   - {fileID: 7692652844570886622}
   m_Father: {fileID: 3007253313272491096}
-  m_LocalEulerAnglesHint: {x: 89.89164, y: -0.000035900684, z: 0}
+  m_LocalEulerAnglesHint: {x: 89.89164, y: -0.000034985813, z: 0}
 --- !u!1 &5566912135982731190
 GameObject:
   m_ObjectHideFlags: 0
@@ -53418,7 +53432,7 @@ Transform:
   m_Children:
   - {fileID: 4789148642578110074}
   m_Father: {fileID: 6693719840194604237}
-  m_LocalEulerAnglesHint: {x: 8.45338e-15, y: 179.99995, z: 180}
+  m_LocalEulerAnglesHint: {x: -70.67563, y: 179.9999, z: -179.9999}
 --- !u!23 &6332886179145679124
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -55292,7 +55306,7 @@ Transform:
   m_Children:
   - {fileID: 3228006304511160788}
   m_Father: {fileID: 9090477383174036735}
-  m_LocalEulerAnglesHint: {x: 52.723576, y: -0.0000011929346, z: -0.000012136841}
+  m_LocalEulerAnglesHint: {x: 37.366505, y: 0.0000011536961, z: -0.0000098020255}
 --- !u!1 &7035407527522099544
 GameObject:
   m_ObjectHideFlags: 0
@@ -57697,8 +57711,9 @@ MonoBehaviour:
   _laserPointers:
   - {fileID: 6382048668088654172}
   - {fileID: 559308240}
-  _laserPointerColor: {r: 4, g: 4, b: 4, a: 0}
-  _endColor: {r: 4, g: 0, b: 0, a: 0}
+  _laserPointerColor: {r: 8, g: 8, b: 8, a: 0}
+  _endColor: {r: 8, g: 0, b: 0, a: 0}
+  _laserAligner: {fileID: 5465723948935641210}
 --- !u!114 &7774891325920701306
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57718,6 +57733,7 @@ MonoBehaviour:
   - rid: 3349245023864751030
   - rid: 3349245023864751031
   - rid: 3349245023864751032
+  - rid: 3349245027788783698
   m_IsInitialised: 0
   m_IsStarted: 0
   references:
@@ -57768,6 +57784,15 @@ MonoBehaviour:
           m_Value1: 8595608011369626065
         Name: Muzzle2
         m_Value: {fileID: 7156334035182806618}
+    - rid: 3349245027788783698
+      type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior,
+        asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 2892196025860482642
+          m_Value1: 11236168985689425328
+        Name: ShootBulletCooltime
+        m_Value: 7
 --- !u!4 &7775532045962518313
 Transform:
   m_ObjectHideFlags: 0
@@ -58624,7 +58649,7 @@ Transform:
   m_Children:
   - {fileID: 4419005460822574581}
   m_Father: {fileID: 9090477383174036735}
-  m_LocalEulerAnglesHint: {x: 52.723576, y: 0.0000011929437, z: 0.000012136847}
+  m_LocalEulerAnglesHint: {x: 23.183514, y: -0.0000037663533, z: 0.000008474699}
 --- !u!65 &8063028182853669275
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -61366,7 +61391,7 @@ Transform:
   m_Children:
   - {fileID: 9090477383174036735}
   m_Father: {fileID: 6693719840194604237}
-  m_LocalEulerAnglesHint: {x: 8.45338e-15, y: 179.99997, z: 180}
+  m_LocalEulerAnglesHint: {x: -80.40034, y: 179.99986, z: -179.99986}
 --- !u!65 &9048499079822710282
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -61476,7 +61501,7 @@ Transform:
   - {fileID: 8059911638230899768}
   - {fileID: 7030092175865786739}
   m_Father: {fileID: 9043282964070631422}
-  m_LocalEulerAnglesHint: {x: 89.98021, y: -0.000023755914, z: 0}
+  m_LocalEulerAnglesHint: {x: 89.98021, y: -0.000022311808, z: 0}
 --- !u!1 &9101488825280850176
 GameObject:
   m_ObjectHideFlags: 0
