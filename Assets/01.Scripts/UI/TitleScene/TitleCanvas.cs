@@ -21,7 +21,7 @@ namespace BLAST.TitleScene
         {
             Sequence seq = DOTween.Sequence();
             seq
-                .AppendInterval(1)
+                .AppendInterval(3)
                 .Append(_titleText.DOFade(1, 2f))
                 .Join(_titleText.rectTransform.DOScaleX(1, 2f))
                 .Append(_playText.DOFade(1, 1.5f))

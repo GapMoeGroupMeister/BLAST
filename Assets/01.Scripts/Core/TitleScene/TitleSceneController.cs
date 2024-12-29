@@ -12,7 +12,7 @@ public class TitleSceneController : MonoBehaviour
 	{
 		if (CanMoveToOtherScene == false) return;
 		if (_isGameStart == true) return;
-		if(Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
+		if(Input.anyKeyDown)
 		{
 			_isGameStart = true;
 			OnStartGame();
