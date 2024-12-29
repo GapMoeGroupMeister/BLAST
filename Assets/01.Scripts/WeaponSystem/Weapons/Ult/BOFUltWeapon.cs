@@ -15,7 +15,6 @@ public class BOFUltWeapon : UltWeapon
     {
         base.Start();
         _playerBOFPart = PlayerPartController.GetCurrentPlayerPart() as PlayerBOFPart;
-        Debug.Log(_playerBOFPart==null);
         _defaultProjectileLPoolType = _playerBOFPart.magazineInfoL.bulletPoolingType;
         _defaultProjectileRPoolType = _playerBOFPart.magazineInfoR.bulletPoolingType;
     }
