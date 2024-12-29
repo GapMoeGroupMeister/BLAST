@@ -297,6 +297,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3773652371605890443}
   - component: {fileID: 5178089627973258518}
+  - component: {fileID: 6259531373216491698}
   - component: {fileID: 8618601352916124225}
   - component: {fileID: 8878793007680538256}
   - component: {fileID: 8489541177564064265}
@@ -351,6 +352,30 @@ MonoBehaviour:
   _damageAmount: 1
   _damageCasters: []
   colliderCompo: {fileID: 0}
+--- !u!114 &6259531373216491698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2390365597539587489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d481d01d395fe44b892306644e38c13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  excluded: 0
+  allocationCount: 32
+  _whatIsCastable:
+    serializedVersion: 2
+    m_Bits: 256
+  _usingExcludeCast: 1
+  excludedDamageCasterList: []
+  effectStateType: 0
+  _effectDuration: 0
+  _effectLevel: 1
+  center: {x: 0, y: 6.53, z: 26}
+  size: {x: 1, y: 1, z: 50}
 --- !u!114 &8618601352916124225
 MonoBehaviour:
   m_ObjectHideFlags: 0

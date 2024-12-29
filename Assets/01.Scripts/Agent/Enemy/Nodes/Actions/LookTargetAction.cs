@@ -13,6 +13,7 @@ public partial class LookTargetAction : Action
 
     protected override Status OnStart()
     {
+        Debug.Log(Target.Value.position);
         Vector3 direction = Target.Value.position - Face.Value.position;
         direction.y = 0;
         direction.Normalize();
