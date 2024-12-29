@@ -71,7 +71,7 @@ public class WaveManager : MonoSingleton<WaveManager>
 
         int allEnemy = AllEnemyCount(wave);
         Transform player = GameManager.Instance.Player.transform;
-        Vector3 spawnPos = player.position + Random.insideUnitSphere * 10;
+        Vector3 spawnPos = spawnPoints[Random.Range(0, spawnPoints.Count)].position;
         while (_currentEnemyCount < allEnemy)
         {
             if (!isRandomSpawn)
