@@ -6,7 +6,7 @@ using UnityEngine;
 using DG.Tweening;
 using UnityEngine.Events;
 
-public class TechTree : MonoBehaviour, IWindowPanel
+public class TechTree : MonoBehaviour
 {
     public TechTreeSO treeSO;
     public Dictionary<NodeSO, Node> nodeDic;
@@ -18,6 +18,7 @@ public class TechTree : MonoBehaviour, IWindowPanel
     private string _path;
 
     [SerializeField] private RectTransform _treeRect;
+    
     public UnityEvent<int, int> selectNodeEvent;
 
     private void Awake()
@@ -188,21 +189,7 @@ public class TechTree : MonoBehaviour, IWindowPanel
         });
     }
 
-    #region UI
-
-    public void Open()
-    {
-        _treeRect.DOAnchorPosY(0, 0.5f).SetEase(Ease.Linear);
-        UIControlManager.Instance.overUIAmount++;
-    }
-
-    public void Close()
-    {
-        _treeRect.DOAnchorPosY(-1080, 0.5f).SetEase(Ease.Linear);
-        UIControlManager.Instance.overUIAmount--;
-    }
-
-    #endregion
+    
 }
 
 
