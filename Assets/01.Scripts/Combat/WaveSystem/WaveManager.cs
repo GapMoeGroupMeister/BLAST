@@ -56,7 +56,7 @@ public class WaveManager : MonoSingleton<WaveManager>
         }
         int enemyIdx = 0;
         WaveSO waveSO = _waveList[wave];
-        bool isBossWave = (waveSO.boss.bossPrefab != null);
+        bool isBossWave = waveSO.boss.isBossExist;
         if (waveSO == null)
         {
             Debug.LogError($"Wave {wave} is null");
