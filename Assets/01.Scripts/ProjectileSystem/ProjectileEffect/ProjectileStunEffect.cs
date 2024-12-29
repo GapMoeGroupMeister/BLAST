@@ -1,14 +1,13 @@
+using System;
 using UnityEngine;
 
 public class ProjectileStunEffect : ProjectileEffect
 {
 	[SerializeField] private DamageCaster _damageCaster;
-	private EffectCaster _effectCaster;
 
 	private void Start()
 	{
 		Init(WeaponType.StunBullet);
-		_effectCaster = GetComponent<EffectCaster>();
 		_baseWeapon.OnWeaponUseEvent += OnEffect;
 	}
 
