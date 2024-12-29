@@ -16192,6 +16192,7 @@ GameObject:
   - component: {fileID: 731461069}
   - component: {fileID: 731461068}
   - component: {fileID: 731461072}
+  - component: {fileID: 731461073}
   m_Layer: 5
   m_Name: TechTreeCanvas
   m_TagString: Untagged
@@ -16294,6 +16295,20 @@ CanvasGroup:
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
+--- !u!114 &731461073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 731461067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02ba4f79248860c4c956059c71345dd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _useUnscaledTime: 0
+  _activeDuration: 0.3
 --- !u!1 &734517519
 GameObject:
   m_ObjectHideFlags: 0
@@ -42342,8 +42357,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 20455294}
-        m_TargetAssemblyTypeName: TechTree, Assembly-CSharp
+      - m_Target: {fileID: 731461073}
+        m_TargetAssemblyTypeName: UIPanel, Assembly-CSharp
         m_MethodName: Close
         m_Mode: 1
         m_Arguments:
@@ -44459,8 +44474,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 20455294}
-        m_TargetAssemblyTypeName: TechTree, Assembly-CSharp
+      - m_Target: {fileID: 731461073}
+        m_TargetAssemblyTypeName: UIPanel, Assembly-CSharp
         m_MethodName: Open
         m_Mode: 1
         m_Arguments:
