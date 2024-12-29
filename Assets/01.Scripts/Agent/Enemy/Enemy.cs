@@ -8,6 +8,7 @@ public abstract class Enemy : Agent, IPoolingObject
 {
     protected BehaviorGraphAgent _btAgent;
 
+    [field: SerializeField]
     public Renderer RendererCompo { get; private set; }
     public EnemyMovement EnemyMovementCompo { get; private set; }
     public EnemyAnimatorTrigger AnimatorTriggerCompo { get; private set; }
@@ -48,7 +49,6 @@ public abstract class Enemy : Agent, IPoolingObject
         EnemyMovementCompo.Initialize(this);
         Transform visualTrm = transform.Find("Visual");
         AnimatorTriggerCompo = visualTrm.GetComponent<EnemyAnimatorTrigger>();
-        RendererCompo = visualTrm.GetComponent<Renderer>();
     }
 
     public void CastDamage()
