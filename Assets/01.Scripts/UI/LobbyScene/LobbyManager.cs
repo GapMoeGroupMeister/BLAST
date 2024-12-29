@@ -9,7 +9,7 @@ namespace LobbyScene
     {
         [SerializeField] private PartChanger _partChanager;
         [SerializeField] private float _sceneTransitionWaitDuration;
-        public void GameStart()
+        public void GameStart(string sceneName)
         {
             SaveManager.SaveData();
             StartCoroutine(StartCoroutine());

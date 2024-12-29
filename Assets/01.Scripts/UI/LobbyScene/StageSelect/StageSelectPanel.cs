@@ -1,4 +1,5 @@
 using DG.Tweening;
+using LobbyScene;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,6 +14,7 @@ public enum StageDifficulty
 
 public class StageSelectPanel : UIPanel
 {
+    [SerializeField] private LobbyManager _lobbySceneManager;
     [SerializeField] private StageInfoListSO _infoList;
     [SerializeField] private StageSelectSlot _slotPrefab;
     [SerializeField] private TextMeshProUGUI _stageNameText;
@@ -116,6 +118,11 @@ public class StageSelectPanel : UIPanel
     {
         _contentTrm.DOAnchorPosX(-_slotSize * _currentSelectIndex, _slotChangeDuration);
         
+    }
+
+    public void StartStage()
+    {
+        _lobbySceneManager.GameStart(_currentSelectedStage.stageSceneName);
     }
     #endregion
 }

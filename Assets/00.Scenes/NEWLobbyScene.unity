@@ -29037,9 +29037,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1315527698}
-        m_TargetAssemblyTypeName: LobbyManager, Assembly-CSharp
-        m_MethodName: GameStart
+      - m_Target: {fileID: 1312475746}
+        m_TargetAssemblyTypeName: StageSelectPanel, Assembly-CSharp
+        m_MethodName: StartStage
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -40840,6 +40840,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _useUnscaledTime: 0
   _activeDuration: 0.2
+  _lobbySceneManager: {fileID: 1315527698}
   _infoList: {fileID: 11400000, guid: fe31480ecfce23e42b8d2acbfe76e558, type: 2}
   _slotPrefab: {fileID: 998153778692155694, guid: f84ea3c27192b414dac06b936fea04e9,
     type: 3}
@@ -40863,7 +40864,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1312475742}
   m_Enabled: 1
-  m_Alpha: 0
+  m_Alpha: 1
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
