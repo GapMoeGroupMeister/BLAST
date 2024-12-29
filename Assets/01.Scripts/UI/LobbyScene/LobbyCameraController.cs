@@ -6,7 +6,7 @@ namespace LobbyScene
 
     public enum LobbyCameraEnum
     {
-        Default,
+        Default = 0,
         PartSelect,
         Waiting
     }
@@ -15,7 +15,7 @@ namespace LobbyScene
         public CinemachineBlendListCamera blendListCam;
         private CinemachineVirtualCameraBase[] _blendCams;
 
-        private void Awake()
+        private void Start()
         {
             _blendCams = blendListCam.ChildCameras;
         }
