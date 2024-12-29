@@ -22,6 +22,7 @@ public class WaveManager : MonoSingleton<WaveManager>
     private void Start()
     {
         // Stage관리자로 부터 WAve를 할당받음
+        if (stageWaves == null) return;
         _waveList = stageWaves.wavelist;
         StartWave(0, true);
 
@@ -29,6 +30,7 @@ public class WaveManager : MonoSingleton<WaveManager>
 
     private void OnDestroy()
     {
+        if (stageWaves == null) return;
         if(_waveCoroutine != null)
             StopCoroutine(_waveCoroutine);
     }
@@ -111,6 +113,7 @@ public class WaveManager : MonoSingleton<WaveManager>
 
     private IEnumerator SpawnEnemy(WaveEnemy waveEnemy, Vector3 spawnPoint)
     {
+
         Enemy enemy =
             gameObject.Pop(waveEnemy.enemyType, spawnPoint, Quaternion.identity) as Enemy;
         // Level 추가시 여기서 설정 해야디
