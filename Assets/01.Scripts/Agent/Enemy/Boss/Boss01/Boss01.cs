@@ -15,10 +15,10 @@ public class Boss01 : Boss
         for(int i = 0; i < _laserPointers.Length; i++)
         {
             _laserPointers[i].gameObject.SetActive(true);
-            _laserPointers[i].material.DOColor(_endColor, _emissionColorID, duration).OnComplete(() =>
+            Material material = _laserPointers[i].material;
+            material.SetColor(_emissionColorID, _laserPointerColor);
+            material.DOColor(_endColor, _emissionColorID, duration).OnComplete(() =>
             {
-                Debug.Log("End");
-                _laserPointers[i].material.SetColor(_emissionColorID,_laserPointerColor);
                 _laserPointers[i].gameObject.SetActive(false);
             });
 
