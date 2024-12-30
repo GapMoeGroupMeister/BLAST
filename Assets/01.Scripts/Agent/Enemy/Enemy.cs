@@ -8,6 +8,7 @@ public abstract class Enemy : Agent, IPoolingObject
 {
     protected BehaviorGraphAgent _btAgent;
 
+    [field: SerializeField]
     public Renderer RendererCompo { get; private set; }
     public EnemyMovement EnemyMovementCompo { get; private set; }
     public EnemyAnimatorTrigger AnimatorTriggerCompo { get; private set; }
@@ -34,6 +35,8 @@ public abstract class Enemy : Agent, IPoolingObject
 
     private readonly int _burnedID = Shader.PropertyToID("_Burned");
 
+    private Coroutine _stunCoroutine;
+
     protected override void Awake()
     {
         base.Awake();
@@ -46,7 +49,6 @@ public abstract class Enemy : Agent, IPoolingObject
         EnemyMovementCompo.Initialize(this);
         Transform visualTrm = transform.Find("Visual");
         AnimatorTriggerCompo = visualTrm.GetComponent<EnemyAnimatorTrigger>();
-        RendererCompo = visualTrm.GetComponent<Renderer>();
     }
 
     public void CastDamage()
@@ -63,7 +65,19 @@ public abstract class Enemy : Agent, IPoolingObject
         WaveManager.Instance.RemoveEnemy(this);
     }
 
-    public abstract void Stun(float duration);
+    public void Stun(float duration)
+    {
+        if (_stunCoroutine != null)
+            StopCoroutine(_stunCoroutine);
+        _stunCoroutine = StartCoroutine(StunCoroutine(duration));
+    }
+
+    private IEnumerator StunCoroutine(float duration)
+    {
+        EnemyMovementCompo.DisableNavAgent();
+        yield return new WaitForSeconds(duration);
+        EnemyMovementCompo.EnableNavAgent();
+    }
 
     public virtual void OnPop()
     {

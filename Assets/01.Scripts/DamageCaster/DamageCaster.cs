@@ -13,6 +13,7 @@ public abstract class DamageCaster : MonoBehaviour
 	[SerializeField] private bool _usingExcludeCast = true;
     public List<DamageCaster> excludedDamageCasterList;
 
+
 	public event Action OnCasterEvent;
 	public event Action OnCasterSuccessEvent;
 	public event Action OnDamageCastSuccessEvent;

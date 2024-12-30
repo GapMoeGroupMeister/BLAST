@@ -70,7 +70,6 @@ public class LaserAligner : MonoBehaviour
             eulerAngle.y += 90;
             _lasers[i].transform.rotation = Quaternion.Euler(eulerAngle);
             _lasers[i].EnableLaser(500);
-            Debug.Log(_lasers[i].transform.localPosition);
         }
     }
 }
