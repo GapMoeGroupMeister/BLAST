@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using DG.Tweening;
 using UnityEngine;
@@ -7,6 +8,7 @@ namespace Objects.PartSelect
 
     public class PartChanger : MonoBehaviour
     {
+        public event Action OnCompletePartChange;
         [SerializeField] private Transform _partConnecterTrm;
         [SerializeField] private Transform _tongsTrm;
         [SerializeField] private TongController[] _tongs;
@@ -41,7 +43,7 @@ namespace Objects.PartSelect
         }
 
 
-        private void Start() 
+        private void Start()
         {
             PlayerCustomColorLoader.AddRenderers(_currentPartTrm);
         }
@@ -110,19 +112,18 @@ namespace Objects.PartSelect
                 _currentPartTrm.SetParent(_partConnecterTrm);
             });
             _seq.AppendInterval(0.4f);
-            _seq.Append(_tongsTrm.DOMoveY(_upDistance, _upDuration).OnComplete(() => _isChanging = false));
+            _seq.Append(_tongsTrm.DOMoveY(_upDistance, _upDuration).OnComplete(() =>
+            {
+                _isChanging = false;
+                OnCompletePartChange?.Invoke();
+            }));
         }
 
         private void ShakeTongs()
         {
-            _tongsTrm.DOShakePosition(0.2f, 0.4f, 50);
+            _tongsTrm.DOShakePosition(0.1f, 0.3f, 50);
         }
 
-        private IEnumerator ChangeCoroutine()
-        {
-
-            yield return null;
-        }
     }
 
 }

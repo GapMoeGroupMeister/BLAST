@@ -6,30 +6,30 @@ using UnityEngine;
 using DG.Tweening;
 using UnityEngine.Events;
 
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
-
-public class TechTree : MonoBehaviour, IWindowPanel
+public class TechTree : MonoBehaviour
 {
     public TechTreeSO treeSO;
-    public Dictionary<int, Node> nodeDic = new Dictionary<int, Node>();
+    public Dictionary<NodeSO, Node> nodeDic;
     public WarningPanel warningPanel;
     public TechTreeTooltipPanel tooltipPanel;
-    public UnityEvent<int, int> selectNodeEvent;
-
     [SerializeField] private Node nodePf;
-    [SerializeField] private RectTransform _treeRect;
-    [SerializeField] private RectTransform _edgeParent;
-    [SerializeField] private RectTransform _edgeFillParent;
 
-    public RectTransform EdgeParent => _edgeParent;
-    public RectTransform EdgeFillParent => _edgeFillParent;
+    public Transform edgeParent;
+    private string _path;
+
+    [SerializeField] private RectTransform _treeRect;
+    
+    public UnityEvent<int, int> selectNodeEvent;
 
     private void Awake()
     {
+        nodeDic = new Dictionary<NodeSO, Node>();
+        _path = Path.Combine(Application.dataPath, "TechTree.json");
+    }
+
+    private void Start()
+    {
         int childCnt = transform.childCount;
-        nodeDic.Clear();
 
         for (int i = 0; i < treeSO.nodes.Count; i++)
         {
@@ -37,8 +37,9 @@ public class TechTree : MonoBehaviour, IWindowPanel
             {
                 if (transform.GetChild(j).TryGetComponent(out Node node))
                 {
-                    if (treeSO.nodes[i].id != node.NodeType.id) continue;
-                    nodeDic.Add(node.NodeType.id, node);
+                    if (treeSO.nodes[i].id != node.node.id) continue;
+
+                    nodeDic.Add(node.node, node);
                 }
             }
         }
@@ -46,96 +47,21 @@ public class TechTree : MonoBehaviour, IWindowPanel
         for (int i = 0; i < treeSO.nodes.Count; i++)
         {
             NodeSO nodeSO = treeSO.nodes[i];
-            nodeDic[nodeSO.id].SetEdge();
+
+            if (nodeDic.TryGetValue(nodeSO, out Node node))
+                node.Init(this, node.node.id == 0);
         }
 
         Load();
     }
 
-    public bool TryGetNode(NodeSO nodeSO, out Node node)
-    {
-        if (nodeSO == null)
-        {
-            node = null;
-            return false;
-        }
-
-        return nodeDic.TryGetValue(nodeSO.id, out node);
-    }
-
-    public Node GetNode(int id)
-    {
-        for (int i = 0; i < treeSO.nodes.Count; i++)
-        {
-            if (treeSO.nodes[i].id == id)
-            {
-                NodeSO nodeSO = treeSO.nodes[i];
-                return nodeDic[nodeSO.id];
-            }
-        }
-        return null;
-    }
-
-    public void Save()
-    {
-        GameDataManager.Instance.Save();
-    }
-
-    public void Load()
-    {
-        GameDataManager.Instance.Load();
-
-        treeSO.nodes.ForEach(n =>
-        {
-            if (n is PartNodeSO part)
-            {
-                if (GameDataManager.Instance.TryGetPart(part.openPart, out PartSave p))
-                {
-                    Debug.Log(p.enabled);
-                    nodeDic[n.id].Init(p.enabled);
-                }
-            }
-            else if (n is WeaponNodeSO weapon)
-            {
-                if (GameDataManager.Instance.TryGetWeapon(weapon.weapon, out WeaponSave w))
-                {
-                    Debug.Log(w.enabled);
-                    nodeDic[n.id].Init(w.enabled);
-                }
-            }
-            else if (n is StartNodeSO start)
-            {
-                nodeDic[n.id].Init(true);
-            }
-        });
-    }
-
-    #region UI
-
-    public void Open()
-    {
-        _treeRect.DOAnchorPosY(0, 0.5f).SetEase(Ease.Linear);
-        UIControlManager.Instance.overUIAmount++;
-    }
-
-    public void Close()
-    {
-        _treeRect.DOAnchorPosY(-1080, 0.5f).SetEase(Ease.Linear);
-        UIControlManager.Instance.overUIAmount--;
-    }
-
-    #endregion
-
-
-
-#if UNITY_EDITOR
     [ContextMenu("CreateNodes")]
     private void CreateNodes()
     {
         treeSO.nodes.ForEach(node =>
         {
-            Node nodeInstance = PrefabUtility.InstantiatePrefab(nodePf, transform) as Node;
-            nodeInstance.SetNode(node);
+            Node nodeInstance = Instantiate(nodePf, transform);
+            nodeInstance.node = node;
 
             if (node is PartNodeSO part)
             {
@@ -148,7 +74,7 @@ public class TechTree : MonoBehaviour, IWindowPanel
             else if (node is StartNodeSO)
             {
                 nodeInstance.name = "StartNode";
-                //nodeInstance.DestroyEdge();
+                nodeInstance.DestroyEdge();
             }
         });
     }
@@ -156,64 +82,114 @@ public class TechTree : MonoBehaviour, IWindowPanel
     [ContextMenu("RefreshNodes")]
     private void RefreshNode()
     {
-        for (int i = 0; i < transform.childCount; i++)
+        for(int i = 0; i < transform.childCount; i++)
         {
-            if (transform.GetChild(i).TryGetComponent(out Node node))
+            if(transform.GetChild(i).TryGetComponent(out Node node))
             {
-                Node nodeInstance = PrefabUtility.InstantiatePrefab(nodePf, transform) as Node;
-                //nodeInstance.SetEdgePosition(node.GetEdgePosition());
-                //nodeInstance.SetPosition(node.GetPosition());
-                //nodeInstance.transform.SetSiblingIndex(i);
+                Node nodeInstance = Instantiate(nodePf, transform);
+                nodeInstance.SetEdgePosition(node.GetEdgePosition());
+                nodeInstance.SetPosition(node.GetPosition());
+                nodeInstance.transform.SetSiblingIndex(i);
 
-                //nodeInstance.node = node.NodeType;
+                nodeInstance.node = node.node;
 
-                if (node.NodeType is PartNodeSO part)
+                if (node.node is PartNodeSO part)
                 {
                     nodeInstance.name = part.openPart.ToString();
                 }
-                else if (node.NodeType is WeaponNodeSO weapon)
+                else if (node.node is WeaponNodeSO weapon)
                 {
                     nodeInstance.name = weapon.weapon.ToString();
                 }
-                else if (node.NodeType is StartNodeSO)
+                else if (node.node is StartNodeSO)
                 {
                     nodeInstance.name = "StartNode";
+                    nodeInstance.DestroyEdge();
                 }
 
                 DestroyImmediate(node.gameObject);
-                //Destroy(NodeType.gameObject);
+                //Destroy(node.gameObject);
             }
         }
     }
 
-    private void OnValidate()
+    public bool TryGetNode(NodeSO nodeSO, out Node node)
     {
-        int childCnt = transform.childCount;
-        nodeDic.Clear();
+        if (nodeSO == null)
+        {
+            node = null;
+            return false;
+        }
+
+        return nodeDic.TryGetValue(nodeSO, out node);
+    }
+
+    public Node GetNode(int id)
+    {
+        //�ϴ� �⺻���� ù��° �� ��ȯ
 
         for (int i = 0; i < treeSO.nodes.Count; i++)
         {
-            for (int j = 0; j < childCnt; j++)
+            if (treeSO.nodes[i].id == id)
             {
-                if (transform.GetChild(j).TryGetComponent(out Node node))
+                NodeSO nodeSO = treeSO.nodes[i];
+                return nodeDic[nodeSO];
+            }
+        }
+        return null;
+    }
+
+    public void Save()
+    {
+        List<Node> parts = new List<Node>();
+        List<Node> weapons = new List<Node>();
+        treeSO.nodes.ForEach(n =>
+        {
+            if (n is PartNodeSO)
+            {
+                if (TryGetNode(n, out Node node))
                 {
-                    if (treeSO.nodes[i].id != node.NodeType.id) continue;
-                    nodeDic.Add(node.NodeType.id, node);
+                    parts.Add(node);
                 }
             }
-        }
 
-        for (int i = 0; i < treeSO.nodes.Count; i++)
-        {
-            NodeSO nodeSO = treeSO.nodes[i];
-            if (nodeDic.TryGetValue(nodeSO.id, out Node node))
+            if (n is WeaponNodeSO)
             {
-                node.SetEdge();
+                if (TryGetNode(n, out Node node))
+                {
+                    weapons.Add(node);
+                }
             }
-        }
-    }
-#endif
+        });
 
+        GameDataManager.Instance.SetParts(parts);
+        GameDataManager.Instance.SetWeapons(weapons);
+
+        GameDataManager.Instance.Save();
+    }
+
+    public void Load()
+    {
+        treeSO.nodes.ForEach(n =>
+        {
+            if (n is PartNodeSO part)
+            {
+                if (GameDataManager.Instance.TryGetPart(part.openPart, out PartSave p))
+                {
+                    nodeDic[n].Init(this, p.enabled);
+                }
+            }
+            else if (n is WeaponNodeSO weapon)
+            {
+                if (GameDataManager.Instance.TryGetWeapon(weapon.weapon, out WeaponSave w))
+                {
+                    nodeDic[n].Init(this, w.enabled);
+                }
+            }
+        });
+    }
+
+    
 }
 
 

@@ -18,13 +18,13 @@ public class TTUltWeapon : UltWeapon
     protected override void Start()
     {
         base.Start();
+        if(enabled == false) return;
         _firePoint = PlayerPartController.GetCurrentPlayerPart().transform.Find("UltFirePoint");
     }
 
     protected override void UseUltWeapon()
     {
         if (UseWeapon() == false) return;
-        
         StartCoroutine(CoroutineFireMissiles());
     }
 

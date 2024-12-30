@@ -18,8 +18,7 @@ MonoBehaviour:
   nextNodes:
   - {fileID: 234842504126906878}
   - {fileID: -2143829668694378394}
-  prevNode: {fileID: -6908903124428556733}
-  icon: {fileID: 21300000, guid: 5de22066704b6a94d9d8708322a13f01, type: 3}
+  icon: {fileID: 21300000, guid: 4242761086ba7e649b46e9a8e9982ec4, type: 3}
   requireCoin: 700
   openPart: 3
   explain: "\uAC00\uACF5\uD560 \uC704\uB825\uC744 \uAC00\uC9C4 \uC5F0\uC0AC\uB825\uC744
@@ -39,12 +38,11 @@ MonoBehaviour:
   m_Name: WeaponNodeSO-1
   m_EditorClassIdentifier: 
   guid: aad049c9f0bd33046a7803982cbe7aaf
-  position: {x: -690.00037, y: -414}
+  position: {x: -689.5, y: -413.49988}
   id: 1
   nextNodes:
-  - {fileID: -7026608529849453298}
   - {fileID: -3222040894075672996}
-  prevNode: {fileID: -7095805674271920510}
+  - {fileID: -7026608529849453298}
   icon: {fileID: 21300000, guid: 75ca4554959336a41a98ba8193f10aed, type: 3}
   requireCoin: 200
   weapon: 10
@@ -67,7 +65,6 @@ MonoBehaviour:
   id: 0
   nextNodes:
   - {fileID: -7284153135833545810}
-  prevNode: {fileID: 0}
   icon: {fileID: 21300000, guid: 913c098d69791ca40a01b9bc69206286, type: 3}
   requireCoin: 0
 --- !u!114 &-7026608529849453298
@@ -87,7 +84,6 @@ MonoBehaviour:
   id: 3
   nextNodes:
   - {fileID: 5938105632368609772}
-  prevNode: {fileID: -7284153135833545810}
   icon: {fileID: 21300000, guid: 2ca7497791cc0cd479ca3520cbee8b72, type: 3}
   requireCoin: 200
   weapon: 11
@@ -110,7 +106,7 @@ MonoBehaviour:
   id: 11
   nextNodes:
   - {fileID: -7442011928976105273}
-  prevNode: {fileID: -2214773564437759324}
+  - {fileID: -2143829668694378394}
   icon: {fileID: 21300000, guid: 8a43a9fcd4ef7e3478a0042e2684a9d1, type: 3}
   requireCoin: 300
   weapon: 20
@@ -128,11 +124,10 @@ MonoBehaviour:
   m_Name: WeaponNodeSO-19
   m_EditorClassIdentifier: 
   guid: 3e857dca78c63de42b7a691c2fa4720b
-  position: {x: 800.00006, y: -280}
+  position: {x: 758.3225, y: -279.99997}
   id: 19
   nextNodes:
   - {fileID: 636366771279778172}
-  prevNode: {fileID: 234842504126906878}
   icon: {fileID: 21300000, guid: 83590aac24b7c1a47bb2cdd175663a8f, type: 3}
   requireCoin: 400
   weapon: 2
@@ -154,7 +149,6 @@ MonoBehaviour:
   id: 12
   nextNodes:
   - {fileID: 5378647910117543522}
-  prevNode: {fileID: 2163563630612604685}
   icon: {fileID: 21300000, guid: 7d31a25726748ed4f8d938e11499761c, type: 3}
   requireCoin: 400
   weapon: 4
@@ -173,12 +167,11 @@ MonoBehaviour:
   m_Name: PartNodeSO-2
   m_EditorClassIdentifier: 
   guid: a88c360dd3dd3564ea4b675883a369db
-  position: {x: -467.99994, y: -550.6665}
+  position: {x: -467.99997, y: -550.4001}
   id: 2
   nextNodes:
   - {fileID: -1202455316387461876}
-  prevNode: {fileID: -7284153135833545810}
-  icon: {fileID: 21300000, guid: 3449d5b5784d81b49b731dfc54c67c8a, type: 3}
+  icon: {fileID: 21300000, guid: 3432c3467eea85542bb830ee0b6684f6, type: 3}
   requireCoin: 400
   openPart: 2
   explain: "\uBC18\uC790\uB3D9 \uAD6C\uCCB4 \uB808\uC77C\uAC74\uC744 \uD0D1\uC7AC\uD55C
@@ -201,7 +194,6 @@ MonoBehaviour:
   id: 10
   nextNodes:
   - {fileID: -6908903124428556733}
-  prevNode: {fileID: 5938105632368609772}
   icon: {fileID: 21300000, guid: f69d185158d84ac4f93c8c80483d5685, type: 3}
   requireCoin: 300
   weapon: 18
@@ -221,12 +213,11 @@ MonoBehaviour:
   m_Name: WeaponNodeSO-16
   m_EditorClassIdentifier: 
   guid: b9d81261f4bdbfe40bac188a4d8c2925
-  position: {x: 580, y: -153.33331}
+  position: {x: 360, y: -165.6}
   id: 16
   nextNodes:
   - {fileID: 2914467863781277404}
   - {fileID: 5380597897789633021}
-  prevNode: {fileID: -7442011928976105273}
   icon: {fileID: 21300000, guid: d40d104d9ad55a44ca12f8e0eafbe230, type: 3}
   requireCoin: 300
   weapon: 13
@@ -249,7 +240,6 @@ MonoBehaviour:
   id: 6
   nextNodes:
   - {fileID: 6096772677620274872}
-  prevNode: {fileID: -1202455316387461876}
   icon: {fileID: 21300000, guid: 78a4237694ba951439e3f3ad4cb8e983, type: 3}
   requireCoin: 300
   weapon: 8
@@ -272,7 +262,6 @@ MonoBehaviour:
   id: 5
   nextNodes:
   - {fileID: -2140480616720950817}
-  prevNode: {fileID: -3222040894075672996}
   icon: {fileID: 21300000, guid: 243cd7a95cffd56458e32b257081596b, type: 3}
   requireCoin: 250
   weapon: 9
@@ -287,7 +276,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a540f074e8eedc143a24836c44f62d00, type: 3}
-  m_Name: TechTree.V1_KR
+  m_Name: TechTree.V1
   m_EditorClassIdentifier: 
   nodes:
   - {fileID: -7095805674271920510}
@@ -328,7 +317,6 @@ MonoBehaviour:
   id: 15
   nextNodes:
   - {fileID: -6904565864644033356}
-  prevNode: {fileID: -7442011928976105273}
   icon: {fileID: 21300000, guid: 815ec5fb507345f4d9b4cfc33435773a, type: 3}
   requireCoin: 350
   weapon: 1
@@ -347,10 +335,9 @@ MonoBehaviour:
   m_Name: WeaponNodeSO-20
   m_EditorClassIdentifier: 
   guid: ba41fc9355746df4e8fd8977cee7d4d1
-  position: {x: 1068.7202, y: -280}
+  position: {x: 998.2489, y: -279.99994}
   id: 20
   nextNodes: []
-  prevNode: {fileID: -6904565864644033356}
   icon: {fileID: 21300000, guid: 7bbe8ec779d02b343a76db39f34835d8, type: 3}
   requireCoin: 250
   weapon: 3
@@ -373,8 +360,7 @@ MonoBehaviour:
   id: 9
   nextNodes:
   - {fileID: -5005693831300187091}
-  prevNode: {fileID: 5938105632368609772}
-  icon: {fileID: 21300000, guid: 032fb98bf6db80a4cbc97ecb7ab4e4f3, type: 3}
+  icon: {fileID: 21300000, guid: 21ed27aa44264fa46a6741e999d00420, type: 3}
   requireCoin: 500
   openPart: 1
   explain: "TC-45 \uACE0\uC555 \uC5F0\uB8CC\uC0AC\uCD9C\uAE30\uB97C \uC751\uC6A9\uD55C
@@ -393,10 +379,9 @@ MonoBehaviour:
   m_Name: WeaponNodeSO-17
   m_EditorClassIdentifier: 
   guid: fae843c1ce955f04097ae8718791d3cf
-  position: {x: 800.00006, y: -153.33331}
+  position: {x: 580, y: -165.6}
   id: 17
   nextNodes: []
-  prevNode: {fileID: -2143829668694378394}
   icon: {fileID: 21300000, guid: 64d200285f5e5d748883dd3b3c95901d, type: 3}
   requireCoin: 750
   weapon: 21
@@ -418,7 +403,6 @@ MonoBehaviour:
   position: {x: 360, y: -413}
   id: 13
   nextNodes: []
-  prevNode: {fileID: -5005693831300187091}
   icon: {fileID: 21300000, guid: bd46a86bce37dd04ab17b0a24a8e1c58, type: 3}
   requireCoin: 350
   weapon: 5
@@ -437,10 +421,9 @@ MonoBehaviour:
   m_Name: WeaponNodeSO-18
   m_EditorClassIdentifier: 
   guid: 48199d6f0ed59a6458986196da40a975
-  position: {x: 799.99976, y: -21.33333}
+  position: {x: 580.0001, y: -33.71769}
   id: 18
   nextNodes: []
-  prevNode: {fileID: -2143829668694378394}
   icon: {fileID: 21300000, guid: 62f3ca8aea0560c4c986e3a482db75ad, type: 3}
   requireCoin: 750
   weapon: 22
@@ -464,7 +447,6 @@ MonoBehaviour:
   nextNodes:
   - {fileID: 2163563630612604685}
   - {fileID: -2214773564437759324}
-  prevNode: {fileID: -7026608529849453298}
   icon: {fileID: 21300000, guid: 6259ed4d08ecf5c4c8963396fae5ae69, type: 3}
   requireCoin: 250
   weapon: 12
@@ -486,7 +468,6 @@ MonoBehaviour:
   id: 7
   nextNodes:
   - {fileID: 8402597492875358155}
-  prevNode: {fileID: -2140480616720950817}
   icon: {fileID: 21300000, guid: 38cbe4758b2355d448737fcb696df243, type: 3}
   requireCoin: 270
   weapon: 7
@@ -509,7 +490,6 @@ MonoBehaviour:
   position: {x: 359.84766, y: -550.45374}
   id: 8
   nextNodes: []
-  prevNode: {fileID: 6096772677620274872}
   icon: {fileID: 21300000, guid: debb7d16285776c46a309f73cc4f99c3, type: 3}
   requireCoin: 300
   weapon: 6

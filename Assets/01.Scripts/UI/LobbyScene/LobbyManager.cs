@@ -1,17 +1,25 @@
+using System.Collections;
 using Objects.PartSelect;
 using UnityEngine;
 
-namespace  LobbyScene
+namespace LobbyScene
 {
-    
+
     public class LobbyManager : MonoBehaviour
     {
         [SerializeField] private PartChanger _partChanager;
-        public void GameStart()
+        [SerializeField] private float _sceneTransitionWaitDuration;
+        public void GameStart(string sceneName)
         {
             SaveManager.SaveData();
-            SceneLoadingManager.LoadScene("GameScene");
+            StartCoroutine(GameStartCoroutine(sceneName));
         } 
+
+        private IEnumerator GameStartCoroutine(string sceneName)
+        {
+            yield return new WaitForSeconds(_sceneTransitionWaitDuration);
+            SceneLoadingManager.LoadScene(sceneName);
+        }
 
         public void GameExit()
         {

@@ -31,6 +31,7 @@ public class MagazineInfo
 	[HideInInspector] public float curAttackDelay;
 	
 	public Action<Vector3> OnAttackEvent;
+	[SerializeField] protected MuzzleEffectPoolType _muzzleEffectPoolType;
 	public Transform[] bulletFirePositions;
 
 	[HideInInspector] public Vector3 AttackDirection;
@@ -61,6 +62,7 @@ public class MagazineInfo
 		{
 			if (bulletFirePositions[i] != null)
 			{
+				bulletFirePositions[i].gameObject.Pop(_muzzleEffectPoolType, bulletFirePositions[i].transform);
 				bulletFirePositions[i].gameObject.Pop(
 					bulletPoolingType,
 					bulletFirePositions[i].position, 
