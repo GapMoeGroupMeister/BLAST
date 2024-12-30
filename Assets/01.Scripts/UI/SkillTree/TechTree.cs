@@ -206,7 +206,10 @@ public class TechTree : MonoBehaviour, IWindowPanel
         for (int i = 0; i < treeSO.nodes.Count; i++)
         {
             NodeSO nodeSO = treeSO.nodes[i];
-            nodeDic[nodeSO.id].SetEdge();
+            if (nodeDic.TryGetValue(nodeSO.id, out Node node))
+            {
+                node.SetEdge();
+            }
         }
     }
 #endif

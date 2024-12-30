@@ -1,9 +1,5 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.UIElements;
 
 //[CreateAssetMenu(menuName = "SO/SkillTreeNode")]
 public abstract class NodeSO : ScriptableObject
@@ -14,6 +10,12 @@ public abstract class NodeSO : ScriptableObject
     [HideInInspector] public int id;
     [HideInInspector] public List<NodeSO> nextNodes;
     [HideInInspector] public NodeSO prevNode;
+
     public Sprite icon;
     public int requireCoin;
+
+
+    public string name;
+    [TextArea]
+    public string explain;
 }

@@ -5,6 +5,4 @@ using UnityEngine;
 public class PartNodeSO : NodeSO
 {
     public PlayerPartType openPart;
-    [TextArea]
-    public string explain;
 }

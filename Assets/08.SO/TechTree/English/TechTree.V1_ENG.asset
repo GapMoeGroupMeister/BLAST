@@ -1,0 +1,586 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-7442011928976105273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0ac6e1064397f04eac35488a387594e, type: 3}
+  m_Name: PartNodeSO-14
+  m_EditorClassIdentifier: 
+  guid: 2f53d9e38b8811c4aa9ac5f28f45dc0a
+  position: {x: 360, y: -280}
+  id: 14
+  nextNodes:
+  - {fileID: 234842504126906878}
+  - {fileID: -2143829668694378394}
+  prevNode: {fileID: -6908903124428556733}
+  icon: {fileID: 21300000, guid: 4242761086ba7e649b46e9a8e9982ec4, type: 3}
+  requireCoin: 700
+  name: HOLE MAKER
+  explain: It do high-speed continuous shooting UB-12 deteriorated uranium bullet
+    with 32 barrel has a formidable force of continuous power. Usually it called
+    a 'Holl Maker'.
+  openPart: 3
+--- !u!114 &-7284153135833545810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc21cd2ec364e594d8dc2f91f8569e29, type: 3}
+  m_Name: WeaponNodeSO-1
+  m_EditorClassIdentifier: 
+  guid: aad049c9f0bd33046a7803982cbe7aaf
+  position: {x: -922.6666, y: -413.33337}
+  id: 1
+  nextNodes:
+  - {fileID: -7026608529849453298}
+  - {fileID: -3222040894075672996}
+  prevNode: {fileID: -7095805674271920510}
+  icon: {fileID: 21300000, guid: 75ca4554959336a41a98ba8193f10aed, type: 3}
+  requireCoin: 200
+  name: Ballistic Missile
+  explain: It's strategic weapon, but to high-tech robot it's just common weapon.
+  weapon: 10
+--- !u!114 &-7095805674271920510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5a579d6d09d4d54e9f01a96ad8ac520, type: 3}
+  m_Name: StartNode
+  m_EditorClassIdentifier: 
+  guid: e7e30c7dd96c05846b03016fd199fa1f
+  position: {x: -1070, y: -414}
+  id: 0
+  nextNodes:
+  - {fileID: -7284153135833545810}
+  prevNode: {fileID: 0}
+  icon: {fileID: 21300000, guid: 913c098d69791ca40a01b9bc69206286, type: 3}
+  requireCoin: 0
+  name: 
+  explain: 
+--- !u!114 &-7026608529849453298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc21cd2ec364e594d8dc2f91f8569e29, type: 3}
+  m_Name: WeaponNodeSO-3
+  m_EditorClassIdentifier: 
+  guid: 4416fb96ea467654bb08f1bb5da4ce8b
+  position: {x: -467.99997, y: -413.99994}
+  id: 3
+  nextNodes:
+  - {fileID: 5938105632368609772}
+  prevNode: {fileID: -7284153135833545810}
+  icon: {fileID: 21300000, guid: 2ca7497791cc0cd479ca3520cbee8b72, type: 3}
+  requireCoin: 200
+  name: Energy Sphere
+  explain: Powerful energe sphere cause electricla damage.
+  weapon: 11
+--- !u!114 &-6908903124428556733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc21cd2ec364e594d8dc2f91f8569e29, type: 3}
+  m_Name: WeaponNodeSO-11
+  m_EditorClassIdentifier: 
+  guid: 5a62b2dc432dddb488f8b1ee2196227b
+  position: {x: 139.33325, y: -280.00003}
+  id: 11
+  nextNodes:
+  - {fileID: -7442011928976105273}
+  prevNode: {fileID: -2214773564437759324}
+  icon: {fileID: 21300000, guid: 8a43a9fcd4ef7e3478a0042e2684a9d1, type: 3}
+  requireCoin: 300
+  name: Acidic Area
+  explain: 
+  weapon: 20
+--- !u!114 &-6904565864644033356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc21cd2ec364e594d8dc2f91f8569e29, type: 3}
+  m_Name: WeaponNodeSO-19
+  m_EditorClassIdentifier: 
+  guid: 3e857dca78c63de42b7a691c2fa4720b
+  position: {x: 800.00006, y: -280}
+  id: 19
+  nextNodes:
+  - {fileID: 636366771279778172}
+  prevNode: {fileID: 234842504126906878}
+  icon: {fileID: 21300000, guid: 83590aac24b7c1a47bb2cdd175663a8f, type: 3}
+  requireCoin: 400
+  name: 
+  explain: "\uAC15\uB825\uD55C \uD30C\uAD34 \uAD11\uC120\uC744 \uBC1C\uC0AC\uD569\uB2C8\uB2E4!"
+  weapon: 2
+--- !u!114 &-6447357882688151100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0ac6e1064397f04eac35488a387594e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  guid: a993dd48d2205054d8bd0be654efd00e
+  position: {x: -89.33341, y: -74.6667}
+  id: 21
+  nextNodes: []
+  prevNode: {fileID: 0}
+  icon: {fileID: 21300000, guid: 3432c3467eea85542bb830ee0b6684f6, type: 3}
+  requireCoin: 0
+  name: AMPERE
+  explain: 'Machine equipped with a semi-automatic spherical railgun.
+
+    Charging
+    is useless because of small reactor.'
+  openPart: 2
+--- !u!114 &-5005693831300187091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc21cd2ec364e594d8dc2f91f8569e29, type: 3}
+  m_Name: WeaponNodeSO-12
+  m_EditorClassIdentifier: 
+  guid: dcd95989aeb131c438be73ed35280bba
+  position: {x: 139.33325, y: -413.33334}
+  id: 12
+  nextNodes:
+  - {fileID: 5378647910117543522}
+  prevNode: {fileID: 2163563630612604685}
+  icon: {fileID: 21300000, guid: 7d31a25726748ed4f8d938e11499761c, type: 3}
+  requireCoin: 400
+  name: Napalm
+  explain: Napalm's power is strong as it work in water.
+  weapon: 4
+--- !u!114 &-3222040894075672996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0ac6e1064397f04eac35488a387594e, type: 3}
+  m_Name: PartNodeSO-2
+  m_EditorClassIdentifier: 
+  guid: a88c360dd3dd3564ea4b675883a369db
+  position: {x: -664.6667, y: -550.6667}
+  id: 2
+  nextNodes:
+  - {fileID: -1202455316387461876}
+  prevNode: {fileID: -7284153135833545810}
+  icon: {fileID: 21300000, guid: 9553e5cdbc5414d4fb30ea5c53965396, type: 3}
+  requireCoin: 400
+  name: TITAN
+  explain: Although it was originally intended as a cargo, it was modified to provide
+    insufficient combat capabilities.  It has difficult to use for long-term combat,
+    but thanks to many weapons loaded instead of cargo can complement this.
+  openPart: 0
+--- !u!114 &-2214773564437759324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc21cd2ec364e594d8dc2f91f8569e29, type: 3}
+  m_Name: WeaponNodeSO-10
+  m_EditorClassIdentifier: 
+  guid: bc5f6e82bf06d8045afb1b52c061231e
+  position: {x: -72, y: -280}
+  id: 10
+  nextNodes:
+  - {fileID: -6908903124428556733}
+  prevNode: {fileID: 5938105632368609772}
+  icon: {fileID: 21300000, guid: f69d185158d84ac4f93c8c80483d5685, type: 3}
+  requireCoin: 300
+  name: Laser Tail
+  explain: "\uD50C\uB808\uC774\uC5B4\uB97C \uB530\uB77C\uB2E4\uB2C8\uB294 \uC18C\uD615
+    \uB808\uC774\uC800 \uC0DD\uC131 \uC7A5\uCE58\uAC00 \uC11C\uB85C\uB97C \uB808\uC774\uC800\uB85C
+    \uC774\uC5B4\uC11C \uAF2C\uB9AC\uB97C \uD615\uC131\uD569\uB2C8\uB2E4\nGenerate "
+  weapon: 18
+--- !u!114 &-2143829668694378394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc21cd2ec364e594d8dc2f91f8569e29, type: 3}
+  m_Name: WeaponNodeSO-16
+  m_EditorClassIdentifier: 
+  guid: b9d81261f4bdbfe40bac188a4d8c2925
+  position: {x: 580, y: -153.33331}
+  id: 16
+  nextNodes:
+  - {fileID: 2914467863781277404}
+  - {fileID: 5380597897789633021}
+  prevNode: {fileID: -7442011928976105273}
+  icon: {fileID: 21300000, guid: d40d104d9ad55a44ca12f8e0eafbe230, type: 3}
+  requireCoin: 300
+  name: Dash Extension
+  explain: When you dash cuase impact.
+  weapon: 13
+--- !u!114 &-2140480616720950817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc21cd2ec364e594d8dc2f91f8569e29, type: 3}
+  m_Name: WeaponNodeSO-6
+  m_EditorClassIdentifier: 
+  guid: 33807d5e5add37a4b86e301319864c1f
+  position: {x: -72.00002, y: -550.6667}
+  id: 6
+  nextNodes:
+  - {fileID: 6096772677620274872}
+  prevNode: {fileID: -1202455316387461876}
+  icon: {fileID: 21300000, guid: 78a4237694ba951439e3f3ad4cb8e983, type: 3}
+  requireCoin: 300
+  name: Magnetic Area
+  explain: Install magnetic objects to create magnetic fields that attract enemies.
+  weapon: 8
+--- !u!114 &-1202455316387461876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc21cd2ec364e594d8dc2f91f8569e29, type: 3}
+  m_Name: WeaponNodeSO-5
+  m_EditorClassIdentifier: 
+  guid: ad56affb4d9a6e4489c0f318f601eb61
+  position: {x: -271.3333, y: -550.66675}
+  id: 5
+  nextNodes:
+  - {fileID: -2140480616720950817}
+  prevNode: {fileID: -3222040894075672996}
+  icon: {fileID: 21300000, guid: 243cd7a95cffd56458e32b257081596b, type: 3}
+  requireCoin: 250
+  name: Magnetic Body
+  explain: Increase experience acquire range.
+  weapon: 9
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a540f074e8eedc143a24836c44f62d00, type: 3}
+  m_Name: TechTree.V1_ENG
+  m_EditorClassIdentifier: 
+  nodes:
+  - {fileID: -7095805674271920510}
+  - {fileID: -7284153135833545810}
+  - {fileID: -3222040894075672996}
+  - {fileID: -7026608529849453298}
+  - {fileID: 5938105632368609772}
+  - {fileID: -1202455316387461876}
+  - {fileID: -2140480616720950817}
+  - {fileID: 6096772677620274872}
+  - {fileID: 8402597492875358155}
+  - {fileID: 2163563630612604685}
+  - {fileID: -2214773564437759324}
+  - {fileID: -6908903124428556733}
+  - {fileID: -5005693831300187091}
+  - {fileID: 5378647910117543522}
+  - {fileID: -7442011928976105273}
+  - {fileID: 234842504126906878}
+  - {fileID: -2143829668694378394}
+  - {fileID: 2914467863781277404}
+  - {fileID: 5380597897789633021}
+  - {fileID: -6904565864644033356}
+  - {fileID: 636366771279778172}
+  - {fileID: -6447357882688151100}
+  - {fileID: 766745954337144972}
+--- !u!114 &234842504126906878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc21cd2ec364e594d8dc2f91f8569e29, type: 3}
+  m_Name: WeaponNodeSO-15
+  m_EditorClassIdentifier: 
+  guid: 88abec4b1750fa6479b3739518a2a5bb
+  position: {x: 579.9999, y: -280}
+  id: 15
+  nextNodes:
+  - {fileID: -6904565864644033356}
+  prevNode: {fileID: -7442011928976105273}
+  icon: {fileID: 21300000, guid: 815ec5fb507345f4d9b4cfc33435773a, type: 3}
+  requireCoin: 350
+  name: Turret
+  explain: Install turret to attack arround the turret.
+  weapon: 1
+--- !u!114 &636366771279778172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc21cd2ec364e594d8dc2f91f8569e29, type: 3}
+  m_Name: WeaponNodeSO-20
+  m_EditorClassIdentifier: 
+  guid: ba41fc9355746df4e8fd8977cee7d4d1
+  position: {x: 1068.7202, y: -280}
+  id: 20
+  nextNodes: []
+  prevNode: {fileID: -6904565864644033356}
+  icon: {fileID: 21300000, guid: 7bbe8ec779d02b343a76db39f34835d8, type: 3}
+  requireCoin: 250
+  name: 
+  explain: "\uD0C4\uC5D0 \uAD00\uD1B5\uD2B9\uC131\uC744 \uBD80\uCC29\uD558\uC5EC
+    \uC801\uC744 \uC81C\uAC70\uD574\uB3C4 \uD3ED\uBC1C\uD558\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4.  "
+  weapon: 3
+--- !u!114 &766745954337144972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0ac6e1064397f04eac35488a387594e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  guid: 9ffd448a9369b5649b4be9df38cff655
+  position: {x: 82.000015, y: -74.6667}
+  id: 22
+  nextNodes: []
+  prevNode: {fileID: 0}
+  icon: {fileID: 21300000, guid: 34121bf74220077459d51d60f0f21cc7, type: 3}
+  requireCoin: 0
+  name: FIRST NOVA
+  explain: 'It is a limited production mahcine created by the collaboration of Isonic
+    and HK.
+
+    Today, the peak of technology, it carried-in anti-gravity and imaginary
+    mass energy are applied antiparticle artillery to erase targets from the world.'
+  openPart: 4
+--- !u!114 &2163563630612604685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0ac6e1064397f04eac35488a387594e, type: 3}
+  m_Name: PartNodeSO-9
+  m_EditorClassIdentifier: 
+  guid: 3aef217211f0fd94b854bd99423ec9e2
+  position: {x: -72, y: -414.00003}
+  id: 9
+  nextNodes:
+  - {fileID: -5005693831300187091}
+  prevNode: {fileID: 5938105632368609772}
+  icon: {fileID: 21300000, guid: 21ed27aa44264fa46a6741e999d00420, type: 3}
+  requireCoin: 500
+  name: BARBECUE OF FRIDAY
+  explain: 'It equp a low-cost flamethrower applied a TC-45 high-pressure fuel injection
+    machine.
+
+    Now let''s burn.'
+  openPart: 1
+--- !u!114 &2914467863781277404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc21cd2ec364e594d8dc2f91f8569e29, type: 3}
+  m_Name: WeaponNodeSO-17
+  m_EditorClassIdentifier: 
+  guid: fae843c1ce955f04097ae8718791d3cf
+  position: {x: 799.99994, y: -153.33334}
+  id: 17
+  nextNodes: []
+  prevNode: {fileID: -2143829668694378394}
+  icon: {fileID: 21300000, guid: 64d200285f5e5d748883dd3b3c95901d, type: 3}
+  requireCoin: 750
+  name: 
+  explain: "\uC57D\uD654\uB41C \uBBF8\uC9C0\uC758 \uACF5\uAC04\uC744 \uB9CC\uB4E4\uC5B4
+    \uB2FF\uC740  \uBD80\uD488\uB4E4\uC744 \uBB34\uB85C \uB418\uB3CC\uB9BD\uB2C8\uB2E4\n"
+  weapon: 21
+--- !u!114 &5378647910117543522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc21cd2ec364e594d8dc2f91f8569e29, type: 3}
+  m_Name: WeaponNodeSO-13
+  m_EditorClassIdentifier: 
+  guid: 48147c57125010445b953a09210605cb
+  position: {x: 359.99994, y: -414}
+  id: 13
+  nextNodes: []
+  prevNode: {fileID: -5005693831300187091}
+  icon: {fileID: 21300000, guid: bd46a86bce37dd04ab17b0a24a8e1c58, type: 3}
+  requireCoin: 350
+  name: Oil Terror
+  explain: 'Spray oil that can spread fire. '
+  weapon: 5
+--- !u!114 &5380597897789633021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc21cd2ec364e594d8dc2f91f8569e29, type: 3}
+  m_Name: WeaponNodeSO-18
+  m_EditorClassIdentifier: 
+  guid: 48199d6f0ed59a6458986196da40a975
+  position: {x: 799.99976, y: -21.33333}
+  id: 18
+  nextNodes: []
+  prevNode: {fileID: -2143829668694378394}
+  icon: {fileID: 21300000, guid: 62f3ca8aea0560c4c986e3a482db75ad, type: 3}
+  requireCoin: 750
+  name: 
+  explain: "\uD575\uC740 \uC608\uC804\uBD80\uD130 \uC138\uACC4\uC5D0\uC11C \uAC00\uC7A5
+    \uAC15\uB825\uD55C \uBB34\uAE30\uB85C \uCD94\uC559\uBC1B\uC544\uC654\uC2B5\uB2C8\uB2E4"
+  weapon: 22
+--- !u!114 &5938105632368609772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc21cd2ec364e594d8dc2f91f8569e29, type: 3}
+  m_Name: WeaponNodeSO-4
+  m_EditorClassIdentifier: 
+  guid: c3c01191a6570184e873ac24fb49f4cc
+  position: {x: -271.33337, y: -414}
+  id: 4
+  nextNodes:
+  - {fileID: 2163563630612604685}
+  - {fileID: -2214773564437759324}
+  prevNode: {fileID: -7026608529849453298}
+  icon: {fileID: 21300000, guid: 6259ed4d08ecf5c4c8963396fae5ae69, type: 3}
+  requireCoin: 250
+  name: Tesla Blade
+  explain: 'Throw a slash with subminiature camera
+
+
+'
+  weapon: 12
+--- !u!114 &6096772677620274872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc21cd2ec364e594d8dc2f91f8569e29, type: 3}
+  m_Name: WeaponNodeSO-7
+  m_EditorClassIdentifier: 
+  guid: 83aef30663cc22b44ae846f9fcf994bc
+  position: {x: 139.19995, y: -550.39996}
+  id: 7
+  nextNodes:
+  - {fileID: 8402597492875358155}
+  prevNode: {fileID: -2140480616720950817}
+  icon: {fileID: 21300000, guid: 38cbe4758b2355d448737fcb696df243, type: 3}
+  requireCoin: 270
+  name: Chaining Lightning
+  explain: When you attack an enemy with an electrical property attack, launch a
+    chained attack on the nearby enemy
+  weapon: 7
+--- !u!114 &8402597492875358155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc21cd2ec364e594d8dc2f91f8569e29, type: 3}
+  m_Name: WeaponNodeSO-8
+  m_EditorClassIdentifier: 
+  guid: 47290c44a7b03074bbe1511ea93eee54
+  position: {x: 359.99985, y: -550.6668}
+  id: 8
+  nextNodes: []
+  prevNode: {fileID: 6096772677620274872}
+  icon: {fileID: 21300000, guid: debb7d16285776c46a309f73cc4f99c3, type: 3}
+  requireCoin: 300
+  name: EMP
+  explain: There was no robot that got hit this and didn't be stun.
+  weapon: 6
