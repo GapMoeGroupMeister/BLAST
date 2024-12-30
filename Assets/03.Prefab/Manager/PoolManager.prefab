@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7540996422526564781
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8671559324160866499}
+  - component: {fileID: 4440637687906710779}
+  m_Layer: 0
+  m_Name: PoolManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8671559324160866499
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7540996422526564781}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4440637687906710779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7540996422526564781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4889394bf6bb225498bb7f1958045b37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  poolBaseList:
+  - {fileID: 11400000, guid: e6b53e2ebe4e6034f9407518fce7e84b, type: 2}
+  - {fileID: 11400000, guid: 96051d6e5c3a2b84ab5d17fb760a470d, type: 2}
+  - {fileID: 11400000, guid: d4fd2ff67d946c34399898a82450466c, type: 2}
+  - {fileID: 11400000, guid: fa0a8e1654bd2764697f698221860e22, type: 2}
+  - {fileID: 11400000, guid: f2269d257a2e4694ba3e114827b1f99a, type: 2}
+  - {fileID: 11400000, guid: 3929c56fe9f39ff489547768c71a0d98, type: 2}
+  - {fileID: 11400000, guid: a42e2dff97eb53c409d40dd31104febd, type: 2}
+  - {fileID: 11400000, guid: 0a98ae3fb0a26f84d9bfdafa90cdbb56, type: 2}
+  - {fileID: 11400000, guid: b071f39352979384d96c11a9c3721097, type: 2}
+  - {fileID: 11400000, guid: 15b7aa5a2e016bb428b5b3218e85d6a2, type: 2}
+  poolingPairs:
+  - poolType: SFXPlayer
+    prefab: {fileID: 7387021849737377057, guid: 642b4c47cbef453458e8a77b73f9bacf,
+      type: 3}
+    poolCount: 20
