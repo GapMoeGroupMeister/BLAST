@@ -5,11 +5,8 @@ using UnityEngine;
 namespace LobbyScene
 {
     
-    public class LobbySceneUIManager : MonoSingleton<LobbySceneUIManager>
+    public class LobbySceneUIManager : MonoBehaviour
     {
-        [SerializeField] private PartChanger _partChanger;
-        [SerializeField] private SelectDisplayPanel _selectDisplayPanel;
-        [SerializeField] private PartSelectController _partSelectController;
         [SerializeField] private PartSelectPanel _partSelectPanel;
         [SerializeField] private MenuButtonGroup _menuButtonGroup;
         

@@ -22,6 +22,7 @@ public class WaveManager : MonoSingleton<WaveManager>
     private void Start()
     {
         // Stage관리자로 부터 WAve를 할당받음
+        if (stageWaves == null) return;
         _waveList = stageWaves.wavelist;
         StartWave(0, true);
 
@@ -29,6 +30,7 @@ public class WaveManager : MonoSingleton<WaveManager>
 
     private void OnDestroy()
     {
+        if (stageWaves == null) return;
         if(_waveCoroutine != null)
             StopCoroutine(_waveCoroutine);
     }
@@ -54,7 +56,7 @@ public class WaveManager : MonoSingleton<WaveManager>
         }
         int enemyIdx = 0;
         WaveSO waveSO = _waveList[wave];
-        bool isBossWave = (waveSO.boss.bossPrefab != null);
+        bool isBossWave = waveSO.boss.isBossExist;
         if (waveSO == null)
         {
             Debug.LogError($"Wave {wave} is null");
@@ -71,7 +73,7 @@ public class WaveManager : MonoSingleton<WaveManager>
 
         int allEnemy = AllEnemyCount(wave);
         Transform player = GameManager.Instance.Player.transform;
-        Vector3 spawnPos = player.position + Random.insideUnitSphere * 10;
+        Vector3 spawnPos = spawnPoints[Random.Range(0, spawnPoints.Count)].position;
         while (_currentEnemyCount < allEnemy)
         {
             if (!isRandomSpawn)
@@ -111,6 +113,7 @@ public class WaveManager : MonoSingleton<WaveManager>
 
     private IEnumerator SpawnEnemy(WaveEnemy waveEnemy, Vector3 spawnPoint)
     {
+
         Enemy enemy =
             gameObject.Pop(waveEnemy.enemyType, spawnPoint, Quaternion.identity) as Enemy;
         // Level 추가시 여기서 설정 해야디

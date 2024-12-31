@@ -67,7 +67,6 @@ public class Bullet : MonoBehaviour, IPoolingObject
 			percent = currentTime / duration;
 			transform.position = Vector3.Lerp(startPos, endPos, percent);
 		}
-		yield return new WaitForSeconds(duration);
 		OnDie();
 	}
 

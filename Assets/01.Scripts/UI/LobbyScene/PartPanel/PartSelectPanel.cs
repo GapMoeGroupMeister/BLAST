@@ -11,6 +11,7 @@ namespace LobbyScene
 
     public class PartSelectPanel : UIPanel
     {
+        [SerializeField] private PartChanger _partChanger;
         [SerializeField] private PlayerPartDataListSO partData;
         [SerializeField] private float _defaultPosX;
         [SerializeField] private float _activePosX;
@@ -28,6 +29,7 @@ namespace LobbyScene
         {
             base.Awake();
             _rectTrm = transform as RectTransform;
+            _partChanger.OnCompletePartChange += HandleCompletePartChange;
         }
 
         public override void Open()
@@ -47,11 +49,7 @@ namespace LobbyScene
             SetCanvasActive(false);
         }
 
-        private void Update()
-        {
-            //_canvasGroup.interactable = !PartChanger.Instance.IsChanging;
-        }
-
+       
 
         private void GenerateSlots()
         {
@@ -65,8 +63,9 @@ namespace LobbyScene
                 if (!datas[i].enabled) // 활성화 된 파츠가 아니면 생성 X
                     continue;
                 PartSelectSlot slot = Instantiate(_slotPrefab, _contentTrm);
-                slot.Initialize(this, partData.GetData(datas[i].id)); // 파즈 정보를 넣는다
+                slot.Initialize(partData.GetData(datas[i].id)); // 파즈 정보를 넣는다
                 slot.SetSelectIcon(currentPartID == datas[i].id);
+                slot.OnSelectEvent += HandleSelectPart;
                 //slot.AddOnClieckEvent(Close);
                 _partSlotList.Add(slot);
             }
@@ -92,12 +91,26 @@ namespace LobbyScene
             GenerateSlots();
         }
 
-        public void SelectPart(PlayerPartDataSO data)
+        public void HandleSelectPart(PlayerPartDataSO data)
         {
             _partDescriptionText.text = data.partDescription;
             _partSelectEvent.RaiseEvent(data);
-            RefreshSlot();
+            _partChanger.ChangePart(data);
+            SaveManager.SelectPlayerPart(data.id);
+            SetInteractable(false);
+            for (int i = 0; i < _partSlotList.Count; i++)
+            {
+                PartSelectSlot slot = _partSlotList[i];
+                slot.SetSelectIcon(slot.dataId == data.id);
+            }
         }
+
+        private void HandleCompletePartChange()
+        {
+            SetInteractable(true);
+        }
+
+
     }
 
 }

@@ -6,10 +6,13 @@ public class TitleSceneController : MonoBehaviour
 {
 	private bool _isGameStart = false;
 	[SerializeField] private string _lobbySceneName;
+	public static bool CanMoveToOtherScene { get; set; } = false;
+
 	private void Update()
 	{
+		if (CanMoveToOtherScene == false) return;
 		if (_isGameStart == true) return;
-		if(Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
+		if(Input.anyKeyDown)
 		{
 			_isGameStart = true;
 			OnStartGame();

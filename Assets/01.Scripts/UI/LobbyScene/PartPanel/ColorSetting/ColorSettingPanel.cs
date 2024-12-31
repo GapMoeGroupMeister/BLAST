@@ -118,6 +118,7 @@ namespace LobbyScene.ColorSettings
             // _currentSelectedSlot.data 
             _colorSetDataGroup.currentData = _currentSelectedSlot.data;
             // 색 변경
+            HandleSaveColorSetData();
             PlayerCustomColorLoader.LoadAndSetColor(_currentSelectedSlot.data.colors);
             SetActiveDetailPanel(false);
         }

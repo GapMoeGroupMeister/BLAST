@@ -1,3 +1,4 @@
+using Crogen.CrogenPooling;
 using UnityEngine;
 
 public class BossManager : MonoSingleton<BossManager>
@@ -8,8 +9,8 @@ public class BossManager : MonoSingleton<BossManager>
 
     public Boss SpawnBoss(WaveBoss bossInfo)
     {
-        _currentBoss = Instantiate(bossInfo.bossPrefab, bossInfo.generatePosition, Quaternion.identity);
-        _boss = (Boss) _currentBoss;
+        _currentBoss = gameObject.Pop(bossInfo.bossPoolType, bossInfo.generatePosition, Quaternion.identity) as Boss;
+        _boss = (Boss)_currentBoss;
         _bossBarContainer.GenerateBossBar(_currentBoss);
         return _boss;
     }

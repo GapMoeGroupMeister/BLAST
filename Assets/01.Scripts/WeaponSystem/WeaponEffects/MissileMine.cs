@@ -8,6 +8,7 @@ public class MissileMine : WeaponEffect, IPoolingObject
     GameObject IPoolingObject.gameObject { get; set; }
 
     [SerializeField] private EffectPoolType _destroyEffectPoolType;
+    [SerializeField] private DamageCaster _damageCaster;
     [SerializeField] private float _endRange = 50;
     [SerializeField] private float _moveDuration = 2f;
     [SerializeField] private float _lifeTime = 3f;
@@ -21,6 +22,7 @@ public class MissileMine : WeaponEffect, IPoolingObject
 
     public void OnPush()
     {
+        _damageCaster.CastDamage(_damage);
         gameObject.Pop(_destroyEffectPoolType, transform.position, Quaternion.identity);
         CameraShakeController.Instance.ShakeCam(3, 0.08f);
         _curLifeTime = 0;

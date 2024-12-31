@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 543290811550922874}
   - component: {fileID: -5361769368171741706}
   - component: {fileID: 6122178055350237928}
+  - component: {fileID: 2067614551131422294}
   m_Layer: 0
   m_Name: FireBullet
   m_TagString: Untagged
@@ -95,7 +96,7 @@ MonoBehaviour:
   _effectDuration: 2
   _effectLevel: 1
   center: {x: 0, y: 0, z: 4}
-  size: {x: 6, y: 6, z: 6}
+  size: {x: 6, y: 10, z: 6}
 --- !u!114 &-5361769368171741706
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119,6 +120,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d1d84a69ae53c4248a49a8607e87f5e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2067614551131422294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2756234889255895914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2882c91955b44a34ca68f7f390a00c9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &3817578365520106697
