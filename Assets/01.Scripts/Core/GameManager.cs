@@ -11,7 +11,7 @@ public class GameManager : MonoSingleton<GameManager>
 
 	private void Start()
 	{
-		_cutSceneManager.Init(Player);
+		_cutSceneManager?.Init(Player);
 		GameStart();
 	}
 
@@ -37,7 +37,7 @@ public class GameManager : MonoSingleton<GameManager>
 
 	private void GameStart()
 	{
-		_cutSceneManager.PlayGameStartCutScene();
+		_cutSceneManager?.PlayGameStartCutScene();
 		
 	}
 

@@ -22,8 +22,9 @@ MonoBehaviour:
     enemyAmount: 15
     spawnDelay: 0.2
   boss:
-    bossPrefab: {fileID: 0}
+    isBossExist: 1
+    bossPoolType: 0
     bossLevel: 1
     generatePosition: {x: 0, y: 0, z: 0}
-  supplyAmount: 1
+  supplyAmount: 0
   dropItemAmount: 2

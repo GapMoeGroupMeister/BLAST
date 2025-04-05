@@ -38,6 +38,12 @@ public class Player : Agent
         }
 
         StateMachine.Initialize(PlayerStateEnum.Idle, this);
+#if UNITY_EDITOR
+        
+#else
+        _isDebugMode=false;
+#endif
+        
         if(_isDebugMode == false) //디버깅할 때는 인스펙터에서 걍 정해버리기~
             _currentPartType = (PlayerPartType)SaveManager.data.partId;
         currentPlayerPart = _playerPartController.Init(_currentPartType);
