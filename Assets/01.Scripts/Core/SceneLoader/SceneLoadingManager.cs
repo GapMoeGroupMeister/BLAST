@@ -126,7 +126,7 @@ public class SceneLoadingManager : MonoBehaviour
 
 		TMPRemoveLastChar(_descriptionText);
 
-		//±ôºý±ôºý
+		//????????
 		for (int i = 0; i < 3; ++i)
 		{
 			_descriptionText.text += '_';
