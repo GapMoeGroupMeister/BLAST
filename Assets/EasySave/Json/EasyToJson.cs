@@ -29,6 +29,17 @@ namespace EasySave.Json
             return Path.Combine(LocalPath, $"{fileName}.json");
         }
         
+        private static bool IsSameJson(string path, string json)
+        {
+            if (!File.Exists(path))
+            {
+                Debug.Log("파일이 존재하지 않습니다.");
+                return false;
+            }
+            string beforeJson = File.ReadAllText(path);
+            return beforeJson == json;
+        }
+        
         /**
          * <summary>
          * Json 파일로 저장
@@ -42,6 +53,13 @@ namespace EasySave.Json
             CreateJsonFolder();
             string path = GetFilePath(jsonFileName);
             string json = JsonUtility.ToJson(obj, prettyPrint);
+            
+            if (IsSameJson(path, json))
+            {
+                Debug.Log("Json 파일이 동일합니다.");
+                return;
+            }
+            
             File.WriteAllText(path, json);
             Debug.Log(json);
         }
@@ -82,6 +100,11 @@ namespace EasySave.Json
             CreateJsonFolder();
             string path = GetFilePath(jsonFileName);
             string json = JsonConvert.SerializeObject(list, prettyPrint ? Formatting.Indented : Formatting.None);
+            if (IsSameJson(path, json))
+            {
+                Debug.Log("Json 파일이 동일합니다.");
+                return;
+            }
             File.WriteAllText(path, json);
             Debug.Log(json);
         }
@@ -122,6 +145,11 @@ namespace EasySave.Json
             CreateJsonFolder();
             string path = GetFilePath(jsonFileName);
             string json = JsonConvert.SerializeObject(dictionary, prettyPrint ? Formatting.Indented : Formatting.None);
+            if (IsSameJson(path, json))
+            {
+                Debug.Log("Json 파일이 동일합니다.");
+                return;
+            }
             File.WriteAllText(path, json);
             Debug.Log(json);
         }
