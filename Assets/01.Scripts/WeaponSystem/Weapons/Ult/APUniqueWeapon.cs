@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Crogen.CrogenPooling;
 using UnityEngine;
 
-public class APUltWeapon : UltWeapon
+public class APUniqueWeapon : UniqueWeapon
 {
     [SerializeField] private EffectPoolType _chargeEffectPoolType;
     [SerializeField] private EffectPoolType _empExplodeEffectPoolType;

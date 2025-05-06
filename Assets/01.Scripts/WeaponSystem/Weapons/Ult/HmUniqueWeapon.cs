@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class FNUltWeapon : UltWeapon
+public class HmUniqueWeapon : UniqueWeapon
 {
     protected override void Update()
     {

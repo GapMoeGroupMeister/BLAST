@@ -2,7 +2,7 @@ using System.Collections;
 using Crogen.CrogenPooling;
 using UnityEngine;
 
-public class BOFUltWeapon : UltWeapon
+public class BofUniqueWeapon : UniqueWeapon
 {
     [SerializeField] private ProjectilePoolType _ultFireBulletPoolType;
     [SerializeField] private float _duration = 8f;

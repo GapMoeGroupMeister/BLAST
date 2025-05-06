@@ -11,17 +11,11 @@ public class DashExtensionWeapon : Weapon
         _playerMovement.OnDashDirectionEvent += OnDash;
     }
 
-    private void OnDash(Vector3 dashDir)
-	{
-        if (isConditionalWeapon)
-		{
-            UseWeapon();
-        }
-	}
+    private void OnDash(Vector3 dashDir) => UseWeapon();
 
 	public override bool UseWeapon()
     {
-        if(base.UseWeapon())
+        if (base.UseWeapon())
         {
             DashExplosionEffect effect = 
                 Instantiate(_dashExplosionPrefab, 

@@ -1,6 +1,6 @@
 using System;
 
-public class UltWeapon : Weapon
+public class UniqueWeapon : Weapon
 {
     protected virtual void Start()
     {

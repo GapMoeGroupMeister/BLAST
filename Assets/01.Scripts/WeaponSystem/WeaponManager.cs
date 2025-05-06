@@ -9,7 +9,7 @@ public class WeaponManager : MonoSingleton<WeaponManager>
     private Dictionary<WeaponType, Weapon> _weapons;
 
     [SerializeField] private List<Weapon> _curWeapons; //해금된 자동발동 무기 리스트
-    private UltWeapon _curUltWeapon;
+    private UniqueWeapon _curUniqueWeapon;
     
     protected override void Awake()
 	{
@@ -20,7 +20,7 @@ public class WeaponManager : MonoSingleton<WeaponManager>
     
     private void Start()
     {
-        _curUltWeapon = GetComponentsInChildren<UltWeapon>().FirstOrDefault(x => 
+        _curUniqueWeapon = GetComponentsInChildren<UniqueWeapon>().FirstOrDefault(x => 
             x.partType == PlayerPartController.GetCurrentPlayerPart().playerPartType);
         
         foreach (WeaponType weaponEnum in Enum.GetValues(typeof(WeaponType)))
@@ -37,7 +37,7 @@ public class WeaponManager : MonoSingleton<WeaponManager>
                 AppendWeapon(weaponEnum);
         }
         
-        _curWeapons.Add(_curUltWeapon);
+        _curWeapons.Add(_curUniqueWeapon);
     }
 
     public int GetCurWeaponCount() => _curWeapons.Count;
@@ -75,7 +75,7 @@ public class WeaponManager : MonoSingleton<WeaponManager>
         return null;
     }
 
-    public UltWeapon GetCurrentUltWeapon() => _curUltWeapon;
+    public UniqueWeapon GetCurrentUltWeapon() => _curUniqueWeapon;
     
     [ContextMenu("DebugAppendWeapon")]
     private void AppendWeapon()
