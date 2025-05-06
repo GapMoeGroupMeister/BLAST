@@ -3,14 +3,6 @@ using Crogen.AttributeExtension;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public enum CompareMode
-{
-	Greater,
-	Equals,
-	NotEqual,
-	Less
-}
-
 public abstract class Weapon : MonoBehaviour
 {
 	public bool canUse = true;
