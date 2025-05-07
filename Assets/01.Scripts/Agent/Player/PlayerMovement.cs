@@ -113,7 +113,7 @@ public class PlayerMovement : MovementController
         _rigidbodyCompo.linearVelocity = -movement * moveSpeed;
 
         _distanceTravelled += (_startPos - _endPos).magnitude;
-        WeaponConditionalEventManager.Invoke("MineWeapon", _distanceTravelled);
+        EventManager.Invoke("MineWeapon", _distanceTravelled);
         _endPos = _startPos;
     }
 }
