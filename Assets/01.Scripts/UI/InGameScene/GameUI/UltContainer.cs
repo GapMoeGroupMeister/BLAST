@@ -10,25 +10,25 @@ public class UltContainer : MonoBehaviour
     [SerializeField] private Color _inactiveColor;
     
     private WeaponManager _weaponManager;
-    private UltWeapon _currentUltWeapon;
+    private UniqueWeapon _currentUniqueWeapon;
     
     private void Start()
     {
-        _currentUltWeapon = WeaponManager.Instance.GetCurrentUltWeapon();
+        _currentUniqueWeapon = WeaponManager.Instance.GetCurrentUltWeapon();
         
-        if(_currentUltWeapon == null)
+        if(_currentUniqueWeapon == null)
             Debug.LogWarning("Current Ult Weapon is null!");
         
         //이벤트 구독
-        _currentUltWeapon.OnCooldownEvent += HandleOnUltGauge;
+        _currentUniqueWeapon.OnCooldownEvent += HandleOnUniqueGauge;
     }
 
     private void OnDestroy()
     {
-        _currentUltWeapon.OnCooldownEvent -= HandleOnUltGauge;
+        _currentUniqueWeapon.OnCooldownEvent -= HandleOnUniqueGauge;
     }
 
-    private void HandleOnUltGauge(float current, float total)
+    private void HandleOnUniqueGauge(float current, float total)
     {
         _ultGauge.value = 1 - current / total;
         if (_ultGauge.value >= 1)

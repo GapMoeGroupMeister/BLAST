@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
-public class TTUltWeapon : UltWeapon
+public class TtUniqueWeapon : UniqueWeapon
 {
     private Player _player;
     [SerializeField] private int _count = 100;

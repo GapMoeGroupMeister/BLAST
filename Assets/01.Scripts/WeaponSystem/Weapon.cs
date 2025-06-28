@@ -16,7 +16,6 @@ public abstract class Weapon : MonoBehaviour
 
 	[Header("Weapon이 활성화되었는가?")]
 	public bool weaponEnabled;
-
 	
 	[Header("스킬 실행")]
 	public bool isConditionalWeapon;
