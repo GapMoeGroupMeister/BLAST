@@ -10,7 +10,7 @@ public class MineWeapon : Weapon
 	public override void WeaponInit()
 	{
 		base.WeaponInit();
-        WeaponConditionalEventManager.AddListener("MineWeapon", HandleUseWeaponByTravelled);
+        EventManager.AddListener("MineWeapon", HandleUseWeaponByTravelled);
     }
 
     private void HandleUseWeaponByTravelled(object distance)

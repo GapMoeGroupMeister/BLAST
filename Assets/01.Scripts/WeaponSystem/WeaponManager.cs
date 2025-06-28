@@ -120,7 +120,7 @@ public class WeaponManager : MonoSingleton<WeaponManager>
     {
         foreach (var weapon in _curWeapons)
         {
-            if (weapon.isConditionalWeapon) continue;
+            if (weapon.useCooldown) continue;
             weapon.UseWeapon();
         }
     }

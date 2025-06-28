@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public static class WeaponConditionalEventManager
+public static class EventManager
 {
     private static Dictionary<string, Action<object>> _events = new Dictionary<string, Action<object>>();
 

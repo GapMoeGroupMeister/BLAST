@@ -1,14 +1,7 @@
 ﻿using System;
 using Crogen.AttributeExtension;
 using UnityEngine;
-
-public enum CompareMode
-{
-	Greater,
-	Equals,
-	NotEqual,
-	Less
-}
+using UnityEngine.Serialization;
 
 public abstract class Weapon : MonoBehaviour
 {
@@ -17,8 +10,8 @@ public abstract class Weapon : MonoBehaviour
 	[Header("Weapon이 활성화되었는가?")]
 	public bool weaponEnabled;
 	
-	[Header("스킬 실행")]
-	public bool isConditionalWeapon;
+	[FormerlySerializedAs("useCooldawn")] [FormerlySerializedAs("isConditionalWeapon")] [Header("스킬 실행")]
+	public bool useCooldown;
 	[SerializeField] protected float _cooldown;
 	protected float _curCooldown;
 
